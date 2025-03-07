@@ -41,44 +41,47 @@ const handleGearChange = ()=> {
 
     return (
 <>
-    <form className={styles.wrapper} position='relative' width='100%'>
+    <form className={styles.wrapper} position='relative'>
         <div className={styles.image}>
             <img src={gearPic} class="img-thumbnail" alt="gears"></img>
-        </div>
-        <div className={styles.content}>
+        
+            <div className={styles.content}>
+                <div>
+                    <p>SAB Style two stage gear</p>
+                </div>
+                <div className="mt-4">
+                    <select className="dropdown" id="select" onChange={ handleOnChange } value={heli}>
+                    {heliGear.map((g)=>
+                        <option id={g.index} value={g.name}>{g.name}</option>
+                    )}
+                    </select>
+                </div>
+            </div>
             <div>
-                <p>SAB Style two stage gear</p>
+                <input className={styles.z1} type='number' id="z1" onChange={ handleGearChange } value={z1}></input>
+                <input className={styles.z2} type='number' id="z2" onChange={ handleGearChange } value={z2}></input>
+                <input className={styles.z3} type='number' id="z3" onChange={ handleGearChange } value={z3}></input>
+                <input className={styles.z4} type='number' id="z4" onChange={ handleGearChange } value={z4}></input>
+                <input className={styles.z5} type='number' id="z5" onChange={ handleGearChange } value={z5}></input>
+                <input className={styles.z6} type='number' id="z6" onChange={ handleGearChange } value={z6}></input>
             </div>
-            <div className="mt-4">
-                <select className="form-select" id="select" onChange={ handleOnChange } value={heli}>
-                {heliGear.map((g)=>
-                    <option id={g.index} value={g.name}>{g.name}</option>
-                )}
-                </select>
+            <div  >
+                <table className={styles.output}>
+                    <tr> 
+                        <td><input key='main1' disabled='true' type='number' value={z1*z3}></input></td>
+                        <td>:</td>
+                        <td><input key='main2' disabled='true' type='number' value={z2*z4}></input></td>
+                        <td>Calculated Main Ratio</td>
+                    </tr>
+                    <tr >
+                        <td><input key='tail1'  disabled='true' type='number' value={z3*z6}></input></td>
+                        <td>:</td>
+                        <td><input key='tail2'  disabled='true' type='number' value={z4*z5}></input></td>
+                        <td>Calculated Tail Ratio</td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div>
-            <input className={styles.z1} type='number' id="z1" onChange={ handleGearChange } value={z1}></input>
-            <input className={styles.z2} type='number' id="z2" onChange={ handleGearChange } value={z2}></input>
-            <input className={styles.z3} type='number' id="z3" onChange={ handleGearChange } value={z3}></input>
-            <input className={styles.z4} type='number' id="z4" onChange={ handleGearChange } value={z4}></input>
-            <input className={styles.z5} type='number' id="z5" onChange={ handleGearChange } value={z5}></input>
-            <input className={styles.z6} type='number' id="z6" onChange={ handleGearChange } value={z6}></input>
-        </div>
-        <table className={styles.output}>
-            <tr> 
-                <td><tr><input key='main1' disabled='true' type='number' value={z1*z3}></input></tr></td>
-                <td><p> : </p></td>
-                <td><tr><input key='main2' disabled='true' type='number' value={z2*z4}></input></tr></td>
-                <td><p>Calculated Main Ratio</p></td>
-            </tr>
-            <tr>
-                <td><input key='tail1' disabled='true' type='number' value={z3*z6}></input></td>
-                <td><p> : </p></td>
-                <td><input key='tail2' disabled='true' type='number' value={z4*z5}></input></td>
-                <td><p>Calculated Tail Ratio</p></td>
-            </tr>
-        </table>
     </form>
 </>
     )
