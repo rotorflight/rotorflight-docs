@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Gears2 from './gears2.json';
+import Gears from './gears.json';
 import 'bootstrap/dist/css/bootstrap.css';
 import styles2 from './gears2.module.css'
-import gearPic from './img/gears2.png'
+import gearPic2 from './img/gears2.png'
 
-const heliGear = Gears2.heliGears
+const heliGear = Gears.heliGears
 let selectIndex = 0;
 
 function GetGears() {
@@ -43,16 +43,16 @@ const handleGearChange = ()=> {
 <>
     <form className={styles2.wrapper} position='relative'>
         <div className={styles2.image}>
-            <img src={gearPic} class="img-thumbnail" alt="gears"></img>
+            <img src={gearPic2} class="img-thumbnail" alt="gears"></img>
         
             <div className={styles2.content}>
                 <div>
-                    <p>SAB Style two stage gear</p>
+                    <p>Type 2: two stage gear</p>
                 </div>
                 <div className="mt-4">
-                    <select className="dropdown" id="select2" onChange={ handleOnChange } value={heli}>
+                    <select className={styles2.drop} id="select2" onChange={ handleOnChange } value={heli}>
                     {heliGear.map((g)=>
-                        <option id={g.index} value={g.name}>{g.name}</option>
+                        (g.type===2 && <option id={g.index} value={g.name}>{g.name}</option>)
                     )}
                     </select>
                 </div>
@@ -65,24 +65,27 @@ const handleGearChange = ()=> {
                 <input className={styles2.z5} type='number' id="-z5" onChange={ handleGearChange } value={z5}></input>
                 <input className={styles2.z6} type='number' id="-z6" onChange={ handleGearChange } value={z6}></input>
             </div>
-            <div  >
-                <table className={styles2.output} >
-                    <tr> 
-                        <td><input key='main1' disabled='true' type='number' value={z1*z3}></input></td>
-                        <td>:</td>
-                        <td><input key='main2' disabled='true' type='number' value={z2*z4}></input></td>
-                        <td>Calculated Main Ratio</td>
-                    </tr>
-                    <tr>
-                        <td><input key='tail1'  disabled='true' type='number' value={z3*z6}></input></td>
-                        <td>:</td>
-                        <td><input key='tail2'  disabled='true' type='number' value={z4*z5}></input></td>
-                        <td>Calculated Tail Ratio</td>
-                    </tr>
-                </table>
+            <div className={styles2.outContainer}>
+                <div className={styles2.out}>
+                    <span>
+                        <input key='main1' disabled='true' type='number' value={z1*z3}></input>
+                        <b> : </b>
+                        <input key='main2' disabled='true' type='number' value={z2*z4}></input>
+                        <b>Calculated Main Ratio</b>
+                    </span>
+                </div>
+                <div className={styles2.out}>
+                    <span >
+                        <input key='tail1' disabled='true' type='number' value={z5}></input>
+                        <b> : </b>
+                        <input key='tail2' disabled='true' type='number' value={z6}></input>
+                        <b>Calculated Tail Ratio</b>
+                    </span>
+                </div>
             </div>
         </div>
     </form>
+
 </>
     )
 }

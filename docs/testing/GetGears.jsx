@@ -47,12 +47,12 @@ const handleGearChange = ()=> {
         
             <div className={styles.content}>
                 <div>
-                    <p>SAB Style two stage gear</p>
+                    <p>Type 1: two stage gear</p>
                 </div>
                 <div className="mt-4">
-                    <select className="dropdown" id="select" onChange={ handleOnChange } value={heli}>
+                    <select className={styles.drop} id="select" onChange={ handleOnChange } value={heli}>
                     {heliGear.map((g)=>
-                        <option id={g.index} value={g.name}>{g.name}</option>
+                        (g.type===1 && <option id={g.index} value={g.name}>{g.name}</option>)
                     )}
                     </select>
                 </div>
@@ -65,24 +65,27 @@ const handleGearChange = ()=> {
                 <input className={styles.z5} type='number' id="z5" onChange={ handleGearChange } value={z5}></input>
                 <input className={styles.z6} type='number' id="z6" onChange={ handleGearChange } value={z6}></input>
             </div>
-            <div  >
-                <table className={styles.output}>
-                    <tr> 
-                        <td><input key='main1' disabled='true' type='number' value={z1*z3}></input></td>
-                        <td>:</td>
-                        <td><input key='main2' disabled='true' type='number' value={z2*z4}></input></td>
-                        <td>Calculated Main Ratio</td>
-                    </tr>
-                    <tr >
-                        <td><input key='tail1'  disabled='true' type='number' value={z3*z6}></input></td>
-                        <td>:</td>
-                        <td><input key='tail2'  disabled='true' type='number' value={z4*z5}></input></td>
-                        <td>Calculated Tail Ratio</td>
-                    </tr>
-                </table>
+            <div className={styles.outContainer}>
+                <div className={styles.out}>
+                    <span>
+                        <input key='maine' disabled='true' type='number' value={z1*z3}></input>
+                        <b> : </b>
+                        <input key='mains' disabled='true' type='number' value={z2*z4}></input>
+                        <b>Calculated Main Ratio</b>
+                    </span>
+                </div>
+                <div className={styles.out}>
+                    <span >
+                        <input key='maind' disabled='true' type='number' value={z3*z6}></input>
+                        <b> : </b>
+                        <input key='mains' disabled='true' type='number' value={z4*z5}></input>
+                        <b>Calculated Tail Ratio</b>
+                    </span>
+                </div>
             </div>
         </div>
     </form>
+
 </>
     )
 }
