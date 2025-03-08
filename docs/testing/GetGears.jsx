@@ -10,12 +10,12 @@ let selectIndex = 0;
 function GetGears() {
 
 const [ heli, setHeli ] = useState('Heli-Default');
-const [ z1, setZ1 ] = useState('0');
-const [ z2, setZ2 ] = useState('0');
-const [ z3, setZ3 ] = useState('0');
-const [ z4, setZ4 ] = useState('0');
-const [ z5, setZ5 ] = useState('0');
-const [ z6, setZ6 ] = useState('0');
+const [ z1, setZ1 ] = useState('20');
+const [ z2, setZ2 ] = useState('50');
+const [ z3, setZ3 ] = useState('20');
+const [ z4, setZ4 ] = useState('60');
+const [ z5, setZ5 ] = useState('30');
+const [ z6, setZ6 ] = useState('20');
 
 const handleOnChange = (e)=>{
     setHeli(e.target.value);
