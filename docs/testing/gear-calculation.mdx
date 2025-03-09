@@ -1,9 +1,48 @@
 import React from 'react'
 import Gears from "./GetGears.jsx"
 import Gears2 from "./GetGears2.jsx"
+import Gears3 from "./GetGears3.jsx"
 
 
+# Two-Stage Gear Train Ratios
 
+Having an accurate gear ratio for the main and tail rotor is essential for Rotorflight accurate RPM Filters performance.
+
+Therefore it is best to count the tooth on the main and tail gear/pulley reduction sets and enter the values into the configurator.
+
+This is relatively easy in single stage drive train that are used on most helicopters.
+
+Broadly there are two types of two-stage ratios which are dependant on where the tail gear is connected. 
+
+## Type 1 - Two-stage gears
+
+Many SAB and ALIGN helicopters use this method.
+
+Chose your helicopter and modify the motor pinion to match what you are installing.
 <Gears />
+
+## Type 2 - Two-stage gears
+
+Chose your helicopter and modify the motor pinion to match what you are installing.
 <Gears2 />
 
+## Type 3 - Two-stage gears
+<Gears3 />
+
+## Calculations
+The following is a description for the calculations used above
+
+Type 1:
+
+* `motor pinion` = *(Z1 x Z3)* = *(21 x 18)* = `378`.
+* `main gear` = *(Z2 x Z4)* = *(56 x 69)* = `3864`.
+* `tail pulley` = *(Z3 x Z6)* = *(18 x 26)* = `468`.
+* `front pulley` = *(Z4 x Z5)* = *(69 x 34)* = `2346`.
+
+
+Type 2:
+
+* `motor pinion` = *(Z1 x Z3)* = *(21 x 18)* = `378`.
+* `main gear` = *(Z2 x Z4)* = *(56 x 69)* = `3864`.
+* `tail pulley` = *(Z3 x Z6)* = *(18 x 26)* = `468`.
+* `front pulley` = *(Z4 x Z5)* = *(69 x 34)* = `2346`.
