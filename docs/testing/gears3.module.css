@@ -78,8 +78,8 @@
    .z5 {
       position: absolute;
       font-size: 90%;
-      top: 56%;
-      left: 39.5%;
+      top: 46%;
+      left: 63.5%;
       width: 10%;
       height: 6%;
       padding: 2px;
@@ -88,12 +88,22 @@
    .z6 {
       position: absolute;
       font-size: 90%;
-      top: 56%;
-      left: 84.5%;
+      top: 34.7%;
+      left: 56.5%;
       width: 10%;
       height: 6%;
       padding: 2px;
       }
+
+    .z7 {
+        position: absolute;
+        font-size: 90%;
+        top: 34.7%;
+        left: 84%;
+        width: 10%;
+        height: 6%;
+        padding: 2px;
+        }
   
   .outContainer {
       position: absolute;    
