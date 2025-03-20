@@ -1,7 +1,10 @@
 import React from 'react'
-import Gears from "./GetGears.jsx"
-import Gears2 from "./GetGears2.jsx"
-import Gears3 from "./GetGears3.jsx"
+import Gears from "@site/src/components/GearCalc/GetGears.jsx"
+import Gears2 from "@site/src/components/GearCalc/GetGears2.jsx"
+import Gears3 from "@site/src/components/GearCalc/GetGears3.jsx"
+import Goblin from "./img/ilGoblin.png"
+import KDS from "./img/kdsA5.png"
+import Hurricane from "./img/hurricane.png"
 
 
 # Two-Stage Gear Train Ratios
@@ -12,7 +15,11 @@ Therefore it is best to count the tooth on the main and tail gear/pulley reducti
 
 This is relatively easy in single stage drive train that are used on most helicopters.
 
-Broadly there are two types of two-stage ratios which are dependant on where the tail gear is connected. 
+Broadly there are three types of two-stage ratios which are dependant on where the tail gear is connected. Review your helicopters gear arrangement and choose the calculator that matches below. 
+
+:::caution note
+Select the helicopter from the dropdown or count the gear teeth for your helicopter and enter the count into the calculator. 
+::: 
 
 ## Type 1 - Two-stage gears
 
@@ -27,10 +34,11 @@ Chose your helicopter and modify the motor pinion to match what you are installi
 <Gears2 />
 
 ## Type 3 - Two-stage gears
+This gear system was used for the Gaui Hurricane. 
 <Gears3 />
 
 ## Calculations
-The following is a description is some details for the calculations used above. This can be used if you wish to calculate the ratios yourself.
+The following section is an example for the calculations that are used in the above. This can be used if you wish to know more or to calculate the ratios yourself.
 
 ### Type 1
 For example for the SAB ilGoblin 700 with STD 21T motor pulley, the calculation will be as follow:
@@ -49,8 +57,7 @@ For example for the SAB ilGoblin 700 with STD 21T motor pulley, the calculation 
 * `tail pulley` = *(Z3 x Z6)* = *(18 x 26)* = `468`.
 * `front pulley` = *(Z4 x Z5)* = *(69 x 34)* = `2312`.
 
-`    378    ` : `    3808   ` Calculated Main Ratio  
-`    468    ` : `    2312   ` Calculated Tail Ratio
+<img src={Goblin} alt="Goblin"/>
 
 ### Type 2
 
@@ -70,8 +77,7 @@ For example for the KDS Agile A5 with STD 21T motor pulley, the calculation will
 * `tail pulley` = *(Z6)* = *(14)* = `14`.
 * `front pulley` = *(Z5)* = *(57)* = `57`.
 
-`    357    ` : `    3564   ` Calculated Main Ratio  
-`    14     ` : `     57    ` Calculated Tail Ratio
+<img src={KDS} alt="KDS A5"/>
 
 ### Type 3
 
@@ -92,5 +98,4 @@ This gear train type has a two-stage Main rotor and two-stage tail ratios. This 
 * `tail pulley` = *(Z5 x Z7)* = *(14 x 9)* = `126`.
 * `front pulley` = *(z4*z6)* = *(61 x 9)* = `549`.
 
-`    247    ` : `    2562   ` Calculated Main Ratio  
-`    126     ` : `    549    ` Calculated Tail Ratio
+<img src={Hurricane} alt="Gaui Hurricane"/>
