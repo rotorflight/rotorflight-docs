@@ -71,6 +71,7 @@ const sidebars = {
                             type: 'category',
                             label: 'Frsky Ethos',
                             items: [
+                                "setup/radio-setup/radio-setup-ethos/ethos-simulators",
                                 "setup/radio-setup/radio-setup-ethos/ethos-generic-radio-setup",
                                 "setup/radio-setup/radio-setup-ethos/ethos-setup",
                                 "setup/radio-setup/radio-setup-ethos/ethos-nexus-status",
