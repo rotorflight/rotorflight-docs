@@ -126,7 +126,7 @@ const config = {
             'https://github.com/rotorflight/rotorflight-docs/tree/main',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          //customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
