@@ -58,7 +58,7 @@ With this info, the FC can calculate the:
 
 **Current Correction:** Use this to scale the ESC Current telemetry value.
 
-**Voltage Consumption:** Use this to scale the ESC Consumption telemetry value.
+**Consumption Correction:** Use this to scale the ESC Consumption telemetry value.
 
 ### DSHOT Protocol
 
