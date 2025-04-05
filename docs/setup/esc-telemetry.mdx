@@ -20,7 +20,12 @@ ESC Telemetry currently supported are :
 - **FlyRotor**:
 - **Graupner**:
 - **YGE**: OpenYGE - Note - The ESC must have firmware V1.03547 or above. At the moment this is in beta and has not been released. Please use the contact form to request the updated firmware. [YGE: Contact Us](https://www.yge.de/en/contact/)
+- **XDFLY**:
   :::
+
+:::caution
+Looking for **Castle Creations** Telemetry?. Castle ESCs use a single wire protocol which is quite different to normal ESC telemetry. see the [**Castle ESC Telemetry**](#castle-esc-telemetry) below.  
+:::
 
 ### Select Serial Port
 
@@ -41,3 +46,41 @@ Select the correct ESC telemetry protocol based on the one you are using.
 Enable the Voltage and Current from the `Power` Tab.
 
 ![ESC Telemetry](./img/esc-telem-power.png)
+
+### Calibrate telemetry values
+
+The measurement accuracy of some ESCs is poor and may need to be scaled to obtain more reasonable values (Some Hobbywing ESCs are very bad). These can be calibrated by using the correctionfactors.
+
+![ESC Telemetry scale](./img/esc-telem-scale.png)
+
+
+## Castle ESC Telemetry
+
+Castle ESCs use a single wire protocol. As such the signal and telemetry are sent on the same wire. 
+
+### Set ESC Protocol
+
+In the **Motor Protocol** select Castle.
+
+![ESC Telemetry](./img/castle-1.png)  
+
+### Enable ESC Link Live
+
+Enable **Link Live** using the Castle link software connected to your ESC.
+
+![ESC Telemetry](./img/castle-2.png)  
+
+### DIY Castle link
+
+This adapter connects between the ESC and the FC. It can be made from a small piece of perf board and a resistor. This resistor is sized depending on your BEC voltage.  
+
+5v BEC  = 5k Resistor  
+7.4 BEC = 8.2k ohm  
+12v BEC = 10k Resistor  
+
+![ESC Telemetry](./img/castle-3.png)
+
+They can be soldered directly to the perf board as below.
+
+![ESC Telemetry](./img/castle-4.png)
+
