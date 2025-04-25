@@ -218,3 +218,13 @@ The governor internal state can be observed in the blackbox log. It is a good in
 `AUTOROTATION` The throttle has dropped from high to the autorotation range. The governor is expecting the throttle to return once the autorotation has been performed. Once the throttle return, the governor moves to the state below.
 
 `AUTOROTATION_BAILOUT` Throttle has returned while in AutoRotation state, and the governor is performing an autorotation bailout.
+
+`THROTTLE_OFF` This state may be entered when any of the following conditions are met:
+
+- On system disarm
+- The throttle signal dropped too low while in IDLE state
+- The throttle signal dropped too low while in SPOOLING_UP state
+- The throttle signal dropped too low while in ACTIVE and zero-throttle timeout has not yet expired
+- The throttle signal dropped too low while in AUTOROTATION (Mode 1 and Mode 2 only)
+- Headspeed lost and headspeed-lost timeout expired (Mode 1 and Mode 2 only)
+- Battery cell count is 0 (Mode 2 only)
