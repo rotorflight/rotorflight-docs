@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Gears2 from '@site/src/resources/gears2.json';
-import 'bootstrap/dist/css/bootstrap.css';
 import styles2 from '@site/src/components/GearCalc/gears2.module.css'
 import gearPic2 from './img/gears2.png'
 

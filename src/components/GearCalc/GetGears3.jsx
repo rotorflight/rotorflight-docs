@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Gears3 from '@site/src/resources/gears3.json';
-import 'bootstrap/dist/css/bootstrap.css';
 import styles3 from '@site/src/components/GearCalc/gears3.module.css'
 import gearPic3 from './img/gears3.png'
 
