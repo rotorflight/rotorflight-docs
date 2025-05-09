@@ -9,7 +9,7 @@ This is a development code for the next Rotorflight release. This is development
 :::
 
 :::info Download Here!!
-[Rotorflight v2.2.0 Development RC1](https://github.com/rotorflight/rotorflight-configurator/releases/tag/release%2F2.2.0-RC1)
+[Rotorflight v2.2.0 Development RC4](https://github.com/rotorflight/rotorflight-configurator/releases/tag/release%2F2.2.0-RC4)
 :::
 
 ![Configurator](./img/configurator.png)
