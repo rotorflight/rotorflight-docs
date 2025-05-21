@@ -75,6 +75,8 @@ const sidebars = {
                                 "setup/radio-setup/radio-setup-ethos/ethos-generic-radio-setup",
                                 "setup/radio-setup/radio-setup-ethos/ethos-setup",
                                 "setup/radio-setup/radio-setup-ethos/ethos-nexus-status",
+                                "setup/radio-setup/radio-setup-ethos/ethos-suite-missing-sensors",
+                                "setup/radio-setup/radio-setup-ethos/ethos-background-task-notification",
                             ],
                         },
                         {
