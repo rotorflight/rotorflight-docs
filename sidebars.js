@@ -138,6 +138,7 @@ const sidebars = {
         "configurator/tabs/status",
         "configurator/tabs/setup",
         "configurator/tabs/configuration",
+        "configurator/tabs/presets",
         "configurator/tabs/receiver",
         "configurator/tabs/failsafe",
         "configurator/tabs/power",
