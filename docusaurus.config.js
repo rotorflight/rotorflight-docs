@@ -154,6 +154,7 @@ const config = {
           srcDark: 'img/Rotorflight_outline_dark.svg',
         },
         items: [
+            { to: '/announcement', label: 'Announcements', position: 'left' },
                    {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
