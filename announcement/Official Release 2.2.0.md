@@ -13,7 +13,7 @@ authors:
 [**Download Configurator**](../docs/download/configurator)  
 [**Download Blackbox**](../docs/download/blackbox)  
 [**Download EdgeTX Lua**](../docs/download/edge-tx-Lua)  
-[**Download Ethos Lua**](../docs/download/ethos-Lua.md)
+[**Download Ethos Lua**](../docs/download/ethos-Lua)
 
 ## 🔧 Firmware (Rotorflight 4.5.x)
 

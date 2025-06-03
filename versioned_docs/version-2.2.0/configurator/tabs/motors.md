@@ -18,7 +18,7 @@ Set the ESC protocol required for your ESC under _ESC/Motor protocol_. Usually t
 
 ### ESC Telemetry Protocol
 
-Set the ESC [_Telemetry_](../../setup/esc-telemetry.md) protocol if your esc supports it.
+Set the ESC [_Telemetry_](../../setup/esc-telemetry.mdx) protocol if your esc supports it.
 
 ![Motor and ESC](../img/motor-telem.png)
 
