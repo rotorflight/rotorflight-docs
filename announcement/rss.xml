@@ -4,7 +4,7 @@
         <title>Rotorflight Blog</title>
         <link>https://github.com/announcement</link>
         <description>Rotorflight Blog</description>
-        <lastBuildDate>Mon, 02 Jun 2025 10:38:57 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 03 Jun 2025 07:07:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[Official Release 2.1.1]]></title>
             <link>https://github.com/announcement/Official Release 2.1.1</link>
             <guid>https://github.com/announcement/Official Release 2.1.1</guid>
-            <pubDate>Mon, 02 Jun 2025 10:38:57 GMT</pubDate>
+            <pubDate>Tue, 03 Jun 2025 07:07:00 GMT</pubDate>
             <description><![CDATA[This is the the Official Release of the Rotorflight firmware for RF 2.1.1.]]></description>
             <content:encoded><![CDATA[<p>This is the the Official Release of the Rotorflight firmware for RF 2.1.1.</p>
 <p>NOTE! The firmware for RF 2.1 uses version number 4.4.x.</p>
@@ -106,6 +106,105 @@ failures are now clearly indicated. Currently there are four different kind of w
 <li>Fix UART bidir mode pull-up on F4</li>
 <li>Fix beep on disarm</li>
 <li>Various CMS fixes</li>
+</ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Official Release 2.2.0]]></title>
+            <link>https://github.com/announcement/Official Release 2.2.0</link>
+            <guid>https://github.com/announcement/Official Release 2.2.0</guid>
+            <pubDate>Tue, 03 Jun 2025 07:07:00 GMT</pubDate>
+            <description><![CDATA[Download Notes]]></description>
+            <content:encoded><![CDATA[<p><a href="https://github.com/docs/download/notes"><strong>Download Notes</strong></a><br>
+<a href="https://github.com/docs/download/configurator"><strong>Download Configurator</strong></a><br>
+<a href="https://github.com/docs/download/blackbox"><strong>Download Blackbox</strong></a><br>
+<a href="https://github.com/docs/download/edge-tx-Lua"><strong>Download EdgeTX Lua</strong></a><br>
+<a href="https://github.com/docs/download/ethos-Lua.md"><strong>Download Ethos Lua</strong></a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-firmware-rotorflight-45x">🔧 Firmware (Rotorflight 4.5.x)<a href="https://github.com/announcement/Official%20Release%202.2.0#-firmware-rotorflight-45x" class="hash-link" aria-label="Direct link to 🔧 Firmware (Rotorflight 4.5.x)" title="Direct link to 🔧 Firmware (Rotorflight 4.5.x)">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-new-features">🆕 New Features<a href="https://github.com/announcement/Official%20Release%202.2.0#-new-features" class="hash-link" aria-label="Direct link to 🆕 New Features" title="Direct link to 🆕 New Features">​</a></h3>
+<ul>
+<li>Support for <strong>USB Mass Storage (MSC)</strong> across Mac, Android, and other platforms.</li>
+<li><strong>Automatic configuration erase</strong> when flashing firmware to ensure clean installs.</li>
+<li><strong>Adjustment function</strong> added for <code>yaw_precomp_cutoff</code>.</li>
+<li>New <strong>Rate Dynamics</strong> and <strong>PID Controller Settings</strong> accessible via Lua scripts.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-updated-defaults-and-improvements">🔁 Updated Defaults and Improvements<a href="https://github.com/announcement/Official%20Release%202.2.0#-updated-defaults-and-improvements" class="hash-link" aria-label="Direct link to 🔁 Updated Defaults and Improvements" title="Direct link to 🔁 Updated Defaults and Improvements">​</a></h3>
+<ul>
+<li>Lowered default <strong>D gains</strong> for improved stability.</li>
+<li>Increased default <strong>HSI gains</strong> (Helicopter Stability Index).</li>
+<li>Improved <strong>collective-to-yaw precompensation</strong>.</li>
+<li>Enabled <strong>CRSF/ELRS custom telemetry</strong> via background Lua script.</li>
+<li>Updated gyro Output Data Rate (ODR) to 4kHz on F4 and F7 targets for stability.</li>
+<li>Added <strong>Blackbox header timestamps</strong> using background Lua sync.</li>
+<li>Enhanced <strong>RPM notch filtering</strong>, fixing glitches at startup and low RPM.</li>
+<li>Improved compatibility with <strong>JR XBus</strong> (both Mode A and Mode B).</li>
+<li>Fixed telemetry sensor scaling for <strong>ESC1</strong> on S.Port.</li>
+<li>Resolved lockups and flash handling on <strong>G4</strong> processors and <strong>W25N</strong> NAND flash.</li>
+<li>Fixed issues with <strong>XDFly ESC telemetry</strong> lockups.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-rotorflight-configurator-v220">🖥️ Rotorflight Configurator (v2.2.0)<a href="https://github.com/announcement/Official%20Release%202.2.0#%EF%B8%8F-rotorflight-configurator-v220" class="hash-link" aria-label="Direct link to 🖥️ Rotorflight Configurator (v2.2.0)" title="Direct link to 🖥️ Rotorflight Configurator (v2.2.0)">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-new-features-1">🆕 New Features<a href="https://github.com/announcement/Official%20Release%202.2.0#-new-features-1" class="hash-link" aria-label="Direct link to 🆕 New Features" title="Direct link to 🆕 New Features">​</a></h3>
+<ul>
+<li>Added a <strong>Presets system</strong> to quickly apply CLI snippets from the UI.</li>
+<li>Added <strong>Android and macOS Apple Silicon builds</strong> (note: macOS requires manual xattr removal).</li>
+<li>Improved <strong>telemetry sensor interface</strong>.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-localization--platform-support">🌐 Localization &amp; Platform Support<a href="https://github.com/announcement/Official%20Release%202.2.0#-localization--platform-support" class="hash-link" aria-label="Direct link to 🌐 Localization &amp; Platform Support" title="Direct link to 🌐 Localization &amp; Platform Support">​</a></h3>
+<ul>
+<li>Added <strong>Spanish</strong> language support.</li>
+<li>Created a <strong>portable ZIP version</strong> for Windows users.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-fixes--ui-enhancements">🐞 Fixes &amp; UI Enhancements<a href="https://github.com/announcement/Official%20Release%202.2.0#-fixes--ui-enhancements" class="hash-link" aria-label="Direct link to 🐞 Fixes &amp; UI Enhancements" title="Direct link to 🐞 Fixes &amp; UI Enhancements">​</a></h3>
+<ul>
+<li>Improved visibility of <strong>mode active indicators</strong> in dark theme.</li>
+<li>Corrected <strong>suggested backup filenames</strong>.</li>
+<li>Resolved issues with <strong>custom target flashing</strong> and <strong>Windows installation errors</strong>.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-lua-scripts-for-edgetx--opentx-v220">📟 Lua Scripts for EdgeTX / OpenTX (v2.2.0)<a href="https://github.com/announcement/Official%20Release%202.2.0#-lua-scripts-for-edgetx--opentx-v220" class="hash-link" aria-label="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.0)" title="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.0)">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-pages--controls">🆕 Pages &amp; Controls<a href="https://github.com/announcement/Official%20Release%202.2.0#-pages--controls" class="hash-link" aria-label="Direct link to 🆕 Pages &amp; Controls" title="Direct link to 🆕 Pages &amp; Controls">​</a></h3>
+<ul>
+<li>New <strong>"Rate Dynamics"</strong> page for advanced rate tuning.</li>
+<li>New <strong>"PID Controller Settings"</strong> page for deep tuning options.</li>
+<li>Units added to most fields for clarity and consistency.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-performance--stability">🛠 Performance &amp; Stability<a href="https://github.com/announcement/Official%20Release%202.2.0#-performance--stability" class="hash-link" aria-label="Direct link to 🛠 Performance &amp; Stability" title="Direct link to 🛠 Performance &amp; Stability">​</a></h3>
+<ul>
+<li><strong>Reduced memory usage</strong> to improve script responsiveness.</li>
+<li>Background script (<code>rf2bg</code>) sets the FC clock and enables CRSF/ELRS telemetry automatically.</li>
+<li>Numerous minor fixes and UX improvements.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-lua-suite-for-frsky-ethos-v220">📟 Lua Suite for FrSky Ethos (v2.2.0)<a href="https://github.com/announcement/Official%20Release%202.2.0#-lua-suite-for-frsky-ethos-v220" class="hash-link" aria-label="Direct link to 📟 Lua Suite for FrSky Ethos (v2.2.0)" title="Direct link to 📟 Lua Suite for FrSky Ethos (v2.2.0)">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-framework-overhaul">🔄 Framework Overhaul<a href="https://github.com/announcement/Official%20Release%202.2.0#-framework-overhaul" class="hash-link" aria-label="Direct link to 🔄 Framework Overhaul" title="Direct link to 🔄 Framework Overhaul">​</a></h3>
+<ul>
+<li>Complete rewrite using a <strong>modular API-driven architecture</strong>.</li>
+<li>Supports dynamic <strong>page/module/widget creation</strong> based on MSP data.</li>
+<li>Enabled <strong>VSCode development integration</strong>.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-functional-enhancements">📈 Functional Enhancements<a href="https://github.com/announcement/Official%20Release%202.2.0#-functional-enhancements" class="hash-link" aria-label="Direct link to 📈 Functional Enhancements" title="Direct link to 📈 Functional Enhancements">​</a></h3>
+<ul>
+<li>Added <strong>Blackbox status</strong>, <strong>arm state</strong>, and <strong>disarm flags widgets</strong>.</li>
+<li>Improved <strong>connect/reconnect speed</strong> and user feedback.</li>
+<li>Introduced <strong>MSP sensor framework</strong> for scalable telemetry.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-internationalization">🌍 Internationalization<a href="https://github.com/announcement/Official%20Release%202.2.0#-internationalization" class="hash-link" aria-label="Direct link to 🌍 Internationalization" title="Direct link to 🌍 Internationalization">​</a></h3>
+<ul>
+<li>Improved translation functions and added <strong>Italian translation/audio</strong>.</li>
+<li>Fixed character encoding issues in non-English locales.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="-fixes--ux">🐞 Fixes &amp; UX<a href="https://github.com/announcement/Official%20Release%202.2.0#-fixes--ux" class="hash-link" aria-label="Direct link to 🐞 Fixes &amp; UX" title="Direct link to 🐞 Fixes &amp; UX">​</a></h3>
+<ul>
+<li>Improved alignment of PID defaults to match <strong>Flybarless (FBL)</strong> systems.</li>
+<li>Added new <strong>adjustment function sounds</strong> and UI feedback.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-blackbox-explorer-v220">📊 Blackbox Explorer (v2.2.0)<a href="https://github.com/announcement/Official%20Release%202.2.0#-blackbox-explorer-v220" class="hash-link" aria-label="Direct link to 📊 Blackbox Explorer (v2.2.0)" title="Direct link to 📊 Blackbox Explorer (v2.2.0)">​</a></h2>
+<ul>
+<li>Added full support for <strong>Rotorflight 4.5.0 log format</strong> including headers and log events.</li>
+<li>Fixed installation issues on some Windows environments.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-compatibility-notes">✅ Compatibility Notes<a href="https://github.com/announcement/Official%20Release%202.2.0#-compatibility-notes" class="hash-link" aria-label="Direct link to ✅ Compatibility Notes" title="Direct link to ✅ Compatibility Notes">​</a></h2>
+<ul>
+<li>Fully compatible with Rotorflight <strong>2.0 and 2.1</strong> configurations.</li>
+<li>Users updating from Rotorflight <strong>1.x must reconfigure</strong> from scratch.</li>
+<li>Always <strong>verify settings and behavior on the bench</strong> before flying after upgrading.</li>
 </ul>]]></content:encoded>
         </item>
     </channel>
