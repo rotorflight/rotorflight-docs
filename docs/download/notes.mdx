@@ -5,53 +5,82 @@ sidebar_position: 1
 # v2.2.0 Upgrade notes
 
 ## Update procedure
-* Please follow the [**Backup and restore**](../setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.1.1 config. 
-* Use `diff all` as the backup command. 
+* Please follow the [**Backup and restore**](../setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.1.1 config.
+* Use `diff all` as the backup command.
 * [**Flash new version**](../setup/flashing-the-firmware.mdx) with ***Full Chip Erase***
 * [**Restore your settings**](../setup/backup-and-restore#loadrestore-config) from the backup file
 
-Note.  It is important that you paste the below commands into your configurator cli after importing the 2.1 diff file. 
-```
-profile 0
-set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
-set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
-set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
-
-profile 1
-set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
-set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
-set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
-
-profile 2
-set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
-set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
-set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
-
-profile 3
-set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
-set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
-set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
-
-profile 4
-set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
-set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
-set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
-
-profile 5
-set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
-set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
-set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
-
-profile 0
-
-save
-```
-
-## safe expected errors
-N/A
-
 ## Breaking changes
-N/A
+
+- RPM Filter has been updated and must be reconfigured.
+- Telemetry sensor configuration has been unified across protocols and must be reconfigured.
+- Gyro data rate (ODR) has been reduced for some targets. As a result, PID loop frequency and blackbox logging rate must be reconfigured.
+- PID Mode 1 and 2 have been removed. Profiles using these PID modes must be reconfigured using PID Mode 3.
+- D term mode `ERROR` has been removed. D term mode is now always `GYRO`. D gain must be reconfigured for profiles previously using `ERROR` D term mode.
+- Yaw Collective Impulse has been removed.
+
+## Renamed parameters
+
+```
+crsf_telemetry_sensors -> telemetry_sensors
+crsf_telemetry_interval -> telemetry_interval
+```
+
+## Removed parameters
+
+```
+pid_in_tlm
+
+telemetry_enable_voltage
+telemetry_enable_current
+telemetry_enable_fuel
+telemetry_enable_mode
+telemetry_enable_acc_x
+telemetry_enable_acc_y
+telemetry_enable_acc_z
+telemetry_enable_pitch
+telemetry_enable_roll
+telemetry_enable_heading
+telemetry_enable_altitude
+telemetry_enable_vario
+telemetry_enable_lat_long
+telemetry_enable_ground_speed
+telemetry_enable_distance
+telemetry_enable_esc_current
+telemetry_enable_esc_voltage
+telemetry_enable_esc_rpm
+telemetry_enable_esc_temperature
+telemetry_enable_temperature
+telemetry_enable_cap_used
+telemetry_enable_adjustment
+telemetry_enable_gov_mode
+telemetry_enable_model_id
+telemetry_enable_pid_profile
+telemetry_enable_rates_profile
+telemetry_enable_bec_voltage
+telemetry_enable_headspeed
+telemetry_enable_tailspeed
+telemetry_enable_throttle_control
+telemetry_enable_arming_flags
+
+error_decay_rate_curve
+error_decay_limit_curve
+offset_decay_rate_curve
+offset_decay_limit_curve
+offset_bleed_rate_curve
+offset_bleed_limit_curve
+offset_charge_curve
+
+pid_dterm_mode
+pid_dterm_mode_yaw
+
+yaw_collective_dynamic_gain
+yaw_collective_dynamic_decay
+
+pitch_error_cutoff
+roll_error_cutoff
+yaw_error_cutoff
+```
 
 ## Whats New
 * [Castle ESC Telemetry](../setup/esc-telemetry.mdx#castle-esc-telemetry)
@@ -63,6 +92,6 @@ N/A
 * [ESC Voltage and Current scaling](../setup/esc-telemetry#calibrate-telemetry-values)
 * [Positive and Negative collective tilt](../configurator/tabs/mixer#positive-and-negative-collective-tilt-correction)
 * [Inertia Precomp](../configurator/tabs/profiles#inertia-precomp-gain)
-* [Mixer Passthrough](../setup//setup-mixer.mdx#mixer-override)
-
-
+* [Mixer Passthrough](../setup/setup-mixer.mdx#mixer-override)
+* Setpoint Boost
+* Yaw Dynamic Deadband/Ceiling
