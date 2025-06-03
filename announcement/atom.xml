@@ -2,126 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://github.com/announcement</id>
     <title>Rotorflight Blog</title>
-    <updated>2025-06-03T07:16:55.000Z</updated>
+    <updated>2025-06-03T08:55:58.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://github.com/announcement"/>
     <subtitle>Rotorflight Blog</subtitle>
     <icon>https://github.com/img/rffavicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Official Release 2.1.1]]></title>
-        <id>https://github.com/announcement/Official Release 2.1.1</id>
-        <link href="https://github.com/announcement/Official Release 2.1.1"/>
-        <updated>2025-06-03T07:16:55.000Z</updated>
-        <summary type="html"><![CDATA[This is the the Official Release of the Rotorflight firmware for RF 2.1.1.]]></summary>
-        <content type="html"><![CDATA[<p>This is the the Official Release of the Rotorflight firmware for RF 2.1.1.</p>
-<p>NOTE! The firmware for RF 2.1 uses version number 4.4.x.</p>
-<p>Swashplate wiggle indications
-The swashplate is now indicating the FC readiness by doing a wiggle. Also, any errors or arming
-failures are now clearly indicated. Currently there are four different kind of wiggles:</p>
-<ul>
-<li>
-<p>FC ready to be armed</p>
-</li>
-<li>
-<p>Arming temporarily disabled</p>
-</li>
-<li>
-<p>Arming permanent failure</p>
-</li>
-<li>
-<p>Armed succesfully (disabled by default)</p>
-</li>
-<li>
-<p>FBUS support</p>
-</li>
-<li>
-<p>With help from FrSky, FBUS is now officially supported.</p>
-</li>
-<li>
-<p>SBUS2 support</p>
-</li>
-<li>
-<p>Futaba SBUS2 telemetry is now available on the F7 and H7 targets.</p>
-</li>
-<li>
-<p>SBUS Output support</p>
-</li>
-<li>
-<p>SBUS output is available as a tech preview, on CLI only. It allows expanding the number of servo outputs</p>
-</li>
-<li>
-<p>with an expander, or using SBUS servos directly.</p>
-</li>
-<li>
-<p>Tx/Rx pinswap for serial ports</p>
-</li>
-<li>
-<p>A support for swapping the Tx/Rx pins on serial receivers, ESC telemetry,<br>
-<!-- -->and transmitter telemetry UARTs have been added.</p>
-</li>
-<li>
-<p>ESC Forward Programming support - A support for ESC Forward Programming has been added. So far, four ESC vendors/models are supported:</p>
-</li>
-<li>
-<p>Hobbywing Platinum V5</p>
-</li>
-<li>
-<p>Scorpion</p>
-</li>
-<li>
-<p>YGE</p>
-</li>
-<li>
-<p>FlyRotor</p>
-</li>
-<li>
-<p>BB logging for ESC telemetry</p>
-</li>
-<li>
-<p>Three new BB log options have been added: ESC, BEC and ESC2.</p>
-</li>
-<li>
-<p>These options are logging the data received from the ESC(s).</p>
-</li>
-</ul>
-<p>Other Changes</p>
-<ul>
-<li>Allow RPM filter Q up to 25</li>
-<li>Add Graupner ESC telemetry</li>
-<li>Add RPM (freq) input edge and pull parameters</li>
-<li>Add model_id and MSP_PILOT_CONFIG for Lua integration</li>
-<li>Add more SmartPort sensors</li>
-<li>Add gov_min_throttle for nitro</li>
-<li>Add Adjustments for ACC trims</li>
-<li>Improved PID defaults</li>
-<li>Improved Rates defaults</li>
-<li>Improved Cyclic Cross-Coupling</li>
-<li>Improved Govnernor precomps</li>
-<li>Improved BB headers</li>
-<li>Improved battery voltage filtering</li>
-<li>Fix adjfunction initilisation bug</li>
-<li>Fix RPM filter update rate calculation</li>
-<li>Fix lost S.Port telemetry issue</li>
-<li>Fix UART bidir mode pull-up on F4</li>
-<li>Fix beep on disarm</li>
-<li>Various CMS fixes</li>
-</ul>]]></content>
-        <author>
-            <name>Rotorflight</name>
-            <uri>https://github.com/rotorflight</uri>
-        </author>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Official Release 2.2.0]]></title>
         <id>https://github.com/announcement/Official Release 2.2.0</id>
         <link href="https://github.com/announcement/Official Release 2.2.0"/>
-        <updated>2025-06-03T07:16:55.000Z</updated>
+        <updated>2025-06-03T08:55:58.000Z</updated>
         <summary type="html"><![CDATA[Download Notes]]></summary>
         <content type="html"><![CDATA[<p><a href="https://github.com/docs/download/notes"><strong>Download Notes</strong></a><br>
 <a href="https://github.com/docs/download/configurator"><strong>Download Configurator</strong></a><br>
 <a href="https://github.com/docs/download/blackbox"><strong>Download Blackbox</strong></a><br>
 <a href="https://github.com/docs/download/edge-tx-Lua"><strong>Download EdgeTX Lua</strong></a><br>
-<a href="https://github.com/docs/download/ethos-Lua.md"><strong>Download Ethos Lua</strong></a></p>
+<a href="https://github.com/docs/download/ethos-Lua"><strong>Download Ethos Lua</strong></a></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-firmware-rotorflight-45x">🔧 Firmware (Rotorflight 4.5.x)<a href="https://github.com/announcement/Official%20Release%202.2.0#-firmware-rotorflight-45x" class="hash-link" aria-label="Direct link to 🔧 Firmware (Rotorflight 4.5.x)" title="Direct link to 🔧 Firmware (Rotorflight 4.5.x)">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-new-features">🆕 New Features<a href="https://github.com/announcement/Official%20Release%202.2.0#-new-features" class="hash-link" aria-label="Direct link to 🆕 New Features" title="Direct link to 🆕 New Features">​</a></h3>
 <ul>
