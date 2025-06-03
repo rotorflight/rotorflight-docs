@@ -1,0 +1,68 @@
+---
+sidebar_position: 1
+---
+
+# v2.2.0 Upgrade notes
+
+## Update procedure
+* Please follow the [**Backup and restore**](../setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.1.1 config. 
+* Use `diff all` as the backup command. 
+* [**Flash new version**](../setup/flashing-the-firmware.mdx) with ***Full Chip Erase***
+* [**Restore your settings**](../setup/backup-and-restore#loadrestore-config) from the backup file
+
+Note.  It is important that you paste the below commands into your configurator cli after importing the 2.1 diff file. 
+```
+profile 0
+set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
+set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
+set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
+
+profile 1
+set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
+set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
+set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
+
+profile 2
+set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
+set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
+set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
+
+profile 3
+set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
+set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
+set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
+
+profile 4
+set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
+set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
+set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
+
+profile 5
+set error_decay_limit_curve = 12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12
+set offset_decay_rate_curve = 250,250,250,250,250,30,5,0,0,0,0,0,0,0,0,0
+set offset_decay_limit_curve = 12,12,10,8,6,4,2,2,2,2,2,2,2,2,2,2
+
+profile 0
+
+save
+```
+
+## safe expected errors
+N/A
+
+## Breaking changes
+N/A
+
+## Whats New
+* [Castle ESC Telemetry](../setup/esc-telemetry.mdx#castle-esc-telemetry)
+* JR DMSS XBUS Protocol added
+* [BlackBox Extra stuff](../configurator/tabs/blackbox#blackbox-configuration)
+        - Disarm grace period
+        - Initial erase
+        - Rolling erase
+* [ESC Voltage and Current scaling](../setup/esc-telemetry#calibrate-telemetry-values)
+* [Positive and Negative collective tilt](../configurator/tabs/mixer#positive-and-negative-collective-tilt-correction)
+* [Inertia Precomp](../configurator/tabs/profiles#inertia-precomp-gain)
+* [Mixer Passthrough](../setup//setup-mixer.mdx#mixer-override)
+
+

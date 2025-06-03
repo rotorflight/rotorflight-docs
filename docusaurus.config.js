@@ -111,7 +111,7 @@ const config = {
     //        lastVersion: 'current',
           versions: {
             current: {
-              label: '2.2.0 (Dev)',
+              label: '(Dev)',
               //path: '2.1',
               banner: 'unreleased'
             },
