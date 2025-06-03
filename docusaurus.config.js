@@ -107,14 +107,19 @@ const config = {
           editUrl:
             'https://github.com/rotorflight/rotorflight-docs/tree/main',
             //Versioning
-            //includeCurrentVersion: false,
-    //        lastVersion: 'current',
+            includeCurrentVersion: false,
+            //lastVersion: 'current',
+            onlyIncludeVersions: [
+                '2.2.0',
+                '2.1.0',
+                '2.0.0'
+    ],
           versions: {
-            current: {
-              label: '(Dev)',
+   //         current: {
+              //label: '(Dev)',
               //path: '2.1',
-              banner: 'unreleased'
-            },
+   //           banner: 'unreleased'
+   //         },
           },
 
         },
@@ -138,7 +143,7 @@ const config = {
       announcementBar: {
         id: 'Announcement',
         content:
-          'ROTORFLIGHT 2 Official Release 2.1.0 is now available. See downloads tab',
+          'ROTORFLIGHT 2 Official Release 2.2.0 is now available. See downloads tab',
         backgroundColor: '#FFFF00',
         textColor: '#000000',
         isCloseable: false,
