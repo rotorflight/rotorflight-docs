@@ -72,7 +72,7 @@ const config = {
                   ];
             } else if (existingPath.includes('/docs/configurator')) {
                 return [
-                  existingPath.replace('/docs/configurator', '/docs/2.1.0/configurator'),
+                  existingPath.replace('/docs/configurator', '/docs/2.2.0/configurator'),
                 ];
             } else if (existingPath.includes('/docs/next')) {
                 return [
