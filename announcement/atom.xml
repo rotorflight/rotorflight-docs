@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://github.com/announcement</id>
     <title>Rotorflight Blog</title>
-    <updated>2025-06-04T20:45:20.000Z</updated>
+    <updated>2025-06-04T20:45:59.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://github.com/announcement"/>
     <subtitle>Rotorflight Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Official Release 2.2.0]]></title>
         <id>https://github.com/announcement/Official Release 2.2.0</id>
         <link href="https://github.com/announcement/Official Release 2.2.0"/>
-        <updated>2025-06-04T20:45:20.000Z</updated>
+        <updated>2025-06-04T20:45:59.000Z</updated>
         <summary type="html"><![CDATA[Download Notes]]></summary>
         <content type="html"><![CDATA[<p><a href="https://github.com/docs/download/notes"><strong>Download Notes</strong></a><br>
 <a href="https://github.com/docs/download/configurator"><strong>Download Configurator</strong></a><br>
