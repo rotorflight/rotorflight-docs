@@ -76,7 +76,7 @@ const config = {
                 ];
             } else if (existingPath.includes('/docs/next')) {
                 return [
-                  existingPath.replace('/docs/next', '/docs/2.2.0'),
+                  existingPath.replace('/docs/next', '/docs/2.3.0'),
                 ];
             }
             return undefined; // Return a falsy value: no redirect created
