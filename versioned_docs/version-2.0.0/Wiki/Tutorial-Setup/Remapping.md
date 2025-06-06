@@ -1,7 +1,9 @@
 ---
 sidebar_position: 50
 ---
-:::info 
+
+:::info
+
 # Remapping (for DIY boards)
 
 Rotorflight is based on Betaflight which is generally used to control drones. Unfortunately, drones do not have servos and have more motors than we need for a helicopter. In order to use servos we must remap our boards so that we have a pad to connect the servos to.
@@ -29,31 +31,29 @@ Before you start remapping your drone FC to be used with Rotorflight, keep in mi
 ![Mixer Tab](./img/remapping-1.png)
 
 ## Custom defaults remapping spreadsheet
+
 Spreadsheet for remapping Betaflight targets for use with Rotorflight. The spreadsheet re-allocates features for motors and servos and configures associated timers and dma.
 
-* Please 'make a copy'. 
-
-[Rotorflight remapping spreadsheet v1.4.1](https://docs.google.com/spreadsheets/d/1m-DhCcTTKnMhXicMjBQc5EqCSAowDk0TqXpZUyZq--A/edit?usp=drivesdk)
-
-[Rotorflight remapping spreadsheet v2.0](https://docs.google.com/spreadsheets/d/1HyrgZuycS6S4s6TsFGkf90Z2PnO5yLcSx2tpa1-f1Vs/edit?usp=sharing)
+[Rotorflight remapping spreadsheet v2.0](https://docs.google.com/spreadsheets/d/1HyrgZuycS6S4s6TsFGkf90Z2PnO5yLcSx2tpa1-f1Vs/copy)
 
 ## Rotorflight Hardware config and remapping video
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TNAeDaAjzfQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-## Importing new targets 
-Some targets in the betaflight target repository have additional #define lines above board_name. Please do not chose them. In the example below copy only from board_name down. The ``Board_name`` MUST be the first line in the spreadsheet.
+## Importing new targets
+
+Some targets in the betaflight target repository have additional #define lines above board_name. Please do not chose them. In the example below copy only from board_name down. The `Board_name` MUST be the first line in the spreadsheet.
 
 ![Mixer Tab](./img/remapping-2.png)
 
- ## Configuring a Motor output
+## Configuring a Motor output
 
- 
- ## Configuring a Frequency input
+## Configuring a Frequency input
 
 The frequency input pin _must_ be connected to a timer with exclusive access.
 In other words, there must be a free timer, not used by anything else, and one of its positive channels must be available
 on a pin that is connected to the FC's solder pads. Negative channels, like CH3N, can't be used as inputs. Once we know which timer and pin we can use, it can be configured for
-frequency sensor use. 
+frequency sensor use.
 
 :::note
 We recommend that Freq inputs are allocated to pins that have Timer 2 or Timer 5 available. If 2 Freq inputs are required (e.g. Motorized tail) then both inputs can share the same timer. In the remapping spreadsheet these pins are indicated by the green box marked Freq.
@@ -64,6 +64,7 @@ In this example, we have chosen to use the LED_STRIP pin as our frequency input.
 ![frequency_1](./img/frequency_1.png)
 
 ### The lines which configure the frequency signal
+
 ```
 resource LED_STRIP 1 NONE
 resource Freq  1 A09
@@ -71,5 +72,3 @@ timer A09 AF1 # Freq - pin A09: TIM1 CH2 (AF1)
 dma pin A09 0 # Freq - 0: DMA2 Stream 6 Channel 0
 
 ```
-
-
