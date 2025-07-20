@@ -18,7 +18,7 @@ This process is generic and may be slightly different, depending on your particu
 8. Optional: Select and Setup the [Governor](../setup/governor.md).
 9. Setup [Servos](../setup/setup-servos.mdx).
 10. Setup and Calibrate the [Mixer](../setup/setup-mixer.mdx).
-11. Setup the [Gyro RPM Filters](../setup/rpm-filters.md#basic-rpm-filters-settings).
+11. Setup the [Gyro RPM Filters](../setup/rpm-filters.md#rpm-filters-1).
 12. Set the [Rates](../configurator/tabs/rates.md) as per flying style.
 13. Set the [PID](../configurator/tabs/profiles.md#pid-controller-gains) Values.
 14. Setup [ARMING](../configurator/tabs/modes.md#arm), and other required modes.

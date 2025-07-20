@@ -9,11 +9,11 @@ authors:
 
 # 🚁 Rotorflight 2.2.0 – Official Release Notes
 
-[**Download Notes**](../docs/download/notes)\
-[**Download Configurator**](../docs/download/configurator)\
-[**Download Blackbox**](../docs/download/blackbox)\
-[**Download EdgeTX Lua**](../docs/download/edge-tx-Lua)\
-[**Download Ethos Lua**](../docs/download/ethos-Lua)
+[**Download Notes**](/docs/download/notes)\
+[**Download Configurator**](/docs/download/configurator)\
+[**Download Blackbox**](/docs/download/blackbox)\
+[**Download EdgeTX Lua**](/docs/download/edge-tx-Lua)\
+[**Download Ethos Lua**](/docs/download/ethos-Lua)
 
 ## 🔧 Firmware (Rotorflight 4.5.x)
 

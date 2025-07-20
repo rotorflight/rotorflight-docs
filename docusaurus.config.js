@@ -267,7 +267,7 @@ const config = {
             items: [
               {
                 label: "Tutorial",
-                to: "/docs/examples/index",
+                to: "/docs/examples",
               },
               {
                 label: "Download",
