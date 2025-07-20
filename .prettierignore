@@ -1,0 +1,15 @@
+# EdgeTX model file
+Generic_RF.yml
+
+package.json
+package-lock.json
+
+*.md
+*.mdx
+
+.docusaurus/
+.git/
+.vscode/
+build/
+node_modules/
+static/
