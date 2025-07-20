@@ -133,14 +133,6 @@ const config = {
         },
       },
     ],
-    [
-      "@docusaurus/plugin-content-blog",
-      {
-        id: "announcement",
-        routeBasePath: "announcement",
-        path: "./announcement",
-      },
-    ],
     require.resolve("docusaurus-lunr-search"),
   ],
 
@@ -167,10 +159,10 @@ const config = {
           },
         },
         blog: {
+          routeBasePath: "announcement",
+          path: "./announcement",
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
+          onUntruncatedBlogPosts: "ignore",
         },
         theme: {
           //customCss: require.resolve('./src/css/custom.css'),

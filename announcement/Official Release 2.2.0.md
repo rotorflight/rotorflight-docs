@@ -1,10 +1,6 @@
 ---
 title: Official Release 2.2.0
-authors:
-  name: Rotorflight
-  title: Rotorflight Team
-  url: https://github.com/rotorflight
-  image_url: https://github.com/rotorflight.png
+authors: Rotorflight
 ---
 
 # 🚁 Rotorflight 2.2.0 – Official Release Notes
