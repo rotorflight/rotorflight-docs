@@ -4,38 +4,38 @@ sidebar_position: 1
 
 # v2.1.0 Upgrade notes
 
-
 ## Update procedure
-* Please follow the [**Backup and restore**](../setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.0.0 config. 
-* Use ```dump all``` as the backup command. 
+
+* Please follow the [**Backup and restore**](../setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.0.0 config.
+* Use `dump all` as the backup command.
 * [**Flash new version**](../setup/flashing-the-firmware.mdx) with ***Full Chip Erase***
 * [**Restore your settings**](../setup/backup-and-restore#loadrestore-config) from the backup file
 
-
 ## safe expected errors
+
 The following errors are expected and can be safely ignored.
 
-### CRSF reuse  
+### CRSF reuse
+
 Telemetry reuse has been replaced by [**ELRS Custom telemetry**](../setup/elrs-custom-telemetry.mdx)
 
 ![crsf reuse](./img/error_reuse.png)
 
-### Battery voltage and current low pass filters were renamed  
-These settings were just renamed.  
+### Battery voltage and current low pass filters were renamed
 
-![Low Pass filters](./img/error1.png)  
+These settings were just renamed.
+
+![Low Pass filters](./img/error1.png)
 
 ## Breaking changes
-There are a couple of changes.   
-* As above. The CRSF Reuse has been removed and replaced with the much more flexible [**ELRS Custom telemetry**](../setup/elrs-custom-telemetry.mdx)  
+
+There are a couple of changes.
+
+* As above. The CRSF Reuse has been removed and replaced with the much more flexible [**ELRS Custom telemetry**](../setup/elrs-custom-telemetry.mdx)
 * The calculation, filters and defaults for Cyclic Cross Coupling and have been changed. Please set CCC to defaults then re-tune the Cyclic Cross Coupling.
 
-![CCC](./img/error-ccc-defaults.png)  
+![CCC](./img/error-ccc-defaults.png)
 
-* On the Configuration tab the gyro alignment has been removed. Please use the [**Roll, Pitch and Yaw degrees**](../configurator/tabs/configuration#board-and-sensor-alignment)  
+* On the Configuration tab the gyro alignment has been removed. Please use the [**Roll, Pitch and Yaw degrees**](../configurator/tabs/configuration#board-and-sensor-alignment)
 
-![Removed](./img/error_removed.png) 
-
-
-
-
+![Removed](./img/error_removed.png)

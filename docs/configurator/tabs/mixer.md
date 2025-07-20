@@ -20,15 +20,15 @@ Choose the direction of rotation for the main rotor. This is looking down from o
 
 #### Elevator control direction
 
-With the helicopter servos powered, tilt the heli forward (pitch down). The swash should now pitch up towards the tail of the helicopter. If this is not the case, change the control direction from **[NORMAL]** to **[REVERSE]**.
+With the helicopter servos powered, tilt the heli forward (pitch down). The swash should now pitch up towards the tail of the helicopter. If this is not the case, change the control direction from **\[NORMAL]** to **\[REVERSE]**.
 
 #### Aileron control direction
 
-Roll the heli to the right (right Aileron). The swash should pitch towards the left. If this is not the case, change the control direction from **[NORMAL]** to **[REVERSE]**.
+Roll the heli to the right (right Aileron). The swash should pitch towards the left. If this is not the case, change the control direction from **\[NORMAL]** to **\[REVERSE]**.
 
 #### Collective control direction
 
-Push the collective stick forward (Increasing collective). The swash should now rise up towards the rotor head (to increase collective). If the swash goes down change the control direction from **[NORMAL]** to **[REVERSE]**.
+Push the collective stick forward (Increasing collective). The swash should now rise up towards the rotor head (to increase collective). If the swash goes down change the control direction from **\[NORMAL]** to **\[REVERSE]**.
 
 ## Swashplate link trims
 
@@ -52,26 +52,26 @@ Adjust until the collective positive and negative deflections are equal.
 
 #### Collective blade pitch limit
 
-- Ideally, one should use this option to set the maximum allowed collective blade pitch. Therefore, if the person wants to change the collective pitch down the line, they should be able to adjust in the "rates" page confidently without worrying about servos binding.
+* Ideally, one should use this option to set the maximum allowed collective blade pitch. Therefore, if the person wants to change the collective pitch down the line, they should be able to adjust in the "rates" page confidently without worrying about servos binding.
 
-- Practically, for most 3D helicopters, this is set to the maximum collective you will ever need (15-16deg) if the helicopter is physically capable of doing it
+* Practically, for most 3D helicopters, this is set to the maximum collective you will ever need (15-16deg) if the helicopter is physically capable of doing it
 
 #### Cyclic blade pitch limit
 
-- This is NOT the same as the cyclic calibration on other FBLs (it's NOT the 8 deg cyclic on vbar for example)
-- This is designed to let the FBL know how much cyclic travel the helicopter is PHYSICALLY capable of
-- Usually adjust it so that around zero collective there is no physical interference anywhere. You might want to temporally increase the I gains (to around 200) on cyclic and move the cyclic stick to find the limits. MAKE SURE TO TURN THEM BACK
-- Some 550+ size helicopter might be able to achieve 16+ degree of cyclic pitch, you could set it to the absolutely maximum but it is advised to limit around 16degree since practically it should never hit that much cyclic.
+* This is NOT the same as the cyclic calibration on other FBLs (it's NOT the 8 deg cyclic on vbar for example)
+* This is designed to let the FBL know how much cyclic travel the helicopter is PHYSICALLY capable of
+* Usually adjust it so that around zero collective there is no physical interference anywhere. You might want to temporally increase the I gains (to around 200) on cyclic and move the cyclic stick to find the limits. MAKE SURE TO TURN THEM BACK
+* Some 550+ size helicopter might be able to achieve 16+ degree of cyclic pitch, you could set it to the absolutely maximum but it is advised to limit around 16degree since practically it should never hit that much cyclic.
 
 #### Total blade pitch limit
 
-- This is probably the most difficult limit to understand and setup properly
-- To find the total blade pitch limit, make sure the collective blade pitch limit and cyclic blade pitch limit are set up correctly. You might want to use the I-gain trick mentioned above
-- Set the collective pitch to max, then move the cyclic. Increase the limit until either there is a physical limit or the fish-eye bearing (the ball) in the center of the swash drops at the max cyclic due to one servo reaching its limit.
-- Repeat at lowest collective pitch
-- You could also increase cyclic servo travels to gain more total blade pitch. However, nothing should be interfering
-- Double check that there's NO binding or interference at ANY combination of collective and cyclic in their whole range.
-- Make sure to turn the I-gains back to default in the end if the I-gain trick is used.
+* This is probably the most difficult limit to understand and setup properly
+* To find the total blade pitch limit, make sure the collective blade pitch limit and cyclic blade pitch limit are set up correctly. You might want to use the I-gain trick mentioned above
+* Set the collective pitch to max, then move the cyclic. Increase the limit until either there is a physical limit or the fish-eye bearing (the ball) in the center of the swash drops at the max cyclic due to one servo reaching its limit.
+* Repeat at lowest collective pitch
+* You could also increase cyclic servo travels to gain more total blade pitch. However, nothing should be interfering
+* Double check that there's NO binding or interference at ANY combination of collective and cyclic in their whole range.
+* Make sure to turn the I-gains back to default in the end if the I-gain trick is used.
 
 #### Swashplate phase angle
 
@@ -79,7 +79,7 @@ Usually set it per manufacture recommendation. One could consider if there's bob
 
 #### Positive and Negative collective tilt correction
 
-Corrects cyclic to collective interactions.  
+Corrects cyclic to collective interactions.\
 Adjust the Positive collective tilt value until the swash ball remains stationary between mid and full Positive collective. Repeat by adjusting the Negative tilt value from mid to full negative collective.
 
 ## Tail Rotor Settings
@@ -102,8 +102,8 @@ Motorized tail operating in bi-directional mode.
 
 ### Yaw Control Direction
 
-With the helicopter tail servo powered, move Rudder stick to the right. The tail slider should move to the inside (toward the tail case). If this is not the case, change the control direction from **[NORMAL]** to **[REVERSE]**.
+With the helicopter tail servo powered, move Rudder stick to the right. The tail slider should move to the inside (toward the tail case). If this is not the case, change the control direction from **\[NORMAL]** to **\[REVERSE]**.
 
-### Center Trim For Tail Rotor [°]
+### Center Trim For Tail Rotor \[°]
 
 Set tail rotor trim for zero yaw command.

@@ -13,7 +13,7 @@ Blackbox is a flight data recording feature in Rotorflight. A Blackbox log conta
 * A flash chip on the FC. Logging is fast, but storage is limited, unless you are using a dedicated RF controller(FlyDragon F7 has 128MByte Flash), and copying log files can be slow.
 * An SD card on the FC, it's fast and storage is only limited by the capacity of the SD card.
 * An external logging device: [OpenLager](../Tutorial-Setup/OpenLager.md). These devices write the log to a micro SD card.
-  
+
 A flash chip or an SD card on the FC are nice, but if your FC doesn't have that you can connect an OpenLager logging device.
 
 ![Blackbox Tab](./img/blackbox-main.png)
@@ -51,7 +51,7 @@ Set it to 2kHz for OpenLager.
 Choose what *extra* data is being logged, eight extra debug items are added to the Blackbox Log.
 
 :::note
-Under _Blackbox debug mode_ you can specify what should be logged. There are a lot of choices, but you can select _GYRO_SCALED_ for PID tuning, _GOVERNOR_ for analyzing the governor or _CYCLETIME_ if you're interested in CPU time.
+Under *Blackbox debug mode* you can specify what should be logged. There are a lot of choices, but you can select *GYRO\_SCALED* for PID tuning, *GOVERNOR* for analyzing the governor or *CYCLETIME* if you're interested in CPU time.
 :::
 
 ### Debug Axis

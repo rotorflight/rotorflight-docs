@@ -19,7 +19,6 @@ Rotorflight is based on Betaflight, and thus has the same basic requirements for
 Please read the Design Guidelines for [Betaflight](https://github.com/betaflight/betaflight/blob/4.4.0-RC5/docs/Manufacturer%20Design%20Guidelines.md)
 first.
 
-
 ## Rotorflight Design
 
 [Rotorflight Design Requirements Github](https://github.com/rotorflight/rotorflight-ref-design/blob/master/FC-Design-Requirements.md)

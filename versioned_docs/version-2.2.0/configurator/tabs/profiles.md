@@ -155,23 +155,23 @@ It is safe to start with the same cutoffs as used with D. Usually in the range o
 
 #### Acro Trainer gain
 
-This determines how aggressively the heli tilt back to the maximum angle (if exceeded) while in _TRAINER_ mode.
+This determines how aggressively the heli tilt back to the maximum angle (if exceeded) while in *TRAINER* mode.
 
 #### Acro Trainer angle limit
 
-This determines the maximum angle the heli can tilt to while in _TRAINER_ mode.
+This determines the maximum angle the heli can tilt to while in *TRAINER* mode.
 
 #### Angle Mode leveling gain
 
-This determines how aggressively the heli tilt back to level while in _ANGLE_ mode.
+This determines how aggressively the heli tilt back to level while in *ANGLE* mode.
 
 #### Angle Mode maximum angle
 
-This determines the maximum angle the heli can tilt to while in _ANGLE_ mode.
+This determines the maximum angle the heli can tilt to while in *ANGLE* mode.
 
 #### Horizon Mode leveling gain
 
-This determines how aggressively the heli tilt back to level while in _HORIZON_ mode.
+This determines how aggressively the heli tilt back to level while in *HORIZON* mode.
 
 ## Rescue Settings
 
@@ -231,4 +231,4 @@ Limit how fast the controller tries to accelerate the helicopter to level or fli
 
 ## Copy Profile
 
-You can use the _Copy profile_ button at the upper right corner to copy the values of the current profile to another one.
+You can use the *Copy profile* button at the upper right corner to copy the values of the current profile to another one.

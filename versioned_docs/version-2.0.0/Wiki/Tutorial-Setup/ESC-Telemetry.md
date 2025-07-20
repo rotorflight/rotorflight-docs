@@ -9,16 +9,16 @@ The purpose of ESC telemetry is to provide a method of reading the values provid
 
 ESC Telemetry currently supported are :
 
-- **BLHELI32**: BLheli and KISS
-- **HOBBYWING V4**: Platinum PRO V4, V4.1,& FLYFUN V5
-- **HOBBYWING V5**: Platinum V5
-- **SCORPION**: Unsc Telem
-- **KONTRONIK**: Kosmik & Kolibri
-- **OMPHOBBY**
-- **ZTW**: Skyhawk
-- **APD**: HV Pro UART telemetry
-- **YGE**: OpenYGE - Note - The ESC must have firmware V1.03547 or above. At the moment this is in beta and has not been released. Please use the contact form to request the updated firmware. [YGE: Contact Us](https://www.yge.de/en/contact/)
-  :::
+* **BLHELI32**: BLheli and KISS
+* **HOBBYWING V4**: Platinum PRO V4, V4.1,& FLYFUN V5
+* **HOBBYWING V5**: Platinum V5
+* **SCORPION**: Unsc Telem
+* **KONTRONIK**: Kosmik & Kolibri
+* **OMPHOBBY**
+* **ZTW**: Skyhawk
+* **APD**: HV Pro UART telemetry
+* **YGE**: OpenYGE - Note - The ESC must have firmware V1.03547 or above. At the moment this is in beta and has not been released. Please use the contact form to request the updated firmware. [YGE: Contact Us](https://www.yge.de/en/contact/)
+:::
 
 ### Select Serial Port
 

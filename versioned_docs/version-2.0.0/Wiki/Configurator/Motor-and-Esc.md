@@ -27,17 +27,18 @@ Set the ESC [*Telemetry*](../Tutorial-Setup/ESC-Telemetry.md) protocol if your e
 ![Motor and ESC](./img/motor-telem.png)
 
 :::note
-A correct RPM measurement is crucial to the operation of *RPM_FILTER* and *GOVERNOR* features, therefore ensure that you have a correct RPM measurement setup. 
+A correct RPM measurement is crucial to the operation of *RPM\_FILTER* and *GOVERNOR* features, therefore ensure that you have a correct RPM measurement setup.
 
 The FC also needs to know the [RPM](../Tutorial-Setup/Rpm-Measurement.mdx) of the main rotor, and the tail rotor. For this you have to exactly specify the *Motor pole count* and the *Gear ratios*.
 
 With this info, the FC can calculate the:
 
-- Main motor RPM = eRPM / (motor pole count / 2)
-- Main rotor RPM = Main motor RPM / ( main gear tooth count / main motor pinion tooth count )
+* Main motor RPM = eRPM / (motor pole count / 2)
+* Main rotor RPM = Main motor RPM / ( main gear tooth count / main motor pinion tooth count )
 :::
 
 ### PWM Protocol
+
 Most RC helicopter ESCs manufacturers (e.g. Hobbywing, YGE, Scorpion ,or Castle) use [PWM](https://en.wikipedia.org/wiki/Servo_control), an analog protocol.
 
 ![Motor and ESC](./img/motor-pwm.png)
@@ -53,31 +54,34 @@ Most RC helicopter ESCs manufacturers (e.g. Hobbywing, YGE, Scorpion ,or Castle)
 **100% Throttle PWM value:** the value that is sent to the ESC when the craft is armed and at full throttle. Usually 2000µs.
 
 ### DSHOT Protocol
+
 Most drone ESCs support DSHOT, a digital protocol.
 
 ![Motor and ESC](./img/motor-dshot.png)
 
 If you use DSHOT, use either DSHOT150 or DSHOT300. DSHOT600 is not recommended. Also make sure that the main motor isn't actively being braked by the ESC, especially if you don't have a [one way bearing](https://youtu.be/ahWzhT5Bn28) on the main shaft.
-- BLHeli_32: set *Non Damped Mode* to *On* on the main motor ESC
-- Bluejay: set *Maximum Breaking Strength* to *0*
 
-#### DShot RPM Telemetry 
-This switch is only visible when the *ESC/Motor protocol* is DSHOTxxx. It enables motor eRPM telemetry on supported ESCs via [bidirectional DSHOT](../Tutorial-Setup/Rpm-Measurement.mdx#bi-directional-dshot) and can be used to facilitate the *GOVERNOR* and/or *RPM_FILTER* features. If you use bidirectional DSHOT you don't have to use a frequency sensor for obtaining the eRPM of the motor(s).
+* BLHeli\_32: set *Non Damped Mode* to *On* on the main motor ESC
+* Bluejay: set *Maximum Breaking Strength* to *0*
+
+#### DShot RPM Telemetry
+
+This switch is only visible when the *ESC/Motor protocol* is DSHOTxxx. It enables motor eRPM telemetry on supported ESCs via [bidirectional DSHOT](../Tutorial-Setup/Rpm-Measurement.mdx#bi-directional-dshot) and can be used to facilitate the *GOVERNOR* and/or *RPM\_FILTER* features. If you use bidirectional DSHOT you don't have to use a frequency sensor for obtaining the eRPM of the motor(s).
 
 ### Gear Ratio Configuration
 
 ![Motor and ESC](./img/motor-gear-ratio.png)
 
-Enter the number of teeth for the main rotor gearing [Teeth on Pinion gear]/[Teeth on Main Gear]. For a direct drive Main rotor this is just set to 1 / 1.
+Enter the number of teeth for the main rotor gearing \[Teeth on Pinion gear]/\[Teeth on Main Gear]. For a direct drive Main rotor this is just set to 1 / 1.
 
-Enter the number of teeth for the Tail rotor gearing [Teeth on Tail gear]/[Teeth on Autorotation Gear]. For a direct drive tail this is just set to 1 / 1.
+Enter the number of teeth for the Tail rotor gearing \[Teeth on Tail gear]/\[Teeth on Autorotation Gear]. For a direct drive tail this is just set to 1 / 1.
 
 :::tip
 If the gear tooth count is not known, you can approximate the gear ratio instead.
 
-For example if the main gear ratio is 11.8 then you set *[Teeth on Pinion gear =10]/[Teeth on Main Gear =118]*.
+For example if the main gear ratio is 11.8 then you set *\[Teeth on Pinion gear =10]/\[Teeth on Main Gear =118]*.
 
-Similarly if the tail gear ratio is 4.8 then you set *[Teeth on Tail gear =10]/[Teeth on Autorotation Gear =48]*.
+Similarly if the tail gear ratio is 4.8 then you set *\[Teeth on Tail gear =10]/\[Teeth on Autorotation Gear =48]*.
 
 note that counting the gear tooth is preferable because an accurate gear ratio is essential to the operation of the [RPM Filters](../Tutorial-Setup/RPM-Filters.md).
 :::
@@ -87,6 +91,7 @@ For Helicopters with two-stage reduction, kindly read the [Two-Stage Gear Train 
 :::
 
 ### Motor Pole Count
+
 Determine the number of magnetic poles for each motor. Count the number of magnets on the motors rotor. In the example below the magnets (circled) are fixed to the outer bell which in total has 14. This allows the flight controller to know how many electrical phase rotations are required to complete one physical motor revolution.
 
 ![Motor and ESC](./img/motor-pole-count-1.png)
@@ -96,6 +101,7 @@ Determine the number of magnetic poles for each motor. Count the number of magne
 ## [Governor Features](../Tutorial-Setup/Governor.md#governor-mode)
 
 ## Motor Override
+
 Motor Override functionality is provided to test the operation of each motor directly. This functionality will make the motors spool up. Do this WITHOUT the main or tail rotors fitted!
 
 ![Motor and ESC](./img/motor-6.png)

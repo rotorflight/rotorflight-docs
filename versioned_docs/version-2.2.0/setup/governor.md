@@ -3,15 +3,16 @@ sidebar_position: 80
 ---
 
 # Governor
+
 :::info
 The purpose of the governor is to maintain a constant headspeed regardless of flight inputs, flying conditions, battery voltage, external disturbances, etc. In Rotorflight, the governor also provides other motor related features, like slow spoolup, autorotation control, battery voltage drop compensation, and fault detection and recovery.
 :::
 
 # Governor Features
+
 The governor can be turned ON/OFF with the drop down menu within **Governor Features** from the **Motors** Tab.
 
 ![Governor](./img/governor-features-off.png)
-
 
 If the feature is disabled, all governor functions are disabled, and the throttle output is taken directly from the receiver throttle channel.
 
@@ -86,8 +87,8 @@ Minimum flight time before Autorotation can be engaged.
 When the throttle input (from receiver) goes to zero, the governor enters an intermediate state where it is waiting for the throttle to return. If the throttle returns before this timeout expires, the spoolup is done with the recovery acceleration. If the timeout expires, the governor enters off state, and any future spoolup will be slow.
 
 :::note
-The purpose of this feature is to allow fast spoolup in case the throttle cut (hold) is hit accidentally. 
-If high throttle is returned very soon after, the heli will spool up quickly and hopefully keep on flying. Unit is 0.1s. 
+The purpose of this feature is to allow fast spoolup in case the throttle cut (hold) is hit accidentally.
+If high throttle is returned very soon after, the heli will spool up quickly and hopefully keep on flying. Unit is 0.1s.
 Typical value is 5..50.
 :::
 
@@ -95,19 +96,19 @@ Typical value is 5..50.
 
 If the headspeed rpm signal is lost, the governor enters an intermediate state where it is waiting for the rpm signal to return. If the signal returns before this timeout expires, the spoolup is done with the recovery acceleration. If the timeout expires, the governor enters the idle state, and any future spoolup would happen with the default (slow) spoolup acceleration. Unit is 0.1s. Typical value is 5..50.
 
-### Headspeed Filter Cutoff [Hz]
+### Headspeed Filter Cutoff \[Hz]
 
 The inputs to the governor must be clean from excess noise. The RPM input is filtered with a BIQUAD filter, with the frequency cutoffs set by these variables.
 
-### Battery Voltage Filter Cutoff [Hz]
+### Battery Voltage Filter Cutoff \[Hz]
 
 The inputs to the governor must be clean from excess noise. The Battery voltage input is filtered with a BIQUAD filter, with the frequency cutoffs set by these variables.
 
-### TTA Bandwidth [Hz]
+### TTA Bandwidth \[Hz]
 
 Cutoff for the TTA (Torque Tail Assist) lowpass filter.
 
-### Precomp Bandwidth [Hz]
+### Precomp Bandwidth \[Hz]
 
 Cutoff for the cyclic/collective precompensation lowpass filter.
 
@@ -163,7 +164,7 @@ With the governor feature activated, the transmitter throttle channel is control
 
 Depending in which range the throttle value falls into, the governor will function differently.
 
-### THROTTLE < *0%*
+### THROTTLE \< *0%*
 
 This throttle value indicates throttle hold (throttle cut) condition. It's guaranteed that all motors are stopped immediately. The throttle output from the governor is guaranteed to be zero.
 
@@ -173,7 +174,7 @@ Make sure your transmitter is sending a value lower than 0% when throttle hold i
 Throttle hold SHOULD NOT be used for autorotation.
 :::
 
-### *0%* < THROTTLE < *5%*
+### *0%* \< THROTTLE \< *5%*
 
 In this range, the governor is in idle or autorotation state, and the output is zero - the main motor is stopped.
 
@@ -183,7 +184,7 @@ Motorized tail is fully active in this range.
 If you want to perform autorotation with the main motor stopped, use this range!
 :::
 
-### *5%* < THROTTLE < *Handover throttle%*
+### *5%* \< THROTTLE \< *Handover throttle%*
 
 In this range, the governor is in idle or autorotation state, and the output is in 0% - H.Thr%, increasing linearly through the range.
 
@@ -193,9 +194,9 @@ Motorized tail is fully active in this range.
 If you want to perform autorotation with the main motor running, use this range!
 :::
 
-### *Handover throttle%* < THROTTLE < *100%*
+### *Handover throttle%* \< THROTTLE \< *100%*
 
-In this range, the governor is in active state, and the requested rpm is *Handover throttle%..100%* of the gov_headspeed.
+In this range, the governor is in active state, and the requested rpm is *Handover throttle%..100%* of the gov\_headspeed.
 
 ## Governor State
 
@@ -221,10 +222,10 @@ The governor internal state can be observed in the blackbox log. It is a good in
 
 `THROTTLE_OFF` This state may be entered when any of the following conditions are met:
 
-- On system disarm
-- The throttle signal dropped too low while in IDLE state
-- The throttle signal dropped too low while in SPOOLING_UP state
-- The throttle signal dropped too low while in ACTIVE and zero-throttle timeout has not yet expired
-- The throttle signal dropped too low while in AUTOROTATION (Mode 1 and Mode 2 only)
-- Headspeed lost and headspeed-lost timeout expired (Mode 1 and Mode 2 only)
-- Battery cell count is 0 (Mode 2 only)
+* On system disarm
+* The throttle signal dropped too low while in IDLE state
+* The throttle signal dropped too low while in SPOOLING\_UP state
+* The throttle signal dropped too low while in ACTIVE and zero-throttle timeout has not yet expired
+* The throttle signal dropped too low while in AUTOROTATION (Mode 1 and Mode 2 only)
+* Headspeed lost and headspeed-lost timeout expired (Mode 1 and Mode 2 only)
+* Battery cell count is 0 (Mode 2 only)

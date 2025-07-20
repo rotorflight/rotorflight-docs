@@ -11,5 +11,3 @@ Lua script **must match** the current firmware version loaded into your Flight C
 :::
 
 ![Edge Tx](../setup/img/edgetx-logo.png)
-
-

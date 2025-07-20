@@ -8,30 +8,30 @@ The Crossfire Protocol (CRSF) used by ELRS does not include the full range of se
 
 As a temporary fix for this issue a series of telemetry items that are currently transferred to the transmitter can be ***re-used*** to transfer information we would rather see. There are four messages that can be chosen, each with a variety of telemetry sensor options.
 
-1. Flight mode 
-    `set crsf_flight_mode_reuse = [OPTION]`  
-    [Option] Allowed values: NONE, GOVERNOR, HEADSPEED, THROTTLE, ESC_TEMP, MCU_TEMP, MCU_LOAD, SYS_LOAD, RT_LOAD, BEC_VOLTAGE, BUS_VOLTAGE, MCU_VOLTAGE, ADJFUNC, GOV_ADJFUNC
-2. Pitch attitude 
-    `set crsf_att_pitch_reuse = [OPTION]`  
-    [Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC_TEMP, MCU_TEMP, MCU_LOAD, SYS_LOAD, RT_LOAD, BEC_VOLTAGE, BUS_VOLTAGE, MCU_VOLTAGE
+1. Flight mode
+   `set crsf_flight_mode_reuse = [OPTION]`\
+   \[Option] Allowed values: NONE, GOVERNOR, HEADSPEED, THROTTLE, ESC\_TEMP, MCU\_TEMP, MCU\_LOAD, SYS\_LOAD, RT\_LOAD, BEC\_VOLTAGE, BUS\_VOLTAGE, MCU\_VOLTAGE, ADJFUNC, GOV\_ADJFUNC
+2. Pitch attitude
+   `set crsf_att_pitch_reuse = [OPTION]`\
+   \[Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC\_TEMP, MCU\_TEMP, MCU\_LOAD, SYS\_LOAD, RT\_LOAD, BEC\_VOLTAGE, BUS\_VOLTAGE, MCU\_VOLTAGE
 3. Roll attitude
-    `set crsf_att_roll_reuse = [OPTION]`   
-    [Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC_TEMP, MCU_TEMP, MCU_LOAD, SYS_LOAD, RT_LOAD, BEC_VOLTAGE, BUS_VOLTAGE, MCU_VOLTAGE 
+   `set crsf_att_roll_reuse = [OPTION]`\
+   \[Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC\_TEMP, MCU\_TEMP, MCU\_LOAD, SYS\_LOAD, RT\_LOAD, BEC\_VOLTAGE, BUS\_VOLTAGE, MCU\_VOLTAGE
 4. Yaw position
-    `set crsf_att_yaw_reuse = [OPTION]`  
-    [Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC_TEMP, MCU_TEMP, MCU_LOAD, SYS_LOAD, RT_LOAD, BEC_VOLTAGE, BUS_VOLTAGE, MCU_VOLTAGE
+   `set crsf_att_yaw_reuse = [OPTION]`\
+   \[Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC\_TEMP, MCU\_TEMP, MCU\_LOAD, SYS\_LOAD, RT\_LOAD, BEC\_VOLTAGE, BUS\_VOLTAGE, MCU\_VOLTAGE
 5. GPS Heading
-    `set crsf_gps_heading_reuse = [OPTION]`  
-    [Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC_TEMP, MCU_TEMP, MCU_LOAD, SYS_LOAD, RT_LOAD
+   `set crsf_gps_heading_reuse = [OPTION]`\
+   \[Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC\_TEMP, MCU\_TEMP, MCU\_LOAD, SYS\_LOAD, RT\_LOAD
 6. GPS Ground Speed
-    `set crsf_gps_ground_speed_reuse = [OPTION]`  
-    [Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC_TEMP, MCU_TEMP, MCU_LOAD, SYS_LOAD, RT_LOAD
+   `set crsf_gps_ground_speed_reuse = [OPTION]`\
+   \[Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC\_TEMP, MCU\_TEMP, MCU\_LOAD, SYS\_LOAD, RT\_LOAD
 7. GPS Altitude
-    `set crsf_gps_altitude_reuse = [OPTION]`  
-    [Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC_TEMP, MCU_TEMP, MCU_LOAD, SYS_LOAD, RT_LOAD
+   `set crsf_gps_altitude_reuse = [OPTION]`\
+   \[Option] Allowed values: NONE, HEADSPEED, THROTTLE, ESC\_TEMP, MCU\_TEMP, MCU\_LOAD, SYS\_LOAD, RT\_LOAD
 8. GPS Sats
-    `set crsf_gps_sats_reuse = [OPTION]`  
-    [Option] Allowed values: NONE, ESC_TEMP, MCU_TEMP, PROFILE, RATE_PROFILE, LED_PROFILE
+   `set crsf_gps_sats_reuse = [OPTION]`\
+   \[Option] Allowed values: NONE, ESC\_TEMP, MCU\_TEMP, PROFILE, RATE\_PROFILE, LED\_PROFILE
 
 This tutorial will guide you through the process of *re-using/transforming* the unused ELRS sensor into a more useful Rotorflight sensors.
 

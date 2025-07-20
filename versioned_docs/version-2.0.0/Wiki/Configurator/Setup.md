@@ -35,4 +35,3 @@ Reboot into mass storage mode to access blackbox data logs.
 ## System Reboot
 
 Reboot and reinitialize the system.
-

@@ -14,14 +14,14 @@ Nothing comes for free. Filters result in a cleaner signal at the expense of lag
 
 Dynamic filters will filter the gyro signal when an [RPM measurement](rpm-measurement.mdx) is not available or it is not accurate. These are not as capable as the RPM filters. These can be used if
 
-- No RPM signal available - Helicopters that do not have an RPM input or bi-directional dshot.
-- Autorotations - In this case the RPM measurement is not correct due to the one way bearing. You may wish to enable 2 notches to account for this.
+* No RPM signal available - Helicopters that do not have an RPM input or bi-directional dshot.
+* Autorotations - In this case the RPM measurement is not correct due to the one way bearing. You may wish to enable 2 notches to account for this.
 
 ## RPM Filters
 
 ## Filter Tuning
 
-Make a blackbox log of a short flight with constant headspeed. Scroll to the point where the heli has spooled up and is hovering. Mark that point with the `I` key. Scroll near the end and mark that with the `O` key. Now bring up the _Analyzer Display_ and enlarge it. It might look like:
+Make a blackbox log of a short flight with constant headspeed. Scroll to the point where the heli has spooled up and is hovering. Mark that point with the `I` key. Scroll near the end and mark that with the `O` key. Now bring up the *Analyzer Display* and enlarge it. It might look like:
 
 ![Missing filters](./img/rpm-filters-missing.png)
 

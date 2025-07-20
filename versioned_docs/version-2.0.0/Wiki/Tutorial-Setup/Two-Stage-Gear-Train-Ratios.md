@@ -13,9 +13,9 @@ This is relatively easy in single stage drive train that are used on most helico
 :::note
 You can use the online spreadsheet to easily get the calculated Tooth Counts for Common Helis.
 
-The Spreadsheet is accessible using the below link: 
+The Spreadsheet is accessible using the below link:
 
-* Please 'make a copy'. 
+* Please 'make a copy'.
 
 [Two-Stage Gear Train Ratios](https://docs.google.com/spreadsheets/d/1PmYWWJfdmIFtDW_hZc1i-MhdTOnUqErDWB5Yag176pk/edit?usp=sharing)
 :::

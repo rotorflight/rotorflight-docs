@@ -8,7 +8,6 @@ Any changes are taking effect immediately, and are saved in the configuration.
 
 ![Adjustments Tab](../img/adjustments-main.png)
 
-
 ## Example - Select a Profile In-Flight
 
 Being able to switch between profiles in-flight allows you to use different head-speeds with differently tuned PIDs. It can also help with PID tuning, since it makes A/B testing possible with the flick of a switch.
@@ -37,42 +36,41 @@ Continuous adjustment is enabled by setting the step size to zero.
 
 The adjustment function assigns the control AUX channel to a configuration parameter or a special function. The supported functions are listed below.
 
-    **Profile change**  
-![Profiles](../img/adjustments-profiles.png)  
+**Profile change**\
+![Profiles](../img/adjustments-profiles.png)
 
-    **Rates**  
-![Profiles](../img/adjustments-rates.png)  
+**Rates**\
+![Profiles](../img/adjustments-rates.png)
 
-    **PID**  
-    ![Profiles](../img/adjustments-pid.png)  
+**PID**\
+![Profiles](../img/adjustments-pid.png)
 
-    **Gyro cutoffs**  
-![Profiles](../img/adjustments-cuttoff.png)  
+**Gyro cutoffs**\
+![Profiles](../img/adjustments-cuttoff.png)
 
-    **Dterm cutoffs**  
-![Profiles](../img/adjustments-dterm.png)  
+**Dterm cutoffs**\
+![Profiles](../img/adjustments-dterm.png)
 
-    **Rescue**  
-![Profiles](../img/adjustments-rescue.png)  
+**Rescue**\
+![Profiles](../img/adjustments-rescue.png)
 
-    **Leveling**  
-![Profiles](../img/adjustments-level.png)  
+**Leveling**\
+![Profiles](../img/adjustments-level.png)
 
-    **Governor**  
-![Profiles](../img/adjustments-gov.png)  
+**Governor**\
+![Profiles](../img/adjustments-gov.png)
 
-    **Boost gains**  
-![Profiles](../img/adjustments-boost.png)  
+**Boost gains**\
+![Profiles](../img/adjustments-boost.png)
 
-    **Offset gains**  
-![Profiles](../img/adjustments-offset.png)  
+**Offset gains**\
+![Profiles](../img/adjustments-offset.png)
 
-    **Cross-coupling**  
-![Profiles](../img/adjustments-coupling.png)  
+**Cross-coupling**\
+![Profiles](../img/adjustments-coupling.png)
 
-    **Accelerometer trims**  
-![Profiles](../img/adjustments-trim.png)  
-
+**Accelerometer trims**\
+![Profiles](../img/adjustments-trim.png)
 
 ### Parameter Change Functions
 
@@ -85,4 +83,3 @@ Each parameter has a min and max limit that the user can set to safeguard agains
 The special functions to change configuration profiles works exactly the same as the parameter functions, except that the possible values are limited to the number of profiles. Both step and continuous adjustments can be used.
 
 For example, there are six Rate Profiles available, thus the parameter limits should be min = 0 and max = 5. Narrower range is also possible, if so desired.
-

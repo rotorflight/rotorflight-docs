@@ -5,6 +5,7 @@ sidebar_position: 1
 # v2.2.0 Upgrade notes
 
 ## Update procedure
+
 * Please follow the [**Backup and restore**](../setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.1.1 config.
 * Use `diff all` as the backup command.
 * [**Flash new version**](../setup/flashing-the-firmware.mdx) with ***Full Chip Erase***
@@ -12,12 +13,12 @@ sidebar_position: 1
 
 ## Breaking changes
 
-- RPM Filter has been updated and must be reconfigured.
-- Telemetry sensor configuration has been unified across protocols and must be reconfigured.
-- Gyro data rate (ODR) has been reduced for some targets. As a result, PID loop frequency and blackbox logging rate must be reconfigured.
-- PID Mode 1 and 2 have been removed. Profiles using these PID modes must be reconfigured using PID Mode 3.
-- D term mode `ERROR` has been removed. D term mode is now always `GYRO`. D gain must be reconfigured for profiles previously using `ERROR` D term mode.
-- Yaw Collective Impulse has been removed.
+* RPM Filter has been updated and must be reconfigured.
+* Telemetry sensor configuration has been unified across protocols and must be reconfigured.
+* Gyro data rate (ODR) has been reduced for some targets. As a result, PID loop frequency and blackbox logging rate must be reconfigured.
+* PID Mode 1 and 2 have been removed. Profiles using these PID modes must be reconfigured using PID Mode 3.
+* D term mode `ERROR` has been removed. D term mode is now always `GYRO`. D gain must be reconfigured for profiles previously using `ERROR` D term mode.
+* Yaw Collective Impulse has been removed.
 
 ## Renamed parameters
 
@@ -83,12 +84,13 @@ yaw_error_cutoff
 ```
 
 ## Whats New
+
 * [Castle ESC Telemetry](../setup/esc-telemetry.mdx#castle-esc-telemetry)
 * JR DMSS XBUS Protocol added
 * [BlackBox Extra stuff](../configurator/tabs/blackbox#blackbox-configuration)
-        - Disarm grace period
-        - Initial erase
-        - Rolling erase
+  * Disarm grace period
+  * Initial erase
+  * Rolling erase
 * [ESC Voltage and Current scaling](../setup/esc-telemetry#calibrate-telemetry-values)
 * [Positive and Negative collective tilt](../configurator/tabs/mixer#positive-and-negative-collective-tilt-correction)
 * [Inertia Precomp](../configurator/tabs/profiles#inertia-precomp-gain)

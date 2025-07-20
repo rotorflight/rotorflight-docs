@@ -148,15 +148,17 @@ aux 3 31 3 1800 2100 0 0
 Buffer packs like the [1st Buffer-Pack](https://1st-rc.com/en/product/1st-buffer-v4-3x25f-for-helis-450-700/) can be switched off from the radio after disconnecting the main pack, this can be done by connecting the buffer pack to a free 1500us PWM Channel on the flight controller.
 
 * First you need to assign servo 5 to a free timer pin, you will then see servo 5 in the Servos Tab.
-    Assuming we have a free timer on pin A08.
+  Assuming we have a free timer on pin A08.
 
-    In CLI:
-    ```
-    Resource Servo 5 A08
-    ```
+  In CLI:
+
+  ```
+  Resource Servo 5 A08
+  ```
 * Next you assign AUX5 Channel to Servo 5 using a mixer rule.
 
-    In CLI:
-    ```
-    mixer rule 1 set AUX5 S5 1000 0
-    ```
+  In CLI:
+
+  ```
+  mixer rule 1 set AUX5 S5 1000 0
+  ```

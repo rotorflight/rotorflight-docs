@@ -8,8 +8,7 @@ Rotorflight supports the use of addressable LEDs. Addressable LEDs allow each LE
 
 ## LED Strip Profiles
 
-The LED strip feature supports 4 LED Strip profiles: RACE, BEACON, STATUS and STATUS_ALT. The selected profile can be changed from the Configurator, CLI, OSD LED strip menu or from an adjustment channel, i.e. switch on your radio.  Take note that the adjustment channel from your radio overrides all other LED strip profile selection options.
-
+The LED strip feature supports 4 LED Strip profiles: RACE, BEACON, STATUS and STATUS\_ALT. The selected profile can be changed from the Configurator, CLI, OSD LED strip menu or from an adjustment channel, i.e. switch on your radio.  Take note that the adjustment channel from your radio overrides all other LED strip profile selection options.
 
 ### STATUS Profile
 
@@ -28,62 +27,62 @@ Addressable LEDs can be used to show information from the flight controller syst
 * RSSI level.
 * Battery level.
 
-### STATUS_ALT Profile
+### STATUS\_ALT Profile
 
-The STATUS_ALT profile works just like the STATUS profile, except for LEDs with the Fade overlay. LEDs with the Fade overlay will use their alternate color when the STATUS_ALT profile is active.
+The STATUS\_ALT profile works just like the STATUS profile, except for LEDs with the Fade overlay. LEDs with the Fade overlay will use their alternate color when the STATUS\_ALT profile is active.
 
 ### RACE Profile
 
 The RACE profile is used to set ALL LEDs to the selected color for racing, i.e. to identify helis based on LED color.  The LED color is fixed and no other information is displayed.
 
-
 ### BEACON Profile
 
 The BEACON profile is used to find a lost heli, it flashes all LEDs white once per second.  Again in this profile no other information is displayed on the LEDs.
 
-
 ### LED Profile Selection
 
 ###### OPTION 1: Use the Configurator
+
 1. Go to the *LED Strip* tab
 2. Select the profile under *LED Strip Global Settings*
 
 ###### OPTION 2: Configure an adjustment range to change the LED strip profile from your radio
+
 1. The LED strip profile selection is performed using an adjustment configured via the *Adjustments* tab.
-    - Enable an adjustment by selecting *Mapped*.
-    - Select the AUX channel to be used to change the LED strip profile under *Enable channel* and set the range to 900-2100us
-    - Set the same AUX channel and range under *Value channel*
-    - For the adjustment select *LED Profile Selection* and set the range to 1-4.
-    - Save
-2. Configure the AUX channel on your radio.  When this channel is changed the selected LED strip profile will change between RACE, BEACON, STATUS and STATUS_ALT. You should see the LED function change as you do this.
+   * Enable an adjustment by selecting *Mapped*.
+   * Select the AUX channel to be used to change the LED strip profile under *Enable channel* and set the range to 900-2100us
+   * Set the same AUX channel and range under *Value channel*
+   * For the adjustment select *LED Profile Selection* and set the range to 1-4.
+   * Save
+2. Configure the AUX channel on your radio.  When this channel is changed the selected LED strip profile will change between RACE, BEACON, STATUS and STATUS\_ALT. You should see the LED function change as you do this.
 
 ###### OPTION 3: Use the CLI to select the LED strip profile (i.e. not selecting the LED strip profile with your radio)
-1. Open the CLI.
-2. Type ```get ledstrip_profile``` followed by enter to display the currently selected LED strip profile.
-3. Type ```set ledstrip_profile=x``` where x is the profile STATUS, STATUS_ALT, RACE or BEACON and press enter.
-4. Type ```save``` followed by enter to save the selected LED strip profile.
 
+1. Open the CLI.
+2. Type `get ledstrip_profile` followed by enter to display the currently selected LED strip profile.
+3. Type `set ledstrip_profile=x` where x is the profile STATUS, STATUS\_ALT, RACE or BEACON and press enter.
+4. Type `save` followed by enter to save the selected LED strip profile.
 
 ###### OPTION 4: By using the OSD
+
 1. Open the OSD menu by yawing left and pitching forward on your radio.
 2. Using the pitch stick, move down to the LED Strip menu and roll right to enter the menu.
 3. The profile and race color can be configured using the left stick to go back and the right stick to navigate up/down and to change the selected value.
 4. Use the left stick to go to the top level menu and select save & reboot to complete.
 
-
 ###### RACE COLOR: The Race color can be configured using the CLI:
-1. Open the CLI.
-2. Type ```get ledstrip_race_color``` followed by enter to display the currently selected race color number.
-3. Type ```set ledstrip_race_color=x``` where x is the required color.
-4. Type ```save``` followed by enter to save the race color to be used.
 
+1. Open the CLI.
+2. Type `get ledstrip_race_color` followed by enter to display the currently selected race color number.
+3. Type `set ledstrip_race_color=x` where x is the required color.
+4. Type `save` followed by enter to save the race color to be used.
 
 ###### BRIGHTNESS: The overall brightness can be configured using the CLI:
-1. Open the CLI.
-2. Type ```get ledstrip_brightness``` followed by enter to display the current brightness.
-3. Type ```set ledstrip_brightness=x``` where x is the brightness in percentage between 5 and 100.
-4. Type ```save``` followed by enter to save the brightness level to be used.
 
+1. Open the CLI.
+2. Type `get ledstrip_brightness` followed by enter to display the current brightness.
+3. Type `set ledstrip_brightness=x` where x is the brightness in percentage between 5 and 100.
+4. Type `save` followed by enter to save the brightness level to be used.
 
 ## Supported hardware
 
@@ -103,7 +102,6 @@ Note: Not all WS2812 ICs use the same timings, some batches use different timing
 * [Aliexpress SK6812 RBGWW strip](https://www.aliexpress.com/wholesale?SearchText=rgbw+sk6812) (works well)
   * Alternative [Adafruit NeoPixel Stick RGBW](https://www.adafruit.com/product/2869)
 
-
 ### WS2811 vs WS2812
 
 The [WS2811](https://cdn-shop.adafruit.com/datasheets/WS2811.pdf) is a LED driver IC which is connected to an RGB LED. It accepts data in the form of 8 bits each of Red-Green-Blue.
@@ -117,11 +115,13 @@ It is thus possible, depending on the LED board/strip being used that either Red
 ```
 set ledstrip_grb_rgb = RGB
 ```
+
 or
 
 ```
 set ledstrip_grb_rgb = GRB
 ```
+
 or
 
 ```
@@ -146,12 +146,13 @@ WS2812 LED strips generally require a single data line, 5V and GND.
 WS2812 LEDs on full brightness can consume quite a bit of current.  It is recommended to verify the current draw and ensure your supply can cope with the load. It's also possible to power one half of the LEDs from one BEC and the other half from another BEC.  Just ensure that the GROUND is the same for all BEC outputs and LEDs.
 
 LED Strip pin should be:
-- on a separate timer
-- with DMA enabled
+
+* on a separate timer
+* with DMA enabled
 
 If you have LEDs that are intermittent, flicker or show the wrong colors then drop the VIN to less than 4.7v, e.g. by using an inline
 diode on the VIN to the LED strip. The problem occurs because of the difference in voltage between the data signal and the power
-signal. The WS2811 LED's require the data signal (Din) to be between 0.3 * Vin (Max) and 0.7 * VIN (Min) to register valid logic
+signal. The WS2811 LED's require the data signal (Din) to be between 0.3 \* Vin (Max) and 0.7 \* VIN (Min) to register valid logic
 low/high signals.  The LED pin on the CPU will always be between 0v to ~3.3v, so the Vin should be 4.7v (3.3v / 0.7 = 4.71v).
 Some LEDs are more tolerant of this than others.
 
@@ -162,20 +163,22 @@ The datasheet can be found here: [WS2812](http://www.adafruit.com/datasheets/WS2
 The LED strip feature can be configured via the Configurator or the CLI.
 
 ### Configurator
-First enable the *LED_STRIP* feature in the *Configuration* tab. The *LED Strip* tab should now become visible.
+
+First enable the *LED\_STRIP* feature in the *Configuration* tab. The *LED Strip* tab should now become visible.
 
 Now go to the *LED Strip* tab and configure the LEDs. First setup how the LEDs are laid out so that you can visualize it later as you configure and so the flight controller knows how many LEDs there are available.
 
 There is a step by step guide on how to use the Configurator to [configure the Led Strip feature](https://oscarliang.com/setup-led-betaflight/) which was published in 2018 by Oscar Liang.
 
 ### CLI
+
 Enable the `LED_STRIP` feature via the cli:
 
 ```
 feature LED_STRIP
 ```
 
-If you enable LED_STRIP feature and the feature is turned off again after a reboot then check your config does not conflict with other features, as above.
+If you enable LED\_STRIP feature and the feature is turned off again after a reboot then check your config does not conflict with other features, as above.
 
 Configure the LEDs using the `led` command.
 
@@ -188,12 +191,12 @@ Each LED is configured using the following template: `x,y:direction:mode:color:b
 `x` and `y` are grid coordinates of a 0 based 16x16 grid, north west is 0,0, south east is 15,15
 `direction` specifies the directions, since an LED can face in any direction it can have multiple directions.  Directions are:
 
- `N` - North
- `E` - East
- `S` - South
- `W` - West
- `U` - Up
- `D` - Down
+`N` - North
+`E` - East
+`S` - South
+`W` - West
+`U` - Up
+`D` - Down
 
 For instance, an LED that faces South-east at a 45 degree downwards angle could be configured as `SED`.
 
@@ -228,7 +231,7 @@ And each LED can have one ore more overlays:
 
 `blinkpause` specifies whether blinking should pause after the blink pattern has been finished. A value of `0` doesn't pause blinking, a value of `3` pauses the blinking for three subsequent rounds.
 
-`alternatecolor` specifies the color for: a. blinking; b. fading between `color` and `alternatecolor` if the LED profile is switched from STATUS to STATUS_ALT. The `alternatecolor` can be black if you want to turn a light off in in the STATUS_ALT profile. The alternate color has a red border in the Configurator.
+`alternatecolor` specifies the color for: a. blinking; b. fading between `color` and `alternatecolor` if the LED profile is switched from STATUS to STATUS\_ALT. The `alternatecolor` can be black if you want to turn a light off in in the STATUS\_ALT profile. The alternate color has a red border in the Configurator.
 
 Example:
 
@@ -290,7 +293,6 @@ This mode binds the LED color to RSSI level.
 
 When RSSI is below 50% is reached, LEDs will blink slowly, and they will blink fast when under 20%.
 
-
 #### Battery level
 
 This mode binds the LED color to remaining battery capacity.
@@ -317,7 +319,7 @@ This overlay makes the LED flicker, a bit like a candle. Set the flicker rate us
 
 #### Fade to alt color
 
-A LED with this overlay will fade to the alternate color in the profile STATUS_ALT. Specify Black as the alternate color to turn LEDs off (e.g. for switching off landing lights). You can set the fade rate with `ledstrip_fade_rate`.
+A LED with this overlay will fade to the alternate color in the profile STATUS\_ALT. Specify Black as the alternate color to turn LEDs off (e.g. for switching off landing lights). You can set the fade rate with `ledstrip_fade_rate`.
 
 #### Larson Scanner (Cylon Effect)
 
@@ -329,16 +331,16 @@ This overlay dims all of the LEDs it is assigned to and brightens certain ones a
 This overlay makes the LED color dependent on the current channel of the VTX, in case it is equipped with SmartAudio or IRC Tramp.
 The color is selected according to the following table:
 
- Frequency range | Default color | Color index
- --- | --- | ---
- < = 5672 | White | 1
- |> 5672 < = 5711 | Red | 2
- |> 5711 < = 5750 | Orange | 3
- |> 5750 < = 5789 | Yellow | 4
- |> 5789 < = 5829 | Green | 6
- |> 5829 < = 5867 | Blue | 10
- |> 5867 < = 5906 | Dark violet | 11
- |> 5906 | Deep pink | 13
+Frequency range | Default color | Color index
+\--- | --- | ---
+\< = 5672 | White | 1
+|> 5672 \< = 5711 | Red | 2
+|> 5711 \< = 5750 | Orange | 3
+|> 5750 \< = 5789 | Yellow | 4
+|> 5789 \< = 5829 | Green | 6
+|> 5829 \< = 5867 | Blue | 10
+|> 5867 \< = 5906 | Dark violet | 11
+|> 5906 | Deep pink | 13
 
 The default color can be changed by double-clicking the color and moving the Hue slider or by using the color command in the CLI.
 
@@ -349,9 +351,10 @@ This mode shows the flight mode and orientation.
 When flight modes are active then the LEDs are updated to show different colors depending on the mode, placement on the grid and direction.
 
 LEDs are set in a specific order:
- * LEDs that marked as facing up or down.
- * LEDs that marked as facing west or east AND are on the west or east side of the grid.
- * LEDs that marked as facing north or south AND are on the north or south side of the grid.
+
+* LEDs that marked as facing up or down.
+* LEDs that marked as facing west or east AND are on the west or east side of the grid.
+* LEDs that marked as facing north or south AND are on the north or south side of the grid.
 
 That is, south facing LEDs have priority.
 
@@ -501,8 +504,8 @@ color 15 0,0,0
 
 Mode Colors can be configured using the cli `mode_color` command.
 
-- No arguments: lists all mode colors
-- arguments: mode, function, color
+* No arguments: lists all mode colors
+* arguments: mode, function, color
 
 First 8 groups of ModeIndexes are :
 
@@ -547,10 +550,10 @@ Mode 7 is used along with Thrust state to make the LED color dependent on a chan
 
 Examples (using the default colors):
 
-- set armed color to red: ```mode_color 6 1 2```
-- set disarmed color to yellow: ```mode_color 6 0 4```
-- set Headfree mode 'south' to Cyan: ```mode_color 1 2 8```
-- set color dependent on AUX 1 in Thrust state: ```mode_color 7 0 4```
+* set armed color to red: `mode_color 6 1 2`
+* set disarmed color to yellow: `mode_color 6 0 4`
+* set Headfree mode 'south' to Cyan: `mode_color 1 2 8`
+* set color dependent on AUX 1 in Thrust state: `mode_color 7 0 4`
 
 ## Positioning
 
@@ -561,6 +564,7 @@ Orientation is when viewed with the front of the aircraft facing away from you a
 ### Example 12 LED config
 
 The default configuration is as follows
+
 ```
 led 0 15,15:ES:IA:0
 led 1 15,8:E:WF:0

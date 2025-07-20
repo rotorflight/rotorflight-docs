@@ -1,6 +1,6 @@
 # CLI
 
-This tab is the CLI or Command Line Interface. It is a method for sending commands and settings to the flight controller. We can also backup and restore our configuration using this tab. 
+This tab is the CLI or Command Line Interface. It is a method for sending commands and settings to the flight controller. We can also backup and restore our configuration using this tab.
 
 ### CLI Usage
 
@@ -64,7 +64,7 @@ copy screen output to a file and save it.
 
 Use the cli `defaults` command first.
 
-When restoring from a backup it is a good idea to do a dump of the latest defaults so you know what has changed - if you do this each time a firmware release is created you will be able to see the cli changes between firmware versions. 
+When restoring from a backup it is a good idea to do a dump of the latest defaults so you know what has changed - if you do this each time a firmware release is created you will be able to see the cli changes between firmware versions.
 
 Use the CLI and send all the output from the saved backup commands.
 

@@ -23,13 +23,7 @@ import ServoSetup from './img/servo-setup.mp4';
 
 Repeat with remaining cyclic servos.
 
-      <video
-        src={ServoSetup}
-        controls
-        playsInline
-        muted
-        width="85%"
-      />
+<video src={ServoSetup} controls playsInline muted width="85%" />
 
 ### Step 3 - set arms at 90 degrees
 
@@ -42,8 +36,8 @@ Repeat with remaining cyclic servos.
 
 ### Step 5 - calibrate range (Optional - recommended)
 
-The purpose of servo calibration is so the FC is able to more accurately control its mechanical movements. Not all servos are the same. Sometimes identical servos can have several degrees of difference for the same output. Calibrating the servos can enable each servo to move by the same amount when commanded.  
-Calibration is also required if using the Geometric Correction function.  
+The purpose of servo calibration is so the FC is able to more accurately control its mechanical movements. Not all servos are the same. Sometimes identical servos can have several degrees of difference for the same output. Calibrating the servos can enable each servo to move by the same amount when commanded.\
+Calibration is also required if using the Geometric Correction function.
 
 * Set the override to a positive value (e.g. 30°)
 * measure the current servo arm angle and increase or decrease the [Scale Pos](../Configurator/Servos.md#scale-neg-and-scale-pos) until the servo arm angle matches the override angle.
@@ -55,4 +49,3 @@ Calibration is also required if using the Geometric Correction function.
 With the servos installed in the helicopter, adjust [Min/Max](../Configurator/Servos.md#min-and-max)  so that the arm & ball won't hit anything in the heli frame (servo override @ 80° / -80°).
 
 Repeat with remaining cyclic/tail servos.
-

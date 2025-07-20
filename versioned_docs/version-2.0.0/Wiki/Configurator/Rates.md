@@ -3,6 +3,7 @@ sidebar_position: 100
 ---
 
 # Rates tab
+
 :::info
 The purpose of rates are to change in flight sensitivity and rotation rates. The aim is usually to have several 'rates' that you can switch between during flight to change flight performance. Please see the [profile switching example](../Tutorial-Setup/Profile-switching-example.md)
 :::
@@ -39,7 +40,7 @@ However, keep in mind that the maximum angular velocity can be limited by your h
 
 ### Expo
 
-Expo flattens the curve between center stick and full stick. To achieve a more linear rate, keep Expo low. For a broader center stick region with finer control, increase Expo. Keep in mind that increasing Expo also reduces center sensitivity. 
+Expo flattens the curve between center stick and full stick. To achieve a more linear rate, keep Expo low. For a broader center stick region with finer control, increase Expo. Keep in mind that increasing Expo also reduces center sensitivity.
 
 While Expo can be as high as 1.0, excessive Expo might cause decreased center stick sensitivity and make the heli’s response more unpredictable towards full stick (more jumpy).
 
@@ -79,7 +80,4 @@ High response times smooths out the input but too high could cause significant i
 
 ## Copy Rate Profile
 
-You can use the _Copy rateprofile_ button at the upper right corner to copy the values of the current profile to another one.
-
-
-
+You can use the *Copy rateprofile* button at the upper right corner to copy the values of the current profile to another one.

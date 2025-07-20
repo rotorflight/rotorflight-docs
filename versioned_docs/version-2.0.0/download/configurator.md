@@ -9,5 +9,3 @@ sidebar_position: 10
 :::
 
 ![Configurator](./img/configurator.png)
-
-

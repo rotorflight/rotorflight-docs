@@ -4,10 +4,9 @@ sidebar_position: 70
 
 # Diy board - Betaflight FC
 
-Rotorflight is a fork of the popular Betaflight project commonly used for drones. This means that all of the drone boards designed for betaflight are also compatibe with Rotorflight. Drones most commonly use 4 motors and do not have servos so we need to do some additional configuration to add these items (as shown below).  
+Rotorflight is a fork of the popular Betaflight project commonly used for drones. This means that all of the drone boards designed for betaflight are also compatibe with Rotorflight. Drones most commonly use 4 motors and do not have servos so we need to do some additional configuration to add these items (as shown below).
 
 ### Flashing Rotorflight
-
 
 [Flashing Rotorflight firmware](../Tutorial-Setup/Flashing-the-firmware.md)
 
@@ -19,15 +18,12 @@ Rotorflight is a fork of the popular Betaflight project commonly used for drones
 
 ## OMP M1
 
-
 ## OMP M2
 
 ## 16mm x 16mm
 
 ## 20mm x 20mm
 
-
 ## Whoop boards
-
 
 ## 32mm x 32mm

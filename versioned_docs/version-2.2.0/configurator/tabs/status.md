@@ -37,7 +37,6 @@ You can find out a description of these flags from the [List of Arming preventio
 * **Capacity** - Shows the consumed capacity of the battery in mAh.
 * **Charge Level** - Shows remaining battery capacity in percent.
 
-
 ## Live Gyro Preview
 
 A live preview of the gyroscope data. This is useful to check if the gyroscope is aligned correctly, and if it isn't getting/giving noisy data.
@@ -61,4 +60,3 @@ A graphic replica of real aircraft instruments.
 The receiver output preview shows the current state of the receiver channels, both in channel value and graph forms, and how those affect the heli movement.
 
 ![Status Tab](../img/status-receiver.png)
-

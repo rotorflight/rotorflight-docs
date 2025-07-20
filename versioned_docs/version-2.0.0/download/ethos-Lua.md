@@ -3,6 +3,7 @@ sidebar_position: 40
 ---
 
 # Download - Ethos Tx Lua
+
 Lua script **must match** the current firmware version loaded into your Flight Controller. If you update firmware you must also update the Lua scripts to match.
 
 :::info[Download Ethos Lua Here!!]
@@ -14,5 +15,3 @@ Ethos RF Touch Suite - Not released in v2.0. This is only available from v2.1 on
 :::
 
 ![Ethos Tx](../img/ethos-logo.png)
-
-

@@ -1,8 +1,9 @@
 ---
 sidebar_position: 80
 ---
+
 # Rotorflight Configurator
 
-[[#tabStatus|Status Page]
+\[\[#tabStatus|Status Page]
 
-[[#tabAdjustments|Adjustments]
+\[\[#tabAdjustments|Adjustments]

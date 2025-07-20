@@ -12,98 +12,104 @@ First activate `Serial Rx` on the UART you have connected your receiver.
 
 ![Receiver Tab](../img/receiver-uart.png)
 
-## Receiver Options 
+## Receiver Options
+
 ![Receiver Tab](../img/receiver-options.png)
 
-* One Wire Communication - 
+* One Wire Communication -
 
 The following options are only available on **F7/H7** and **G4** MCUs
+
 * Inverted serial signaling - Some protoculs such as SBUS and FPORT
-* Pin Swap - This feature can be 
+* Pin Swap - This feature can be
 
 ## Receiver Type
-Please see the documentation for your FC for more details on how to connect your receiver. 
-There are many receiver protocols supported in Rotorflight. 
-* It is preferable that a telemetry capable protocol be used with the [Rotorflight LUA scripts](../../setup/lua-scripts.mdx) to perform tuning using you radio.  
-* Protocols that do not have telemetry are still compatible with Rotorflight (and transmitters without Lua Scripting); however, [Adjustments](./adjustments.md) have to be configured in order to tune from your radio.  
+
+Please see the documentation for your FC for more details on how to connect your receiver.
+There are many receiver protocols supported in Rotorflight.
+
+* It is preferable that a telemetry capable protocol be used with the [Rotorflight LUA scripts](../../setup/lua-scripts.mdx) to perform tuning using you radio.
+* Protocols that do not have telemetry are still compatible with Rotorflight (and transmitters without Lua Scripting); however, [Adjustments](./adjustments.md) have to be configured in order to tune from your radio.
 
 :::info[Please choose to suit your receiver protocol]
 <Tabs groupId="receiver-types">
-    <TabItem value="" label="Choose Rx">
-        Rotorflight has great support for both EdgeTX and Ethos.  Please choose your radio.
-    </TabItem>
-    <TabItem value="ELRS" label="ELRS">
-        * [CRSF/ELRS](https://www.expresslrs.org/2.0/quick-start/receivers/wiring-up/) needs an RX and a TX on the same UART. 
+  <TabItem value="" label="Choose Rx">
+    Rotorflight has great support for both EdgeTX and Ethos.  Please choose your radio.
+  </TabItem>
 
-        ![Receiver Tab](../img/receiver-crsf.png)
+  <TabItem value="ELRS" label="ELRS">
+    * [CRSF/ELRS](https://www.expresslrs.org/2.0/quick-start/receivers/wiring-up/) needs an RX and a TX on the same UART.
 
-    </TabItem>
-    <TabItem value="S.BUS" label="S.BUS">
-        * SBUS needs to be connected to an RX pad.
+    ![Receiver Tab](../img/receiver-crsf.png)
+  </TabItem>
 
-        ![Receiver Tab](../img/receiver-sbus.png)
+  <TabItem value="S.BUS" label="S.BUS">
+    * SBUS needs to be connected to an RX pad.
 
-    </TabItem>
-    <TabItem value="S.BUS2" label="S.BUS2">
-        * SBUS2 needs to be connected to an TX pad.
+    ![Receiver Tab](../img/receiver-sbus.png)
+  </TabItem>
 
-        ![Receiver Tab](../img/receiver-sbus2.png)
+  <TabItem value="S.BUS2" label="S.BUS2">
+    * SBUS2 needs to be connected to an TX pad.
 
-    </TabItem>
-    <TabItem value="S.BUS + S.PORT" label="S.BUS + S.PORT">
-        * [SBUS with S.Port](https://oscarliang.com/sbus-smartport-telemetry-naze32/): the SBUS pin needs to be connected to a free UART RX, and the S.Port pin needs to be connected to a free UART TX (of *another free UART*), and you activate `Telemetry: FrSky SmartPort` on that UART.
+    ![Receiver Tab](../img/receiver-sbus2.png)
+  </TabItem>
 
-        ![Receiver Tab](../img/receiver-sbus.png)
-        ![Receiver Tab](../img/receiver-uart-sport.png)
-    </TabItem>
-    <TabItem value="F.BUS" label="F.BUS">
-        * F.Bus needs to be connected to a TX pad, with `Inverted Serial Signaling` activated ,and `Half-Duplex` activated. F.Bus is the preferred Frsky connection method, its faster that F.Port
+  <TabItem value="S.BUS + S.PORT" label="S.BUS + S.PORT">
+    * [SBUS with S.Port](https://oscarliang.com/sbus-smartport-telemetry-naze32/): the SBUS pin needs to be connected to a free UART RX, and the S.Port pin needs to be connected to a free UART TX (of *another free UART*), and you activate `Telemetry: FrSky SmartPort` on that UART.
 
-        ![Receiver Tab](../img/Receiver-f.bus.png)
+    ![Receiver Tab](../img/receiver-sbus.png)
+    ![Receiver Tab](../img/receiver-uart-sport.png)
+  </TabItem>
 
-    </TabItem>
-    <TabItem value="F.PORT" label="F.PORT">
-        * F.Port needs be connected to a TX pad, with `Inverted Serial Signaling` activated ,and `Half-Duplex` activated.
+  <TabItem value="F.BUS" label="F.BUS">
+    * F.Bus needs to be connected to a TX pad, with `Inverted Serial Signaling` activated ,and `Half-Duplex` activated. F.Bus is the preferred Frsky connection method, its faster that F.Port
 
-        ![Receiver Tab](../img/receiver-fport.png)
+    ![Receiver Tab](../img/Receiver-f.bus.png)
+  </TabItem>
 
-        **note:**
-        The **Inverted Serial Signaling** option will work only on **F7/H7** or **G4** type mcu, if you are using an **F4** mcu, then you need to use and external signal inverter, or hack your receiver to get an Un-Inverted signal for SBUS, S.Port, and F.Port.
-        for more info check [Uninverted SBUS and Smart Port on Frsky Receivers](https://oscarliang.com/uninverted-sbus-smart-port-frsky-receivers/)
-    </TabItem>
-    <TabItem value="Spektrum" label="Spektrum">
+  <TabItem value="F.PORT" label="F.PORT">
+    * F.Port needs be connected to a TX pad, with `Inverted Serial Signaling` activated ,and `Half-Duplex` activated.
 
+    ![Receiver Tab](../img/receiver-fport.png)
+
+    **note:**
+    The **Inverted Serial Signaling** option will work only on **F7/H7** or **G4** type mcu, if you are using an **F4** mcu, then you need to use and external signal inverter, or hack your receiver to get an Un-Inverted signal for SBUS, S.Port, and F.Port.
+    for more info check [Uninverted SBUS and Smart Port on Frsky Receivers](https://oscarliang.com/uninverted-sbus-smart-port-frsky-receivers/)
+  </TabItem>
+
+  <TabItem value="Spektrum" label="Spektrum">
     There are a lot of different Spektrum Receivers and connections. Please review the list below for your particular receiver.
 
-        | Type       | Modulation | Supply Voltage   | UART I/O pin | RX Protocol | Telemetry         |
-        | -----------|------------|------------------|--------------|-------------|------------------ |
-        | SPM9545    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
-        | SPM4645    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
-        | SPM4645    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
-        | SPM4648    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
-        | SPM4648    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
-        | SPM4649T   |   DSMX     | 5V (4V - 8.4V)   |  Tx          | DSM/SRXL    |   Yes             |
-        | SPM9745    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
-        | SPM9746    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
-        | SPM4650(C) |   DSMX     | 5V (3.3V - 8.4V) |  Tx          | DSM/SRXL2   |   Yes             |
-        | SPM4651T   |   DSMX     | 5V (3.3V - 8.4V) |  Tx          | DSM/SRXL2   |   Yes             |
-        | SPM9747    |   DSMX     | 5V (3.3V - 8.4V) |  Tx          | DSM/SRXL2   |   Yes (Fly By)    |
+    | Type       | Modulation | Supply Voltage   | UART I/O pin | RX Protocol | Telemetry         |
+    | -----------|------------|------------------|--------------|-------------|------------------ |
+    | SPM9545    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
+    | SPM4645    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
+    | SPM4645    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
+    | SPM4648    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
+    | SPM4648    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
+    | SPM4649T   |   DSMX     | 5V (4V - 8.4V)   |  Tx          | DSM/SRXL    |   Yes             |
+    | SPM9745    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
+    | SPM9746    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
+    | SPM4650(C) |   DSMX     | 5V (3.3V - 8.4V) |  Tx          | DSM/SRXL2   |   Yes             |
+    | SPM4651T   |   DSMX     | 5V (3.3V - 8.4V) |  Tx          | DSM/SRXL2   |   Yes             |
+    | SPM9747    |   DSMX     | 5V (3.3V - 8.4V) |  Tx          | DSM/SRXL2   |   Yes (Fly By)    |
 
+    **Notes:**
 
-        **Notes:**
-        * SRXL and SRXL2 uses One-Wire bidirectional half-duplex connection, firmware sets this automatically so there 
-        is no need to manually select this. But it does not hurt to do it either.
-        * Leave Inverted Serial Signaling Off.
-        * Rx/Tx Pin swap can be used with SRXL/SRXL2 if no Tx pin is available on the FC connector, but with F7 MCUs only.
-        * Full size SRXL2 receivers are not supported by RotorFlight
-        * Binding.
-        SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver.
-        Other receivers can use cli commands, see: https://betaflight.com/docs/development/spektrum-bind
+    * SRXL and SRXL2 uses One-Wire bidirectional half-duplex connection, firmware sets this automatically so there
+      is no need to manually select this. But it does not hurt to do it either.
+    * Leave Inverted Serial Signaling Off.
+    * Rx/Tx Pin swap can be used with SRXL/SRXL2 if no Tx pin is available on the FC connector, but with F7 MCUs only.
+    * Full size SRXL2 receivers are not supported by RotorFlight
+    * Binding.
+      SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver.
+      Other receivers can use cli commands, see: https://betaflight.com/docs/development/spektrum-bind
+  </TabItem>
 
-    </TabItem>
-    <TabItem value="OTHER" label="OTHER">
-        If your receiver is not listed here it may still be compatible. Rotorflight can operate with all receiver protocols compatible with Betaflight. Please see the betaflight website and your Receiver documentation for more information.
-    </TabItem>
+  <TabItem value="OTHER" label="OTHER">
+    If your receiver is not listed here it may still be compatible. Rotorflight can operate with all receiver protocols compatible with Betaflight. Please see the betaflight website and your Receiver documentation for more information.
+  </TabItem>
 </Tabs>
 :::
 
@@ -131,20 +137,20 @@ For **CRSF/ELRS** always set [*ARM*](./modes.md#arm) switch to *CH5/AUX1* on the
 
 ![Receiver Tab](../img/receiver-settings.png)
 
-* **Stick Center** - adjust as required by your radio to achieve 0% when the _ROLL, PITCH, YAW_ sticks are centered. 
+* **Stick Center** - adjust as required by your radio to achieve 0% when the *ROLL, PITCH, YAW* sticks are centered.
 * **Stick Maximum Travel** - adjust achieve 100% at the sticks limits.
-* **Throttle Channel value for arming** - channel value under which arming is allowed.Throttle must be below this limit prior to ARM mode being selected. 
+* **Throttle Channel value for arming** - channel value under which arming is allowed.Throttle must be below this limit prior to ARM mode being selected.
 * **Throttle Channel value for 0% throttle** - The channel value (in µS) for the channel to be considered 0%.
 * **Throttle Channel value for 100% throttle** - The channel value (in µS) for the channel to be considered 100%.
 * **Cyclic Deadband** and **Yaw Deadband** - adjust to the smallest possible value that doesn't make your model drift in the *Rates Preview* window.
 
 :::caution
 Calibrating Stability Mode
-The stability modes (Angle, Horizon or Rescue) can be calibrated so that the heli doesn't drift much when using such a mode. This can only be done via the [accelerometer trims](../../setup/using-stability-modes-example.md). 
+The stability modes (Angle, Horizon or Rescue) can be calibrated so that the heli doesn't drift much when using such a mode. This can only be done via the [accelerometer trims](../../setup/using-stability-modes-example.md).
 **Do not use trim on your transmitter**.
 :::
 
-You should end up with something similar to this:  
+You should end up with something similar to this:\
 ![Receiver tab](../img/tx-output-calibrated.gif)
 
 ## Telemetry Sensors
@@ -154,6 +160,5 @@ Use the below switch to enable/disable the telemetry stream sent to your radio. 
 ![Receiver Tab](../img/receiver-telem-sensors.png)
 
 :::tip
-For ELRS receivers, follow the [ELRS Custom Telemetry](../../setup/elrs-custom-telemetry.mdx) page for how to setup. This is new for Rotorflight 2.1 and ELRS Reuse is no longer available.  
+For ELRS receivers, follow the [ELRS Custom Telemetry](../../setup/elrs-custom-telemetry.mdx) page for how to setup. This is new for Rotorflight 2.1 and ELRS Reuse is no longer available.
 :::
-

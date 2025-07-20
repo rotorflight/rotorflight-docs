@@ -4,9 +4,9 @@ sidebar_position: 0
 
 # Getting Started
 
-The general process for setting up a helicopter using Rotorflight.  
+The general process for setting up a helicopter using Rotorflight.
 
-This process is generic and may be slightly different, depending on your particular helicopter.  
+This process is generic and may be slightly different, depending on your particular helicopter.
 
 1. Install the latest RF2 [release](../Tutorial-Setup/Flashing-the-firmware.md#install-rotorflight-configurator)
 2. [Remap](../Tutorial-Setup/Remapping.md) your servos and motors if you are using a Betaflight FC, otherwise, skip this step.

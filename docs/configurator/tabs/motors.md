@@ -1,6 +1,6 @@
 # Motors
 
-The _Motors_ tab is used to configure the ESC communications protocols **( Motor Control Protocol & Telemetry Protocol )** ,as well as to provide the ability to test motor operation. Depending on the selected ESC protocol and selected Rotorflight features, you might need to specify some other parameters as well.
+The *Motors* tab is used to configure the ESC communications protocols **( Motor Control Protocol & Telemetry Protocol )** ,as well as to provide the ability to test motor operation. Depending on the selected ESC protocol and selected Rotorflight features, you might need to specify some other parameters as well.
 
 :::info
 This section is about Rotorflight communicating with the ESC. The settings for your motor (such as timing, braking and motor update frequency) can only be set in your ESC, and not in Rotorflight.
@@ -12,19 +12,18 @@ This section is about Rotorflight communicating with the ESC. The settings for y
 
 ### ESC Throttle Protocol
 
-Set the ESC protocol required for your ESC under _ESC/Motor protocol_. Usually this would be _PWM_ or _DSHOT300_.
+Set the ESC protocol required for your ESC under *ESC/Motor protocol*. Usually this would be *PWM* or *DSHOT300*.
 
 ![Motor and ESC](../img/motor-protocol.png)
 
 ### ESC Telemetry Protocol
 
-Set the ESC [_Telemetry_](../../setup/esc-telemetry.mdx) protocol if your esc supports it.
+Set the ESC [*Telemetry*](../../setup/esc-telemetry.mdx) protocol if your esc supports it.
 
 ![Motor and ESC](../img/motor-telem.png)
 
 :::note[Castle]
 Looking for Castle ESC Telemetry? Castle ESCs use a single wire protocol. Both the throttle protocol and telemetry are sent and received on the same wire.
-
 :::
 
 ### PWM Protocol
@@ -36,15 +35,15 @@ Most RC helicopter ESCs manufacturers (e.g. Hobbywing, YGE, Scorpion ,or Castle)
 **RPM Sensor:** Activate the RPM Sensor input for motor RPM, you can connect an RPM signal from the ESC, or from an external RPM sensor device.
 
 :::note
-A correct RPM measurement is crucial to the operation of _RPM_FILTER_ and _GOVERNOR_ features, therefore ensure that you have a correct RPM measurement setup.
+A correct RPM measurement is crucial to the operation of *RPM\_FILTER* and *GOVERNOR* features, therefore ensure that you have a correct RPM measurement setup.
 
-The FC also needs to know the [RPM](../../setup/rpm-measurement.mdx) of the main rotor, and the tail rotor. For this you have to exactly specify the _Motor pole count_ and the _Gear ratios_.
+The FC also needs to know the [RPM](../../setup/rpm-measurement.mdx) of the main rotor, and the tail rotor. For this you have to exactly specify the *Motor pole count* and the *Gear ratios*.
 
 With this info, the FC can calculate the:
 
-- Main motor RPM = eRPM / (motor pole count / 2)
-- Main rotor RPM = Main motor RPM / ( main gear tooth count / main motor pinion tooth count )
-  :::
+* Main motor RPM = eRPM / (motor pole count / 2)
+* Main rotor RPM = Main motor RPM / ( main gear tooth count / main motor pinion tooth count )
+:::
 
 **ESC Update Frequency:** the PWM update frequency for your ESC. Usually between 50-400Hz.
 
@@ -68,27 +67,27 @@ Most drone ESCs support DSHOT, a digital protocol.
 
 If you use DSHOT, use either DSHOT150 or DSHOT300. DSHOT600 is not recommended. Also make sure that the main motor isn't actively being braked by the ESC, especially if you don't have a [one way bearing](https://youtu.be/ahWzhT5Bn28) on the main shaft.
 
-- BLHeli*32: set \_Non Damped Mode* to _On_ on the main motor ESC
-- Bluejay: set _Maximum Breaking Strength_ to _0_
+* BLHeli*32: set \_Non Damped Mode* to *On* on the main motor ESC
+* Bluejay: set *Maximum Breaking Strength* to *0*
 
 #### DShot RPM Telemetry
 
-This switch is only visible when the _ESC/Motor protocol_ is DSHOTxxx. It enables motor eRPM telemetry on supported ESCs via [bidirectional DSHOT](../../setup/rpm-measurement.mdx#bi-directional-dshot) and can be used to facilitate the _GOVERNOR_ and/or _RPM_FILTER_ features. If you use bidirectional DSHOT you don't have to use a frequency sensor for obtaining the eRPM of the motor(s).
+This switch is only visible when the *ESC/Motor protocol* is DSHOTxxx. It enables motor eRPM telemetry on supported ESCs via [bidirectional DSHOT](../../setup/rpm-measurement.mdx#bi-directional-dshot) and can be used to facilitate the *GOVERNOR* and/or *RPM\_FILTER* features. If you use bidirectional DSHOT you don't have to use a frequency sensor for obtaining the eRPM of the motor(s).
 
 ### Gear Ratio Configuration
 
 ![Motor and ESC](../img/motor-gear-ratio.png)
 
-Enter the number of teeth for the main rotor gearing [Teeth on Pinion gear]/[Teeth on Main Gear]. For a direct drive Main rotor this is just set to 1 / 1.
+Enter the number of teeth for the main rotor gearing \[Teeth on Pinion gear]/\[Teeth on Main Gear]. For a direct drive Main rotor this is just set to 1 / 1.
 
-Enter the number of teeth for the Tail rotor gearing [Teeth on Tail gear]/[Teeth on Autorotation Gear]. For a direct drive tail this is just set to 1 / 1.
+Enter the number of teeth for the Tail rotor gearing \[Teeth on Tail gear]/\[Teeth on Autorotation Gear]. For a direct drive tail this is just set to 1 / 1.
 
 :::tip
 If the gear tooth count is not known, you can approximate the gear ratio instead.
 
-For example if the main gear ratio is 11.8 then you set _[Teeth on Pinion gear =10]/[Teeth on Main Gear =118]_.
+For example if the main gear ratio is 11.8 then you set *\[Teeth on Pinion gear =10]/\[Teeth on Main Gear =118]*.
 
-Similarly if the tail gear ratio is 4.8 then you set _[Teeth on Tail gear =10]/[Teeth on Autorotation Gear =48]_.
+Similarly if the tail gear ratio is 4.8 then you set *\[Teeth on Tail gear =10]/\[Teeth on Autorotation Gear =48]*.
 
 note that counting the gear tooth is preferable because an accurate gear ratio is essential to the operation of the [RPM Filters](../../setup/rpm-filters.md).
 :::

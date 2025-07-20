@@ -19,5 +19,3 @@ There are two different Lua scripts available for Ethos radios. Either version c
 :::
 
 ![Ethos Tx](../setup/img/ethos-logo.png)
-
-

@@ -9,22 +9,22 @@ The purpose of ESC telemetry is to provide a method of reading the values provid
 
 ESC Telemetry currently supported are :
 
-- **BLHELI32**: BLheli and KISS
-- **HOBBYWING V4**: Platinum PRO V4, V4.1,& FLYFUN V5
-- **HOBBYWING V5**: Platinum V5
-- **SCORPION**: Unsc Telem
-- **KONTRONIK**: Kosmik & Kolibri
-- **OMPHOBBY**
-- **ZTW**: Skyhawk
-- **APD**: HV Pro UART telemetry
-- **FlyRotor**:
-- **Graupner**:
-- **YGE**: OpenYGE - Note - The ESC must have firmware V1.03547 or above. At the moment this is in beta and has not been released. Please use the contact form to request the updated firmware. [YGE: Contact Us](https://www.yge.de/en/contact/)
-- **XDFLY**:
-  :::
+* **BLHELI32**: BLheli and KISS
+* **HOBBYWING V4**: Platinum PRO V4, V4.1,& FLYFUN V5
+* **HOBBYWING V5**: Platinum V5
+* **SCORPION**: Unsc Telem
+* **KONTRONIK**: Kosmik & Kolibri
+* **OMPHOBBY**
+* **ZTW**: Skyhawk
+* **APD**: HV Pro UART telemetry
+* **FlyRotor**:
+* **Graupner**:
+* **YGE**: OpenYGE - Note - The ESC must have firmware V1.03547 or above. At the moment this is in beta and has not been released. Please use the contact form to request the updated firmware. [YGE: Contact Us](https://www.yge.de/en/contact/)
+* **XDFLY**:
+:::
 
 :::caution
-Looking for **Castle Creations** Telemetry?. Castle ESCs use a single wire protocol which is quite different to normal ESC telemetry. see the [**Castle ESC Telemetry**](#castle-esc-telemetry) below.  
+Looking for **Castle Creations** Telemetry?. Castle ESCs use a single wire protocol which is quite different to normal ESC telemetry. see the [**Castle ESC Telemetry**](#castle-esc-telemetry) below.
 :::
 
 ### Select Serial Port
@@ -53,35 +53,33 @@ The measurement accuracy of some ESCs is poor and may need to be scaled to obtai
 
 ![ESC Telemetry scale](./img/esc-telem-scale.png)
 
-
 ## Castle ESC Telemetry
 
-Castle ESCs use a single wire protocol. As such the signal and telemetry are sent on the same wire. 
+Castle ESCs use a single wire protocol. As such the signal and telemetry are sent on the same wire.
 
 ### Set ESC Protocol
 
 In the **Motor Protocol** select Castle.
 
-![ESC Telemetry](./img/castle-1.png)  
+![ESC Telemetry](./img/castle-1.png)
 
 ### Enable ESC Link Live
 
 Enable **Link Live** using the Castle link software connected to your ESC.
 
-![ESC Telemetry](./img/castle-2.png)  
+![ESC Telemetry](./img/castle-2.png)
 
 ### DIY Castle link
 
-This adapter connects between the ESC and the FC. It can be made from a small piece of perf board and a resistor. This resistor is sized depending on your BEC voltage.  
+This adapter connects between the ESC and the FC. It can be made from a small piece of perf board and a resistor. This resistor is sized depending on your BEC voltage.
 
-5v BEC      = 5k Resistor  
-7.4v BEC    = 8.2k Resistor  
-9.6v BEC    = 13k Resistor  
-12v BEC     = 18k Resistor   
+5v BEC      = 5k Resistor\
+7.4v BEC    = 8.2k Resistor\
+9.6v BEC    = 13k Resistor\
+12v BEC     = 18k Resistor
 
 ![ESC Telemetry](./img/castle-3.png)
 
 They can be soldered directly to the perf board as below.
 
 ![ESC Telemetry](./img/castle-4.png)
-
