@@ -146,17 +146,6 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
-          //Versioning
-          includeCurrentVersion: false,
-          //lastVersion: 'current',
-          onlyIncludeVersions: ["2.2.0", "2.1.0", "2.0.0"],
-          versions: {
-            //         current: {
-            //label: '(Dev)',
-            //path: '2.1',
-            //           banner: 'unreleased'
-            //         },
-          },
         },
         blog: {
           routeBasePath: "announcement",
