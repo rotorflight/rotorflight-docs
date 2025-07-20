@@ -1,4 +1,5 @@
 // @ts-check
+import "dotenv/config";
 
 import { themes } from "prism-react-renderer";
 const lightCodeTheme = themes.github;
@@ -10,8 +11,8 @@ export default {
   tagline: "Open-source Helicopter flight controller",
   favicon: "img/rffavicon.ico",
 
-  url: "https://github.com/",
-  baseUrl: "/",
+  url: process.env.URL ?? "https://github.com/",
+  baseUrl: process.env.BASE_PATH ?? "/",
   trailingSlash: false,
 
   onBrokenLinks: "warn",
