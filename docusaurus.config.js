@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const {themes} = require('prism-react-renderer');
+const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
@@ -10,125 +10,167 @@ const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Rotorflight',
-  tagline: 'Open-source Helicopter flight controller',
-  favicon: 'img/rffavicon.ico',
+  title: "Rotorflight",
+  tagline: "Open-source Helicopter flight controller",
+  favicon: "img/rffavicon.ico",
 
-  url: 'https://github.com/', // Your website URL
-  baseUrl: '/',
-  projectName: 'rotorflight.github.io',
-  organizationName: 'rotorflight',
+  url: "https://github.com/", // Your website URL
+  baseUrl: "/",
+  projectName: "rotorflight.github.io",
+  organizationName: "rotorflight",
   trailingSlash: false,
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ["@docusaurus/theme-mermaid"],
 
   plugins: [
     [
-        '@docusaurus/plugin-client-redirects',
+      "@docusaurus/plugin-client-redirects",
       {
-        fromExtensions: ['html', 'htm'],
-        toExtensions: ['exe', 'zip'],
+        fromExtensions: ["html", "htm"],
+        toExtensions: ["exe", "zip"],
         redirects: [
           //Redirect Rotorflight v2.0 configurator links to new website links
-          { from: '/docs/Tutorial-Setup/Configuration', to: '/docs/2.0.0/Wiki/Configurator/Configuration', },
-          { from: '/docs/Tutorial-Setup/Receiver', to: '/docs/2.0.0/Wiki/Configurator/Receiver', },
-          { from: '/docs/Tutorial-Setup/Failsafe', to: '/docs/2.0.0/Wiki/Configurator/Failsafe', },
-          { from: '/docs/Tutorial-Setup/Beepers', to: '/docs/2.0.0/Wiki/Configurator/Beepers', },
-          { from: '/docs/Tutorial-Setup/Power', to: '/docs/2.0.0/Wiki/Configurator/Power', },
-          { from: '/docs/Tutorial-Setup/RPM-Filters', to: '/docs/2.0.0/Wiki/Tutorial-Setup/RPM-Filters', },
-          { from: '/docs/Tutorial-Setup/Motor-and-Esc', to: '/docs/2.0.0/Wiki/Configurator/Motor-and-Esc', },
-          { from: '/docs/Tutorial-Setup/Servos', to: '/docs/2.0.0/Wiki/Configurator/Servos', },
-          { from: '/docs/Tutorial-Setup/Mixer', to: '/docs/2.0.0/Wiki/Configurator/Mixer', },
-          { from: '/docs/Tutorial-Setup/Rates', to: '/docs/2.0.0/Wiki/Configurator/Rates', },
-          { from: '/docs/Tutorial-Setup/Profiles', to: '/docs/2.0.0/Wiki/Configurator/Profiles', },
-          { from: '/docs/Tutorial-Setup/Modes', to: '/docs/2.0.0/Wiki/Configurator/Modes', },
-          { from: '/docs/Tutorial-Setup/Adjustments', to: '/docs/2.0.0/Wiki/Configurator/Adjustments', },
-          { from: '/docs/Tutorial-Setup/Sensors', to: '/docs/2.0.0/Wiki/Configurator/Sensors', },
-          { from: '/docs/Tutorial-Setup/Blackbox', to: '/docs/2.0.0/Wiki/Configurator/Blackbox', },
-          { from: '/docs/Tutorial-Setup/CLI', to: '/docs/2.0.0/Wiki/Configurator/CLI', },
+          {
+            from: "/docs/Tutorial-Setup/Configuration",
+            to: "/docs/2.0.0/Wiki/Configurator/Configuration",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Receiver",
+            to: "/docs/2.0.0/Wiki/Configurator/Receiver",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Failsafe",
+            to: "/docs/2.0.0/Wiki/Configurator/Failsafe",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Beepers",
+            to: "/docs/2.0.0/Wiki/Configurator/Beepers",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Power",
+            to: "/docs/2.0.0/Wiki/Configurator/Power",
+          },
+          {
+            from: "/docs/Tutorial-Setup/RPM-Filters",
+            to: "/docs/2.0.0/Wiki/Tutorial-Setup/RPM-Filters",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Motor-and-Esc",
+            to: "/docs/2.0.0/Wiki/Configurator/Motor-and-Esc",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Servos",
+            to: "/docs/2.0.0/Wiki/Configurator/Servos",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Mixer",
+            to: "/docs/2.0.0/Wiki/Configurator/Mixer",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Rates",
+            to: "/docs/2.0.0/Wiki/Configurator/Rates",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Profiles",
+            to: "/docs/2.0.0/Wiki/Configurator/Profiles",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Modes",
+            to: "/docs/2.0.0/Wiki/Configurator/Modes",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Adjustments",
+            to: "/docs/2.0.0/Wiki/Configurator/Adjustments",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Sensors",
+            to: "/docs/2.0.0/Wiki/Configurator/Sensors",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Blackbox",
+            to: "/docs/2.0.0/Wiki/Configurator/Blackbox",
+          },
+          {
+            from: "/docs/Tutorial-Setup/CLI",
+            to: "/docs/2.0.0/Wiki/Configurator/CLI",
+          },
 
           //Redirect for Radio setups to point to downloads
-          { from: '/docs/next/setup/radio-setup/radio-setup-edgetx/lua-RF2', to: '/docs/download/edge-tx-Lua', },
+          {
+            from: "/docs/next/setup/radio-setup/radio-setup-edgetx/lua-RF2",
+            to: "/docs/download/edge-tx-Lua",
+          },
         ],
 
         createRedirects(existingPath) {
-            if (existingPath.includes('/docs/Wiki')) {
-                return [
-                    existingPath.replace('/docs/Wiki', '/docs/2.0.0/Wiki'),
-                  ];
-            } else if (existingPath.includes('/docs/configurator')) {
-                return [
-                  existingPath.replace('/docs/configurator', '/docs/2.2.0/configurator'),
-                ];
-            } else if (existingPath.includes('/docs/next')) {
-                return [
-                  existingPath.replace('/docs/next', '/docs/2.3.0'),
-                ];
-            }
-            return undefined; // Return a falsy value: no redirect created
-          },
+          if (existingPath.includes("/docs/Wiki")) {
+            return [existingPath.replace("/docs/Wiki", "/docs/2.0.0/Wiki")];
+          } else if (existingPath.includes("/docs/configurator")) {
+            return [
+              existingPath.replace(
+                "/docs/configurator",
+                "/docs/2.2.0/configurator",
+              ),
+            ];
+          } else if (existingPath.includes("/docs/next")) {
+            return [existingPath.replace("/docs/next", "/docs/2.3.0")];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
       },
     ],
     [
-      '@docusaurus/plugin-content-blog',
+      "@docusaurus/plugin-content-blog",
       {
-        id: 'announcement',
-        routeBasePath: 'announcement',
-        path: './announcement',
+        id: "announcement",
+        routeBasePath: "announcement",
+        path: "./announcement",
       },
     ],
-    require.resolve('docusaurus-lunr-search'),
+    require.resolve("docusaurus-lunr-search"),
   ],
-
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/rotorflight/rotorflight-docs/tree/main',
-            //Versioning
-            includeCurrentVersion: false,
-            //lastVersion: 'current',
-            onlyIncludeVersions: [
-                '2.2.0',
-                '2.1.0',
-                '2.0.0'
-    ],
+          editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
+          //Versioning
+          includeCurrentVersion: false,
+          //lastVersion: 'current',
+          onlyIncludeVersions: ["2.2.0", "2.1.0", "2.0.0"],
           versions: {
-   //         current: {
-              //label: '(Dev)',
-              //path: '2.1',
-   //           banner: 'unreleased'
-   //         },
+            //         current: {
+            //label: '(Dev)',
+            //path: '2.1',
+            //           banner: 'unreleased'
+            //         },
           },
-
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/rotorflight/rotorflight-docs/tree/main',
+          editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
         },
         theme: {
           //customCss: require.resolve('./src/css/custom.css'),
@@ -141,138 +183,138 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        id: 'Announcement',
+        id: "Announcement",
         content:
-          'ROTORFLIGHT 2 Official Release 2.2.0 is now available. See downloads tab',
-        backgroundColor: '#FE9900',
-        textColor: '#000000',
+          "ROTORFLIGHT 2 Official Release 2.2.0 is now available. See downloads tab",
+        backgroundColor: "#FE9900",
+        textColor: "#000000",
         isCloseable: false,
       },
 
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: 'Rotorflight',
+        title: "Rotorflight",
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/Rotorflight_outline.svg',
-          srcDark: 'img/Rotorflight_outline_dark.svg',
+          alt: "My Site Logo",
+          src: "img/Rotorflight_outline.svg",
+          srcDark: "img/Rotorflight_outline_dark.svg",
         },
         items: [
-            { to: '/announcement', label: 'Announcements', position: 'left' },
-                   {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-            to: '/docs/examples/example-1',
+          { to: "/announcement", label: "Announcements", position: "left" },
+          {
+            type: "docSidebar",
+            sidebarId: "tutorialSidebar",
+            position: "left",
+            label: "Tutorial",
+            to: "/docs/examples/example-1",
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'ControllerSidebar',
-            position: 'left',
-            label: 'Download',
-            to: '/docs/download/configurator',
+            type: "docSidebar",
+            sidebarId: "ControllerSidebar",
+            position: "left",
+            label: "Download",
+            to: "/docs/download/configurator",
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'manufactSidebar',
-            position: 'left',
-            label: 'Manufacturers',
-            to: '/docs/Manufacturers/intro',
+            type: "docSidebar",
+            sidebarId: "manufactSidebar",
+            position: "left",
+            label: "Manufacturers",
+            to: "/docs/Manufacturers/intro",
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'tuningSidebar',
-            position: 'left',
-            label: 'Tuning',
-            to: '/docs/Tuning/Tuning-description',
+            type: "docSidebar",
+            sidebarId: "tuningSidebar",
+            position: "left",
+            label: "Tuning",
+            to: "/docs/Tuning/Tuning-description",
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'developSidebar',
-            position: 'left',
-            label: 'Contributing',
-            to: '/docs/Contributing/intro',
+            type: "docSidebar",
+            sidebarId: "developSidebar",
+            position: "left",
+            label: "Contributing",
+            to: "/docs/Contributing/intro",
           },
           {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            banner: 'unreleased',
+            type: "docsVersionDropdown",
+            position: "right",
+            banner: "unreleased",
           },
           {
-            href: 'https://www.rotorflight.org/donate',
-            label: 'Support Us',
-            position: 'right',
+            href: "https://www.rotorflight.org/donate",
+            label: "Support Us",
+            position: "right",
           },
           {
-            href: 'https://github.com/rotorflight',
-            label: 'GitHub',
-            position: 'right',
+            href: "https://github.com/rotorflight",
+            label: "GitHub",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         logo: {
-          src: 'img/Rotorflight_outline.png',
+          src: "img/Rotorflight_outline.png",
           width: 90,
           height: 50,
         },
         links: [
           {
-            title: 'Docs',
+            title: "Docs",
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/examples/index',
+                label: "Tutorial",
+                to: "/docs/examples/index",
               },
               {
-                label: 'Download',
-                to: '/docs/download/configurator',
+                label: "Download",
+                to: "/docs/download/configurator",
               },
               {
-                label: 'Manufacturers',
-                to: '/docs/Manufacturers/intro',
+                label: "Manufacturers",
+                to: "/docs/Manufacturers/intro",
               },
               {
-                label: 'Tuning',
-                to: '/docs/Tuning/First-Flight-Filter-Tuning',
+                label: "Tuning",
+                to: "/docs/Tuning/First-Flight-Filter-Tuning",
               },
               {
-                label: 'Contributing',
-                to: '/docs/Contributing/intro',
+                label: "Contributing",
+                to: "/docs/Contributing/intro",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               {
-                label: 'Discord',
-                href: 'https://discord.gg/6QUySXdEvd',
+                label: "Discord",
+                href: "https://discord.gg/6QUySXdEvd",
               },
               {
-                label: 'RC Groups',
-                href: 'https://www.rcgroups.com/forums/showthread.php?4000345-Rotorflight-Flight-Control-%28FBL%29-Software-Official-discussion',
-              },
-            ],
-          },
-          {
-            title: 'Support Us',
-            items: [
-              {
-                label: 'Donate to Rotorflight',
-                href: 'https://www.rotorflight.org/donate',
+                label: "RC Groups",
+                href: "https://www.rcgroups.com/forums/showthread.php?4000345-Rotorflight-Flight-Control-%28FBL%29-Software-Official-discussion",
               },
             ],
           },
           {
-            title: 'More',
+            title: "Support Us",
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/rotorflight',
+                label: "Donate to Rotorflight",
+                href: "https://www.rotorflight.org/donate",
+              },
+            ],
+          },
+          {
+            title: "More",
+            items: [
+              {
+                label: "GitHub",
+                href: "https://github.com/rotorflight",
               },
             ],
           },
@@ -287,4 +329,3 @@ const config = {
 };
 
 module.exports = config;
-

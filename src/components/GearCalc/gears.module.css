@@ -8,7 +8,7 @@
   margin: 10px;
   width: 100%;
   height: 100%;
-    }
+}
 
 .image {
   position: relative;
@@ -16,103 +16,103 @@
   top: 0;
   left: 0;
   object-fit: contain;
-    }
+}
 
 .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 .drop {
-    margin-left: 3%;
-    top: 2;
-    width: 30%;
-    height: 8%;
-    font-size: 90%;
-    }
+  margin-left: 3%;
+  top: 2;
+  width: 30%;
+  height: 8%;
+  font-size: 90%;
+}
 
 .z1 {
-    position: absolute;
-    font-size: 90%;
-    top: 45.5%;
-    left: 9%;
-    width: 10%;
-    height: 6%;
-    padding: 2px;
-    }
+  position: absolute;
+  font-size: 90%;
+  top: 45.5%;
+  left: 9%;
+  width: 10%;
+  height: 6%;
+  padding: 2px;
+}
 
 .z2 {
-    position: absolute;
-    font-size: 90%;
-    top: 45.5%;
-    left: 23.5%;
-    width: 10%;
-    height: 6%;
-    padding: 2px;
-    }
+  position: absolute;
+  font-size: 90%;
+  top: 45.5%;
+  left: 23.5%;
+  width: 10%;
+  height: 6%;
+  padding: 2px;
+}
 
- .z3 {
-    position: absolute;
-    font-size: 90%;
-    top: 34%;
-    left: 23.5%;
-    width: 10%;
-    height: 6%;
-    padding: 2px;
-    }
+.z3 {
+  position: absolute;
+  font-size: 90%;
+  top: 34%;
+  left: 23.5%;
+  width: 10%;
+  height: 6%;
+  padding: 2px;
+}
 
- .z4 {
-    position: absolute;
-    font-size: 90%;
-    top: 34%;
-    left: 39.5%;
-    width: 10%;
-    height: 6%;
-    padding: 2px;
-    }
+.z4 {
+  position: absolute;
+  font-size: 90%;
+  top: 34%;
+  left: 39.5%;
+  width: 10%;
+  height: 6%;
+  padding: 2px;
+}
 
- .z5 {
-    position: absolute;
-    font-size: 90%;
-    top: 56%;
-    left: 21%;
-    width: 10%;
-    height: 6%;
-    padding: 2px;
-    }
+.z5 {
+  position: absolute;
+  font-size: 90%;
+  top: 56%;
+  left: 21%;
+  width: 10%;
+  height: 6%;
+  padding: 2px;
+}
 
- .z6 {
-    position: absolute;
-    font-size: 90%;
-    top: 56%;
-    left: 84.5%;
-    width: 10%;
-    height: 6%;
-    padding: 2px;
-    }
+.z6 {
+  position: absolute;
+  font-size: 90%;
+  top: 56%;
+  left: 84.5%;
+  width: 10%;
+  height: 6%;
+  padding: 2px;
+}
 
 .outContainer {
-    position: absolute;    
-    width: 80%;
-    left: 5%;
-    top: 73%;
+  position: absolute;
+  width: 80%;
+  left: 5%;
+  top: 73%;
 }
 
 .out {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
 
 .out b {
-    font-size: 90%;
-    padding-left: 5px;
-    padding-right: 5px;
+  font-size: 90%;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .out input {
-    font-size: 90%;
-    width: 15%;
-    padding: 2px;
+  font-size: 90%;
+  width: 15%;
+  padding: 2px;
 }

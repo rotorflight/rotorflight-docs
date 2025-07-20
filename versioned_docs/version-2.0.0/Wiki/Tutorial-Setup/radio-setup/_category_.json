@@ -1,9 +1,7 @@
-
-
 {
-    "label": "Radio Setup",
-    "position": 1,
-    "link": {
-      "type": "generated-index"
-    }
+  "label": "Radio Setup",
+  "position": 1,
+  "link": {
+    "type": "generated-index"
   }
+}

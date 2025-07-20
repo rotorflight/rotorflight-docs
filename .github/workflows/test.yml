@@ -22,8 +22,8 @@ jobs:
       - name: output
         id: output
         run: |
-            echo "URL=https://${{ github.repository_owner }}.github.io" >> $GITHUB_OUTPUT
-            echo "BASE_PATH=/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_OUTPUT
+          echo "URL=https://${{ github.repository_owner }}.github.io" >> $GITHUB_OUTPUT
+          echo "BASE_PATH=/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_OUTPUT
 
       - name: prepare env
         run: |

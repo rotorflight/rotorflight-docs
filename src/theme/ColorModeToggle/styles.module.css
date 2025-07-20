@@ -18,8 +18,8 @@
   background: var(--ifm-color-emphasis-500);
 }
 
-[data-theme='light'] .darkToggleIcon,
-[data-theme='dark'] .lightToggleIcon {
+[data-theme="light"] .darkToggleIcon,
+[data-theme="dark"] .lightToggleIcon {
   display: none;
 }
 

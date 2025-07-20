@@ -55,9 +55,7 @@
         "type": "doc",
         "id": "examples/index"
       },
-      "items": [
-        "examples/example-1"
-      ]
+      "items": ["examples/example-1"]
     },
     {
       "type": "category",
@@ -88,25 +86,19 @@
               ]
             },
             {
-                "type": "category",
-                "label": "Futaba",
-                "items": [
-                "setup/radio-setup/radio-setup-futaba/futaba-setup"
-              ]
+              "type": "category",
+              "label": "Futaba",
+              "items": ["setup/radio-setup/radio-setup-futaba/futaba-setup"]
             },
             {
               "type": "category",
               "label": "Jeti",
-              "items": [
-                "setup/radio-setup/radio-setup-jeti/jeti-setup"
-              ]
+              "items": ["setup/radio-setup/radio-setup-jeti/jeti-setup"]
             },
             {
               "type": "category",
               "label": "Others",
-              "items": [
-                "setup/radio-setup/radio-setup-others/others"
-              ]
+              "items": ["setup/radio-setup/radio-setup-others/others"]
             }
           ]
         },
