@@ -6,7 +6,7 @@ sidebar_position: 30
 
 ![Flydragon v2.2](./img/flydragon2-2.png)
 
-:::info Specifications  
+:::info[Specifications]
 ### Hardware Specifications： 
 MCU: STM32F722RET6  
 IMU: BMI270  

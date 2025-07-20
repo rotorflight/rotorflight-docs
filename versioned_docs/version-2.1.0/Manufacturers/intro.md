@@ -9,7 +9,7 @@ The Rotorflight team have collaborated with several manufacturers to produce Fli
 ## Flight Controller Specifications
 We have documented some flight controller [Design Requirements](Design-Requirements.md). Also there are several pin and MCU specific [Reference Designs](Reference-Design.md). These are specified to optimise resources and provide a consistent starting point. 
 
-:::caution note
+:::caution[note]
 For an FC to be fully supported by Rotorflight-2 (RF2), it must follow one of the Reference Designs.
 :::
 

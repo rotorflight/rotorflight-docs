@@ -6,7 +6,7 @@ sidebar_position: 60
 
 ![Matek G474HELI](./img/matek-g474-hlite.png)
 
-:::info Specifications  
+:::info[Specifications]
 ### Hardware Specifications： 
 MCU: STM32G474CE  
 IMU: ICM42688-P  

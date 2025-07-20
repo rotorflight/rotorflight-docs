@@ -22,7 +22,7 @@ Set the ESC [_Telemetry_](../../setup/esc-telemetry.mdx) protocol if your esc su
 
 ![Motor and ESC](../img/motor-telem.png)
 
-:::note Castle
+:::note[Castle]
 Looking for Castle ESC Telemetry? Castle ESCs use a single wire protocol. Both the throttle protocol and telemetry are sent and received on the same wire.
 
 :::
@@ -119,10 +119,10 @@ RPM - The measured RPM telemetry feedback. As the motor spins this should read a
 
 Errors (only with DSHOT) - This shows the status of the RPM telemetry signal. This should be 0%.
 
-::::note Slider
+:::note[Slider]
 If you use the slider, make sure you release the mouse button. Nothing changes as long as you hold the mouse button down!
-::::
+:::
 
-::::note BLHeliSuite32
+:::note[BLHeliSuite32]
 The Test motors function in BLHeliSuite32 doesn't work when using Rotorflight. It will give an error like 'Initialization of Motor Test Mode failed! Please check current Unknown rev 4.3.0 support for this application function!'.
-::::
+:::

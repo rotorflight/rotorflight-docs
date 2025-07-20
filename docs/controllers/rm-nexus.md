@@ -9,7 +9,7 @@ sidebar_position: 10
 ## Release Video
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/G9lQ2TzKDRA?si=iZwL1pnlucgEwzXM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
 
-:::info Specifications  
+:::info[Specifications]
 ### Hardware Specifications：  
 NEXUS Heli Flight Controller  
 MCU: STM32F722RET6  

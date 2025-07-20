@@ -26,11 +26,11 @@ The mode selector tab enables several modes and functions to be enabled or disab
 ![Modes](../img/modes-1.png)
 
 ## ARM
-:::caution ELRS
+:::caution[ELRS]
 If using an ELRS receiver you must configure the ARM switch to AUX1 (1000 = Disarmed, 2000 = Armed). This channel is sent every cycle. Please see the [ELRS switch config documentation](https://www.expresslrs.org/software/switch-config/) 
 :::
 
-:::info ARM & throttle hold
+:::info[ARM & throttle hold]
 ARM and throttle hold are not the same. Do not configure the ARM and throttle hold on the same channel. The Flight controller needs to see minimum throttle before it can arm and if they are both on the same channel it will fail the minimum throttle check and will not ARM.
 :::
 

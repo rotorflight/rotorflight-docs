@@ -6,7 +6,7 @@ sidebar_position: 40
 
 ![Flywing Heli405](./img/fw-helif405.png)
 
-:::info Specifications  
+:::info[Specifications]
 ### Hardware Specifications： 
 MCU: STM32F405RGT6 
 IMU: ICM42688  
