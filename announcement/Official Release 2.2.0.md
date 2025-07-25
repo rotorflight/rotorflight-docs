@@ -1,9 +1,9 @@
 ---
-title: Official Release 2.2.0
+title: Official Release 2.2.1
 authors: Rotorflight
 ---
 
-# 🚁 Rotorflight 2.2.0 – Official Release Notes
+# 🚁 Rotorflight 2.2.1 – Official Release Notes
 
 [**Download Notes**](/docs/download/notes)\
 [**Download Configurator**](/docs/download/configurator)\
@@ -15,6 +15,9 @@ authors: Rotorflight
 
 ### 🆕 New Features
 
+* FrSky attitude sensor scaling fixed
+* Voltage and Current corrections added to XDFly ESC telemetry
+* Force half-duplex setting with Spektrum SRXL2
 * Support for **USB Mass Storage (MSC)** across Mac, Android, and other platforms.
 * **Automatic configuration erase** when flashing firmware to ensure clean installs.
 * **Adjustment function** added for `yaw_precomp_cutoff`.
@@ -34,7 +37,7 @@ authors: Rotorflight
 * Resolved lockups and flash handling on **G4** processors and **W25N** NAND flash.
 * Fixed issues with **XDFly ESC telemetry** lockups.
 
-## 🖥️ Rotorflight Configurator (v2.2.0)
+## 🖥️ Rotorflight Configurator (v2.2.1)
 
 ### 🆕 New Features
 
@@ -49,14 +52,24 @@ authors: Rotorflight
 
 ### 🐞 Fixes & UI Enhancements
 
+* Performance improvements
+* Fix crash with older hardware lacking WebGL 2 support
+* Fix Windows 32-bit installer
+* Fix visual bugs on presets tab
+* Fix maximum allowed value for cyclic deadband
 * Improved visibility of **mode active indicators** in dark theme.
 * Corrected **suggested backup filenames**.
 * Resolved issues with **custom target flashing** and **Windows installation errors**.
 
-## 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.0)
+## 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.1)
+
+**NOTE!** Use the SYS key to bring up the Save menu with Touch UI feature enabled on EdgeTx 2.11+
 
 ### 🆕 Pages & Controls
 
+* Added touch UI support for EdgeTX 2.11+
+* Improved support for FLYROTOR ESC
+* Various minor fixes
 * New **"Rate Dynamics"** page for advanced rate tuning.
 * New **"PID Controller Settings"** page for deep tuning options.
 * Units added to most fields for clarity and consistency.
@@ -67,7 +80,7 @@ authors: Rotorflight
 * Background script (`rf2bg`) sets the FC clock and enables CRSF/ELRS telemetry automatically.
 * Numerous minor fixes and UX improvements.
 
-## 📟 Lua Suite for FrSky Ethos (v2.2.0)
+## 📟 Lua Suite for FrSky Ethos (v2.2.1)
 
 ### 🔄 Framework Overhaul
 
