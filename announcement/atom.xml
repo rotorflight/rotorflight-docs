@@ -2,16 +2,16 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rotorflight.org/announcement</id>
     <title>Rotorflight Blog</title>
-    <updated>2025-07-20T23:32:49.000Z</updated>
+    <updated>2025-07-25T09:46:45.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rotorflight.org/announcement"/>
     <subtitle>Rotorflight Blog</subtitle>
     <icon>https://rotorflight.org/img/rffavicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Official Release 2.2.0]]></title>
+        <title type="html"><![CDATA[Official Release 2.2.1]]></title>
         <id>https://rotorflight.org/announcement/Official Release 2.2.0</id>
         <link href="https://rotorflight.org/announcement/Official Release 2.2.0"/>
-        <updated>2025-07-20T23:32:49.000Z</updated>
+        <updated>2025-07-25T09:46:45.000Z</updated>
         <summary type="html"><![CDATA[Download Notes\]]></summary>
         <content type="html"><![CDATA[<p><a href="https://rotorflight.org/docs/download/notes"><strong>Download Notes</strong></a><br>
 <a href="https://rotorflight.org/docs/download/configurator"><strong>Download Configurator</strong></a><br>
@@ -21,6 +21,9 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="-firmware-rotorflight-45x">🔧 Firmware (Rotorflight 4.5.x)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-firmware-rotorflight-45x" class="hash-link" aria-label="Direct link to 🔧 Firmware (Rotorflight 4.5.x)" title="Direct link to 🔧 Firmware (Rotorflight 4.5.x)">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-new-features">🆕 New Features<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-new-features" class="hash-link" aria-label="Direct link to 🆕 New Features" title="Direct link to 🆕 New Features">​</a></h3>
 <ul>
+<li>FrSky attitude sensor scaling fixed</li>
+<li>Voltage and Current corrections added to XDFly ESC telemetry</li>
+<li>Force half-duplex setting with Spektrum SRXL2</li>
 <li>Support for <strong>USB Mass Storage (MSC)</strong> across Mac, Android, and other platforms.</li>
 <li><strong>Automatic configuration erase</strong> when flashing firmware to ensure clean installs.</li>
 <li><strong>Adjustment function</strong> added for <code>yaw_precomp_cutoff</code>.</li>
@@ -40,7 +43,7 @@
 <li>Resolved lockups and flash handling on <strong>G4</strong> processors and <strong>W25N</strong> NAND flash.</li>
 <li>Fixed issues with <strong>XDFly ESC telemetry</strong> lockups.</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-rotorflight-configurator-v220">🖥️ Rotorflight Configurator (v2.2.0)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#%EF%B8%8F-rotorflight-configurator-v220" class="hash-link" aria-label="Direct link to 🖥️ Rotorflight Configurator (v2.2.0)" title="Direct link to 🖥️ Rotorflight Configurator (v2.2.0)">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-rotorflight-configurator-v221">🖥️ Rotorflight Configurator (v2.2.1)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#%EF%B8%8F-rotorflight-configurator-v221" class="hash-link" aria-label="Direct link to 🖥️ Rotorflight Configurator (v2.2.1)" title="Direct link to 🖥️ Rotorflight Configurator (v2.2.1)">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-new-features-1">🆕 New Features<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-new-features-1" class="hash-link" aria-label="Direct link to 🆕 New Features" title="Direct link to 🆕 New Features">​</a></h3>
 <ul>
 <li>Added a <strong>Presets system</strong> to quickly apply CLI snippets from the UI.</li>
@@ -54,13 +57,22 @@
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-fixes--ui-enhancements">🐞 Fixes &amp; UI Enhancements<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-fixes--ui-enhancements" class="hash-link" aria-label="Direct link to 🐞 Fixes &amp; UI Enhancements" title="Direct link to 🐞 Fixes &amp; UI Enhancements">​</a></h3>
 <ul>
+<li>Performance improvements</li>
+<li>Fix crash with older hardware lacking WebGL 2 support</li>
+<li>Fix Windows 32-bit installer</li>
+<li>Fix visual bugs on presets tab</li>
+<li>Fix maximum allowed value for cyclic deadband</li>
 <li>Improved visibility of <strong>mode active indicators</strong> in dark theme.</li>
 <li>Corrected <strong>suggested backup filenames</strong>.</li>
 <li>Resolved issues with <strong>custom target flashing</strong> and <strong>Windows installation errors</strong>.</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-lua-scripts-for-edgetx--opentx-v220">📟 Lua Scripts for EdgeTX / OpenTX (v2.2.0)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-lua-scripts-for-edgetx--opentx-v220" class="hash-link" aria-label="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.0)" title="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.0)">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-lua-scripts-for-edgetx--opentx-v221">📟 Lua Scripts for EdgeTX / OpenTX (v2.2.1)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-lua-scripts-for-edgetx--opentx-v221" class="hash-link" aria-label="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.1)" title="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.1)">​</a></h2>
+<p><strong>NOTE!</strong> Use the SYS key to bring up the Save menu with Touch UI feature enabled on EdgeTx 2.11+</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-pages--controls">🆕 Pages &amp; Controls<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-pages--controls" class="hash-link" aria-label="Direct link to 🆕 Pages &amp; Controls" title="Direct link to 🆕 Pages &amp; Controls">​</a></h3>
 <ul>
+<li>Added touch UI support for EdgeTX 2.11+</li>
+<li>Improved support for FLYROTOR ESC</li>
+<li>Various minor fixes</li>
 <li>New <strong>"Rate Dynamics"</strong> page for advanced rate tuning.</li>
 <li>New <strong>"PID Controller Settings"</strong> page for deep tuning options.</li>
 <li>Units added to most fields for clarity and consistency.</li>
@@ -71,7 +83,7 @@
 <li>Background script (<code>rf2bg</code>) sets the FC clock and enables CRSF/ELRS telemetry automatically.</li>
 <li>Numerous minor fixes and UX improvements.</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-lua-suite-for-frsky-ethos-v220">📟 Lua Suite for FrSky Ethos (v2.2.0)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-lua-suite-for-frsky-ethos-v220" class="hash-link" aria-label="Direct link to 📟 Lua Suite for FrSky Ethos (v2.2.0)" title="Direct link to 📟 Lua Suite for FrSky Ethos (v2.2.0)">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-lua-suite-for-frsky-ethos-v221">📟 Lua Suite for FrSky Ethos (v2.2.1)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-lua-suite-for-frsky-ethos-v221" class="hash-link" aria-label="Direct link to 📟 Lua Suite for FrSky Ethos (v2.2.1)" title="Direct link to 📟 Lua Suite for FrSky Ethos (v2.2.1)">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="-framework-overhaul">🔄 Framework Overhaul<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-framework-overhaul" class="hash-link" aria-label="Direct link to 🔄 Framework Overhaul" title="Direct link to 🔄 Framework Overhaul">​</a></h3>
 <ul>
 <li>Complete rewrite using a <strong>modular API-driven architecture</strong>.</li>
