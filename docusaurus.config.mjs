@@ -168,7 +168,7 @@ export default {
       },
 
       // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/rotorflight-docs-card.webp",
       navbar: {
         title: "Rotorflight",
         logo: {
