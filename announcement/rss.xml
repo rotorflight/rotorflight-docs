@@ -4,7 +4,7 @@
         <title>Rotorflight Blog</title>
         <link>https://rotorflight.org/announcement</link>
         <description>Rotorflight Blog</description>
-        <lastBuildDate>Thu, 18 Sep 2025 22:36:26 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 18 Sep 2025 22:43:35 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[Official Release 2.2.1]]></title>
             <link>https://rotorflight.org/announcement/Official Release 2.2.0</link>
             <guid>https://rotorflight.org/announcement/Official Release 2.2.0</guid>
-            <pubDate>Thu, 18 Sep 2025 22:36:26 GMT</pubDate>
+            <pubDate>Thu, 18 Sep 2025 22:43:35 GMT</pubDate>
             <description><![CDATA[Download Notes\]]></description>
             <content:encoded><![CDATA[<p><a href="https://rotorflight.org/docs/download/notes"><strong>Download Notes</strong></a><br>
 <a href="https://rotorflight.org/docs/download/configurator"><strong>Download Configurator</strong></a><br>
