@@ -5,17 +5,17 @@ sidebar_position: 40
 # High Speed Integral
 
 TL;DR
-The high speed integral fixes bobbling problems during fast-moving maneuvers. Higher O-gain resulting in fast reaction to high airspeed. Too high might result in bobble during stops since it behaves like integral gain at constant collective position.
+The high speed integral fixes bobbling problems during fast-moving maneuvers. Higher HSI-gain resulting in fast reaction to high airspeed. Too high might result in bobble during stops since it behaves like integral gain at constant collective position.
 
 ## What is it?
 
-This is one of the core features of most advanced FBL systems (Vbar, CGY760R, Spirit .etc) The problem it is solving is mainly due to the difference in lift from high airspeed in the x and y directions. For example, as the helicopter is moving forward while having a constant positive collective pitch, the helicopter tends to pull up. If the collective pitch is negative, the imbalance of lift is reversed, and the heli would tend to push down. This is usually not a problem if the collective stays constant because the integral gain will compensate this constant "trim". However, when changing collective while moving at a high speed (for example, fast moving side tick tocks) the heli would not move axially. It would behave in a snake shape because the I term is constantly charging and discharging in the opposite direction.
+This is a feature developed to mimic the observed core functionality of most advanced modern flight controllers. The problem being solved is mainly due to the difference in lift from high airspeed in the x and y directions. For example, as the helicopter is moving forward while having a constant positive collective pitch, the helicopter tends to pull up. If the collective pitch is negative, the imbalance of lift is reversed, and the heli would tend to push down. This is usually not a problem if the collective stays constant because the integral gain will compensate this constant "trim". However, when changing collective while moving at a high speed (for example, fast moving side tick tocks) the heli would not move axially. It would behave in a snake shape because the I term is constantly charging and discharging in the opposite direction.
 
-The High Speed Integral (HSI) resembles another integral term. However, its output is proportional to the collective input, which reverses when the collective is negative. This is the "arching" effect you might see on FBLs like a vbar, where if one tilt the helicopter at high collective, and move the collective up and down, the swash plate would resemble one side of a seesaw.
+The High Speed Integral (HSI) resembles another integral term. However, its output is proportional to the collective input, which reverses when the collective is negative. This is the "arching" effect you might see on other FBLs, where if one tilt the helicopter at high collective, and move the collective up and down, the swash plate would resemble one side of a seesaw.
 
 ## How to tune it?
 
-To properly tune the HSI, one has to be able to fly maneuvers comfortably at a relatively high speed. The best maneuver is the fast moving ticktocks. It is advised to start low (about 30) and see if there's snaking at the first few tick tocks. The higher O-gain you use, the faster it reacts to high speed, meaning the amount of time ticktock becomes axial is lowered. Ideally, the O-gain should be just high enough to have no snaking. Too high might result in bobbling during stationary tick tocks because it is essentially an I gain at constant collective.
+45 HSI gain and 100 degrees HSI term limit on pitch and roll are good values in general. Additional tuning is not necessary in most cases.
 
 ## (Advanced Topic) Tick tock Optimization
 
