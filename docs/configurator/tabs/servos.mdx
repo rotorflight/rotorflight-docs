@@ -1,24 +1,66 @@
 # Servos
 
-Open the Servos tab and confirm that you have the correct number of servos. If this is not the case, please confirm you have installed the correct firmware (either 'M' motorized or servo tail) or if you are using a drone FC that your [Remapping](../../setup/remapping.mdx)  is correct.
+## Servo 101
+- **Check servo directions** – For example, apply some collective to verify cyclic servo movement. Reverse servos if necessary.
+- **Level the servo arms** – Enable *Servo Override* and adjust *Center* until each arm is perpendicular to the main shaft.
+- **Set scaling** – Use *Scale neg* and *Scale pos* to achieve correct servo angles. With *Servo Override* active, specify an angle of 30°. If the servo moves less, increase *Scale pos*; if it moves more, decrease it. Repeat for *Scale neg*.
+- **Adjust limits only for mechanical issues** – Use *Min* or *Max* to prevent binding or extend travel if required. For range adjustment of roll, pitch, or collective, use the mixer instead.
 
 ![Servo Tab](../img/servo-1.png)
 
+## Servo Configuration parameters
+
+### Center
+
+Use *Center* to level the servo arms. Ideally this is around 1500 µs for cyclic servos and 750 µs for tail servos, but some servo arms may require significant adjustment, and values like 1400 µs for center are not uncommon.
+
+### Min and Max
+
+*Min* and *Max* define the hard limits to keep servos from binding or exceeding their mechanical range. If a servo is driven beyond what it can physically handle, it may buzz, damage components, or even burn out.
+
+### Scale Neg and Scale Pos
+
+Scales the negative and positive direction of the servo to match the commanded angle. 
+
+### Rate
+
+This sets the servo PWM update frequency, as specified by the manufacturer. Most modern digital servos support 333 Hz, while most analog servos should be set to 50 Hz.
+
+> Use separate timers for different update rates. All known Rotorflight flight controllers dedicate a timer to the tail servo, allowing it to always run at its optimal frequency.
+
+### Speed
+
+Sets the servo speed and can be used to equalize servo movement. Speed equalization helps eliminate the [collective "bobbing"](https://discord.com/channels/859480656135192579/1224593758314561547/1338336784165371904) that can occur during rapid elevator changes.
+
+Bobbing happens because the elevator servo often needs to move twice the distance of the aileron servos. If the elevator servo can’t keep up, the aileron servos reach their target before the elevator servo, causing the swashplate to shift slightly.
+
+To tune this, increase the speed value (measured in ms/60°, as in the servo datasheet) until the bobbing disappears. If unsure, using the value from the servo datasheet is always safe.
+
+### Reverse
+
+Toggle for forward or reverse servo direction.
+
+### Geo Cor
+
+Geometry Correction: since servos are rotary, large servo angles produce smaller swashplate movement per degree of servo rotation. Geometry correction compensates for this, giving better control at high swashplate angles (e.g., during 3D flight).
+
+To use this feature correctly, make sure the servo arm is set at 90° with the servo centered, and calibrate the servo scale.
+
+## Servo Override
+
+The toggle at the bottom of the page enables servo overrides, allowing each servo to be moved with a slider for calibrating its range and center. Each servo also has its own individual override control.
+
+The servo override slider scale is in degrees
+
+![Servo Tab](../img/servo-3.png)
+
 ## Servo Numbering
 
-### Direct
+### CCPM: Cyclic/Collective Pitch Mixing
 
-For helicopters that uses mechanical mixing, where the *Pitch*, *Roll*, and *Collective* movements are each controlled by a dedicated servo by means of a complex series of linkages and levers from the servos up to the swashplate.
+CCPM is a control system where multiple servos work together to move a helicopter’s swashplate for both cyclic and collective pitch. It is the most common system used in model helicopters today. 
 
-Servo 1 - Pitch\
-Servo 2 - Roll\
-Servo 3 - Collective\
-Servo 4 - Rudder
-
-### CCPM
-
-For 120, 135 and 140 deg CCPM swashplates.
-Looking from the tail towards the nose of the helicopter:
+For 120, 135 and 140 deg CCPM swashplates, looking from the tail towards the nose of the helicopter:
 
 Servo 1 - Pitch (inline with the centerline of the helicopter)\
 Servo 2 - Left side\
@@ -45,55 +87,13 @@ Servo 3 - Rudder
 
 ![Servo Tab](../img/90deg-v.svg)
 
-## Servo Override
+### Direct
 
-The toggle at the bottom of this page enables the servo overrides. The purpose of this is so that each servo can be driven by the slider to calibrate the range and center points. Beside each servo is an individual override.
+For helicopters that uses mechanical mixing, where the *Pitch*, *Roll*, and *Collective* movements are each controlled by a dedicated servo by means of a complex series of linkages and levers from the servos up to the swashplate.
 
-The servo override slider scale is in degrees
+Servo 1 - Pitch\
+Servo 2 - Roll\
+Servo 3 - Collective\
+Servo 4 - Rudder
 
-![Servo Tab](../img/servo-3.png)
 
-## Servo Configuration parameters
-
-![Servo Tab](../img/servo-4.png)
-
-### Center
-
-In general this will be 1520us for cyclic servos and 760us for tail servos.
-
-### Min and Max
-
-These are hard limits to prevent servos binding or moving outside of their mechanical limits. If a servo is commanded to a point that is greater or less than it is capable it will buzz and likely burn out. These settings should be used to limit the command.
-
-### Scale Neg and Scale Pos
-
-Scales the negative and positive direction of the servo to match the commanded angle.
-
-### Rate
-
-This is the servo frequency. This will be specified by the manufacturer. A large proportion of servos suitable for cyclic operate at 333Hz.
-
-:::note
-For Rotorflight 2 it is recommended that tail servos are assigned to a different timer than cyclic servos (see [Remapping](../../setup/remapping.mdx)).
-
-This means that tail servos can be set to a different frequency (i.e. faster).
-:::
-
-### Speed
-
-Servo Speed Equalization. The aim of this parameter is to remove the collective "bobbing" when fast elevator changes are applied.
-
-The bobbing happens because the elevator servo has to move double distance vs. the aileron servos, when elevator position is changed.
-If the change is faster than the servos can go, the aileron servos will reach the target sooner than the elevator servo, causing the swash to jump slightly in the process.
-
-To tune this value increase the speed value (it's actually ms/60°, like in the servo datasheet) until the bobbing is not visible any more. It should be always ok to use the value from the servo datasheet if unsure.
-
-### Reverse
-
-Toggle for forward or reverse servo direction.
-
-### Geo Cor
-
-Geometry Correction. Servos are rotary, so at high angles this results in smaller swashplate movement for each degree of servo movement. Geometry correction accounts for this and provides better control at high angles (e.g. 3D flight).
-
-In order to use this feature it is important to set the servo arm at 90° (with servo center) and calibrating the servo scale.
