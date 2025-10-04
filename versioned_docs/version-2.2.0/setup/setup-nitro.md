@@ -47,4 +47,4 @@ Note: if the servo is moving around the wrong way, you need to swap the *100% Th
 
 Here's a video where Jiawen explains how to setup your throttle on the transmitter.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WyALh4S6_ho" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen />
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J1NCDg9RbuE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen />
