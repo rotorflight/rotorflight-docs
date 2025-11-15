@@ -1,0 +1,314 @@
+# diff all
+
+# version
+# Rotorflight / STM32F405 (S405) 4.5.1 Jul 25 2025 / 06:36:57 (e69823a) MSP API: 12.8
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name GOOSKY_F4MINI
+board_design RTFL
+manufacturer_id GSKY
+signature
+
+# name: S2 MAX
+
+# feature
+feature TELEMETRY
+feature GOVERNOR
+feature RPM_FILTER
+
+# servo
+servo 1 1530 -700 600 535 535 426 60 2
+servo 2 1530 -700 700 535 535 426 60 2
+servo 3 1500 -700 700 535 535 426 60 2
+
+# mixer input
+mixer input SR -833 833 1050
+mixer input SP -833 833 -1050
+mixer input SY -1000 1000 1000
+mixer input SC -1167 1167 967
+
+# aux
+aux 0 0 0 1650 2100 0 0
+aux 1 2 1 1700 1795 0 0
+aux 2 53 1 1950 2045 0 0
+
+# adjfunc
+adjfunc 0 2 255 1500 1500 2 900 2015 1500 1500 0 1 6
+adjfunc 1 0 255 1500 1500 2 875 2000 1500 1500 0 0 100
+
+# master
+set gyro_lpf1_static_hz = 150
+set dyn_notch_count = 2
+set dyn_notch_q = 40
+set dyn_notch_min_hz = 50
+set acc_trim_pitch = 25
+set acc_trim_roll = 40
+set acc_calibration = 0,0,0,0
+set align_mag = CW0
+set blackbox_mode = ARMED
+set blackbox_rate_denom = 2
+set blackbox_log_acc = ON
+set blackbox_log_alt = OFF
+set blackbox_log_esc = ON
+set blackbox_log_bec = ON
+set blackbox_rolling_erase = ON
+set motor_poles = 24,12,0,0
+set bat_capacity = 750
+set cbat_alert_percent = 30
+set battery_cell_count = 3
+set tail_rotor_mode = MOTORIZED
+set tail_motor_idle = 65
+set swash_collective_trim = 200
+set swash_pitch_limit = 1750
+set swash_geo_correction = -5
+set gov_mode = MODE1
+set gov_handover_throttle = 10
+set gov_tta_filter = 30
+set gov_ff_filter = 30
+set gov_spoolup_min_throttle = 0
+set rc_arm_throttle = 1010
+set rc_min_throttle = 1020
+set rc_max_throttle = 2000
+set pid_process_denom = 2
+set crsf_telemetry_mode = CUSTOM
+set crsf_telemetry_link_rate = 500
+set telemetry_sensors = 3,8,5,6,4,46,52,50,60,99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+set esc_sensor_voltage_correction = 1
+set gyro_1_align_pitch = 1800
+set gyro_1_align_yaw = 2700
+set gyro_rpm_notch_preset = 0
+set gyro_rpm_notch_min_hz = 50
+set gyro_rpm_notch_source_pitch = 10,11,12,13,14,21,0,0,0,0,0,0,0,0,0,0
+set gyro_rpm_notch_q_pitch = 80,80,30,100,100,100,0,0,0,0,0,0,0,0,0,0
+set gyro_rpm_notch_source_roll = 10,11,12,13,14,21,22,0,0,0,0,0,0,0,0,0
+set gyro_rpm_notch_q_roll = 80,60,30,100,100,100,100,0,0,0,0,0,0,0,0,0
+set gyro_rpm_notch_source_yaw = 10,11,12,13,14,21,22,0,0,0,0,0,0,0,0,0
+set gyro_rpm_notch_q_yaw = 80,80,40,100,100,100,100,0,0,0,0,0,0,0,0,0
+set name = S2 MAX
+set model_param1_type = TIMER1
+set model_param1_value = 240
+set model_param2_type = TIMER2
+set model_param2_value = 300
+set model_param3_type = TIMER3
+set model_param3_value = 360
+
+profile 0
+
+# profile 0
+set profile_name = P1
+set pitch_p_gain = 48
+set pitch_d_gain = 12
+set pitch_b_gain = 22
+set pitch_o_gain = 28
+set roll_p_gain = 48
+set roll_d_gain = 12
+set roll_b_gain = 15
+set roll_o_gain = 26
+set yaw_p_gain = 62
+set yaw_i_gain = 100
+set yaw_d_gain = 50
+set yaw_b_gain = 35
+set yaw_f_gain = 20
+set pitch_d_cutoff = 40
+set pitch_b_cutoff = 40
+set pitch_gyro_cutoff = 100
+set roll_d_cutoff = 40
+set roll_b_cutoff = 40
+set roll_gyro_cutoff = 100
+set yaw_d_cutoff = 50
+set yaw_b_cutoff = 50
+set yaw_gyro_cutoff = 125
+set yaw_precomp_cutoff = 10
+set yaw_cyclic_ff_gain = 15
+set yaw_collective_ff_gain = 50
+set yaw_inertia_precomp_cutoff = 250
+set cyclic_cross_coupling_ratio = 6
+set cyclic_cross_coupling_cutoff = 30
+set error_limit = 50,50,60
+set offset_limit = 80,80
+set error_decay_time_cyclic = 150
+set offset_flood_relax_level = 45
+set offset_flood_relax_cutoff = 14
+set iterm_relax_level = 30,30,30
+set iterm_relax_cutoff = 22,22,22
+set rescue_mode = CLIMB
+set rescue_level_gain = 85
+set rescue_pull_up_time = 2
+set rescue_climb_time = 3
+set rescue_pull_up_collective = 1000
+set rescue_climb_collective = 650
+set rescue_hover_collective = 400
+set rescue_max_sp_accel = 800
+set gov_headspeed = 4000
+set gov_gain = 50
+set gov_p_gain = 25
+set gov_i_gain = 65
+set gov_d_gain = 2
+set gov_f_gain = 13
+set gov_p_limit = 40
+set gov_d_limit = 5
+set gov_tta_gain = 55
+set gov_tta_limit = 60
+set gov_cyclic_ff_weight = 30
+set gov_min_throttle = 25
+
+profile 1
+
+# profile 1
+set profile_name = P2
+set pitch_p_gain = 48
+set pitch_d_gain = 12
+set pitch_b_gain = 22
+set pitch_o_gain = 28
+set roll_p_gain = 48
+set roll_d_gain = 12
+set roll_b_gain = 15
+set roll_o_gain = 26
+set yaw_p_gain = 62
+set yaw_i_gain = 100
+set yaw_d_gain = 50
+set yaw_b_gain = 35
+set yaw_f_gain = 20
+set pitch_d_cutoff = 40
+set pitch_b_cutoff = 40
+set pitch_gyro_cutoff = 100
+set roll_d_cutoff = 40
+set roll_b_cutoff = 40
+set roll_gyro_cutoff = 100
+set yaw_d_cutoff = 50
+set yaw_b_cutoff = 50
+set yaw_gyro_cutoff = 125
+set yaw_precomp_cutoff = 10
+set yaw_cyclic_ff_gain = 15
+set yaw_collective_ff_gain = 50
+set yaw_inertia_precomp_cutoff = 250
+set cyclic_cross_coupling_ratio = 6
+set cyclic_cross_coupling_cutoff = 30
+set error_limit = 50,50,60
+set offset_limit = 80,80
+set error_decay_time_cyclic = 150
+set offset_flood_relax_level = 45
+set offset_flood_relax_cutoff = 14
+set iterm_relax_level = 30,30,30
+set iterm_relax_cutoff = 22,22,22
+set rescue_mode = CLIMB
+set rescue_level_gain = 85
+set rescue_pull_up_time = 2
+set rescue_climb_time = 3
+set rescue_pull_up_collective = 950
+set rescue_climb_collective = 600
+set rescue_max_sp_accel = 800
+set gov_headspeed = 4600
+set gov_gain = 50
+set gov_p_gain = 25
+set gov_i_gain = 67
+set gov_d_gain = 2
+set gov_f_gain = 13
+set gov_p_limit = 40
+set gov_d_limit = 5
+set gov_tta_gain = 40
+set gov_tta_limit = 50
+set gov_cyclic_ff_weight = 30
+set gov_min_throttle = 25
+
+profile 2
+
+# profile 2
+set profile_name = P3
+set pitch_p_gain = 48
+set pitch_d_gain = 12
+set pitch_b_gain = 22
+set pitch_o_gain = 28
+set roll_p_gain = 48
+set roll_d_gain = 12
+set roll_b_gain = 15
+set roll_o_gain = 26
+set yaw_p_gain = 62
+set yaw_i_gain = 100
+set yaw_d_gain = 50
+set yaw_b_gain = 35
+set yaw_f_gain = 20
+set pitch_d_cutoff = 40
+set pitch_b_cutoff = 40
+set pitch_gyro_cutoff = 100
+set roll_d_cutoff = 40
+set roll_b_cutoff = 40
+set roll_gyro_cutoff = 100
+set yaw_d_cutoff = 50
+set yaw_b_cutoff = 50
+set yaw_gyro_cutoff = 125
+set yaw_precomp_cutoff = 10
+set yaw_cyclic_ff_gain = 15
+set yaw_collective_ff_gain = 50
+set yaw_inertia_precomp_cutoff = 250
+set cyclic_cross_coupling_ratio = 6
+set cyclic_cross_coupling_cutoff = 30
+set error_limit = 50,50,60
+set offset_limit = 80,80
+set error_decay_time_cyclic = 150
+set offset_flood_relax_level = 45
+set offset_flood_relax_cutoff = 14
+set iterm_relax_level = 30,30,30
+set iterm_relax_cutoff = 22,22,22
+set rescue_mode = CLIMB
+set rescue_level_gain = 85
+set rescue_pull_up_time = 2
+set rescue_climb_time = 3
+set rescue_pull_up_collective = 900
+set rescue_climb_collective = 550
+set rescue_hover_collective = 300
+set rescue_max_sp_accel = 800
+set gov_headspeed = 5100
+set gov_gain = 50
+set gov_p_gain = 25
+set gov_i_gain = 70
+set gov_d_gain = 2
+set gov_f_gain = 14
+set gov_p_limit = 40
+set gov_d_limit = 5
+set gov_tta_gain = 40
+set gov_tta_limit = 50
+set gov_cyclic_ff_weight = 30
+set gov_min_throttle = 25
+
+profile 3
+
+profile 4
+
+profile 5
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set roll_rc_rate = 17
+set pitch_rc_rate = 17
+set yaw_rc_rate = 32
+set collective_rc_rate = 54
+set roll_expo = 25
+set pitch_expo = 25
+set yaw_expo = 50
+set roll_srate = 27
+set pitch_srate = 27
+set yaw_srate = 54
+set collective_srate = 54
+set roll_response = 15
+set pitch_response = 15
+set yaw_response = 4
+set collective_response = 2
+set setpoint_boost_gain = 10,10,65,0
+set setpoint_boost_cutoff = 20,20,90,15
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
+save
+#
