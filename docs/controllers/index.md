@@ -11,6 +11,7 @@ There are several flight controllers specifically made for Rotorflight.
 * [FrSky Vantac 007](frsky-007.mdx)
 * [Flydragon V2.2](flydragon2.2.md)
 * [Flywing F405HELI](flywingf405heli.md)
+* [Goosky F4MINI](goosky-f4mini.md)
 * [Matek G474Heli](matek_heli.md)
 * [Matek G474-HLITE](matek_hlite.md)
 * [DIY - from a Betaflight FC](betaflight-diy.md)

@@ -33,6 +33,7 @@ const sidebars = {
         "controllers/frsky-007",
         "controllers/flydragon2.2",
         "controllers/flywingf405heli",
+        "controllers/goosky-f4mini",
         "controllers/matek_heli",
         "controllers/matek_hlite",
         "controllers/betaflight-diy",
