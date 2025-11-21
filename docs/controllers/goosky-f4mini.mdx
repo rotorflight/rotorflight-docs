@@ -2,12 +2,12 @@
 sidebar_position: 15
 ---
 
-# Goosky F4MINI
+# Goosky F4-mini
 
-![Goosky F4MINI](./img/ggoosky-f4mini.png)
+![Goosky F4-mini](./img/goosky-f4mini.png)
 
 :::info[Specifications]
-### Goosky F4MINI Flight Controller
+### Goosky F4-mini Flight Controller
 
 * MCU: STM32F405
 * IMU: ICM-42688-P
@@ -33,16 +33,20 @@ sidebar_position: 15
 
 Please use the GOOSKY\_F4MINI target when updating Rotorflight firmware.
 
-![Goosky F4MINI](./img/f4mini-target.png)
+![Goosky F4-mini](./img/f4mini-target.png)
 
-# Update Procedure
+# Update Procedure for the S2 Max
 
-The first batch of F4MINI flight controllers and ESCs have outdated firmware and settings that do not make optimal use of the hardware. Here's how you can update.
+:::note
+This update procedure applies to the S2 Max. Once the S2 Ultra tune is ready, we’ll update this page with instructions on how to upgrade your Ultra.
+:::
 
-## 1. Update the F4MINI Firmware
+The F4-mini is a plug-and-play replacement for the stock S2 Max flight controller. Team Rotorflight has tuned the F4-mini for the S2 Max. However, before you can apply this tune, you'll need to update the firmware on the F4-mini and the stock Goosky ESC. Here's how you can update.
+
+## 1. Update the F4-mini Firmware
 
 1. Start *Rotorflight Configurator*
-2. Connect the F4MINI using USB
+2. Connect the F4-mini using USB
 3. Click on *Update Firmware* in the upper right corner
 4. Select the *GOOSKY\_F4MINI* board in the dropdown
 5. Enable *Full chip erase*
@@ -52,15 +56,15 @@ The first batch of F4MINI flight controllers and ESCs have outdated firmware and
 
 Now that the firmware has been updated, you can configure it.
 
-## 2. Configure the F4MINI for the S2 MAX
+## 2. Configure the F4-mini for the S2 Max
 
-The Rotorflight team have created two tunes for the S2 MAX.
+The Rotorflight team has created two tunes for the S2 Max.
 
-* S2 MAX configuration for [Hard 3D](./configs/f4mini-s2-max-hard.txt): tune suitable for hard 3D. RPMs for profile 1/2/3: 4000/5100/5500.
-* S2 MAX configuration for [Sport flying](./configs/f4mini-s2-max-sport.txt): very similar to the above tune, but with just one rate profile instead of three and slightly lower RPMs. RPMs for profile 1/2/3: 4000/4600/5100.
+* S2 Max configuration for [Hard 3D](./configs/f4mini-s2-max-hard.txt): tune suitable for hard 3D. RPMs for profile 1/2/3: 4000/5100/5500.
+* S2 Max configuration for [Sport flying](./configs/f4mini-s2-max-sport.txt): very similar to the above tune, but with just one rate profile instead of three and slightly lower RPMs. RPMs for profile 1/2/3: 4000/4600/5100.
 
 :::warning
-Do not use these configurations if you haven't flashed the F4MINI as described above. The configuration expects certain default values which are only available after flashing the GOOSKY\_F4MINI board.
+Do not use these configurations if you haven't flashed the F4-mini as described above. The configuration expects certain default values which are only available after flashing the GOOSKY\_F4MINI board.
 :::
 
 Download the configuration you want (e.g. right click on it and select *Save link as*). Then proceed as follows:
@@ -80,13 +84,13 @@ Download the configuration you want (e.g. right click on it and select *Save lin
 ## 3. Update the ESC Firmware
 
 1. Download [AM32\_GOOSKY\_3S\_F421\_2.19.hex](https://github.com/am32-firmware/AM32/releases/download/v2.19/AM32_GOOSKY_3S_F421_2.19.hex)
-2. Power up the S2 MAX
-3. Connect the F4MINI using USB
-4. Make sure *Rotorflight Configurator* isn't connected to the F4MINI. If it is, press *Disconnect*.
+2. Power up the S2 Max
+3. Connect the F4-mini using USB
+4. Make sure *Rotorflight Configurator* isn't connected to the F4-mini. If it is, press *Disconnect*.
 5. Go to https://am32.ca/configurator
 6. Click on *Connect* in the upper right corner
 7. Click on *Read*. The *AM32 Configurator* will now show various ESC settings, as well as some new buttons.\
-   ![Goosky F4MINI](./img/s2-esc-am32-configurator.png)
+   ![Goosky F4-mini](./img/s2-esc-am32-configurator.png)
 8. Click *Flash firmware*
 9. Go to the *Local* tab
 10. Click *Choose file* and select the `AM32_GOOSKY_3S_F421_2.19.hex` file you downloadeded
