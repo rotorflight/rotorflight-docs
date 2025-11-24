@@ -77,7 +77,6 @@ set pid_process_denom = 2
 set crsf_telemetry_mode = CUSTOM
 set crsf_telemetry_link_rate = 500
 set telemetry_sensors = 3,4,5,6,15,23,43,52,60,90,91,93,95,96,99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-set esc_sensor_consumption_correction = 0
 set gyro_rpm_notch_preset = 0
 set gyro_rpm_notch_min_hz = 50
 set gyro_rpm_notch_source_pitch = 10,11,12,13,14,21,0,0,0,0,0,0,0,0,0,0
