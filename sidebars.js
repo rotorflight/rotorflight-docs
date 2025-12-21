@@ -33,7 +33,15 @@ const sidebars = {
         "controllers/frsky-007",
         "controllers/flydragon2.2",
         "controllers/flywingf405heli",
-        "controllers/goosky-f4mini",
+        {
+          type: "category",
+          label: "Goosky F4 mini",
+          collapsed: false,
+          items: [
+            "controllers/goosky-f4mini/goosky-max",
+            "controllers/goosky-f4mini/goosky-ultra",
+          ],
+        },
         "controllers/matek_heli",
         "controllers/matek_hlite",
         "controllers/betaflight-diy",
