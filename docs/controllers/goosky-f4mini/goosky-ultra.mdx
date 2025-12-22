@@ -4,7 +4,7 @@ sidebar_position: 16
 
 # Goosky S2 Ultra
 
-This section is for the Rotorflight Official tune for the Goosky S2 Ultra which is supplied with the Goosky F4 Mini FC.
+![Goosky F4-mini](../img/goosky-f4mini.png)
 
 :::info[Specifications]
 ### Goosky F4-mini Flight Controller
@@ -33,34 +33,24 @@ This section is for the Rotorflight Official tune for the Goosky S2 Ultra which 
 
 Please use the GOOSKY\_F4MINI target when updating Rotorflight firmware.
 
-!\[Goosky F4-mini ] ( ./img/f4mini-target.png)
+![Goosky F4-mini](../img/f4mini-target.png)
 
 # Update Procedure for the S2 Ultra
 
 :::note
-This is the official Rotorflight tune for the Goosky S2 Ultra. It is different to the S2 Max so please choose the tune to suit your helicopter. The tune is specific to the later versions of AM32 ESC firmware so please make sure you update ESC firmware as part of setting this tune.
+This is the official Rotorflight tune for the Goosky S2 Ultra. The S2 Ultra and S2 Max use different tunes—select the correct one for your model. This tune requires updated AM32 ESC firmware, so update your ESC before applying.
 :::
-
-The F4-mini is a plug-and-play replacement for the stock S2 Max flight controller. Team Rotorflight has tuned the F4-mini for the S2 Ultra. However, before you can apply this tune, you'll need to update the firmware on the F4-mini and the stock Goosky ESC. Here's how you can update.
 
 ## 1. Update the F4-mini Firmware
 
 1. Start *Rotorflight Configurator*
-
 2. Connect the F4-mini using USB
-
 3. Click on *Update Firmware* in the upper right corner
-
 4. Select the *GOOSKY\_F4MINI* board in the dropdown
-
 5. Select firmware version *25-07-2025 08:39 - 4.5.1*
-
 6. Enable *Full chip erase*
-
 7. Click *Load Firmware \[Online]*
-
 8. Click *Flash Firmware*
-
 9. Wait till it finished flashing. If everything went well, it should display *Programming SUCCESSFUL*.
 
 Now that the firmware has been updated, you can configure it.
@@ -71,11 +61,11 @@ Windows needs the right drivers for flashing Rotorflight. If you haven't flashed
 
 ## 2. Configure the F4-mini for the S2 Ultra
 
-The Rotorflight team has created two tunes for the S2 Ultra.
+The Rotorflight team has created a tune for the S2 Ultra. It's available as a diff and as a dump.
 RPMs for profile 1/2/3: 4400/5100/5500.
 
-* S2 Ultra [Configuration Diff](../configs/RTFL-backup-diff-S2U-AM32v219-20251217-Preset.txt)
-* S2 Ultra [Configuration Dump](../configs/RTFL-backup-dump-S2U-AM32v219-20251217-110951.txt)
+* S2 Ultra [configuration diff](../configs/f4mini-s2-ultra-diff.txt)
+* S2 Ultra [configuration dump](../configs/f4mini-s2-ultra-dump.txt)
 
 :::warning
 Do not use these configurations if you haven't flashed the F4-mini as described above. The configuration expects certain default values which are only available after flashing the GOOSKY\_F4MINI board.
@@ -89,22 +79,22 @@ Download the configuration you want (e.g. right click on it and select *Save lin
 4. Click on *Execute*
 5. After the configuration has been loaded, a warning will be given: 'The accelerometer is enabled but is not calibrated'. Click *Close*.
 6. Go to the *Setup* tab and click on *Calibrate Accelerometer*
-7. Go to the *Servos* tab and \[adjust servo centers] (/docs/setup/setup-servos#step-3---set-arms-at-90-degrees).
-8. Go to the *Mixer* tab and \[check the *Collective trim*] (/docs/setup/setup-mixer#level-the-swashplate-and-blade-pitch-to-zero)
-9. On the *Rates* tab, configure the \[rates] (/docs/configurator/tabs/rates) to your liking.
-10. On the *Modes* tab, configure the \[modes] (/docs/configurator/tabs/modes) so that they work with your transmitter.
-11. On the *Adjustments* tab, configure the \[adjustments] (/docs/configurator/tabs/adjustments) so that they work with your transmitter.
+7. Go to the *Servos* tab and [adjust servo centers](/docs/setup/setup-servos#step-3---set-arms-at-90-degrees).
+8. Go to the *Mixer* tab and [check the *Collective trim*](/docs/setup/setup-mixer#level-the-swashplate-and-blade-pitch-to-zero)
+9. On the *Rates* tab, configure the [rates](/docs/configurator/tabs/rates) to your liking.
+10. On the *Modes* tab, configure the [modes](/docs/configurator/tabs/modes) so that they work with your transmitter.
+11. On the *Adjustments* tab, configure the [adjustments](/docs/configurator/tabs/adjustments) so that they work with your transmitter.
 
 ## 3. Update the ESC Firmware
 
 1. Download [AM32\_GOOSKY\_3S\_F421\_2.19.hex](https://github.com/am32-firmware/AM32/releases/download/v2.19/AM32_GOOSKY_3S_F421_2.19.hex)
-2. Power up the S2 Max
+2. Power up the S2 Ultra
 3. Connect the F4-mini using USB
 4. Make sure *Rotorflight Configurator* isn't connected to the F4-mini. If it is, press *Disconnect*.
 5. Go to https://am32.ca/configurator
 6. Click on *Connect* in the upper right corner
 7. Click on *Read*. The *AM32 Configurator* will now show various ESC settings, as well as some new buttons.\
-   !\[Goosky F4-mini] (./img/s2-esc-am32-configurator.png)
+   ![Goosky F4-mini](../img/s2-esc-am32-configurator.png)
 8. Click *Flash firmware*
 9. Go to the *Local* tab
 10. Select *Ignore current mcu layout* if you flash the ESC for the first time
@@ -117,17 +107,17 @@ After both ESCs have been flashed, they can be configured. ESC 1 is the ESC for 
 
 Start with configuring the main motor ESC.
 
-1. Download [`S2-ultra-main-esc-config-12-16.bin`](../configs/S2-ultra-main-esc-config-12-16.bin)
+1. Download [`s2-ultra-main-esc-config.bin`](../configs/s2-ultra-main-esc-config.bin)
 2. Click on *Apply config*
-3. Click *Choose file* and select the file `S2-ultra-main-esc-config-12-16.bin` that you just downloaded
+3. Click *Choose file* and select the file `S2-ultra-main-esc-config.bin` that you just downloaded
 4. Only select ESC 1
 5. Click *Apply*
 
 Now configure the tail ESC.
 
-1. Download [`S2-ultra-tail-esc-config-12-16.bin`](../configs/S2-ultra-tail-esc-config-12-16.bin)
+1. Download [`s2-ultra-tail-esc-config.bin`](../configs/s2-ultra-tail-esc-config.bin)
 2. Click on *Apply config*
-3. Click *Choose file* and select the file `S2-ultra-tail-esc-config-12-16.bin`
+3. Click *Choose file* and select the file `S2-ultra-tail-esc-config.bin`
 4. Only select ESC 2
 5. Click *Apply*
 6. Click *Disconnect*
