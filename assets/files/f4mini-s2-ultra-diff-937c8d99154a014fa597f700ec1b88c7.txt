@@ -1,5 +1,6 @@
 # Preset for Goosky S2 Ultra 12/17/25
 # ESC needs to be updated and configured to match
+# diff all
 
 # version
 # Rotorflight / STM32F405 (S405) 4.5.1 Jul 25 2025 / 06:36:57 (e69823a) MSP API: 12.8
@@ -13,17 +14,8 @@ defaults nosave
 board_name GOOSKY_F4MINI
 board_design RTFL
 manufacturer_id GSKY
-mcu_id 003900493035511138343437
-signature 
 
-# name: S2U AM32v219
-
-# resources
-resource LED_STRIP 1 C09
-resource SERIAL_TX 3 B10
-resource SERIAL_TX 6 C06
-resource SERIAL_RX 3 B11
-resource SERIAL_RX 6 C07
+# name: S2 Ultra
 
 # feature
 feature TELEMETRY
@@ -31,9 +23,9 @@ feature GOVERNOR
 feature RPM_FILTER
 
 # servo
-servo 1 1500 -650 650 535 535 426 60 2
-servo 2 1500 -650 650 535 535 426 60 2
-servo 3 1500 -650 650 535 535 426 60 2
+servo 1 1500 -650 650 535 535 400 60 2
+servo 2 1500 -650 650 535 535 400 60 2
+servo 3 1500 -650 650 535 535 400 60 2
 
 # mixer input
 mixer input SR -833 833 1179
@@ -55,7 +47,7 @@ set dyn_notch_count = 3
 set dyn_notch_q = 40
 set dyn_notch_min_hz = 50
 set dyn_notch_max_hz = 245
-set acc_calibration = 8,12,6,1
+set acc_calibration = 0,0,0,0
 set align_mag = CW0
 set blackbox_mode = ARMED
 set blackbox_rate_denom = 2
@@ -65,13 +57,13 @@ set blackbox_log_esc = ON
 set blackbox_log_bec = ON
 set blackbox_rolling_erase = ON
 set dshot_bitbang = AUTO
-set motor_poles = 24,12,8,8
+set motor_poles = 24,12,0,0
 set bat_capacity = 750
 set cbat_alert_percent = 30
 set battery_cell_count = 3
 set tail_rotor_mode = MOTORIZED
 set tail_motor_idle = 60
-set swash_collective_trim = 160
+set swash_collective_trim = 150
 set swash_pitch_limit = 1750
 set swash_geo_correction = -50
 set gov_mode = MODE1
@@ -95,7 +87,7 @@ set gyro_rpm_notch_source_roll = 10,11,12,13,14,21,22,0,0,0,0,0,0,0,0,0
 set gyro_rpm_notch_q_roll = 80,60,30,100,100,100,100,0,0,0,0,0,0,0,0,0
 set gyro_rpm_notch_source_yaw = 10,11,12,13,14,21,22,0,0,0,0,0,0,0,0,0
 set gyro_rpm_notch_q_yaw = 80,80,40,100,100,100,100,0,0,0,0,0,0,0,0,0
-set name = S2U AM32v219
+set name = S2 Ultra
 
 profile 0
 
@@ -521,4 +513,4 @@ rateprofile 0
 
 # save configuration
 save
-# 
+#

@@ -1,3 +1,5 @@
+# Preset for Goosky S2 Ultra 12/17/25
+# ESC needs to be updated and configured to match
 # dump all
 
 # version
@@ -9,10 +11,10 @@ batch start
 board_name GOOSKY_F4MINI
 board_design RTFL
 manufacturer_id GSKY
-mcu_id 005100223135510735303533
-signature 
+mcu_id 0034004d3035511138343437
+signature
 
-# name: S2U Or AM32v219
+# name: S2 Ultra
 
 # resources
 resource BEEPER 1 NONE
@@ -37,13 +39,13 @@ resource PWM 5 NONE
 resource PWM 6 NONE
 resource PWM 7 NONE
 resource PWM 8 NONE
-resource LED_STRIP 1 C09
+resource LED_STRIP 1 NONE
 resource SERIAL_TX 1 B06
 resource SERIAL_TX 2 A02
-resource SERIAL_TX 3 B10
+resource SERIAL_TX 3 NONE
 resource SERIAL_TX 4 NONE
 resource SERIAL_TX 5 NONE
-resource SERIAL_TX 6 C06
+resource SERIAL_TX 6 NONE
 resource SERIAL_TX 7 NONE
 resource SERIAL_TX 8 NONE
 resource SERIAL_TX 9 NONE
@@ -52,10 +54,10 @@ resource SERIAL_TX 11 NONE
 resource SERIAL_TX 12 NONE
 resource SERIAL_RX 1 B07
 resource SERIAL_RX 2 A03
-resource SERIAL_RX 3 B11
+resource SERIAL_RX 3 NONE
 resource SERIAL_RX 4 NONE
 resource SERIAL_RX 5 D02
-resource SERIAL_RX 6 C07
+resource SERIAL_RX 6 NONE
 resource SERIAL_RX 7 NONE
 resource SERIAL_RX 8 NONE
 resource SERIAL_RX 9 NONE
@@ -217,14 +219,12 @@ feature RPM_FILTER
 serial 20 1 115200 57600 0 115200
 serial 0 64 115200 57600 0 115200
 serial 1 0 115200 57600 0 115200
-serial 2 0 115200 57600 0 115200
 serial 4 1024 115200 57600 0 115200
-serial 5 0 115200 57600 0 115200
 
 # servo
-servo 1 1451 -650 650 535 535 426 60 2
-servo 2 1436 -650 650 535 535 426 60 2
-servo 3 1453 -650 650 535 535 426 60 2
+servo 1 1500 -650 650 535 535 400 60 2
+servo 2 1500 -650 650 535 535 400 60 2
+servo 3 1500 -650 650 535 535 400 60 2
 
 # mixer input
 mixer input SR -833 833 1179
@@ -492,7 +492,7 @@ set acc_hardware = AUTO
 set acc_lpf_hz = 10
 set acc_trim_pitch = 0
 set acc_trim_roll = 0
-set acc_calibration = 8,12,6,1
+set acc_calibration = 0,0,0,0
 set align_mag = CW0
 set mag_align_roll = 0
 set mag_align_pitch = 0
@@ -571,7 +571,7 @@ set use_unsynced_pwm = OFF
 set motor_pwm_protocol = DSHOT300
 set motor_pwm_rate = 250
 set motor_control_mode = 0,0,0,0
-set motor_poles = 24,12,8,8
+set motor_poles = 24,12,0,0
 set motor_rpm_lpf = 100,100,100,100
 set motor_rpm_factor = 0,0,0,0
 set main_rotor_gear_ratio = 1,1
@@ -639,7 +639,7 @@ set swash_ring = 100
 set swash_phase = 0
 set swash_roll_trim = 0
 set swash_pitch_trim = 0
-set swash_collective_trim = 160
+set swash_collective_trim = 150
 set swash_pitch_limit = 1750
 set swash_tta_precomp = 0
 set swash_geo_correction = -50
@@ -828,7 +828,7 @@ set stats_min_armed_time_s = -1
 set stats_total_flights = 0
 set stats_total_time_s = 0
 set stats_total_dist_m = 0
-set name = S2U Or AM32v219
+set name = S2 Ultra
 set model_id = 0
 set model_param1_type = NONE
 set model_param1_value = 0
@@ -1467,7 +1467,7 @@ set gov_max_throttle = 100
 set gov_min_throttle = 10
 
 # restore original profile selection
-profile 2
+profile 0
 
 rateprofile 0
 
@@ -1690,4 +1690,3 @@ rateprofile 0
 
 # save configuration
 save
-# 
