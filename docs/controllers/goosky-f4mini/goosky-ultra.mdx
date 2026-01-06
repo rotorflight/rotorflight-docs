@@ -87,6 +87,10 @@ Download the configuration you want (e.g. right click on it and select *Save lin
 
 ## 3. Update the ESC Firmware
 
+:::warning
+Follow this update procedure carefully and completely. A failed flash can brick the ESC, which would then require [special tools](https://github.com/am32-firmware/am32-wiki/blob/main/docs%2Fguides%2FFlashing-Tekko32-45A-Single-ESC.md) to restore.
+:::
+
 1. Download [AM32\_GOOSKY\_3S\_F421\_2.19.hex](https://github.com/am32-firmware/AM32/releases/download/v2.19/AM32_GOOSKY_3S_F421_2.19.hex)
 2. Power up the S2 Ultra
 3. Connect the F4-mini using USB
@@ -99,7 +103,7 @@ Download the configuration you want (e.g. right click on it and select *Save lin
 9. Go to the *Local* tab
 10. Select *Ignore current mcu layout* if you flash the ESC for the first time
 11. Click *Choose file* and select the `AM32_GOOSKY_3S_F421_2.19.hex` file you downloaded
-12. Click *Start flash*
+12. Click *Start flash* and wait till it's done
 
 ## 4. Configure the ESCs
 
