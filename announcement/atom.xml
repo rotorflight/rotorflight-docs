@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rotorflight.org/announcement</id>
     <title>Rotorflight Blog</title>
-    <updated>2025-12-22T23:28:05.000Z</updated>
+    <updated>2026-01-06T23:35:47.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rotorflight.org/announcement"/>
     <subtitle>Rotorflight Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Official Release 2.2.1]]></title>
         <id>https://rotorflight.org/announcement/Official Release 2.2.0</id>
         <link href="https://rotorflight.org/announcement/Official Release 2.2.0"/>
-        <updated>2025-12-22T23:28:05.000Z</updated>
+        <updated>2026-01-06T23:35:47.000Z</updated>
         <summary type="html"><![CDATA[Download Notes\]]></summary>
         <content type="html"><![CDATA[<p><a href="https://rotorflight.org/docs/download/notes"><strong>Download Notes</strong></a><br>
 <a href="https://rotorflight.org/docs/download/configurator"><strong>Download Configurator</strong></a><br>

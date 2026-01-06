@@ -56,7 +56,6 @@ set blackbox_log_alt = OFF
 set blackbox_log_esc = ON
 set blackbox_log_bec = ON
 set blackbox_rolling_erase = ON
-set dshot_bitbang = AUTO
 set motor_poles = 24,12,0,0
 set bat_capacity = 750
 set cbat_alert_percent = 30
