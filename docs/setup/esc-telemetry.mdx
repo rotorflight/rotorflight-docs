@@ -89,3 +89,45 @@ They can be soldered directly to the perf board as below.
 To avoid interferences or destructive voltages it's important to remove the red wire.
 
 ![ESC Telemetry](./img/HW-Esc.png)
+
+## xdfly telemetry setup
+
+### Connect ESC
+
+Connect the RX pin of the ESC to a UART port of the flight controller. Using TLM or SBUS is most convenient.
+A GND connection is optional. Make sure not to connect the + pin of the ESC's telemetry port.\
+![ESC Telemetry](./img/X-fly-1.png)
+
+### Setup Ports
+
+Set up the UART ports in the configuration panel. Make sure to match the connection from step 1.\
+![ESC Telemetry](./img/X-fly-2.png)
+
+### Battery Settings
+
+Now you need to set the battery info to grab the information from the ESC telemetry:
+Go to the Battery panel and adjust the settings as shown.\
+![ESC Telemetry](./img/X-fly-3.png)
+
+### Telemetry Configuration
+
+To enable telemetry data from the ESC, you need to configure the telemetry settings:
+1 / 2
+xdfly\_telemetry\_setup.md
+2026-01-25
+Set the telemetry protocol to "XDFLY", and enable half-duplex and pin swap. Half-duplex is required since we
+are using UART with only one wire for RX and TX. Pin swap is needed because the TLM and SBUS are
+connected to an RX pin of the MCU. The default half-duplex configuration uses a TX pin, so we need to swap
+the pins.\
+![ESC Telemetry](./img/X-fly-4.png)
+
+### Test
+
+The ESC and the flight controller should now be able to communicate. The FC and ESC perform a handshake
+at power-up. Having your flight controller powered on (for example via USB) and powering the ESC afterwards
+won't work. Power up both at the same time to establish a successful connection. You should now see voltage
+and current values from the ESC in the motor panel.
+
+:::note
+For using ESC forward programming it is necessary to use the RX pin of the ESC telemetry port
+:::
