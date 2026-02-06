@@ -8,7 +8,7 @@ Open the Servos tab and confirm that you have the correct number of servos. If t
 
 ### Direct
 
-For helicopters that uses mechanical mixing, where the *Pitch*, *Roll*, and *Collective* movements are each controlled by a dedicated servo by means of a complex series of linkages and levers from the servos up to the swashplate.
+For helicopters that use mechanical mixing, where the *pitch*, *roll*, and *collective* movements are each controlled by a dedicated servo by means of a complex series of linkages and levers from the servos up to the swashplate.
 
 Servo 1 - Pitch\
 Servo 2 - Roll\
@@ -17,7 +17,7 @@ Servo 4 - Rudder
 
 ### CCPM
 
-For 120, 135 and 140 deg CCPM swashplates.
+For 120, 135 and 140 degree CCPM swashplates.
 Looking from the tail towards the nose of the helicopter:
 
 Servo 1 - Pitch (inline with the centerline of the helicopter)\
@@ -83,14 +83,14 @@ This means that tail servos can be set to a different frequency (i.e. faster).
 
 Servo Speed Equalization. The aim of this parameter is to remove the collective "bobbing" when fast elevator changes are applied.
 
-The bobbing happens because the elevator servo has to move double distance vs. the aileron servos, when elevator position is changed.
+The bobbing happens because the elevator servo has to move twice the distance vs. the aileron servos, when elevator position is changed.
 If the change is faster than the servos can go, the aileron servos will reach the target sooner than the elevator servo, causing the swash to jump slightly in the process.
 
-To tune this value increase the speed value (it's actually ms/60°, like in the servo datasheet) until the bobbing is not visible any more. It should be always ok to use the value from the servo datasheet if unsure.
+To tune this value increase the speed value (the units are ms/60°, as in the servo datasheet) until the bobbing is not visible anymore. It should be always OK to use the value from the servo datasheet if unsure.
 
 ### Reverse
 
-Toggle for forward or reverse servo direction.
+Toggle to reverse the servo direction.
 
 ### Geo Cor
 
