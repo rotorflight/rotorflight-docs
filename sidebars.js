@@ -112,6 +112,7 @@ const sidebars = {
         "setup/rpm-measurement",
         "setup/governor",
         "setup/governor-setup",
+        "setup/governor-flyrotor-setup",
         "setup/rpm-filters",
         "setup/esc-telemetry",
         "setup/esc-forward-programming",
