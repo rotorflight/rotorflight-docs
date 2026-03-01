@@ -1,4 +1,4 @@
----
+<img width="875" height="699" alt="image" src="https://github.com/user-attachments/assets/2fdaf74b-4996-47da-bd33-12f10383a83e" />---
 sidebar_position: 40
 ---
 
@@ -85,4 +85,4 @@ Rotorflight Configurator will display DFU - STM32 BOOTLOADER at the top of the p
 
 ![Flashing](./img/flash-7.png)
 
-If you still having problem connecting to the MCU, install the [**Impulse-RC Driver Fixer**](https://impulserc.com/pages/downloads).
+If you still having problem connecting to the MCU, install the [**Impulse-RC Driver Fixer**](https://github.com/ImpulseRC/ImpulseRC_Driver_Fixer).
