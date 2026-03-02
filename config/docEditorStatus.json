@@ -1,0 +1,8 @@
+{
+  "blocked": false,
+  "blockMessage": "Rotorflight DocsEditor is temporarily unavailable.",
+  "latestVersion": "1.4.2",
+  "minSupportedVersion": "1.3.0",
+  "updateMessage": "A newer version of DocsEditor is available.",
+  "downloadUrl": "https://github.com/rotorflight/docseditor/releases/latest"
+}
