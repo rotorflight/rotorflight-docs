@@ -1,4 +1,4 @@
-<img width="875" height="699" alt="image" src="https://github.com/user-attachments/assets/2fdaf74b-4996-47da-bd33-12f10383a83e" />---
+---
 sidebar_position: 40
 ---
 
