@@ -5,18 +5,35 @@ import { themes } from "prism-react-renderer";
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
+const isFaster = process.env.FASTER === "true";
+
 /** @type {import('@docusaurus/types').Config} */
 export default {
   title: "Rotorflight",
   tagline: "Open-source Helicopter flight controller",
   favicon: "img/rffavicon.ico",
 
+  ...(isFaster && {
+    future: {
+      v4: true, // opt-in for Docusaurus v4 planned changes
+      experimental_faster: {
+        swcJsLoader: true,
+        swcJsMinimizer: true,
+        swcHtmlMinimizer: true,
+        lightningCssMinimizer: true,
+        rspackBundler: true,
+        mdxCrossCompilerCache: true,
+        ssgWorkerThreads: true,
+        rspackPersistentCache: true,
+      },
+    },
+  }),
+
   url: process.env.URL ?? "https://github.com/",
   baseUrl: process.env.BASE_PATH ?? "/",
   trailingSlash: false,
 
   onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -28,6 +45,9 @@ export default {
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
   },
   themes: ["@docusaurus/theme-mermaid"],
 
@@ -132,6 +152,22 @@ export default {
         },
       }),
     ],
+    [
+      "@signalwire/docusaurus-plugin-llms-txt",
+      {
+        siteTitle: "Rotorflight Documentation",
+        siteDescription:
+          "Comprehensive documentation for Rotorflight, the open-source helicopter flight controller software.",
+        depth: 2,
+        content: {
+          enableMarkdownFiles: true,
+          includeDocs: true,
+          enableLlmsFullTxt: false,
+          includeVersionedDocs: false,
+          images,
+        },
+      },
+    ],
     "docusaurus-lunr-search",
   ],
 
@@ -144,6 +180,8 @@ export default {
           sidebarPath: "./sidebars.js",
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
+          // Only build the current version during development for faster rebuilds
+          // ...(isFaster && { onlyIncludeVersions: ["current"] }),
         },
         blog: {
           routeBasePath: "announcement",
