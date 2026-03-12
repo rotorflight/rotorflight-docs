@@ -4,6 +4,7 @@ import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import RotorflightSvg from "@site/static/img/Rotorflight3.svg";
 import BgVidMp4 from "@site/static/vid/rf_bg_vid_1920.mp4";
 import BgVidWebm from "@site/static/vid/rf_bg_vid_1920.webm";
+import BgVidPoster from "@site/static/img/rf_bg_vid_poster_1920.webp";
 
 import styles from "./index.module.css";
 import Head from "@docusaurus/Head";
@@ -11,7 +12,16 @@ import Head from "@docusaurus/Head";
 function HomepageHeader() {
   return (
     <div className={styles.wrapper}>
-      <video className={styles.video} autoPlay playsInline loop muted>
+      <video
+        className={styles.video}
+        autoPlay
+        playsInline
+        loop
+        muted
+        preload="none"
+        aria-hidden={true}
+        poster={BgVidPoster}
+      >
         <source src={BgVidWebm} type="video/webm" />
         <source src={BgVidMp4} type="video/mp4" />
       </video>
@@ -29,18 +39,10 @@ export default function Home() {
     >
       <Head>
         <link
-          fetchPriority="high"
           rel="preload"
-          href="/vid/rf_bg_vid_1920.webm"
-          as="video"
-          type="video/webm"
-        />
-        <link
+          as="image"
+          href={BgVidPoster}
           fetchPriority="high"
-          rel="preload"
-          href="/vid/rf_bg_vid_1920.mp4"
-          as="video"
-          type="video/mp4"
         />
       </Head>
       <HomepageHeader />
