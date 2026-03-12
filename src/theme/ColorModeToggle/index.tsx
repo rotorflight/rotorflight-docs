@@ -5,7 +5,18 @@ import { translate } from "@docusaurus/Translate";
 import IconLightMode from "@theme/Icon/LightMode";
 import IconDarkMode from "@theme/Icon/DarkMode";
 import styles from "./styles.module.css";
-function ColorModeToggle({ className, buttonClassName, value, onChange }) {
+
+function ColorModeToggle({
+  className,
+  buttonClassName,
+  value,
+  onChange,
+}: {
+  className?: string;
+  buttonClassName?: string;
+  value: "light" | "dark";
+  onChange: (value: "light" | "dark") => void;
+}) {
   const isBrowser = useIsBrowser();
   const title = translate(
     {
@@ -28,6 +39,7 @@ function ColorModeToggle({ className, buttonClassName, value, onChange }) {
             }),
     },
   );
+
   return (
     <div className={clsx(styles.toggle, className)}>
       <button
