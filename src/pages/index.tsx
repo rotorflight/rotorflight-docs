@@ -6,6 +6,7 @@ import BgVidMp4 from "@site/static/vid/rf_bg_vid_1920.mp4";
 import BgVidWebm from "@site/static/vid/rf_bg_vid_1920.webm";
 
 import styles from "./index.module.css";
+import Head from "@docusaurus/Head";
 
 function HomepageHeader() {
   return (
@@ -26,6 +27,22 @@ export default function Home() {
       title="Homepage"
       description="Open Source RC Helicopter Flight Controller"
     >
+      <Head>
+        <link
+          fetchPriority="high"
+          rel="preload"
+          href="/vid/rf_bg_vid_1920.webm"
+          as="video"
+          type="video/webm"
+        />
+        <link
+          fetchPriority="high"
+          rel="preload"
+          href="/vid/rf_bg_vid_1920.mp4"
+          as="video"
+          type="video/mp4"
+        />
+      </Head>
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -208,9 +208,11 @@ const config: Config = {
     navbar: {
       title: "Rotorflight",
       logo: {
-        alt: "My Site Logo",
+        alt: "Rotorflight logo",
         src: "img/Rotorflight_outline.svg",
         srcDark: "img/Rotorflight_outline_dark.svg",
+        width: 58,
+        height: 32,
       },
       items: [
         { to: "/announcement", label: "Announcements", position: "left" },
@@ -264,6 +266,7 @@ const config: Config = {
       style: "dark",
       logo: {
         src: "img/Rotorflight_outline.png",
+        alt: "Rotorflight logo",
         width: 90,
         height: 50,
       },
