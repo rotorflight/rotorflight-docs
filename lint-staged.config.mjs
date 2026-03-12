@@ -1,4 +1,4 @@
 export default {
-  "*": ["prettier --ignore-unknown --write"],
+  "*": ["npm run prettier:check", "npm run spellcheck"],
   "*.{md,mdx}": ["remark --output --"],
 };
