@@ -46,7 +46,7 @@ On commit, `lint-staged` runs automatically:
 
 * **Prettier** (`.prettierrc.ts`): 80 char width, 2-space indent, double quotes, trailing commas, LF line endings.
 * **Remark** (`.remarkrc.mjs`): Uses `remark-preset-lint-recommended` with MDX and directive support.
-* **cspell** (`cspell.json`): Custom dictionary in `project-words.txt` — add domain-specific terms there (not in `cspell.json`). SVGs, YMLs, and `build/` are ignored.
+* **cspell** (`cspell.json`): Custom dictionary in `project-words.txt` — add domain-specific terms there. Code project specific words like dependencies should be included in `cspell.json`. SVGs, YMLs, and `build/` are ignored.
 
 ## Adding a New Doc Page
 

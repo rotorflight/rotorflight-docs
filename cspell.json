@@ -43,6 +43,7 @@
     "tsconfig",
     "remarkrc",
     "applebot",
-    "bytespider"
+    "bytespider",
+    "llms"
   ]
 }
