@@ -1,5 +1,5 @@
 export default {
-  "*.{js,jsx,ts,tsx,json,yml,yaml,css,scss,html}": [
+  "*.{js,jsx,ts,tsx,mjs,cjs, json,yml,yaml,css,scss,html}": [
     "npm run prettier:check:staged --",
     "npm run spellcheck:staged --",
   ],

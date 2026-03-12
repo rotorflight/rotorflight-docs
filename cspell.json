@@ -40,6 +40,9 @@
     "config",
     "eslint",
     "prettier",
-    "tsconfig"
+    "tsconfig",
+    "remarkrc",
+    "applebot",
+    "bytespider"
   ]
 }
