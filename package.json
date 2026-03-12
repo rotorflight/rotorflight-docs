@@ -13,11 +13,11 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "prettier:check:all": "prettier --check . --ignore-unknown",
-    "prettier:check": "prettier --check --ignore-unknown",
+    "prettier:check:staged": "prettier --check --ignore-unknown",
     "prettier:fix": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "spellcheck:all": "cspell . --no-must-find-files",
-    "spellcheck": "cspell --no-must-find-files",
+    "spellcheck:staged": "cspell --no-must-find-files",
     "prepare": "husky"
   },
   "dependencies": {
