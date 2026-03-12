@@ -1,0 +1,104 @@
+# v2.2.1 Upgrade notes
+
+## Update procedure[​](#update-procedure "Direct link to Update procedure")
+
+* Please follow the [**Backup and restore**](/docs/setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.1.1 config.
+* Use `diff all` as the backup command.
+* [**Flash new version**](/docs/setup/flashing-the-firmware.md) with ***Full Chip Erase***
+* [**Restore your settings**](/docs/setup/backup-and-restore.md#loadrestore-config) from the backup file
+
+## Breaking changes[​](#breaking-changes "Direct link to Breaking changes")
+
+* RPM Filter has been updated and must be reconfigured.
+* Telemetry sensor configuration has been unified across protocols and must be reconfigured.
+* Gyro data rate (ODR) has been reduced for some targets. As a result, PID loop frequency and blackbox logging rate must be reconfigured.
+* PID Mode 1 and 2 have been removed. Profiles using these PID modes must be reconfigured using PID Mode 3.
+* D term mode `ERROR` has been removed. D term mode is now always `GYRO`. D gain must be reconfigured for profiles previously using `ERROR` D term mode.
+* Yaw Collective Impulse has been removed.
+
+## Renamed parameters[​](#renamed-parameters "Direct link to Renamed parameters")
+
+```
+crsf_telemetry_sensors -> telemetry_sensors
+crsf_telemetry_interval -> telemetry_interval
+```
+
+## Removed parameters[​](#removed-parameters "Direct link to Removed parameters")
+
+```
+pid_in_tlm
+
+telemetry_enable_voltage
+telemetry_enable_current
+telemetry_enable_fuel
+telemetry_enable_mode
+telemetry_enable_acc_x
+telemetry_enable_acc_y
+telemetry_enable_acc_z
+telemetry_enable_pitch
+telemetry_enable_roll
+telemetry_enable_heading
+telemetry_enable_altitude
+telemetry_enable_vario
+telemetry_enable_lat_long
+telemetry_enable_ground_speed
+telemetry_enable_distance
+telemetry_enable_esc_current
+telemetry_enable_esc_voltage
+telemetry_enable_esc_rpm
+telemetry_enable_esc_temperature
+telemetry_enable_temperature
+telemetry_enable_cap_used
+telemetry_enable_adjustment
+telemetry_enable_gov_mode
+telemetry_enable_model_id
+telemetry_enable_pid_profile
+telemetry_enable_rates_profile
+telemetry_enable_bec_voltage
+telemetry_enable_headspeed
+telemetry_enable_tailspeed
+telemetry_enable_throttle_control
+telemetry_enable_arming_flags
+
+error_decay_rate_curve
+error_decay_limit_curve
+offset_decay_rate_curve
+offset_decay_limit_curve
+offset_bleed_rate_curve
+offset_bleed_limit_curve
+offset_charge_curve
+
+pid_dterm_mode
+pid_dterm_mode_yaw
+
+yaw_collective_dynamic_gain
+yaw_collective_dynamic_decay
+
+pitch_error_cutoff
+roll_error_cutoff
+yaw_error_cutoff
+```
+
+## Whats New[​](#whats-new "Direct link to Whats New")
+
+* [Castle ESC Telemetry](/docs/setup/esc-telemetry.md#castle-esc-telemetry)
+
+* JR DMSS XBUS Protocol added
+
+* [BlackBox Extra stuff](/docs/configurator/tabs/blackbox.md#blackbox-configuration)
+
+  * Disarm grace period
+  * Initial erase
+  * Rolling erase
+
+* [ESC Voltage and Current scaling](/docs/setup/esc-telemetry.md#calibrate-telemetry-values)
+
+* [Positive and Negative collective tilt](/docs/configurator/tabs/mixer.md#positive-and-negative-collective-tilt-correction)
+
+* [Inertia Precomp](/docs/configurator/tabs/profiles.md#inertia-precomp-gain)
+
+* [Mixer Passthrough](/docs/setup/setup-mixer.md#mixer-override)
+
+* Setpoint Boost
+
+* Yaw Dynamic Deadband/Ceiling

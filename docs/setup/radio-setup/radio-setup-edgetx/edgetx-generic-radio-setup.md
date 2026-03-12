@@ -1,0 +1,221 @@
+# EdgeTX Generic Radio Setup
+
+This walkthrough will guide you through to create a basic radio model for rotorflight controller.
+
+This is a guide for EdgeTx/OpenTx radios, it will work with both ELRS and F.port receivers.
+
+The Channel order is AECR1T23 which required by ELRS receiver, but it will also works for F.Port, SBUS, and others.
+
+note
+
+The Rotorflight basic operation will require a minimum of 6 channels, but this is for basic operation only, additional channels will be required for other options, such as profile switching, Rescue, etc.
+
+Normally you will need a total of 8 channels if you want to have options like *Profile switching* and *Rescue*.
+
+## Channels Arrangement[​](#channels-arrangement "Direct link to Channels Arrangement")
+
+This following radio model uses 12 channels to get the best of Rotorflight options, the user can add or delete channels depending on his specific application, and required features.
+
+These channels are configured as follows:
+
+| Channel # | Function                         |
+| --------- | -------------------------------- |
+| CH1       | Aileron                          |
+| CH2       | Elevator                         |
+| CH3       | Collective                       |
+| CH4       | Rudder                           |
+| CH5       | AUX1 - Arming                    |
+| CH6       | Throttle                         |
+| CH7       | AUX2 - Profile Switching         |
+| CH8       | AUX3 - Rescue                    |
+| CH9       | AUX4 - Blackbox                  |
+| CH10      | AUX5 - Backup Pack               |
+| CH11      | AUX6 - Adjustment Enable Channel |
+| CH12      | AUX7 - Adjustment Value Channel  |
+
+note
+
+Use the below recommended setting for the ELRS Tx module.
+
+* [Baud Rate](https://www.expresslrs.org/quick-start/transmitters/tx-prep/#radio-settings): *5.25M (or as high as your module supports)*
+* [Packet Rate](https://www.expresslrs.org/software/switch-config/#channel-update-rate-versus-packet-rate): *500Hz*
+* Telemetry Ratio: *1:8 to 1:32*
+* [Switch Mode](https://www.expresslrs.org/software/switch-config/#summary-of-switch-configuration-modes): *Wide*
+* [Tx Max Power](https://www.expresslrs.org/software/dynamic-transmit-power/#description): *250mW Dynamic*
+
+Consult [ELRS Website](https://www.expresslrs.org/software/switch-config/) for more info.
+
+## Radio Setup[​](#radio-setup "Direct link to Radio Setup")
+
+This [Generic Rotorflight Radio Model](/assets/files/Generic_RF-935521af677ed9cdc31f834af24c40eb.yml) Yaml file contain all the options listed above.
+
+### Radio Inputs Page Setup[​](#radio-inputs-page-setup "Direct link to Radio Inputs Page Setup")
+
+Configure the inputs on the radio as per the below image.
+
+![Generic Setup](/assets/images/generic-setup-input-e94d46071f3e3c21869e19aaf499cbc7.png)
+
+Based on the image above:
+
+The 3-position **SB** Switch will control *Arming* as below:
+
+* Switch **SB**-*down*: Disarmed
+* Switch **SB**-*middle*: Disarmed
+* Switch **SB**-*up*: Armed
+
+The 2-position **SF** Switch will control *Throttle Hold* as below:
+
+* Switch **SF**-*down*: Throttle Hold
+* Switch **SF**-*up*: Throttle Release
+
+The 3-position **SE** Switch will control *Throttle percentage* and *Profile Switching* as below:
+
+* Switch **SE**-*down*: Throttle 60%, Profile 1, and Rate 1
+* Switch **SE**-*middle*: Throttle 70%, Profile 2, and Rate 2
+* Switch **SE**-*up*: Throttle 80%, Profile 3, and Rate 3
+
+The 2-position **SH** Momentary Switch will control *Rescue* as below:
+
+* Switch **SH**-*down*: Rescue OFF
+* Switch **SH**-*up*: Rescue ON
+
+The 3-position **SA** Switch will control *Blackbox enable* and *Blackbox erase* as below:
+
+* Switch **SA**-*down*: Blackbox Logging OFF
+* Switch **SA**-*middle*: Blackbox Logging ON
+* Switch **SA**-*up*: Erase Blackbox Logs
+
+The 3-position **SC** Switch will control *Backup Buffer Pack* as below:
+
+* Switch **SC**-*down*: Buffer OFF
+* Switch **SC**-*middle*: Buffer ON
+* Switch **SC**-*up*: Buffer ON
+
+### Radio Mixer Page Setup[​](#radio-mixer-page-setup "Direct link to Radio Mixer Page Setup")
+
+Additionally you can use CH11-AUX6 and CH12-AUX7 to perform in flight parameter adjustment using adjustment functions from the [Adjustments Tab](/docs/configurator/tabs/adjustments.md#adjustment-functions).
+
+![Generic Setup](/assets/images/generic-setup-mixer-9eacacbaee27e112b5114f1de7b937c7.png)
+
+The above settings will allow you to adjust 30 parameters in flight using the radio trim switches with combination of the 6-position buttons.
+
+The below table explain how each parameter can be accessed.
+
+![Generic Setup](/assets/images/generic-setup-adjustments-f6e808108eec8d4857baf1f86412066c.png)
+
+For example when 6-position *button 1* is activated, the *pitch trim switch* will change *Pitch P Gain* value, and when 6-position *button 3* is activated, the *throttle trim switch* will change *Governor D Gain* value, and so on.
+
+## Rotorflight Setup[​](#rotorflight-setup "Direct link to Rotorflight Setup")
+
+After completing the above radio setup, you can proceed to the Rotorflight Configurator to complete the setup on the flight controller side.
+
+### Arming Setup[​](#arming-setup "Direct link to Arming Setup")
+
+Proceed to Modes Tab and setup arming as per below picture.
+
+![Generic Setup](data:image/png;base64,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397yPvfh9pt3ozXLPgXLDz34I8eBVY2yBC82yX797TetOQXLIiIiIiLhLiDNsBUoS7BTGRURERERkYrQaNg+YoU8+5JwiPXLly9bqVdxNMzTp09f1+RPREREREREgp+CZTf5+fkYP348evTogaysLCv1euz0PnfuXEydOtX0T3SXk5ODgQMHlvoaGRkZ5vX5YJ+CSZMmmREQvWwRLyIiIiIiIn6mYNmNPQQ/B1T417/+ZYJif+KNz9etW4cXX3zRjGgnIiIiIiIiVU/BsgsGxgyQOVocb2fBadY027ic96974403kJ2dfd3ItIcPH8bChQuxdOlS00S7WTPPty969dVXsWHDBvz61782gbI9kiGbdr/22msYNmyYqXmeNWuWuR0A7d+/H4888oi5BQrTufzpp58uGfadz7PT7drrsWPHmvX4un/+85+RkpJiXvuVV17B2bNnzXoiIiIiIiJylYJlF8ePH8e2bdvQoUMHc2NuYnNqYhPp9PR0PPnkk/joo49MoMn/NgbKzzzzDP72t79h5cqVeOmll0ytsTfsfs0c6p14jzwGwwzU+Rrvvfce3n333ZK+0QzEn332WZPO5atWrcLy5cvNEO98np1uGzJkCGJiYkwgzyCcQTNfm/vw/vvvq/m3iIiIiIiIGwXLLnbu3GkCya5du5obunfp0sXcU5HBLJtmsxY4LS0N8+fPN/2VeU8yG4Ns3udu5syZZvlTTz1lLSnbww8/jN69e+OFF14wNxNv166dSWfwypuk80bztsLCQjNomK1Xr17m/m+LFy826/GeaBxQjEE7t/HTTz8128jabe4P77H25ZdfWmtfxWbnql0WERERERG5loJli90EOy8vDw888ADuvPNO05yaQXBBQYEJRE+cOIH4+Hg0bNgQDRo0MAGt7dChQyZojY2NNfOsyW3VqpWZLs/tt9+OX/3qV2jSpIkJzNk8m7XDDNzL0r17d9x0002IioryeL8w1pazJpqP0gYiY7Nt1yBcREREREREFCyXsJtgu9u1a5fpn8wAmcEpA1gGl2wS7XpbqObNm5vaX7v5M4NvNqf2hEExm0KzNnjFihXmNbkOm0inpqaakbTZvJp9qN3Vq1fPmrqqfv366Nixoxlt+/vf/74ZZZsBPAN8NvFmUD148GDTTHzz5s1Yv3495syZU9L8W0RERERERJwULFvYhJrBMkelZiDJBwPV733veyZYrlmzJtq0aWOaPjPYzMzMxNq1a621gYSEBPOfzaLZXJvrspa6PBx1e9SoUWY9e9AwNp3m63Mgrvvvv98MzuWNiIgIU+PNoNnGgH7Pnj0m2GeTb/azZh9mDvzFZuSebo8lIiIiIiISrhQsOzCgZN9k1sImJiZaqTBBK/stM4hmzfOYMWPM4F8MqBlcDxo0yHomTDpHqeb9kv/whz+Y12FAWh4G4ffee69Z/8033zQ10/fddx86depkmnI/8cQTmDBhgvVsz9j3mNvpioE2A3HWevN1J0+ebGqaqX///mjdurWZFhERERERkasirng5FPKM3862poAJPx5vTUkw4W2tXn75ZTPIWPv27U1z8UWLFuHDDz/E7Nmzr+ljHQ7+9sZr1hTw0wmPWlMiIiIiIhKOPI31VBrVLFcjt9xyixnEa9y4cSXNrFnLzdGw2adaREREREREvONTsHzp0kVrSoIJm5HzPtBJSUlmns2tH3vsMUycOBF16tQxaeFCZVRERERERCrCp2bYg1IGIv5WZ79XkWC0/8B+rMr62JpTM2wRERERkXAXkGbYW7ZuVc2dBC2WTZZRERERERERX/kULB8/cRzLM1aY2jsFzRIsWBZZJlk2WUZFRERERER85VMzbJFQo2bYIiIiIiLhTaNhi4iIiIiIiFSQgmURERERERERN143wxYREREREREJF6pZFhEREREREXGjYFlERERERETEjYJlERERERERkWsA/x/dSMRZD+SIzQAAAABJRU5ErkJggg==)
+
+Alternatively you can paste and save the below commands in CLI to easily achieve the same result.
+
+```
+aux 0 0 0 1800 2100 0 0
+```
+
+### Profile Switching Setup[​](#profile-switching-setup "Direct link to Profile Switching Setup")
+
+Proceed to Adjustment Tab and setup Profiles and rates switching as per below picture.
+
+![Generic Setup](/assets/images/generic-setup-prof-switch-a17d379c0f8d88673fdd8bd17b4e35d8.png)
+
+Alternatively in CLI.
+
+```
+adjfunc 0 2 1 900 2100 1 975 2025 975 2025 0 0 3
+adjfunc 1 1 1 900 2100 1 975 2025 975 2025 0 0 3
+```
+
+### Rescue Setup[​](#rescue-setup "Direct link to Rescue Setup")
+
+Proceed to Modes Tab and setup Rescue mode as per below picture.
+
+![Generic Setup](/assets/images/generic-setup-rescue-a0d9b0b5f6c30f62ecd01b01651402d6.png)
+
+Alternatively in CLI.
+
+```
+aux 1 53 2 1800 2100 0 0
+```
+
+### Blackbox Setup[​](#blackbox-setup "Direct link to Blackbox Setup")
+
+Proceed to Modes Tab and setup Blackbox Modes as per below picture.
+
+![Generic Setup](/assets/images/generic-setup-blackbox-aec0ca4b84ecdf4b8690e89d165956bd.png)
+
+Alternatively in CLI.
+
+```
+aux 2 26 3 1400 1600 0 0
+aux 3 31 3 1800 2100 0 0
+```
+
+### Buffer Pack Setup[​](#buffer-pack-setup "Direct link to Buffer Pack Setup")
+
+Buffer packs like the [1st Buffer-Pack](https://1st-rc.com/en/product/1st-buffer-v4-3x25f-for-helis-450-700/) can be switched off from the radio after disconnecting the main pack, this can be done by connecting the buffer pack to a free 1500us PWM Channel on the flight controller.
+
+* First you need to assign servo 5 to a free timer pin, you will then see servo 5 in the Servos Tab. Assuming we have a free timer on pin A08.
+
+  In CLI:
+
+  ```
+  Resource Servo 5 A08
+  ```
+
+* Next you assign AUX5 Channel to Servo 5 using a mixer rule.
+
+  In CLI:
+
+  ```
+  mixer rule 1 set AUX5 S5 1000 0
+  ```
+
+### In-Flight Profile Parameters Setup[​](#in-flight-profile-parameters-setup "Direct link to In-Flight Profile Parameters Setup")
+
+![Generic Setup](/assets/images/generic-setup-adjustments-f6e808108eec8d4857baf1f86412066c.png)
+
+Since there is many functions required to perform the In-flight adjustment as per the above table, you can directly copy the below commands to CLI and save.
+
+```
+adjfunc 2 14 5 900 1100 6 1025 1075 1925 1975 5 10 200
+adjfunc 3 18 5 900 1100 6 1100 1150 1850 1900 5 10 200
+adjfunc 4 22 5 900 1100 6 1175 1225 1775 1825 5 10 200
+adjfunc 5 49 5 900 1100 6 1250 1300 1700 1750 5 10 200
+adjfunc 6 27 5 900 1100 6 1325 1375 1625 1675 5 10 200
+adjfunc 7 26 5 900 1100 6 1400 1450 1550 1600 5 10 200
+adjfunc 8 15 5 1100 1300 6 1025 1075 1925 1975 5 10 200
+adjfunc 9 19 5 1100 1300 6 1100 1150 1850 1900 5 10 200
+adjfunc 10 23 5 1100 1300 6 1175 1225 1775 1825 5 10 200
+adjfunc 11 50 5 1100 1300 6 1250 1300 1700 1750 5 10 200
+adjfunc 12 28 5 1100 1300 6 1325 1375 1625 1675 5 10 200
+adjfunc 13 29 5 1100 1300 6 1400 1450 1550 1600 5 10 200
+adjfunc 14 16 5 1300 1400 6 1025 1075 1925 1975 5 10 200
+adjfunc 15 20 5 1300 1400 6 1100 1150 1850 1900 5 10 200
+adjfunc 16 24 5 1300 1400 6 1175 1225 1775 1825 5 10 200
+adjfunc 17 51 5 1300 1400 6 1250 1300 1700 1750 5 10 200
+adjfunc 18 39 5 1300 1400 6 1325 1375 1625 1675 5 10 200
+adjfunc 19 40 5 1300 1400 6 1400 1450 1550 1600 5 10 200
+adjfunc 20 17 5 1550 1700 6 1025 1075 1925 1975 5 10 200
+adjfunc 21 21 5 1550 1700 6 1100 1150 1850 1900 5 10 200
+adjfunc 22 25 5 1550 1700 6 1175 1225 1775 1825 5 10 200
+adjfunc 23 52 5 1550 1700 6 1250 1300 1700 1750 5 10 200
+adjfunc 24 59 5 1750 1900 6 1025 1075 1925 1975 5 10 200
+adjfunc 25 60 5 1750 1900 6 1100 1150 1850 1900 5 10 200
+adjfunc 26 54 5 1750 1900 6 1175 1225 1775 1825 5 10 200
+adjfunc 27 55 5 1750 1900 6 1250 1300 1700 1750 5 10 200
+adjfunc 28 56 5 1950 2100 6 1025 1075 1925 1975 5 10 200
+adjfunc 29 57 5 1950 2100 6 1100 1150 1850 1900 5 10 200
+adjfunc 30 58 5 1950 2100 6 1175 1225 1775 1825 5 10 200
+adjfunc 31 48 5 1950 2100 6 1250 1300 1700 1750 5 10 200
+```
+
+Consult [Rotorflight Adjustments](/docs/configurator/tabs/adjustments.md) for more info on how to setup the above adjustments.
