@@ -78,7 +78,7 @@ function GetGears() {
 
           <div className={styles3.content}>
             <div>
-              <p>Type 2: two stage gear</p>
+              <p>Type 3: two stage gear</p>
             </div>
             <div className="mt-4">
               <select
