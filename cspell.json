@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "gitignoreRoot": ".",
+  "useGitignore": true,
+  "ignoreRegExpList": ["Urls", "Email"],
+  "dictionaryDefinitions": [
+    {
+      "name": "project-words",
+      "path": "./project-words.txt",
+      "addWords": true
+    }
+  ],
+  "language": "en",
+  "dictionaries": [
+    "project-words",
+    "css",
+    "html",
+    "javascript",
+    "typescript",
+    "companies",
+    "softwareTerms"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "project-words.txt",
+    "build",
+    ".docusaurus",
+    "docs/controllers/**/*.txt",
+    "versioned_docs/version-2.0.0/Wiki/Configurator/LED-Strip.md",
+    "**/*.yml",
+    "**/*.svg"
+  ],
+  "words": [
+    "feat",
+    "fix",
+    "chore",
+    "refactor",
+    "deps",
+    "config",
+    "eslint",
+    "prettier",
+    "tsconfig"
+  ]
+}
