@@ -52,11 +52,11 @@ This gear system was used for the Gaui Hurricane.
 
 ![gears](/assets/images/gears3-5e03699076b82951821c6c92f2ddd6e9.png)
 
-Type 2: two stage gear
+Type 3: two stage gear
 
 Type 3 Custom
 
-156019611499
+155019611499
 
 **&#x20;:&#x20;****Calculated Main Ratio**
 
