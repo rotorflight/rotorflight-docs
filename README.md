@@ -27,3 +27,7 @@ You can also build the complete site and test it locally.
 ```
 
 This will create a `/build` directory, which contains the complete website.
+
+### Faster build
+
+Optionally you can provide a `FASTER=true` environment variable to use the new swc based build system, which is much faster than the default webpack based build system. More info in this [blog post](https://docusaurus.io/blog/releases/3.6#docusaurus-faster).
