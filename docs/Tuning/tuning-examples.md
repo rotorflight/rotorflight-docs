@@ -17,7 +17,7 @@ danger
 There are two options for using these pre-sets.
 
 1. Follow the screen shots to configure your helicopter.
-2. Load from the supplied Diff file. **Please note:** This method may overwright some of your previously configured settings. Please check and confirm carefully.
+2. Load from the supplied Diff file. **Please note:** This method may overwrite some of your previously configured settings. Please check and confirm carefully.
 
 OMPHOBBY M7
 
@@ -87,7 +87,7 @@ This tune has a single profile using the Rotorflight Governor with maximum heads
 
 [**Jiawen Nimbus Diff All**](/assets/files/RTFL_cli_Nimbus_Nitro_20240712_125546-d07404fb4ac75e5ae0ab326f8874a0d8.txt) - This is suitable for all Rotorflight Controllers
 
-[**S5 on SBUS Port**](/assets/files/S5-on-Sbus-0665a0dee4624f8fd0b0fc69510f19b9.txt) - Jiawen uses the SBUS port as an extra servo output which is used to control the glow ignighter. This file will configure the extra servo and is suitable for Flydragon F722V2 and NEXUS. It can also be used for the FlywingF405; however, it is output on the DSM port.
+[**S5 on SBUS Port**](/assets/files/S5-on-Sbus-0665a0dee4624f8fd0b0fc69510f19b9.txt) - Jiawen uses the SBUS port as an extra servo output which is used to control the glow igniter. This file will configure the extra servo and is suitable for Flydragon F722V2 and NEXUS. It can also be used for the FlywingF405; however, it is output on the DSM port.
 
 #### Servos[​](#servos-1 "Direct link to Servos")
 
@@ -118,7 +118,7 @@ Author’s Notes - READ BEFORE USING THIS TUNE
 
 This tune has a single profile using the Rotorflight Governor with maximum headspeed of 1950RPM.
 
-Setup:<br />**Helicopter:** Specter Nitro<br />**Main Rotor Blades:** RotorTech 700mm Ultimate<br />**Tail Rotor Blades:** RotorTech 116mm Ultimate<br />**Engine:** OS91speed<br />**Pipe:** Kenny Ko pipe<br />**Servos:** Theta Kenny Ko 12V servos<br />**Throttle Servo:** GDW G28-06<br />**FBL/Receiver:** Flydragon F722v2<br />**Battery:** Gens ACE 3S 2200mah<br />**RPM sensor:** XGuard Back Plate Sensor<br />**Glow Ignighter:** XGlow Pro ICE igniter<br />**Capacitor:** Panasonic 16V 2200μF<br />**Fuel:** VP30%
+Setup:<br />**Helicopter:** Specter Nitro<br />**Main Rotor Blades:** RotorTech 700mm Ultimate<br />**Tail Rotor Blades:** RotorTech 116mm Ultimate<br />**Engine:** OS91speed<br />**Pipe:** Kenny Ko pipe<br />**Servos:** Theta Kenny Ko 12V servos<br />**Throttle Servo:** GDW G28-06<br />**FBL/Receiver:** Flydragon F722v2<br />**Battery:** Gens ACE 3S 2200mah<br />**RPM sensor:** XGuard Back Plate Sensor<br />**Glow Igniter:** XGlow Pro ICE igniter<br />**Capacitor:** Panasonic 16V 2200μF<br />**Fuel:** VP30%
 
 [YouTube video player](https://www.youtube.com/embed/YqX0sLBM68Y?si=-JR9_gq1iSERcdCT)
 
@@ -126,7 +126,7 @@ Setup:<br />**Helicopter:** Specter Nitro<br />**Main Rotor Blades:** RotorTech 
 
 #### Diff all[​](#diff-all-2 "Direct link to Diff all")
 
-[**Jiawen Nitro Specter Diff All**](/assets/files/SpecterN_before_awesome-e8013a850199938e62e08eb4475d2ec4.txt) - Jiawen uses the SBUS port as an extra servo output which is used to control the glow ignighter.
+[**Jiawen Nitro Specter Diff All**](/assets/files/SpecterN_before_awesome-e8013a850199938e62e08eb4475d2ec4.txt) - Jiawen uses the SBUS port as an extra servo output which is used to control the glow igniter.
 
 #### Servos[​](#servos-2 "Direct link to Servos")
 

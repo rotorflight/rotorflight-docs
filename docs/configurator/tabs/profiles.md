@@ -108,7 +108,7 @@ The increase of yaw (what) gain during stops. Higher gain results in crisper sto
 
 Since cyclic input creates more torque on the main rotor, this gain aims to pre-compensate the tail motion due to cyclic inputs. a high cyclic value results CW motion on tail when starting pitching/rolling, a low value results CCW motion. (for CW main rotor)
 
-#### Yaw Precomp cuttoff[​](#yaw-precomp-cuttoff "Direct link to Yaw Precomp cuttoff")
+#### Yaw Precomp cutoff[​](#yaw-precomp-cutoff "Direct link to Yaw Precomp cutoff")
 
 Frequency limit for all Yaw precompensation values.
 
@@ -130,7 +130,7 @@ The strength of the main rotors inertia. Larger values result in more Precomp be
 
 #### Inertia Precomp[​](#inertia-precomp "Direct link to Inertia Precomp")
 
-Cuttof frequency for the inertia Precomp. Larger values result in a more rapid application of the precomp.
+Cutoff frequency for the inertia Precomp. Larger values result in a more rapid application of the precomp.
 
 ## PID Controller Bandwidth[​](#pid-controller-bandwidth "Direct link to PID Controller Bandwidth")
 

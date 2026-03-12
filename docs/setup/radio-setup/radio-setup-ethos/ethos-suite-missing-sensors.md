@@ -22,11 +22,11 @@ Highlight and press the \* icon at the top
 
 ![Ethos](/assets/images/ethos-missing-5-0c86b05eb92ffd523efd5edc0c1fc857.jpg)
 
-The flight controller will resart after the changes are applied.
+The flight controller will restart after the changes are applied.
 
 ![Ethos](/assets/images/ethos-missing-6-383f58fe42b7c4e1599c0cab60db039a.jpg)
 
-NOTE: If the \* option is not available you will be required to upgrade your Rotorflight firmware to at least RC1 or add the sensors manualy in the receiver \ telemetry options, delete all and re-discover sensors.
+NOTE: If the \* option is not available you will be required to upgrade your Rotorflight firmware to at least RC1 or add the sensors manually in the receiver \ telemetry options, delete all and re-discover sensors.
 
 You can as a short cut, if so desired, enter this in the cli then enter save.
 

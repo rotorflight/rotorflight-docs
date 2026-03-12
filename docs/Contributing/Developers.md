@@ -1,6 +1,6 @@
 # Software Developers
 
-Software developers willing to assist with adding to this project are welcome. Skills in languages such as 'C', HTML, JavaScript, JQuery across the Firmmware, Configurator and Blackbox.
+Software developers willing to assist with adding to this project are welcome. Skills in languages such as 'C', HTML, JavaScript, JQuery across the Firmware, Configurator and Blackbox.
 
 In order to do this, please contact us through the [Discord](https://discord.gg/6QUySXdEvd) so we can understand a little about what your proposed changes are about. This will enable us to discuss the change and provide some feedback and review prior to opening a Pull Request.
 

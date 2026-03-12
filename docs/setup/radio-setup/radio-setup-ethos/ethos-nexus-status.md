@@ -70,7 +70,7 @@ This is the main widget display which has 6 pre-defined boxes each of which can 
 
 ![Ethos](/assets/images/ethos-status-14-aa62273208516fd6d9db81ab11c39599.jpg)
 
-The additional display options allow the widget to display the min\max of the sensors as well as colours to indicate status or low battery. You also have the option to add additional sensors from Telemetry and choose these to display in the main screen.
+The additional display options allow the widget to display the min\max of the sensors as well as colors to indicate status or low battery. You also have the option to add additional sensors from Telemetry and choose these to display in the main screen.
 
 ![Ethos](/assets/images/ethos-status-15-e4b3a9da05a5e60168ae080862a019f8.jpg)
 

@@ -1,6 +1,6 @@
 # Contributing to Rotorflight
 
-Rotorflight is an Opensource project. Contribution from other like minded people, keen to assist in making this software even better is welcomed and encouraged. You do not have to be a hardcore programmer to help. Lots of things can be done by anyone with a spare heli and some eagerness to learn and teach others. If you have the skills and time to contribute to some of the activities below please contact us through the [Discord](https://discord.gg/6QUySXdEvd) and we can chat about the options.
+Rotorflight is an Open Source project. Contribution from other like minded people, keen to assist in making this software even better is welcomed and encouraged. You do not have to be a hardcore programmer to help. Lots of things can be done by anyone with a spare heli and some eagerness to learn and teach others. If you have the skills and time to contribute to some of the activities below please contact us through the [Discord](https://discord.gg/6QUySXdEvd) and we can chat about the options.
 
 ## Translations[​](#translations "Direct link to Translations")
 

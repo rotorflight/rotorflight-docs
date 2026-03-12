@@ -228,4 +228,4 @@ Video to go here
 
 Slop and sticky linkages
 
-If your helicopter wags continuously with varying PID values then there is a good change there is a mechanical issue. Hysterisis due to slop in the linkage or sticky jerky movement of the pitch slider cannot be tuned out with the controller. Review your linkage, sliders and servo if continuous wagging is encountered. Generally a helicopter using the default PID values the tail will be sluggish and wander. It should not 'Wag'.
+If your helicopter wags continuously with varying PID values then there is a good change there is a mechanical issue. Hysteresis due to slop in the linkage or sticky jerky movement of the pitch slider cannot be tuned out with the controller. Review your linkage, sliders and servo if continuous wagging is encountered. Generally a helicopter using the default PID values the tail will be sluggish and wander. It should not 'Wag'.

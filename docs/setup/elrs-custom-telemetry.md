@@ -32,7 +32,7 @@ To set up ELRS custom telemetry:
 
 * Set the Telemetry ratio. Generally this can be between **4 and 16**
 
-  * Note Please read the warnign at the top of page. Update to ELRS 3.5.5
+  * Note Please read the warning at the top of page. Update to ELRS 3.5.5
   * Start with 4. If you get 'telemetry lost' then increase as required.
 
 ![Telemetry Tab](/assets/images/telemetry-1-5ec2afbe359ee09004f630516c27bea6.png)
