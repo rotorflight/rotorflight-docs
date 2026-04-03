@@ -3,6 +3,10 @@
 > Comprehensive documentation for Rotorflight, the open-source helicopter flight controller software.
 
 
+## search
+
+- [Search the documentation](/search.md)
+
 ## docs
 
 Rotorflight is a flight control software suite for single rotor RC helicopters. It is based on Betaflight, with many advanced features added for helicopters. It consists of several components:
