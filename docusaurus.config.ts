@@ -194,6 +194,9 @@ const config: Config = {
           showReadingTime: true,
           onUntruncatedBlogPosts: "ignore",
         },
+        theme: {
+          customCss: "./src/css/custom.css",
+        },
       } satisfies Preset.Options,
     ],
   ],
