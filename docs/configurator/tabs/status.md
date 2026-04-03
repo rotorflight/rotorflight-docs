@@ -41,7 +41,7 @@ You can find out a description of these flags from the [List of Arming preventio
 
 A live preview of the gyroscope data. This is useful to check if the gyroscope is aligned correctly, and if it isn't getting/giving noisy data.
 
-![Status Tab](/assets/images/status-live-preview-6ab054c51a3d2010f053a31083a14456.png)
+![Status Tab](/rotorflight-docs/assets/images/status-live-preview-6ab054c51a3d2010f053a31083a14456.png)
 
 * **Reset Z axis** - This button resets the heli heading to 0 degrees.
 
@@ -53,10 +53,10 @@ You can set the gyroscope alignment in the `Configuration` tab.
 
 A graphic replica of real aircraft instruments.
 
-![Status Tab](/assets/images/status-instruments-4cd1611c8e2c852cf6bceba5bfc046c8.png)
+![Status Tab](/rotorflight-docs/assets/images/status-instruments-4cd1611c8e2c852cf6bceba5bfc046c8.png)
 
 ## Receiver[​](#receiver "Direct link to Receiver")
 
 The receiver output preview shows the current state of the receiver channels, both in channel value and graph forms, and how those affect the heli movement.
 
-![Status Tab](/assets/images/status-receiver-f3f873c361cd5fc3490d0570b15c486c.png)
+![Status Tab](/rotorflight-docs/assets/images/status-receiver-f3f873c361cd5fc3490d0570b15c486c.png)

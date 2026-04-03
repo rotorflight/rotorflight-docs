@@ -1,6 +1,6 @@
 # Setup
 
-![Setup](/assets/images/setup-main-06af6f11de0861c17717af77a080f7dc.png)
+![Setup](/rotorflight-docs/assets/images/setup-main-06af6f11de0861c17717af77a080f7dc.png)
 
 ## Calibrate Accelerometer[​](#calibrate-accelerometer "Direct link to Calibrate Accelerometer")
 

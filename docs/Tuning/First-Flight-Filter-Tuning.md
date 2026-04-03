@@ -28,8 +28,8 @@ The noise is usually much higher during 3D flight especially on the second harmo
 
 ### RAW Gyro:[​](#raw-gyro "Direct link to RAW Gyro:")
 
-![First Flight](/assets/images/First_flight_1-d7a7d1836a019f7c54dcafd2fca3175d.png)
+![First Flight](/rotorflight-docs/assets/images/First_flight_1-d7a7d1836a019f7c54dcafd2fca3175d.png)
 
 ### Filtered Gyro:[​](#filtered-gyro "Direct link to Filtered Gyro:")
 
-![First Flight](/assets/images/First_flight_2-89976d0d2d76b0976e8879195eb99590.png)
+![First Flight](/rotorflight-docs/assets/images/First_flight_2-89976d0d2d76b0976e8879195eb99590.png)

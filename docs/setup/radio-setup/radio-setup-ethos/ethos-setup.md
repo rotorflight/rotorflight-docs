@@ -12,37 +12,37 @@ Once the bind is successful you will see Telemetry items updating in the Model\T
 
 And the radio will display signal in the top right similar to this:
 
-![Ethos](/assets/images/ethos-setup1-1-c0baa7adcaad05cbf337af8e276cf587.png)
+![Ethos](/rotorflight-docs/assets/images/ethos-setup1-1-c0baa7adcaad05cbf337af8e276cf587.png)
 
 Enter the Model screen and scroll to RF System, select the receiver, in this example we are using a Frsky Archer GR6Plus, click on the receiver type and select options. Under Telemetry port choose FBUS, and exit the screen. FBUS is the preferred method of connection.
 
-![Ethos](/assets/images/ethos-receiver-f.bus2-212f789c830bab876bc12ae4c6946bbb.jpg)
+![Ethos](/rotorflight-docs/assets/images/ethos-receiver-f.bus2-212f789c830bab876bc12ae4c6946bbb.jpg)
 
 Nexus and RF Configurator In the following example the Frsky receiver is connected to Port (A) of a Nexus controller. With the supplied cables you can connect to either Port A, B or C
 
-![Ethos](/assets/images/ethos-nexus1-272e78cc73fe2b17c6d7b3f380f466c3.jpg)
+![Ethos](/rotorflight-docs/assets/images/ethos-nexus1-272e78cc73fe2b17c6d7b3f380f466c3.jpg)
 
 Connect the USB-C cable to the Nexus and connect to the PC\Laptop with the Configurator installed. The latest Rotorflight configurator can be found HERE
 
 One connected this screen will be displayed if a new Nexus is attached.
 
-![Ethos](/assets/images/ethos-setup-page1-9b447d28d66f20b35009295bb5b5ee4a.png)
+![Ethos](/rotorflight-docs/assets/images/ethos-setup-page1-9b447d28d66f20b35009295bb5b5ee4a.png)
 
 This is a warning the accelerometer is not calibrated, click close and enter the main configurator page.
 
-![Ethos](/assets/images/ethos-setup-page2-23ff0caa3da47c991819350d87543761.png)
+![Ethos](/rotorflight-docs/assets/images/ethos-setup-page2-23ff0caa3da47c991819350d87543761.png)
 
 Select SETUP on the left, hold or keep the nexus flat on the bench and click 'Calibrate Accelerometer', the top status bar will show ' Accelerometer calibration finished'
 
 Select STATUS on the left and the following page will be displayed
 
-![Ethos](/assets/images/ethos-setup-page3-e301b16839f6b425a746574d15757676.png)
+![Ethos](/rotorflight-docs/assets/images/ethos-setup-page3-e301b16839f6b425a746574d15757676.png)
 
 Item 1 is showing board firmware and identification. Item 2 is showing battery connection info - At this stage the main battery is not connected. Item 3 is showing the Nexus firmware version and the RF Configurator version.
 
 Configurator Initial Setup Select Configuration on the left
 
-![Ethos](/assets/images/ethos-setup-page4-ad9a45a87ab1966cf105d350b0587707.png)
+![Ethos](/rotorflight-docs/assets/images/ethos-setup-page4-ad9a45a87ab1966cf105d350b0587707.png)
 
 The screen is described as:
 
@@ -54,14 +54,14 @@ By default the Nexus is setup to be installed horizontal servo pins facing towar
 
 Enter the Receiver tab and select the options as per this view.
 
-![Ethos](/assets/images/ethos-setup-page5-7b01988db3b97e372977839c096960bb.png)
+![Ethos](/rotorflight-docs/assets/images/ethos-setup-page5-7b01988db3b97e372977839c096960bb.png)
 
 Under telemetry enable these options
 
-![Ethos](/assets/images/ethos-setup-page6-6df45fce6a2335e2fa71e401c5c03e38.png)
+![Ethos](/rotorflight-docs/assets/images/ethos-setup-page6-6df45fce6a2335e2fa71e401c5c03e38.png)
 
 Save and Reboot, please ensure your transmitter is switched on and connected to your receiver
 
 Return to the receiver tab, you should now see the channel bars moving when the TX joysticks are moved. If not either the TX\RX are not bound or a step above has been missed.
 
-![Ethos](/assets/images/ethos-setup-page7-3fd499cec07b83d6d469d45ecf87e356.png)
+![Ethos](/rotorflight-docs/assets/images/ethos-setup-page7-3fd499cec07b83d6d469d45ecf87e356.png)

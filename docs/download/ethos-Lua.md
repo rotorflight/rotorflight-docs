@@ -12,4 +12,4 @@ Download RF Touch Lua Here!!
 
 [Download the Ethos RF Touch Suite Release v2.2.1](https://github.com/rotorflight/rotorflight-lua-ethos-suite/releases/tag/release%2F2.2.0)
 
-![Ethos Tx](/assets/images/ethos-logo-d565893f83fdd83bfa36d6df15aad088.png)
+![Ethos Tx](/rotorflight-docs/assets/images/ethos-logo-d565893f83fdd83bfa36d6df15aad088.png)

@@ -1,6 +1,6 @@
 # Matek G474Heli
 
-![Matek G474HELI](/assets/images/matek-g474-6ee4a56052ce7a151c2a3064406b2147.png)
+![Matek G474HELI](/rotorflight-docs/assets/images/matek-g474-6ee4a56052ce7a151c2a3064406b2147.png)
 
 Specifications
 
@@ -12,17 +12,17 @@ MCU: STM32G474CE<br /><!-- -->IMU: ICM42688-P<br /><!-- -->Black Box: W25N01G (1
 
 When updating Rotorflight firmware. Please use the MATEKG474HELI target.
 
-![Matek G474Heli Target](/assets/images/g474-target-66d10567a28b3492d5ce025e81735eb6.png)
+![Matek G474Heli Target](/rotorflight-docs/assets/images/g474-target-66d10567a28b3492d5ce025e81735eb6.png)
 
 ### Wiring[​](#wiring "Direct link to Wiring")
 
-![Wiring Diagram](/assets/images/g474-wiring-bc40e48b2da022a88838bea287ec5b97.jpg)
+![Wiring Diagram](/rotorflight-docs/assets/images/g474-wiring-bc40e48b2da022a88838bea287ec5b97.jpg)
 
 ### UART ports[​](#uart-ports "Direct link to UART ports")
 
-![UARTS](/assets/images/mt-uarts-94be99f37528279566a1d4e5c025e168.png)
+![UARTS](/rotorflight-docs/assets/images/mt-uarts-94be99f37528279566a1d4e5c025e168.png)
 
-![UARTS](/assets/images/mt-ports-fba5f20a070078014ca4793ae7879158.png)
+![UARTS](/rotorflight-docs/assets/images/mt-ports-fba5f20a070078014ca4793ae7879158.png)
 
 ### Onboard BEC[​](#onboard-bec "Direct link to Onboard BEC")
 
@@ -32,7 +32,7 @@ caution
 
 If using an external BEC the internal BEC MUST be disabled via the \[Vx Off] solder bridge.
 
-![BEC](/assets/images/mt-bec-aae2120379facd3839f1133dbdeda8ee.png)
+![BEC](/rotorflight-docs/assets/images/mt-bec-aae2120379facd3839f1133dbdeda8ee.png)
 
 ### Manuals[​](#manuals "Direct link to Manuals")
 

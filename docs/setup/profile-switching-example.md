@@ -18,13 +18,13 @@ We need to assign a spare channel to your 3 position switch (SwE) (can be any ch
 
 **Step 1:** Assign Ch9 to the SwE in the **Mixers** tab
 
-![Change Profiles](/assets/images/Change_Profiles_1-ef198abf82c5424f4646f879d98638ad.png)
+![Change Profiles](/rotorflight-docs/assets/images/Change_Profiles_1-ef198abf82c5424f4646f879d98638ad.png)
 
 ### Configure flight controller[​](#configure-flight-controller "Direct link to Configure flight controller")
 
 **Step 2:** looking at the channels in the **receiver** tab we can see that Aux4 is the ninth channel. This matches our TX assignment from step 1. Confirm the 3 position switch changes the value seen on Aux4,
 
-![Change Profiles](/assets/images/Change_Profiles_2-c5ded5dda14325eb61b07f7379ca8465.png)
+![Change Profiles](/rotorflight-docs/assets/images/Change_Profiles_2-c5ded5dda14325eb61b07f7379ca8465.png)
 
 **Step 3:**
 
@@ -33,8 +33,8 @@ We need to assign a spare channel to your 3 position switch (SwE) (can be any ch
 * Select **Profile Selection** from the dropdown. This means we want to change the 'Profile selection' by the switch position.
 * Stretch the *Profile Selection* slider from 1 to 3, This means over the defined range a value of 1-3 will be chosen based on the switch position. (e.g. SwE down = 0, SwE middle = 1, SwE up = 2). These values are added to the Profile so will result in (e.g. SwE down = Profile 1, SwE middle = Profile 2, SwE up = Profile 3).
 
-![Change Profiles](/assets/images/change-prof-prof-sw-example-4230ebec14e328850ac68d9923e68deb.png)
+![Change Profiles](/rotorflight-docs/assets/images/change-prof-prof-sw-example-4230ebec14e328850ac68d9923e68deb.png)
 
 **Step 4:** Go to the **Profiles** tab and test and confirm that changing the switch position results in changing of the current Profile.
 
-![Change Profiles](/assets/images/Change_Profiles_4-16e8827ff3f14f47c961b9db20ca04b7.png)
+![Change Profiles](/rotorflight-docs/assets/images/Change_Profiles_4-16e8827ff3f14f47c961b9db20ca04b7.png)

@@ -41,13 +41,13 @@ When using SBUS only connection, you will not be able to use advanced features s
 
 ## Radio Setup[​](#radio-setup "Direct link to Radio Setup")
 
-This [Generic Rotorflight Radio Model](/assets/files/generic_rf-19cb206c8a79c2ed1c0e7a50f884dbad.bin) BIN file contains all the options listed above.
+This [Generic Rotorflight Radio Model](/rotorflight-docs/assets/files/generic_rf-19cb206c8a79c2ed1c0e7a50f884dbad.bin) BIN file contains all the options listed above.
 
 ### Radio Mixer Page Setup[​](#radio-mixer-page-setup "Direct link to Radio Mixer Page Setup")
 
 Configure the inputs on the radio as per the below image.
 
-![Generic Setup](/assets/images/generic-setup-mixer-34089db4fc00fa1d8553ddb8f2cbf75b.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-mixer-34089db4fc00fa1d8553ddb8f2cbf75b.png)
 
 Based on the image above:
 
@@ -105,7 +105,7 @@ aux 0 0 0 1800 2100 0 0
 
 Proceed to Adjustment Tab and setup Profiles and rates switching as per below picture.
 
-![Generic Setup](/assets/images/generic-setup-prof-switch-a17d379c0f8d88673fdd8bd17b4e35d8.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-prof-switch-a17d379c0f8d88673fdd8bd17b4e35d8.png)
 
 Alternatively in CLI.
 
@@ -118,7 +118,7 @@ adjfunc 1 1 1 900 2100 1 975 2025 975 2025 0 0 3
 
 Proceed to Modes Tab and setup Rescue mode as per below picture.
 
-![Generic Setup](/assets/images/generic-setup-rescue-a0d9b0b5f6c30f62ecd01b01651402d6.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-rescue-a0d9b0b5f6c30f62ecd01b01651402d6.png)
 
 Alternatively in CLI.
 
@@ -130,7 +130,7 @@ aux 1 53 2 1800 2100 0 0
 
 Proceed to Modes Tab and setup Blackbox Modes as per below picture.
 
-![Generic Setup](/assets/images/generic-setup-blackbox-aec0ca4b84ecdf4b8690e89d165956bd.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-blackbox-aec0ca4b84ecdf4b8690e89d165956bd.png)
 
 Alternatively in CLI.
 

@@ -1,6 +1,6 @@
 # Radiomaster NEXUS
 
-![Nexus](/assets/images/nexus-radiomaster-8f575a5bb9610e4a9c01a00cfea40dea.png)
+![Nexus](/rotorflight-docs/assets/images/nexus-radiomaster-8f575a5bb9610e4a9c01a00cfea40dea.png)
 
 ## Release Video[​](#release-video "Direct link to Release Video")
 
@@ -22,13 +22,13 @@ When updating Rotorflight firmware. Please use the NEXUS\_F7.
 
 Any of the Rotorflight receiver protocols can be used with the NEXUS. Radiomaster does have the RP3-H receiver which is a direct plug and play ELRS receiver.
 
-![Radiomaster RP3-H](/assets/images/nexus-rp3-h-247f07639a0c8286aaeb98528b24c017.png)
+![Radiomaster RP3-H](/rotorflight-docs/assets/images/nexus-rp3-h-247f07639a0c8286aaeb98528b24c017.png)
 
 ### F-Port[​](#f-port "Direct link to F-Port")
 
-Nexus supports F.Port on: The 'TX' pin of Port A, B or C or by remapping the SBUS to a TX for F.Port.<br />![F.PORT](/assets/images/nexus-fport-e6ab8272f0739a3da4b280da43ed4f73.png)
+Nexus supports F.Port on: The 'TX' pin of Port A, B or C or by remapping the SBUS to a TX for F.Port.<br />![F.PORT](/rotorflight-docs/assets/images/nexus-fport-e6ab8272f0739a3da4b280da43ed4f73.png)
 
-F.Port is an Inverted protocol over a single wire so must configured with both of these options enabled.<br />![Remap SBUS to F.PORT](/assets/images/nexus-remap-89e5b28d84acf5b21a5ee9797c30bfbd.png)
+F.Port is an Inverted protocol over a single wire so must configured with both of these options enabled.<br />![Remap SBUS to F.PORT](/rotorflight-docs/assets/images/nexus-remap-89e5b28d84acf5b21a5ee9797c30bfbd.png)
 
 ### Motorised Tail[​](#motorised-tail "Direct link to Motorised Tail")
 
@@ -36,17 +36,17 @@ To use the NEXUS with a motorised tail the Servo 4 needs to be remapped to Motor
 
 `resource SERVO 4 none`<br />`resource MOTOR 2 B03`<br />`save`
 
-![Nexus Target](/assets/images/nexus-motorised-57820bfff794402783b2d5407a1fa531.png)
+![Nexus Target](/rotorflight-docs/assets/images/nexus-motorised-57820bfff794402783b2d5407a1fa531.png)
 
 ### Wiring[​](#wiring "Direct link to Wiring")
 
-![Nexus wiring](/assets/images/nexus-wiring-218c5231c8b5882aec43c8021d7573af.png)
+![Nexus wiring](/rotorflight-docs/assets/images/nexus-wiring-218c5231c8b5882aec43c8021d7573af.png)
 
 ### UART ports[​](#uart-ports "Direct link to UART ports")
 
 All the UARTS on the NEXUS are labeled to match each port. Just enter the function you wish to use for each port such as SerialRx (receiver), ESC Telemetry, blackbox, GPS etc.
 
-![Nexus UARTS](/assets/images/nexus-uarts-416b6794c72fd39c8d51f30fd0dc3315.png)
+![Nexus UARTS](/rotorflight-docs/assets/images/nexus-uarts-416b6794c72fd39c8d51f30fd0dc3315.png)
 
 ### Manuals[​](#manuals "Direct link to Manuals")
 

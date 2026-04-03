@@ -10,15 +10,15 @@ There are two ways you can Edit the Rotorflight Website. Directly online through
 
 This is probably the easiest and most straightforward way to make changes. At the bottom of each page there is an **Edit this page** button. Click on this link to take you to the project folder on Github.
 
-![Editing](/assets/images/edit-1-ca16ef861ce7927edf9c35c80cc32103.png)
+![Editing](/rotorflight-docs/assets/images/edit-1-ca16ef861ce7927edf9c35c80cc32103.png)
 
 In the top right-hand corner of the page click on Edit
 
-![Editing](/assets/images/edit-2-c03f11135670e4a8077b5b0f24b95411.png)
+![Editing](/rotorflight-docs/assets/images/edit-2-c03f11135670e4a8077b5b0f24b95411.png)
 
 You can now edit the **Markdown** file as required. When complete click on the **Commit Changes** Button on the top Right corner of the page.
 
-![Editing](/assets/images/edit-3-01520ab8cd9816b90d931e4822048a33.png)
+![Editing](/rotorflight-docs/assets/images/edit-3-01520ab8cd9816b90d931e4822048a33.png)
 
 ## Adding pictures[​](#adding-pictures "Direct link to Adding pictures")
 
@@ -28,7 +28,7 @@ info
 
 Please do not use **Capitals**\* or **Underscore** (\_) in the image names.
 
-![Editing](/assets/images/edit-4-cf368462e54bb92af5d19b309df7346f.png)
+![Editing](/rotorflight-docs/assets/images/edit-4-cf368462e54bb92af5d19b309df7346f.png)
 
 ## Adding a new page[​](#adding-a-new-page "Direct link to Adding a new page")
 

@@ -2,7 +2,7 @@
 
 This page collects the generic hardware requirements for all Flight Controller designs for Rotorflight.
 
-The actual Reference Designs for Rotorflight-2 can be found [here](/docs/Manufacturers/Reference-Design.md).
+The actual Reference Designs for Rotorflight-2 can be found [here](/rotorflight-docs/docs/Manufacturers/Reference-Design.md).
 
 note
 

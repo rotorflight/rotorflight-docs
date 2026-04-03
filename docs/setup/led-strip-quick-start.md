@@ -24,7 +24,7 @@ Now go to the *Configuration* tab and enable *LED\_STRIP* under *Features*. Pres
 
 A piece of LED strip is ideal for testing. I'll be using one with 3 LEDs connected to Port B on the Nexus. Wiring is simple: just connect 5V, ground and LED\_STRIP (formerly known as TX6) to the strip.
 
-![Wiring](/assets/images/ledstrip-wiring-cc684e7e35799fac3c28f55937c931c3.jpg)
+![Wiring](/rotorflight-docs/assets/images/ledstrip-wiring-cc684e7e35799fac3c28f55937c931c3.jpg)
 
 ## The *LED Strip* tab[​](#the-led-strip-tab "Direct link to the-led-strip-tab")
 
@@ -51,7 +51,7 @@ Connect the Nexus to the Configurator using USB. 5V will now be available on por
 
 Your screen might now look like this, although the actual position of the three squares will likely be different:
 
-![LED Profile Adjustments](/assets/images/ledstrip-grid-94f8d398f658a24c7776fbc07633894c.png)
+![LED Profile Adjustments](/rotorflight-docs/assets/images/ledstrip-grid-94f8d398f658a24c7776fbc07633894c.png)
 
 ### Create the green navigation light[​](#create-the-green-navigation-light "Direct link to Create the green navigation light")
 
@@ -79,7 +79,7 @@ Your screen might now look like this, although the actual position of the three 
 * Press *Save*
 * You can use *Adjustments* to switch the LED profile from your transmitter. It might look something like:
 
-![LED Profile Adjustments](/assets/images/ledstrip-adjustments-4595f17e8a84421e5fc23f417049eb09.png)
+![LED Profile Adjustments](/rotorflight-docs/assets/images/ledstrip-adjustments-4595f17e8a84421e5fc23f417049eb09.png)
 
 Here's another video showing the techniques used in this Quick Start on a Walkera 4F200LM, for which I used two 3mm and four 5mm LEDs.
 
@@ -89,7 +89,7 @@ Here's another video showing the techniques used in this Quick Start on a Walker
 
 Here's a simple bus system for connecting individual LEDs using 4-pin Molex PicoBlade connectors. It can be used for connecting individual WS2811/2812 LEDs as well as conventional LEDs.
 
-![C189 PicoBlade Bus](/assets/images/ledstrip-c189-044253338cadc996a4c3731638aa6373.jpg)
+![C189 PicoBlade Bus](/rotorflight-docs/assets/images/ledstrip-c189-044253338cadc996a4c3731638aa6373.jpg)
 
 Conventional LEDs should come after the WS2811/2812 LEDs since they don't support *data in* and *data out*. Also, you can use 2-pin PicoBlade connectors for them.
 
@@ -104,7 +104,7 @@ Conventional LEDs should come after the WS2811/2812 LEDs since they don't suppor
 * Isolate the bottom of the bus with hot glue or epoxy
 * Connect the bus to the FC
 
-![Building a PicoBlade Bus](/assets/images/ledstrip-picobus-e2fef9b4e949d14653426846263a4157.jpg)
+![Building a PicoBlade Bus](/rotorflight-docs/assets/images/ledstrip-picobus-e2fef9b4e949d14653426846263a4157.jpg)
 
 ## Remapping to LED\_STRIP[​](#remapping-to-led_strip "Direct link to Remapping to LED_STRIP")
 
@@ -134,7 +134,7 @@ save
 
 ### FlyDragon F722[​](#flydragon-f722 "Direct link to FlyDragon F722")
 
-The FlyDragon F722 has a built in LED 'strip' with just one LED. It has the [Warning overlay](/docs/setup/led-strip-quick-start.md#flydragon-f722) enabled by default and is connected to the FC using pin B08. However, the *data out* pin of that LED isn't exposed, so you have to remap some other port to LED\_STRIP to make use of your own LEDs. There are several options: SCL, SDA, RPM-S and F.Port. SCL and SDA are located on the GPS port, which also provides 5V. Using SCL or SDA is preferred because they can have their own dedicated timer.
+The FlyDragon F722 has a built in LED 'strip' with just one LED. It has the [Warning overlay](/rotorflight-docs/docs/setup/led-strip-quick-start.md#flydragon-f722) enabled by default and is connected to the FC using pin B08. However, the *data out* pin of that LED isn't exposed, so you have to remap some other port to LED\_STRIP to make use of your own LEDs. There are several options: SCL, SDA, RPM-S and F.Port. SCL and SDA are located on the GPS port, which also provides 5V. Using SCL or SDA is preferred because they can have their own dedicated timer.
 
 #### 1. Remap SCL to LED\_STRIP[​](#1-remap-scl-to-led_strip "Direct link to 1. Remap SCL to LED_STRIP")
 

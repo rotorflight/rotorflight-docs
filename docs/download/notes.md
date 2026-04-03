@@ -2,10 +2,10 @@
 
 ## Update procedure[​](#update-procedure "Direct link to Update procedure")
 
-* Please follow the [**Backup and restore**](/docs/setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.1.1 config.
+* Please follow the [**Backup and restore**](/rotorflight-docs/docs/setup/backup-and-restore.md) process to save a backup of your Rotorflight v2.1.1 config.
 * Use `diff all` as the backup command.
-* [**Flash new version**](/docs/setup/flashing-the-firmware.md) with ***Full Chip Erase***
-* [**Restore your settings**](/docs/setup/backup-and-restore.md#loadrestore-config) from the backup file
+* [**Flash new version**](/rotorflight-docs/docs/setup/flashing-the-firmware.md) with ***Full Chip Erase***
+* [**Restore your settings**](/rotorflight-docs/docs/setup/backup-and-restore.md#loadrestore-config) from the backup file
 
 ## Breaking changes[​](#breaking-changes "Direct link to Breaking changes")
 
@@ -81,23 +81,23 @@ yaw_error_cutoff
 
 ## Whats New[​](#whats-new "Direct link to Whats New")
 
-* [Castle ESC Telemetry](/docs/setup/esc-telemetry.md#castle-esc-telemetry)
+* [Castle ESC Telemetry](/rotorflight-docs/docs/setup/esc-telemetry.md#castle-esc-telemetry)
 
 * JR DMSS XBUS Protocol added
 
-* [BlackBox Extra stuff](/docs/configurator/tabs/blackbox.md#blackbox-configuration)
+* [BlackBox Extra stuff](/rotorflight-docs/docs/configurator/tabs/blackbox.md#blackbox-configuration)
 
   * Disarm grace period
   * Initial erase
   * Rolling erase
 
-* [ESC Voltage and Current scaling](/docs/setup/esc-telemetry.md#calibrate-telemetry-values)
+* [ESC Voltage and Current scaling](/rotorflight-docs/docs/setup/esc-telemetry.md#calibrate-telemetry-values)
 
-* [Positive and Negative collective tilt](/docs/configurator/tabs/mixer.md#positive-and-negative-collective-tilt-correction)
+* [Positive and Negative collective tilt](/rotorflight-docs/docs/configurator/tabs/mixer.md#positive-and-negative-collective-tilt-correction)
 
-* [Inertia Precomp](/docs/configurator/tabs/profiles.md#inertia-precomp-gain)
+* [Inertia Precomp](/rotorflight-docs/docs/configurator/tabs/profiles.md#inertia-precomp-gain)
 
-* [Mixer Passthrough](/docs/setup/setup-mixer.md#mixer-override)
+* [Mixer Passthrough](/rotorflight-docs/docs/setup/setup-mixer.md#mixer-override)
 
 * Setpoint Boost
 

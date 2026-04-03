@@ -16,7 +16,7 @@ A number of ESC vendor/models have forward programming support from the transmit
 
 Enable the UART port for ESC telemetry on the Configuration Tab.
 
-![Forward Programming](/assets/images/forward-uart-17c9ab716c7d217585d4376c437737e6.png)
+![Forward Programming](/rotorflight-docs/assets/images/forward-uart-17c9ab716c7d217585d4376c437737e6.png)
 
 ### ESC telemetry protocol[​](#esc-telemetry-protocol "Direct link to ESC telemetry protocol")
 
@@ -26,7 +26,7 @@ Select one of the ESCs above that support Forward Programming. Enter this in the
 
 Most ESCs have a single telemetry wire. This is used to transmit telemetry information from the ESC to the flight controller. For forward programming functionality, this wire also need's to transmit information from the Flight controller to the ESC. By enabling the half-duplex bi-directional communications are enabled.
 
-![Forward Programming](/assets/images/forward-duplex-bcea0efff83e68604a46cca094ae9e6f.png)
+![Forward Programming](/rotorflight-docs/assets/images/forward-duplex-bcea0efff83e68604a46cca094ae9e6f.png)
 
 ### Pin Swap[​](#pin-swap "Direct link to Pin Swap")
 
@@ -56,50 +56,50 @@ Rotorflight has great support for both EdgeTX and Ethos. Please choose your radi
 
 ## EdgeTX[​](#edgetx "Direct link to EdgeTX")
 
-![EdgeTX](/assets/images/edgetx-logo-4a31de63bb29c6ec264fc50a3a50bab5.png)
+![EdgeTX](/rotorflight-docs/assets/images/edgetx-logo-4a31de63bb29c6ec264fc50a3a50bab5.png)
 
 ### Load Lua scripts onto radio[​](#load-lua-scripts-onto-radio "Direct link to Load Lua scripts onto radio")
 
 Ensure the latest version of Lua script is installed on your radio’s SD card.<br /><!-- -->To access ESC Forward Programming, run the Rotorflight lua script on your transmitter by pressing the ‘Sys’ button on your radio and selecting ‘Rotorflight 2’ (under Tools). Ensure the FBL and ESC are powered up (in most cases, the battery pack will need to be connected to the ESC).
 
-![Forward Programming](/assets/images/forward-etx-1-037ddbc2e74de17a6290c3eba9d919b4.png)
+![Forward Programming](/rotorflight-docs/assets/images/forward-etx-1-037ddbc2e74de17a6290c3eba9d919b4.png)
 
 ### Choose the connected ESC[​](#choose-the-connected-esc "Direct link to Choose the connected ESC")
 
-Scroll down to the bottom of the page and select the ESC you have in your Helicopter (will match the ESC Telemetry Protocol set in the FC).<br />![Forward Programming](/assets/images/forward-etx-2-37f20311a160f2b3d62abefc483f4a70.png)
+Scroll down to the bottom of the page and select the ESC you have in your Helicopter (will match the ESC Telemetry Protocol set in the FC).<br />![Forward Programming](/rotorflight-docs/assets/images/forward-etx-2-37f20311a160f2b3d62abefc483f4a70.png)
 
 ### Make your changes[​](#make-your-changes "Direct link to Make your changes")
 
 #### Page 1[​](#page-1 "Direct link to Page 1")
 
-![Forward Programming](/assets/images/forward-etx-3-371207db1a660da238572f1be1323e8a.png)
+![Forward Programming](/rotorflight-docs/assets/images/forward-etx-3-371207db1a660da238572f1be1323e8a.png)
 
 #### Page 2[​](#page-2 "Direct link to Page 2")
 
-![Forward Programming](/assets/images/forward-etx-4-6879b33de3564b639cbd7b5029eb57fb.png)
+![Forward Programming](/rotorflight-docs/assets/images/forward-etx-4-6879b33de3564b639cbd7b5029eb57fb.png)
 
 #### Page 3[​](#page-3 "Direct link to Page 3")
 
-![Forward Programming](/assets/images/forward-etx-5-85a413b463f9699d270f077bff51f817.png)
+![Forward Programming](/rotorflight-docs/assets/images/forward-etx-5-85a413b463f9699d270f077bff51f817.png)
 
 #### Page 4[​](#page-4 "Direct link to Page 4")
 
-![Forward Programming](/assets/images/forward-etx-6-4c3cbcdb11f2822b2df79cb417a6de6b.png)
+![Forward Programming](/rotorflight-docs/assets/images/forward-etx-6-4c3cbcdb11f2822b2df79cb417a6de6b.png)
 
 ## ETHOS[​](#ethos "Direct link to ETHOS")
 
-![ETHOS](/assets/images/ethos-logo-d565893f83fdd83bfa36d6df15aad088.png)
+![ETHOS](/rotorflight-docs/assets/images/ethos-logo-d565893f83fdd83bfa36d6df15aad088.png)
 
 ### Hardware[​](#hardware "Direct link to Hardware")
 
-From the Hardware section select ESC.<br />![Forward Programming](/assets/images/ethos-1-ff6bef877211b3faf436ba57d9c67383.png)
+From the Hardware section select ESC.<br />![Forward Programming](/rotorflight-docs/assets/images/ethos-1-ff6bef877211b3faf436ba57d9c67383.png)
 
 ### Esc Type[​](#esc-type "Direct link to Esc Type")
 
-Choose your ESC.<br />![Forward Programming](/assets/images/ethos-2-7633af56ebd3a7cc3e176ec71f7df264.png)
+Choose your ESC.<br />![Forward Programming](/rotorflight-docs/assets/images/ethos-2-7633af56ebd3a7cc3e176ec71f7df264.png)
 
 ### Basic/Advanced/Other[​](#basicadvancedother "Direct link to Basic/Advanced/Other")
 
-Different parameters are available in the Basic/Advanced/Other sections.<br />![Forward Programming](/assets/images/ethos-3-e05a9a36a8b4cc7a770a4adda89b7bc8.png)
+Different parameters are available in the Basic/Advanced/Other sections.<br />![Forward Programming](/rotorflight-docs/assets/images/ethos-3-e05a9a36a8b4cc7a770a4adda89b7bc8.png)
 
-Change your settings as required.<br />![Forward Programming](/assets/images/ethos-4-c6975253a6de17decbd58417a8bd7cf6.png)
+Change your settings as required.<br />![Forward Programming](/rotorflight-docs/assets/images/ethos-4-c6975253a6de17decbd58417a8bd7cf6.png)

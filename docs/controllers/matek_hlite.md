@@ -1,6 +1,6 @@
 # Matek G474-HLite
 
-![Matek G474HELI](/assets/images/matek-g474-hlite-8cda0b6f5d5511fa67b4003895036780.png)
+![Matek G474HELI](/rotorflight-docs/assets/images/matek-g474-hlite-8cda0b6f5d5511fa67b4003895036780.png)
 
 Specifications
 
@@ -12,7 +12,7 @@ MCU: STM32G474CE<br /><!-- -->IMU: ICM42688-P<br /><!-- -->Black Box: W25N01G (1
 
 When updating Rotorflight firmware. Please use the MATEKG474HELI target.
 
-![Matek G474Heli Target](/assets/images/g474-target-66d10567a28b3492d5ce025e81735eb6.png)
+![Matek G474Heli Target](/rotorflight-docs/assets/images/g474-target-66d10567a28b3492d5ce025e81735eb6.png)
 
 ### Motorised Tail[​](#motorised-tail "Direct link to Motorised Tail")
 
@@ -20,17 +20,17 @@ The H-Lite FC is configured with 4 servos and 1 motor. If you wish to use this b
 
 `resource SERVO 4 none`<br />`resource motor 2 A06`<br />`save`
 
-![Matek Motorised Tail](/assets/images/mt-motorised-eafff3a6ae9dec873830956b6fba47d5.png)
+![Matek Motorised Tail](/rotorflight-docs/assets/images/mt-motorised-eafff3a6ae9dec873830956b6fba47d5.png)
 
 ### Wiring[​](#wiring "Direct link to Wiring")
 
-![Wiring Diagram](/assets/images/g474-hlite_wiring-4eb7a911b255a59179b503a775585a9d.jpg)
+![Wiring Diagram](/rotorflight-docs/assets/images/g474-hlite_wiring-4eb7a911b255a59179b503a775585a9d.jpg)
 
 ### UART ports[​](#uart-ports "Direct link to UART ports")
 
-![UARTS](/assets/images/mt-uarts-94be99f37528279566a1d4e5c025e168.png)
+![UARTS](/rotorflight-docs/assets/images/mt-uarts-94be99f37528279566a1d4e5c025e168.png)
 
-![UARTS](/assets/images/mt-hl-ports-bfd33c6e4363dd49a400bfae70fc29f2.png)
+![UARTS](/rotorflight-docs/assets/images/mt-hl-ports-bfd33c6e4363dd49a400bfae70fc29f2.png)
 
 ### Manuals[​](#manuals "Direct link to Manuals")
 

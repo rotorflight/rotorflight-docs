@@ -2,11 +2,11 @@
 
 The default tuning parameters supplied with Rotorflight are designed to be safe and flyable for all helicopters. This means in most cases the helicopter will not be responsive and locked in on your first flight and some tuning will be required.
 
-These tuning parameters are located on the Profile tab in the [Configurator](/docs/configurator/tabs/profiles.md) and could also be changed via the [LUA Scripts](/docs/setup/lua-scripts.md) or [Adjustments](/docs/configurator/tabs/adjustments.md)
+These tuning parameters are located on the Profile tab in the [Configurator](/rotorflight-docs/docs/configurator/tabs/profiles.md) and could also be changed via the [LUA Scripts](/rotorflight-docs/docs/setup/lua-scripts.md) or [Adjustments](/rotorflight-docs/docs/configurator/tabs/adjustments.md)
 
 ## Tuning Profile PID:[​](#tuning-profile-pid "Direct link to Tuning Profile PID:")
 
-![Profile PID](/assets/images/tuning-pid-db3a4648294a386148d0ed8df1d85a6b.png)
+![Profile PID](/rotorflight-docs/assets/images/tuning-pid-db3a4648294a386148d0ed8df1d85a6b.png)
 
 caution
 
@@ -32,13 +32,13 @@ What do we mean "wobble"?? When tuning parameters are too high the helicopter wi
 
 3. Increase Integral (I) on each axis individually, until it wobbles, then back off a bit.
 
-4. Set Feedforward so that you get good response and Integral (I) remains near 0 in full stick flips and rolls (viewed using the blackbox logs). Feedforward can also be tuned by following the description in [Tune Feedforward](/docs/Tuning/Tune-Feedforward.md).
+4. Set Feedforward so that you get good response and Integral (I) remains near 0 in full stick flips and rolls (viewed using the blackbox logs). Feedforward can also be tuned by following the description in [Tune Feedforward](/rotorflight-docs/docs/Tuning/Tune-Feedforward.md).
 
 5. If necessary, then tweak P<!-- -->:D<!-- --> ratio to tweak stick response damping to your liking.
 
-6. Increase [HSI](/docs/Tuning/High-Speed-Integral.md) until it wobbles when jabbing elevator at full collective, back off a bit.
+6. Increase [HSI](/rotorflight-docs/docs/Tuning/High-Speed-Integral.md) until it wobbles when jabbing elevator at full collective, back off a bit.
 
-![Profile HSI](/assets/images/tuning-hsi-e43cad09851602245aefb19d8a01890e.png)
+![Profile HSI](/rotorflight-docs/assets/images/tuning-hsi-e43cad09851602245aefb19d8a01890e.png)
 
 7. Increase Boost (B) if you want sharper/faster response.
 

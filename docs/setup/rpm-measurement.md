@@ -36,13 +36,13 @@ If both Frequency Sensor and telemetry RPM signals are available, the Frequency 
 
 Plug the ESC RPM wire (often yellow wire) or separate RPM sensor (Hobbywing RPM etc) into the FC RPM input.
 
-![Frequency input](/assets/images/frequency-connection-d2f0270e40e73c9547ea2acbfeac515b.png)
+![Frequency input](/rotorflight-docs/assets/images/frequency-connection-d2f0270e40e73c9547ea2acbfeac515b.png)
 
 ### Configuration[​](#configuration "Direct link to Configuration")
 
-Then the frequency sensor can be turned ON with the feature flag located on the [***Motors***](/docs/configurator/tabs/motors.md#pwm-protocol) tab.
+Then the frequency sensor can be turned ON with the feature flag located on the [***Motors***](/rotorflight-docs/docs/configurator/tabs/motors.md#pwm-protocol) tab.
 
-![frequency\_2](/assets/images/frequency_2-6a55dfd504f87303dd3ad4054ddcf8e3.png)
+![frequency\_2](/rotorflight-docs/assets/images/frequency_2-6a55dfd504f87303dd3ad4054ddcf8e3.png)
 
 ## Bi-directional DSHOT[​](#bi-directional-dshot "Direct link to Bi-directional DSHOT")
 
@@ -76,7 +76,7 @@ Bidirectional DSHOT is fully supported from firmware version 32.7.0 onward. ESCs
 
 More details on Bidirectional DSHOT and RPM filtering at [Betaflight](https://betaflight.com/docs/wiki/guides/current/DSHOT-RPM-Filtering).
 
-![Filter](/assets/images/ESC_logo-728f9c40300a695afcf07ad34aa83288.png)
+![Filter](/rotorflight-docs/assets/images/ESC_logo-728f9c40300a695afcf07ad34aa83288.png)
 
 [**ESC Configurator**](https://esc-configurator.com/)
 
@@ -84,14 +84,14 @@ More details on Bidirectional DSHOT and RPM filtering at [Betaflight](https://be
 
 BLHeli\_S ESCs **do not support Bidirectional DSHOT**. In order to access this functionality with a BLheli\_S ESC, the firmware must be upgraded to Bluejay using the ESC Configurator.
 
-![Filter](/assets/images/ESC_logo-728f9c40300a695afcf07ad34aa83288.png)
+![Filter](/rotorflight-docs/assets/images/ESC_logo-728f9c40300a695afcf07ad34aa83288.png)
 
 [**ESC Configurator**](https://esc-configurator.com/)
 
 #### Bluejay[​](#bluejay "Direct link to Bluejay")
 
-Bluejay is an open source firmware for BLheli\_S ESCs which supports Bidirectional DSHOT, see [BlueJay](https://github.com/mathiasvr/bluejay). This firmware has been used successfully for several Rotorflight builds. Bluejay is capable of flashing individual settings to each ESC (tail and main) which is important when using an all in one (AIO) board. Bluejay v0.15 and later also supports disabling *damped light* (regenerative breaking), a must if your helicopter doesn't have a one way bearing. For example, a K110 will yaw/spin rapidly on throttle hold if *damped light* is enabled. Please follow the [Blheli\_S to Bluejay](/docs/setup/blheli_s-to-bluejay.md) walkthrough.
+Bluejay is an open source firmware for BLheli\_S ESCs which supports Bidirectional DSHOT, see [BlueJay](https://github.com/mathiasvr/bluejay). This firmware has been used successfully for several Rotorflight builds. Bluejay is capable of flashing individual settings to each ESC (tail and main) which is important when using an all in one (AIO) board. Bluejay v0.15 and later also supports disabling *damped light* (regenerative breaking), a must if your helicopter doesn't have a one way bearing. For example, a K110 will yaw/spin rapidly on throttle hold if *damped light* is enabled. Please follow the [Blheli\_S to Bluejay](/rotorflight-docs/docs/setup/blheli_s-to-bluejay.md) walkthrough.
 
-![Filter](/assets/images/bluejay_logo-3272ddcf195ab7d55e45ba00400f0e22.png)
+![Filter](/rotorflight-docs/assets/images/bluejay_logo-3272ddcf195ab7d55e45ba00400f0e22.png)
 
 [**ESC Configurator**](https://esc-configurator.com/)

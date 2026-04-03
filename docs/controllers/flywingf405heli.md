@@ -1,6 +1,6 @@
 # Flywing Heli405
 
-![Flywing Heli405](/assets/images/fw-helif405-056a8fcd022a1f1f35d08e3f16013344.png)
+![Flywing Heli405](/rotorflight-docs/assets/images/fw-helif405-056a8fcd022a1f1f35d08e3f16013344.png)
 
 Specifications
 
@@ -14,11 +14,11 @@ MCU: STM32F405RGT6 IMU: ICM42688<br /><!-- -->Black Box: 16MB<br /><!-- -->Baro:
 
 **Motorised Tail:**<br /><!-- -->Use the FLYWING\_HELI405M target for a Motorised tail. The 'M' is Motorised.
 
-![Flywing Heli405 Target](/assets/images/fw-target-cbee8f01f75fa599dcc8cb00069ab1f4.png)
+![Flywing Heli405 Target](/rotorflight-docs/assets/images/fw-target-cbee8f01f75fa599dcc8cb00069ab1f4.png)
 
 ### Wiring[​](#wiring "Direct link to Wiring")
 
-![Wiring Diagram v2.2](/assets/images/fw-wiring-6e5d43a57c860d25bd75608e48ee933c.png)
+![Wiring Diagram v2.2](/rotorflight-docs/assets/images/fw-wiring-6e5d43a57c860d25bd75608e48ee933c.png)
 
 ### UART ports[​](#uart-ports "Direct link to UART ports")
 
@@ -26,8 +26,8 @@ MCU: STM32F405RGT6 IMU: ICM42688<br /><!-- -->Black Box: 16MB<br /><!-- -->Baro:
 * UART 2 - Top JST-GH port
 * UART 6 - DSM and SBUS
 
-![UARTS](/assets/images/fw-uarts-f48bd9c82aa7726f97893ffd0f5ecda4.png)
+![UARTS](/rotorflight-docs/assets/images/fw-uarts-f48bd9c82aa7726f97893ffd0f5ecda4.png)
 
-![Ports](/assets/images/fw-ports2-de14d664ea175b3e43d8dc6a3882b417.png)
+![Ports](/rotorflight-docs/assets/images/fw-ports2-de14d664ea175b3e43d8dc6a3882b417.png)
 
-![Ports](/assets/images/fw-ports-1c8ddfb2d121059f2ec0812006b3cc47.png)
+![Ports](/rotorflight-docs/assets/images/fw-ports-1c8ddfb2d121059f2ec0812006b3cc47.png)

@@ -11,7 +11,7 @@ The swashplate can be configured to 'wiggle' as an indication for when you are
 
 If arming is ready to be enabled and there is no prevention flags active (ready to arm) the swashplate will wiggle as an indication.<br /><!-- -->It can be enabled or disabled from the cli:<br />`set wiggle_enable_ready = ON or OFF (default ON)`<br />`save`
 
-[](/assets/medias/arming-ready-50af317c322ee8557fbbe7459c5ac81b.mp4)
+[](/rotorflight-docs/assets/medias/arming-ready-50af317c322ee8557fbbe7459c5ac81b.mp4)
 
 ## FC Armed[​](#fc-armed "Direct link to FC Armed")
 
@@ -30,11 +30,11 @@ If the flight controller identifies a configuration fault it will do an error mo
 
 * Arm switch is active<br /><!-- -->It can be enabled or disabled from the cli:<br />`set wiggle_enable_error = ON or OFF (default ON)`<br />`save`
 
-  [](/assets/medias/arming-fail-83affead7ef485af4b3686d40307c06f.mp4)
+  [](/rotorflight-docs/assets/medias/arming-fail-83affead7ef485af4b3686d40307c06f.mp4)
 
 ## FC Fatal error[​](#fc-fatal-error "Direct link to FC Fatal error")
 
-The following [**Arm disable flags**](/docs/setup/arming.md#disable-flags-description) will trigger a FC fatal error.<br /><!-- -->It can be enabled or disabled from the cli:<br />`set wiggle_enable_fatal = ON or OFF (default ON)`<br />`save`
+The following [**Arm disable flags**](/rotorflight-docs/docs/setup/arming.md#disable-flags-description) will trigger a FC fatal error.<br /><!-- -->It can be enabled or disabled from the cli:<br />`set wiggle_enable_fatal = ON or OFF (default ON)`<br />`save`
 
 * 'NOGYRO'
 * 'LOAD'

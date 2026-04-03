@@ -20,7 +20,7 @@ Before you start remapping your drone FC to be used with Rotorflight, keep in mi
 
 4- In case you are using a PWM controlled esc then Rotorflight will require an rpm signal for governor and RPM Filtering, RPM input should be on a 32bit separate timer (TIM2 or TIM5).
 
-![Mixer Tab](/assets/images/remapping-1-03ea9d64f2a9cb3c4f22340d53fedcc7.png)
+![Mixer Tab](/rotorflight-docs/assets/images/remapping-1-03ea9d64f2a9cb3c4f22340d53fedcc7.png)
 
 ## Custom defaults remapping spreadsheet[​](#custom-defaults-remapping-spreadsheet "Direct link to Custom defaults remapping spreadsheet")
 
@@ -36,7 +36,7 @@ Spreadsheet for remapping Betaflight targets for use with Rotorflight. The sprea
 
 Some targets in the betaflight target repository have additional #define lines above board\_name. Please do not chose them. In the example below copy only from board\_name down. The `Board_name` MUST be the first line in the spreadsheet.
 
-![Mixer Tab](/assets/images/remapping-2-626682e0cc3b714810a23985f931637b.png)
+![Mixer Tab](/rotorflight-docs/assets/images/remapping-2-626682e0cc3b714810a23985f931637b.png)
 
 ## Configuring a Motor output[​](#configuring-a-motor-output "Direct link to Configuring a Motor output")
 
@@ -50,7 +50,7 @@ We recommend that Freq inputs are allocated to pins that have Timer 2 or Timer 5
 
 In this example, we have chosen to use the LED\_STRIP pin as our frequency input. We see there is only one option (Timer1) on AF1. We can use this pin but must not allocate any of the Servos or Motors to Timer1. Only the motor pins share this timer so we can choose either AF2 (timer3) or AF3 (timer8).
 
-![frequency\_1](/assets/images/frequency_1-fee92965b2dc819dc007a9ddbbaa9177.png)
+![frequency\_1](/rotorflight-docs/assets/images/frequency_1-fee92965b2dc819dc007a9ddbbaa9177.png)
 
 ### The lines which configure the frequency signal[​](#the-lines-which-configure-the-frequency-signal "Direct link to The lines which configure the frequency signal")
 

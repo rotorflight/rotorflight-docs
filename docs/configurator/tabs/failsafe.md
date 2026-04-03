@@ -1,6 +1,6 @@
 # Failsafe
 
-![Failsafe Tab](/assets/images/failsafe-main-655e9cdcc857b699eae1ab5452f4012e.png)
+![Failsafe Tab](/rotorflight-docs/assets/images/failsafe-main-655e9cdcc857b699eae1ab5452f4012e.png)
 
 In the event of receiver failsafe the flight controller can be configured to set the commands to a predetermined position.
 

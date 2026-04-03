@@ -22,13 +22,13 @@ Choose what you want to back up. There are several options.
 
 ### Step 3.[​](#step-3 "Direct link to Step 3.")
 
-* Click on ***\[Clear output window]***. This removes any previous commands so they are not captured in your backup.<br />![Step 3](/assets/images/restore-2a-4bd63265419cb69c5fd6cc5c5a259965.png)
+* Click on ***\[Clear output window]***. This removes any previous commands so they are not captured in your backup.<br />![Step 3](/rotorflight-docs/assets/images/restore-2a-4bd63265419cb69c5fd6cc5c5a259965.png)
 
-* Type the backup command (from step 2) in the window and click ***\[ENTER]***.<br />![Step 3](/assets/images/restore-2-733c9d2a7a4852fc27b87adea09a9937.png)
+* Type the backup command (from step 2) in the window and click ***\[ENTER]***.<br />![Step 3](/rotorflight-docs/assets/images/restore-2-733c9d2a7a4852fc27b87adea09a9937.png)
 
 ### Step 4.[​](#step-4 "Direct link to Step 4.")
 
-![Step 4](/assets/images/restore-3-ea44eb31e7f33348597299e1344c6b57.png)
+![Step 4](/rotorflight-docs/assets/images/restore-3-ea44eb31e7f33348597299e1344c6b57.png)
 
 After the command is complete click ***\[Save to File]*** and store on your computer.
 
@@ -38,16 +38,16 @@ Use this process to load remapping config files for your specific flight control
 
 ### Step 1.[​](#step-1-1 "Direct link to Step 1.")
 
-![Step 1](/assets/images/restore-4-bbe0989aca859325ee3e238ccdebb143.png)
+![Step 1](/rotorflight-docs/assets/images/restore-4-bbe0989aca859325ee3e238ccdebb143.png)
 
 * Open the CLI tab and click ***\[Load from File]*** and select the file on your computer.
 
 ### Step 2.[​](#step-2-1 "Direct link to Step 2.")
 
-* Click on the ***\[Execute]*** from the pop up. ![Step 2](/assets/images/restore-5-77931c6093694fe8dbab88038f77715b.png)
+* Click on the ***\[Execute]*** from the pop up. ![Step 2](/rotorflight-docs/assets/images/restore-5-77931c6093694fe8dbab88038f77715b.png)
 
 ### Step 3.[​](#step-3-1 "Direct link to Step 3.")
 
-![Step 2](/assets/images/restore-6-c815bf44df3dbca8c103cefa431be006.png)
+![Step 2](/rotorflight-docs/assets/images/restore-6-c815bf44df3dbca8c103cefa431be006.png)
 
 Once the backup is loaded type **save** in the command line and ***\[ENTER]***. The flight controller will now reboot.

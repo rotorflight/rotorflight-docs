@@ -8,15 +8,15 @@ Blackbox is a flight data recording feature in Rotorflight. A Blackbox log conta
 
 * A flash chip on the FC. Logging is fast, but storage is limited, unless you are using a dedicated RF controller(FlyDragon F7 has 128MByte Flash), and copying log files can be slow.
 * An SD card on the FC, it's fast and storage is only limited by the capacity of the SD card.
-* An external logging device: [OpenLager](/docs/setup/openlager.md). These devices write the log to a micro SD card.
+* An external logging device: [OpenLager](/rotorflight-docs/docs/setup/openlager.md). These devices write the log to a micro SD card.
 
 A flash chip or an SD card on the FC are nice, but if your FC doesn't have that you can connect an OpenLager logging device.
 
-![Blackbox Tab](/assets/images/blackbox-main-665333b013a8ce1507b3ba3b4a00834e.png)
+![Blackbox Tab](/rotorflight-docs/assets/images/blackbox-main-665333b013a8ce1507b3ba3b4a00834e.png)
 
 ## Blackbox Configuration[​](#blackbox-configuration "Direct link to Blackbox Configuration")
 
-![Blackbox Tab](/assets/images/blackbox-config-233b7ce7a8411dddfdcb05c35f322a7e.png)
+![Blackbox Tab](/rotorflight-docs/assets/images/blackbox-config-233b7ce7a8411dddfdcb05c35f322a7e.png)
 
 ### Logging Device[​](#logging-device "Direct link to Logging Device")
 
@@ -25,16 +25,16 @@ Here you can select the device type.
 * **No Logging**: Disable Logging.
 * **Onboard Flash**: Log to the onboard flash chip (if available).
 * **SD Card**: Log to the onboard SD Card (if available).
-* **Serial Port**: Log to an external logging device (eg. [OpenLager](/docs/setup/openlager.md)).
+* **Serial Port**: Log to an external logging device (eg. [OpenLager](/rotorflight-docs/docs/setup/openlager.md)).
 
 ### Logging Mode[​](#logging-mode "Direct link to Logging Mode")
 
 Select the preferred logging mode.
 
 * **No Logging**: Disable Logging.
-* **Normal**: Start logging when both [**ARM**](/docs/setup/arming.md) and [**BLACKBOX**](/docs/configurator/tabs/modes.md#blackbox) switches are active.
-* **Armed**: Start logging when [**ARM**](/docs/setup/arming.md) switch is active.
-* **Switch**: Start logging when [**BLACKBOX**](/docs/configurator/tabs/modes.md#blackbox) switch is active.
+* **Normal**: Start logging when both [**ARM**](/rotorflight-docs/docs/setup/arming.md) and [**BLACKBOX**](/rotorflight-docs/docs/configurator/tabs/modes.md#blackbox) switches are active.
+* **Armed**: Start logging when [**ARM**](/rotorflight-docs/docs/setup/arming.md) switch is active.
+* **Switch**: Start logging when [**BLACKBOX**](/rotorflight-docs/docs/configurator/tabs/modes.md#blackbox) switch is active.
 
 ### Logging Rate[​](#logging-rate "Direct link to Logging Rate")
 
@@ -68,7 +68,7 @@ Choose which *axis* is being debugged. Applies to some of the debug modes.
 
 ## Blackbox Logging Options[​](#blackbox-logging-options "Direct link to Blackbox Logging Options")
 
-![Blackbox Tab](/assets/images/blackbox-options-35b04c2ab4a4e4a9535e0d9e7890af16.png)
+![Blackbox Tab](/rotorflight-docs/assets/images/blackbox-options-35b04c2ab4a4e4a9535e0d9e7890af16.png)
 
 Here you activate the parameters that you want to log.
 
@@ -76,14 +76,14 @@ For general use activate the following options `Command` `Setpoint` `Mixer` `PID
 
 ## Onboard dataflash chip[​](#onboard-dataflash-chip "Direct link to Onboard dataflash chip")
 
-![Blackbox Tab](/assets/images/blackbox-save-2df0d9d410326961e527a63d1a5417ec.png)
+![Blackbox Tab](/rotorflight-docs/assets/images/blackbox-save-2df0d9d410326961e527a63d1a5417ec.png)
 
 * **Erase** - Erase Blackbox Data.
 * **Save to file** - Download Blackbox Data.
 
 ## Mass Storage Mode[​](#mass-storage-mode "Direct link to Mass Storage Mode")
 
-![Blackbox Tab](/assets/images/blackbox-mass-a8df07996a750b8b04fd8e6c87c9074c.png)
+![Blackbox Tab](/rotorflight-docs/assets/images/blackbox-mass-a8df07996a750b8b04fd8e6c87c9074c.png)
 
 # Blackbox Explorer
 

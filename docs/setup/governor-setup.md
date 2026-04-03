@@ -11,7 +11,7 @@ Governor Options
 
 Configuring a single profile with **Full Headspeed** set to the Maximum desired headspeed.
 
-![Governor Setup](/assets/images/governor-setup-1-e925e2e705cf2cc41521793684733e0a.png)
+![Governor Setup](/rotorflight-docs/assets/images/governor-setup-1-e925e2e705cf2cc41521793684733e0a.png)
 
 Transmitter throttle settings are configured to Separate throttle positions for each desired headspeed.
 
@@ -41,12 +41,12 @@ Our Idle up switch (headspeed switch) is just a 3 position switch assigned to an
 
 #### Enable Profile Switching[​](#enable-profile-switching "Direct link to Enable Profile Switching")
 
-This example switches between Profiles 1-3<br /><!-- -->More details can be found in the [**Profile Switching Example**](/docs/setup/profile-switching-example.md)
+This example switches between Profiles 1-3<br /><!-- -->More details can be found in the [**Profile Switching Example**](/rotorflight-docs/docs/setup/profile-switching-example.md)
 
-![Governor Setup](/assets/images/governor-setup-3-0f85f1291e59ae0e14412d5f61e49117.png)
+![Governor Setup](/rotorflight-docs/assets/images/governor-setup-3-0f85f1291e59ae0e14412d5f61e49117.png)
 
 #### Set profile Full Headspeed[​](#set-profile-full-headspeed "Direct link to Set profile Full Headspeed")
 
 For each of the profiles set a separate **Full Headspeed**
 
-![Governor Setup](/assets/images/governor-setup-2-939893dcd18f7c63f6cf4bbe00fbd0a6.png)
+![Governor Setup](/rotorflight-docs/assets/images/governor-setup-2-939893dcd18f7c63f6cf4bbe00fbd0a6.png)

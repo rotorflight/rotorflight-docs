@@ -47,13 +47,13 @@ Consult [ELRS Website](https://www.expresslrs.org/software/switch-config/) for m
 
 ## Radio Setup[​](#radio-setup "Direct link to Radio Setup")
 
-This [Generic Rotorflight Radio Model](/assets/files/Generic_RF-935521af677ed9cdc31f834af24c40eb.yml) Yaml file contain all the options listed above.
+This [Generic Rotorflight Radio Model](/rotorflight-docs/assets/files/Generic_RF-935521af677ed9cdc31f834af24c40eb.yml) Yaml file contain all the options listed above.
 
 ### Radio Inputs Page Setup[​](#radio-inputs-page-setup "Direct link to Radio Inputs Page Setup")
 
 Configure the inputs on the radio as per the below image.
 
-![Generic Setup](/assets/images/generic-setup-input-e94d46071f3e3c21869e19aaf499cbc7.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-input-e94d46071f3e3c21869e19aaf499cbc7.png)
 
 Based on the image above:
 
@@ -93,15 +93,15 @@ The 3-position **SC** Switch will control *Backup Buffer Pack* as below:
 
 ### Radio Mixer Page Setup[​](#radio-mixer-page-setup "Direct link to Radio Mixer Page Setup")
 
-Additionally you can use CH11-AUX6 and CH12-AUX7 to perform in flight parameter adjustment using adjustment functions from the [Adjustments Tab](/docs/configurator/tabs/adjustments.md#adjustment-functions).
+Additionally you can use CH11-AUX6 and CH12-AUX7 to perform in flight parameter adjustment using adjustment functions from the [Adjustments Tab](/rotorflight-docs/docs/configurator/tabs/adjustments.md#adjustment-functions).
 
-![Generic Setup](/assets/images/generic-setup-mixer-9eacacbaee27e112b5114f1de7b937c7.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-mixer-9eacacbaee27e112b5114f1de7b937c7.png)
 
 The above settings will allow you to adjust 30 parameters in flight using the radio trim switches with combination of the 6-position buttons.
 
 The below table explain how each parameter can be accessed.
 
-![Generic Setup](/assets/images/generic-setup-adjustments-f6e808108eec8d4857baf1f86412066c.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-adjustments-f6e808108eec8d4857baf1f86412066c.png)
 
 For example when 6-position *button 1* is activated, the *pitch trim switch* will change *Pitch P Gain* value, and when 6-position *button 3* is activated, the *throttle trim switch* will change *Governor D Gain* value, and so on.
 
@@ -125,7 +125,7 @@ aux 0 0 0 1800 2100 0 0
 
 Proceed to Adjustment Tab and setup Profiles and rates switching as per below picture.
 
-![Generic Setup](/assets/images/generic-setup-prof-switch-a17d379c0f8d88673fdd8bd17b4e35d8.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-prof-switch-a17d379c0f8d88673fdd8bd17b4e35d8.png)
 
 Alternatively in CLI.
 
@@ -138,7 +138,7 @@ adjfunc 1 1 1 900 2100 1 975 2025 975 2025 0 0 3
 
 Proceed to Modes Tab and setup Rescue mode as per below picture.
 
-![Generic Setup](/assets/images/generic-setup-rescue-a0d9b0b5f6c30f62ecd01b01651402d6.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-rescue-a0d9b0b5f6c30f62ecd01b01651402d6.png)
 
 Alternatively in CLI.
 
@@ -150,7 +150,7 @@ aux 1 53 2 1800 2100 0 0
 
 Proceed to Modes Tab and setup Blackbox Modes as per below picture.
 
-![Generic Setup](/assets/images/generic-setup-blackbox-aec0ca4b84ecdf4b8690e89d165956bd.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-blackbox-aec0ca4b84ecdf4b8690e89d165956bd.png)
 
 Alternatively in CLI.
 
@@ -181,7 +181,7 @@ Buffer packs like the [1st Buffer-Pack](https://1st-rc.com/en/product/1st-buffer
 
 ### In-Flight Profile Parameters Setup[​](#in-flight-profile-parameters-setup "Direct link to In-Flight Profile Parameters Setup")
 
-![Generic Setup](/assets/images/generic-setup-adjustments-f6e808108eec8d4857baf1f86412066c.png)
+![Generic Setup](/rotorflight-docs/assets/images/generic-setup-adjustments-f6e808108eec8d4857baf1f86412066c.png)
 
 Since there is many functions required to perform the In-flight adjustment as per the above table, you can directly copy the below commands to CLI and save.
 
@@ -218,4 +218,4 @@ adjfunc 30 58 5 1950 2100 6 1175 1225 1775 1825 5 10 200
 adjfunc 31 48 5 1950 2100 6 1250 1300 1700 1750 5 10 200
 ```
 
-Consult [Rotorflight Adjustments](/docs/configurator/tabs/adjustments.md) for more info on how to setup the above adjustments.
+Consult [Rotorflight Adjustments](/rotorflight-docs/docs/configurator/tabs/adjustments.md) for more info on how to setup the above adjustments.

@@ -1,8 +1,8 @@
 # Servos
 
-Open the Servos tab and confirm that you have the correct number of servos. If this is not the case, please confirm you have installed the correct firmware (either 'M' motorized or servo tail) or if you are using a drone FC that your [Remapping](/docs/setup/remapping.md) is correct.
+Open the Servos tab and confirm that you have the correct number of servos. If this is not the case, please confirm you have installed the correct firmware (either 'M' motorized or servo tail) or if you are using a drone FC that your [Remapping](/rotorflight-docs/docs/setup/remapping.md) is correct.
 
-![Servo Tab](/assets/images/servo-1-a6408dc2dc7aadbc01bb58cae552d58b.png)
+![Servo Tab](/rotorflight-docs/assets/images/servo-1-a6408dc2dc7aadbc01bb58cae552d58b.png)
 
 ## Servo Numbering[​](#servo-numbering "Direct link to Servo Numbering")
 
@@ -40,11 +40,11 @@ The toggle at the bottom of this page enables the servo overrides. The purpose o
 
 The servo override slider scale is in degrees
 
-![Servo Tab](/assets/images/servo-3-51968afaa0d88e24f90bf472e1a58e94.png)
+![Servo Tab](/rotorflight-docs/assets/images/servo-3-51968afaa0d88e24f90bf472e1a58e94.png)
 
 ## Servo Configuration parameters[​](#servo-configuration-parameters "Direct link to Servo Configuration parameters")
 
-![Servo Tab](/assets/images/servo-4-694fd14838b674b4fedfcdae11186457.png)
+![Servo Tab](/rotorflight-docs/assets/images/servo-4-694fd14838b674b4fedfcdae11186457.png)
 
 ### Center[​](#center "Direct link to Center")
 
@@ -64,7 +64,7 @@ This is the servo frequency. This will be specified by the manufacturer. A large
 
 note
 
-For Rotorflight 2 it is recommended that tail servos are assigned to a different timer than cyclic servos (see [Remapping](/docs/setup/remapping.md)).
+For Rotorflight 2 it is recommended that tail servos are assigned to a different timer than cyclic servos (see [Remapping](/rotorflight-docs/docs/setup/remapping.md)).
 
 This means that tail servos can be set to a different frequency (i.e. faster).
 

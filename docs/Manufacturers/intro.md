@@ -4,7 +4,7 @@ The Rotorflight team have collaborated with several manufacturers to produce Fli
 
 ## Flight Controller Specifications[​](#flight-controller-specifications "Direct link to Flight Controller Specifications")
 
-We have documented some flight controller [Design Requirements](/docs/Manufacturers/Design-Requirements.md). Also there are several pin and MCU specific [Reference Designs](/docs/Manufacturers/Reference-Design.md). These are specified to optimize resources and provide a consistent starting point.
+We have documented some flight controller [Design Requirements](/rotorflight-docs/docs/Manufacturers/Design-Requirements.md). Also there are several pin and MCU specific [Reference Designs](/rotorflight-docs/docs/Manufacturers/Reference-Design.md). These are specified to optimize resources and provide a consistent starting point.
 
 note
 

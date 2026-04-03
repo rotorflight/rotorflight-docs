@@ -1,6 +1,6 @@
 # FrSky Vantac RF007
 
-![FrSky Vantac RF007](/assets/images/007-overview-f73de3e72dc38f7e5eaaf5cc85756a60.png)
+![FrSky Vantac RF007](/rotorflight-docs/assets/images/007-overview-f73de3e72dc38f7e5eaaf5cc85756a60.png)
 
 Specifications
 
@@ -57,17 +57,17 @@ Specifications
 
 When updating Rotorflight firmware. Please use the VANTAC\_RF007.
 
-![FrSky Vantac RF007](/assets/images/007-target-cf0c478bc5bb7dc6edb4105921d8c6a0.png)
+![FrSky Vantac RF007](/rotorflight-docs/assets/images/007-target-cf0c478bc5bb7dc6edb4105921d8c6a0.png)
 
 ### Wiring[​](#wiring "Direct link to Wiring")
 
-![FrSky Vantac RF007 ports](/assets/images/007-ports-4fb51a271e961d9f1c3f400b30b2231e.png)
+![FrSky Vantac RF007 ports](/rotorflight-docs/assets/images/007-ports-4fb51a271e961d9f1c3f400b30b2231e.png)
 
 ### UART ports[​](#uart-ports "Direct link to UART ports")
 
 All the UARTS on the Vantac 007 are labeled to match each port. Just enter the function you wish to use for each port such as SerialRx (receiver), ESC Telemetry, blackbox, GPS etc.
 
-![Frsky UARTS](/assets/images/007-uarts-4b0e19584414211aca708c467a3867f9.png)
+![Frsky UARTS](/rotorflight-docs/assets/images/007-uarts-4b0e19584414211aca708c467a3867f9.png)
 
 # Pin mappings
 
