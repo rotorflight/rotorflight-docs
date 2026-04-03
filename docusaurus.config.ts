@@ -3,6 +3,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import type { PluginOptions as ClientRedirectOptions } from "@docusaurus/plugin-client-redirects";
 import type { PluginOptions as LlmsPluginOptions } from "@signalwire/docusaurus-plugin-llms-txt";
+import type { ThemeConfigAlgolia } from "@docsearch/docusaurus-adapter";
 
 import { themes } from "prism-react-renderer";
 const lightCodeTheme = themes.github;
@@ -173,7 +174,7 @@ const config: Config = {
         },
       } satisfies LlmsPluginOptions,
     ],
-    "docusaurus-lunr-search",
+    "@docsearch/docusaurus-adapter",
   ],
 
   presets: [
@@ -192,6 +193,9 @@ const config: Config = {
           path: "./announcement",
           showReadingTime: true,
           onUntruncatedBlogPosts: "ignore",
+        },
+        theme: {
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
@@ -338,6 +342,15 @@ const config: Config = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
+    docsearch: {
+      // The application ID provided by Algolia
+      appId: process.env.ALGOLIA_APP_ID,
+      // Public API key: it is safe to commit it
+      apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+      contextualSearch: true,
+      searchPagePath: "search",
+    } satisfies ThemeConfigAlgolia,
   } satisfies Preset.ThemeConfig,
 };
 

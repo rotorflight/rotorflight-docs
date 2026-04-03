@@ -11,6 +11,11 @@ jobs:
   deploy:
     name: Test deployment
     runs-on: ubuntu-latest
+    env:
+      ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+      ALGOLIA_SEARCH_API_KEY: ${{ vars.ALGOLIA_SEARCH_API_KEY }}
+      ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
+      FASTER: true
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
