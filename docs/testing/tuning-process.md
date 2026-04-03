@@ -32,11 +32,11 @@ Cyclic cross coupling
 * Beginner
 * Intermediate
 
-Cyclic cross coupling happens mainly due to the pitch axis inputs. When the pitch command is given, due to the high moment of inertia of the helicopter in the pitch axis, the frame would "lag" behind the rotor disks. This difference in position creates a torque on the rotor blade and thus transfer to the roll axis due to gyroscopic precession. More details can be found on the [**Cyclic Cross Coupling** page](/rotorflight-docs/docs/testing/Cyclic-Cross-Coupling)
+Cyclic cross coupling happens mainly due to the pitch axis inputs. When the pitch command is given, due to the high moment of inertia of the helicopter in the pitch axis, the frame would "lag" behind the rotor disks. This difference in position creates a torque on the rotor blade and thus transfer to the roll axis due to gyroscopic precession. More details can be found on the [**Cyclic Cross Coupling** page](/docs/testing/Cyclic-Cross-Coupling)
 
 **Note:** It is good to tune this early in your tuning process while you helicopter is on defaults. During this time the control loop is probably slow and it will be easier to see the unwanted rotations.
 
-![Cyclic Cross Coupling](/rotorflight-docs/assets/images/cross-coupling-25d22578a7ba3a24859e8cc1bb5ba1e7.png)
+![Cyclic Cross Coupling](/assets/images/cross-coupling-25d22578a7ba3a24859e8cc1bb5ba1e7.png)
 
 1. during hover, shake the elevator stick forward and backwards.
 
@@ -69,7 +69,7 @@ Proportional (P). Proportional control is fast and reacts immediately on the dif
 
 **note:** if Proportional is set too high it will cause rapid oscillations. If this occurs we need to reduce it until the oscillations stop.
 
-![Cyclic P](/rotorflight-docs/assets/images/cyclic-p-28cc6c730de1542cb65794ea7c61adb3.png)
+![Cyclic P](/assets/images/cyclic-p-28cc6c730de1542cb65794ea7c61adb3.png)
 
 1. Increase P on each axis until the helicopter begins to vibrate or wobble when you conduct an aggressive move.
 
@@ -102,7 +102,7 @@ Tune Cyclic D
 
 **Purpose:** Derivative (D) is used to dampen oscillations. The ratio between the P and D also controls your stick feel. The higher the D gain is the more 'robotic' the feel.<br /><!-- -->increase the D until we get the desired stick feel OR until we see high frequency vibrations (we have gone too far). **Caution:** Derivative is very susceptible to noise. Make sure your filters are enabled and working before increasing D.
 
-![Cyclic D](/rotorflight-docs/assets/images/cyclic-d-19aca3d4fb17043283764a688422cf0b.png)
+![Cyclic D](/assets/images/cyclic-d-19aca3d4fb17043283764a688422cf0b.png)
 
 1. Increase D gain.
 
@@ -138,7 +138,7 @@ Tune Cyclic I
 
 **Purpose:** Integral (I)
 
-![Cyclic I](/rotorflight-docs/assets/images/cyclic-i-6464512622cae0086b85479665822738.png)
+![Cyclic I](/assets/images/cyclic-i-6464512622cae0086b85479665822738.png)
 
 1. Fly xyz movement.
 
@@ -168,7 +168,7 @@ Tune Cyclic FF
 
 **Purpose:** Feed-Forward (FF)
 
-![Cyclic FF](/rotorflight-docs/assets/images/cyclic-ff-a8a30e8abbddb209ec789012986ee850.png)
+![Cyclic FF](/assets/images/cyclic-ff-a8a30e8abbddb209ec789012986ee850.png)
 
 1.
 
@@ -195,7 +195,7 @@ Tune Cyclic Boost
 
 **Purpose:** Boost (B)
 
-![Cyclic FF](/rotorflight-docs/assets/images/cyclic-b-e9a62d65dddf16360c5a71fde98d7ce7.png)
+![Cyclic FF](/assets/images/cyclic-b-e9a62d65dddf16360c5a71fde98d7ce7.png)
 
 * increased incrementally on each axis match how sharp the response you want. Usually only pitch needs a significant B-gain.
 * Too high on B-gain results in unwanted oscillations at stops.
@@ -211,7 +211,7 @@ iTerm Relax
 
 **Purpose:** iTerm Relax -
 
-![Cyclic FF](/rotorflight-docs/assets/images/iterm-relax-a0b78e163ab65885c8b06be838b028bc.png)
+![Cyclic FF](/assets/images/iterm-relax-a0b78e163ab65885c8b06be838b028bc.png)
 
 This is not a requirement as at low collective throws and headspeeds the control loop works fine. Just use default.
 

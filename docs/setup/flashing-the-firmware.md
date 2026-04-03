@@ -29,20 +29,20 @@ Open the Rotorflight configurator and click on **Update Firmware**.
 * Select Full chip Erase, this will remove all previous configurations.
 * Click on **Load firmware\[online]**
 
-![Flashing](/rotorflight-docs/assets/images/flash-2-bf2f672d6137f8a4f989168d041728fc.png)
+![Flashing](/assets/images/flash-2-bf2f672d6137f8a4f989168d041728fc.png)
 
 ### Step 2.[​](#step-2 "Direct link to Step 2.")
 
 * Check and confirm the target board is correct.
 * Click on **Flash Firmware**.
 
-![Flashing](/rotorflight-docs/assets/images/flash-3-3caa3b107fac9ebe864eff4b77ec1b40.png)
+![Flashing](/assets/images/flash-3-3caa3b107fac9ebe864eff4b77ec1b40.png)
 
 ### Step 3.[​](#step-3 "Direct link to Step 3.")
 
 * When the programming is successful click on **Connect**.
 
-![Flashing](/rotorflight-docs/assets/images/flash-4-453cd5acf97707f4ac440eff700bb103.png)
+![Flashing](/assets/images/flash-4-453cd5acf97707f4ac440eff700bb103.png)
 
 ## Troubleshooting[​](#troubleshooting "Direct link to Troubleshooting")
 
@@ -56,7 +56,7 @@ If you're on Windows and it hangs while displaying *Initiating reboot to bootloa
 * In the Configurator, go to the *CLI* tab and type `dfu`. This puts the FC in Device Firmware Update mode.
 * Download and start [Zadig](https://zadig.akeo.ie/), select *Options > List all Devices*, select *STM32 BOOTLOADER* and change the driver to WinUSB. *Flash firmware* should now work.
 
-![Flashing](/rotorflight-docs/assets/images/flash-5-43a28b0686f5586a51813c07c9e1c5cf.png)
+![Flashing](/assets/images/flash-5-43a28b0686f5586a51813c07c9e1c5cf.png)
 
 ### Error 'Rebooting device to bootloader: FAILED'[​](#error-rebooting-device-to-bootloader-failed "Direct link to Error 'Rebooting device to bootloader: FAILED'")
 
@@ -66,10 +66,10 @@ If you receive the error *Rebooting device to bootloader: FAILED* then you will 
 
 Ok, so after rebooting you are no longer able to connect to the FC via USB. This can happen if your configuration file is not correct (USB becomes unallocated) or if you have loaded the incorrect firmware for the processor type. Don't worry: the bootloader can't be bricked, it's in ROM. You can always reload the firmware via the DFU (device firmware update) mode. Most flight controllers have a 'boot' button or pins which are used to enter DFU mode. Generally you can just enter DFU mode by pushing the button or bridging the boot pins as you plug the USB in (while the Rotorflight Configurator is open).
 
-![Flashing](/rotorflight-docs/assets/images/flash-6-f79c1ecd3d32d2f3a685f85382bdd2ec.png)
+![Flashing](/assets/images/flash-6-f79c1ecd3d32d2f3a685f85382bdd2ec.png)
 
 Rotorflight Configurator will display *DFU - STM32 BOOTLOADER* at the top of the page after a successful DFU connection. Click on the *Update Firmware* and follow the steps above to re-flash the firmware as required.
 
-![Flashing](/rotorflight-docs/assets/images/flash-7-46fd2492aec928e0d09d64f5891c8504.png)
+![Flashing](/assets/images/flash-7-46fd2492aec928e0d09d64f5891c8504.png)
 
 If you still having problem connecting, install the [Impulse-RC Driver Fixer](https://impulserc.com/pages/downloads).

@@ -18,7 +18,7 @@ Many SAB and ALIGN helicopters use this method.
 
 Chose your helicopter and modify the motor pinion to match what you are installing.
 
-![gears](/rotorflight-docs/assets/images/gears-52b4a1ed5e3d2f64d42953f1f7a1e8c9.png)
+![gears](/assets/images/gears-52b4a1ed5e3d2f64d42953f1f7a1e8c9.png)
 
 Type 1: two stage gear
 
@@ -34,7 +34,7 @@ Choose Helicopter
 
 Chose your helicopter and modify the motor pinion to match what you are installing.
 
-![gears](/rotorflight-docs/assets/images/gears2-6b0131320d4cdc4744001ce305c54ac4.png)
+![gears](/assets/images/gears2-6b0131320d4cdc4744001ce305c54ac4.png)
 
 Type 2: two stage gear
 
@@ -50,7 +50,7 @@ Choose Helicopter
 
 This gear system was used for the Gaui Hurricane.
 
-![gears](/rotorflight-docs/assets/images/gears3-5e03699076b82951821c6c92f2ddd6e9.png)
+![gears](/assets/images/gears3-5e03699076b82951821c6c92f2ddd6e9.png)
 
 Type 3: two stage gear
 

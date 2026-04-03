@@ -1,6 +1,6 @@
 # Modes
 
-![Modes](/rotorflight-docs/assets/images/modes-main-762cdfd3421e8bf8c292237d8a4a4b3a.png)
+![Modes](/assets/images/modes-main-762cdfd3421e8bf8c292237d8a4a4b3a.png)
 
 | **ID** | **Mode Name**          | **Function**                                                                                                                                                                         |
 | ------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -22,7 +22,7 @@
 
 The mode selector tab enables several modes and functions to be enabled or disabled via the TX. This is done by configuring a channel on the TX, such as a switch, that you wish to use for operating the mode. From the **Modes** tab, select the required Mode you wish to assign and click **Add Range**, then select the AUX channel matching your TX switch and set a range where you wish the mode to be active. If the mode you wish to use is not visible deselect "Hide unused modes".
 
-![Modes](/rotorflight-docs/assets/images/modes-1-5de827ff90ec5d08bead05f738a98d22.png)
+![Modes](/assets/images/modes-1-5de827ff90ec5d08bead05f738a98d22.png)
 
 ## ARM[​](#arm "Direct link to ARM")
 
@@ -60,7 +60,7 @@ The purpose of the rescue mode is to arrest any decent, then put the helicopter 
 * if it is still inverted (and the flip toggle enabled) it will flip to upright.
 * Hover collective is now applied.
 
-After enabling Rescue mode configure the rescue settings from the [**Profiles**](/rotorflight-docs/docs/configurator/tabs/profiles.md#rescue-settings) Tab.
+After enabling Rescue mode configure the rescue settings from the [**Profiles**](/docs/configurator/tabs/profiles.md#rescue-settings) Tab.
 
 ## 6G flight modes[​](#6g-flight-modes "Direct link to 6G flight modes")
 
@@ -80,7 +80,7 @@ Acro trainer mode does not provide self leveling of the helicopter. It does howe
 
 Enable ANGLE/HORIZON/TRAINER modes from the tabs. Allocate the AUX channel and range to suit.
 
-![Modes](/rotorflight-docs/assets/images/modes-3g-c84bf5673cc47ba2b13464acfddacaf9.png)
+![Modes](/assets/images/modes-3g-c84bf5673cc47ba2b13464acfddacaf9.png)
 
 In the example above AUX3, and AUX6 are each assigned to a separate 3 position switches on the TX.
 
@@ -89,14 +89,14 @@ In the example above AUX3, and AUX6 are each assigned to a separate 3 position s
 * Nothing is assigned when AUX3 switch fully down. This means the Heli is in Normal or 3D mode.
 * Trainer mode is assigned to AUX6 at full up position of the AUX6 switch.
 
-After enabling 3G modes you can configure their settings from the [**Profiles**](/rotorflight-docs/docs/configurator/tabs/profiles.md#auto-leveling-settings) Tab.
+After enabling 3G modes you can configure their settings from the [**Profiles**](/docs/configurator/tabs/profiles.md#auto-leveling-settings) Tab.
 
 ## BLACKBOX[​](#blackbox "Direct link to BLACKBOX")
 
-When you select [**Normal**](/rotorflight-docs/docs/configurator/tabs/blackbox.md#logging-mode) logging mode, you need to activate the blackbox switch in the Modes Tab.
+When you select [**Normal**](/docs/configurator/tabs/blackbox.md#logging-mode) logging mode, you need to activate the blackbox switch in the Modes Tab.
 
 Enable Blackbox from the tabs. Allocate an AUX channel and range to suit.
 
-![Modes](/rotorflight-docs/assets/images/modes-blackbox-5a3be826b3e62ce26200b69128970e5a.png)
+![Modes](/assets/images/modes-blackbox-5a3be826b3e62ce26200b69128970e5a.png)
 
 Now in this example the blackbox logging will start when the heli is armed and AUX5 is at full up position.

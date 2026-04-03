@@ -8,4 +8,4 @@ If you click the radio links to the left of the demo page it will stop the demo
 
 ## Rotorflight Status[​](#rotorflight-status "Direct link to Rotorflight Status")
 
-![Ethos Simulator](/rotorflight-docs/assets/images/ethos-simulator-bc7a1b56c2360996265dd8a0d01a0a86.png)
+![Ethos Simulator](/assets/images/ethos-simulator-bc7a1b56c2360996265dd8a0d01a0a86.png)

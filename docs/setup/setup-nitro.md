@@ -2,7 +2,7 @@
 
 1. First plug in the throttle servo into the ESC port. Go to the motors page.
 
-   ![Nitro setup](/rotorflight-docs/assets/images/nitro-setup-1-671600b5144ec889ec718c9f4722bc04.png)
+   ![Nitro setup](/assets/images/nitro-setup-1-671600b5144ec889ec718c9f4722bc04.png)
 
 2. Set *ESC throttle protocol* to PWM
 
@@ -12,7 +12,7 @@
 
 5. Set the *Gear ratios* and set *Main Motor pole count* to 2.
 
-   ![Nitro setup](/rotorflight-docs/assets/images/nitro-setup-2-c4fc892c1d3ed2de604ceb217b46b387.png)
+   ![Nitro setup](/assets/images/nitro-setup-2-c4fc892c1d3ed2de604ceb217b46b387.png)
 
 The *Motor Stop Throttle PWM value* is the throttle cut<br />*0% Throttle PWM value* is the motor idle<br />*100% Throttle PWM value* is the motor on full throttle
 
@@ -28,11 +28,11 @@ This way you make sure when you power the heli that the throttle servo is not bi
 
 10. Set *0% throttle PWM value* around 100µs above *Motor Stop Throttle PWM value*.
 
-    ![Nitro setup](/rotorflight-docs/assets/images/nitro-setup-3-84f039395f9b274f1c760b399ae49364.png)
+    ![Nitro setup](/assets/images/nitro-setup-3-84f039395f9b274f1c760b399ae49364.png)
 
 11. Enable *Motor Override* and set the slider to 100%. Now adjust the *100% Throttle PWM value* until the carb is fully open. To adjust/save the value you need to save and reboot every time.
 
-    ![Nitro setup](/rotorflight-docs/assets/images/nitro-setup-4-4c73a1dd5097c948bafc34cfea703f56.png)
+    ![Nitro setup](/assets/images/nitro-setup-4-4c73a1dd5097c948bafc34cfea703f56.png)
 
 12. Set *Governor mode* to MODE1 or STANDARD.
 

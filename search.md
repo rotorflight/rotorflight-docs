@@ -2,16 +2,16 @@
 
 ROTORFLIGHT 2 Official Release 2.2.0 is now available. See downloads tab
 
-[![Rotorflight logo](/rotorflight-docs/img/Rotorflight_outline.svg)![Rotorflight logo](/rotorflight-docs/img/Rotorflight_outline_dark.svg)](/rotorflight-docs/)
+[![Rotorflight logo](/img/Rotorflight_outline.svg)![Rotorflight logo](/img/Rotorflight_outline_dark.svg)](/)
 
-[**Rotorflight**](/rotorflight-docs/)[Announcements](/rotorflight-docs/announcement)[Tutorial](/rotorflight-docs/docs.md)[Download](/rotorflight-docs/docs/download/notes.md)[Manufacturers](/rotorflight-docs/docs/Manufacturers/intro.md)[Tuning](/rotorflight-docs/docs/Tuning/First-Flight-Filter-Tuning.md)[Contributing](/rotorflight-docs/docs/Contributing/intro.md)
+[**Rotorflight**](/)[Announcements](/announcement)[Tutorial](/docs.md)[Download](/docs/download/notes.md)[Manufacturers](/docs/Manufacturers/intro.md)[Tuning](/docs/Tuning/First-Flight-Filter-Tuning.md)[Contributing](/docs/Contributing/intro.md)
 
-[2.2.0](/rotorflight-docs/docs.md)
+[2.2.0](/docs.md)
 
-* [Next](/rotorflight-docs/docs/next)
-* [2.2.0](/rotorflight-docs/docs.md)
-* [2.1.0](/rotorflight-docs/docs/2.1.0)
-* [2.0.0](/rotorflight-docs/docs/2.0.0/download/configurator)
+* [Next](/docs/next)
+* [2.2.0](/docs.md)
+* [2.1.0](/docs/2.1.0)
+* [2.0.0](/docs/2.0.0/download/configurator)
 
 [Support Us](https://www.rotorflight.org/donate)[GitHub](https://github.com/rotorflight)
 
@@ -27,11 +27,11 @@ Powered by[](https://www.algolia.com/)
 
 Docs
 
-* [Tutorial](/rotorflight-docs/docs/examples.md)
-* [Download](/rotorflight-docs/docs/download/configurator.md)
-* [Manufacturers](/rotorflight-docs/docs/Manufacturers/intro.md)
-* [Tuning](/rotorflight-docs/docs/Tuning/First-Flight-Filter-Tuning.md)
-* [Contributing](/rotorflight-docs/docs/Contributing/intro.md)
+* [Tutorial](/docs/examples.md)
+* [Download](/docs/download/configurator.md)
+* [Manufacturers](/docs/Manufacturers/intro.md)
+* [Tuning](/docs/Tuning/First-Flight-Filter-Tuning.md)
+* [Contributing](/docs/Contributing/intro.md)
 
 Community
 
@@ -46,6 +46,6 @@ More
 
 * [GitHub](https://github.com/rotorflight)
 
-![Rotorflight logo](/rotorflight-docs/img/Rotorflight_outline.png)![Rotorflight logo](/rotorflight-docs/img/Rotorflight_outline.png)
+![Rotorflight logo](/img/Rotorflight_outline.png)![Rotorflight logo](/img/Rotorflight_outline.png)
 
 Copyright © 2026 Team Rotorflight. Built with Docusaurus.

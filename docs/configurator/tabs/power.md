@@ -2,7 +2,7 @@
 
 Set up all your power and battery related settings. Set the voltage and current sensor sources and calibration so that the FC can read the values and warn you accordingly. You can also check the current power measurements.
 
-![Power](/rotorflight-docs/assets/images/power-main-d2e61083593b5ad1bcd547b5a4937398.png)
+![Power](/assets/images/power-main-d2e61083593b5ad1bcd547b5a4937398.png)
 
 ## Power State[​](#power-state "Direct link to Power State")
 

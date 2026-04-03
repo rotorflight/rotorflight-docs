@@ -1,6 +1,6 @@
 # Reference Design
 
-Design Please read the page [Rotorflight FC Design Requirements](/rotorflight-docs/docs/Manufacturers/Design-Requirements.md) first. It is explaining the generic requirements for all Rotorflight designs.
+Design Please read the page [Rotorflight FC Design Requirements](/docs/Manufacturers/Design-Requirements.md) first. It is explaining the generic requirements for all Rotorflight designs.
 
 **For an FC to be fully supported by Rotorflight-2, it *must* follow one of the reference designs.**
 

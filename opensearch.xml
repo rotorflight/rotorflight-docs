@@ -4,8 +4,8 @@
   <ShortName>Rotorflight</ShortName>
   <Description>Search Rotorflight</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://rotorflight.github.io/rotorflight-docs/img/rffavicon.ico</Image>
-  <Url type="text/html" method="get" template="https://rotorflight.github.io/rotorflight-docs/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://rotorflight.github.io/rotorflight-docs/opensearch.xml" />
-  <moz:SearchForm>https://rotorflight.github.io/rotorflight-docs/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://rotorflight.github.io/img/rffavicon.ico</Image>
+  <Url type="text/html" method="get" template="https://rotorflight.github.io/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://rotorflight.github.io/opensearch.xml" />
+  <moz:SearchForm>https://rotorflight.github.io/</moz:SearchForm>
 </OpenSearchDescription>

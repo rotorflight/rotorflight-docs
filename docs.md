@@ -11,20 +11,20 @@ Rotorflight does NOT support multi-rotor drones, nor airplanes; it is only for t
 
 Most Betaflight F4, F7 and H7 flight controllers are compatible with Rotorflight. They usually require some soldering.
 
-Since 2023 there are also commercial [**Rotorflight controllers**](/rotorflight-docs/docs/controllers.md) available, such as the
+Since 2023 there are also commercial [**Rotorflight controllers**](/docs/controllers.md) available, such as the
 
-* [**Flywing HELI-F405**](/rotorflight-docs/docs/controllers/flywingf405heli.md)
-* [**FlyDragon F722 v2.2**](/rotorflight-docs/docs/controllers/flydragon2.2.md)
-* [**Radiomaster Nexus**](/rotorflight-docs/docs/controllers/rm-nexus.md)
-* [**Matek G474Heli**](/rotorflight-docs/docs/controllers/matek_heli.md)
-* [**Matek G474H-lite**](/rotorflight-docs/docs/controllers/matek_hlite.md)
+* [**Flywing HELI-F405**](/docs/controllers/flywingf405heli.md)
+* [**FlyDragon F722 v2.2**](/docs/controllers/flydragon2.2.md)
+* [**Radiomaster Nexus**](/docs/controllers/rm-nexus.md)
+* [**Matek G474Heli**](/docs/controllers/matek_heli.md)
+* [**Matek G474H-lite**](/docs/controllers/matek_hlite.md)
 
 ## Latest Rotorflight 2 Version[​](#latest-rotorflight-2-version "Direct link to Latest Rotorflight 2 Version")
 
-Rotorflight v2.1 is the current stable release and can be found in the [**V2.1.0 Stable Downloads**](/rotorflight-docs/docs/download/configurator.md).
+Rotorflight v2.1 is the current stable release and can be found in the [**V2.1.0 Stable Downloads**](/docs/download/configurator.md).
 
 ## Next release testing[​](#next-release-testing "Direct link to Next release testing")
 
-The next release of Rotorflight is currently in the development phase. Snapshots can be found [**Development Downloads**](/rotorflight-docs/docs/next/download/configurator).
+The next release of Rotorflight is currently in the development phase. Snapshots can be found [**Development Downloads**](/docs/next/download/configurator).
 
-![Introduction](/rotorflight-docs/assets/images/intro-1-47550b31dd051216a24e836f6dcf9f6c.jpg)
+![Introduction](/assets/images/intro-1-47550b31dd051216a24e836f6dcf9f6c.jpg)

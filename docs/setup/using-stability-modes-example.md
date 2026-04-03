@@ -18,13 +18,13 @@ We need to assign a spare channel to your 3 position switch (SwC) (can be any ch
 
 **Step 1:** Assign Ch8 to the SwC in the **Mixers** tab
 
-![Stability Mode](/rotorflight-docs/assets/images/Stability_1-ffa682b3fa035b7df24959c066740a6f.png)
+![Stability Mode](/assets/images/Stability_1-ffa682b3fa035b7df24959c066740a6f.png)
 
 ### Configure flight controller[​](#configure-flight-controller "Direct link to Configure flight controller")
 
 **Step 2:** looking at the channels in the **receiver** tab we can see that Aux3 is the eight channel. This matches our TX assignment from step 1. Confirm the 3 position switch changes the value seen on Aux3,
 
-![Stability Mode](/rotorflight-docs/assets/images/Stability_2-036b7c5d0fb74b4a10c69db3c24dfe8f.png)
+![Stability Mode](/assets/images/Stability_2-036b7c5d0fb74b4a10c69db3c24dfe8f.png)
 
 **Step 3:**
 
@@ -32,11 +32,11 @@ We need to assign a spare channel to your 3 position switch (SwC) (can be any ch
 * Chose the Horizon Mode. Enter AUX3 in the channel and adjust the range to cover the middle section of the control channel as shown in the picture below.
 * Chose the Angle Mode. Enter Aux3 in the channel and adjust the range to cover the top section of the control range as shown in the pic below.
 
-![Stability Mode](/rotorflight-docs/assets/images/Stability_3-f307411be80469651e0a4a30d28dd02b.png)
+![Stability Mode](/assets/images/Stability_3-f307411be80469651e0a4a30d28dd02b.png)
 
 **Step 4:** Test and confirm the switch position enables and disables modes as required These values are added to the Profile so will result in (e.g. SwC down = No mode active = Acro, SwC middle = Horizon Mode, SwC up = Angle Mode).
 
-![Stability Mode](/rotorflight-docs/assets/images/Stability_4-b1a098cc439e2b317e1c96686ad2c1d8.png)
+![Stability Mode](/assets/images/Stability_4-b1a098cc439e2b317e1c96686ad2c1d8.png)
 
 ### Calibrating stability modes[​](#calibrating-stability-modes "Direct link to Calibrating stability modes")
 
@@ -46,7 +46,7 @@ Your Roll, Pitch and Yaw should all be trimmed to the stick centre configured in
 
 Stability modes will try to stabilize to the calibrated flight controller level. This is rarely perfectly aligned with the actual helicopters attitude where there is no drift (least drift... there will always be some due to wind etc). In order to calibrate this in-flight we have 2 methods:
 
-* Using the [Rotorflight Lua Scripts](/rotorflight-docs/docs/setup/lua-scripts.md)
+* Using the [Rotorflight Lua Scripts](/docs/setup/lua-scripts.md)
 * Stick controls
 
 Note that it's also possible to adjust accelerometer trim values in the *Configuration* tab of the Configurator.
@@ -55,7 +55,7 @@ Note that it's also possible to adjust accelerometer trim values in the *Configu
 
 Select *Accelerometer Trims* from the Rotorflight main menu. Test fly the heli tail-in in either Angle or Horizon mode, with sticks at centre. If the heli drifts left, increase roll trim. If it drifts backwards, increase pitch trim. Each time you make a change to the trims long press the wheel/roller. The Page menu should now pop up. Select Save page. Adjust trims until the heli flies hands off without any pronounced drift in any direction.
 
-![Stability Mode](/rotorflight-docs/assets/images/Stability_5-7481c6e6d5f19af31252f51f8cc8abac.png)
+![Stability Mode](/assets/images/Stability_5-7481c6e6d5f19af31252f51f8cc8abac.png)
 
 #### Calibration using Stick Commands[​](#calibration-using-stick-commands "Direct link to Calibration using Stick Commands")
 
@@ -72,6 +72,6 @@ You will also need to enable this in the CLI<br />`set enable_stick_commands = O
 | Trim Acc Forwards  | HIGH       | CENTER | HIGH   | CENTER |
 | Trim Acc Backwards | HIGH       | CENTER | LOW    | CENTER |
 
-![Stick Commands](/rotorflight-docs/assets/images/stick-commands-e499ed6a74ab2297e634ca5ccc8fddf1.png)
+![Stick Commands](/assets/images/stick-commands-e499ed6a74ab2297e634ca5ccc8fddf1.png)
 
 For more details of the stick commands. See the [Betaflight Wiki here.](https://betaflight.com/docs/development/Controls#Yaw%20Control%E2%80%8B)

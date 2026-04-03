@@ -8,7 +8,7 @@ This section is about Rotorflight communicating with the ESC. The settings for y
 
 ## ESC/Motor Features[​](#escmotor-features "Direct link to ESC/Motor Features")
 
-![Motor and ESC](/rotorflight-docs/assets/images/motor-main-27d2cd369cb6181fbce245803d9a0cd0.png)
+![Motor and ESC](/assets/images/motor-main-27d2cd369cb6181fbce245803d9a0cd0.png)
 
 ### ESC Throttle Protocol[​](#esc-throttle-protocol "Direct link to ESC Throttle Protocol")
 
@@ -18,7 +18,7 @@ Set the ESC protocol required for your ESC under *ESC/Motor protocol*. Usually t
 
 ### ESC Telemetry Protocol[​](#esc-telemetry-protocol "Direct link to ESC Telemetry Protocol")
 
-Set the ESC [*Telemetry*](/rotorflight-docs/docs/setup/esc-telemetry.md) protocol if your esc supports it.
+Set the ESC [*Telemetry*](/docs/setup/esc-telemetry.md) protocol if your esc supports it.
 
 ![Motor and ESC](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAAC5CAIAAABFmVFWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAA1uSURBVHhe7Z1Lkts4EkDrJHOoiqhL1NKfOUC1DjCXkKOv0QuXT+BVL73wriO8650mP8hEJpigKImUDClfMNwQCIJUPiYogGPP08ePHz9//vzfZExA3xP85z//O+Q26AbplwrH3kBfoPDvg+ffwx+y689/Dod/asvj21+HX4fD17/a+q//Hn79aCvD7Y8f7gJya7auwr+/148Qbg1iKvzdtkUKw5qlWyrceFuqUCNes/B7GWWBashUFkOsEDTYSq9Qx+029bkSzpgK+9tShWpOC9CmmANtEmJXeTj8CQVSWBpQmXtWhdWlyVebeSg4Ffa3ixSWdIw2dGAUam96eDFHe7GZ7G295kB6bFuqUGOqDmBDi4zUQDPmFxVUoY606MMqNANvgfa6CzBZntt0W6bQZJJV2O7VwRM2P5Cqwvks1C2zcPm2SCHmlgSxOPBioD2WSRtXcjqqwmJdZRtJ1hb0w+U6Dvuz5zbdugodJu1qFpoxUB2wOeDrd3HMskkJYFtac4XmRET+Ip3fYoW5DbSlwuG3VDj8lgqH31Lh8FtRWH78JQOSCocnVPi+e/K8vZc9P/bPT897meQJ2H73rXwgpjWO97fSpxbsSZ+//KQawFzJy15rE0tXoRGAH0tYt1L4c/9iT8HHmkoq1zspMSxRaHJlbYUR1lzl55fnTMSQpVlYPp6lEIUxom2ShYb4FKmwS1ehpeZEX+EUVmhCX9Oro5BGS6CRiuAppqmZAEuy0DyHTs5CPLbu+rZjnXNZaE9XoJpMwQ5LFFLon3YY1JMVYsGD/cwqNKdD0t8Rtlbos1CYV9iMvYHjxLBEoYnjyQrdzxAUFg+keAp51OGx9ZGZ+XeMrkKHxhEVelDAnEL8ACYKZXicKMRiPem0pqCja1IJFSYjkQqHJxUOTyocnlQ4PKlweEKFRyYJU8zcwOAWWc4lnokuheYzzTXgd3HLrZed4ubcuUK6Bn94W0MLF6lwQ4WX0uZce6lwkS/PD5eFuGbG2JWztz3dzoBoI4V7acyHQ8saUAzf/if/SRV2NQ7LEGvNQupthwMjUjvRBaOX3S56V4zXpqtL7VeDj7v3ex1Ip5RvTqEkSXXtFMNkJJWQYUu55bEsJiSgohNOxxGEDp+fX7RMHTqFYkh7s4urtoGlNuZyHRjgLsH296rQ3KpArUFDOhBJRNyd7oKuodFYqzBrjjt/373s3788izmKtetNoq+VLvpGp6Nz8XAsX7PrZDxOVejDZBVqaNSNv+Ul56SgEaRswMOhffMnoPG1vYWVXYV6ee57QWUpP5hCb0si6CqPxhfqKdtquElnyT8418t+P41vqNBFv6uwHOuuB79Rg//Kw3CyQhNKDBmbQ4USSiybZ2HVVmNdwmdOATX2KQjliS0roJrzd4aerkWE6X1mcffBeJyuEMJ2wS9ShpRrQiC2hnqTnUcUcpmgC+go5P6bLyXco8LNKQ+/lcGMjCXdNTdRuGKscQQuCeTG6gfi6gp53FsvBeuo3hsn752bZGGyJqlweFLh8KTC4QkVHpkXTnEzOcXO5M7msknbdALK34Wmj7Q0oaw/ybkSd64wmGnUGvhS9zAJ+e0VXgpeuV2yqZeKN8fNL28FzlF4yQIbtKwBhQbQA/9JFdizLUOsNQuptzVf+ZrzDk1X4ZT6zYskepbQHY1hMpJKaLCl3PJYFhMSONEJp+MBDTq83itfuyaglSNychaiIR0zJSLuTndBl9jVWKswa447v+orX3vN7vpH41SFPkxWoXpVNzbo1IYPLAWIvkStjJnQvvkTmFfoTtFTqJc3/V6CuxUGY70s1Mqj8YX627/y9WA/nV2/PScrNKHEkLE5VCihxDKnF7Y02mqssTd8/tRTQM2VX/la3/WLjMjpCuEb6w8B+ywZ75UvmWOGfRACocLNKQ+/lUElXtJDcBOFK8YaR+CSjm6sfiCurpDHvfVS0E7vHjAFgZtkYbImqXB4UuHw9BSaH9wbPWPsxCC5gFBhM9WdThPXIBWuRKiwdbbNNC5ZhyVZ6NHVEJNDvPaByFFQ8/y2w5Yv9EZwukxjs3DaJ+3dvUl13kB9QoU2ps2SlUlQWfHCHC0LVLiX29sFM169LBp0Al4V1j5pkkdH8QXwIVRefyS/FzoKBZ04N9oMmLKqWXW6dU7Vhkh7Vej6FJ1VsKlMIo4oZDQ5TMIpLr59hVU8jrFGoe8zFZ5MpBAi3nhSB14GkVl4Y8IsxJBVAe7XjYlmkEa4l3VOFIpm1Vkl1T6xK9aZChcTKgRIm6BJhmBwCxpWFMaItulAqv/js+YOkDJja1LhInoKV8UNlcnKpMLhSYXDcxWFyZakwuFJhcOTCocnVNjOw2jGfYOZmU4u3Swz8SxQqOspJ3J53FPhEo4ppHWT8/JvxbinwhnmFWLBra4BncWw5vUsj73lI+Qx/f1NOQS7ZeTmoLVvfkVM1awryEI6e3tJj82MQru6rdQE9UvSLsTcoMYdh2Jvq1nyLkuybK6et1VI98oZQ/p901WI4L87rqEn3DqL6HSRrY69QjnKNVadxqs50BXwYtJfQF8hvT+iVKuBw4+LX8/GCt1NcIpC/Ntr0mFi6CrU5KMMEG03zEIsuAtLmOMK+aPc/nWXfxYuVmhtYT0fuFBh01WCLFHIgZMgojBGtHUUlqMgg9u40z1ByFkWK6SWUk6QUGEyEqlweFLh8KTC4UmFw5MKhycVDs+MQpqBFXTaB/Cszs+vdQqIH+q0ryCLO359DpnWeNx8UTHTxKSrEDXU2NF0Xj7CLlyutHN/jGlVhceavXUyngq3IFYYxKiusKBCfDtYG0CgqSZWWI9NhVsQKpw4QLQSFe6/QV7KWAo5Sv+O4cUK8UBGDmeF+1IvLUlh80++YUs9KXb7MI4jhW7NU9GEIIU/asggXlBvZDQKsSUHFNtMKUdp/6ycL4COtWXqh8dtPgWWqQejrV7bI3C2wmJO49UodEj2mDaFWuNOqueq2hDJZtWG6IFYoIzUwmMQKWzTiNHKohADCnGUeDUKwySYUyh6CKewpCYg5/LPQrkeuZmwq7r3/gkVNjEiaog1ZFjQ3zWXKtRkoupYoc1CvTxzIPb29g57w7PfK7FC1uBvf/2oCimUYutShdYWqqqJJbcOlckcnddcg/ZJ16m7HoSeQoDDx9igVIV29LtYIYAHMnI4e13yi5Sha/anuHtmFA4J2K2Dx2NwZwrNCPEw3JFCHNUfLgWBO8vCRyQVDk8qHJ5IYZldOeBXPs8CW2gqbZ9A1Mz80Hdz9mR9FmShmfwxNC2rFX5uBzMz9zZxOhdM1uWYQsrIZp7eKKQ24hjK/v9Sq8nRZHXmFfLiSCugVdis18AuEkmHYQ/hSk2yFnMKUVU0Bk4U1lSDAglTqVBwg3CyOn2Fda25ZaoQH3hYgw9CPqS45KRMtqSnEFecewPgVGEZOev4WeSB2nwQbk2sMJBkiPbSgGlzjnTu33I6sTmBQhwVZx9goeD3N3z9axKXZxf5INycqUL8DRlgnIUKSbzLuflUTtYiyMJkLFLh8KTC4UmFw5MKhycVDk8qHJ45hdOpHr1X8sjMD2eBjlyXuRIzCnF5ZffmFzlRoXWDS6n6jsJO5AP9yTb0FX6jv/WC7yvMIlmrkFTR0vZ0LSZXZ65DVyEIoPTyryxOUai7kk3pKQRzRRWaUDeLB1KkyeBkGzoKm9dGagLLHmmWCm9FqDB4WVF+1EwGUiUH0lsRKbRpR1QZJyik+6DJy2QDAoXu4ceoucUKsZNOy2Rdpgr9T9CCpNS8Qkc+Ba9EkIXJWKTC4UmFw5MKhycVDk8qHJ4ZhXaNZsUZHk5a2nknLsWZU+BHpU5OaK7Z0vtbA49DT2Fdv0ZwOmg+Xkg7uXQz0WZNwH7Ecq7YTYgVbr1mjf2LDHcuuld8YuFgwHdPKgwJFYYLNFLJOfQFPiE2NesCjSghPbvSNMw8n5HzklJhSKSwHegYyQZKlBJKkzQmvjVvSGrpymYeQs+/Z/+3iF1GTsBTNKTRsxVqjkrQcW9NXNBDwbVKJjmEhzQOnEK+VxhqllkYEilcMpDaoQ+Djns9+OCcVRjkXChJK1NhSKgwCG79ObMkC4VTFTadM6lwnlghhBefVPqUosiWjzy+cehNxG180Q2VT1bIzewwznPEVNinpxCgZ1XBxBS10b/nzDuaHyOFMv04QyHCd4mgSUl2W+wFPCYzCjuQwsmPneRmpMLhSYXDc7rC5DcjFQ5PKhyeVDg8Mwrtmtlqr5mS1ekopMm1zpppTn2qxXChNVmfWOFk3UReU5xAKrwSocK56MdrZmZJjA6si3Oln9pA5pQ8vzSvjnX9LNfMTiJSODt5jxSa1xR4LA+59j6o5Toms1Tuitay2dxZg/ZDs5rCyTsEo1BfVCFSb89iy65xcpxI4RkDqX2tUWp85lXBqXBlQoXTnzO1pqNQQUM0JJr7ILNwS2KFFFPzswLDWkJsnlU6fhpb9bloK2u5Hp4KV6KjEMG4CzamWk+/JzkLSXlBchTzVe+D2iDSlgovYEZhMgapcHhS4fCkwuFBhZ8+fSqfkgH5+PHj0+vr64cPH0BmMhyQfq+vr/8HPlksfITcL4AAAAAASUVORK5CYII=)
 
@@ -30,7 +30,7 @@ Looking for Castle ESC Telemetry? Castle ESCs use a single wire protocol. Both t
 
 Most RC helicopter ESCs manufacturers (e.g. Hobbywing, YGE, Scorpion ,or Castle) use [PWM](https://en.wikipedia.org/wiki/Servo_control), an analog protocol.
 
-![Motor and ESC](/rotorflight-docs/assets/images/motor-pwm-6289751b0fafff336bce1782ef1c8804.png)
+![Motor and ESC](/assets/images/motor-pwm-6289751b0fafff336bce1782ef1c8804.png)
 
 **RPM Sensor:** Activate the RPM Sensor input for motor RPM, you can connect an RPM signal from the ESC, or from an external RPM sensor device.
 
@@ -38,7 +38,7 @@ note
 
 A correct RPM measurement is crucial to the operation of *RPM\_FILTER* and *GOVERNOR* features, therefore ensure that you have a correct RPM measurement setup.
 
-The FC also needs to know the [RPM](/rotorflight-docs/docs/setup/rpm-measurement.md) of the main rotor, and the tail rotor. For this you have to exactly specify the *Motor pole count* and the *Gear ratios*.
+The FC also needs to know the [RPM](/docs/setup/rpm-measurement.md) of the main rotor, and the tail rotor. For this you have to exactly specify the *Motor pole count* and the *Gear ratios*.
 
 With this info, the FC can calculate the:
 
@@ -63,7 +63,7 @@ With this info, the FC can calculate the:
 
 Most drone ESCs support DSHOT, a digital protocol.
 
-![Motor and ESC](/rotorflight-docs/assets/images/motor-dshot-e2237c8a92e994ec2e858eb81e299495.png)
+![Motor and ESC](/assets/images/motor-dshot-e2237c8a92e994ec2e858eb81e299495.png)
 
 If you use DSHOT, use either DSHOT150 or DSHOT300. DSHOT600 is not recommended. Also make sure that the main motor isn't actively being braked by the ESC, especially if you don't have a [one way bearing](https://youtu.be/ahWzhT5Bn28) on the main shaft.
 
@@ -72,7 +72,7 @@ If you use DSHOT, use either DSHOT150 or DSHOT300. DSHOT600 is not recommended. 
 
 #### DShot RPM Telemetry[​](#dshot-rpm-telemetry "Direct link to DShot RPM Telemetry")
 
-This switch is only visible when the *ESC/Motor protocol* is DSHOTxxx. It enables motor eRPM telemetry on supported ESCs via [bidirectional DSHOT](/rotorflight-docs/docs/setup/rpm-measurement.md#bi-directional-dshot) and can be used to facilitate the *GOVERNOR* and/or *RPM\_FILTER* features. If you use bidirectional DSHOT you don't have to use a frequency sensor for obtaining the eRPM of the motor(s).
+This switch is only visible when the *ESC/Motor protocol* is DSHOTxxx. It enables motor eRPM telemetry on supported ESCs via [bidirectional DSHOT](/docs/setup/rpm-measurement.md#bi-directional-dshot) and can be used to facilitate the *GOVERNOR* and/or *RPM\_FILTER* features. If you use bidirectional DSHOT you don't have to use a frequency sensor for obtaining the eRPM of the motor(s).
 
 ### Gear Ratio Configuration[​](#gear-ratio-configuration "Direct link to Gear Ratio Configuration")
 
@@ -90,11 +90,11 @@ For example if the main gear ratio is 11.8 then you set *\[Teeth on Pinion gear 
 
 Similarly if the tail gear ratio is 4.8 then you set *\[Teeth on Tail gear =10]/\[Teeth on Autorotation Gear =48]*.
 
-note that counting the gear tooth is preferable because an accurate gear ratio is essential to the operation of the [RPM Filters](/rotorflight-docs/docs/setup/rpm-filters.md).
+note that counting the gear tooth is preferable because an accurate gear ratio is essential to the operation of the [RPM Filters](/docs/setup/rpm-filters.md).
 
 note
 
-For Helicopters with two-stage reduction, kindly read the [Two-Stage Gear Train WalkTrough](/rotorflight-docs/docs/setup/two-stage-gear-train-ratios.md)
+For Helicopters with two-stage reduction, kindly read the [Two-Stage Gear Train WalkTrough](/docs/setup/two-stage-gear-train-ratios.md)
 
 ### Motor Pole Count[​](#motor-pole-count "Direct link to Motor Pole Count")
 
@@ -102,15 +102,15 @@ Determine the number of magnetic poles for each motor. Count the number of magne
 
 ![Motor and ESC](data:image/png;base64,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)
 
-![Motor and ESC](/rotorflight-docs/assets/images/motor-pole-count-2-71efc3c67848e75efe564111e4e0ee1c.png)
+![Motor and ESC](/assets/images/motor-pole-count-2-71efc3c67848e75efe564111e4e0ee1c.png)
 
-## [Governor Features](/rotorflight-docs/docs/setup/governor.md#governor-mode)[​](#governor-features "Direct link to governor-features")
+## [Governor Features](/docs/setup/governor.md#governor-mode)[​](#governor-features "Direct link to governor-features")
 
 ## Motor Override[​](#motor-override "Direct link to Motor Override")
 
 Motor Override functionality is provided to test the operation of each motor directly. This functionality will make the motors spool up. Do this WITHOUT the main or tail rotors fitted!
 
-![Motor and ESC](/rotorflight-docs/assets/images/motor-6-6483942cee5421456499a8bd46feb37a.png)
+![Motor and ESC](/assets/images/motor-6-6483942cee5421456499a8bd46feb37a.png)
 
 Throttle - This is the command being sent from the flight controller to the ESC.
 

@@ -10,17 +10,17 @@ Bluejay can be flashed via the web page application at <https://esc-configurator
 
 Click on settings and check the "Disable common settings". This enables different settings to be loaded to each ESC which is required so we can change the settings between the main and tail motors.
 
-![Settings](/rotorflight-docs/assets/images/Bluejay_settings-fea186fe5ab954820f0e7ad9cb80ca1d.png)
+![Settings](/assets/images/Bluejay_settings-fea186fe5ab954820f0e7ad9cb80ca1d.png)
 
 ### step 2.[​](#step-2 "Direct link to step 2.")
 
 From the top right corner click on **\[Connect]**. Power up the ESC with the flight pack and click on **\[Read Setup]**.
 
-![Connect](/rotorflight-docs/assets/images/Bluejay_Connect-5b980c3b6077197a06a573cec5746aae.png)
+![Connect](/assets/images/Bluejay_Connect-5b980c3b6077197a06a573cec5746aae.png)
 
 ### step 3.[​](#step-3 "Direct link to step 3.")
 
-Click on **\[Flash all]** ![Select flash](/rotorflight-docs/assets/images/Bluejay_Select_flash-10c17e12feaeb81a005a3244e60e19af.png)
+Click on **\[Flash all]** ![Select flash](/assets/images/Bluejay_Select_flash-10c17e12feaeb81a005a3244e60e19af.png)
 
 ### step 4.[​](#step-4 "Direct link to step 4.")
 
@@ -33,7 +33,7 @@ From the config dropdown chose:
 
 Click on **\[Flash]** to load the new firmware.
 
-![Load Firmware](/rotorflight-docs/assets/images/Bluejay_Load_Firmware-c35a913dde1346ec4df69526113786e7.png)
+![Load Firmware](/assets/images/Bluejay_Load_Firmware-c35a913dde1346ec4df69526113786e7.png)
 
 ### step 5.[​](#step-5 "Direct link to step 5.")
 
@@ -44,4 +44,4 @@ After flashing has completed Click on **\[Read setup]**.
 
 Click the **\[Write Setup]** to complete the setup.
 
-![Connect](/rotorflight-docs/assets/images/Bluejay_Complete-f7fd2489fd6d1d73ed27d3a58aa30758.png)
+![Connect](/assets/images/Bluejay_Complete-f7fd2489fd6d1d73ed27d3a58aa30758.png)

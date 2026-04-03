@@ -4,4 +4,4 @@ Download Here!!
 
 [Download the EdgeTx Release v2.2.1](https://github.com/rotorflight/rotorflight-lua-scripts/releases/tag/release%2F2.2.1)
 
-![Edge Tx](/rotorflight-docs/assets/images/edgetx-logo-4a31de63bb29c6ec264fc50a3a50bab5.png)
+![Edge Tx](/assets/images/edgetx-logo-4a31de63bb29c6ec264fc50a3a50bab5.png)

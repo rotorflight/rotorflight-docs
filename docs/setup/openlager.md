@@ -8,7 +8,7 @@ An OpenLager is not the much cheaper OpenLog. They can log much faster and is mo
 
 Some versions use an open/lock hinge mechanism instead of a 'push to eject' SD card socket, so you can't wrap it in heat shrink tube. You can fix that by carefully flattening the SD card retainer pin a little bit.
 
-![OpenLager](/rotorflight-docs/assets/images/OpenLager-slide-in-fix-5452f2aa24f61563946181b7cbeb4437.png)
+![OpenLager](/assets/images/OpenLager-slide-in-fix-5452f2aa24f61563946181b7cbeb4437.png)
 
 ## Introduction[​](#introduction "Direct link to Introduction")
 

@@ -2,9 +2,9 @@
 
 info
 
-The purpose of rates are to change in flight sensitivity and rotation rates. The aim is usually to have several 'rates' that you can switch between during flight to change flight performance. Please see the [profile switching example](/rotorflight-docs/docs/setup/profile-switching-example.md)
+The purpose of rates are to change in flight sensitivity and rotation rates. The aim is usually to have several 'rates' that you can switch between during flight to change flight performance. Please see the [profile switching example](/docs/setup/profile-switching-example.md)
 
-![Rates](/rotorflight-docs/assets/images/rates-main-9097a3765f55fe6da05245882fa43f6c.png)
+![Rates](/assets/images/rates-main-9097a3765f55fe6da05245882fa43f6c.png)
 
 Rotorflight offers a total of five rate systems:
 
@@ -22,7 +22,7 @@ However, the most widely adopted is Actual Rates.
 
 There are 3 values in Actual Rates: Center Sensitivity, Max Rate, Expo.
 
-![Rates](/rotorflight-docs/assets/images/rates-actual-fb10eaacc7745a7e45fdecf2579f2868.png)
+![Rates](/assets/images/rates-actual-fb10eaacc7745a7e45fdecf2579f2868.png)
 
 ### Center Sensitivity[​](#center-sensitivity "Direct link to Center Sensitivity")
 
@@ -46,7 +46,7 @@ Actual Rates can be a little bit tricky for someone that does not have Betafligh
 
 There are 3 values in Raceflight Rates: Rate, Acro+, Expo.
 
-![Rates](/rotorflight-docs/assets/images/rates-raceflight-8dd6038a2fb2ade7c373f8fecbc6d964.png)
+![Rates](/assets/images/rates-raceflight-8dd6038a2fb2ade7c373f8fecbc6d964.png)
 
 ### Rate[​](#rate "Direct link to Rate")
 

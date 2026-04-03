@@ -29,25 +29,25 @@ The ESC telemetry pin TX needs to be connected to a spare UART RX.
 
 Select the UART from the Configuration page.
 
-![ESC Telemetry](/rotorflight-docs/assets/images/esc-telem-uart-5dcfad44c9144abe4bc3d17e186a00fe.png)
+![ESC Telemetry](/assets/images/esc-telem-uart-5dcfad44c9144abe4bc3d17e186a00fe.png)
 
 ### Select the Protocol[​](#select-the-protocol "Direct link to Select the Protocol")
 
 Select the correct ESC telemetry protocol based on the one you are using.
 
-![ESC Telemetry](/rotorflight-docs/assets/images/esc-telem-sel-p-04da12f0ed375deb18221ed661c0afab.png)
+![ESC Telemetry](/assets/images/esc-telem-sel-p-04da12f0ed375deb18221ed661c0afab.png)
 
 ### Power Config[​](#power-config "Direct link to Power Config")
 
 Enable the Voltage and Current from the `Power` Tab.
 
-![ESC Telemetry](/rotorflight-docs/assets/images/esc-telem-power-24c16005f8352b8e9867374cad743c11.png)
+![ESC Telemetry](/assets/images/esc-telem-power-24c16005f8352b8e9867374cad743c11.png)
 
 ### Calibrate telemetry values[​](#calibrate-telemetry-values "Direct link to Calibrate telemetry values")
 
 The measurement accuracy of some ESCs is poor and may need to be scaled to obtain more reasonable values (Some Hobbywing ESCs are very bad). These can be calibrated by using the correction correction factors shown below.
 
-![ESC Telemetry scale](/rotorflight-docs/assets/images/esc-telem-scale-082b524b5ac9588ea37aaef78954bfe6.png)
+![ESC Telemetry scale](/assets/images/esc-telem-scale-082b524b5ac9588ea37aaef78954bfe6.png)
 
 ## Castle ESC Telemetry[​](#castle-esc-telemetry "Direct link to Castle ESC Telemetry")
 
@@ -57,13 +57,13 @@ Castle ESCs use a single wire protocol. As such the signal and telemetry are sen
 
 In the **Motor Protocol** select Castle.
 
-![ESC Telemetry](/rotorflight-docs/assets/images/castle-1-a3665c14b9b98de5361eaa8154ecfc8c.png)
+![ESC Telemetry](/assets/images/castle-1-a3665c14b9b98de5361eaa8154ecfc8c.png)
 
 ### Enable ESC Link Live[​](#enable-esc-link-live "Direct link to Enable ESC Link Live")
 
 Enable **Link Live** using the Castle link software connected to your ESC.
 
-![ESC Telemetry](/rotorflight-docs/assets/images/castle-2-82d75dfe0d125b5134a7f99ec690ad5f.png)
+![ESC Telemetry](/assets/images/castle-2-82d75dfe0d125b5134a7f99ec690ad5f.png)
 
 ### DIY Castle link[​](#diy-castle-link "Direct link to DIY Castle link")
 
@@ -75,31 +75,31 @@ This adapter connects between the ESC and the FC. It can be made from a small pi
 
 They can be soldered directly to the perf board as below.
 
-![ESC Telemetry](/rotorflight-docs/assets/images/castle-4-1e643a08ca2036e237ad5918d267bcf6.png)
+![ESC Telemetry](/assets/images/castle-4-1e643a08ca2036e237ad5918d267bcf6.png)
 
 ## HOBBYWING (V4/V5) Telemetry[​](#hobbywing-v4v5-telemetry "Direct link to HOBBYWING (V4/V5) Telemetry")
 
 To avoid interferences or destructive voltages it's important to remove the red wire.
 
-![ESC Telemetry](/rotorflight-docs/assets/images/HW-Esc-3babc50b78d6c3a0dd7854d5d1343f00.png)
+![ESC Telemetry](/assets/images/HW-Esc-3babc50b78d6c3a0dd7854d5d1343f00.png)
 
 ## xdfly telemetry setup[​](#xdfly-telemetry-setup "Direct link to xdfly telemetry setup")
 
 ### Connect ESC[​](#connect-esc "Direct link to Connect ESC")
 
-Connect the RX pin of the ESC to a UART port of the flight controller. Using TLM or SBUS is most convenient. A GND connection is optional. Make sure not to connect the + pin of the ESC's telemetry port.<br />![ESC Telemetry](/rotorflight-docs/assets/images/X-fly-1-328009d04a22259edfbf95d6036353e4.png)
+Connect the RX pin of the ESC to a UART port of the flight controller. Using TLM or SBUS is most convenient. A GND connection is optional. Make sure not to connect the + pin of the ESC's telemetry port.<br />![ESC Telemetry](/assets/images/X-fly-1-328009d04a22259edfbf95d6036353e4.png)
 
 ### Setup Ports[​](#setup-ports "Direct link to Setup Ports")
 
-Set up the UART ports in the configuration panel. Make sure to match the connection from step 1.<br />![ESC Telemetry](/rotorflight-docs/assets/images/X-fly-2-bc1dcde4087744024f00ef4ce0c95397.png)
+Set up the UART ports in the configuration panel. Make sure to match the connection from step 1.<br />![ESC Telemetry](/assets/images/X-fly-2-bc1dcde4087744024f00ef4ce0c95397.png)
 
 ### Battery Settings[​](#battery-settings "Direct link to Battery Settings")
 
-Now you need to set the battery info to grab the information from the ESC telemetry: Go to the Battery panel and adjust the settings as shown.<br />![ESC Telemetry](/rotorflight-docs/assets/images/X-fly-3-7628eda080ffbf62786bba5545bb9568.png)
+Now you need to set the battery info to grab the information from the ESC telemetry: Go to the Battery panel and adjust the settings as shown.<br />![ESC Telemetry](/assets/images/X-fly-3-7628eda080ffbf62786bba5545bb9568.png)
 
 ### Telemetry Configuration[​](#telemetry-configuration "Direct link to Telemetry Configuration")
 
-To enable telemetry data from the ESC, you need to configure the telemetry settings: 1 / 2 xdfly\_telemetry\_setup.md 2026-01-25 Set the telemetry protocol to "XDFLY", and enable half-duplex and pin swap. Half-duplex is required since we are using UART with only one wire for RX and TX. Pin swap is needed because the TLM and SBUS are connected to an RX pin of the MCU. The default half-duplex configuration uses a TX pin, so we need to swap the pins.<br />![ESC Telemetry](/rotorflight-docs/assets/images/X-fly-4-fbaa315d31cb63eef4ed0b46aa02aaea.png)
+To enable telemetry data from the ESC, you need to configure the telemetry settings: 1 / 2 xdfly\_telemetry\_setup.md 2026-01-25 Set the telemetry protocol to "XDFLY", and enable half-duplex and pin swap. Half-duplex is required since we are using UART with only one wire for RX and TX. Pin swap is needed because the TLM and SBUS are connected to an RX pin of the MCU. The default half-duplex configuration uses a TX pin, so we need to swap the pins.<br />![ESC Telemetry](/assets/images/X-fly-4-fbaa315d31cb63eef4ed0b46aa02aaea.png)
 
 ### Test[​](#test "Direct link to Test")
 

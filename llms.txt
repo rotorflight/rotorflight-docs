@@ -3,18 +3,18 @@
 > Comprehensive documentation for Rotorflight, the open-source helicopter flight controller software.
 
 
-## rotorflight-docs
-
-
-### search
+## search
 
 - [Search the documentation](/search.md)
 
-### docs
+## docs
 
 Rotorflight is a flight control software suite for single rotor RC helicopters. It is based on Betaflight, with many advanced features added for helicopters. It consists of several components:
 
 - [Introduction](/docs.md): Rotorflight is a flight control software suite for single rotor RC helicopters. It is based on Betaflight, with many advanced features added for helicopters. It consists of several components:
+
+### configurator
+
 - [Configurator](/docs/configurator.md)
 - [Adjustments](/docs/configurator/tabs/adjustments.md): There are total 32 adjustment slots, each assigning an AUX channel to a configuration parameter or a special function. An adjustment slot consist of an enabling condition, an adjustment function, and parameter limits.
 - [Beepers](/docs/configurator/tabs/beepers.md): To Do
@@ -37,6 +37,9 @@ Rotorflight is a flight control software suite for single rotor RC helicopters. 
 - [Servos](/docs/configurator/tabs/servos.md): Open the Servos tab and confirm that you have the correct number of servos. If this is not the case, please confirm you have installed the correct firmware (either 'M' motorized or servo tail) or if you are using a drone FC that your Remapping  is correct.
 - [Setup](/docs/configurator/tabs/setup.md): Setup
 - [Status](/docs/configurator/tabs/status.md): A place for basic flight controller information. The status tab is the first tab you see when you connect to your flight controller. You can check the gyroscope live preview, view the arming prevention flags and other FC information.
+
+### Contributing
+
 - [Adding a Blog Post](/docs/Contributing/Adding-a-Blog.md): To make a new Blog post open the Blog Directory. Click on one of the previous posts to use as a template then chose download.
 - [Software Developers](/docs/Contributing/Developers.md): Software developers willing to assist with adding to this project are welcome. Skills in languages such as 'C', HTML, JavaScript, JQuery across the Firmware, Configurator and Blackbox.
 - [Editing the Website](/docs/Contributing/Editing-the-Website.md): Website is built using Docusaurus
@@ -44,6 +47,11 @@ Rotorflight is a flight control software suite for single rotor RC helicopters. 
 - [Contributing to Rotorflight](/docs/Contributing/intro.md): Rotorflight is an Open Source project. Contribution from other like minded people, keen to assist in making this software even better is welcomed and encouraged. You do not have to be a hardcore programmer to help. Lots of things can be done by anyone with a spare heli and some eagerness to learn and teach others. If you have the skills and time to contribute to some of the activities below please contact us through the Discord and we can chat about the options.
 - [Modeling Cross Coupling](/docs/Contributing/Modeling-Cross-Coupling.md): By Etocii
 - [Support Us!](/docs/Contributing/support.md): We hope you enjoy using Rotorflight. If so please consider supporting us with a donation to our project. You can do a one time donation or a recurring one.
+
+### controllers
+
+There are several flight controllers specifically made for Rotorflight.
+
 - [Controllers](/docs/controllers.md): There are several flight controllers specifically made for Rotorflight.
 - [Diy board - Betaflight FC](/docs/controllers/betaflight-diy.md): Rotorflight is a fork of the popular Betaflight project commonly used for drones. This means that all of the drone boards designed for betaflight are also compatible with Rotorflight. Drones most commonly use 4 motors and do not have servos so we need to do some additional configuration to add these items (as shown below).
 - [Flydragon V2.2](/docs/controllers/flydragon2.2.md): Flydragon v2.2
@@ -52,16 +60,30 @@ Rotorflight is a flight control software suite for single rotor RC helicopters. 
 - [Matek G474Heli](/docs/controllers/matek_heli.md): Matek G474HELI
 - [Matek G474-HLite](/docs/controllers/matek_hlite.md): Matek G474HELI
 - [Radiomaster NEXUS](/docs/controllers/rm-nexus.md): Nexus
+
+### download
+
 - [Download - Blackbox](/docs/download/blackbox.md): Download the Release v2.2.0
 - [Download - Configurator](/docs/download/configurator.md): Rotorflight Release v2.2.1
 - [Download - Edge Tx Lua](/docs/download/edge-tx-Lua.md): Download the EdgeTx Release v2.2.1
 - [Download - Ethos Tx Lua](/docs/download/ethos-Lua.md): Versions
 - [v2.2.1 Upgrade notes](/docs/download/notes.md): Update procedure
+
+### examples
+
+The general process for setting up a helicopter using Rotorflight.
+
 - [Getting Started](/docs/examples.md): The general process for setting up a helicopter using Rotorflight.
 - [Example setup - Servo tail](/docs/examples/example-1.md): The following doc will give and overview for how to setup a servo tailed helicopter using Rotorflight. The purpose is just as a generic guide to outline the steps to take when setting up a helicopter of this type.
+
+### Manufacturers
+
 - [Design Requirements](/docs/Manufacturers/Design-Requirements.md): This page collects the generic hardware requirements for all Flight Controller designs for Rotorflight.
 - [Manufacturers Information](/docs/Manufacturers/intro.md): The Rotorflight team have collaborated with several manufacturers to produce Flight Controllers for use with our software. We welcome working with other vendors and designers. Please contact us on admin@rotorflight.org or on the Discord and we can discuss further.
 - [Reference Design](/docs/Manufacturers/Reference-Design.md): Design
+
+### setup
+
 - [Arming](/docs/setup/arming.md): Arming is a safety feature that checks a series of settings in the FC to make sure it is safe before allowing it to spool up. It checks for things like accelerometer calibration, gyro filtering, throttle not at minimum, RX not connected.
 - [Backup and restore](/docs/setup/backup-and-restore.md): Back up the configuration
 - [Flashing Blheli_S ESC to Bluejay firmware](/docs/setup/blheli_s-to-bluejay.md): Rotorflight requires motor RPM telemetry to provide the Governor function and filtering of the gyro signal. This can be provided by the ESC via bidirectional D-shot telemetry. Blheli\_S ESC's do not provide this feature as standard and the firmware has to be updated. Bluejay has been tested with many Rotorflight builds and is preferred due to the ability to disable Damped Light mode and loading individual ESC config.
@@ -98,7 +120,13 @@ Rotorflight is a flight control software suite for single rotor RC helicopters. 
 - [Swashplate Wiggle](/docs/setup/swash-wiggle.md): The swashplate can be configured to 'wiggle' as an indication for when you are
 - [Two-Stage Gear Train Ratios](/docs/setup/two-stage-gear-train-ratios.md): Having an accurate gear ratio for the main and tail rotor is essential for Rotorflight accurate RPM Filters performance.
 - [Using Stability Modes (6G)](/docs/setup/using-stability-modes-example.md): Purpose
+
+### testing
+
 - [Tuning process](/docs/testing/tuning-process.md): Collective to Pitch Compensation
+
+### Tuning
+
 - [Cyclic Cross Coupling](/docs/Tuning/Cyclic-Cross-Coupling.md): What is it?
 - [First Flight & Filter Tuning](/docs/Tuning/First-Flight-Filter-Tuning.md): It is crucial to tune the filters based on your helicopter to gain the maximum performance while keeping noise out of the control loop. A good filter tuning should be just strong enough to suppress the peaks in the gyro readouts. A filter too weak may have peaks leaked inside the loop, and a filter too strong, while making the gyro signal clean, may lower the maximum gains later which cause a "sloppy" and delayed feel.
 - [High Speed Integral](/docs/Tuning/High-Speed-Integral.md): TL;DR

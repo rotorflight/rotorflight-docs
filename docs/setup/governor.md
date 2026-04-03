@@ -40,7 +40,7 @@ Like MODE1, but with battery voltage compensation. The PID loop does not need to
 
 ## Governor Basic Settings[​](#governor-basic-settings "Direct link to Governor Basic Settings")
 
-![Governor](/rotorflight-docs/assets/images/governor-features-92cc09677a9b428b350046fc49ff8d64.png)
+![Governor](/assets/images/governor-features-92cc09677a9b428b350046fc49ff8d64.png)
 
 In order to use the governor you must first configure the ESC/Motor features. This defines the motor telemetry (for RPM feedback) and gear ratios for your helicopter which lets the flight controller know how fast the rotor is spinning.
 
@@ -108,7 +108,7 @@ Cutoff for the cyclic/collective precompensation lowpass filter.
 
 These settings are set from the Profiles Tab. If desired, individual Profiles can be configured via the Adjustments Tab. This enables individual flight modes to have separate tuning and configuration set for each flight mode. (similar to 'Bank Switching').
 
-![Governor](/rotorflight-docs/assets/images/governor-settings-08f93ed336b14ccb57aa986b880fe5b8.png)
+![Governor](/assets/images/governor-settings-08f93ed336b14ccb57aa986b880fe5b8.png)
 
 ### Full Headspeed[​](#full-headspeed "Direct link to Full Headspeed")
 

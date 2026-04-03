@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrotorflight_docs=self.webpackChunkrotorflight_docs||[]).push([["1833"],{55513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Official Release 2.2.1","permalink":"/rotorflight-docs/announcement/Official Release 2.2.0","unlisted":false,"date":"2026-04-03T19:27:28.000Z"}]}')}}]);

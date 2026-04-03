@@ -4,7 +4,7 @@ This section will describe the configuration of the mixer and calibrate the roto
 
 note
 
-Before proceeding with setting up the mixer, make sure that [gyro sensor alignment](/rotorflight-docs/docs/configurator/tabs/configuration.md#board-and-sensor-alignment) is correct.
+Before proceeding with setting up the mixer, make sure that [gyro sensor alignment](/docs/configurator/tabs/configuration.md#board-and-sensor-alignment) is correct.
 
 ### Main Rotor Settings[​](#main-rotor-settings "Direct link to Main Rotor Settings")
 
@@ -12,7 +12,7 @@ Before proceeding with setting up the mixer, make sure that [gyro sensor alignme
 
 Choose the swash type that suits your helicopter.
 
-![Mixer Tab](/rotorflight-docs/assets/images/mixer-main-rotor-settings-880ad842dc90ce7327a264c5b617cbdb.png)
+![Mixer Tab](/assets/images/mixer-main-rotor-settings-880ad842dc90ce7327a264c5b617cbdb.png)
 
 #### Rotor direction[​](#rotor-direction "Direct link to Rotor direction")
 
@@ -32,7 +32,7 @@ Push the collective stick forward (Increasing collective). The swash should now 
 
 ## Swashplate link trims[​](#swashplate-link-trims "Direct link to Swashplate link trims")
 
-![Mixer Tab](/rotorflight-docs/assets/images/mixer-swashplate-link-trims-c1b640fb1c2173d674bdf743031e5f04.png)
+![Mixer Tab](/assets/images/mixer-swashplate-link-trims-c1b640fb1c2173d674bdf743031e5f04.png)
 
 Ideally the swashplate should be set with all 3 Collective servos at 90 deg while the blade angle is at 0 degrees. Some helicopters have fixed length swash links which means in order to get 0 degrees for blade centre the servo arms need to be raised or lowered. Use these link trims to provide that function.
 
@@ -40,11 +40,11 @@ For helicopters with adjustable swash links this should remain at 0 and the link
 
 ## Main rotor geometry[​](#main-rotor-geometry "Direct link to Main rotor geometry")
 
-![Mixer Tab](/rotorflight-docs/assets/images/mixer-main-rotor-geometry-80740f7ba37d19076d5fcb8a909f46a4.png)
+![Mixer Tab](/assets/images/mixer-main-rotor-geometry-80740f7ba37d19076d5fcb8a909f46a4.png)
 
 #### Cyclic and collective calibration[​](#cyclic-and-collective-calibration "Direct link to Cyclic and collective calibration")
 
-These settings are used to calibrate the mixer so that the blade angle matches the commanded angle for both the cyclic and collective. See the [calibration procedure](/rotorflight-docs/docs/setup/setup-mixer.md#calibrating-the-mixer) for details.
+These settings are used to calibrate the mixer so that the blade angle matches the commanded angle for both the cyclic and collective. See the [calibration procedure](/docs/setup/setup-mixer.md#calibrating-the-mixer) for details.
 
 #### Collective geometry correction[​](#collective-geometry-correction "Direct link to Collective geometry correction")
 
@@ -83,7 +83,7 @@ Corrects cyclic to collective interactions.<br /><!-- -->Adjust the Positive col
 
 ## Tail Rotor Settings[​](#tail-rotor-settings "Direct link to Tail Rotor Settings")
 
-![Mixer Tab](/rotorflight-docs/assets/images/mixer-tail-rotor-settings-81501a3a65d5402828e2ef9b2c0dcc6a.png)
+![Mixer Tab](/assets/images/mixer-tail-rotor-settings-81501a3a65d5402828e2ef9b2c0dcc6a.png)
 
 ### Tail rotor type[​](#tail-rotor-type "Direct link to Tail rotor type")
 

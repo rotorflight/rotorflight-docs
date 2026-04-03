@@ -16,13 +16,13 @@ This example will use:
 
 ## Update Firmware[​](#update-firmware "Direct link to Update Firmware")
 
-Update the Flight Controller firmware to the current release. Follow the description on the [**Flashing the firmware**](/rotorflight-docs/docs/setup/flashing-the-firmware.md) page.
+Update the Flight Controller firmware to the current release. Follow the description on the [**Flashing the firmware**](/docs/setup/flashing-the-firmware.md) page.
 
 ## Setup Receiver[​](#setup-receiver "Direct link to Setup Receiver")
 
 Choose where you want to connect your receiver. Any of the UARTS or SBUS port are suitable depending on your receiver and personal preference. In this example we are using ELRS and will connect to the Port(A) which is default ELRS port.
 
-![Example 1](/rotorflight-docs/assets/images/example-1-2-d0a586a6b08a5470a3e60cf7159be03c.png)
+![Example 1](/assets/images/example-1-2-d0a586a6b08a5470a3e60cf7159be03c.png)
 
 caution
 
@@ -30,21 +30,21 @@ Double check your wires between receiver and flight controller before powering o
 
 ### Receiver - serial ports[​](#receiver---serial-ports "Direct link to Receiver - serial ports")
 
-Open the [configuration tab](/rotorflight-docs/docs/configurator/tabs/configuration.md) and set the serial port **Port (A)** to **Serial\_RX**.<br />**Save and Reboot**.
+Open the [configuration tab](/docs/configurator/tabs/configuration.md) and set the serial port **Port (A)** to **Serial\_RX**.<br />**Save and Reboot**.
 
-![Example 1](/rotorflight-docs/assets/images/example-1-3-71baf96f6da8f95c516f35a44ba3db23.png)
+![Example 1](/assets/images/example-1-3-71baf96f6da8f95c516f35a44ba3db23.png)
 
 ### Receiver - Rx protocol[​](#receiver----rx-protocol "Direct link to Receiver -  Rx protocol")
 
-Open the [Receiver tab](/rotorflight-docs/docs/configurator/tabs/receiver.md). Set the receiver protocol to TBS CRSF (ELRS) and the channel order to ELRS (AECR1T).<br />**Save and Reboot**.
+Open the [Receiver tab](/docs/configurator/tabs/receiver.md). Set the receiver protocol to TBS CRSF (ELRS) and the channel order to ELRS (AECR1T).<br />**Save and Reboot**.
 
-![Example 1](/rotorflight-docs/assets/images/example-1-4-a80ded2ffec53c3a090a59d4f32c293b.png)
+![Example 1](/assets/images/example-1-4-a80ded2ffec53c3a090a59d4f32c293b.png)
 
 ### Receiver - Check[​](#receiver---check "Direct link to Receiver - Check")
 
 Your Receiver should now be connected and operating correctly.
 
-[](/rotorflight-docs/assets/medias/example-1-5-208d36a8d4622446d1b4949867ff0b57.mp4)
+[](/assets/medias/example-1-5-208d36a8d4622446d1b4949867ff0b57.mp4)
 
 ### Receiver - Update firmware[​](#receiver---update-firmware "Direct link to Receiver - Update firmware")
 
@@ -62,7 +62,7 @@ Enable telemetry back to your transmitter
 
 ## Enable ARM mode[​](#enable-arm-mode "Direct link to Enable ARM mode")
 
-Arming is an important step for Rotorflight. See the [**Arming setup**](/rotorflight-docs/docs/setup/arming.md) page for more details.
+Arming is an important step for Rotorflight. See the [**Arming setup**](/docs/setup/arming.md) page for more details.
 
 ## Gyro setup[​](#gyro-setup "Direct link to Gyro setup")
 
@@ -70,39 +70,39 @@ The gyro can be put into the helicopter in many different ways. We now have to s
 
 ### Gyro - alignment[​](#gyro---alignment "Direct link to Gyro - alignment")
 
-Check and confirm on the [configuration tab](/rotorflight-docs/docs/configurator/tabs/configuration.md) that while moving your helicopter (gyro installed) that the model in the configurator moves in the same direction.
+Check and confirm on the [configuration tab](/docs/configurator/tabs/configuration.md) that while moving your helicopter (gyro installed) that the model in the configurator moves in the same direction.
 
-![Example 1](/rotorflight-docs/assets/images/example-1-7-1e0be2e9a633cfdae483eeeafb83861f.png)
+![Example 1](/assets/images/example-1-7-1e0be2e9a633cfdae483eeeafb83861f.png)
 
 ### Gyro - Calibrate accelerometer[​](#gyro---calibrate-accelerometer "Direct link to Gyro - Calibrate accelerometer")
 
-With the flight controller installed in your Helicopter open the [setup tab](/rotorflight-docs/docs/configurator/tabs/setup.md) and click on the [calibrate accelerometer](/rotorflight-docs/docs/configurator/tabs/setup.md#calibrate-accelerometer)
+With the flight controller installed in your Helicopter open the [setup tab](/docs/configurator/tabs/setup.md) and click on the [calibrate accelerometer](/docs/configurator/tabs/setup.md#calibrate-accelerometer)
 
-![Example 1](/rotorflight-docs/assets/images/example-1-8-ab09c07aec135bad240d4ced4187fd05.png)
+![Example 1](/assets/images/example-1-8-ab09c07aec135bad240d4ced4187fd05.png)
 
 ## Servo Setup[​](#servo-setup "Direct link to Servo Setup")
 
-The purpose of this step is to [**setup and calibrate servos**](/rotorflight-docs/docs/setup/setup-servos.md). On the M4 the servos are setup in the [CCPM 120 degree](/rotorflight-docs/docs/configurator/tabs/servos.md#ccpm) arrangement so the servos need to be plugged in as shown below.
+The purpose of this step is to [**setup and calibrate servos**](/docs/setup/setup-servos.md). On the M4 the servos are setup in the [CCPM 120 degree](/docs/configurator/tabs/servos.md#ccpm) arrangement so the servos need to be plugged in as shown below.
 
 ![Example 1](data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDQ4MCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0ODAiIGhlaWdodD0iNDIwIiBmaWxsPSJ3aGl0ZSIvPgo8ZyBvcGFjaXR5PSIwLjIiPgo8cGF0aCBkPSJNMTA1LjkzNCAyMDcuODkxQzExMC4wODggMjA3Ljg5MSAxMTMuOTQzIDIwNS43OTUgMTE2LjIzNyAyMDIuMzI5QzEyOS43IDE4MS45OTUgMTQyLjg4NyAxNDguMTk0IDE0Mi44ODcgMTE1LjA1OEMxNDIuODk0IDYyLjcyNjggMTA1LjgyMiA4IDk1LjA3ODkgOEM4NC4zMzU0IDggNDcuMjYzNSA2Mi43MjY4IDQ3LjI2MzUgMTE1LjA1OEM0Ny4yNjM1IDE0OC4yMDEgNjAuNDUwMSAxODIuMDAzIDczLjkxMzEgMjAyLjMyOUM3Ni4yMDY4IDIwNS43OTUgODAuMDY5MyAyMDcuODkxIDg0LjIxNTggMjA3Ljg5MUgxMDUuOTI3SDEwNS45MzRaIiBmaWxsPSIjMUY5NkMyIi8+CjwvZz4KPHBhdGggZD0iTTkzLjQ0MjcgMTEwLjk3TDgyLjA5NCAxMzkuNzcxQzgxLjQxNDIgMTQxLjQ5MyA4My41MTM2IDE0Mi45NjggODQuODk1NyAxNDEuNzMzTDkzLjkxMzQgMTMzLjcxNUM5NC41NzgzIDEzMy4xMjMgOTUuNTc5NSAxMzMuMTIzIDk2LjI0NDQgMTMzLjcxNUwxMDUuMjYyIDE0MS43MzNDMTA2LjY0NCAxNDIuOTYgMTA4Ljc0NCAxNDEuNDkzIDEwOC4wNjQgMTM5Ljc3MUw5Ni43MTUxIDExMC45N0M5Ni4xMzIzIDEwOS40ODggOTQuMDMyOSAxMDkuNDg4IDkzLjQ0MjcgMTEwLjk3WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTk1LjA3ODkgMTc3Ljk0NUM2Ny4wNjIxIDE3Ny45NDUgNDQuMjc1MSAxNTUuMTExIDQ0LjI3NTEgMTI3LjAzNkM0NC4yNzUxIDk4Ljk2MTggNjcuMDYyMSA3Ni4xMjc4IDk1LjA3ODkgNzYuMTI3OEMxMjMuMDk2IDc2LjEyNzggMTQ1Ljg4MyA5OC45NjE4IDE0NS44ODMgMTI3LjAzNkMxNDUuODgzIDE1NS4xMTEgMTIzLjA5NiAxNzcuOTQ1IDk1LjA3ODkgMTc3Ljk0NVpNOTUuMDc4OSA4My42MTQzQzcxLjE4NjIgODMuNjE0MyA1MS43NDYzIDEwMy4wOTQgNTEuNzQ2MyAxMjcuMDM2QzUxLjc0NjMgMTUwLjk3OSA3MS4xODYyIDE3MC40NTkgOTUuMDc4OSAxNzAuNDU5QzExOC45NzIgMTcwLjQ1OSAxMzguNDEyIDE1MC45NzkgMTM4LjQxMiAxMjcuMDM2QzEzOC40MTIgMTAzLjA5NCAxMTguOTcyIDgzLjYxNDMgOTUuMDc4OSA4My42MTQzWiIgZmlsbD0iIzFGOTZDMiIvPgo8ZyBvcGFjaXR5PSIwLjIiPgo8cGF0aCBkPSJNMTEzLjc1NyAzMDYuNzE0QzExMi4xMDYgMzA2LjcxNCAxMTAuNzY4IDMwOC4wNTQgMTEwLjc2OCAzMDkuNzA5VjM1MC4xMzZIMTAxLjA1NlYyMDcuODkxSDg5LjEwMTlWMzcyLjU5NkM4OS4xMDE5IDM3NS45MDUgOTEuNzc2NiAzNzguNTg1IDk1LjA3ODggMzc4LjU4NUM5OC4zODExIDM3OC41ODUgMTAxLjA1NiAzNzUuOTA1IDEwMS4wNTYgMzcyLjU5NlYzNjguODUzSDExMC43NjhWNDA4LjUzMkMxMTAuNzY4IDQxMC4xODYgMTEyLjEwNiA0MTEuNTI2IDExMy43NTcgNDExLjUyNkMxMTUuNDA4IDQxMS41MjYgMTE2Ljc0NSA0MTAuMTg2IDExNi43NDUgNDA4LjUzMlYzMDkuNzA5QzExNi43NDUgMzA4LjA1NCAxMTUuNDA4IDMwNi43MTQgMTEzLjc1NyAzMDYuNzE0WiIgZmlsbD0iIzFGOTZDMiIvPgo8L2c+CjxwYXRoIGQ9Ik0xMDYuMzEgOTIuNjgyMkwxMDYuMzEgNTkuNDIwNkMxMDYuMzEgNTguMDgzOCAxMDUuMjI0IDU3IDEwMy44ODQgNTdMODUuNTI2OCA1N0M4NC4xODcyIDU3IDgzLjEwMTIgNTguMDgzOCA4My4xMDEyIDU5LjQyMDZMODMuMTAxMiA5Mi42ODIyQzgzLjEwMTIgOTQuMDE5MSA4NC4xODcyIDk1LjEwMjggODUuNTI2OCA5NS4xMDI4TDEwMy44ODQgOTUuMTAyOEMxMDUuMjI0IDk1LjEwMjggMTA2LjMxIDk0LjAxOTEgMTA2LjMxIDkyLjY4MjJaIiBmaWxsPSIjMUExQTQwIi8+CjxwYXRoIGQ9Ik0xMzMuNzYxIDEyOC43MzNMMTE3LjEzIDE1Ny41OThDMTE2LjQ2MiAxNTguNzU4IDExNi44NTkgMTYwLjI0MiAxMTguMDE3IDE2MC45MTFMMTMzLjg4MSAxNzAuMDlDMTM1LjAzOSAxNzAuNzYgMTM2LjUyIDE3MC4zNjIgMTM3LjE4OCAxNjkuMjAyTDE1My44MTkgMTQwLjMzN0MxNTQuNDg3IDEzOS4xNzcgMTU0LjA5MSAxMzcuNjk0IDE1Mi45MzMgMTM3LjAyNEwxMzcuMDY4IDEyNy44NDVDMTM1LjkxIDEyNy4xNzYgMTM0LjQzIDEyNy41NzMgMTMzLjc2MSAxMjguNzMzWiIgZmlsbD0iIzFBMUE0MCIvPgo8cGF0aCBkPSJNNTMuNDYwNSAxMjguNDg5TDM3LjU5NTYgMTM3LjY2N0MzNi40Mzc4IDEzOC4zMzcgMzYuMDQxMiAxMzkuODIxIDM2LjcwOTYgMTQwLjk4MUw1My4zNDA0IDE2OS44NDZDNTQuMDA4OCAxNzEuMDA2IDU1LjQ4OTIgMTcxLjQwMyA1Ni42NDcgMTcwLjczNEw3Mi41MTIgMTYxLjU1NUM3My42Njk3IDE2MC44ODUgNzQuMDY2NCAxNTkuNDAyIDczLjM5OCAxNTguMjQyTDU2Ljc2NzIgMTI5LjM3N0M1Ni4wOTg4IDEyOC4yMTcgNTQuNjE4MyAxMjcuODE5IDUzLjQ2MDUgMTI4LjQ4OVoiIGZpbGw9IiMxQTFBNDAiLz4KPGcgb3BhY2l0eT0iMC4yIj4KPHBhdGggZD0iTTQwNS41MjcgMjA3Ljg5MUM0MDkuNjgxIDIwNy44OTEgNDEzLjUzNiAyMDUuNzk1IDQxNS44MyAyMDIuMzI5QzQyOS4yOTMgMTgxLjk5NSA0NDIuNDggMTQ4LjE5NCA0NDIuNDggMTE1LjA1OEM0NDIuNDg3IDYyLjcyNjggNDA1LjQxNSA4IDM5NC42NzIgOEMzODMuOTI4IDggMzQ2Ljg1NiA2Mi43MjY4IDM0Ni44NTYgMTE1LjA1OEMzNDYuODU2IDE0OC4yMDEgMzYwLjA0MyAxODIuMDAzIDM3My41MDYgMjAyLjMyOUMzNzUuOCAyMDUuNzk1IDM3OS42NjIgMjA3Ljg5MSAzODMuODA5IDIwNy44OTFINDA1LjUySDQwNS41MjdaIiBmaWxsPSIjMUY5NkMyIi8+CjwvZz4KPHBhdGggZD0iTTM5My4wMzYgMTEwLjk3TDM4MS42ODcgMTM5Ljc3MUMzODEuMDA3IDE0MS40OTMgMzgzLjEwNiAxNDIuOTY4IDM4NC40ODkgMTQxLjczM0wzOTMuNTA2IDEzMy43MTVDMzk0LjE3MSAxMzMuMTIzIDM5NS4xNzIgMTMzLjEyMyAzOTUuODM3IDEzMy43MTVMNDA0Ljg1NSAxNDEuNzMzQzQwNi4yMzcgMTQyLjk2IDQwOC4zMzcgMTQxLjQ5MyA0MDcuNjU3IDEzOS43NzFMMzk2LjMwOCAxMTAuOTdDMzk1LjcyNSAxMDkuNDg4IDM5My42MjYgMTA5LjQ4OCAzOTMuMDM2IDExMC45N1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zOTUuNDE5IDc2LjEyNzhDNDIzLjQzNiA3Ni4xMjc4IDQ0Ni4yMjMgOTguOTYxOCA0NDYuMjIzIDEyNy4wMzZDNDQ2LjIyMyAxNTUuMTExIDQyMy40MzYgMTc3Ljk0NSAzOTUuNDE5IDE3Ny45NDVDMzY3LjQwMiAxNzcuOTQ1IDM0NC42MTUgMTU1LjExMSAzNDQuNjE1IDEyNy4wMzZDMzQ0LjYxNSA5OC45NjE4IDM2Ny40MDIgNzYuMTI3OCAzOTUuNDE5IDc2LjEyNzhaTTM5NS40MTkgMTcwLjQ1OUM0MTkuMzEyIDE3MC40NTkgNDM4Ljc1MiAxNTAuOTc5IDQzOC43NTIgMTI3LjAzNkM0MzguNzUyIDEwMy4wOTQgNDE5LjMxMiA4My42MTQzIDM5NS40MTkgODMuNjE0M0MzNzEuNTI2IDgzLjYxNDMgMzUyLjA4NiAxMDMuMDk0IDM1Mi4wODYgMTI3LjAzNkMzNTIuMDg2IDE1MC45NzkgMzcxLjUyNiAxNzAuNDU5IDM5NS40MTkgMTcwLjQ1OVoiIGZpbGw9IiMxRjk2QzIiLz4KPGcgb3BhY2l0eT0iMC4yIj4KPHBhdGggZD0iTTQxMy4zNSAzMDYuNzE0QzQxMS42OTggMzA2LjcxNCA0MTAuMzYxIDMwOC4wNTQgNDEwLjM2MSAzMDkuNzA5VjM1MC4xMzZINDAwLjY0OVYyMDcuODkxSDM4OC42OTVWMzcyLjU5NkMzODguNjk1IDM3NS45MDUgMzkxLjM2OSAzNzguNTg1IDM5NC42NzIgMzc4LjU4NUMzOTcuOTc0IDM3OC41ODUgNDAwLjY0OSAzNzUuOTA1IDQwMC42NDkgMzcyLjU5NlYzNjguODUzSDQxMC4zNjFWNDA4LjUzMkM0MTAuMzYxIDQxMC4xODYgNDExLjY5OCA0MTEuNTI2IDQxMy4zNSA0MTEuNTI2QzQxNS4wMDEgNDExLjUyNiA0MTYuMzM4IDQxMC4xODYgNDE2LjMzOCA0MDguNTMyVjMwOS43MDlDNDE2LjMzOCAzMDguMDU0IDQxNS4wMDEgMzA2LjcxNCA0MTMuMzUgMzA2LjcxNFoiIGZpbGw9IiMxRjk2QzIiLz4KPC9nPgo8cGF0aCBkPSJNNDA3LjM5NiAxOTQuNjgyTDQwNy4zOTYgMTYxLjQyMUM0MDcuMzk2IDE2MC4wODQgNDA2LjMxIDE1OSA0MDQuOTcxIDE1OUwzODYuNjE0IDE1OUMzODUuMjc0IDE1OSAzODQuMTg4IDE2MC4wODQgMzg0LjE4OCAxNjEuNDIxTDM4NC4xODggMTk0LjY4MkMzODQuMTg4IDE5Ni4wMTkgMzg1LjI3NCAxOTcuMTAzIDM4Ni42MTQgMTk3LjEwM0w0MDQuOTcxIDE5Ny4xMDNDNDA2LjMxIDE5Ny4xMDMgNDA3LjM5NiAxOTYuMDE5IDQwNy4zOTYgMTk0LjY4MloiIGZpbGw9IiMxQTFBNDAiLz4KPHBhdGggZD0iTTM1My4zMDcgODQuODc2N0wzMzYuNjc2IDExMy43NDFDMzM2LjAwOCAxMTQuOTAyIDMzNi40MDQgMTE2LjM4NSAzMzcuNTYyIDExNy4wNTVMMzUzLjQyNyAxMjYuMjM0QzM1NC41ODUgMTI2LjkwMyAzNTYuMDY1IDEyNi41MDYgMzU2LjczNCAxMjUuMzQ2TDM3My4zNjQgOTYuNDgwOUMzNzQuMDMzIDk1LjMyMDcgMzczLjYzNiA5My44MzcyIDM3Mi40NzggOTMuMTY3NEwzNTYuNjEzIDgzLjk4ODhDMzU1LjQ1NiA4My4zMTkgMzUzLjk3NSA4My43MTY1IDM1My4zMDcgODQuODc2N1oiIGZpbGw9IiMxQTFBNDAiLz4KPHBhdGggZD0iTTQzMy44NTIgODMuMzQzOUw0MTcuOTg3IDkyLjUyMjRDNDE2LjgyOSA5My4xOTIzIDQxNi40MzMgOTQuNjc1OCA0MTcuMTAxIDk1LjgzNTlMNDMzLjczMiAxMjQuNzAxQzQzNC40IDEyNS44NjEgNDM1Ljg4MSAxMjYuMjU4IDQzNy4wMzkgMTI1LjU4OUw0NTIuOTA0IDExNi40MUM0NTQuMDYxIDExNS43NCA0NTQuNDU4IDExNC4yNTcgNDUzLjc5IDExMy4wOTdMNDM3LjE1OSA4NC4yMzE3QzQzNi40OSA4My4wNzE2IDQzNS4wMSA4Mi42NzQxIDQzMy44NTIgODMuMzQzOVoiIGZpbGw9IiMxQTFBNDAiLz4KPHBhdGggZD0iTTkwLjIyNjcgODNWODAuMTQ0SDk0LjA0MjdWNjguOTEySDkwLjgyNjdWNjYuNzI4QzkyLjYwMjcgNjYuMzkyIDkzLjgyNjcgNjUuOTM2IDk0Ljk1NDcgNjUuMjRIOTcuNTcwN1Y4MC4xNDRIMTAwLjkwN1Y4M0g5MC4yMjY3WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTM5MS4yMjcgMTg4LjQ3NVYxODUuNjE5SDM5NS4wNDNWMTc0LjM4N0gzOTEuODI3VjE3Mi4yMDNDMzkzLjYwMyAxNzEuODY3IDM5NC44MjcgMTcxLjQxMSAzOTUuOTU1IDE3MC43MTVIMzk4LjU3MVYxODUuNjE5SDQwMS45MDdWMTg4LjQ3NUgzOTEuMjI3WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTQ4LjY5MzMgMTU3LjE3VjE1NS4xM0M1My41MTczIDE1MC44MSA1Ni4zNzMzIDE0Ny40NzQgNTYuMzczMyAxNDQuNzM4QzU2LjM3MzMgMTQyLjkzOCA1NS4zODkzIDE0MS44NTggNTMuNzA5MyAxNDEuODU4QzUyLjQxMzMgMTQxLjg1OCA1MS4zMzMzIDE0Mi42OTggNTAuNDQ1MyAxNDMuNjgyTDQ4LjUyNTMgMTQxLjc2MkM1MC4xNTczIDE0MC4wMzQgNTEuNzQxMyAxMzkuMDc0IDU0LjE2NTMgMTM5LjA3NEM1Ny41MjUzIDEzOS4wNzQgNTkuNzU3MyAxNDEuMjM0IDU5Ljc1NzMgMTQ0LjU0NkM1OS43NTczIDE0Ny43NjIgNTcuMDkzMyAxNTEuMjE4IDUzLjg1MzMgMTU0LjM4NkM1NC43NDEzIDE1NC4yOSA1NS45MTczIDE1NC4xOTQgNTYuNzMzMyAxNTQuMTk0SDYwLjU5NzNWMTU3LjE3SDQ4LjY5MzNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQ3LjY5MzMgMTU4LjE3VjE1NC42ODNMNDguMDI2MiAxNTQuMzg1QzUwLjQyNTQgMTUyLjIzNiA1Mi4yODk3IDE1MC4zNzIgNTMuNTQ5IDE0OC43MzFDNTQuODIzOSAxNDcuMDcgNTUuMzczMyAxNDUuNzcxIDU1LjM3MzMgMTQ0LjczOEM1NS4zNzMzIDE0NC4wMTMgNTUuMTc2OCAxNDMuNTYyIDU0LjkzNTggMTQzLjNDNTQuNzA1IDE0My4wNSA1NC4zMjc2IDE0Mi44NTggNTMuNzA5MyAxNDIuODU4QzUyLjg1OTYgMTQyLjg1OCA1Mi4wMzM2IDE0My40MTQgNTEuMTg3NyAxNDQuMzUyTDUwLjQ4MjUgMTQ1LjEzM0w0Ny4xMzEgMTQxLjc4Mkw0Ny43OTgzIDE0MS4wNzVDNDkuNTU0NSAxMzkuMjE2IDUxLjM4NDMgMTM4LjA3NCA1NC4xNjUzIDEzOC4wNzRDNTYuMDYyMiAxMzguMDc0IDU3LjcyNTUgMTM4LjY4NyA1OC45MTk1IDEzOS44NTJDNjAuMTE2MiAxNDEuMDE5IDYwLjc1NzMgMTQyLjY1OCA2MC43NTczIDE0NC41NDZDNjAuNzU3MyAxNDYuNDI0IDU5Ljk4MzggMTQ4LjI4MyA1OC44NjA5IDE1MC4wMjVDNTguMTY3MSAxNTEuMTAyIDU3LjMxOTggMTUyLjE2NSA1Ni4zODc1IDE1My4xOThDNTYuNTA3NCAxNTMuMTk1IDU2LjYyMzEgMTUzLjE5NCA1Ni43MzMzIDE1My4xOTRINjEuNTk3M1YxNTguMTdINDcuNjkzM1pNNTUuNDAzMyAxNTQuMjQ4QzU0Ljg2OTkgMTU0LjI4NCA1NC4zMjE1IDE1NC4zMzUgNTMuODUzMyAxNTQuMzg2QzU0LjIyNyAxNTQuMDIgNTQuNTkzIDE1My42NTEgNTQuOTQ4MiAxNTMuMjc5QzU3LjY3MjQgMTUwLjQyNCA1OS43NTczIDE0Ny4zOTEgNTkuNzU3MyAxNDQuNTQ2QzU5Ljc1NzMgMTQxLjIzNCA1Ny41MjUzIDEzOS4wNzQgNTQuMTY1MyAxMzkuMDc0QzUyLjA5MzMgMTM5LjA3NCA1MC42MzUgMTM5Ljc3NSA0OS4yMzU5IDE0MS4wNThDNDkuMjAzNiAxNDEuMDg4IDQ5LjE3MTMgMTQxLjExOCA0OS4xMzkgMTQxLjE0OEM0OC45MzQgMTQxLjM0IDQ4LjczIDE0MS41NDUgNDguNTI1MyAxNDEuNzYyTDUwLjQ0NTMgMTQzLjY4MkM1MC42NjE0IDE0My40NDIgNTAuODg4OSAxNDMuMjExIDUxLjEyODIgMTQyLjk5OUM1MS44NzE4IDE0Mi4zMzkgNTIuNzI4NyAxNDEuODU4IDUzLjcwOTMgMTQxLjg1OEM1NS4zODkzIDE0MS44NTggNTYuMzczMyAxNDIuOTM4IDU2LjM3MzMgMTQ0LjczOEM1Ni4zNzMzIDE0Ny40NzQgNTMuNTE3MyAxNTAuODEgNDguNjkzMyAxNTUuMTNWMTU3LjE3SDYwLjU5NzNWMTU0LjE5NEg1Ni43MzMzQzU2LjM0NzYgMTU0LjE5NCA1NS44ODE0IDE1NC4yMTUgNTUuNDAzMyAxNTQuMjQ4WiIgZmlsbD0iIzFBMUE0MCIvPgo8cGF0aCBkPSJNMzQ4LjA4NCAxMTNWMTEwLjk2QzM1Mi45MDggMTA2LjY0IDM1NS43NjQgMTAzLjMwNCAzNTUuNzY0IDEwMC41NjhDMzU1Ljc2NCA5OC43NjggMzU0Ljc4IDk3LjY4OCAzNTMuMSA5Ny42ODhDMzUxLjgwNCA5Ny42ODggMzUwLjcyNCA5OC41MjggMzQ5LjgzNiA5OS41MTJMMzQ3LjkxNiA5Ny41OTJDMzQ5LjU0OCA5NS44NjQgMzUxLjEzMiA5NC45MDQgMzUzLjU1NiA5NC45MDRDMzU2LjkxNiA5NC45MDQgMzU5LjE0OCA5Ny4wNjQgMzU5LjE0OCAxMDAuMzc2QzM1OS4xNDggMTAzLjU5MiAzNTYuNDg0IDEwNy4wNDggMzUzLjI0NCAxMTAuMjE2QzM1NC4xMzIgMTEwLjEyIDM1NS4zMDggMTEwLjAyNCAzNTYuMTI0IDExMC4wMjRIMzU5Ljk4OFYxMTNIMzQ4LjA4NFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMzQuNzA2IDE1Ny41MDZDMTMxLjg5OCAxNTcuNTA2IDEzMC4wMDIgMTU2LjQ1IDEyOC43NTQgMTU1LjAzNEwxMzAuNDEgMTUyLjgwMkMxMzEuNDY2IDE1My44MzQgMTMyLjc2MiAxNTQuNjI2IDEzNC4zNyAxNTQuNjI2QzEzNi4xNyAxNTQuNjI2IDEzNy4zOTQgMTUzLjczOCAxMzcuMzk0IDE1Mi4xNTRDMTM3LjM5NCAxNTAuNDAyIDEzNi4zNjIgMTQ5LjMyMiAxMzIuNDk4IDE0OS4zMjJWMTQ2Ljc3OEMxMzUuNzYyIDE0Ni43NzggMTM2LjgxOCAxNDUuNjUgMTM2LjgxOCAxNDQuMDY2QzEzNi44MTggMTQyLjY3NCAxMzUuOTU0IDE0MS44NTggMTM0LjQ0MiAxNDEuODM0QzEzMy4xNyAxNDEuODU4IDEzMi4xMzggMTQyLjQ1OCAxMzEuMDgyIDE0My40MThMMTI5LjI4MiAxNDEuMjU4QzEzMC44MTggMTM5LjkxNCAxMzIuNTIyIDEzOS4wNzQgMTM0LjYxIDEzOS4wNzRDMTM4LjA0MiAxMzkuMDc0IDE0MC4zNyAxNDAuNzU0IDE0MC4zNyAxNDMuODAyQzE0MC4zNyAxNDUuNzIyIDEzOS4yOSAxNDcuMTE0IDEzNy4zOTQgMTQ3Ljg1OFYxNDcuOTc4QzEzOS40MSAxNDguNTMgMTQwLjk0NiAxNTAuMDE4IDE0MC45NDYgMTUyLjM0NkMxNDAuOTQ2IDE1NS42MSAxMzguMDkgMTU3LjUwNiAxMzQuNzA2IDE1Ny41MDZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNDM2LjQ2MyAxMTMuMzM2QzQzMy42NTUgMTEzLjMzNiA0MzEuNzU5IDExMi4yOCA0MzAuNTExIDExMC44NjRMNDMyLjE2NyAxMDguNjMyQzQzMy4yMjMgMTA5LjY2NCA0MzQuNTE5IDExMC40NTYgNDM2LjEyNyAxMTAuNDU2QzQzNy45MjcgMTEwLjQ1NiA0MzkuMTUxIDEwOS41NjggNDM5LjE1MSAxMDcuOTg0QzQzOS4xNTEgMTA2LjIzMiA0MzguMTE5IDEwNS4xNTIgNDM0LjI1NSAxMDUuMTUyVjEwMi42MDhDNDM3LjUxOSAxMDIuNjA4IDQzOC41NzUgMTAxLjQ4IDQzOC41NzUgOTkuODk2QzQzOC41NzUgOTguNTA0IDQzNy43MTEgOTcuNjg4IDQzNi4xOTkgOTcuNjY0QzQzNC45MjcgOTcuNjg4IDQzMy44OTUgOTguMjg4IDQzMi44MzkgOTkuMjQ4TDQzMS4wMzkgOTcuMDg4QzQzMi41NzUgOTUuNzQ0IDQzNC4yNzkgOTQuOTA0IDQzNi4zNjcgOTQuOTA0QzQzOS43OTkgOTQuOTA0IDQ0Mi4xMjcgOTYuNTg0IDQ0Mi4xMjcgOTkuNjMyQzQ0Mi4xMjcgMTAxLjU1MiA0NDEuMDQ3IDEwMi45NDQgNDM5LjE1MSAxMDMuNjg4VjEwMy44MDhDNDQxLjE2NyAxMDQuMzYgNDQyLjcwMyAxMDUuODQ4IDQ0Mi43MDMgMTA4LjE3NkM0NDIuNzAzIDExMS40NCA0MzkuODQ3IDExMy4zMzYgNDM2LjQ2MyAxMTMuMzM2WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==)
 
 ## Mixer Setup[​](#mixer-setup "Direct link to Mixer Setup")
 
-The purpose of this step is to [**setup and calibrate the mixer**](/rotorflight-docs/docs/setup/setup-mixer.md).
+The purpose of this step is to [**setup and calibrate the mixer**](/docs/setup/setup-mixer.md).
 
 ## Motor and ESC Setup[​](#motor-and-esc-setup "Direct link to Motor and ESC Setup")
 
-**ESC Throttle Protocol** - The OMPHobby 65A ESC uses a PWM protocol.<br />**ESC telemetry Protocol** - Set this to OMPHobby to match the ESC.<br />**RPM Sensor** - The nexus has an RPM input. The Yellow RPM signal wire from the ESC is plugged into this port. Enabling this toggle enables the RPM so it can be used for the [**Governor**](/rotorflight-docs/docs/setup/governor.md) and [**RPM Filtering**](/rotorflight-docs/docs/setup/rpm-filters.md)<br />**Main Rotor Gear Ratio** - The M4 is a direct drive Helicopter so is set to `1 / 1`<br />**Tail Rotor Gear Ratio** - Counting the teeth on the M4 gears is `22 / 99`<br />**Main Motor Pole count** - The M4 motor has 42 poles `42`
+**ESC Throttle Protocol** - The OMPHobby 65A ESC uses a PWM protocol.<br />**ESC telemetry Protocol** - Set this to OMPHobby to match the ESC.<br />**RPM Sensor** - The nexus has an RPM input. The Yellow RPM signal wire from the ESC is plugged into this port. Enabling this toggle enables the RPM so it can be used for the [**Governor**](/docs/setup/governor.md) and [**RPM Filtering**](/docs/setup/rpm-filters.md)<br />**Main Rotor Gear Ratio** - The M4 is a direct drive Helicopter so is set to `1 / 1`<br />**Tail Rotor Gear Ratio** - Counting the teeth on the M4 gears is `22 / 99`<br />**Main Motor Pole count** - The M4 motor has 42 poles `42`
 
 note
 
-If your helicopter has a two stage gear train, please [**follow this guide**](/rotorflight-docs/docs/setup/two-stage-gear-train-ratios.md)
+If your helicopter has a two stage gear train, please [**follow this guide**](/docs/setup/two-stage-gear-train-ratios.md)
 
-![Example 1](/rotorflight-docs/assets/images/example-1-9-9bd5c6541730a09092f5427d7f46fa1b.png)
+![Example 1](/assets/images/example-1-9-9bd5c6541730a09092f5427d7f46fa1b.png)
 
-**Governor Mode** - Set this to "Mode 1". This will control the Headspeed and provide slow spoolup.<br /><!-- -->See the [**Governor Modes**](/rotorflight-docs/docs/setup/governor.md#governor-mode) and [**Governor setup**](/rotorflight-docs/docs/setup/governor-setup.md) for details and examples.
+**Governor Mode** - Set this to "Mode 1". This will control the Headspeed and provide slow spoolup.<br /><!-- -->See the [**Governor Modes**](/docs/setup/governor.md#governor-mode) and [**Governor setup**](/docs/setup/governor-setup.md) for details and examples.
 
-![Example 1](/rotorflight-docs/assets/images/example-1-10-9d2ee6e5d5d45f0b38a6ceec29752013.png)
+![Example 1](/assets/images/example-1-10-9d2ee6e5d5d45f0b38a6ceec29752013.png)
 
 ## Test motor and Telemetry[​](#test-motor-and-telemetry "Direct link to Test motor and Telemetry")
 
@@ -114,27 +114,27 @@ This step MUST be done with blades off!!
 
 Enable the motor override and slowly raise the motor override signal. The Motor should begin to spool up and RPM and other ESC telemetry should be displayed.
 
-![Example 1](/rotorflight-docs/assets/images/example-1-11-979bb5e8fc2ea59948c5e9288c434e95.png)
+![Example 1](/assets/images/example-1-11-979bb5e8fc2ea59948c5e9288c434e95.png)
 
 ## Power setup[​](#power-setup "Direct link to Power setup")
 
-Since we now have ESC telemetry working we can enable ESC Telemetry as the Voltage and current source.<br />![Example 1](/rotorflight-docs/assets/images/example-1-14-824ee2cd94aaff84ee9d76587ceae11f.png)
+Since we now have ESC telemetry working we can enable ESC Telemetry as the Voltage and current source.<br />![Example 1](/assets/images/example-1-14-824ee2cd94aaff84ee9d76587ceae11f.png)
 
 ## ELRS custom telemetry[​](#elrs-custom-telemetry "Direct link to ELRS custom telemetry")
 
-Since Rotorflight v2.1 ELRS will need to use the custom telemetry Lua. The Crossfire protocol is very limited for our helicopters so this is required to get the full range of telemetry that we may wish to see.<br /><!-- -->See the [**ELRS Custom Telemetry**](/rotorflight-docs/docs/setup/elrs-custom-telemetry.md) on how to set it up.
+Since Rotorflight v2.1 ELRS will need to use the custom telemetry Lua. The Crossfire protocol is very limited for our helicopters so this is required to get the full range of telemetry that we may wish to see.<br /><!-- -->See the [**ELRS Custom Telemetry**](/docs/setup/elrs-custom-telemetry.md) on how to set it up.
 
 ## RPM Filters[​](#rpm-filters "Direct link to RPM Filters")
 
 From the Gyro tab enable the RPM filters and accept the default.
 
-![Example 1](/rotorflight-docs/assets/images/example-1-12-1f908843cef7d4e9f132ca08336d9ada.png)
+![Example 1](/assets/images/example-1-12-1f908843cef7d4e9f132ca08336d9ada.png)
 
 ## Rates[​](#rates "Direct link to Rates")
 
 Review and modify your Rates to taste.
 
-![Example 1](/rotorflight-docs/assets/images/example-1-13-32a87ba74f2820dbd799a83f01507fbd.png)
+![Example 1](/assets/images/example-1-13-32a87ba74f2820dbd799a83f01507fbd.png)
 
 ## Pre-flight test[​](#pre-flight-test "Direct link to Pre-flight test")
 

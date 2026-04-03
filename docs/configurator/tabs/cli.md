@@ -72,4 +72,4 @@ Compare the two backups to make sure you are happy with your restored settings.
 
 Re-apply any new defaults as desired.
 
-![CLI Tab](/rotorflight-docs/assets/images/cli-cf2c37eee20b79522257a43f5281952b.png)
+![CLI Tab](/assets/images/cli-cf2c37eee20b79522257a43f5281952b.png)

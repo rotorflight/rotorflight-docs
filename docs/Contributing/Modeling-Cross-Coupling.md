@@ -10,7 +10,7 @@ An Initial Attempt in Theorizing Cross-Coupling Oscillation Between Roll and Pit
 
 When the helicopter experience high disturbance in the pitch axis, it would wobble to the roll axis. Similarly, when the helicopter experience disturbance in the roll axis, it would transfer to the pitch axis, but to a lesser degree.
 
-![The Coupling Effect](/rotorflight-docs/assets/images/the-coupling-effect-02dbcc7a902cc4312e053c9d4bcd38ec.png)<br /><!-- -->(Thanks to Jonas for the picture)
+![The Coupling Effect](/assets/images/the-coupling-effect-02dbcc7a902cc4312e053c9d4bcd38ec.png)<br /><!-- -->(Thanks to Jonas for the picture)
 
 ## To explain the coupling[​](#to-explain-the-coupling "Direct link to To explain the coupling")
 
@@ -26,7 +26,7 @@ The transient coupling is likely due to the change of phase lag of the main roto
 
 The rotor and body can be modeled as a rigid spinning disk and a body coupled by a spring and a damper. When commanded to pitch forward, the disk tilts forward first and the body stays the same attitude. Since there is a difference in angles, the spring loads up, giving the body a torque in positive pitch. However, by Newton's third law, the disk would "feel" a positive pitch force, which turns 90 degree and gives a torque on the roll axis.
 
-![Disk Body Model](/rotorflight-docs/assets/images/Disk_Body_Model-d98c499effdce8d30c99fbfcf36dce74.jpg)
+![Disk Body Model](/assets/images/Disk_Body_Model-d98c499effdce8d30c99fbfcf36dce74.jpg)
 
 ## To explain the different magnitudes[​](#to-explain-the-different-magnitudes "Direct link to To explain the different magnitudes")
 

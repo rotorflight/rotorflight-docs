@@ -2,7 +2,7 @@
 
 ## ESC Configurator[​](#esc-configurator "Direct link to ESC Configurator")
 
-![](/rotorflight-docs/assets/images/flyrotor-1-061d4022e7b68d73d7379e5b4175f06d.png)
+![](/assets/images/flyrotor-1-061d4022e7b68d73d7379e5b4175f06d.png)
 
 The latest FlyRotor ESC Configurator for Windows is available here:<br /><https://github.com/Jiki-Mo/ESC-Configurator/>
 
@@ -17,7 +17,7 @@ FlyRotor ESC’s have one of the fastest updating ESC telemetry systems in the w
 
 FlyRotor ESC Telemetry Rate: 100 Hz
 
-![](/rotorflight-docs/assets/images/flyrotor-2-b7d852578ceb0a11c927ddabf091dba8.png)
+![](/assets/images/flyrotor-2-b7d852578ceb0a11c927ddabf091dba8.png)
 
 FlyRotor Hardware Wiring Overview.
 
@@ -29,7 +29,7 @@ note
 
 This is an accessory for the ESC and the port does not have polarity. It can be plugged in either way.
 
-![](/rotorflight-docs/assets/images/flyrotor-3-70877f922bf10ac243a32096d2131a2e.png)
+![](/assets/images/flyrotor-3-70877f922bf10ac243a32096d2131a2e.png)
 
 * This port is for powering the ESC cooling fan and for ESC telemetry communication.
 * **G:** GND, **V:** Fan positive terminal, **T:** Telemetry or programming.
@@ -45,7 +45,7 @@ The T pin should be wired to a Rotorflight UART TX pin.
 
 * This USB port is the communication port between the ESC and the computer, and it supports USB 2.0 and C-to-C cables. This is required when using the FlyRotor Configurator app to make settings changes or firmware updates.
 
-![](/rotorflight-docs/assets/images/flyrotor-5-33b5a4106025be6a35487680b36a8a1b.png)
+![](/assets/images/flyrotor-5-33b5a4106025be6a35487680b36a8a1b.png)
 
 ## FlyRotor ESC Configurator – Order of Operations[​](#flyrotor-esc-configurator--order-of-operations "Direct link to FlyRotor ESC Configurator – Order of Operations")
 
@@ -53,7 +53,7 @@ note
 
 As of FlyRotor Configurator v1.2.1, the application will automatically read ESC parameters upon successful connection. Prior to v1.2.1, you needed to manually click “Read Parameters” after a successful connection.
 
-![](/rotorflight-docs/assets/images/flyrotor-6-c97da5332876bc52043918213d32cc63.png)
+![](/assets/images/flyrotor-6-c97da5332876bc52043918213d32cc63.png)
 
 1. Scan Ports
 2. Connect to ESC
@@ -70,12 +70,12 @@ As of FlyRotor Configurator v1.2.1, the application will automatically read ESC 
 * If the motor temperature is high during flight, please increase this value.
 * It is recommended to use the automatic mode, which will dynamically adjust the electrical angle value based on the current speed of the motor and the temperature value of the ESC.
 
-![](/rotorflight-docs/assets/images/flyrotor-7-476a0732603160ef7f64cc4f7b9a4917.png)
+![](/assets/images/flyrotor-7-476a0732603160ef7f64cc4f7b9a4917.png)
 
 * For **RF Gyro Governor** or **Linear Throttle** ESC modes: the **Starting Torque** setting can be lowered if experiencing a tail whip/kick symptom upon motor spool-up.
 * The default value is 5. If the starting force is too high, it is recommended to decrease this value to 2 and retest.
 
-![](/rotorflight-docs/assets/images/flyrotor-8-4ecd03be71a4a361fa1437d104f99da3.png)
+![](/assets/images/flyrotor-8-4ecd03be71a4a361fa1437d104f99da3.png)
 
 ## FlyRotor ESC Configurator – Advanced Setup[​](#flyrotor-esc-configurator--advanced-setup "Direct link to FlyRotor ESC Configurator – Advanced Setup")
 
@@ -86,32 +86,32 @@ As of FlyRotor Configurator v1.2.1, the application will automatically read ESC 
 * You must use the **Speed Calculator** to determine if your target RPM is feasible and/or throttle value % is sufficient for governor functions.
 * Recommended throttle is 75–85% with 15–25% reserved for governor authority.
 
-![](/rotorflight-docs/assets/images/flyrotor-9-f6882427362264c0ea9d690ea20407c6.png)
+![](/assets/images/flyrotor-9-f6882427362264c0ea9d690ea20407c6.png)
 
 ## FlyRotor ESC Configurator – Other[​](#flyrotor-esc-configurator--other "Direct link to FlyRotor ESC Configurator – Other")
 
 * Choose **RF FLYROTOR** when integrating with Rotorflight for ESC telemetry protocol.
 
-![](/rotorflight-docs/assets/images/flyrotor-10-f0dc39870743ca80326f40b2a1333c26.png)
+![](/assets/images/flyrotor-10-f0dc39870743ca80326f40b2a1333c26.png)
 
 “TBS – CRSF” telemetry protocol was added for the following use cases:
 
 * Using an ELRS receiver to fly a helicopter where the flight controller is not Rotorflight.
 * Using an ELRS receiver to fly a fixed-wing aircraft or other model aircraft.
 
-![](/rotorflight-docs/assets/images/flyrotor-11-0be9f4ae57cf2fe8bea7c50fbbb0454d.png)
+![](/assets/images/flyrotor-11-0be9f4ae57cf2fe8bea7c50fbbb0454d.png)
 
 ## FlyRotor ESC Configurator – Logging[​](#flyrotor-esc-configurator--logging "Direct link to FlyRotor ESC Configurator – Logging")
 
 * Shows logging values from previous ESC flights as well as alarms or events that may be of interest.
 
-![](/rotorflight-docs/assets/images/flyrotor-12-72f24ea181c5ce957b0001ae3172621c.png)
+![](/assets/images/flyrotor-12-72f24ea181c5ce957b0001ae3172621c.png)
 
 ## FlyRotor ESC Configurator – Settings/Update[​](#flyrotor-esc-configurator--settingsupdate "Direct link to FlyRotor ESC Configurator – Settings/Update")
 
 * Use this tab to check for ESC firmware and Configurator version updates.
 
-![](/rotorflight-docs/assets/images/flyrotor-13-2cb1e5d96a0a51b030d6b3a68ce4b4cf.png)
+![](/assets/images/flyrotor-13-2cb1e5d96a0a51b030d6b3a68ce4b4cf.png)
 
 ## Calibrating FlyRotor throttle endpoints using Rotorflight – Motor Override[​](#calibrating-flyrotor-throttle-endpoints-using-rotorflight--motor-override "Direct link to Calibrating FlyRotor throttle endpoints using Rotorflight – Motor Override")
 
@@ -122,11 +122,11 @@ As of FlyRotor Configurator v1.2.1, the application will automatically read ESC 
   * 0%: 1100 µs
   * 100%: 1940 µs
 
-![](/rotorflight-docs/assets/images/flyrotor-14-7021735822de6592b56fd493b48737e5.png)
+![](/assets/images/flyrotor-14-7021735822de6592b56fd493b48737e5.png)
 
 * You should update these values in the Rotorflight **Motors** tab for 0% and 100% throttle PWM values to match FlyRotor defaults (1100/1940 µs).
 
-![](/rotorflight-docs/assets/images/flyrotor-15-5345eb9fbac1233a7a345e26d8e9ea19.png)
+![](/assets/images/flyrotor-15-5345eb9fbac1233a7a345e26d8e9ea19.png)
 
 Note: This procedure is required only if you need to teach the FlyRotor ESC new throttle endpoints.
 
@@ -137,30 +137,30 @@ Note: This procedure is required only if you need to teach the FlyRotor ESC new 
 5. Lower throttle to 0% in Motor Override and wait for beep confirmation.
 6. Disable Motor Override.
 
-![](/rotorflight-docs/assets/images/flyrotor-16-e5b7c592eb36e3c5a358a771a3b2ee23.png)
+![](/assets/images/flyrotor-16-e5b7c592eb36e3c5a358a771a3b2ee23.png)
 
 ## FlyRotor ESC – Motor temperature sensor feature overview[​](#flyrotor-esc--motor-temperature-sensor-feature-overview "Direct link to FlyRotor ESC – Motor temperature sensor feature overview")
 
 * Within the FlyRotor Configurator, you must **Enable** Motor Temperature Sensor (default is **Disabled**).
 
-![](/rotorflight-docs/assets/images/flyrotor-17-96fee9241abc2e6d13ad17fb740f86f3.png)
+![](/assets/images/flyrotor-17-96fee9241abc2e6d13ad17fb740f86f3.png)
 
 * You should adjust the Motor Temperature Limit between 90–125 °C. When this limit is reached, the ESC will limit throttle output to 50% to prevent overheating.
 * Note: Most copper motor wire insulation will start to burn at around 150 °C.
 
-![](/rotorflight-docs/assets/images/flyrotor-18-2c4a2c98bd7138adc1fc4f812dceb462.png)
+![](/assets/images/flyrotor-18-2c4a2c98bd7138adc1fc4f812dceb462.png)
 
 * The optimal location for the temperature sensor is depicted below.
 
-![](/rotorflight-docs/assets/images/flyrotor-19-1b29eb46d27dccae1c8f873082bd9fb3.png)
+![](/assets/images/flyrotor-19-1b29eb46d27dccae1c8f873082bd9fb3.png)
 
 * Use a high-temperature, thermally conductive adhesive to secure the thermistor and prevent it from moving during flight. For example, **Kafuter K-5204K**.
 
-![](/rotorflight-docs/assets/images/flyrotor-20-0b3560f1357fe3dd877d7280ba9300de.png)
+![](/assets/images/flyrotor-20-0b3560f1357fe3dd877d7280ba9300de.png)
 
 Example picture: Motor temp sensor installed in Goosky RS5 helicopter.
 
-![](/rotorflight-docs/assets/images/flyrotor-21-04081f9036c78506b0c9f71256b16363.png)
+![](/assets/images/flyrotor-21-04081f9036c78506b0c9f71256b16363.png)
 
 ## FlyRotor ESC – Battery capacity limit feature overview[​](#flyrotor-esc--battery-capacity-limit-feature-overview "Direct link to FlyRotor ESC – Battery capacity limit feature overview")
 
@@ -168,30 +168,30 @@ Example picture: Motor temp sensor installed in Goosky RS5 helicopter.
 * When the ESC reaches the programmed capacity limit, it automatically reduces throttle output to 50% as a safety measure to protect the battery.
 * This feature is activated when a non-zero value is entered in **Capacity Limit**.
 
-![](/rotorflight-docs/assets/images/flyrotor-22-87ec621a55cabc2170bf4c4b12e7bb60.png)
+![](/assets/images/flyrotor-22-87ec621a55cabc2170bf4c4b12e7bb60.png)
 
 These settings were taken from a 700-class RC helicopter and are provided as an example. You may need to adjust them to suit your specific setup.
 
 ## Rotorflight Profile – PIDs[​](#rotorflight-profile--pids "Direct link to Rotorflight Profile – PIDs")
 
-![](/rotorflight-docs/assets/images/flyrotor-23-4c92abd5e5428ade45149a7109f1fb33.png)
+![](/assets/images/flyrotor-23-4c92abd5e5428ade45149a7109f1fb33.png)
 
 ## Rotorflight Profile – Tail rotor settings[​](#rotorflight-profile--tail-rotor-settings "Direct link to Rotorflight Profile – Tail rotor settings")
 
-![](/rotorflight-docs/assets/images/flyrotor-24-b9eb44f20f67aa2ceab85304fb380351.png)
+![](/assets/images/flyrotor-24-b9eb44f20f67aa2ceab85304fb380351.png)
 
 ## Rotorflight Profile – Governor settings[​](#rotorflight-profile--governor-settings "Direct link to Rotorflight Profile – Governor settings")
 
 * If the RF Gov PID Master Gain or P-gain is too high, the head speed will oscillate or surge.
 * If the P-gain is too low, the system will bog or droop under load.
 
-![](/rotorflight-docs/assets/images/flyrotor-25-8b840f41c4cd897e39f1c200828c13c4.png)
+![](/assets/images/flyrotor-25-8b840f41c4cd897e39f1c200828c13c4.png)
 
 ## Rotorflight Motor tab – Governor features[​](#rotorflight-motor-tab--governor-features "Direct link to Rotorflight Motor tab – Governor features")
 
 * Change the **Governor Handover Throttle** from 20% to 10%.
 
-![](/rotorflight-docs/assets/images/flyrotor-26-9e2548905ed81a58ef7cc7821416020e.png)
+![](/assets/images/flyrotor-26-9e2548905ed81a58ef7cc7821416020e.png)
 
 ## Rotorflight – Receiver – Telemetry sensors[​](#rotorflight--receiver--telemetry-sensors "Direct link to Rotorflight – Receiver – Telemetry sensors")
 
@@ -199,4 +199,4 @@ These settings were taken from a 700-class RC helicopter and are provided as an 
 * You need to enable **ESC Temp 2** to pass this to the radio telemetry link.
 * The radio-side telemetry item will show as **BecT**.
 
-![](/rotorflight-docs/assets/images/flyrotor-27-2322aff9168d00cfb86418cb955ff596.png)
+![](/assets/images/flyrotor-27-2322aff9168d00cfb86418cb955ff596.png)
