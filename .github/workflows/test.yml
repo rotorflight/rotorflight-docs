@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - test
+      - "test/**"
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
@@ -15,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: ./package-lock.json
 
@@ -31,6 +32,8 @@ jobs:
           echo URL=${{ steps.output.outputs.URL }} > .env
           echo BASE_PATH=${{ steps.output.outputs.BASE_PATH }} >> .env
           echo ORG=${{ github.repository_owner }} >> .env
+          echo ALGOLIA_INDEX_NAME=dev_RF_DOCS >> .env
+          echo FASTER=true >> .env
 
       - name: Install dependencies & build
         run: |
