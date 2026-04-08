@@ -53,7 +53,7 @@ Rotorflight is a flight control software suite for single rotor RC helicopters. 
 There are several flight controllers specifically made for Rotorflight.
 
 - [Controllers](/docs/controllers.md): There are several flight controllers specifically made for Rotorflight.
-- [Diy board - Betaflight FC](/docs/controllers/betaflight-diy.md): Rotorflight is a fork of the popular Betaflight project commonly used for drones. This means that all of the drone boards designed for betaflight are also compatible with Rotorflight. Drones most commonly use 4 motors and do not have servos so we need to do some additional configuration to add these items (as shown below).
+- [DIY board - Betaflight FC](/docs/controllers/betaflight-diy.md): Rotorflight is a fork of the popular Betaflight project commonly used for drones. This means that all of the drone boards designed for betaflight are also compatible with Rotorflight. Drones most commonly use 4 motors and do not have servos so we need to do some additional configuration to add these items (as shown below).
 - [Flydragon V2.2](/docs/controllers/flydragon2.2.md): Flydragon v2.2
 - [Flywing Heli405](/docs/controllers/flywingf405heli.md): Flywing Heli405
 - [FrSky Vantac RF007](/docs/controllers/frsky-007.md): FrSky Vantac RF007
