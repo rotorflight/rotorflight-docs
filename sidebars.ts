@@ -37,8 +37,9 @@ const sidebars: SidebarsConfig = {
           label: "Goosky",
           collapsed: false,
           items: [
+            "controllers/goosky/f701",
             "controllers/goosky/f4mini",
-            "controllers/goosky/s2"
+            "controllers/goosky/s2-tune"
           ],
         },
         "controllers/matek_heli",
