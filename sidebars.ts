@@ -34,11 +34,11 @@ const sidebars: SidebarsConfig = {
         "controllers/flywingf405heli",
         {
           type: "category",
-          label: "Goosky F4 mini",
+          label: "Goosky",
           collapsed: false,
           items: [
-            "controllers/goosky-f4mini/goosky-max",
-            "controllers/goosky-f4mini/goosky-ultra",
+            "controllers/goosky/f4mini",
+            "controllers/goosky/s2"
           ],
         },
         "controllers/matek_heli",
