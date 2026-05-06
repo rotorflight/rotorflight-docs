@@ -13,7 +13,9 @@ import ETHOS from './img/ethos-logo.png';
 
 ## Introduction
 
-You can adjust a variety of settings using only your transmitter with the Rotorflight Lua scripts. A Lua script once loaded to your transmitter adds extra pages to the interface. These pages allow you to change things like PIDs, rates, filters, failsafe and governed headspeed on the field. Prerequisites:
+You can configure the system directly from your transmitter using the Rotorflight Lua scripts. Once installed, the scripts add dedicated pages to the transmitter UI, providing access to parameters such as PID tuning, rates, filters, servo settings, and governed head speed—without needing a computer at the field.
+
+Prerequisites:
 
 * OpenTX 2.3.12, EdgeTX 2.5.0 or newer or Ethos 1.4 or newer on the transmitter and:
   * an FrSky SmartPort or F.Port receiver.
@@ -47,9 +49,7 @@ There are different Lua scripts depending on what radio you are using (edgeTX or
 
     ### OpenTX/EdgeTX Installation
 
-    Download the [latest release](https://github.com/rotorflight/rotorflight-lua-scripts/releases) and copy the contents of the SCRIPTS folder to your transmitter. See also the [readme](https://github.com/rotorflight/rotorflight-lua-scripts#installing).
-
-    and copy the contents of the SCRIPTS folder to your transmitter.
+    Download the [latest release](https://github.com/rotorflight/rotorflight-lua-scripts/releases) and copy the contents of the `SCRIPTS` folder to your transmitter. See also the [README](https://github.com/rotorflight/rotorflight-lua-scripts#installation).
 
     You will know if you did this correctly if the `rf2.lua` file shows up in the `/SCRIPTS/TOOLS` directory. Also *Rotorflight 2* should now show up in the *Tools* menu of your transmitter.
 
@@ -59,11 +59,11 @@ There are different Lua scripts depending on what radio you are using (edgeTX or
 
     ![Tools](./img/lua-tools.png)
 
-    The first time you do this all scripts will be compiled and the *Tools* menu will be displayed again. Select *Rotorflight conf* again. Now the script will wait for a connection with the receiver.
+    The first time you do this all scripts will be compiled and the *Tools* menu will be displayed again. Select *Rotorflight 2* again. Now the script will wait for a connection with the receiver.
 
     ![Connection](./img/lua-connection.png)
 
-    Power up the receiver. The script will retrieve the API version used by Rotorflight and the device ID of the flight controller. After this you will see the main menu.
+    Power up the receiver. The script will retrieve the Rotorflight version. After this you will see the main menu. If you don't, make sure you've discovered all telemetry sensors.
 
     ![MainMenu](./img/lua-main.png)
 
@@ -71,33 +71,80 @@ There are different Lua scripts depending on what radio you are using (edgeTX or
 
     ![PID](./img/lua-profile-pid.png)
 
-    Now you can change the values of your PIDs. If you want to save your changes, long press the wheel/roller. The *Page* menu should now pop up. Select *Save page* to send your changes to the flight controller. Or press Exit to exit the *Page* menu.
+    Now you can change the values of your PIDs. 
+    
+    Feel free to have a look at any page. As long as you don't select *Save*, nothing will be changed.
+    
+    ### Saving changes
+    
+    If you want to save your changes, press the *Save* button (color radios) or long press the wheel/roller and select *Save* (black and white radios). 
 
-    ![PageMenu](./img/lua-save.png)
+    ### Status Page
 
-    There's quite a lot of settings you can adjust on the field. Here's an overview of all the pages:
+    The *Status* page displays any *Arming disabled flags*, which can be handy for troubleshooting why you can't start the heli. 
+    
+    ![PID](./img/lua-status.png)
 
-    ![Pages](./img/lua-pages.png)
+    ### Battery Page
 
-    Feel free to have a look at any page. As long as you don't select *Save page*, nothing will be changed.
+    On the *Battery* Page you can define up to 6 battery profiles for your heli. These settings are stored on the flight controller of the heli, so each heli can have it's own battery profiles. 
+    
+    You can also specify the pack you're going to use for the next flight on this page, so the battery capacity sensor will work correctly.
+
+    ![PID](./img/lua-battery.png)
+
+    ### Model Page
+
+    On the *Model* page you can specify the duration of Timer 1/2/3, among other things. These settings are stored on the flight controller of the connected heli. This enables you to use one model on the transmitter for different helis, with each heli having its own timer settings.
+
+    ![PID](./img/lua-model.png)
+
+    ### Settings Page
+
+    On the *Settings* page you can specify which pages should be shown on the main menu. This allows you to hide unused pages.
+
+    ![PID](./img/lua-settings.png)
+
 
     ### Background script
+    The optional background script `rf2bg.lua` features *Real Time FC Clock synchronization*, the *Adjustment Teller* and *CRSF/ELRS custom telemetry*.
+    - RTC synchronization will send the time of the transmitter to the flight controller. The script will beep if RTC synchronization has been completed. Blackbox logs and files created by the FC will now have the correct timestamp.
+    - *CRSF/ELRS custom telemetry* enables all available Rotorflight telemetry sensors when using ELRS.
+    - The *Adjustment Teller* will [tell you](https://www.youtube.com/watch?v=rbMiiWhzhqI) what adjustment you just made. It supports all adjustments except profile adjustments.
 
-    This background script offers RTC synchronization and RSSI through MSP and is used for [ELRS Custom Telemetry](./elrs-custom-telemetry.mdx).
+    There are two ways to run the background script:
+    1. Either configure `rf2bg` to run as a special or global function in EdgeTX/OpenTX.
+    2. Or configure the *RF Tool* widget. This only works on color radios running EdgeTX.
 
-    RTC synchronization will send the time of the transmitter to the flight controller. The script will beep if RTC synchronization has been completed.
+    ### 1. Run the background script as a function
+    In OpenTX, configure your special function as follows to run the script automatically as soon as the model is selected ('ON').
 
-    Blackbox logs and files created by the FC will now have the correct timestamp.
+    ![OpenTX script setup](https://github.com/rotorflight/rotorflight-lua-scripts/assets/34315684/d91c69e3-1bcf-48ce-92bf-4cb9f6e9322e)
 
-    The background script can be setup as a special or global function in EdgeTX.
+    On EdgeTX, make also sure to set *Repeat* to *On*:
 
-    The image below shows how to configure the background script as a special function.
+    ![EdgeTX script setup](https://raw.githubusercontent.com/rotorflight/rotorflight-lua-scripts/master/docs/assets/images/background_script_edgetx.png)
 
-    By doing this, the script will automatically run as soon as the model is selected.
+    ### 2. Or configure the *RF Tool* widget
 
-    ![Background script](./img/lua-bg-script-setup-1.png)
+    If you have a color radio running EdgeTX 2.11 or higher, then you can use the *RF Tool* widget that was released in Rotorflight 2.3.0. Running this widget has several benefits:
+    - It will automatically show the name of the connected model.
+    - *RF Tool* can also always display one sensor value of your liking. I like *Vcel* (cell voltage) to be displayed always, so I don't completely exhaust my batteries while tuning.
+    - *RF Tool* defines an API that can also be used by other widgets, which makes programming Rotorflight widgets easier. The *RF Stats* widget for example uses the *RF Tool* API, and displays/updates flight statistics.
+    - You don't need to configure a function for running the background script anymore.
 
-    ![Background script](./img/lua-bg-script-setup-2.png)
+    In the image below you can see the *RF Tool* widget in the upper left part, while the *RF Stats* widget sits in the lower right part of the screen.
+
+    ![EdgeTX script setup](https://raw.githubusercontent.com/rotorflight/rotorflight-lua-scripts/master/docs/assets/images/rotorflight-widgets.png)
+
+    Here's a video that explains [how to set up the widget](https://www.youtube.com/watch?v=t72pQoBngGs).
+
+    ## Adjustment Teller
+
+    The *Adjustment Teller* can be enabled under Settings > Rf2bg Options > Adjustment Teller. The teller uses telemetry for getting the adjustment function and value:
+    - S.port/F.port: the telemetry sensors 5110 and 5111 should be available. Discover or add them if they aren't.
+    - RF 2.0 CRSF: the telemetry sensor FM should be available. Also do a `set crsf_flight_mode_reuse = ADJFUNC` in the CLI and `save`.
+    - RF 2.1+ with CRSF/ELRS custom telemetry: make sure you include the *Adjustment Function* sensor.
   </TabItem>
 
   <TabItem value="ETHOS" label="ETHOS" attributes={{className: tabStyles.tab}}>
