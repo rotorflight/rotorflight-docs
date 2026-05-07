@@ -63,7 +63,7 @@ authors: Rotorflight
 
 ## 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.1)
 
-**NOTE!** Use the SYS key to bring up the Save menu with Touch UI feature enabled on EdgeTx 2.11+
+**NOTE!** Use the SYS key to bring up the Save menu with Touch UI feature enabled on EdgeTX 2.11+
 
 ### 🆕 Pages & Controls
 

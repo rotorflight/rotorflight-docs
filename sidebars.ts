@@ -65,10 +65,11 @@ const sidebars: SidebarsConfig = {
           items: [
             {
               type: "category",
-              label: "Edge Tx",
+              label: "EdgeTX",
               items: [
                 "setup/radio-setup/radio-setup-edgetx/edgetx-generic-radio-setup",
-                "setup/radio-setup/radio-setup-edgetx/lua-RF2-touch",
+                "setup/radio-setup/radio-setup-edgetx/edgetx-lua-scripts",
+                "setup/radio-setup/radio-setup-edgetx/edgetx-rf-api",
                 "setup/radio-setup/radio-setup-edgetx/widget-etx-bob00",
               ],
             },
@@ -79,6 +80,7 @@ const sidebars: SidebarsConfig = {
                 "setup/radio-setup/radio-setup-ethos/ethos-simulators",
                 "setup/radio-setup/radio-setup-ethos/ethos-generic-radio-setup",
                 "setup/radio-setup/radio-setup-ethos/ethos-setup",
+                "setup/radio-setup/radio-setup-ethos/ethos-lua-scripts",
                 "setup/radio-setup/radio-setup-ethos/ethos-nexus-status",
                 "setup/radio-setup/radio-setup-ethos/ethos-suite-missing-sensors",
                 "setup/radio-setup/radio-setup-ethos/ethos-background-task-notification",
@@ -103,7 +105,6 @@ const sidebars: SidebarsConfig = {
         },
 
         "setup/arming",
-        "setup/lua-scripts",
         "setup/backup-and-restore",
         "setup/flashing-the-firmware",
         "setup/remapping",
