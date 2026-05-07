@@ -4,7 +4,7 @@
 
 info
 
-We often configure several flight modes to suit our own flying requirements e.g. (Futaba - Normal, IU1, IU2)(OpenTx - FM1, FM2, FM3). It is quite possible that with each of these flight modes we would want to adjust and tune the model independently. We can do this through the Adjustments tab. This is a similar feature to V-bar 'Bank switching'. The following example is just a suggestion and is one way to go about using the adjustments tab. The same process can be used to switch rates if required.
+We often configure several flight modes to suit our own flying requirements e.g. (Futaba - Normal, IU1, IU2)(OpenTX - FM1, FM2, FM3). It is quite possible that with each of these flight modes we would want to adjust and tune the model independently. We can do this through the Adjustments tab. This is a similar feature to V-bar 'Bank switching'. The following example is just a suggestion and is one way to go about using the adjustments tab. The same process can be used to switch rates if required.
 
 ## Aim[​](#aim "Direct link to Aim")
 
@@ -14,7 +14,7 @@ My helicopter has already been set up to have a 3 position switch (SwE) which se
 
 We need to assign a spare channel to your 3 position switch (SwE) (can be any channel or switch).
 
-**NOTE** This example shows the process for EdgeTx (same for OpenTX) but is really the same process for any transmitter.
+**NOTE** This example shows the process for EdgeTX (same for OpenTX) but is really the same process for any transmitter.
 
 **Step 1:** Assign Ch9 to the SwE in the **Mixers** tab
 

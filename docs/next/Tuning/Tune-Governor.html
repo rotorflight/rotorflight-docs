@@ -12,8 +12,8 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Rotorflight" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.c531b136.css">
-<script src="/assets/js/runtime~main.52a5dde9.js" defer="defer"></script>
-<script src="/assets/js/main.321e95bb.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.dd8baef4.js" defer="defer"></script>
+<script src="/assets/js/main.b9b80a0f.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -30,7 +30,7 @@
 <li class="">Start with governor <em>P-gain</em> and <em>I-gain</em> really low, e.g. 10 for P and 20 for I. Spool up might now take a bit longer.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tuning-steps">Tuning steps<a href="#tuning-steps" class="hash-link" aria-label="Direct link to Tuning steps" title="Direct link to Tuning steps" translate="no">​</a></h2>
-<p>When you&#x27;re using the <a class="" href="/docs/next/setup/lua-scripts">Rotorflight Lua scripts</a>, you can change all gain values on the field. My routine is to make logs of 3 or 4 different values around the default value for one specific gain. Example: the governor F-gain has a default value of 15, so try 10, 15, 20 and 25. Start with 10, do some pitch pumps (give it full collective for a short period of time) and disarm. Change the value to 15 and save, arm, do some pitch pumps, and so on. The result will be one log file with 4 partial logs, which you can select with the dropdown in the upper-right corner of the Blackbox Explorer. Then look in the Blackbox Explorer to see what gain value works best. If you think you might need higher or lower values for a specific gain, make a new log with adjusted values.</p>
+<p>When you&#x27;re using the <a class="" href="/docs/next/setup/lua-scripts.mdx">Rotorflight Lua scripts</a>, you can change all gain values on the field. My routine is to make logs of 3 or 4 different values around the default value for one specific gain. Example: the governor F-gain has a default value of 15, so try 10, 15, 20 and 25. Start with 10, do some pitch pumps (give it full collective for a short period of time) and disarm. Change the value to 15 and save, arm, do some pitch pumps, and so on. The result will be one log file with 4 partial logs, which you can select with the dropdown in the upper-right corner of the Blackbox Explorer. Then look in the Blackbox Explorer to see what gain value works best. If you think you might need higher or lower values for a specific gain, make a new log with adjusted values.</p>
 <p>Try increments of 10 for the F-gain, increments of 25 for the I-gain and increments of 10 for the P-gain.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-tune-the-f-gain">1. Tune the F-gain<a href="#1-tune-the-f-gain" class="hash-link" aria-label="Direct link to 1. Tune the F-gain" title="Direct link to 1. Tune the F-gain" translate="no">​</a></h3>
 <p>The F-gain determines the feedforward term, together with cyclic and collective precompensation. As stated, the better the F-gain is tuned, the less the PID-loop has to correct. Here&#x27;s an example where the F-gain is too low, since the headspeed drops quite a bit when doing pitch pumps.</p>

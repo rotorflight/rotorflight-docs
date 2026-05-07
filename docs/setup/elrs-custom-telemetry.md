@@ -63,7 +63,7 @@ Set ‘Telemetry Rate’ to match the ‘Packet Rate’ you’ve set for ELRS (5
 
 ### 4. Download telemetry Lua Script[​](#4-download-telemetry-lua-script "Direct link to 4. Download telemetry Lua Script")
 
-NOTE! Lua script is required for Custom Telemetry Custom telemetry requires the radio to run a telemetry Lua script in the background. You need to install all the Lua scripts coming with the release, and then enable rf2tlm.lua as a ‘Custom Script’ in your EdgeTx model. The steps below explain how to to this and discover the newly added sensors on your EdgeTx radio.
+NOTE! Lua script is required for Custom Telemetry Custom telemetry requires the radio to run a telemetry Lua script in the background. You need to install all the Lua scripts coming with the release, and then enable rf2tlm.lua as a ‘Custom Script’ in your EdgeTX model. The steps below explain how to to this and discover the newly added sensors on your EdgeTX radio.
 
 [**Download the latest Lua script HERE**](https://github.com/rotorflight/rotorflight-lua-scripts/releases)
 
@@ -71,7 +71,7 @@ NOTE! Lua script is required for Custom Telemetry Custom telemetry requires the 
 
 ### 5. Add Lua to SD card[​](#5-add-lua-to-sd-card "Direct link to 5. Add Lua to SD card")
 
-2. Copy the ‘Script’ folder from the zip file into your EdgeTx radio’s SD card (root directory). There will be a Scripts folder already in your SD card. You can safely overwrite any existing files. (Note: As with any upgrades, ensure you have already backed up your SD card in case anything goes wrong) Contents of the zip file:
+2. Copy the ‘Script’ folder from the zip file into your EdgeTX radio’s SD card (root directory). There will be a Scripts folder already in your SD card. You can safely overwrite any existing files. (Note: As with any upgrades, ensure you have already backed up your SD card in case anything goes wrong) Contents of the zip file:
 
 ![Telemetry Tab](/assets/images/telemetry-5-18931fb2f051b80ab6c163f89fca9b31.png)
 
@@ -86,7 +86,7 @@ Contents of your SD card should look something like this:<br />![Telemetry Tab](
 ### 7. Discover telemetry[​](#7-discover-telemetry "Direct link to 7. Discover telemetry")
 
 * Power off your Flight Controller.
-* On your EdgeTx radio, navigate to Model settings -> Telemetry page and **Delete All** sensors that you may have previously discovered. Then **Discover New** sensors
+* On your EdgeTX radio, navigate to Model settings -> Telemetry page and **Delete All** sensors that you may have previously discovered. Then **Discover New** sensors
 * NOW power up your helicopter for sensors to be discovered
 
 ***Important: If your sensors are not in the correct order it means the FC was already powered prior to "Discover new". Make sure the FC is powered up only after "Discovery new" is active***

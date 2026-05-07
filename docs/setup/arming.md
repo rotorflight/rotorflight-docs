@@ -19,7 +19,7 @@ For ELRS receivers - Put your arm switch on AUX1, and set it as 1000 is disarmed
 
 Please read [ELRS switch configs and Arming](https://www.expresslrs.org/software/switch-config/#why-do-you-keep-saying-put-arm-on-aux1) for more details
 
-For EdgeTx this would look like this:
+For EdgeTX this would look like this:
 
 ![Arming](/assets/images/arming-1-5fe514c9a745bb437b7b12444d7ccd80.png)
 

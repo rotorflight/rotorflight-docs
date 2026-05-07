@@ -65,7 +65,7 @@ There are several flight controllers specifically made for Rotorflight.
 
 - [Download - Blackbox](/docs/download/blackbox.md): Download the Release v2.2.0
 - [Download - Configurator](/docs/download/configurator.md): Rotorflight Release v2.2.1
-- [Download - Edge Tx Lua](/docs/download/edge-tx-Lua.md): Download the EdgeTx Release v2.2.1
+- [Download - Edge Tx Lua](/docs/download/edge-tx-Lua.md): Download the EdgeTX Release v2.2.1
 - [Download - Ethos Tx Lua](/docs/download/ethos-Lua.md): Versions
 - [v2.2.1 Upgrade notes](/docs/download/notes.md): Update procedure
 
