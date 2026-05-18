@@ -12,7 +12,18 @@ First install Node.js on your machine, either by downloading the latest or by us
 > git clone https://github.com/rotorflight/rotorflight-docs
 > cd rotorflight-docs
 > npm install
-> npm run start
+```
+
+Copy the `example.env` file to `.env`. The example file contains sane defaults for local development, but you can review and change them to your liking:
+
+```
+ cp example.env .env
+```
+
+Then you can start the development server:
+
+```
+npm run start
 ```
 
 This will start the development server. Also, your browser wil open http://localhost:3000/, where you can view and test the website. If you now edit and save a markdown file in `/versioned_docs`, the changes will automatically show up in your browser.
