@@ -75,37 +75,17 @@ The dev server hot-reloads on every file save.
 
 ## Deployment
 
-The site is deployed to GitHub Pages automatically on every push to `main` via GitHub Actions. The workflow uses [mike](https://github.com/jimporter/mike) to manage versioned documentation.
+The site is deployed to GitHub Pages automatically on every push to `main` via GitHub Actions (`mkdocs gh-deploy`). No manual steps are needed for a normal release.
 
-### How versioning works
+### Manual deploy (maintainers)
 
-Each Rotorflight release gets its own documentation version on the `gh-pages` branch. The `main` branch is always deployed as `latest`.
-
-```
-https://rotorflight.org/          →  latest (current release)
-https://rotorflight.org/2.2.0/    →  version 2.2.0
-https://rotorflight.org/2.1.0/    →  version 2.1.0
-```
-
-### Publishing a new version (maintainers)
-
-When cutting a release, deploy the docs for that version from the release commit:
+If you need to deploy outside of CI — for example to test a hotfix — run from the repo root:
 
 ```bash
-# Make sure you're on the release commit / tag
-git checkout v2.3.0
-
-# Activate your venv and deploy
-mike deploy --push --update-aliases 2.3.0 latest
-mike set-default --push latest
+mkdocs gh-deploy --force
 ```
 
-### Listing and deleting versions
-
-```bash
-mike list           # Show all deployed versions
-mike delete 2.0.0   # Remove an old version
-```
+This builds the site and pushes the output directly to the `gh-pages` branch.
 
 ---
 
@@ -146,8 +126,3 @@ rotorflight-docs/
 
 Full guide: [Contributing → Editing the Website](docs/Contributing/Editing-the-Website.md)
 
----
-
-## Versioned docs (legacy)
-
-The `versioned_docs/` directory contains Docusaurus-era frozen snapshots for versions 2.0.0, 2.1.0, and 2.2.0. These are not built by MkDocs. They will be converted and deployed as versioned mike releases in a future step.
