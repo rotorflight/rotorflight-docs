@@ -26,10 +26,10 @@ Since 2023 there are also commercial [**Rotorflight controllers**](./controllers
 
 ## Latest Rotorflight 2 Version
 
-Rotorflight v2.2 is the current stable release and can be found in the [**V2.2.0 Stable Downloads**](/docs/download/configurator).
+Rotorflight v2.2 is the current stable release and can be found in the [**V2.2.0 Stable Downloads**](./download/configurator.md).
 
 ## Next release testing
 
-The next release of Rotorflight is currently in the development phase.  Snapshots can be found [**Development Downloads**](/docs/next/download/configurator).
+The next release of Rotorflight is currently in the development phase. Snapshots can be found in [**Development Downloads**](./download/configurator.md).
 
 ![Introduction](./img/intro-1.jpg)

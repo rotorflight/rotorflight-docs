@@ -8,8 +8,8 @@ The flight channels (Aileron, Elevator, Throttle, Rudder, Collective) can be AUT
 
 The auxiliary channels can be Hold or Set, (Default is HOLD).
 
-:::note
-AUTOMATIC - Flight channels are set to safe values (low throttle, mid position for yaw/pitch/roll).\
-HOLD - Channel holds the last value.\
-SET - Channel is set to a specific configured value.
-:::
+!!! note
+    AUTOMATIC - Flight channels are set to safe values (low throttle, mid position for yaw/pitch/roll).\
+    HOLD - Channel holds the last value.\
+    SET - Channel is set to a specific configured value.
+

@@ -1,0 +1,204 @@
+﻿# Tuning examples and presets
+
+!!! warning
+    Please use the supplied defaults until a maiden flight has been conducted and the filtering is confirmed. Once this is done higher gains can be tested. Skipping this step and using these settings without adequate filtering could result in an uncontrollable helicopter.
+
+    <table>
+    <td>
+    **No filter**
+
+    ![No Filter](./img/no-filter.png)
+    </td>
+
+    <td>
+    **Filters are working**
+
+    <img src="./img/working-filter.png" alt="Filter" width="200%" />
+    </td>
+    </table>
+
+
+!!! danger
+    ⚠ THE CREATORS OF THESE PRE-SETS ASSUME NO RESPONSIBILITY OR LIABILITY FOR DAMAGE CAUSED BY USING THEIR PARAMETERS. IMPROPER USE MAY LEAD TO LOSS OF VEHICLE, INJURY OR DEATH. PROCEED AT YOUR OWN RISK. ⚠
+
+
+## How to use these presets?
+
+There are two options for using these pre-sets.
+
+1. Follow the screen shots to configure your helicopter.
+2. Load from the supplied Diff file. **Please note:** This method may overwrite some of your previously configured settings. Please check and confirm carefully.
+
+!!! info "OMPHOBBY M7"
+    ### Jiawen Bao - M7
+
+    === "OMPHOBBY M7"
+        <div style={{textAlign: 'center'}}>
+        <img src="./img/jiawen-m7.jpeg" alt="Jiawen M7" width="60%" />
+        </div>
+
+    === "View Pre-set"
+        === "Author’s Notes"
+            Author’s Notes - READ BEFORE USING THIS TUNE
+
+            **Creator:**           Jiawen Bao @etocii\
+            **Rotorflight Version:**    2.0.0 Release\
+            **Rotorflight Hardware:**   Flydragon F722 v2.2\
+            **Tune Attributes:**     Precise, Locked-In, 3D, Robotic
+
+            This tune has a single profile using the Rotorflight Governor with maximum headspeed of 2200RPM.
+
+            **Helicopter:** 		OMPHOBBY M7\
+            **Main Rotor Blades:** 	RotorTech 715mm Ultimate\
+            **Tail Rotor Blades:**	RotorTech 106mm Ultimate\
+            **FBL/Receiver:**	Flydragon F722v2\
+            **Motor:**			SUNNYSKY R4530\
+            **Pinion:**			13t\
+            **ESC:**			Hobbywing 260A v5\
+            **Dampers:** 		POM
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lk8hiFstBJM?si=nfFoVsEjYLGLDJU-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+        === "Recommended Filters"
+            ![M7 Filters](./img/jiawen-m7-filters.png)
+
+        === "I have checked: filters are enabled and working"
+            #### Diff all
+
+            [**Jiawen M7 Diff All**](./diff-all/RTFL_cli_OMP_M7_Jiawen_20240708_212743.txt)  - This is suitable for all Rotorflight Controllers
+
+            #### Servos
+
+            ![M7 Servos](./img/jiawen-m7-servos.png)\
+            Mixer: Calibration\
+            ![M7 Mixer](./img/jiawen-m7-mixer.png)
+
+            #### Headspeed: 2200RPM
+
+            ![M7 2200 RPM](./img/jiawen-m7-pf1.png)
+
+
+
+
+
+
+## XLPower Nitro Nimbus
+
+!!! info "XLPower Nitro Nimbus"
+    ### Jiawen Bao - Nitro Nimbus.
+
+    === "Nitro Nimbus"
+        <div style={{textAlign: 'center'}}>
+        <img src="./img/jiawen-nimbus.png" alt="Jiawen Nimbus" width="60%" />
+        </div>
+
+    === "View Pre-set"
+        === "Author’s Notes"
+            Author’s Notes - READ BEFORE USING THIS TUNE
+
+            **Creator:**           Jiawen Bao @etocii\
+            **Rotorflight Version:**    2.0.0 Release\
+            **Rotorflight Hardware:**   Flydragon F722 v2.2\
+            **Tune Attributes:**     Precise, Locked-In, 3D, Robotic
+
+            This tune has a single profile using the Rotorflight Governor with maximum headspeed of 2200RPM.
+
+            **Helicopter:** 		XLPower Nitro Nimbus\
+            **Main Rotor Blades:** 	RotorTech 580mm Ultimate\
+            **Tail Rotor Blades:**	RotorTech 96mm Ultimate\
+            **FBL/Receiver:**	    Flydragon F722v2\
+            ***Servos:***           Theta C1, D1\
+            **Engine:**			    OS55HZR\
+            **RPM sensor:**			ALIGN sensor
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/SX1gI6EBy5k?si=LQsTeogDzOPADhxx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+        === "Recommended Filters"
+            ![Nimbus Filters](./img/jiawen-nimbus-filters.png)
+
+        === "I have checked: filters are enabled and working"
+            #### Diff all
+
+            [**Jiawen Nimbus Diff All**](./diff-all/RTFL_cli_Nimbus_Nitro_20240712_125546.txt)  - This is suitable for all Rotorflight Controllers
+
+            [**S5 on SBUS Port**](./diff-all/S5-on-Sbus.txt) - Jiawen uses the SBUS port as an extra servo output which is used to control the glow igniter. This file will configure the extra servo and is suitable for Flydragon F722V2 and NEXUS. It can also be used for the FlywingF405; however, it is output on the DSM port.
+
+            #### Servos
+
+            ![Nimbus Servos](./img/jiawen-nimbus-servos.png)\
+            Mixer: Calibration\
+            ![Nimbus Mixer](./img/jiawen-nimbus-mixer.png)
+
+            #### Headspeed: 2100RPM
+
+            With a throttle signal of 100%\
+            ![Nimbus 2100 RPM](./img/jiawen-nimbus-pf1-1.png)\
+            ![Nimbus 2100 RPM](./img/jiawen-nimbus-pf1-2.png)
+
+
+
+
+
+
+## XLPower Specter Nitro
+
+!!! info "XLPower Specter Nitro"
+    ### Jiawen Bao - Specter Nitro.
+
+    === "Specter Nitro"
+        <div style={{textAlign: 'center'}}>
+        <img src="./img/jiawen-specter.png" alt="Jiawen Nimbus" width="60%" />
+        </div>
+
+    === "View Pre-set"
+        === "Author’s Notes"
+            Author’s Notes - READ BEFORE USING THIS TUNE
+
+            **Creator:**           Jiawen Bao @etocii\
+            **Rotorflight Version:**    2.0.0 Release\
+            **Rotorflight Hardware:**   Flydragon F722 v2.2\
+            **Tune Attributes:**     Precise, Locked-In, 3D, Robotic
+
+            This tune has a single profile using the Rotorflight Governor with maximum headspeed of 1950RPM.
+
+            Setup:\
+            **Helicopter:** 		Specter Nitro\
+            **Main Rotor Blades:** 	RotorTech 700mm Ultimate\
+            **Tail Rotor Blades:**	RotorTech 116mm Ultimate\
+            **Engine:**				OS91speed\
+            **Pipe:**				Kenny Ko pipe\
+            **Servos:**				Theta Kenny Ko 12V servos\
+            **Throttle Servo:**		GDW G28-06\
+            **FBL/Receiver:**		Flydragon F722v2\
+            **Battery:**			Gens ACE 3S 2200mah\
+            **RPM sensor:**			XGuard Back Plate Sensor\
+            **Glow Igniter:**		XGlow Pro ICE igniter\
+            **Capacitor:**			Panasonic 16V 2200μF\
+            **Fuel:**				VP30%
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/YqX0sLBM68Y?si=-JR9_gq1iSERcdCT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+        === "Recommended Filters"
+            ![Nimbus Filters](./img/jiawen-specter-filters.png)
+
+        === "I have checked: filters are enabled and working"
+            #### Diff all
+
+            [**Jiawen Nitro Specter Diff All**](./diff-all/SpecterN_before_awesome.txt) - Jiawen uses the SBUS port as an extra servo output which is used to control the glow igniter.
+
+            #### Servos
+
+            ![Specter Servos](./img/jiawen-specter-servos.png)\
+            Mixer: Calibration\
+            ![Specter Mixer](./img/jiawen-specter-mixer.png)
+
+            #### Headspeed: 1950RPM
+
+            With a throttle signal of 85.5%\
+            ![Specter 1950 RPM](./img/jiawen-specter-pf1-1.png)
+
+
+
+
+
+

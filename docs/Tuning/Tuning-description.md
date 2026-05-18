@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 20
 ---
 
@@ -6,26 +6,26 @@ sidebar_position: 20
 
 The default tuning parameters supplied with Rotorflight are designed to be safe and flyable for all helicopters. This means in most cases the helicopter will not be responsive and locked in on your first flight and some tuning will be required.
 
-These tuning parameters are located on the Profile tab in the [Configurator](../configurator/tabs/profiles.md) and could also be changed via the [LUA Scripts](../setup/lua-scripts.mdx) or [Adjustments](../configurator/tabs/adjustments.md)
+These tuning parameters are located on the Profile tab in the [Configurator](../configurator/tabs/profiles.md) and could also be changed via the [LUA Scripts](../setup/radio-setup/radio-setup-edgetx/edgetx-lua-scripts.md) or [Adjustments](../configurator/tabs/adjustments.md)
 
 ## Tuning Profile PID:
 
 ![Profile PID](./img/tuning-pid.png)
 
-:::caution
-Please start by confirming your filters are working correctly before you increase your tuning parameters. If you do not have filters enabled it is particularly important that you do not use Derivative. This can result in hot Motors and Servos.
-:::
+!!! warning
+    Please start by confirming your filters are working correctly before you increase your tuning parameters. If you do not have filters enabled it is particularly important that you do not use Derivative. This can result in hot Motors and Servos.
 
-:::note
-What do we mean "wobble"??
-When tuning parameters are too high the helicopter will wobble or shake during some movements. Each time we increase a tuning value we need to test fly and see if the new setting is too high. Test this in the following way:
 
-* Beginner: Tap the stick and see if it shakes/shudders/wobbles
-* Average: Do some flips with sudden stops, try going fast and tapping the stick, do some Tictocs
-* Advanced: Do crazy high speed high rate stuff that makes the FC sweat and see if it freaks out \:stuck\_out\_tongue\_winking\_eye:.
+!!! note
+    What do we mean "wobble"??
+    When tuning parameters are too high the helicopter will wobble or shake during some movements. Each time we increase a tuning value we need to test fly and see if the new setting is too high. Test this in the following way:
 
-## Please also see the General Guidelines below for more specific descriptions
-:::
+    * Beginner: Tap the stick and see if it shakes/shudders/wobbles
+    * Average: Do some flips with sudden stops, try going fast and tapping the stick, do some Tictocs
+    * Advanced: Do crazy high speed high rate stuff that makes the FC sweat and see if it freaks out \:stuck\_out\_tongue\_winking\_eye:.
+
+    ## Please also see the General Guidelines below for more specific descriptions
+
 
 1. Increase Derivative (D) on each axis individually, (roll, pitch, yaw) until it wobbles, then back off a bit. **(remember!! don't do this if your filters are not working)**.
 

@@ -6,9 +6,9 @@ sidebar_position: 130
 
 ## Add an extra servo controlled by an AUX channel.
 
-:::note
-Sometimes we may wish to add an extra servo to our helicopter to be controlled by our Tx for something like retracts on a scale machine or a camera etc. This can be done using the remapping spreadsheet. In the example below we will add Servo 5 to be controlled by the AUX 3 channel.
-:::
+!!! note
+    Sometimes we may wish to add an extra servo to our helicopter to be controlled by our Tx for something like retracts on a scale machine or a camera etc. This can be done using the remapping spreadsheet. In the example below we will add Servo 5 to be controlled by the AUX 3 channel.
+
 
 **Step 1:** Assign the servo to your chosen pin. In the pic below we have assigned Servo 5 to Serial Rx 2.
 

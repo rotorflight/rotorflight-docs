@@ -1,0 +1,207 @@
+site_name: Rotorflight
+site_description: Open-source Helicopter flight controller
+site_url: https://www.rotorflight.org/
+repo_url: https://github.com/rotorflight/rotorflight-docs
+repo_name: rotorflight/rotorflight-docs
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  logo: img/Rotorflight_outline.svg
+  favicon: img/rffavicon.ico
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - content.tabs.link
+    - content.code.copy
+    - content.action.edit
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - mike:
+      alias_type: symlink
+      canonical_version: latest
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra:
+  version:
+    provider: mike
+    default: latest
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rotorflight
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/6QUySXdEvd
+
+nav:
+  - Home: index.md
+  - Tutorial:
+    - Welcome: index.md
+    - Controllers:
+      - Overview: controllers/index.md
+      - Radiomaster Nexus: controllers/rm-nexus.md
+      - FrSky 007: controllers/frsky-007.md
+      - FlyDragon F722 v2.2: controllers/flydragon2.2.md
+      - Flywing HELI-F405: controllers/flywingf405heli.md
+      - Goosky:
+        - F701: controllers/goosky/f701.md
+        - F4 Mini: controllers/goosky/f4mini.md
+        - S2 Tune: controllers/goosky/s2-tune.md
+      - Matek G474Heli: controllers/matek_heli.md
+      - Matek G474H-lite: controllers/matek_hlite.md
+      - Betaflight DIY: controllers/betaflight-diy.md
+    - Setup Examples:
+      - Overview: examples/index.md
+      - Example 1: examples/example-1.md
+    - Tutorial - Setup:
+      - Radio Setup:
+        - EdgeTX:
+          - Generic Radio Setup: setup/radio-setup/radio-setup-edgetx/edgetx-generic-radio-setup.md
+          - Lua Scripts: setup/radio-setup/radio-setup-edgetx/edgetx-lua-scripts.md
+          - RF API: setup/radio-setup/radio-setup-edgetx/edgetx-rf-api.md
+          - Widget ETX BOB00: setup/radio-setup/radio-setup-edgetx/widget-etx-bob00.md
+        - Frsky Ethos:
+          - Simulators: setup/radio-setup/radio-setup-ethos/ethos-simulators.md
+          - Generic Radio Setup: setup/radio-setup/radio-setup-ethos/ethos-generic-radio-setup.md
+          - Ethos Setup: setup/radio-setup/radio-setup-ethos/ethos-setup.md
+          - Lua Scripts: setup/radio-setup/radio-setup-ethos/ethos-lua-scripts.md
+          - Nexus Status: setup/radio-setup/radio-setup-ethos/ethos-nexus-status.md
+          - Missing Sensors: setup/radio-setup/radio-setup-ethos/ethos-suite-missing-sensors.md
+          - Background Notifications: setup/radio-setup/radio-setup-ethos/ethos-background-task-notification.md
+        - Futaba:
+          - Futaba Setup: setup/radio-setup/radio-setup-futaba/futaba-setup.md
+        - Jeti:
+          - Jeti Setup: setup/radio-setup/radio-setup-jeti/jeti-setup.md
+        - Others:
+          - Others: setup/radio-setup/radio-setup-others/others.md
+      - Arming: setup/arming.md
+      - Backup & Restore: setup/backup-and-restore.md
+      - Flashing Firmware: setup/flashing-the-firmware.md
+      - Remapping: setup/remapping.md
+      - Servos Setup: setup/setup-servos.md
+      - Mixer Setup: setup/setup-mixer.md
+      - RPM Measurement: setup/rpm-measurement.md
+      - Governor: setup/governor.md
+      - Governor Setup: setup/governor-setup.md
+      - FlyRotor Governor: setup/governor-flyrotor-setup.md
+      - RPM Filters: setup/rpm-filters.md
+      - ESC Telemetry: setup/esc-telemetry.md
+      - ESC Forward Programming: setup/esc-forward-programming.md
+      - ELRS Custom Telemetry: setup/elrs-custom-telemetry.md
+      - Extra Servo: setup/extra-servo.md
+      - Nitro Setup: setup/setup-nitro.md
+      - Two-Stage Gear Ratios: setup/two-stage-gear-train-ratios.md
+      - Profile Switching Example: setup/profile-switching-example.md
+      - Stability Modes Example: setup/using-stability-modes-example.md
+      - LED Strip: setup/led-strip-quick-start.md
+      - Swash Wiggle: setup/swash-wiggle.md
+      - BLHeli_S to Bluejay: setup/blheli_s-to-bluejay.md
+      - OpenLager: setup/openlager.md
+    - Configurator:
+      - Overview: configurator/index.md
+      - Status: configurator/tabs/status.md
+      - Setup: configurator/tabs/setup.md
+      - Configuration: configurator/tabs/configuration.md
+      - Presets: configurator/tabs/presets.md
+      - Receiver: configurator/tabs/receiver.md
+      - Failsafe: configurator/tabs/failsafe.md
+      - Power: configurator/tabs/power.md
+      - Motors: configurator/tabs/motors.md
+      - Servos: configurator/tabs/servos.md
+      - Mixer: configurator/tabs/mixer.md
+      - Gyro Filters: configurator/tabs/gyro.md
+      - Rates: configurator/tabs/rates.md
+      - Profiles: configurator/tabs/profiles.md
+      - Modes: configurator/tabs/modes.md
+      - Adjustments: configurator/tabs/adjustments.md
+      - LED Strip: configurator/tabs/led-strip.md
+      - Beepers: configurator/tabs/beepers.md
+      - GPS: configurator/tabs/gps.md
+      - Sensors: configurator/tabs/sensors.md
+      - Blackbox: configurator/tabs/blackbox.md
+      - CLI: configurator/tabs/cli.md
+  - Download:
+    - Configurator: download/configurator.md
+    - Blackbox Explorer: download/blackbox.md
+    - EdgeTX Lua Scripts: download/edge-tx-Lua.md
+    - Ethos Lua Scripts: download/ethos-Lua.md
+    - Release Notes: download/notes.md
+  - Testing:
+    - Tuning Process: testing/tuning-process.md
+  - Tuning:
+    - Tuning Description: Tuning/Tuning-description.md
+    - First Flight Filter Tuning: Tuning/First-Flight-Filter-Tuning.md
+    - Governor Tuning: Tuning/Tune-Governor.md
+    - Feedforward Tuning: Tuning/Tune-Feedforward.md
+    - Cyclic Cross-Coupling: Tuning/Cyclic-Cross-Coupling.md
+    - High Speed Integral: Tuning/High-Speed-Integral.md
+    - Motorised Tail & TTA: Tuning/Motorised-Tail-and-TTA.md
+    - Rescue Mode Settings: Tuning/Rescue-mode-settings.md
+    - Tuning Examples: Tuning/tuning-examples.md
+  - Manufacturers:
+    - Overview: Manufacturers/intro.md
+    - Design Requirements: Manufacturers/Design-Requirements.md
+    - Reference Design: Manufacturers/Reference-Design.md
+  - Contributing:
+    - Overview: Contributing/intro.md
+    - Developers: Contributing/Developers.md
+    - Editing the Website: Contributing/Editing-the-Website.md
+    - Running MkDocs: Contributing/running-mkdocs.md
+    - Modeling Cross-Coupling: Contributing/Modeling-Cross-Coupling.md
+    - Flow Charts: Contributing/Flow-Charts.md
+    - Support: Contributing/support.md
+  - Announcements:
+    - blog/index.md

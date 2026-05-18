@@ -36,12 +36,12 @@ Minimum Cell Voltage - The voltage that is considered critically low, and will t
 Maximum Cell Voltage - The voltage of a fully charged Cell
 Warning Cell Voltage - The voltage that is considered low, and will trigger the corresponding warnings
 
-:::danger
-The warning voltage should be set to a value where you can still land safely, usually 3.6-3.5V.
-The minimum voltage should be set to a value where damage is imminent, usually 3.3V.
+!!! danger
+    The warning voltage should be set to a value where you can still land safely, usually 3.6-3.5V.
+    The minimum voltage should be set to a value where damage is imminent, usually 3.3V.
 
-If you fly a battery to less than 3.3V, it will start to be damaged and will not be able to hold a charge anymore, and can even be dangerous.
-:::
+    If you fly a battery to less than 3.3V, it will start to be damaged and will not be able to hold a charge anymore, and can even be dangerous.
+
 
 ### Capacity
 

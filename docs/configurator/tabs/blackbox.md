@@ -1,4 +1,4 @@
-# Blackbox
+﻿# Blackbox
 
 ## What is Blackbox
 
@@ -32,8 +32,8 @@ Here you can select the device type.
 Select the preferred logging mode.
 
 * **No Logging**: Disable Logging.
-* **Normal**: Start logging when both [**ARM**](../../setup/arming.mdx) and [**BLACKBOX**](./modes.md#blackbox) switches are active.
-* **Armed**: Start logging when [**ARM**](../../setup/arming.mdx) switch is active.
+* **Normal**: Start logging when both [**ARM**](../../setup/arming.md) and [**BLACKBOX**](./modes.md#blackbox) switches are active.
+* **Armed**: Start logging when [**ARM**](../../setup/arming.md) switch is active.
 * **Switch**: Start logging when [**BLACKBOX**](./modes.md#blackbox) switch is active.
 
 ### Logging Rate
@@ -58,9 +58,9 @@ Setting the slider will begin to delete older files when the storage is full so 
 
 Choose what *extra* data is being logged, eight extra debug items are added to the Blackbox Log.
 
-:::note
-Under *Blackbox debug mode* you can specify what should be logged. There are a lot of choices, but you can select *GYRO\_SCALED* for PID tuning, *GOVERNOR* for analyzing the governor or *CYCLETIME* if you're interested in CPU time.
-:::
+!!! note
+    Under *Blackbox debug mode* you can specify what should be logged. There are a lot of choices, but you can select *GYRO\_SCALED* for PID tuning, *GOVERNOR* for analyzing the governor or *CYCLETIME* if you're interested in CPU time.
+
 
 ### Debug Axis
 

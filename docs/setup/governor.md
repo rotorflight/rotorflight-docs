@@ -4,9 +4,9 @@ sidebar_position: 80
 
 # Governor
 
-:::info
-The purpose of the governor is to maintain a constant headspeed regardless of flight inputs, flying conditions, battery voltage, external disturbances, etc. In Rotorflight, the governor also provides other motor related features, like slow spoolup, autorotation control, battery voltage drop compensation, and fault detection and recovery.
-:::
+!!! info
+    The purpose of the governor is to maintain a constant headspeed regardless of flight inputs, flying conditions, battery voltage, external disturbances, etc. In Rotorflight, the governor also provides other motor related features, like slow spoolup, autorotation control, battery voltage drop compensation, and fault detection and recovery.
+
 
 # Governor Features
 
@@ -86,11 +86,11 @@ Minimum flight time before Autorotation can be engaged.
 
 When the throttle input (from receiver) goes to zero, the governor enters an intermediate state where it is waiting for the throttle to return. If the throttle returns before this timeout expires, the spoolup is done with the recovery acceleration. If the timeout expires, the governor enters off state, and any future spoolup will be slow.
 
-:::note
-The purpose of this feature is to allow fast spoolup in case the throttle cut (hold) is hit accidentally.
-If high throttle is returned very soon after, the heli will spool up quickly and hopefully keep on flying. Unit is 0.1s.
-Typical value is 5..50.
-:::
+!!! note
+    The purpose of this feature is to allow fast spoolup in case the throttle cut (hold) is hit accidentally.
+    If high throttle is returned very soon after, the heli will spool up quickly and hopefully keep on flying. Unit is 0.1s.
+    Typical value is 5..50.
+
 
 ### Headspeed Signal Timeout
 
@@ -168,31 +168,31 @@ Depending in which range the throttle value falls into, the governor will functi
 
 This throttle value indicates throttle hold (throttle cut) condition. It's guaranteed that all motors are stopped immediately. The throttle output from the governor is guaranteed to be zero.
 
-:::note
-Make sure your transmitter is sending a value lower than 0% when throttle hold is activated.
+!!! note
+    Make sure your transmitter is sending a value lower than 0% when throttle hold is activated.
 
-Throttle hold SHOULD NOT be used for autorotation.
-:::
+    Throttle hold SHOULD NOT be used for autorotation.
+
 
 ### *0%* \< THROTTLE \< *5%*
 
 In this range, the governor is in idle or autorotation state, and the output is zero - the main motor is stopped.
 
-:::note
-Motorized tail is fully active in this range.
+!!! note
+    Motorized tail is fully active in this range.
 
-If you want to perform autorotation with the main motor stopped, use this range!
-:::
+    If you want to perform autorotation with the main motor stopped, use this range!
+
 
 ### *5%* \< THROTTLE \< *Handover throttle%*
 
 In this range, the governor is in idle or autorotation state, and the output is in 0% - H.Thr%, increasing linearly through the range.
 
-:::note
-Motorized tail is fully active in this range.
+!!! note
+    Motorized tail is fully active in this range.
 
-If you want to perform autorotation with the main motor running, use this range!
-:::
+    If you want to perform autorotation with the main motor running, use this range!
+
 
 ### *Handover throttle%* \< THROTTLE \< *100%*
 

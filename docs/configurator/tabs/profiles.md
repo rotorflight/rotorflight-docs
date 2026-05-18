@@ -1,8 +1,8 @@
 # Profiles
 
-:::info
-The purpose of profiles are to store in flight tuning parameters. The aim is usually to have several 'profiles' that you can switch between during flight to change flight performance. Things like different headspeeds, tuning, rescue settings etc can be 'tuned' for the individual flight mode. Please see the [profile switching example](../../setup/profile-switching-example.md)
-:::
+!!! info
+    The purpose of profiles are to store in flight tuning parameters. The aim is usually to have several 'profiles' that you can switch between during flight to change flight performance. Things like different headspeeds, tuning, rescue settings etc can be 'tuned' for the individual flight mode. Please see the [profile switching example](../../setup/profile-switching-example.md)
+
 
 ## Main Tuning Parameters
 

@@ -18,11 +18,11 @@ Shows some basic data from the flight controller and model. This includes:
 
 * **Enable Arming:** Use this switch to enable arming while the configurator is connected.
 
-:::caution
-With the arming enabled, the motor can spoolup when the throttle is released.
+!!! warning
+    With the arming enabled, the motor can spoolup when the throttle is released.
 
-Remove blades for safety.
-:::
+    Remove blades for safety.
+
 
 * **Arming Disable Flags:** Shows all of the "errors" that prevent the flight controller from arming. This is useful to check if you're having issues arming.
 
@@ -45,9 +45,9 @@ A live preview of the gyroscope data. This is useful to check if the gyroscope i
 
 * **Reset Z axis** - This button resets the heli heading to 0 degrees.
 
-:::info
-You can set the gyroscope alignment in the `Configuration` tab.
-:::
+!!! info
+    You can set the gyroscope alignment in the `Configuration` tab.
+
 
 ## Instruments
 

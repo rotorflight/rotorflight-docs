@@ -6,23 +6,23 @@ sidebar_position: 40
 
 ![Flywing Heli405](./img/fw-helif405.png)
 
-:::info[Specifications]
-### Hardware Specifications：
+!!! info "Specifications"
+    ### Hardware Specifications：
 
-MCU: STM32F405RGT6
-IMU: ICM42688\
-Black Box: 16MB\
-Baro: SPL06 (I2C2）
-USB: Micro\
-UARTS: UART1，UART2，UART6\
-I2C: I2C1\
-ADC: Voltage measurement port VBat (5-30v)\
-Servo Pins: CH1-CH4\
-RPM Inputs: RPM (ESC RPM Wire)
-BEC Voltage: 5-19V\
-Dimensions: 42mm x 22mm x 14mm\
-Weight: 17g
-:::
+    MCU: STM32F405RGT6
+    IMU: ICM42688\
+    Black Box: 16MB\
+    Baro: SPL06 (I2C2）
+    USB: Micro\
+    UARTS: UART1，UART2，UART6\
+    I2C: I2C1\
+    ADC: Voltage measurement port VBat (5-30v)\
+    Servo Pins: CH1-CH4\
+    RPM Inputs: RPM (ESC RPM Wire)
+    BEC Voltage: 5-19V\
+    Dimensions: 42mm x 22mm x 14mm\
+    Weight: 17g
+
 
 ### Rotorflight Target
 

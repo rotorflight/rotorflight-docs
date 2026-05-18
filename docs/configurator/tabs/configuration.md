@@ -1,4 +1,4 @@
-# Configuration
+﻿# Configuration
 
 ## Personalization
 
@@ -38,9 +38,9 @@ This section is used to enable or disable features.
 
 ![Configuration Tab](../img/config-features.png)
 
-:::tip
-Features such as the GPS must be selected in the [Serial ports](#serial-ports) section before selecting the Feature here.
-:::
+!!! tip
+    Features such as the GPS must be selected in the [Serial ports](#serial-ports) section before selecting the Feature here.
+
 
 ## Serial Ports
 
@@ -59,11 +59,11 @@ GPS is not currently used for Rotorflight for any flight controls. This can be u
 
 ### Serial Rx
 
-Check [Receiver](./receiver.mdx) page for detailed info.
+Check [Receiver](./receiver.md) page for detailed info.
 
 ### ESC Telemetry
 
-Check [ESC Telemetry](../../setup/esc-telemetry.mdx) page for detailed info.
+Check [ESC Telemetry](../../setup/esc-telemetry.md) page for detailed info.
 
 ### Blackbox Logging
 

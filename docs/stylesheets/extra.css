@@ -1,0 +1,11 @@
+/* Rotorflight brand colour */
+:root {
+  --md-primary-fg-color: #FE9900;
+  --md-primary-fg-color--light: #FFB74D;
+  --md-primary-fg-color--dark: #E65100;
+  --md-accent-fg-color: #FE9900;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #FE9900;
+}

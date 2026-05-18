@@ -6,25 +6,25 @@ sidebar_position: 60
 
 ![Matek G474HELI](./img/matek-g474-hlite.png)
 
-:::info[Specifications]
-### Hardware Specifications：
+!!! info "Specifications"
+    ### Hardware Specifications：
 
-MCU: STM32G474CE\
-IMU: ICM42688-P\
-Black Box: W25N01G (128MB)\
-Baro: SPL06 (I2C2）\
-LED: LED\_STRIP port\
-Beeper: Buzzer output\
-USB: Type-C\
-UARTS: UART1, UART2 (Rx Only)，UART3, UART4\
-ADC: Battery measurement VBat 2-6s (5.4-30v)
-Servo Pins: CH1-CH4\
-Motor Pins: M1
-Voltage range Vx: 4.5V~14V\
-RPM Inputs: RPM Frequency input\
-Dimensions: 30mm x 23mm x 13mm\
-Weight: 9g
-:::
+    MCU: STM32G474CE\
+    IMU: ICM42688-P\
+    Black Box: W25N01G (128MB)\
+    Baro: SPL06 (I2C2）\
+    LED: LED\_STRIP port\
+    Beeper: Buzzer output\
+    USB: Type-C\
+    UARTS: UART1, UART2 (Rx Only)，UART3, UART4\
+    ADC: Battery measurement VBat 2-6s (5.4-30v)
+    Servo Pins: CH1-CH4\
+    Motor Pins: M1
+    Voltage range Vx: 4.5V~14V\
+    RPM Inputs: RPM Frequency input\
+    Dimensions: 30mm x 23mm x 13mm\
+    Weight: 9g
+
 
 ### Rotorflight Target
 

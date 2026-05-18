@@ -26,13 +26,13 @@ The mode selector tab enables several modes and functions to be enabled or disab
 
 ## ARM
 
-:::caution[ELRS]
-If using an ELRS receiver you must configure the ARM switch to AUX1 (1000 = Disarmed, 2000 = Armed). This channel is sent every cycle. Please see the [ELRS switch config documentation](https://www.expresslrs.org/software/switch-config/)
-:::
+!!! warning "ELRS"
+    If using an ELRS receiver you must configure the ARM switch to AUX1 (1000 = Disarmed, 2000 = Armed). This channel is sent every cycle. Please see the [ELRS switch config documentation](https://www.expresslrs.org/software/switch-config/)
 
-:::info[ARM & throttle hold]
-ARM and throttle hold are not the same. Do not configure the ARM and throttle hold on the same channel. The Flight controller needs to see minimum throttle before it can arm and if they are both on the same channel it will fail the minimum throttle check and will not ARM.
-:::
+
+!!! info "ARM & throttle hold"
+    ARM and throttle hold are not the same. Do not configure the ARM and throttle hold on the same channel. The Flight controller needs to see minimum throttle before it can arm and if they are both on the same channel it will fail the minimum throttle check and will not ARM.
+
 
 ![Modes](../img/modes-arm.png)
 
@@ -50,15 +50,15 @@ Enable Rescue mode from the tabs. Allocate the AUX channel and range to suit.
 
 ![Modes](../img/modes-rescue.png)
 
-:::info
-The purpose of the rescue mode is to arrest any decent, then put the helicopter at a safe altitude in a stable attitude. It does this in stages.
+!!! info
+    The purpose of the rescue mode is to arrest any decent, then put the helicopter at a safe altitude in a stable attitude. It does this in stages.
 
-* Immediately levels in current orientation (upright or inverted)
-* Applies a pull up collective to rapidly stop any decent
-* Applies a climb Collective to gain some height
-* if it is still inverted (and the flip toggle enabled) it will flip to upright.
-* Hover collective is now applied.
-:::
+    * Immediately levels in current orientation (upright or inverted)
+    * Applies a pull up collective to rapidly stop any decent
+    * Applies a climb Collective to gain some height
+    * if it is still inverted (and the flip toggle enabled) it will flip to upright.
+    * Hover collective is now applied.
+
 
 After enabling Rescue mode configure the rescue settings from the [**Profiles**](./profiles.md#rescue-settings) Tab.
 

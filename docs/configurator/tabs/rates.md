@@ -1,8 +1,8 @@
 # Rates
 
-:::info
-The purpose of rates are to change in flight sensitivity and rotation rates. The aim is usually to have several 'rates' that you can switch between during flight to change flight performance. Please see the [profile switching example](../../setup/profile-switching-example.md)
-:::
+!!! info
+    The purpose of rates are to change in flight sensitivity and rotation rates. The aim is usually to have several 'rates' that you can switch between during flight to change flight performance. Please see the [profile switching example](../../setup/profile-switching-example.md)
+
 
 ![Rates](../img/rates-main.png)
 
@@ -68,9 +68,9 @@ While Expo can be as high as 100, excessive Expo might cause decreased center st
 
 * **Response Time** - corresponds the smoothness of the reaction to stick inputs, also called  time constant of the input filter.
 
-:::note
-High response times smooths out the input but too high could cause significant input delay.
-:::
+!!! note
+    High response times smooths out the input but too high could cause significant input delay.
+
 
 * **Max Acceleration** - is the input acceleration limiter. Zero represents off. Low value reduces the load on the machine and could be desired for scale flying, not useful for 3D normally.
 

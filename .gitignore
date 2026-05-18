@@ -1,22 +1,15 @@
-# Dependencies
-/node_modules
-
-# Production
-/build
-
-# Generated files
-.docusaurus
-.cache-loader
+# MkDocs build output
+/site
 
 # Misc
 .DS_Store
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
 .idea
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/

@@ -1,43 +1,24 @@
-name: Test deployment
+name: Test Build
 
 on:
   pull_request:
     branches:
       - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
-  deploy:
-    name: Test deployment
+  build:
+    name: Test build
     runs-on: ubuntu-latest
-    env:
-      ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
-      ALGOLIA_SEARCH_API_KEY: ${{ vars.ALGOLIA_SEARCH_API_KEY }}
-      ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
-      FASTER: true
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
         with:
-          node-version: 24
-          cache: npm
-          cache-dependency-path: ./package-lock.json
+          python-version: '3.12'
+          cache: pip
 
-      - name: output
-        id: output
-        run: |
-          echo "URL=https://${{ github.repository_owner }}.github.io" >> $GITHUB_OUTPUT
-          echo "BASE_PATH=/" >> $GITHUB_OUTPUT
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - name: prepare env
-        run: |
-          touch .env
-          echo URL=${{ steps.output.outputs.URL }} > .env
-          echo BASE_PATH=${{ steps.output.outputs.BASE_PATH }} >> .env
-          echo ORG=${{ github.repository_owner }} >> .env
-
-      - name: Install dependencies & build
-        run: |
-          npm ci
-          npm run build
+      - name: Build site
+        run: mkdocs build --strict

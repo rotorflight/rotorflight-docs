@@ -1,10 +1,10 @@
-# Mixer
+﻿# Mixer
 
 This section will describe the configuration of the mixer and calibrate the rotor blade angles.
 
-:::note
-Before proceeding with setting up the mixer, make sure that [gyro sensor alignment](./configuration.md#board-and-sensor-alignment) is correct.
-:::
+!!! note
+    Before proceeding with setting up the mixer, make sure that [gyro sensor alignment](./configuration.md#board-and-sensor-alignment) is correct.
+
 
 ### Main Rotor Settings
 
@@ -44,7 +44,7 @@ For helicopters with adjustable swash links this should remain at 0 and the link
 
 #### Cyclic and collective calibration
 
-These settings are used to calibrate the mixer so that the blade angle matches the commanded angle for both the cyclic and collective. See the [calibration procedure](../../setup/setup-mixer.mdx#calibrating-the-mixer) for details.
+These settings are used to calibrate the mixer so that the blade angle matches the commanded angle for both the cyclic and collective. See the [calibration procedure](../../setup/setup-mixer.md#calibrating-the-mixer) for details.
 
 #### Collective geometry correction
 

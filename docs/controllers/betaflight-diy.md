@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 70
 ---
 
@@ -8,11 +8,11 @@ Rotorflight is a fork of the popular Betaflight project commonly used for drones
 
 ### Flashing Rotorflight
 
-[Flashing Rotorflight firmware](../setup/flashing-the-firmware.mdx)
+[Flashing Rotorflight firmware](../setup/flashing-the-firmware.md)
 
 ### Remap Betaflight board
 
-[Remapping servos and motors](../setup/remapping.mdx)
+[Remapping servos and motors](../setup/remapping.md)
 
 # Example: M1 with DarwinFPV 15A
 
@@ -33,7 +33,7 @@ There's also a DarwinFPV 15A with built-in ELRS receiver, but we can't use that 
 ## Build notes
 
 * The AIO is mounted to the M1 frame with some plastic M3 spacers and screws. The spacers are glued to the M1 frame with some epoxy, after cutting the thread underneath them slightly to make a perfect fit.
-* The servo connectors are three Molex PicoBlade connectors glued together (similar to [this bus](../setup/led-strip-quick-start#building-the-picoblade-bus)), then connected to the FC using 5 wires (5V/GND using 28AWG, S1/S2/S3 with 30AWG). The underside of the bus is reinforced and insulated with epoxy.
+* The servo connectors are three Molex PicoBlade connectors glued together (similar to [this bus](../setup/led-strip-quick-start.md#building-the-picoblade-bus)), then connected to the FC using 5 wires (5V/GND using 28AWG, S1/S2/S3 with 30AWG). The underside of the bus is reinforced and insulated with epoxy.
 * None of the servo or tail motor wires are modified, and only the copper connectors on the main motor wires were removed.
 * All wires soldered to the PCBs are secured with some electronics-friendly silicon glue, which will reduce the risk of solder joints breaking or wires loosening during flight.
 * The ESCs were flashed with [Bluejay](../setup/blheli_s-to-bluejay) version 0.21, so we can use bi-directional Dshot with RPM telemetry for filtering and governing.

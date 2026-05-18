@@ -8,9 +8,9 @@ This page collects the generic hardware requirements for all Flight Controller d
 
 The actual Reference Designs for Rotorflight-2 can be found [here](./Reference-Design.md).
 
-:::caution[note]
-For an FC to be fully supported by Rotorflight-2 (RF2), it must follow one of the Reference Designs.
-:::
+!!! warning "note"
+    For an FC to be fully supported by Rotorflight-2 (RF2), it must follow one of the Reference Designs.
+
 
 ## Betaflight Guidelines
 

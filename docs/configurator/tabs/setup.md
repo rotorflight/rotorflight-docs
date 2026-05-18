@@ -6,9 +6,9 @@
 
 The accelerometer is used to determine the orientation of the flight controller. It is used to determine the pitch, roll and yaw angles. You can calibrate it here, following the instructions.
 
-:::info
-The accelerometer is used for self stabilization features, like angle, horizon, acro trainer, and even rescue. If you do not intend to use these features, you can skip this step, or even disable the accelerometer entirely.
-:::
+!!! info
+    The accelerometer is used for self stabilization features, like angle, horizon, acro trainer, and even rescue. If you do not intend to use these features, you can skip this step, or even disable the accelerometer entirely.
+
 
 ## Calibrate Magnetometer
 
