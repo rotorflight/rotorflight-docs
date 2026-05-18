@@ -1,11 +1,26 @@
-/* Rotorflight brand colour */
+/* Rotorflight brand colour — Material uses [data-md-color-primary] attribute selectors */
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color:        #5EB1DE;
+  --md-primary-fg-color--light: #A8D5EE;
+  --md-primary-fg-color--dark:  #3A8BBF;
+  --md-primary-bg-color:        #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+}
+
+/* Fallback via :root so the variables are always defined */
 :root {
-  --md-primary-fg-color: #FE9900;
-  --md-primary-fg-color--light: #FFB74D;
-  --md-primary-fg-color--dark: #E65100;
-  --md-accent-fg-color: #FE9900;
+  --md-primary-fg-color:        #5EB1DE;
+  --md-primary-fg-color--light: #A8D5EE;
+  --md-primary-fg-color--dark:  #3A8BBF;
+  --md-primary-bg-color:        #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+  --md-accent-fg-color:         #FE9900;
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #FE9900;
+  --md-primary-fg-color:        #5EB1DE;
+  --md-primary-fg-color--light: #A8D5EE;
+  --md-primary-fg-color--dark:  #3A8BBF;
+  --md-primary-bg-color:        #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
 }

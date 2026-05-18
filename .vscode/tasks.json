@@ -1,12 +1,57 @@
 {
-	"version": "2.0.0",
-	"tasks": [
+    "version": "2.0.0",
+    "tasks": [
         {
-            "type": "npm",
-            "script": "start",
+            "label": "MkDocs: Serve",
+            "type": "shell",
+            "command": "mkdocs serve",
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "mkdocs",
+                "pattern": {
+                    "regexp": "^ERROR\\s+-\\s+(.+)$",
+                    "message": 1
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "INFO\\s+-\\s+Building documentation",
+                    "endsPattern": "Serving on"
+                }
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "MkDocs: Build",
+            "type": "shell",
+            "command": "mkdocs build --strict",
             "problemMatcher": [],
-            "label": "npm: start",
-            "detail": "docusaurus start"
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            }
+        },
+        {
+            "label": "MkDocs: Setup (first time)",
+            "type": "shell",
+            "command": "bash setup.sh --no-serve",
+            "windows": {
+                "command": "powershell -ExecutionPolicy Bypass -File setup.ps1 -NoServe"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+                "clear": true
+            }
         }
     ]
 }

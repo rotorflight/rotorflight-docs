@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Preview Docs",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "mkdocs serve",
+            "serverReadyAction": {
+                "pattern": "Serving on (https?://\\S+)",
+                "uriFormat": "%s",
+                "action": "openSimpleBrowser"
+            }
+        }
+    ]
+}
