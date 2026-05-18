@@ -4,6 +4,14 @@
         "Rainbowing",
         "Rotorflight"
     ],
+    "cSpell.customDictionaries": {
+        "project-words": {
+            "name": "project-words",
+            "path": "${workspaceFolder}/project-words.txt",
+            "scope": "workspace",
+            "addWords": true
+        }
+    },
     "terminal.integrated.env.windows": {
         "PATH": "${workspaceFolder}\\.venv\\Scripts;${env:PATH}"
     },
