@@ -106,6 +106,7 @@ const sidebars: SidebarsConfig = {
 
         "setup/arming",
         "setup/backup-and-restore",
+        "setup/cli-reference",
         "setup/flashing-the-firmware",
         "setup/remapping",
         "setup/setup-servos",
