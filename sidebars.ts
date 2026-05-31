@@ -117,6 +117,7 @@ const sidebars: SidebarsConfig = {
         "setup/rpm-filters",
         "setup/esc-telemetry",
         "setup/esc-forward-programming",
+        "setup/fbus-master",
         "setup/smartfuel",
         "setup/elrs-custom-telemetry",
         "setup/extra-servo",
