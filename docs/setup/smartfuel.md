@@ -5,7 +5,14 @@ sidebar_position: 95
 # SmartFuel
 
 :::info
-SmartFuel is Rotorflight's smarter battery gauge. It estimates how much usable battery you have left by reading pack voltage at plug-in, then using the selected mode to compensate for voltage sag, track mAh used, or combine both for a more realistic percentage than a simple voltage-based reading.
+SmartFuel is Rotorflight's smarter battery gauge. At plug-in, it uses pack
+voltage to estimate the starting fuel level, so the telemetry reflects the
+pack's actual state instead of assuming every battery is full.
+
+SmartFuel can calculate fuel from voltage alone, which is useful when no
+current sensor is fitted. If a current sensor is available, it can also track
+mAh used, or use combined mode to compare both estimates and report the more
+conservative value.
 :::
 
 ## Why SmartFuel?
