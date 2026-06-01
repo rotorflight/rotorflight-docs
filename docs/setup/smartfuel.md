@@ -5,7 +5,7 @@ sidebar_position: 95
 # SmartFuel
 
 :::info
-SmartFuel gives you a smarter battery percentage on your radio. Instead of a simple voltage-to-percent line, it compensates for the voltage sag that happens when you load the rotor — so you get a stable, trustworthy reading throughout the flight rather than a number that spikes low every time you punch collective.
+SmartFuel is Rotorflight's smarter battery gauge. It estimates how much usable battery you have left by reading pack voltage at plug-in, then using the selected mode to compensate for voltage sag, track mAh used, or combine both for a more realistic percentage than a simple voltage-based reading.
 :::
 
 ## Why SmartFuel?
