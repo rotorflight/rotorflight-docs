@@ -30,11 +30,13 @@ The result is a cleaner, calmer fuel gauge on your radio that you can actually t
 
 ## Requirements
 
-Battery capacity and cell count must be set in the Power tab for all modes.
+SmartFuel always needs a battery voltage source and a known cell count. Cell
+count can be detected automatically or set in the Power tab.
 
 - **VOLTAGE** — a battery voltage sensor configured (Battery ADC or ESC telemetry).
-- **CURRENT** — a current sensor configured.
-- **COMBINED** — a battery voltage sensor and a current sensor configured.
+- **CURRENT** — a current sensor configured and battery capacity set.
+- **COMBINED** — a battery voltage sensor, current sensor, and battery capacity
+  set.
 
 ## Setup
 
@@ -52,16 +54,22 @@ Scroll to the **SmartFuel** section and select a mode from the dropdown:
 
 | Mode | What it does |
 |---|---|
-| **OFF** | SmartFuel disabled. Falls back to legacy voltage or consumption-based percentage. |
+| **OFF** | SmartFuel disabled. Falls back to the legacy charge-level source: consumption if capacity is set, otherwise linear voltage. |
 | **VOLTAGE** | Uses pack voltage with sag compensation. Works with no current sensor. Recommended starting point. |
-| **CURRENT** | Seeds from voltage at plug-in, then tracks actual mAh used. Requires a current sensor and capacity set. |
-| **COMBINED** | Takes the **lower** of the voltage and current estimates at every moment — the most conservative option. |
+| **CURRENT** | Seeds from voltage at plug-in, then tracks actual mAh used once capacity and consumption data are available. |
+| **COMBINED** | Takes the **lower** of the voltage and current estimates at every moment once capacity and consumption data are available. |
 
 :::tip
-If your flight controller has a current sensor, **CURRENT** is the simplest and most reliable mode. It reads the pack voltage once on plug-in to set the starting percentage, then tracks actual mAh used from there — so ongoing voltage calibration and sag tuning don't matter. **VOLTAGE** and **COMBINED** both rely on accurate voltage calibration throughout the flight to give a good reading. Use **VOLTAGE** only if you have no current sensor.
+If your flight controller has a current sensor, **CURRENT** is the simplest and
+most reliable mode. It reads pack voltage on plug-in to set the starting
+percentage, then tracks actual mAh used from there. Voltage calibration still
+matters for the initial anchor, but sag tuning does not affect the current-based
+part of the estimate. **VOLTAGE** and the voltage side of **COMBINED** both rely
+on accurate voltage calibration throughout the flight to give a good reading.
+Use **VOLTAGE** only if you have no current sensor.
 :::
 
-### Step 4 — Save and reboot
+### Step 4 — Save
 
 Click **Save** in the Power tab. A reboot is not required.
 
@@ -82,7 +90,9 @@ Controls how fast the voltage reading is allowed to drop. A lower value makes th
 
 *Default: 50 (= 0.50% per second)*
 
-The maximum speed at which the displayed percentage can fall while armed. This acts as a smoothing limit on the voltage path.
+The maximum speed at which the voltage-based percentage can fall once the model
+is armed, or has been armed during the current power cycle. This acts as a
+smoothing limit on the voltage path.
 
 - **Percentage lags too far behind real pack state** → increase this value
 - **Percentage drops too hard during load spikes** → decrease this value
@@ -113,21 +123,29 @@ If SmartFuel hits your warning level well before the pack is genuinely low, redu
 Re-fly after each change. Small adjustments (5–10 units) are usually enough — large changes are rarely needed.
 
 :::note
-Tuning is only necessary for **VOLTAGE** and **COMBINED** modes. **CURRENT** mode tracks actual mAh used and does not depend on sag tuning.
+Tuning is only necessary for **VOLTAGE** mode and the voltage side of
+**COMBINED** mode. **CURRENT** mode tracks actual mAh used and does not depend
+on sag tuning once consumption data are available.
 :::
 
 ## Radio Display
 
-SmartFuel feeds directly into the standard battery telemetry output, so the percentage you set up on your radio will automatically show SmartFuel values once it is enabled.
+When firmware SmartFuel is enabled, it feeds the standard battery charge-level
+telemetry output, so the percentage you set up on your radio will show
+SmartFuel values.
 
 ### Frsky Ethos with RF Suite
 
 RF Suite exposes two virtual sensors:
 
 - **Smart Fuel** — the usable fuel percentage, with your configured reserve remapped to 0%. When this reads 0%, land.
-- **Smart Consumption** — the estimated mAh used since plug-in.
+- **Smart Consumption** — consumed mAh reported by the firmware, or a value
+  derived by RF Suite for the current SmartFuel session.
 
-These appear automatically in your Ethos widget and callout settings once SmartFuel is active. No extra configuration is needed on the radio side.
+RF Suite creates these local Ethos sensors from the real telemetry sensors sent
+by the flight controller. If you use RF Suite's telemetry defaults, the required
+voltage, current, consumption, and fuel/charge-level sensors are selected for
+you.
 
 :::info
 RF Suite maps your reserve/consumption warning percentage to 0% on the Smart Fuel sensor. For example, if your reserve is set to 30%, a pack that is at 30% raw charge will show as 0% Smart Fuel — meaning land now. A full pack always shows 100%.
@@ -150,7 +168,7 @@ Check that a battery voltage source is configured in the Power tab. SmartFuel re
 If using CURRENT or COMBINED mode, verify that the battery capacity is set to a non-zero value and that a current sensor is configured and returning readings.
 
 **The percentage drops immediately on plug-in**
-The initial percentage is anchored to the first voltage sample after cell count is detected. If you plug in a partially discharged pack, the starting value will reflect that — this is correct behaviour.
+The initial percentage is anchored to the first voltage sample after cell count is detected. If you plug in a partially discharged pack, the starting value will reflect that — this is correct behavior.
 
 **Percentage is stable during hover but drops too fast when loading the rotor**
 Increase **Sag Gain** in small steps until the dips flatten out during aggressive maneuvers.
