@@ -1,0 +1,54 @@
+name: PR Verification
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-verification-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    env:
+      ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+      ALGOLIA_SEARCH_API_KEY: ${{ vars.ALGOLIA_SEARCH_API_KEY }}
+      ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
+      FASTER: true
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: ./package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run prettier:check:all
+
+      - name: Spellcheck
+        run: npm run spellcheck:all
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Prepare env
+        run: |
+          touch .env
+          echo URL=https://${{ github.repository_owner }}.github.io > .env
+          echo BASE_PATH=/ >> .env
+          echo ORG=${{ github.repository_owner }} >> .env
+
+      - name: Build
+        run: npm run build
