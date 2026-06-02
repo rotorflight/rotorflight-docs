@@ -56,6 +56,18 @@
     "remarkrc",
     "applebot",
     "bytespider",
-    "llms"
+    "llms",
+    "Fmode",
+    "deadbands",
+    "goosky",
+    "f701",
+    "f4mini",
+    "s2-tune",
+    "matek_heli",
+    "rpm",
+    "frequency",
+    "bi-directional",
+    "dshot",
+    "Precomps"
   ]
 }
