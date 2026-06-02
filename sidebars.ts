@@ -39,7 +39,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "controllers/goosky/f701",
             "controllers/goosky/f4mini",
-            "controllers/goosky/s2-tune"
+            "controllers/goosky/s2-tune",
           ],
         },
         "controllers/matek_heli",
