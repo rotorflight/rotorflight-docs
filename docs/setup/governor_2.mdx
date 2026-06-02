@@ -2,55 +2,112 @@
 sidebar_position: 80
 ---
 
+import React from 'react';
+
+import govEnable from './img/governor-enable.png';
+import govOptions from './img/governor-options.png';
+import govFmode from './img/governor-features-mode.png';
+import govHandover from './img/governor-handover.png';
+import govThrottle from './img/governor-throttle.png';
+import govThrottleLimits from './img/governor-throttle-limits.png';
+import govSettings from './img/governor-settings.png';
+import motRPM from './img/motors-rpm.png';
+import govFeatures from './img/governor-features.png';
+
 # Governor
 
 :::info
-The purpose of the governor is to maintain a constant headspeed regardless of flight inputs, flying conditions, battery voltage, external disturbances, etc. In Rotorflight, the governor also provides other motor related features, like slow spoolup, autorotation control, battery voltage drop compensation, and fault detection and recovery.
+The purpose of the governor is to keep the headspeed constant, regardless of the flight conditions, amount of collective applied, the battery voltage level, and so on.
+
+It is also ensuring safe operation by limiting the spool up and down speeds, and dealing with failure situations.
 :::
 
-# Governor Features
+## Basic Operation
 
-The governor can be turned ON/OFF with the drop down menu within **Governor Features** from the **Motors** Tab.
+The Rotorflight RF Governor offers a variety of features, providing flexibility for both traditional throttle-curve setups and modern switch-based (flight-mode) setups. It fully supports electric helicopters as well as nitro/IC (glow) engines.
 
-![Governor](./img/governor-features-off.png)
+<div style={{ textAlign: 'center' }}>
+  <img src={govEnable} style={{ width: '90%', borderRadius: '10px' }} />
+</div>
 
-If the feature is disabled, all governor functions are disabled, and the throttle output is taken directly from the receiver throttle channel.
+## Governor Modes
 
-## Governor Mode
+The governor mode controls what type of governor is used - if any.
 
-The governor has multiple operating modes, each using a slightly different method for the throttle control in the PID loop. Select a mode from one of the values below.
+<div style={{ textAlign: 'center' }}>
+  <img src={govOptions} style={{ width: '30%', borderRadius: '10px' }} />
+</div>
 
-![Governor](./img/governor-features-mode.png)
+### Governor Mode OFF
 
-### OFF
+The governor is completely disabled. The input throttle is used as the output throttle.
 
-The governor is disabled, and the stabilized throttle output ST is taken from the receiver throttle channel.
+### Governor Mode LIMIT
 
-### PASSTHROUGH
+The governor is completely disabled. The input throttle is used as the output throttle, with gov\_idle\_throttle, gov\_min\_throttle and gov\_max\_throttle applied.
 
-The governor does not control the headspeed, but provides all the aux functions, like slow spool up, autorotation bailout, and error recovery. In the active state, the receiver throttle channel is directly passed through to the stabilized throttle output ST.
+### Governor Mode DIRECT
 
-### STANDARD
+The input throttle is used directly, but with limits and slow spoolup features. The speed governing function is disabled. This mode is intended for use with ESCs that have their own built-in governor but no slow spoolup, or with traditional throttle curves in the transmitter.
 
-The governor is stabilizing the headspeed with a standard PID control, similar to most ESCs. All aux functions are also active.
+This mode does not require an RPM signal.
 
-### MODE1
+### Governor Mode ELECTRIC
 
-Like STANDARD, but with collective/cyclic precompensation. This is similar to governors in most FBL systems.
+Full Rotorflight governor functionality is enabled, optimised for electric motors. The governor actively maintains the requested headspeed throughout the flight.
 
-### MODE2
+Requires an RPM signal from the ESC or a separate RPM sensor.
 
-Like MODE1, but with battery voltage compensation. The PID loop does not need to react to battery voltage fluctuations, as it is taken into account outside the PID loop. This is usually the best choice. Can be used only if the battery voltage is connected to the FC.
+### Governor Mode NITRO
+
+Full Rotorflight governor functionality is enabled, optimised for nitro/IC engines.
+
+Requires a magnetic RPM sensor mounted on the engine or main gear.
 
 ## Governor Basic Settings
 
-![Governor](./img/governor-features.png)
+<div style={{ textAlign: 'center' }}>
+  <img src={govFeatures} style={{ width: '95%', borderRadius: '10px' }} />
+</div>
 
 In order to use the governor you must first configure the ESC/Motor features. This defines the motor telemetry (for RPM feedback) and gear ratios for your helicopter which lets the flight controller know how fast the rotor is spinning.
+
+### Setup RPM signal
+
+First step is to configure the RPM signal source as shown in [**RPM Measurement**](./rpm-measurement.mdx). Either a frequency sensor or bi-directional Dshot can be used to measure the RPM. The governor relies on fast RPM measurement (i.e. not ESC telemetry) to maintain the headspeed.
+
+<div style={{ textAlign: 'center' }}>
+  <img src={motRPM} style={{ width: '95%', borderRadius: '10px' }} />
+</div>
+
+### Throttle Channel
+
+The throttle channel is the main control for the motor and the governor.
+
+The throttle channel has a defined active range, in which the motor is running. Below this active range, the motor remains stopped. The microsecond values for the active range are configured in the Receiver settings and represented as 0%-100% in the governor.\
+These are configured on the **Receiver** tab.
+
+<div style={{ textAlign: 'center' }}>
+  <img src={govThrottleLimits} style={{ width: '95%', borderRadius: '10px' }} />
+</div>
+
+Example with 1100µs-1900µs active range in ELRS:
+
+<div style={{ textAlign: 'center' }}>
+  <img src={govThrottle} style={{ width: '95%', borderRadius: '10px' }} />
+</div>
+
+\:::caution Note
+In order to **Arm** your helicopter, the throttle channel must be within the stop range.
+\:::
 
 ### Handover throttle
 
 The throttle level above which the governor is activated. Below this level the input throttle is passed to the ESC, above this level the governor is enabled and the input throttle is used for calculating the target headspeed. The motor must be able to start below this throttle level.
+
+<div style={{ textAlign: 'center' }}>
+  <img src={govHandover} style={{ width: '95%', borderRadius: '10px' }} />
+</div>
 
 ### Startup time
 
@@ -96,27 +153,13 @@ Typical value is 5..50.
 
 If the headspeed rpm signal is lost, the governor enters an intermediate state where it is waiting for the rpm signal to return. If the signal returns before this timeout expires, the spoolup is done with the recovery acceleration. If the timeout expires, the governor enters the idle state, and any future spoolup would happen with the default (slow) spoolup acceleration. Unit is 0.1s. Typical value is 5..50.
 
-### Headspeed Filter Cutoff \[Hz]
-
-The inputs to the governor must be clean from excess noise. The RPM input is filtered with a BIQUAD filter, with the frequency cutoffs set by these variables.
-
-### Battery Voltage Filter Cutoff \[Hz]
-
-The inputs to the governor must be clean from excess noise. The Battery voltage input is filtered with a BIQUAD filter, with the frequency cutoffs set by these variables.
-
-### TTA Bandwidth \[Hz]
-
-Cutoff for the TTA (Torque Tail Assist) lowpass filter.
-
-### Precomp Bandwidth \[Hz]
-
-Cutoff for the cyclic/collective precompensation lowpass filter.
-
 ## Governor Profiles Settings
 
 These settings are set from the Profiles Tab. If desired, individual Profiles can be configured via the Adjustments Tab. This enables individual flight modes to have separate tuning and configuration set for each flight mode. (similar to 'Bank Switching').
 
-![Governor](./img/governor-settings.png)
+<div style={{ textAlign: 'center' }}>
+  <img src={govSettings} style={{ width: '95%', borderRadius: '10px' }} />
+</div>
 
 ### Full Headspeed
 

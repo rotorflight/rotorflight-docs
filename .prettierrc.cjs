@@ -1,6 +1,5 @@
-import { type Config } from "prettier";
-
-const config: Config = {
+/** @type {import("prettier").Config} */
+module.exports = {
   printWidth: 80,
   tabWidth: 2,
   useTabs: false,
@@ -15,5 +14,3 @@ const config: Config = {
   arrowParens: "always",
   endOfLine: "lf",
 };
-
-export default config;
