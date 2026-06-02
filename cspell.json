@@ -4,6 +4,16 @@
   "gitignoreRoot": ".",
   "useGitignore": true,
   "ignoreRegExpList": ["Urls", "Email"],
+  "import": [
+    "@cspell/dict-en-gb/cspell-ext.json",
+    "@cspell/dict-en_us/cspell-ext.json",
+    "@cspell/dict-typescript/cspell-ext.json",
+    "@cspell/dict-software-terms/cspell-ext.json",
+    "@cspell/dict-css/cspell-ext.json",
+    "@cspell/dict-html/cspell-ext.json",
+    "@cspell/dict-companies/cspell-ext.json",
+    "@cspell/dict-markdown/cspell-ext.json"
+  ],
   "dictionaryDefinitions": [
     {
       "name": "project-words",
@@ -11,15 +21,17 @@
       "addWords": true
     }
   ],
-  "language": "en",
+  "language": "en, en-US, en-GB",
   "dictionaries": [
     "project-words",
+    "en_US",
+    "en_gb",
     "css",
     "html",
-    "javascript",
     "typescript",
     "companies",
-    "softwareTerms"
+    "softwareTerms",
+    "markdown"
   ],
   "ignorePaths": [
     "node_modules",

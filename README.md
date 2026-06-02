@@ -42,3 +42,16 @@ This will create a `/build` directory, which contains the complete website.
 ### Faster build
 
 Optionally you can provide a `FASTER=true` environment variable to use the new swc based build system, which is much faster than the default webpack based build system. More info in this [blog post](https://docusaurus.io/blog/releases/3.6#docusaurus-faster).
+
+## Adding missing terminology
+
+The project uses cspell to check spelling in documentation and source files. If
+cspell reports a valid Rotorflight term, product name, acronym, or other
+project-specific word as misspelled, add it to `project-words.txt`.
+
+Add one term per line, keep the list alphabetically sorted where practical, and
+prefer the exact casing used in the documentation. After updating the file, run:
+
+```
+npm run spellcheck:all
+```

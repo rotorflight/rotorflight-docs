@@ -53,11 +53,14 @@ sunnysky
 rateprofile
 acro
 dshot
+dshotprog
+escprog
 feedforward
 piro
 tock
 precomp
 precompensation
+PLLP
 evenodd
 dterm
 cycletime
@@ -68,6 +71,8 @@ deadband
 datasheet
 ccpm
 spoolup
+spooldown
+handback
 brushless
 molex
 pico
@@ -95,6 +100,8 @@ txtail
 calib
 bustype
 serialrx
+serialpassthrough
+gpspassthrough
 halfduplex
 autoreset
 vrefint
@@ -105,6 +112,7 @@ vbux
 bidir
 bitbang
 vbat
+Vref
 ibat
 nmea
 sbas
@@ -112,8 +120,10 @@ mavlink
 ledstrip
 sdcard
 sdio
+SPLC
 displayport
 rxfail
+rxtx
 vbus
 ibata
 vfas
@@ -131,6 +141,7 @@ hysteresis
 tocs
 rpmfilter
 nogyro
+gyroregisters
 carb
 feedforwards
 bldc
@@ -161,6 +172,7 @@ erpm
 outrunner
 zadig
 telem
+tele
 xattr
 nand
 cutoff
@@ -193,6 +205,7 @@ Kafuter
 rfsuite
 Shmuley
 aetrc
+AETR
 unsc
 customise
 autorotations
@@ -219,3 +232,21 @@ neswud
 ptch
 gspd
 Liang
+Kira
+centidegrees
+centivolts
+GHST
+kbps
+smartfuel
+FLVSS
+ADXL
+SBEC
+rescan
+ULSLXO
+Vcel
+Verif
+bandletter
+bandname
+vtxtable
+OPENYGE
+setpoints
