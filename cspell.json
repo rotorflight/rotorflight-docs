@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "gitignoreRoot": ".",
+  "useGitignore": true,
+  "ignoreRegExpList": ["Urls", "Email"],
+  "import": [
+    "@cspell/dict-en-gb/cspell-ext.json",
+    "@cspell/dict-en_us/cspell-ext.json",
+    "@cspell/dict-typescript/cspell-ext.json",
+    "@cspell/dict-software-terms/cspell-ext.json",
+    "@cspell/dict-css/cspell-ext.json",
+    "@cspell/dict-html/cspell-ext.json",
+    "@cspell/dict-companies/cspell-ext.json",
+    "@cspell/dict-markdown/cspell-ext.json"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "project-words",
+      "path": "./project-words.txt",
+      "addWords": true
+    }
+  ],
+  "language": "en, en-US, en-GB",
+  "dictionaries": [
+    "project-words",
+    "en_US",
+    "en_gb",
+    "css",
+    "html",
+    "typescript",
+    "companies",
+    "softwareTerms",
+    "markdown"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "project-words.txt",
+    "build",
+    ".docusaurus",
+    "docs/controllers/**/*.txt",
+    "versioned_docs/version-2.0.0/Wiki/Configurator/LED-Strip.md",
+    "**/*.yml",
+    "**/*.svg"
+  ],
+  "words": [
+    "feat",
+    "fix",
+    "chore",
+    "refactor",
+    "deps",
+    "config",
+    "eslint",
+    "prettier",
+    "tsconfig",
+    "remarkrc",
+    "applebot",
+    "bytespider",
+    "llms"
+  ]
+}

@@ -51,6 +51,19 @@ The capacity of the battery in mAh. This is used to calculate the remaining batt
 
 Force cell count to avoid confusion between full 11S and flat 12S for example.
 
+### SmartFuel
+
+SmartFuel is a voltage-sag-compensating battery percentage estimator introduced in RF 2.3. It provides a calmer, more trustworthy charge level on your radio telemetry than a simple voltage-to-percent curve.
+
+Select the operating mode:
+
+* **OFF** — SmartFuel disabled; falls back to legacy charge level
+* **VOLTAGE** — voltage-based estimate with sag compensation (no current sensor required)
+* **CURRENT** — seeds from voltage at plug-in, then tracks actual mAh used
+* **COMBINED** — the lower/more pessimistic of the voltage and current estimates
+
+See the [SmartFuel setup guide](../../setup/smartfuel.md) for full configuration and tuning instructions.
+
 ## Voltage Meters
 
 Settings for the voltage meter to measure the battery voltage correctly.

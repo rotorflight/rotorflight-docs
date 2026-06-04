@@ -29,7 +29,7 @@ Telemetry: S.BUS, HoTT, S.Port, MSP, EDGETX, ELRS\
 ESC: PWM, Oneshot, Multishot, Dshot\
 Support Tail ESC: 760μs/1520μs Servo\
 Support Tail Motor: Yes\
-Demensions: 41.3 X 25.4 X 13.1mm\
+Dimensions: 41.3 X 25.4 X 13.1mm\
 Weight: 16.8g
 :::
 

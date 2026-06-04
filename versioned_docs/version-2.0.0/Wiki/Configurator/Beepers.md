@@ -12,7 +12,7 @@ resource BEEPER 1 C06
 
 The Beeper required MUST be 5v and buffered to protect the UART output.
 
-If the Beeper remains a constant tone on powerup enter this into the cli
+If the Beeper remains a constant tone on power up enter this into the cli
 
 set beeper\_inversion = ON, then type save and exit
 

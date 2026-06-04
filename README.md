@@ -12,7 +12,18 @@ First install Node.js on your machine, either by downloading the latest or by us
 > git clone https://github.com/rotorflight/rotorflight-docs
 > cd rotorflight-docs
 > npm install
-> npm run start
+```
+
+Copy the `example.env` file to `.env`. The example file contains sane defaults for local development, but you can review and change them to your liking:
+
+```
+ cp example.env .env
+```
+
+Then you can start the development server:
+
+```
+npm run start
 ```
 
 This will start the development server. Also, your browser wil open http://localhost:3000/, where you can view and test the website. If you now edit and save a markdown file in `/versioned_docs`, the changes will automatically show up in your browser.
@@ -27,3 +38,20 @@ You can also build the complete site and test it locally.
 ```
 
 This will create a `/build` directory, which contains the complete website.
+
+### Faster build
+
+Optionally you can provide a `FASTER=true` environment variable to use the new swc based build system, which is much faster than the default webpack based build system. More info in this [blog post](https://docusaurus.io/blog/releases/3.6#docusaurus-faster).
+
+## Adding missing terminology
+
+The project uses cspell to check spelling in documentation and source files. If
+cspell reports a valid Rotorflight term, product name, acronym, or other
+project-specific word as misspelled, add it to `project-words.txt`.
+
+Add one term per line, keep the list alphabetically sorted where practical, and
+prefer the exact casing used in the documentation. After updating the file, run:
+
+```
+npm run spellcheck:all
+```

@@ -1,0 +1,357 @@
+import "dotenv/config";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
+import type { PluginOptions as ClientRedirectOptions } from "@docusaurus/plugin-client-redirects";
+import type { PluginOptions as LlmsPluginOptions } from "@signalwire/docusaurus-plugin-llms-txt";
+import type { ThemeConfigAlgolia } from "@docsearch/docusaurus-adapter";
+
+import { themes } from "prism-react-renderer";
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
+
+const isFaster = process.env.FASTER === "true";
+
+const config: Config = {
+  title: "Rotorflight",
+  tagline: "Open-source Helicopter flight controller",
+  favicon: "img/rffavicon.ico",
+
+  ...(isFaster && {
+    future: {
+      v4: true, // opt-in for Docusaurus v4 planned changes
+      experimental_faster: {
+        swcJsLoader: true,
+        swcJsMinimizer: true,
+        swcHtmlMinimizer: true,
+        lightningCssMinimizer: true,
+        rspackBundler: true,
+        mdxCrossCompilerCache: true,
+        ssgWorkerThreads: true,
+        rspackPersistentCache: true,
+      },
+    },
+  }),
+
+  url: process.env.URL ?? "https://github.com/",
+  baseUrl: process.env.BASE_PATH ?? "/",
+  trailingSlash: false,
+
+  onBrokenLinks: "warn",
+
+  // Even if you don't use internalization, you can use this field to set useful
+  // metadata like html lang. For example, if your site is Chinese, you may want
+  // to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en"],
+  },
+
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
+  themes: ["@docusaurus/theme-mermaid"],
+
+  plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        id: "redirects",
+        fromExtensions: ["html", "htm"],
+        toExtensions: ["exe", "zip"],
+        redirects: [
+          //Redirect Rotorflight v2.0 configurator links to new website links
+          {
+            from: "/docs/Tutorial-Setup/Configuration",
+            to: "/docs/2.0.0/Wiki/Configurator/Configuration",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Receiver",
+            to: "/docs/2.0.0/Wiki/Configurator/Receiver",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Failsafe",
+            to: "/docs/2.0.0/Wiki/Configurator/Failsafe",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Beepers",
+            to: "/docs/2.0.0/Wiki/Configurator/Beepers",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Power",
+            to: "/docs/2.0.0/Wiki/Configurator/Power",
+          },
+          {
+            from: "/docs/Tutorial-Setup/RPM-Filters",
+            to: "/docs/2.0.0/Wiki/Tutorial-Setup/RPM-Filters",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Motor-and-Esc",
+            to: "/docs/2.0.0/Wiki/Configurator/Motor-and-Esc",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Servos",
+            to: "/docs/2.0.0/Wiki/Configurator/Servos",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Mixer",
+            to: "/docs/2.0.0/Wiki/Configurator/Mixer",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Rates",
+            to: "/docs/2.0.0/Wiki/Configurator/Rates",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Profiles",
+            to: "/docs/2.0.0/Wiki/Configurator/Profiles",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Modes",
+            to: "/docs/2.0.0/Wiki/Configurator/Modes",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Adjustments",
+            to: "/docs/2.0.0/Wiki/Configurator/Adjustments",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Sensors",
+            to: "/docs/2.0.0/Wiki/Configurator/Sensors",
+          },
+          {
+            from: "/docs/Tutorial-Setup/Blackbox",
+            to: "/docs/2.0.0/Wiki/Configurator/Blackbox",
+          },
+          {
+            from: "/docs/Tutorial-Setup/CLI",
+            to: "/docs/2.0.0/Wiki/Configurator/CLI",
+          },
+
+          //Redirect for Radio setups to point to downloads
+          {
+            from: "/docs/next/setup/radio-setup/radio-setup-edgetx/lua-RF2",
+            to: "/docs/download/edge-tx-Lua",
+          },
+        ],
+
+        createRedirects(existingPath) {
+          if (existingPath.includes("/docs/Wiki")) {
+            return [existingPath.replace("/docs/Wiki", "/docs/2.0.0/Wiki")];
+          }
+
+          if (existingPath.includes("/docs/configurator")) {
+            return [
+              existingPath.replace(
+                "/docs/configurator",
+                "/docs/2.2.0/configurator",
+              ),
+            ];
+          }
+
+          if (existingPath.includes("/docs/setup")) {
+            return [existingPath.replace("/docs/setup", "/docs/2.2.0/setup")];
+          }
+
+          if (existingPath.includes("/docs/next")) {
+            return [existingPath.replace("/docs/next", "/docs/2.3.0")];
+          }
+        },
+      } satisfies ClientRedirectOptions,
+    ],
+    [
+      "@signalwire/docusaurus-plugin-llms-txt",
+      {
+        siteTitle: "Rotorflight Documentation",
+        siteDescription:
+          "Comprehensive documentation for Rotorflight, the open-source helicopter flight controller software.",
+        depth: 2,
+        content: {
+          enableMarkdownFiles: true,
+          includeDocs: true,
+          enableLlmsFullTxt: false,
+          includeVersionedDocs: false,
+        },
+      } satisfies LlmsPluginOptions,
+    ],
+    "@docsearch/docusaurus-adapter",
+  ],
+
+  presets: [
+    [
+      "classic",
+      {
+        docs: {
+          sidebarPath: "./sidebars.ts",
+          // Remove this to remove the "edit this page" links.
+          editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
+          // Only build the current version during development for faster rebuilds
+          // ...(isFaster && { onlyIncludeVersions: ["current"] }),
+        },
+        blog: {
+          routeBasePath: "announcement",
+          path: "./announcement",
+          showReadingTime: true,
+          onUntruncatedBlogPosts: "ignore",
+        },
+        theme: {
+          customCss: "./src/css/custom.css",
+        },
+      } satisfies Preset.Options,
+    ],
+  ],
+
+  themeConfig: {
+    announcementBar: {
+      id: "Announcement",
+      content:
+        "ROTORFLIGHT 2 Official Release 2.2.0 is now available. See downloads tab",
+      backgroundColor: "#FE9900",
+      textColor: "#000000",
+      isCloseable: false,
+    },
+
+    // Replace with your project's social card
+    image: "img/rotorflight-docs-card.webp",
+    navbar: {
+      title: "Rotorflight",
+      logo: {
+        alt: "Rotorflight logo",
+        src: "img/Rotorflight_outline.svg",
+        srcDark: "img/Rotorflight_outline_dark.svg",
+        width: 58,
+        height: 32,
+      },
+      items: [
+        { to: "/announcement", label: "Announcements", position: "left" },
+        {
+          type: "docSidebar",
+          sidebarId: "tutorialSidebar",
+          position: "left",
+          label: "Tutorial",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "ControllerSidebar",
+          position: "left",
+          label: "Download",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "manufactSidebar",
+          position: "left",
+          label: "Manufacturers",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "tuningSidebar",
+          position: "left",
+          label: "Tuning",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "developSidebar",
+          position: "left",
+          label: "Contributing",
+        },
+        {
+          type: "docsVersionDropdown",
+          position: "right",
+        },
+        {
+          href: "https://www.rotorflight.org/donate",
+          label: "Support Us",
+          position: "right",
+        },
+        {
+          href: "https://github.com/rotorflight",
+          label: "GitHub",
+          position: "right",
+        },
+      ],
+    },
+    footer: {
+      style: "dark",
+      logo: {
+        src: "img/Rotorflight_outline.png",
+        alt: "Rotorflight logo",
+        width: 90,
+        height: 50,
+      },
+      links: [
+        {
+          title: "Docs",
+          items: [
+            {
+              label: "Tutorial",
+              to: "/docs/examples",
+            },
+            {
+              label: "Download",
+              to: "/docs/download/configurator",
+            },
+            {
+              label: "Manufacturers",
+              to: "/docs/Manufacturers/intro",
+            },
+            {
+              label: "Tuning",
+              to: "/docs/Tuning/First-Flight-Filter-Tuning",
+            },
+            {
+              label: "Contributing",
+              to: "/docs/Contributing/intro",
+            },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            {
+              label: "Discord",
+              href: "https://discord.gg/6QUySXdEvd",
+            },
+            {
+              label: "RC Groups",
+              href: "https://www.rcgroups.com/forums/showthread.php?4000345-Rotorflight-Flight-Control-%28FBL%29-Software-Official-discussion",
+            },
+          ],
+        },
+        {
+          title: "Support Us",
+          items: [
+            {
+              label: "Donate to Rotorflight",
+              href: "https://www.rotorflight.org/donate",
+            },
+          ],
+        },
+        {
+          title: "More",
+          items: [
+            {
+              label: "GitHub",
+              href: "https://github.com/rotorflight",
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} Team Rotorflight. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+    },
+    docsearch: {
+      // The application ID provided by Algolia
+      appId: process.env.ALGOLIA_APP_ID,
+      // Public API key: it is safe to commit it
+      apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+      contextualSearch: true,
+      searchPagePath: "search",
+    } satisfies ThemeConfigAlgolia,
+  } satisfies Preset.ThemeConfig,
+};
+
+export default config;
