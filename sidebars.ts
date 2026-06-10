@@ -112,7 +112,6 @@ const sidebars: SidebarsConfig = {
         "setup/setup-servos",
         "setup/setup-mixer",
         "setup/rpm-measurement",
-        "setup/governor",
         "setup/governor-setup",
         "setup/governor-flyrotor-setup",
         "setup/rpm-filters",
