@@ -15,6 +15,8 @@ import govSwitch from '../img/governor-switch.png';
 import govFunction from '../img/governor-function.png';
 import govELRS from '../img/governor-elrs.png';
 import govIdle from '../img/governor-idle.png';
+import govMotorRamp from '../img/governor-motor-ramp.png';
+import govProfile from '../img/governor-profiles.png';
 import govAutoThrottle from '../img/governor-auto-throttle.png';
 import motRPM from '../../setup/img/motors-rpm.png';
 import govFeatures from '../img/governor-features.png';
@@ -266,3 +268,31 @@ The governor is temporarily disabled, and the throttle is passed to the ESC unal
 
 Settings
 The governor has both global and profile settings. Global settings are always valid. Profile settings are applied only when a profile is active.
+
+## Motor Ramp
+
+<div style={{ textAlign: 'center' }}>
+  <img src={govMotorRamp} style={{ width: '95%', borderRadius: '10px' }} />
+</div>
+
+### Spoolup Time
+
+The throttle change speed limit for SPOOLUP state. It is the time it takes from idle to full throttle. This is the main parameter for controlling the spoolup aggressiveness.
+
+### Spooldown Time
+
+The throttle change speed limit for spooldown, which occurs when the throttle is dropped below handover while in ACTIVE state. It is the time it takes to spool down from full throttle to idle. This is a safety feature to prevent sudden throttle drops in case of an accidental Throttle Cut activation.
+
+### Recovery Time
+
+The throttle change speed limit for RECOVERY and BAILOUT states. It is the time it takes to recover from a throttle drop or autorotation attempt. This should be set much faster than spoolup time, as the helicopter is likely airborne in these scenarios.
+
+### Tracking Time
+
+The throttle change speed limit for changes in target headspeed while in ACTIVE state. This is the time it takes for the governor to adjust to a new headspeed target. This should be set faster than spoolup time, but not too fast to cause oscillations in the throttle.
+
+## Governor Profile settings
+
+<div style={{ textAlign: 'center' }}>
+  <img src={govProfile} style={{ width: '95%', borderRadius: '10px' }} />
+</div>
