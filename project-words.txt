@@ -250,3 +250,6 @@ bandname
 vtxtable
 OPENYGE
 setpoints
+Subtrim
+UARTSPORT
+UARTSport
