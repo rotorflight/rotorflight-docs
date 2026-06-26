@@ -11,6 +11,23 @@ const darkCodeTheme = themes.dracula;
 
 const isFaster = process.env.FASTER === "true";
 
+// Build the docsearch config only when ALGOLIA_APP_ID is provided. This avoids
+// Docusaurus validation errors when CI (or forked PRs) don't have the env var set.
+const docsearchConfig: ThemeConfigAlgolia | undefined =
+  process.env.ALGOLIA_APP_ID &&
+  process.env.ALGOLIA_SEARCH_API_KEY &&
+  process.env.ALGOLIA_INDEX_NAME
+    ? {
+        // The application ID provided by Algolia
+        appId: process.env.ALGOLIA_APP_ID,
+        // Public API key: it is safe to commit it
+        apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        contextualSearch: true,
+        searchPagePath: "search",
+      }
+    : undefined;
+
 const config: Config = {
   title: "Rotorflight",
   tagline: "Open-source Helicopter flight controller",
@@ -342,15 +359,9 @@ const config: Config = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
-    docsearch: {
-      // The application ID provided by Algolia
-      appId: process.env.ALGOLIA_APP_ID,
-      // Public API key: it is safe to commit it
-      apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
-      indexName: process.env.ALGOLIA_INDEX_NAME,
-      contextualSearch: true,
-      searchPagePath: "search",
-    } satisfies ThemeConfigAlgolia,
+    // Conditionally include docsearch only when ALGOLIA_APP_ID is set. This avoids
+    // the build-time validation error when the env var is missing in CI/forks.
+    ...(docsearchConfig ? { docsearch: docsearchConfig } : {}),
   } satisfies Preset.ThemeConfig,
 };
 
