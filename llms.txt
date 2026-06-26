@@ -100,7 +100,6 @@ The general process for setting up a helicopter using Rotorflight.
 - [OpenLager](/docs/setup/openlager.md): OpenLager is a Blackbox data logger developed by dRonin.
 - [Profile (Bank) switching example](/docs/setup/profile-switching-example.md): Purpose
 - [EdgeTX Generic Radio Setup](/docs/setup/radio-setup/radio-setup-edgetx/edgetx-generic-radio-setup.md): This walkthrough will guide you through to create a basic radio model for rotorflight controller.
-- [RF2 Touch Lua Scripts](/docs/setup/radio-setup/radio-setup-edgetx/lua-RF2-touch.md): By Shmuley
 - [ETX Widget](/docs/setup/radio-setup/radio-setup-edgetx/widget-etx-bob00.md): Bob00 has created a custom widget for displaying Rotorflight Telemetry. More details and downloads can be found in the Github Repository.
 - [FrSky Ethos Background Task Notification](/docs/setup/radio-setup/radio-setup-ethos/ethos-background-task-notification.md): On a new installation of the Ethos Suite you may be presented with the error enable background task.
 - [ETHOS Generic Radio Setup](/docs/setup/radio-setup/radio-setup-ethos/ethos-generic-radio-setup.md): This walkthrough will guide you through to create a basic radio model for rotorflight controller.
