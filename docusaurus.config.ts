@@ -344,10 +344,12 @@ const config: Config = {
     },
     docsearch: {
       // The application ID provided by Algolia
-      appId: process.env.ALGOLIA_APP_ID ?? "",
+      appId: process.env.ALGOLIA_APP_ID || "TA54ULSLXO",
       // Public API key: it is safe to commit it
-      apiKey: process.env.ALGOLIA_SEARCH_API_KEY ?? "",
-      indexName: process.env.ALGOLIA_INDEX_NAME ?? "",
+      apiKey:
+        process.env.ALGOLIA_SEARCH_API_KEY ||
+        "df22fc1a768ac1f658d6fa5f0f0dfe62",
+      indexName: process.env.ALGOLIA_INDEX_NAME || "prod_RF_DOCS",
       contextualSearch: true,
       searchPagePath: "search",
     } satisfies ThemeConfigAlgolia,
