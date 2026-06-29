@@ -187,6 +187,14 @@ const config: Config = {
           editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
           // Only build the current version during development for faster rebuilds
           // ...(isFaster && { onlyIncludeVersions: ["current"] }),
+
+          lastVersion: "current",
+          versions: {
+            current: {
+              label: "2.3.0",
+              path: "next",
+            },
+          },
         },
         blog: {
           routeBasePath: "announcement",
@@ -205,8 +213,8 @@ const config: Config = {
     announcementBar: {
       id: "Announcement",
       content:
-        "ROTORFLIGHT 2 Official Release 2.2.0 is now available. See downloads tab",
-      backgroundColor: "#FE9900",
+        "ROTORFLIGHT 2 Official Release 2.3.0 is now available. See downloads tab",
+      backgroundColor: "#c700fe",
       textColor: "#000000",
       isCloseable: false,
     },
