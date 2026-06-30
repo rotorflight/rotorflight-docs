@@ -1,20 +1,67 @@
 # Servos
 
-Open the Servos tab and confirm that you have the correct number of servos. If this is not the case, please confirm you have installed the correct firmware (either 'M' motorized or servo tail) or if you are using a drone FC that your [Remapping](/docs/setup/remapping.md) is correct.
+## Servo 101[​](#servo-101 "Direct link to Servo 101")
+
+* **Check servo directions** – For example, apply some collective to verify cyclic servo movement. Reverse servos if necessary.
+* **Level the servo arms** – Enable *Servo Override* and adjust *Center* until each arm is perpendicular to the main shaft.
+* **Set scaling** – Use *Scale neg* and *Scale pos* to achieve correct servo angles. With *Servo Override* active, specify an angle of 30°. If the servo moves less, increase *Scale pos*; if it moves more, decrease it. Repeat for *Scale neg*.
+* **Adjust limits only for mechanical issues** – Use *Min* or *Max* to prevent binding or extend travel if required. For range adjustment of roll, pitch, or collective, use the mixer instead.
 
 ![Servo Tab](/assets/images/servo-1-a6408dc2dc7aadbc01bb58cae552d58b.png)
 
+## Servo Configuration parameters[​](#servo-configuration-parameters "Direct link to Servo Configuration parameters")
+
+### Center[​](#center "Direct link to Center")
+
+Use *Center* to level the servo arms. Ideally this is around 1500 µs for cyclic servos and 750 µs for tail servos, but some servo arms may require significant adjustment, and values like 1400 µs for center are not uncommon.
+
+### Min and Max[​](#min-and-max "Direct link to Min and Max")
+
+*Min* and *Max* define the hard limits to keep servos from binding or exceeding their mechanical range. If a servo is driven beyond what it can physically handle, it may buzz, damage components, or even burn out.
+
+### Scale Neg and Scale Pos[​](#scale-neg-and-scale-pos "Direct link to Scale Neg and Scale Pos")
+
+Scales the negative and positive direction of the servo to match the commanded angle.
+
+### Rate[​](#rate "Direct link to Rate")
+
+This sets the servo PWM update frequency, as specified by the manufacturer. Most modern digital servos support 333 Hz, while most analog servos should be set to 50 Hz.
+
+> Use separate timers for different update rates. All known Rotorflight flight controllers dedicate a timer to the tail servo, allowing it to always run at its optimal frequency.
+
+### Speed[​](#speed "Direct link to Speed")
+
+Sets the servo speed and can be used to equalize servo movement. Speed equalization helps eliminate the [collective "bobbing"](https://discord.com/channels/859480656135192579/1224593758314561547/1338336784165371904) that can occur during rapid elevator changes.
+
+Bobbing happens because the elevator servo often needs to move twice the distance of the aileron servos. If the elevator servo can’t keep up, the aileron servos reach their target before the elevator servo, causing the swashplate to shift slightly.
+
+To tune this, increase the speed value (measured in ms/60°, as in the servo datasheet) until the bobbing disappears. If unsure, using the value from the servo datasheet is always safe.
+
+### Reverse[​](#reverse "Direct link to Reverse")
+
+Toggle for forward or reverse servo direction.
+
+### Geo Cor[​](#geo-cor "Direct link to Geo Cor")
+
+Geometry Correction: since servos are rotary, large servo angles produce smaller swashplate movement per degree of servo rotation. Geometry correction compensates for this, giving better control at high swashplate angles (e.g., during 3D flight).
+
+To use this feature correctly, make sure the servo arm is set at 90° with the servo centered, and calibrate the servo scale.
+
+## Servo Override[​](#servo-override "Direct link to Servo Override")
+
+The toggle at the bottom of the page enables servo overrides, allowing each servo to be moved with a slider for calibrating its range and center. Each servo also has its own individual override control.
+
+The servo override slider scale is in degrees
+
+![Servo Tab](/assets/images/servo-3-51968afaa0d88e24f90bf472e1a58e94.png)
+
 ## Servo Numbering[​](#servo-numbering "Direct link to Servo Numbering")
 
-### Direct[​](#direct "Direct link to Direct")
+### CCPM: Cyclic/Collective Pitch Mixing[​](#ccpm-cycliccollective-pitch-mixing "Direct link to CCPM: Cyclic/Collective Pitch Mixing")
 
-For helicopters that uses mechanical mixing, where the *Pitch*, *Roll*, and *Collective* movements are each controlled by a dedicated servo by means of a complex series of linkages and levers from the servos up to the swashplate.
+CCPM is a control system where multiple servos work together to move a helicopter’s swashplate for both cyclic and collective pitch. It is the most common system used in model helicopters today.
 
-Servo 1 - Pitch<br /><!-- -->Servo 2 - Roll<br /><!-- -->Servo 3 - Collective<br /><!-- -->Servo 4 - Rudder
-
-### CCPM[​](#ccpm "Direct link to CCPM")
-
-For 120, 135 and 140 deg CCPM swashplates. Looking from the tail towards the nose of the helicopter:
+For 120, 135 and 140 deg CCPM swashplates, looking from the tail towards the nose of the helicopter:
 
 Servo 1 - Pitch (inline with the centerline of the helicopter)<br /><!-- -->Servo 2 - Left side<br /><!-- -->Servo 3 - Right side<br /><!-- -->Servo 4 - Rudder
 
@@ -34,54 +81,8 @@ Servo 1 - Left side<br /><!-- -->Servo 2 - Right side<br /><!-- -->Servo 3 - Rud
 
 ![Servo Tab](data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDI0MCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyNDAiIGhlaWdodD0iNDIwIiBmaWxsPSJ3aGl0ZSIvPgo8ZyBvcGFjaXR5PSIwLjIiPgo8cGF0aCBkPSJNMTMwLjQzNSAyMDcuODkxQzEzNC41ODkgMjA3Ljg5MSAxMzguNDQ0IDIwNS43OTUgMTQwLjczOCAyMDIuMzI5QzE1NC4yMDEgMTgxLjk5NSAxNjcuMzg3IDE0OC4xOTQgMTY3LjM4NyAxMTUuMDU4QzE2Ny4zOTUgNjIuNzI2OCAxMzAuMzIzIDggMTE5LjU3OSA4QzEwOC44MzYgOCA3MS43NjQyIDYyLjcyNjggNzEuNzY0MiAxMTUuMDU4QzcxLjc2NDIgMTQ4LjIwMSA4NC45NTA3IDE4Mi4wMDMgOTguNDEzNyAyMDIuMzI5QzEwMC43MDcgMjA1Ljc5NSAxMDQuNTcgMjA3Ljg5MSAxMDguNzE2IDIwNy44OTFIMTMwLjQyOEgxMzAuNDM1WiIgZmlsbD0iIzFGOTZDMiIvPgo8L2c+CjxwYXRoIGQ9Ik0xMTcuOTQ0IDExMC45N0wxMDYuNTk1IDEzOS43NzFDMTA1LjkxNSAxNDEuNDkzIDEwOC4wMTQgMTQyLjk2OCAxMDkuMzk3IDE0MS43MzNMMTE4LjQxNCAxMzMuNzE1QzExOS4wNzkgMTMzLjEyMyAxMjAuMDggMTMzLjEyMyAxMjAuNzQ1IDEzMy43MTVMMTI5Ljc2MyAxNDEuNzMzQzEzMS4xNDUgMTQyLjk2IDEzMy4yNDQgMTQxLjQ5MyAxMzIuNTY1IDEzOS43NzFMMTIxLjIxNiAxMTAuOTdDMTIwLjYzMyAxMDkuNDg4IDExOC41MzQgMTA5LjQ4OCAxMTcuOTQ0IDExMC45N1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMTkuNTggMTc3Ljk0NUM5MS41NjI5IDE3Ny45NDUgNjguNzc1OSAxNTUuMTExIDY4Ljc3NTkgMTI3LjAzNkM2OC43NzU5IDk4Ljk2MTggOTEuNTYyOSA3Ni4xMjc4IDExOS41OCA3Ni4xMjc4QzE0Ny41OTYgNzYuMTI3OCAxNzAuMzgzIDk4Ljk2MTggMTcwLjM4MyAxMjcuMDM2QzE3MC4zODMgMTU1LjExMSAxNDcuNTk2IDE3Ny45NDUgMTE5LjU4IDE3Ny45NDVaTTExOS41OCA4My42MTQzQzk1LjY4NjkgODMuNjE0MyA3Ni4yNDcgMTAzLjA5NCA3Ni4yNDcgMTI3LjAzNkM3Ni4yNDcgMTUwLjk3OSA5NS42ODY5IDE3MC40NTkgMTE5LjU4IDE3MC40NTlDMTQzLjQ3MiAxNzAuNDU5IDE2Mi45MTIgMTUwLjk3OSAxNjIuOTEyIDEyNy4wMzZDMTYyLjkxMiAxMDMuMDk0IDE0My40NzIgODMuNjE0MyAxMTkuNTggODMuNjE0M1oiIGZpbGw9IiMxRjk2QzIiLz4KPGcgb3BhY2l0eT0iMC4yIj4KPHBhdGggZD0iTTEzOC4yNTggMzA2LjcxNEMxMzYuNjA2IDMwNi43MTQgMTM1LjI2OSAzMDguMDU0IDEzNS4yNjkgMzA5LjcwOVYzNTAuMTM2SDEyNS41NTdWMjA3Ljg5MUgxMTMuNjAzVjM3Mi41OTZDMTEzLjYwMyAzNzUuOTA1IDExNi4yNzcgMzc4LjU4NSAxMTkuNTggMzc4LjU4NUMxMjIuODgyIDM3OC41ODUgMTI1LjU1NyAzNzUuOTA1IDEyNS41NTcgMzcyLjU5NlYzNjguODUzSDEzNS4yNjlWNDA4LjUzMkMxMzUuMjY5IDQxMC4xODYgMTM2LjYwNiA0MTEuNTI2IDEzOC4yNTggNDExLjUyNkMxMzkuOTA5IDQxMS41MjYgMTQxLjI0NiA0MTAuMTg2IDE0MS4yNDYgNDA4LjUzMlYzMDkuNzA5QzE0MS4yNDYgMzA4LjA1NCAxMzkuOTA5IDMwNi43MTQgMTM4LjI1OCAzMDYuNzE0WiIgZmlsbD0iIzFGOTZDMiIvPgo8L2c+CjxwYXRoIGQ9Ik05OC42NDIgMTAwLjIzMUw3NS4xMjI1IDc2LjcxMTdDNzQuMTc3MiA3NS43NjYzIDcyLjY0MyA3NS43Njc5IDcxLjY5NTcgNzYuNzE1Mkw1OC43MTUzIDg5LjY5NTZDNTcuNzY4IDkwLjY0MjkgNTcuNzY2NCA5Mi4xNzcxIDU4LjcxMTcgOTMuMTIyNUw4Mi4yMzEyIDExNi42NDJDODMuMTc2NSAxMTcuNTg3IDg0LjcxMDggMTE3LjU4NiA4NS42NTggMTE2LjYzOEw5OC42Mzg1IDEwMy42NThDOTkuNTg1NyAxMDIuNzExIDk5LjU4NzMgMTAxLjE3NiA5OC42NDIgMTAwLjIzMVoiIGZpbGw9IiMxQTFBNDAiLz4KPHBhdGggZD0iTTE1OC40NTMgMTE3LjE5M0wxODEuOTcyIDkzLjY3MzVDMTgyLjkxOCA5Mi43MjgyIDE4Mi45MTYgOTEuMTkzOSAxODEuOTY5IDkwLjI0NjZMMTY4Ljk4OCA3Ny4yNjYyQzE2OC4wNDEgNzYuMzE5IDE2Ni41MDcgNzYuMzE3NCAxNjUuNTYyIDc3LjI2MjdMMTQyLjA0MiAxMDAuNzgyQzE0MS4wOTcgMTAxLjcyNyAxNDEuMDk4IDEwMy4yNjIgMTQyLjA0NiAxMDQuMjA5TDE1NS4wMjYgMTE3LjE4OUMxNTUuOTczIDExOC4xMzcgMTU3LjUwOCAxMTguMTM4IDE1OC40NTMgMTE3LjE5M1oiIGZpbGw9IiMxQTFBNDAiLz4KPHBhdGggZD0iTTc0LjIyNjggMTA1VjEwMi4xNDRINzguMDQyOFY5MC45MTJINzQuODI2OFY4OC43MjhDNzYuNjAyOCA4OC4zOTIgNzcuODI2OCA4Ny45MzYgNzguOTU0OCA4Ny4yNEg4MS41NzA4VjEwMi4xNDRIODQuOTA2OFYxMDVINzQuMjI2OFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNTYuMjkxIDEwNVYxMDIuOTZDMTYxLjExNSA5OC42NCAxNjMuOTcxIDk1LjMwNCAxNjMuOTcxIDkyLjU2OEMxNjMuOTcxIDkwLjc2OCAxNjIuOTg3IDg5LjY4OCAxNjEuMzA3IDg5LjY4OEMxNjAuMDExIDg5LjY4OCAxNTguOTMxIDkwLjUyOCAxNTguMDQzIDkxLjUxMkwxNTYuMTIzIDg5LjU5MkMxNTcuNzU1IDg3Ljg2NCAxNTkuMzM5IDg2LjkwNCAxNjEuNzYzIDg2LjkwNEMxNjUuMTIzIDg2LjkwNCAxNjcuMzU1IDg5LjA2NCAxNjcuMzU1IDkyLjM3NkMxNjcuMzU1IDk1LjU5MiAxNjQuNjkxIDk5LjA0OCAxNjEuNDUxIDEwMi4yMTZDMTYyLjMzOSAxMDIuMTIgMTYzLjUxNSAxMDIuMDI0IDE2NC4zMzEgMTAyLjAyNEgxNjguMTk1VjEwNUgxNTYuMjkxWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==)
 
-## Servo Override[​](#servo-override "Direct link to Servo Override")
+### Direct[​](#direct "Direct link to Direct")
 
-The toggle at the bottom of this page enables the servo overrides. The purpose of this is so that each servo can be driven by the slider to calibrate the range and center points. Beside each servo is an individual override.
+For helicopters that uses mechanical mixing, where the *Pitch*, *Roll*, and *Collective* movements are each controlled by a dedicated servo by means of a complex series of linkages and levers from the servos up to the swashplate.
 
-The servo override slider scale is in degrees
-
-![Servo Tab](/assets/images/servo-3-51968afaa0d88e24f90bf472e1a58e94.png)
-
-## Servo Configuration parameters[​](#servo-configuration-parameters "Direct link to Servo Configuration parameters")
-
-![Servo Tab](/assets/images/servo-4-694fd14838b674b4fedfcdae11186457.png)
-
-### Center[​](#center "Direct link to Center")
-
-In general this will be 1520us for cyclic servos and 760us for tail servos.
-
-### Min and Max[​](#min-and-max "Direct link to Min and Max")
-
-These are hard limits to prevent servos binding or moving outside of their mechanical limits. If a servo is commanded to a point that is greater or less than it is capable it will buzz and likely burn out. These settings should be used to limit the command.
-
-### Scale Neg and Scale Pos[​](#scale-neg-and-scale-pos "Direct link to Scale Neg and Scale Pos")
-
-Scales the negative and positive direction of the servo to match the commanded angle.
-
-### Rate[​](#rate "Direct link to Rate")
-
-This is the servo frequency. This will be specified by the manufacturer. A large proportion of servos suitable for cyclic operate at 333Hz.
-
-note
-
-For Rotorflight 2 it is recommended that tail servos are assigned to a different timer than cyclic servos (see [Remapping](/docs/setup/remapping.md)).
-
-This means that tail servos can be set to a different frequency (i.e. faster).
-
-### Speed[​](#speed "Direct link to Speed")
-
-Servo Speed Equalization. The aim of this parameter is to remove the collective "bobbing" when fast elevator changes are applied.
-
-The bobbing happens because the elevator servo has to move double distance vs. the aileron servos, when elevator position is changed. If the change is faster than the servos can go, the aileron servos will reach the target sooner than the elevator servo, causing the swash to jump slightly in the process.
-
-To tune this value increase the speed value (it's actually ms/60°, like in the servo datasheet) until the bobbing is not visible any more. It should be always ok to use the value from the servo datasheet if unsure.
-
-### Reverse[​](#reverse "Direct link to Reverse")
-
-Toggle for forward or reverse servo direction.
-
-### Geo Cor[​](#geo-cor "Direct link to Geo Cor")
-
-Geometry Correction. Servos are rotary, so at high angles this results in smaller swashplate movement for each degree of servo movement. Geometry correction accounts for this and provides better control at high angles (e.g. 3D flight).
-
-In order to use this feature it is important to set the servo arm at 90° (with servo center) and calibrating the servo scale.
+Servo 1 - Pitch<br /><!-- -->Servo 2 - Roll<br /><!-- -->Servo 3 - Collective<br /><!-- -->Servo 4 - Rudder

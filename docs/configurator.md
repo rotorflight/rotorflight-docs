@@ -34,9 +34,13 @@
 
 [The Motors tab is used to configure the ESC communications protocols ( Motor Control Protocol & Telemetry Protocol ) ,as well as to provide the ability to test motor operation. Depending on the selected ESC protocol and selected Rotorflight features, you might need to specify some other parameters as well.](/docs/configurator/tabs/motors.md)
 
+## [📄️<!-- --> <!-- -->Governor](/docs/configurator/tabs/governor.md)
+
+[The purpose of the governor is to keep the headspeed constant, regardless of the flight conditions, amount of collective applied, the battery voltage level, and so on.](/docs/configurator/tabs/governor.md)
+
 ## [📄️<!-- --> <!-- -->Servos](/docs/configurator/tabs/servos.md)
 
-[Open the Servos tab and confirm that you have the correct number of servos. If this is not the case, please confirm you have installed the correct firmware (either 'M' motorized or servo tail) or if you are using a drone FC that your Remapping is correct.](/docs/configurator/tabs/servos.md)
+[Servo 101](/docs/configurator/tabs/servos.md)
 
 ## [📄️<!-- --> <!-- -->Mixer](/docs/configurator/tabs/mixer.md)
 

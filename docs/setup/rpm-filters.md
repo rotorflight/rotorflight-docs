@@ -2,48 +2,18 @@
 
 ## Introduction[​](#introduction "Direct link to Introduction")
 
-RPM filters clean up the gyro signals by filtering out vibrations that are coming from the rotating parts in a helicopter: the main rotor, tail rotor and motor(s).
+RPM filters clean up the gyro signals by filtering out vibrations that are coming from the rotating parts in a helicopter: the main rotor, tail rotor and motor(s). These vibrations are seen as noise in the gyro signal. Removing these vibrations (noise) results in a cleaner signal which is more representative of the physical movement of the helicopter. A cleaner signal is much better for the controller to operate from.
 
-The difference between an unfiltered and filtered signal is significant. Here's an example of filtered and unfiltered gyro signals:
+Nothing comes for free. Filters result in a cleaner signal at the expense of lag. The filtered signal is slightly slower than the original. This means to have the most responsive controller we should minimize the filters used.
 
-![Gyro signals](/assets/images/rpm-unfiltered-20b6697aa790a2143f27566f94663ca7.png)
+## Dynamic filters[​](#dynamic-filters "Direct link to Dynamic filters")
 
-RPM filtered gyro signals enable you to tune the helicopter better, for example by being able to use higher gains.
+Dynamic filters will filter the gyro signal when an [RPM measurement](/docs/setup/rpm-measurement.md) is not available or it is not accurate. These are not as capable as the RPM filters. These can be used if
 
-The RPM filters require real time motor speed information to be available to the flight controller. This can be obtained with a [Frequency Sensor](/docs/setup/rpm-measurement.md#frequency-sensor) or by using [Bidirectional DSHOT](/docs/setup/rpm-measurement.md#bi-directional-dshot).
+* No RPM signal available - Helicopters that do not have an RPM input or bi-directional dshot.
+* Autorotations - In this case the RPM measurement is not correct due to the one way bearing. You may wish to enable 2 notches to account for this.
 
-Once the FC knows the motor speed, it can calculate the main and tail rotor speeds. For this it needs to know the *Main Rotor Gear Ratio* and the *Tail Rotor Gear Ratio*, which you can specify in the *Motors* tab.
-
-For example, here are the ratios for my Gaui X3.
-
-![Gear ratios](/assets/images/motors-gear-ratios-e78d5d9f7edfdfa808e39ec7459b55d8.png)
-
-note
-
-Direct drive motors have a ratio of 1:1.
-
-In order to use RPM filters, proceed to the *Gyro* tab, and enable the filters as shown below.
-
-## Basic RPM Filters Settings[​](#basic-rpm-filters-settings "Direct link to Basic RPM Filters Settings")
-
-These settings should be ok for a first flight.
-
-![RPM Filters](/assets/images/rpm-filters-set-1-1ed77e515775eb8c4c0f469c416f7a9c.png)
-
-![RPM Filters](/assets/images/rpm-filters-set-2-e7ed76de18502bfa21152b083b9a00c9.png)
-
-Filters introduce latency. More filters mean more latency. So try to keep the number of filters low.
-
-Double filters provide heavier filtering than single filters, but are also slower. They are sometimes needed on the 1st and/or 2nd harmonic.
-
-tip
-
-The Q factor defines how wide the filter is:
-
-* Lower Q values make the filter wider
-* Higher Q values make the filter smaller
-
-Wider filters are slower than narrow filters, so try to make the filters as small as possible without it being ineffective.
+## RPM Filters[​](#rpm-filters-1 "Direct link to RPM Filters")
 
 ## Filter Tuning[​](#filter-tuning "Direct link to Filter Tuning")
 

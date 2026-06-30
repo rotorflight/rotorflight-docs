@@ -4,7 +4,7 @@ Rotorflight is a flight control software suite for single rotor RC helicopters. 
 
 * The Rotorflight Configurator: update and configure the firmware using Windows, macOS or Linux.
 * Rotorflight Firmware: the software that runs on your flight controller (loaded via the configurator).
-* Rotorflight Blackbox Explorer: analyse Rotorflight logs on your computer.
+* Rotorflight Blackbox Explorer: analyze Rotorflight logs on your computer.
 * Rotorflight LUA scripts: tweak your helicopter on the field using your OpenTX/EdgeTX transmitter.
 
 Rotorflight does NOT support multi-rotor drones, nor airplanes; it is only for traditional RC helicopters.
@@ -21,7 +21,7 @@ Since 2023 there are also commercial [**Rotorflight controllers**](/docs/control
 
 ## Latest Rotorflight 2 Version[​](#latest-rotorflight-2-version "Direct link to Latest Rotorflight 2 Version")
 
-Rotorflight v2.1 is the current stable release and can be found in the [**V2.1.0 Stable Downloads**](/docs/download/configurator.md).
+Rotorflight v2.2 is the current stable release and can be found in the [**V2.2.0 Stable Downloads**](/docs/download/configurator.md).
 
 ## Next release testing[​](#next-release-testing "Direct link to Next release testing")
 

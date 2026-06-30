@@ -92,7 +92,7 @@ The purpose of this step is to [**setup and calibrate the mixer**](/docs/setup/s
 
 ## Motor and ESC Setup[​](#motor-and-esc-setup "Direct link to Motor and ESC Setup")
 
-**ESC Throttle Protocol** - The OMPHobby 65A ESC uses a PWM protocol.<br />**ESC telemetry Protocol** - Set this to OMPHobby to match the ESC.<br />**RPM Sensor** - The nexus has an RPM input. The Yellow RPM signal wire from the ESC is plugged into this port. Enabling this toggle enables the RPM so it can be used for the [**Governor**](/docs/setup/governor.md) and [**RPM Filtering**](/docs/setup/rpm-filters.md)<br />**Main Rotor Gear Ratio** - The M4 is a direct drive Helicopter so is set to `1 / 1`<br />**Tail Rotor Gear Ratio** - Counting the teeth on the M4 gears is `22 / 99`<br />**Main Motor Pole count** - The M4 motor has 42 poles `42`
+**ESC Throttle Protocol** - The OMPHobby 65A ESC uses a PWM protocol.<br />**ESC telemetry Protocol** - Set this to OMPHobby to match the ESC.<br />**RPM Sensor** - The nexus has an RPM input. The Yellow RPM signal wire from the ESC is plugged into this port. Enabling this toggle enables the RPM so it can be used for the [**Governor**](/docs/configurator/tabs/governor.md) and [**RPM Filtering**](/docs/setup/rpm-filters.md)<br />**Main Rotor Gear Ratio** - The M4 is a direct drive Helicopter so is set to `1 / 1`<br />**Tail Rotor Gear Ratio** - Counting the teeth on the M4 gears is `22 / 99`<br />**Main Motor Pole count** - The M4 motor has 42 poles `42`
 
 note
 
@@ -100,7 +100,7 @@ If your helicopter has a two stage gear train, please [**follow this guide**](/d
 
 ![Example 1](/assets/images/example-1-9-9bd5c6541730a09092f5427d7f46fa1b.png)
 
-**Governor Mode** - Set this to "Mode 1". This will control the Headspeed and provide slow spoolup.<br /><!-- -->See the [**Governor Modes**](/docs/setup/governor.md#governor-mode) and [**Governor setup**](/docs/setup/governor-setup.md) for details and examples.
+**Governor Mode** - Set this to "Mode 1". This will control the Headspeed and provide slow spoolup.<br /><!-- -->See the [**Governor setup**](/docs/configurator/tabs/governor.md) for details and examples.
 
 ![Example 1](/assets/images/example-1-10-9d2ee6e5d5d45f0b38a6ceec29752013.png)
 

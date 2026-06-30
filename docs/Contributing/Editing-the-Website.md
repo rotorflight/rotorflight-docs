@@ -12,7 +12,7 @@ This is probably the easiest and most straightforward way to make changes. At th
 
 ![Editing](/assets/images/edit-1-ca16ef861ce7927edf9c35c80cc32103.png)
 
-In the top right-hand corner of the page click on Edit
+In the top right hand corner of the page click on Edit
 
 ![Editing](/assets/images/edit-2-c03f11135670e4a8077b5b0f24b95411.png)
 

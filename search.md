@@ -1,15 +1,16 @@
 [Skip to main content](#__docusaurus_skipToContent_fallback)
 
-ROTORFLIGHT 2 Official Release 2.2.0 is now available. See downloads tab
+ROTORFLIGHT 2 Official Release 2.3.0 is now available. See downloads tab
 
 [![Rotorflight logo](/img/Rotorflight_outline.svg)![Rotorflight logo](/img/Rotorflight_outline_dark.svg)](/)
 
 [**Rotorflight**](/)[Announcements](/announcement)[Tutorial](/docs.md)[Download](/docs/download/notes.md)[Manufacturers](/docs/Manufacturers/intro.md)[Tuning](/docs/Tuning/First-Flight-Filter-Tuning.md)[Contributing](/docs/Contributing/intro.md)
 
-[2.2.0](/docs.md)
+[2.3.0](/docs.md)
 
 * [Next](/docs/next)
-* [2.2.0](/docs.md)
+* [2.3.0](/docs.md)
+* [2.2.0](/docs/2.2.0)
 * [2.1.0](/docs/2.1.0)
 * [2.0.0](/docs/2.0.0/download/configurator)
 

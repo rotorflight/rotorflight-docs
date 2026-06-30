@@ -30,7 +30,7 @@ Then visit the receiver page and configure as follows
 
 On the `Linkage Menu` -> `System Type` page, make sure you are using a protocol that supports telemetry, like T-FHSS or FASSTest 18ch and that telemetry is enabled. ![RadioTelemetryOn](/assets/images/telemetry-on-0911b699444fbee349c3ac2ede615e0c.jpg)
 
-Once you have activated telemetry, you have to configure the list of sensors in the `Linkage Menu` -> `Sensor` page. The slot assignment and sensor types are important, otherwise your radio won't display the telemetry information correctly. Follow the assignment map and example bellow:
+Once you have activated telemetry, you have to configure the list of sensors in the `Linkage Menu` -> `Sensor` page. The slot assignment and sensor types are important, otherwise your radio won't display the telemetry information correctly. Follow the assignment map and example below:
 
 ![ConfiguratorSensorsList](/assets/images/sensors-b9c5e42259caaf559b93e83cbe834b6e.png)
 

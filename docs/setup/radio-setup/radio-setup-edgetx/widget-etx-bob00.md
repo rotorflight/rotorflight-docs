@@ -1,4 +1,4 @@
-# ETX Widget
+# Telemetry Widget
 
 Bob00 has created a custom widget for displaying Rotorflight Telemetry. More details and downloads can be found in the Github Repository.
 

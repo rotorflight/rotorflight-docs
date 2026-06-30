@@ -32,7 +32,7 @@ Cyclic cross coupling
 * Beginner
 * Intermediate
 
-Cyclic cross coupling happens mainly due to the pitch axis inputs. When the pitch command is given, due to the high moment of inertia of the helicopter in the pitch axis, the frame would "lag" behind the rotor disks. This difference in position creates a torque on the rotor blade and thus transfer to the roll axis due to gyroscopic precession. More details can be found on the [**Cyclic Cross Coupling** page](/docs/testing/Cyclic-Cross-Coupling)
+Cyclic cross coupling happens mainly due to the pitch axis inputs. When the pitch command is given, due to the high moment of inertia of the helicopter in the pitch axis, the frame would "lag" behind the rotor disks. This difference in position creates a torque on the rotor blade and thus transfer to the roll axis due to gyroscopic precession. More details can be found on the [**Cyclic Cross Coupling** page](/docs/tuning/Cyclic-Cross-Coupling)
 
 **Note:** It is good to tune this early in your tuning process while you helicopter is on defaults. During this time the control loop is probably slow and it will be easier to see the unwanted rotations.
 

@@ -4,120 +4,148 @@
         <title>Rotorflight Blog</title>
         <link>https://rotorflight.org/announcement</link>
         <description>Rotorflight Blog</description>
-        <lastBuildDate>Mon, 29 Jun 2026 06:24:36 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 30 Jun 2026 09:41:26 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
-            <title><![CDATA[Official Release 2.2.1]]></title>
-            <link>https://rotorflight.org/announcement/Official Release 2.2.0</link>
-            <guid>https://rotorflight.org/announcement/Official Release 2.2.0</guid>
-            <pubDate>Mon, 29 Jun 2026 06:24:36 GMT</pubDate>
+            <title><![CDATA[Official Release 2.3.0]]></title>
+            <link>https://rotorflight.org/announcement/official-release-2.3.0</link>
+            <guid>https://rotorflight.org/announcement/official-release-2.3.0</guid>
+            <pubDate>Tue, 30 Jun 2026 09:41:26 GMT</pubDate>
             <description><![CDATA[Download Notes\]]></description>
             <content:encoded><![CDATA[<p><a class="" href="https://rotorflight.org/docs/download/notes"><strong>Download Notes</strong></a><br>
 <a class="" href="https://rotorflight.org/docs/download/configurator"><strong>Download Configurator</strong></a><br>
 <a class="" href="https://rotorflight.org/docs/download/blackbox"><strong>Download Blackbox</strong></a><br>
 <a class="" href="https://rotorflight.org/docs/download/edge-tx-Lua"><strong>Download EdgeTX Lua</strong></a><br>
 <a class="" href="https://rotorflight.org/docs/download/ethos-Lua"><strong>Download Ethos Lua</strong></a></p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-firmware-rotorflight-45x">🔧 Firmware (Rotorflight 4.5.x)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-firmware-rotorflight-45x" class="hash-link" aria-label="Direct link to 🔧 Firmware (Rotorflight 4.5.x)" title="Direct link to 🔧 Firmware (Rotorflight 4.5.x)" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-new-features">🆕 New Features<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-new-features" class="hash-link" aria-label="Direct link to 🆕 New Features" title="Direct link to 🆕 New Features" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-firmware-rotorflight-46x">🔧 Firmware (Rotorflight 4.6.x)<a href="https://rotorflight.org/announcement/official-release-2.3.0#-firmware-rotorflight-46x" class="hash-link" aria-label="Direct link to 🔧 Firmware (Rotorflight 4.6.x)" title="Direct link to 🔧 Firmware (Rotorflight 4.6.x)" translate="no">​</a></h2>
+<p>The full list of changes is located in the <a href="https://github.com/rotorflight/rotorflight-firmware/blob/RF-4.6.x/Changes.md" target="_blank" rel="noopener noreferrer" class=""><strong>Changes</strong></a></p>
+<p><strong>New features</strong></p>
 <ul>
-<li class="">FrSky attitude sensor scaling fixed</li>
-<li class="">Voltage and Current corrections added to XDFly ESC telemetry</li>
-<li class="">Force half-duplex setting with Spektrum SRXL2</li>
-<li class="">Support for <strong>USB Mass Storage (MSC)</strong> across Mac, Android, and other platforms.</li>
-<li class=""><strong>Automatic configuration erase</strong> when flashing firmware to ensure clean installs.</li>
-<li class=""><strong>Adjustment function</strong> added for <code>yaw_precomp_cutoff</code>.</li>
-<li class="">New <strong>Rate Dynamics</strong> and <strong>PID Controller Settings</strong> accessible via Lua scripts.</li>
+<li class="">Introduce Rotorflight Rates with refactored rate handling</li>
+<li class="">Add support for applying rates in polar coordinates</li>
+<li class="">Refactor Governor for Nitro/I.C. engines with multiple improvements and fixes</li>
+<li class="">Refactor throttle channel range and arm limit</li>
+<li class="">Refactor Adjustment Function implementation</li>
+<li class="">Add battery profile support</li>
+<li class="">Add SmartFuel battery charge estimator</li>
+<li class="">New hardware and protocol support</li>
+<li class="">Add Forward Programming support for AM32, BLHeli S/Bluejay, ZTW, OMP, and XDFly ESCs</li>
+<li class="">Add FlySky IBUS2 Control &amp; Telemetry Support</li>
+<li class="">Add FBUS Master Out</li>
+<li class="">Add FBUS sensor input</li>
+<li class="">Add S.PORT sensor input</li>
+<li class="">Add GYRO_CLK support for external gyro clocking</li>
+<li class="">Add BMP581 barometer driver</li>
+<li class="">Add BMI323 gyro driver</li>
+<li class="">Add native ELRS telemetry sensors for RPM and TEMP</li>
+<li class="">Add ESC telemetry output to Spektrum transmitters</li>
+<li class="">Add Winbond W25N04KV flash ID</li>
+<li class="">Add PY25Q128HA flash ID</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-updated-defaults-and-improvements">🔁 Updated Defaults and Improvements<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-updated-defaults-and-improvements" class="hash-link" aria-label="Direct link to 🔁 Updated Defaults and Improvements" title="Direct link to 🔁 Updated Defaults and Improvements" translate="no">​</a></h3>
+<p><strong>Improvements</strong></p>
 <ul>
-<li class="">Lowered default <strong>D gains</strong> for improved stability.</li>
-<li class="">Increased default <strong>HSI gains</strong> (Helicopter Stability Index).</li>
-<li class="">Improved <strong>collective-to-yaw precompensation</strong>.</li>
-<li class="">Enabled <strong>CRSF/ELRS custom telemetry</strong> via background Lua script.</li>
-<li class="">Updated gyro Output Data Rate (ODR) to 4kHz on F4 and F7 targets for stability.</li>
-<li class="">Added <strong>Blackbox header timestamps</strong> using background Lua sync.</li>
-<li class="">Enhanced <strong>RPM notch filtering</strong>, fixing glitches at startup and low RPM.</li>
-<li class="">Improved compatibility with <strong>JR XBus</strong> (both Mode A and Mode B).</li>
-<li class="">Fixed telemetry sensor scaling for <strong>ESC1</strong> on S.Port.</li>
-<li class="">Resolved lockups and flash handling on <strong>G4</strong> processors and <strong>W25N</strong> NAND flash.</li>
-<li class="">Fixed issues with <strong>XDFly ESC telemetry</strong> lockups.</li>
+<li class="">Reject incompatible dump/diff files</li>
+<li class="">Improve gyro calibration routine</li>
+<li class="">Improve the decimation filter</li>
+<li class="">Enable Blackbox logging while ARMed by default</li>
+<li class="">Enable flight stats by default</li>
+<li class="">Increase max cyclic deadband to 100</li>
+<li class="">Disable yaw dynamic ceiling and reduce deadband defaults</li>
+<li class="">Change RESCUE default to FLIP</li>
+<li class="">Increase default I-term and O-term (HSI) limits</li>
+<li class="">Add motor override timeout</li>
+<li class="">Disallow arming while rescue is active</li>
+<li class="">Disallow arming if motor override is active</li>
+<li class="">Remove PID term reset on profile change</li>
+<li class="">Add new MSP APIs for tools and Lua scripts</li>
+<li class="">Add freq_input_minhz parameter</li>
+<li class="">Extend servo parameter ranges</li>
+<li class="">Improve Hobbywing V4 ESC telemetry</li>
+<li class="">Start tail motor ASAP</li>
+<li class="">Remove error_rotation parameter</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-rotorflight-configurator-v221">🖥️ Rotorflight Configurator (v2.2.1)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#%EF%B8%8F-rotorflight-configurator-v221" class="hash-link" aria-label="Direct link to 🖥️ Rotorflight Configurator (v2.2.1)" title="Direct link to 🖥️ Rotorflight Configurator (v2.2.1)" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-new-features-1">🆕 New Features<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-new-features-1" class="hash-link" aria-label="Direct link to 🆕 New Features" title="Direct link to 🆕 New Features" translate="no">​</a></h3>
+<p><strong>Bug fixes</strong></p>
 <ul>
-<li class="">Added a <strong>Presets system</strong> to quickly apply CLI snippets from the UI.</li>
-<li class="">Added <strong>Android and macOS Apple Silicon builds</strong> (note: macOS requires manual xattr removal).</li>
-<li class="">Improved <strong>telemetry sensor interface</strong>.</li>
+<li class="">Fix potential buffer overflows in RX protocols and rcdevice</li>
+<li class="">Fix isVoltageStable check in battery presence</li>
+<li class="">Fix ACRO TRAINER catastrophic failure</li>
+<li class="">Fix failsafe throttle handling</li>
+<li class="">Fix JR Xbus Mode-A channel corruption</li>
+<li class="">Fix APD ESC telemetry</li>
+<li class="">Fix MSPv2 over SmartPort</li>
+<li class="">Fix IBUS2 channel decoding</li>
+<li class="">Fix Hobbywing Platinum V5 ESC parameter writes</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-localization--platform-support">🌐 Localization &amp; Platform Support<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-localization--platform-support" class="hash-link" aria-label="Direct link to 🌐 Localization &amp; Platform Support" title="Direct link to 🌐 Localization &amp; Platform Support" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-rotorflight-configurator-v230">🖥️ Rotorflight Configurator (v2.3.0)<a href="https://rotorflight.org/announcement/official-release-2.3.0#%EF%B8%8F-rotorflight-configurator-v230" class="hash-link" aria-label="Direct link to 🖥️ Rotorflight Configurator (v2.3.0)" title="Direct link to 🖥️ Rotorflight Configurator (v2.3.0)" translate="no">​</a></h2>
+<p><strong>Changes from 2.2.x</strong></p>
 <ul>
-<li class="">Added <strong>Spanish</strong> language support.</li>
-<li class="">Created a <strong>portable ZIP version</strong> for Windows users.</li>
+<li class="">Support for Rotorflight Firmware 4.6.0</li>
+<li class="">Add Expert Mode toggle (only implemented on some tabs)</li>
+<li class="">New layouts for Motors, Receiver and Failsafe tab</li>
+<li class="">Governor configuration moved to a new tab</li>
+<li class="">Live updates to throttle range parameters</li>
+<li class="">Simplified firmware flasher tab</li>
+<li class="">Various mobile layout improvements</li>
+<li class="">Removed confusing arm mode active indicator on Modes tab</li>
+<li class="">Bulgarian translation</li>
+<li class="">Windows installer now includes the STM32 DFU driver</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-fixes--ui-enhancements">🐞 Fixes &amp; UI Enhancements<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-fixes--ui-enhancements" class="hash-link" aria-label="Direct link to 🐞 Fixes &amp; UI Enhancements" title="Direct link to 🐞 Fixes &amp; UI Enhancements" translate="no">​</a></h3>
+<p><strong>Important:</strong> The Apple silicon build is not notarized by Apple. It is necessary to run the following command before installing.</p>
+<p>:::note NOTE
+Replace /path/to with the actual path to the file.</p>
+<p><code>xattr -cr "/path/to/rotorflight-configurator_2.3.0_macos_arm64.dmg"</code>
+:::</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-lua-scripts-for-edgetx--opentx-v230">📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)<a href="https://rotorflight.org/announcement/official-release-2.3.0#-lua-scripts-for-edgetx--opentx-v230" class="hash-link" aria-label="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)" title="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)" translate="no">​</a></h2>
+<p><strong>Changes Since Version 2.2.1</strong></p>
 <ul>
-<li class="">Performance improvements</li>
-<li class="">Fix crash with older hardware lacking WebGL 2 support</li>
-<li class="">Fix Windows 32-bit installer</li>
-<li class="">Fix visual bugs on presets tab</li>
-<li class="">Fix maximum allowed value for cyclic deadband</li>
-<li class="">Improved visibility of <strong>mode active indicators</strong> in dark theme.</li>
-<li class="">Corrected <strong>suggested backup filenames</strong>.</li>
-<li class="">Resolved issues with <strong>custom target flashing</strong> and <strong>Windows installation errors</strong>.</li>
+<li class="">Model page: added support for per model statistics like Total flights and Total time.</li>
+<li class="">Battery page: new page for configuring and specifying your batteries.</li>
+<li class="">Governor page: added support for the new Rotorflight governor.</li>
+<li class="">Rates page: added support for Rotorflight rates.</li>
+<li class="">Rate Dynamics page: added support for Cyclic ring and Polar coordinates.</li>
+<li class="">AM32 ESC page: new page for configuring AM32 ESCs.</li>
+<li class="">BLHeli_S ESC page: new page for configuring BLHeli_S ESCs.</li>
+<li class="">Bluejay ESC page: new page for configuring Bluejay ESCs.</li>
+<li class="">FLYROTOR ESC page: updated parameters.</li>
+<li class="">Added support for configuring OMP and ZTW ESCs.</li>
+<li class="">Added partial support for the FlySky PA01.</li>
+<li class="">Various minor fixes.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-lua-scripts-for-edgetx--opentx-v221">📟 Lua Scripts for EdgeTX / OpenTX (v2.2.1)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-lua-scripts-for-edgetx--opentx-v221" class="hash-link" aria-label="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.1)" title="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.2.1)" translate="no">​</a></h2>
-<p><strong>NOTE!</strong> Use the SYS key to bring up the Save menu with Touch UI feature enabled on EdgeTX 2.11+</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-pages--controls">🆕 Pages &amp; Controls<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-pages--controls" class="hash-link" aria-label="Direct link to 🆕 Pages &amp; Controls" title="Direct link to 🆕 Pages &amp; Controls" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-lua-scripts-for-edgetx--opentx-v230-1">📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)<a href="https://rotorflight.org/announcement/official-release-2.3.0#-lua-scripts-for-edgetx--opentx-v230-1" class="hash-link" aria-label="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)" title="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)" translate="no">​</a></h2>
+<p><strong>Changes Since Version 2.2.1</strong></p>
 <ul>
-<li class="">Added touch UI support for EdgeTX 2.11+</li>
-<li class="">Improved support for FLYROTOR ESC</li>
-<li class="">Various minor fixes</li>
-<li class="">New <strong>"Rate Dynamics"</strong> page for advanced rate tuning.</li>
-<li class="">New <strong>"PID Controller Settings"</strong> page for deep tuning options.</li>
-<li class="">Units added to most fields for clarity and consistency.</li>
+<li class="">Model page: added support for per model statistics like Total flights and Total time.</li>
+<li class="">Battery page: new page for configuring and specifying your batteries.</li>
+<li class="">ESC Sensor page: new page for configuring ESC telemetry.</li>
+<li class="">Governor page: added support for the new Rotorflight governor.</li>
+<li class="">Rates page: added support for Rotorflight rates.</li>
+<li class="">Rate Dynamics page: added support for Cyclic ring and Polar coordinates.</li>
+<li class="">Smart Fuel page: new page for configuring Smart Fuel.</li>
+<li class="">AM32 ESC page: new page for configuring AM32 ESCs.</li>
+<li class="">BLHeli_S ESC page: new page for configuring BLHeli_S ESCs.</li>
+<li class="">Bluejay ESC page: new page for configuring Bluejay ESCs.</li>
+<li class="">FLYROTOR ESC page: updated parameters.</li>
+<li class="">HW Platinum V5 page: improved support for various Hobbywing Platinum V5 ESCs, including support for the Stratos 200 ESC.</li>
+<li class="">Added support for configuring OMP and ZTW ESCs.</li>
+<li class="">Various minor fixes.</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-performance--stability">🛠 Performance &amp; Stability<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-performance--stability" class="hash-link" aria-label="Direct link to 🛠 Performance &amp; Stability" title="Direct link to 🛠 Performance &amp; Stability" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-lua-suite-for-frsky-ethos-v230">📟 Lua Suite for FrSky Ethos (v2.3.0)<a href="https://rotorflight.org/announcement/official-release-2.3.0#-lua-suite-for-frsky-ethos-v230" class="hash-link" aria-label="Direct link to 📟 Lua Suite for FrSky Ethos (v2.3.0)" title="Direct link to 📟 Lua Suite for FrSky Ethos (v2.3.0)" translate="no">​</a></h2>
+<p><strong>Changes Since Version 2.2.1</strong></p>
 <ul>
-<li class=""><strong>Reduced memory usage</strong> to improve script responsiveness.</li>
-<li class="">Background script (<code>rf2bg</code>) sets the FC clock and enables CRSF/ELRS telemetry automatically.</li>
-<li class="">Numerous minor fixes and UX improvements.</li>
+<li class="">Added the new dashboard system, dashboard theme support, Ethos 2.6 theme integration, theme selection, and improved dashboard loader/status handling.</li>
+<li class="">Reworked the menu structure and added/expanded modules so more Rotorflight configuration can be edited directly from the radio, including mixer, receiver, FBUS, ESC/motor, governor, rates, tail, smart fuel, and RF 2.3-specific settings.</li>
+<li class="">Added Battery Profile support and improved battery/profile-aware behaviour for gauges, alerts, smart fuel, and fuel calculations.</li>
+<li class="">Added Smart Fuel support on the FBL side, including improved model detection, voltage/consumption handling, sensor reset behaviour, and related translations/audio.</li>
+<li class="">Added and improved ESC programming support, including BLHeli_S/Bluejay, AM32, Hobbywing/HW5, ZTW, OMP, Flyrotor, Skorpion, and 4-way ESC reliability improvements.</li>
+<li class="">Improved MSP and telemetry transport with MSPv2 support, MSP boost mode, API/message-bus refactors, better S.Port reliability, FBUS sensor support, ELRS telemetry improvements, and safer reconnect/queue handling.</li>
+<li class="">Added the Session Log tool, protocol/debug logging improvements, diagnostics/admin tools, and support for Ethos malloc debugging.</li>
+<li class="">Added the new FrSky package format and cross-platform Ethos Suite updater/deployment tooling.</li>
+<li class="">Reduced radio load throughout the app, background tasks, widgets, dashboard objects, ESC tools, telemetry modules, progress dialogs, image/theme handling, and navigation paths by reducing allocations, lazy loading more code, clearing caches, and fixing memory leaks.</li>
+<li class="">Includes many UI fixes, translation/audio updates, sensor-tool updates, dashboard theme additions, and smaller stability fixes from the 2.3.0 snapshots and release candidates.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-lua-suite-for-frsky-ethos-v221">📟 Lua Suite for FrSky Ethos (v2.2.1)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-lua-suite-for-frsky-ethos-v221" class="hash-link" aria-label="Direct link to 📟 Lua Suite for FrSky Ethos (v2.2.1)" title="Direct link to 📟 Lua Suite for FrSky Ethos (v2.2.1)" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-framework-overhaul">🔄 Framework Overhaul<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-framework-overhaul" class="hash-link" aria-label="Direct link to 🔄 Framework Overhaul" title="Direct link to 🔄 Framework Overhaul" translate="no">​</a></h3>
-<ul>
-<li class="">Complete rewrite using a <strong>modular API-driven architecture</strong>.</li>
-<li class="">Supports dynamic <strong>page/module/widget creation</strong> based on MSP data.</li>
-<li class="">Enabled <strong>VSCode development integration</strong>.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-functional-enhancements">📈 Functional Enhancements<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-functional-enhancements" class="hash-link" aria-label="Direct link to 📈 Functional Enhancements" title="Direct link to 📈 Functional Enhancements" translate="no">​</a></h3>
-<ul>
-<li class="">Added <strong>Blackbox status</strong>, <strong>arm state</strong>, and <strong>disarm flags widgets</strong>.</li>
-<li class="">Improved <strong>connect/reconnect speed</strong> and user feedback.</li>
-<li class="">Introduced <strong>MSP sensor framework</strong> for scalable telemetry.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-internationalization">🌍 Internationalization<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-internationalization" class="hash-link" aria-label="Direct link to 🌍 Internationalization" title="Direct link to 🌍 Internationalization" translate="no">​</a></h3>
-<ul>
-<li class="">Improved translation functions and added <strong>Italian translation/audio</strong>.</li>
-<li class="">Fixed character encoding issues in non-English locales.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-fixes--ux">🐞 Fixes &amp; UX<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-fixes--ux" class="hash-link" aria-label="Direct link to 🐞 Fixes &amp; UX" title="Direct link to 🐞 Fixes &amp; UX" translate="no">​</a></h3>
-<ul>
-<li class="">Improved alignment of PID defaults to match <strong>Flybarless (FBL)</strong> systems.</li>
-<li class="">Added new <strong>adjustment function sounds</strong> and UI feedback.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-blackbox-explorer-v220">📊 Blackbox Explorer (v2.2.0)<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-blackbox-explorer-v220" class="hash-link" aria-label="Direct link to 📊 Blackbox Explorer (v2.2.0)" title="Direct link to 📊 Blackbox Explorer (v2.2.0)" translate="no">​</a></h2>
-<ul>
-<li class="">Added full support for <strong>Rotorflight 4.5.0 log format</strong> including headers and log events.</li>
-<li class="">Fixed installation issues on some Windows environments.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-compatibility-notes">✅ Compatibility Notes<a href="https://rotorflight.org/announcement/Official%20Release%202.2.0#-compatibility-notes" class="hash-link" aria-label="Direct link to ✅ Compatibility Notes" title="Direct link to ✅ Compatibility Notes" translate="no">​</a></h2>
-<ul>
-<li class="">Fully compatible with Rotorflight <strong>2.0 and 2.1</strong> configurations.</li>
-<li class="">Users updating from Rotorflight <strong>1.x must reconfigure</strong> from scratch.</li>
-<li class="">Always <strong>verify settings and behavior on the bench</strong> before flying after upgrading.</li>
-</ul>]]></content:encoded>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-blackbox-explorer-v230">📊 Blackbox Explorer (v2.3.0)<a href="https://rotorflight.org/announcement/official-release-2.3.0#-blackbox-explorer-v230" class="hash-link" aria-label="Direct link to 📊 Blackbox Explorer (v2.3.0)" title="Direct link to 📊 Blackbox Explorer (v2.3.0)" translate="no">​</a></h2>]]></content:encoded>
         </item>
     </channel>
 </rss>

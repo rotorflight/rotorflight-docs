@@ -1,6 +1,6 @@
-# EdgeTX Generic Radio Setup
+# Generic Radio Setup
 
-This walkthrough will guide you through to create a basic radio model for rotorflight controller.
+This walkthrough will guide you through to create a basic radio model for Rotorflight controller.
 
 This is a guide for EdgeTX/OpenTX radios, it will work with both ELRS and F.port receivers.
 

@@ -35,7 +35,7 @@ There's also a DarwinFPV 15A with built-in ELRS receiver, but we can't use that 
 * The ESCs were flashed with [Bluejay](/docs/setup/blheli_s-to-bluejay.md) version 0.21, so we can use bi-directional Dshot with RPM telemetry for filtering and governing.
 * The pre-soldered capacitor on the DarwinFPV 15A has been removed.
 
-Here's a view from the left:
+Here's a view from the left. Note that the board is hard mounted, which is possible if the gyro on the DarwinFPV 15A can cope with strong vibrations or if the heli is extremely well balanced. This board has an MPU-6000 gyro and the heli is pretty well balanced.
 
 ![M1](/assets/images/m1-darwinfpv-left-16479546a717ccd5c7cb511347514041.jpg)
 
@@ -63,3 +63,29 @@ And here's an overview of the pads on the DarwinFPV 15A:
 ELRS is on RX1/TX1/4.5V (so it also powers up when connecting USB), OpenLager is on TX2.
 
 Here's the complete [`diff all`](/assets/files/m1-diff-all-e4ce777ac60e581886f8634adfbbe570.txt).
+
+# Mounting a flight controller with an MPU-6500 gyro
+
+Some DarwinFPV 15A boards are equipped with an MPU-6500 gyro, which is particularly sensitive to vibrations. Hard mounting the PCB will likely overwhelm the gyro, resulting in oscillations and twitches visible as a noisy, unstable gyro trace. This can be resolved by using for example rubber O-rings around the mounting screws to soft-mount the PCB.
+
+![T-REX 150X](/assets/images/trex-150x-mpu6500-ab7b9d8d0feb86c6264a91722a5a3347.jpg)
+
+You can check the gyro type on your flight controller using the CLI. Run:
+
+```
+status
+```
+
+The output will look something like this:
+
+```
+MCU F411 Clock=108MHz (PLLP-HSE), Vref=3.29V, Core temp=24degC
+Stack size: 2048, Stack address: 0x2001fff0
+Configuration: CONFIGURED, size: 5147, max available: 16384
+Devices detected: SPI:1, I2C:0
+Gyros detected: gyro 1 locked dma
+GYRO=MPU6500, ACC=MPU6500
+...
+```
+
+The `GYRO=` field shows the gyro type. In this example, the board has an **MPU-6500**.

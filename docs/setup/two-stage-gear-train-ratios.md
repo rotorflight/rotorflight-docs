@@ -6,7 +6,7 @@ Therefore it is best to count the tooth on the main and tail gear/pulley reducti
 
 This is relatively easy in single stage drive train that are used on most helicopters.
 
-Broadly there are three types of two-stage ratios which are dependant on where the tail gear is connected. Review your helicopters gear arrangement and choose the calculator that matches below.
+Broadly there are three types of two-stage ratios which are dependent on where the tail gear is connected. Review your helicopters gear arrangement and choose the calculator that matches below.
 
 note
 

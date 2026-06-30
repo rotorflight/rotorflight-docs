@@ -42,7 +42,7 @@ Plug the ESC RPM wire (often yellow wire) or separate RPM sensor (Hobbywing RPM 
 
 Then the frequency sensor can be turned ON with the feature flag located on the [***Motors***](/docs/configurator/tabs/motors.md#pwm-protocol) tab.
 
-![frequency\_2](/assets/images/frequency_2-6a55dfd504f87303dd3ad4054ddcf8e3.png)
+![frequency\_2](/assets/images/motors-rpm-5143c7ca53d1b67b134a1c79d8b075fb.png)
 
 ## Bi-directional DSHOT[​](#bi-directional-dshot "Direct link to Bi-directional DSHOT")
 
