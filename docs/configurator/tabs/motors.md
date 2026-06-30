@@ -104,7 +104,7 @@ Determine the number of magnetic poles for each motor. Count the number of magne
 
 ![Motor and ESC](../img/motor-pole-count-2.png)
 
-## [Governor Features](../../setup/governor.md#governor-mode)
+## [Governor Features](./governor.mdx)
 
 ## Motor Override
 

@@ -15,11 +15,11 @@ This process is generic and may be slightly different, depending on your particu
 5. Connect [Receiver](../configurator/tabs/receiver.mdx) to a free UART and select corresponding receiver settings.
 6. Select [Battery Voltage and Current Source](../configurator/tabs/power.md#battery) as per you setup, and Set Battery [Capacity](../configurator/tabs/power.md#capacity) and [Cell Count](../configurator/tabs/power.md#cell-count).
 7. Select [ESC Throttle protocol](../configurator/tabs/motors.md#esc-throttle-protocol), and Optional: [ESC Telemetry protocol](../configurator/tabs/motors.md#esc-telemetry-protocol), Set [Gear Ratios](../configurator/tabs/motors.md#gear-ratio-configuration), and [Motor Pole Count](../configurator/tabs/motors.md#motor-pole-count).
-8. Optional: Select and Setup the [Governor](../setup/governor.md).
+8. Optional: Select and Setup the [Governor](../configurator/tabs/governor.mdx).
 9. Setup [Servos](../setup/setup-servos.mdx).
 10. Setup and Calibrate the [Mixer](../setup/setup-mixer.mdx).
 11. Setup the [Gyro RPM Filters](../setup/rpm-filters.md#rpm-filters-1).
-12. Set the [Rates](../configurator/tabs/rates.md) as per flying style.
+12. Set the [Rates](../configurator/tabs/rates.mdx) as per flying style.
 13. Set the [PID](../configurator/tabs/profiles.md#pid-controller-gains) Values.
 14. Setup [ARMING](../configurator/tabs/modes.md#arm), and other required modes.
 15. Setup [Profile Switching](../setup/profile-switching-example.md) and other [Adjustments](../configurator/tabs/adjustments.md) if required.

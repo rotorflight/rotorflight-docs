@@ -5,7 +5,7 @@ sidebar_position: 50
 # Tune the Governor
 
 :::note
-If using the governor you must first enable the [RPM Measurement](../setup/rpm-measurement.mdx) and configure the [Governor](../setup/governor.md)
+If using the governor you must first enable the [RPM Measurement](../setup/rpm-measurement.mdx) and configure the [Governor](../configurator/tabs/governor.mdx)
 :::
 
 Our goal here is to have a more or less constant headspeed, without any motor oscillations. Ideally the feedforward term should do most of the work, while the P-term is only used for quick corrections. The I-term should maintain the headspeed over time.

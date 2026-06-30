@@ -130,7 +130,7 @@ const config: Config = {
 
           //Redirect for Radio setups to point to downloads
           {
-            from: "/docs/next/setup/radio-setup/radio-setup-edgetx/lua-RF2",
+            from: "/docs/setup/radio-setup/radio-setup-edgetx/lua-RF2",
             to: "/docs/download/edge-tx-Lua",
           },
         ],
