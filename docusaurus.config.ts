@@ -150,7 +150,7 @@ const config: Config = {
           }
 
           if (existingPath.includes("/docs/setup")) {
-            return [existingPath.replace("/docs/setup", "/docs/2.2.0/setup")];
+            return [existingPath.replace("/docs/setup", "/docs/2.3.0/setup")];
           }
 
           if (existingPath.includes("/docs/next")) {
