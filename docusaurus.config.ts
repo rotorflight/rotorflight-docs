@@ -181,6 +181,7 @@ const config: Config = {
           editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
           // Only build the current version during development for faster rebuilds
           // ...(isFaster && { onlyIncludeVersions: ["current"] }),
+          onlyIncludeVersions: ["2.3.0", "2.2.0", "2.1.0", "2.0.0"],
         },
         blog: {
           routeBasePath: "announcement",

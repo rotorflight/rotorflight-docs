@@ -112,7 +112,7 @@ Replace /path/to with the actual path to the file.
 * Added partial support for the FlySky PA01.
 * Various minor fixes.
 
-## 📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)
+## 📟 Lua Scripts for Ethos (v2.3.0)
 
 **Changes Since Version 2.2.1**
 
@@ -129,7 +129,7 @@ Replace /path/to with the actual path to the file.
 * FLYROTOR ESC page: updated parameters.
 * HW Platinum V5 page: improved support for various Hobbywing Platinum V5 ESCs, including support for the Stratos 200 ESC.
 * Added support for configuring OMP and ZTW ESCs.
-* Various minor fixes.
+* Various minor fixes
 
 ## 📟 Lua Suite for FrSky Ethos (v2.3.0)
 
