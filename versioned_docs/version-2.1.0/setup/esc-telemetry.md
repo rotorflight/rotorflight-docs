@@ -19,7 +19,7 @@ ESC Telemetry currently supported are :
 * **APD**: HV Pro UART telemetry
 * **FlyRotor**:
 * **Graupner**:
-* **YGE**: OpenYGE - Note - The ESC must have firmware V1.03547 or above. At the moment this is in beta and has not been released. Please use the contact form to request the updated firmware. [YGE: Contact Us](https://www.yge.de/en/contact/)
+* **YGE**: OpenYGE - Note - The ESC must have firmware V1.03547 or above.
 :::
 
 ### Select Serial Port
