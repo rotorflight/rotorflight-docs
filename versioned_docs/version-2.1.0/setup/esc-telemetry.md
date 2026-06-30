@@ -20,6 +20,7 @@ ESC Telemetry currently supported are :
 * **FlyRotor**:
 * **Graupner**:
 * **YGE**: OpenYGE - Note - The ESC must have firmware V1.03547 or above.
+:::
 
 ### Select Serial Port
 
