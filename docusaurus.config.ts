@@ -127,12 +127,6 @@ const config: Config = {
             from: "/docs/Tutorial-Setup/CLI",
             to: "/docs/2.0.0/Wiki/Configurator/CLI",
           },
-
-          //Redirect for Radio setups to point to downloads
-          {
-            from: "/docs/next/setup/radio-setup/radio-setup-edgetx/lua-RF2",
-            to: "/docs/download/edge-tx-Lua",
-          },
         ],
 
         createRedirects(existingPath) {
@@ -144,13 +138,13 @@ const config: Config = {
             return [
               existingPath.replace(
                 "/docs/configurator",
-                "/docs/2.2.0/configurator",
+                "/docs/2.3.0/configurator",
               ),
             ];
           }
 
           if (existingPath.includes("/docs/setup")) {
-            return [existingPath.replace("/docs/setup", "/docs/2.2.0/setup")];
+            return [existingPath.replace("/docs/setup", "/docs/2.3.0/setup")];
           }
 
           if (existingPath.includes("/docs/next")) {
@@ -205,8 +199,8 @@ const config: Config = {
     announcementBar: {
       id: "Announcement",
       content:
-        "ROTORFLIGHT 2 Official Release 2.2.0 is now available. See downloads tab",
-      backgroundColor: "#FE9900",
+        "ROTORFLIGHT 2 Official Release 2.3.0 is now available. See downloads tab",
+      backgroundColor: "#c700fe",
       textColor: "#000000",
       isCloseable: false,
     },

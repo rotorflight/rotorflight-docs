@@ -1,0 +1,34 @@
+---
+sidebar_position: 85
+---
+
+import Tabs     from '@theme/Tabs';
+import TabItem  from '@theme/TabItem';
+import tabStyles   from '../../tabs.module.css';
+
+import GovernorBypassMode from '../img/governor-bypass-mode.png';
+import GovernorBypass from '../img/governor-bypass.png';
+
+# Governor Bypass
+
+The governor bypass feature allows you to disable the governor when the ***Governor Bypass*** mode is configured and enabled. This can be used to achieve a more direct throttle response when the governor is not desired, such as during takeoff or landing, while still having the ability to use the governor at other times. This feature can be used to create a "***Normal***" mode. This can be used to spool up the helicopter manually and then switch to governor for aerobatic flight.
+
+## Governor setup
+
+Set your governor up for your desired headspeed as shown in the previous examples. This will be used for your regular flight.
+
+## Bypass mode
+
+Enable the governor bypass in the [***Modes Tab***](../../configurator/tabs/modes.md). Set the channel and range to suit your signals. For example, if we are setting up a "Normal Mode" we can set this to the flight mode channel at the position corresponding to our flight mode 1.
+
+<div style={{ textAlign: 'center' }}>
+  <img src={GovernorBypassMode} style={{ width: '100%', borderRadius: '10px' }} />
+</div>
+
+## Bypass Curve
+
+On the governor tab, you can set the bypass curve. This is the throttle curve that will be used when the governor is bypassed.
+
+<div style={{ textAlign: 'center' }}>
+  <img src={GovernorBypass} style={{ width: '100%', borderRadius: '10px' }} />
+</div>

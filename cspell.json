@@ -68,6 +68,12 @@
     "frequency",
     "bi-directional",
     "dshot",
-    "Precomps"
+    "Precomps",
+    "Winbond",
+    "minhz",
+    "rcdevice",
+    "Stratos",
+    "Skorpion",
+    "malloc"
   ]
 }
