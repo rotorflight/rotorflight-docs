@@ -127,12 +127,6 @@ const config: Config = {
             from: "/docs/Tutorial-Setup/CLI",
             to: "/docs/2.0.0/Wiki/Configurator/CLI",
           },
-
-          //Redirect for Radio setups to point to downloads
-          {
-            from: "/docs/setup/radio-setup/radio-setup-edgetx/lua-RF2",
-            to: "/docs/download/edge-tx-Lua",
-          },
         ],
 
         createRedirects(existingPath) {
@@ -144,7 +138,7 @@ const config: Config = {
             return [
               existingPath.replace(
                 "/docs/configurator",
-                "/docs/2.2.0/configurator",
+                "/docs/2.3.0/configurator",
               ),
             ];
           }
@@ -187,14 +181,6 @@ const config: Config = {
           editUrl: "https://github.com/rotorflight/rotorflight-docs/tree/main",
           // Only build the current version during development for faster rebuilds
           // ...(isFaster && { onlyIncludeVersions: ["current"] }),
-
-          lastVersion: "current",
-          versions: {
-            current: {
-              label: "2.3.0",
-              path: "next",
-            },
-          },
         },
         blog: {
           routeBasePath: "announcement",
