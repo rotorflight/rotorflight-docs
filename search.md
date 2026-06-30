@@ -8,7 +8,6 @@ ROTORFLIGHT 2 Official Release 2.3.0 is now available. See downloads tab
 
 [2.3.0](/docs.md)
 
-* [Next](/docs/next)
 * [2.3.0](/docs.md)
 * [2.2.0](/docs/2.2.0)
 * [2.1.0](/docs/2.1.0)
@@ -22,7 +21,7 @@ Search
 
 Type your search here
 
-Next (current)
+2.3.0
 
 Powered by[](https://www.algolia.com/)
 

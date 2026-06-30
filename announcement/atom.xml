@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rotorflight.org/announcement</id>
     <title>Rotorflight Blog</title>
-    <updated>2026-06-30T09:41:26.000Z</updated>
+    <updated>2026-06-30T10:24:23.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rotorflight.org/announcement"/>
     <subtitle>Rotorflight Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Official Release 2.3.0]]></title>
         <id>https://rotorflight.org/announcement/official-release-2.3.0</id>
         <link href="https://rotorflight.org/announcement/official-release-2.3.0"/>
-        <updated>2026-06-30T09:41:26.000Z</updated>
+        <updated>2026-06-30T10:24:23.000Z</updated>
         <summary type="html"><![CDATA[Download Notes\]]></summary>
         <content type="html"><![CDATA[<p><a class="" href="https://rotorflight.org/docs/download/notes"><strong>Download Notes</strong></a><br>
 <a class="" href="https://rotorflight.org/docs/download/configurator"><strong>Download Configurator</strong></a><br>
@@ -112,7 +112,7 @@ Replace /path/to with the actual path to the file.</p>
 <li class="">Added partial support for the FlySky PA01.</li>
 <li class="">Various minor fixes.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-lua-scripts-for-edgetx--opentx-v230-1">📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)<a href="https://rotorflight.org/announcement/official-release-2.3.0#-lua-scripts-for-edgetx--opentx-v230-1" class="hash-link" aria-label="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)" title="Direct link to 📟 Lua Scripts for EdgeTX / OpenTX (v2.3.0)" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-lua-scripts-for-ethos-v230">📟 Lua Scripts for Ethos (v2.3.0)<a href="https://rotorflight.org/announcement/official-release-2.3.0#-lua-scripts-for-ethos-v230" class="hash-link" aria-label="Direct link to 📟 Lua Scripts for Ethos (v2.3.0)" title="Direct link to 📟 Lua Scripts for Ethos (v2.3.0)" translate="no">​</a></h2>
 <p><strong>Changes Since Version 2.2.1</strong></p>
 <ul>
 <li class="">Model page: added support for per model statistics like Total flights and Total time.</li>
@@ -128,7 +128,7 @@ Replace /path/to with the actual path to the file.</p>
 <li class="">FLYROTOR ESC page: updated parameters.</li>
 <li class="">HW Platinum V5 page: improved support for various Hobbywing Platinum V5 ESCs, including support for the Stratos 200 ESC.</li>
 <li class="">Added support for configuring OMP and ZTW ESCs.</li>
-<li class="">Various minor fixes.</li>
+<li class="">Various minor fixes</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-lua-suite-for-frsky-ethos-v230">📟 Lua Suite for FrSky Ethos (v2.3.0)<a href="https://rotorflight.org/announcement/official-release-2.3.0#-lua-suite-for-frsky-ethos-v230" class="hash-link" aria-label="Direct link to 📟 Lua Suite for FrSky Ethos (v2.3.0)" title="Direct link to 📟 Lua Suite for FrSky Ethos (v2.3.0)" translate="no">​</a></h2>
 <p><strong>Changes Since Version 2.2.1</strong></p>
