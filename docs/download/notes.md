@@ -2,7 +2,7 @@
 
 ## ⚠️ Upgrading to Rotorflight 2.3.0 using `diff`[​](#️-upgrading-to-rotorflight-230-using-diff "Direct link to ️-upgrading-to-rotorflight-230-using-diff")
 
-After applying your `diff` in the CLI, check the following settings — their [defaults have changed](https://github.com/rotorflight/rotorflight-firmware/blob/release/4.6.0-RC1/Changes.md#defaults):
+After applying your `diff` in the CLI, check the following settings — their [defaults have changed](https://github.com/rotorflight/rotorflight-firmware/blob/release/4.6.0/Changes.md#defaults):
 
 * **Rate type** — If you're using Actual Rates, type `set rates_type = ACTUAL`. The default is now `ROTORFLIGHT`.
 * **Motor poles** — If you're using an 8 pole motor, type `set motor_poles = 8,0,0,0`. The default is now 0 poles, so users have to specify it.
