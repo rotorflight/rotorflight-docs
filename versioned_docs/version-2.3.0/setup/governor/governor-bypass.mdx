@@ -13,6 +13,12 @@ import GovernorBypass from '../img/governor-bypass.png';
 
 The governor bypass feature allows you to disable the governor when the ***Governor Bypass*** mode is configured and enabled. This can be used to achieve a more direct throttle response when the governor is not desired, such as during takeoff or landing, while still having the ability to use the governor at other times. This feature can be used to create a "***Normal***" mode. This can be used to spool up the helicopter manually and then switch to governor for aerobatic flight.
 
+:::warning
+Governor Bypass uses the collective input to determine throttle output. The
+transmitter **must** be configured with a linear, full range collective curve
+to work correctly with governor bypass.
+:::
+
 ## Governor setup
 
 Set your governor up for your desired headspeed as shown in the previous examples. This will be used for your regular flight.
