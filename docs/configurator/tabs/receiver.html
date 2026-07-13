@@ -12,7 +12,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Rotorflight" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.4052d4f2.css">
-<script src="/assets/js/runtime~main.625feb61.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.71d31430.js" defer="defer"></script>
 <script src="/assets/js/main.41ec8be0.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -73,7 +73,9 @@ for more info check <a href="https://oscarliang.com/uninverted-sbus-smart-port-f
 <li class="">SRXL and SRXL2 uses One-Wire bidirectional half-duplex connection, firmware sets this automatically so there
 is no need to manually select this. But it does not hurt to do it either.</li>
 <li class="">Leave Inverted Serial Signaling Off.</li>
-<li class="">Rx/Tx Pin swap can be used with SRXL/SRXL2 if no Tx pin is available on the FC connector, but with F7 MCUs only.</li>
+<li class="">Rx/Tx Pin swap can be used with SRXL/SRXL2 if no Tx pin is available on the FC connector, but with F7 MCUs only.
+I.e. When connected to a UART Tx pin, set pinswap OFF.
+When connected to a UART Rx pin, set pinswap ON.</li>
 <li class="">Full size SRXL2 receivers are not supported by RotorFlight</li>
 <li class="">Binding.
 SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver.

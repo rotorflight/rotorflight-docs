@@ -96,7 +96,7 @@ There are a lot of different Spektrum Receivers and connections. Please review t
 
 * SRXL and SRXL2 uses One-Wire bidirectional half-duplex connection, firmware sets this automatically so there is no need to manually select this. But it does not hurt to do it either.
 * Leave Inverted Serial Signaling Off.
-* Rx/Tx Pin swap can be used with SRXL/SRXL2 if no Tx pin is available on the FC connector, but with F7 MCUs only.
+* Rx/Tx Pin swap can be used with SRXL/SRXL2 if no Tx pin is available on the FC connector, but with F7 MCUs only. I.e. When connected to a UART Tx pin, set pinswap OFF. When connected to a UART Rx pin, set pinswap ON.
 * Full size SRXL2 receivers are not supported by RotorFlight
 * Binding. SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver. Other receivers can use cli commands, see: <https://betaflight.com/docs/development/spektrum-bind>
 
