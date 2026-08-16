@@ -21,7 +21,7 @@ When the helicopter experience high disturbance in the pitch axis, it would wobb
 
 ### Theory 1
 
-It might be due to the fact that the rotor and motors are spinning disks. Due to gyroscopic precession, there must be some coupling between pitch and roll axis. (Not true, perfect spinning disks does not have coupling)
+It might be due to the fact that the rotor and motors are spinning disks. Due to gyroscopic procession, there must be some coupling between pitch and roll axis. (Not true, perfect spinning disks does not have coupling)
 Instead, if theory 3 dominates, conventional motor would provide the same motion. However, direct drive motor would actually counter the tilting motion.
 
 ### Theory 2
