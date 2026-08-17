@@ -254,3 +254,10 @@ Subtrim
 UARTSPORT
 UARTSport
 Github
+configurability
+STM
+FC
+MSP
+ExpressLRS
+Lua
+rf
