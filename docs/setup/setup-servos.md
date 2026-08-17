@@ -28,7 +28,7 @@ Repeat with remaining cyclic servos.
 
 ![Servo Tab](/assets/images/servos-centre-3e4e3352c3fc41d45502add101e15301.png)
 
-### Step 5 - calibrate range (Optional - recommended)[​](#step-5---calibrate-range-optional---recommended "Direct link to Step 5 - calibrate range (Optional - recommended)")
+### Step 4 - calibrate range (Optional - recommended)[​](#step-4---calibrate-range-optional---recommended "Direct link to Step 4 - calibrate range (Optional - recommended)")
 
 The purpose of servo calibration is so the FC is able to more accurately control its mechanical movements. Not all servos are the same. Sometimes identical servos can have several degrees of difference for the same output. Calibrating the servos can enable each servo to move by the same amount when commanded.<br /><!-- -->Calibration is also required if using the Geometric Correction function.
 
@@ -37,7 +37,7 @@ The purpose of servo calibration is so the FC is able to more accurately control
 
 ![Servo Tab](/assets/images/servo-5-1b792e6285bd3f192c831a0dd138ca90.png)
 
-### Step 4 - set final limits (Usually Not Required)[​](#step-4---set-final-limits-usually-not-required "Direct link to Step 4 - set final limits (Usually Not Required)")
+### Step 5 - set final limits (Usually Not Required)[​](#step-5---set-final-limits-usually-not-required "Direct link to Step 5 - set final limits (Usually Not Required)")
 
 With the servos installed in the helicopter, adjust [Min/Max](/docs/configurator/tabs/servos.md#min-and-max) so that the arm & ball won't hit anything in the heli frame (servo override @ 80° / -80°).
 
