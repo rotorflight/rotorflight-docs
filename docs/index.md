@@ -30,6 +30,6 @@ Rotorflight v2.3 is the current stable release and can be found in the [**V2.3.0
 
 ## Next release testing
 
-The next release of Rotorflight is currently in the development phase.  Snapshots can be found [**Development Downloads**](/docs/next/download/configurator).
+The next release of Rotorflight is currently in the development phase. Snapshots can be found [**Development Downloads**](/docs/next/download/configurator).
 
 ![Introduction](./img/intro-1.jpg)
