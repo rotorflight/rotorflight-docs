@@ -34,11 +34,13 @@ Sunday, April 6, 2025
 8:44 AM
 
 ## XDfly Forward Programming / Telemetry  
-1. Connect the XDfly Bluetooth module, and install the XDfly app from either Google Play, Apple 
-Store.
+
+### Install the XDFly app
+
+Connect the XDfly Bluetooth module, and install the XDfly app from either Google Play, Apple 
+Store. 
 
 **Minimum XDfly Version (updated 4/6/25)**  
-
 
 
 |  | model | FW Version|
@@ -51,136 +53,137 @@ Store.
 | XDfly | 195a  | B1.1 | 
 | XDfly | 300a  | B2.1 | 
 
+### Update the ESC Firmware
+
 Xdfly App Firmware Update Procedure
-2.
+
+1. Click Bluetooth Icon in Upper Right Corner
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly1} style={{ width: '50%', borderRadius: '10px' }} />
 </div>
 
-Click Bluetooth Icon in Upper Right Corner
-3.
-Make sure Bluetooth module is plugged into 4 pin serial port on XDfly ESC, AND throttle/BEC lines 
+* Make sure Bluetooth module is plugged into 4 pin serial port on XDfly ESC, AND throttle/BEC lines 
 are disconnected from FC. 
-RF Page 1   
-are disconnected from FC. 
-a.
-The XDfly BT module will appear as "BLE-XXXX" then click "Connect"
+  
+* The XDfly BT module will appear as "BLE-XXXX" then click "Connect"
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly2} style={{ width: '50%', borderRadius: '10px' }} />
 </div>
-4.
-Once connected, the BT module name will appear above XDfly logo, and the BT icon will show a 
+
+* Once connected, the BT module name will appear above XDfly logo, and the BT icon will show a 
 red ring indicating it is connected properly.
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly3} style={{ width: '50%', borderRadius: '10px' }} />
 </div>
 
-5.
-At the bottom of the screen tap check for updates. Once completed you will see new version 
+* At the bottom of the screen tap check for updates. Once completed you will see new version 
 highlighted in blue. Click the Update button on the far right of the blue icon. 
-a.
-b.
-Wait for the update to complete 100%, and power cycle the ESC.
-NOTE: You will have to reconfigure your ESC settings like BEC voltage, Governor Type, etc.
+
+* Wait for the update to complete 100%, and power cycle the ESC.
+:::info 
+You will have to reconfigure your ESC settings like BEC voltage, Governor Type, etc.
+:::
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly4} style={{ width: '50%', borderRadius: '10px' }} />
 </div>
 
-6.
-On the XDfly ESC there is a 4 pin port (on the rear, or side of ESC) where the bluetooth module 
+* On the XDfly ESC there is a 4 pin port (on the rear, or side of ESC) where the bluetooth module 
 and esc fan are plugged into. But there are two specific pins used for various telemetry options, RX 
 or TX.
+
+:::info 
 Note: For Rotorflight 2.2.x releases, you will want to use the "RX" port on XDfly ESC for 
 bidirectional support.
 Previously for Rotorflight 2.1.x, you would use XDfly "TX" port for "ZTW" telemetry protocol
 Open Rotorflight Configurator 2.2.x, goto the motors tab, and select "XDfly" ESC telemetry 
+:::
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly5} style={{ width: '70%', borderRadius: '10px' }} />
 </div>
 
-7.
+### Configure Rotorflight
 Open Rotorflight Configurator 2.2.x, goto the motors tab, and select "XDfly" ESC telemetry 
 protocol.
-a.
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly6} style={{ width: '100%', borderRadius: '10px' }} />
 </div>
-b.
 
-8.
-i.
-For F7 FCs (RM Nexus, FlyDragon F722, FrSky RF007) 
+* For F7 FCs (RM Nexus, FlyDragon F722, FrSky RF007) 
 Enable one-wire (half-duplex) communications to enable bidirectional support 
 required. 
-ii.
-You will need to use TX PIN on FC, if using a 3 pin servo header, then RX/TX pin swap 
+
+* You will need to use TX PIN on FC, if using a 3 pin servo header, then RX/TX pin swap 
 should be enabled as well.
 For F4 FC's (Flywing Heli405, Betaflight Boards), an external converter would be required 
 and these options are not enabled.
 Updating RF Suite LUA to 2.2.x 
-a.
-b.
-c.
 
-9.
-Download latest RF Suite LUA 2.2.x zip file
+* Download latest RF Suite LUA 2.2.x zip file
 Delete existing /scripts/rfsuite folder on ETHOS radio first 
 Finally, copy the extracted zip /rfsuite folder into /scripts folder
 RF Suite 2.2.x ESC Tools Usage
-a.
-Tap RF Suite Icon
+
+* Tap RF Suite Icon
+
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly7} style={{ width: '90%', borderRadius: '10px' }} />
 </div>
-a.
-Tap ESC Tools Icon
+
+* Tap ESC Tools Icon
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly8} style={{ width: '90%', borderRadius: '10px' }} />
 </div>
  
-c. Tap XDfly Icon
+* Tap XDfly Icon
+
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly9} style={{ width: '90%', borderRadius: '10px' }} />
 </div>
 
-d. If everything is setup properly, the ESC will connect, and show the ESC hardware and firmware 
+* If everything is setup properly, the ESC will connect, and show the ESC hardware and firmware 
 version. 
+:::info
 Note: If it shows "UNKNOWN" recheck the physical connections, and RF configurations are 
 correct.
+:::
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly10} style={{ width: '90%', borderRadius: '10px' }} />
 </div>  
 
-d. XDfly Basic Parameters
+* XDfly Basic Parameters
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly11} style={{ width: '90%', borderRadius: '10px' }} />
 </div>
-d. Tap XDfly Advanced
+
+* Tap XDfly Advanced
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly12} style={{ width: '90%', borderRadius: '10px' }} />
 </div>
    
-e. XDfly Advanced Parameters
+* XDfly Advanced Parameters
 
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly13} style={{ width: '90%', borderRadius: '10px' }} />
 </div>
 
-f. Tap XDfly Governor 
+* Tap XDfly Governor 
+
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly14} style={{ width: '90%', borderRadius: '10px' }} />
 </div> 
-g. XDfly Governor Parameters
+
+* XDfly Governor Parameters
+
 <div style={{ textAlign: 'center' }}>
   <img src={xdfly15} style={{ width: '90%', borderRadius: '10px' }} />
 </div>  
