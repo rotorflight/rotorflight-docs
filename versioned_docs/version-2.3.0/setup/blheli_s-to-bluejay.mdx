@@ -1,6 +1,11 @@
 ---
 sidebar_position: 210
 ---
+import bluejaySettings from "./img/Bluejay_settings.png";
+import bluejayConnect from "./img/Bluejay_Connect.png";
+import bluejaySelectFlash from "./img/Bluejay_Select_flash.png";
+import bluejayLoadFirmware from "./img/Bluejay_Load_Firmware.png";
+import bluejayComplete from "./img/Bluejay_Complete.png";
 
 # Flashing Blheli\_S ESC to Bluejay firmware
 
@@ -14,18 +19,18 @@ Bluejay can be flashed via the web page application at https://esc-configurator.
 
 Click on settings and check the "Disable common settings". This enables different settings to be loaded to each ESC which is required so we can change the settings between the main and tail motors.
 
-![Settings](./img/Bluejay_settings.png)
+<img src={bluejaySettings} alt="Settings" style={{ maxWidth: '100%' }} />
 
 ### step 2.
 
 From the top right corner click on **\[Connect]**. Power up the ESC with the flight pack and click on **\[Read Setup]**.
 
-![Connect](./img/Bluejay_Connect.png)
+<img src={bluejayConnect} alt="Connect" style={{ maxWidth: '100%' }} />
 
 ### step 3.
 
 Click on **\[Flash all]**
-![Select flash](./img/Bluejay_Select_flash.png)
+<img src={bluejaySelectFlash} alt="Select flash" style={{ maxWidth: '100%' }} />
 
 ### step 4.
 
@@ -38,7 +43,7 @@ From the config dropdown chose:
 
 Click on **\[Flash]** to load the new firmware.
 
-![Load Firmware](./img/Bluejay_Load_Firmware.png)
+<img src={bluejayLoadFirmware} alt="Load Firmware" style={{ maxWidth: '100%' }} />
 
 ### step 5.
 
@@ -49,4 +54,4 @@ After flashing has completed Click on **\[Read setup]**.
 
 Click the **\[Write Setup]** to complete the setup.
 
-![Connect](./img/Bluejay_Complete.png)
+<img src={bluejayComplete} alt="Connect" style={{ maxWidth: '100%' }} />
