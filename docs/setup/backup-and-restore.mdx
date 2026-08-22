@@ -1,6 +1,13 @@
 ---
 sidebar_position: 30
 ---
+import restore1 from "./img/restore-1.png";
+import restore2a from "./img/restore-2a.png";
+import restore2 from "./img/restore-2.png";
+import restore3 from "./img/restore-3.png";
+import restore4 from "./img/restore-4.png";
+import restore5 from "./img/restore-5.png";
+import restore6 from "./img/restore-6.png";
 
 # Backup and restore
 
@@ -10,7 +17,7 @@ Backups of your Rotorflight configuration can be taken in order to restore a con
 
 ### Step 1.
 
-![Step 1](./img/restore-1.png)
+<img src={restore1} alt="Step 1" style={{ maxWidth: '100%' }} />
 
 Open Rotorflight Configurator and ***\[Connect]***. If the board is new and as supplied with Betaflight a warning message will pop up saying the *"firmware version is not supported"*. This means that the board currently does not have Rotorflight loaded so it can be safely ignored. Rotorflight configurator will now open in CLI mode. If you are backing up your config after having already configured your helicopter you will need to click on the CLI tab from the left hand side of the page to open the CLI interface.
 
@@ -32,14 +39,14 @@ Choose what you want to back up. There are several options.
 ### Step 3.
 
 * Click on ***\[Clear output window]***. This removes any previous commands so they are not captured in your backup.\
-  ![Step 3](./img/restore-2a.png)
+  <img src={restore2a} alt="Step 3" style={{ maxWidth: '100%' }} />
 
 * Type the backup command (from step 2) in the window and click ***\[ENTER]***.\
-  ![Step 3](./img/restore-2.png)
+  <img src={restore2} alt="Step 3" style={{ maxWidth: '100%' }} />
 
 ### Step 4.
 
-![Step 4](./img/restore-3.png)
+<img src={restore3} alt="Step 4" style={{ maxWidth: '100%' }} />
 
 After the command is complete click ***\[Save to File]*** and store on your computer.
 
@@ -50,17 +57,17 @@ You can also restore config files to your flight controller you have previously 
 
 ### Step 1.
 
-![Step 1](./img/restore-4.png)
+<img src={restore4} alt="Step 1" style={{ maxWidth: '100%' }} />
 
 * Open the CLI tab and click ***\[Load from File]*** and select the file on your computer.
 
 ### Step 2.
 
 * Click on the ***\[Execute]*** from the pop up.
-  ![Step 2](./img/restore-5.png)
+  <img src={restore5} alt="Step 2" style={{ maxWidth: '100%' }} />
 
 ### Step 3.
 
-![Step 2](./img/restore-6.png)
+<img src={restore6} alt="Step 2" style={{ maxWidth: '100%' }} />
 
 Once the backup is loaded type **save** in the command line and ***\[ENTER]***. The flight controller will now reboot.
