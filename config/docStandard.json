@@ -1,0 +1,8 @@
+{
+  "mdxRequiredImports": [
+    { "id": "react", "line": "import React from 'react';" },
+    { "id": "tabs", "line": "import Tabs from '@theme/Tabs';" },
+    { "id": "tabItem", "line": "import TabItem from '@theme/TabItem';" },
+    { "id": "tabStyles" }
+  ]
+}
