@@ -3,6 +3,6 @@
   "blockMessage": "Rotorflight DocsEditor is temporarily unavailable.",
   "latestVersion": "1.1.0",
   "minSupportedVersion": "1.1.0",
-  "updateMessage": "v1.1.0 adds collapsible Workspace panel, Single Editor/Preview scroll with contents line traacking, WYSIWYG editing tools for images, admonitions, tables, and tabs right in the preview, one-click Markdown-to-MDX conversion, and notifications when your PR gets a review comment or is merged.",
+  "updateMessage": "v1.1.0 adds collapsible Workspace panel, Single Editor/Preview scroll with contents line tracking, WYSIWYG editing tools for images, admonitions, tables, and tabs right in the preview, one-click Markdown-to-MDX conversion, and notifications when your PR gets a review comment or is merged.",
   "downloadUrl": "https://github.com/pkaig/rotorflight-docEditor/releases/latest"
 }
