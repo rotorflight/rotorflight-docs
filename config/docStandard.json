@@ -1,0 +1,3 @@
+{
+  "mdxRequiredImports": ["react", "tabs", "tabItem", "tabStyles"]
+}
