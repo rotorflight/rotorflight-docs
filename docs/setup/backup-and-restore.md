@@ -22,9 +22,13 @@ Choose what you want to back up. There are several options.
 
 ### Step 3.[​](#step-3 "Direct link to Step 3.")
 
-* Click on ***\[Clear output window]***. This removes any previous commands so they are not captured in your backup.<br />![Step 3](/assets/images/restore-2a-4bd63265419cb69c5fd6cc5c5a259965.png)
+* Click on ***\[Clear output window]***. This removes any previous commands so they are not captured in your backup.\\
 
-* Type the backup command (from step 2) in the window and click ***\[ENTER]***.<br />![Step 3](/assets/images/restore-2-733c9d2a7a4852fc27b87adea09a9937.png)
+  ![Step 3](/assets/images/restore-2a-4bd63265419cb69c5fd6cc5c5a259965.png)
+
+* Type the backup command (from step 2) in the window and click ***\[ENTER]***.\\
+
+  ![Step 3](/assets/images/restore-2-733c9d2a7a4852fc27b87adea09a9937.png)
 
 ### Step 4.[​](#step-4 "Direct link to Step 4.")
 
@@ -44,7 +48,9 @@ Use this process to load remapping config files for your specific flight control
 
 ### Step 2.[​](#step-2-1 "Direct link to Step 2.")
 
-* Click on the ***\[Execute]*** from the pop up. ![Step 2](/assets/images/restore-5-77931c6093694fe8dbab88038f77715b.png)
+* Click on the ***\[Execute]*** from the pop up.
+  <!-- -->
+  ![Step 2](/assets/images/restore-5-77931c6093694fe8dbab88038f77715b.png)
 
 ### Step 3.[​](#step-3-1 "Direct link to Step 3.")
 

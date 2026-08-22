@@ -20,7 +20,9 @@ From the top right corner click on **\[Connect]**. Power up the ESC with the fli
 
 ### step 3.[​](#step-3 "Direct link to step 3.")
 
-Click on **\[Flash all]** ![Select flash](/assets/images/Bluejay_Select_flash-10c17e12feaeb81a005a3244e60e19af.png)
+Click on **\[Flash all]**
+
+![Select flash](/assets/images/Bluejay_Select_flash-10c17e12feaeb81a005a3244e60e19af.png)
 
 ### step 4.[​](#step-4 "Direct link to step 4.")
 
