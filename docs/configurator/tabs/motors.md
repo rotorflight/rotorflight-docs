@@ -1,3 +1,7 @@
+---
+sidebar_position: 80
+---
+
 # Motors
 
 The *Motors* tab is used to configure the ESC communications protocols **( Motor Control Protocol & Telemetry Protocol )** ,as well as to provide the ability to test motor operation. Depending on the selected ESC protocol and selected Rotorflight features, you might need to specify some other parameters as well.

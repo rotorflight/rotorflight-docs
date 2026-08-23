@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # Status
 
 A place for basic flight controller information. The status tab is the first tab you see when you connect to your flight controller. You can check the gyroscope live preview, view the arming prevention flags and other FC information.
