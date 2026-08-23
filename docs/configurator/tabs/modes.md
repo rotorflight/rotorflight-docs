@@ -1,3 +1,7 @@
+---
+sidebar_position: 150
+---
+
 # Modes
 
 ![Modes](../img/modes-main.png)

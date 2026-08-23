@@ -1,3 +1,7 @@
+---
+sidebar_position: 220
+---
+
 # CLI
 
 This tab is the CLI or Command Line Interface. It is a method for sending commands and settings to the flight controller. We can also backup and restore our configuration using this tab.
