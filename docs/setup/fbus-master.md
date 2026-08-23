@@ -1,5 +1,5 @@
 ---
-sidebar_position: 102
+sidebar_position: 140
 ---
 
 # FBus & S.Port Master
@@ -8,7 +8,7 @@ Rotorflight can act as a bus master on either the FrSky **FBus** or **S.Port** p
 
 The video below covers FBus Master setup in practice:
 
-<iframe width="100%" style={{aspectRatio: "16/9"}} src="https://www.youtube.com/embed/WHM7ZVK7rfk" title="FBus Master" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" style={{aspectRatio: "16/9"}} src="https://www.youtube.com/embed/WHM7ZVK7rfk" title="FBus Master" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
 
 ## Which one should I use?
 
@@ -27,22 +27,22 @@ Use **FBus Master** for newer FrSky hardware. Use **S.Port Master** if your sens
 
 The same sensor types are supported by both modes:
 
-- **FLVSS** — LiPo cell voltage sensor
-- **FAS-150S** — current and voltage sensor
-- **FrSky GPS** — position, altitude, speed
-- **VARIO2** — variometer
-- **RPM sensor**
-- **SBEC** — BEC voltage
-- **FrSky ESC sensor**
+* **FLVSS** — LiPo cell voltage sensor
+* **FAS-150S** — current and voltage sensor
+* **FrSky GPS** — position, altitude, speed
+* **VARIO2** — variometer
+* **RPM sensor**
+* **SBEC** — BEC voltage
+* **FrSky ESC sensor**
 
 Up to 32 sensors per source can be tracked (64 combined if both modes are active simultaneously).
 
 ## Requirements
 
-- A spare **UART** with both TX and RX pins accessible for each bus master you want to use
-- FrSky sensor(s) that support the matching protocol (FBus or S.Port)
+* A spare **UART** with both TX and RX pins accessible for each bus master you want to use
+* FrSky sensor(s) that support the matching protocol (FBus or S.Port)
 
----
+***
 
 ## FBus Master Setup
 
@@ -103,7 +103,7 @@ save
 
 Unused slots should be set to `0xFF`.
 
----
+***
 
 ## S.Port Master Setup
 
@@ -128,7 +128,7 @@ The same process as FBus Master applies. Run `fbus_sensors` in the CLI to confir
 
 S.Port Master has a fixed 5-second discovery window and a fixed polling interval; these are not user-configurable.
 
----
+***
 
 ## Inspecting Discovered Sensors
 
@@ -144,7 +144,7 @@ Sensors are listed with their physical ID and source (FBUS or SPORT). To clear t
 fbus_sensors clear
 ```
 
----
+***
 
 ## Troubleshooting
 

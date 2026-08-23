@@ -13,7 +13,7 @@ This process is generic and may be slightly different, depending on your particu
 3. [Calibrate the Accelerometer](../configurator/tabs/setup.md#calibrate-accelerometer).
 4. Check you [Board alignment](../configurator/tabs/configuration.md#board-and-sensor-alignment) setting and adjust if necessary.
 5. Connect [Receiver](../configurator/tabs/receiver.mdx) to a free UART and select corresponding receiver settings.
-6. Select [Battery Voltage and Current Source](../configurator/tabs/power.md#battery) as per you setup, and Set Battery [Capacity](../configurator/tabs/power.md#capacity) and [Cell Count](../configurator/tabs/power.md#cell-count).
+6. Select [Battery Voltage and Current Source](../configurator/tabs/power.mdx#battery) as per you setup, and Set Battery [Capacity](../configurator/tabs/power.mdx#capacity) and [Cell Count](../configurator/tabs/power.mdx#cell-count).
 7. Select [ESC Throttle protocol](../configurator/tabs/motors.md#esc-throttle-protocol), and Optional: [ESC Telemetry protocol](../configurator/tabs/motors.md#esc-telemetry-protocol), Set [Gear Ratios](../configurator/tabs/motors.md#gear-ratio-configuration), and [Motor Pole Count](../configurator/tabs/motors.md#motor-pole-count).
 8. Optional: Select and Setup the [Governor](../configurator/tabs/governor.mdx).
 9. Setup [Servos](../setup/setup-servos.mdx).
@@ -24,4 +24,4 @@ This process is generic and may be slightly different, depending on your particu
 14. Setup [ARMING](../configurator/tabs/modes.md#arm), and other required modes.
 15. Setup [Profile Switching](../setup/profile-switching-example.md) and other [Adjustments](../configurator/tabs/adjustments.md) if required.
 16. Setup [BLACKBOX](../configurator/tabs/blackbox.md#what-is-blackbox) Logging.
-17. Optional: Setup [LUA Script](../setup/lua-scripts.mdx#introduction) on radio.
+17. Optional: Setup [LUA Script](../setup/radio-setup/radio-setup-edgetx/edgetx-lua-scripts.mdx#introduction) on radio.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 31
+sidebar_position: 40
 ---
 
 # CLI Reference
@@ -24,7 +24,7 @@ The Rotorflight Command Line Interface (CLI) gives direct access to the flight c
 
 Lines beginning with `#` are treated as comments and ignored.
 
----
+***
 
 ## Configuration Management
 
@@ -96,7 +96,7 @@ batch start
 batch end
 ```
 
----
+***
 
 ## Profile Management
 
@@ -118,7 +118,7 @@ rateprofile          # show current rate profile index
 rateprofile <index>  # switch to rate profile 0–5
 ```
 
----
+***
 
 ## Helicopter Configuration Commands
 
@@ -183,11 +183,11 @@ servo override <value>|off
 servo override <servo> <value>|off
 ```
 
-- `<servo>` is 1-based.
-- Center, min, and max are in microseconds (typical: 1500, 1000, 2000).
-- `-scale` and `+scale` are percentages (0–200).
-- `update_rate` is in Hz.
-- `speed` is in µs/second (0 = unlimited).
+* `<servo>` is 1-based.
+* Center, min, and max are in microseconds (typical: 1500, 1000, 2000).
+* `-scale` and `+scale` are percentages (0–200).
+* `update_rate` is in Hz.
+* `speed` is in µs/second (0 = unlimited).
 
 **Servo flags:**
 
@@ -220,11 +220,11 @@ motor override off
 motor override <index> <value>|off
 ```
 
-- `<index>` is 1-based; use `0` or `all` to set all motors simultaneously.
-- `<value>` range: 1000–2000 (standard ESC range).
-- `off` releases the override and returns to normal control.
+* `<index>` is 1-based; use `0` or `all` to set all motors simultaneously.
+* `<value>` range: 1000–2000 (standard ESC range).
+* `off` releases the override and returns to normal control.
 
----
+***
 
 ## Get / Set Variables
 
@@ -248,11 +248,11 @@ get <name>       # show a specific variable (partial name match supported)
 
 ### Parameter reference
 
-The table below lists all settable parameters, grouped by function. Parameters marked **[profile]** are per-PID-profile; those marked **[rates]** are per-rate-profile. All others are global (master) settings.
+The table below lists all settable parameters, grouped by function. Parameters marked **\[profile]** are per-PID-profile; those marked **\[rates]** are per-rate-profile. All others are global (master) settings.
 
 Use `get <prefix>` in the CLI to quickly filter a group — for example `get gov_` shows all governor parameters.
 
----
+***
 
 #### Gyro
 
@@ -283,7 +283,7 @@ Use `get <prefix>` in the CLI to quickly filter a group — for example `get gov
 | `gyro_1_align_pitch` | -3600–3600 | Custom pitch alignment |
 | `gyro_1_align_yaw` | -3600–3600 | Custom yaw alignment |
 
----
+***
 
 #### Accelerometer
 
@@ -293,9 +293,9 @@ Use `get <prefix>` in the CLI to quickly filter a group — for example `get gov
 | `acc_lpf_hz` | 0–400 | Accelerometer LPF cutoff (Hz) |
 | `acc_trim_pitch` | -300–300 | Pitch trim offset (centidegrees) |
 | `acc_trim_roll` | -300–300 | Roll trim offset (centidegrees) |
-| `acc_calibration` | array[4] | Accelerometer zero offsets + calibrated flag |
+| `acc_calibration` | array\[4] | Accelerometer zero offsets + calibrated flag |
 
----
+***
 
 #### Board Alignment
 
@@ -305,7 +305,7 @@ Use `get <prefix>` in the CLI to quickly filter a group — for example `get gov
 | `align_board_pitch` | -180–360 | Board pitch offset (degrees) |
 | `align_board_yaw` | -180–360 | Board yaw offset (degrees) |
 
----
+***
 
 #### Motor
 
@@ -320,13 +320,13 @@ Use `get <prefix>` in the CLI to quickly filter a group — for example `get gov
 | `dshot_bidir` | `OFF` `ON` | Enable bidirectional DShot (required for RPM telemetry) |
 | `dshot_burst` | `OFF` `ON` `AUTO` | DShot burst mode |
 | `dshot_bitbang` | `OFF` `ON` `AUTO` | Use bit-bang DShot implementation |
-| `motor_poles` | array[4] | Pole count for each motor (for RPM calculation) |
-| `motor_rpm_lpf` | array[4] | LPF cutoff for each motor's RPM signal |
-| `motor_rpm_factor` | array[4] | RPM correction factor (signed, ×1000) |
-| `main_rotor_gear_ratio` | array[2] | Main rotor gear ratio as numerator/denominator |
-| `tail_rotor_gear_ratio` | array[2] | Tail rotor gear ratio as numerator/denominator |
+| `motor_poles` | array\[4] | Pole count for each motor (for RPM calculation) |
+| `motor_rpm_lpf` | array\[4] | LPF cutoff for each motor's RPM signal |
+| `motor_rpm_factor` | array\[4] | RPM correction factor (signed, ×1000) |
+| `main_rotor_gear_ratio` | array\[2] | Main rotor gear ratio as numerator/denominator |
+| `tail_rotor_gear_ratio` | array\[2] | Tail rotor gear ratio as numerator/denominator |
 
----
+***
 
 #### Mixer (Swash)
 
@@ -348,7 +348,7 @@ Use `get <prefix>` in the CLI to quickly filter a group — for example `get gov
 | `collective_tilt_correction_pos` | -100–100 | Collective-to-pitch coupling correction (positive collective) |
 | `collective_tilt_correction_neg` | -100–100 | Collective-to-pitch coupling correction (negative collective) |
 
----
+***
 
 #### Governor (Global)
 
@@ -366,14 +366,14 @@ Use `get <prefix>` in the CLI to quickly filter a group — for example `get gov
 | `gov_handover_throttle` | 10–100 | Throttle level at which governor takes over (%) |
 | `gov_idle_throttle` | 0–250 | Idle throttle in LIMIT mode |
 | `gov_auto_throttle` | 0–250 | Automatic collective-follow throttle |
-| `gov_bypass_throttle` | array[GOV_CURVE_POINTS] | Throttle curve for DIRECT/NITRO mode |
+| `gov_bypass_throttle` | array\[GOV\_CURVE\_POINTS] | Throttle curve for DIRECT/NITRO mode |
 | `gov_pwr_filter` | 0–250 | Power input filter cutoff |
 | `gov_rpm_filter` | 0–250 | RPM input filter cutoff |
 | `gov_tta_filter` | 0–250 | Throttle-to-angle filter cutoff |
 | `gov_ff_filter` | 0–250 | Feedforward filter cutoff |
 | `gov_d_filter` | 0–250 | D-term filter cutoff |
 
----
+***
 
 #### Governor (Per-Profile)
 
@@ -381,163 +381,163 @@ These are part of the PID profile and differ per profile.
 
 | Parameter | Range / Values | Description |
 |---|---|---|
-| `gov_headspeed` | 0–50000 | Target headspeed (RPM) **[profile]** |
-| `gov_gain` | 0–250 | Overall governor gain **[profile]** |
-| `gov_p_gain` | 0–250 | Proportional gain **[profile]** |
-| `gov_i_gain` | 0–250 | Integral gain **[profile]** |
-| `gov_d_gain` | 0–250 | Derivative gain **[profile]** |
-| `gov_f_gain` | 0–250 | Feedforward gain **[profile]** |
-| `gov_p_limit` | 0–100 | P-term output limit (%) **[profile]** |
-| `gov_i_limit` | 0–100 | I-term output limit (%) **[profile]** |
-| `gov_d_limit` | 0–100 | D-term output limit (%) **[profile]** |
-| `gov_f_limit` | 0–100 | Feedforward output limit (%) **[profile]** |
-| `gov_tta_gain` | 0–250 | Throttle-to-angle gain **[profile]** |
-| `gov_tta_limit` | 0–250 | TTA output limit **[profile]** |
-| `gov_yaw_ff_weight` | 0–250 | Yaw torque feedforward weight **[profile]** |
-| `gov_cyclic_ff_weight` | 0–250 | Cyclic load feedforward weight **[profile]** |
-| `gov_collective_ff_weight` | 0–250 | Collective load feedforward weight **[profile]** |
-| `gov_max_throttle` | 10–100 | Maximum governor output throttle (%) **[profile]** |
-| `gov_min_throttle` | 10–100 | Minimum governor output throttle (%) **[profile]** |
-| `gov_fallback_drop` | 0–50 | Throttle reduction during RPM fallback **[profile]** |
-| `gov_collective_curve` | 5–40 | Collective feedforward curve shape **[profile]** |
-| `gov_dyn_min_throttle` | 0–100 | Dynamic minimum throttle level **[profile]** |
-| `gov_use_fallback_precomp` | `OFF` `ON` | Enable fallback precompensation **[profile]** |
-| `gov_use_pid_spoolup` | `OFF` `ON` | Use PID output during spoolup **[profile]** |
-| `gov_use_voltage_comp` | `OFF` `ON` | Enable battery voltage compensation **[profile]** |
-| `gov_use_dyn_min_throttle` | `OFF` `ON` | Enable dynamic minimum throttle **[profile]** |
+| `gov_headspeed` | 0–50000 | Target headspeed (RPM) **\[profile]** |
+| `gov_gain` | 0–250 | Overall governor gain **\[profile]** |
+| `gov_p_gain` | 0–250 | Proportional gain **\[profile]** |
+| `gov_i_gain` | 0–250 | Integral gain **\[profile]** |
+| `gov_d_gain` | 0–250 | Derivative gain **\[profile]** |
+| `gov_f_gain` | 0–250 | Feedforward gain **\[profile]** |
+| `gov_p_limit` | 0–100 | P-term output limit (%) **\[profile]** |
+| `gov_i_limit` | 0–100 | I-term output limit (%) **\[profile]** |
+| `gov_d_limit` | 0–100 | D-term output limit (%) **\[profile]** |
+| `gov_f_limit` | 0–100 | Feedforward output limit (%) **\[profile]** |
+| `gov_tta_gain` | 0–250 | Throttle-to-angle gain **\[profile]** |
+| `gov_tta_limit` | 0–250 | TTA output limit **\[profile]** |
+| `gov_yaw_ff_weight` | 0–250 | Yaw torque feedforward weight **\[profile]** |
+| `gov_cyclic_ff_weight` | 0–250 | Cyclic load feedforward weight **\[profile]** |
+| `gov_collective_ff_weight` | 0–250 | Collective load feedforward weight **\[profile]** |
+| `gov_max_throttle` | 10–100 | Maximum governor output throttle (%) **\[profile]** |
+| `gov_min_throttle` | 10–100 | Minimum governor output throttle (%) **\[profile]** |
+| `gov_fallback_drop` | 0–50 | Throttle reduction during RPM fallback **\[profile]** |
+| `gov_collective_curve` | 5–40 | Collective feedforward curve shape **\[profile]** |
+| `gov_dyn_min_throttle` | 0–100 | Dynamic minimum throttle level **\[profile]** |
+| `gov_use_fallback_precomp` | `OFF` `ON` | Enable fallback precompensation **\[profile]** |
+| `gov_use_pid_spoolup` | `OFF` `ON` | Use PID output during spoolup **\[profile]** |
+| `gov_use_voltage_comp` | `OFF` `ON` | Enable battery voltage compensation **\[profile]** |
+| `gov_use_dyn_min_throttle` | `OFF` `ON` | Enable dynamic minimum throttle **\[profile]** |
 
----
+***
 
 #### PID Gains (Per-Profile)
 
 | Parameter | Range / Values | Description |
 |---|---|---|
-| `pid_mode` | 0–9 | PID controller mode **[profile]** |
-| `pitch_p_gain` | 0–2000 | Pitch P gain **[profile]** |
-| `pitch_i_gain` | 0–2000 | Pitch I gain **[profile]** |
-| `pitch_d_gain` | 0–2000 | Pitch D gain **[profile]** |
-| `pitch_f_gain` | 0–2000 | Pitch feedforward gain **[profile]** |
-| `pitch_b_gain` | 0–2000 | Pitch B-term (boost) gain **[profile]** |
-| `pitch_o_gain` | 0–2000 | Pitch offset gain **[profile]** |
-| `roll_p_gain` | 0–2000 | Roll P gain **[profile]** |
-| `roll_i_gain` | 0–2000 | Roll I gain **[profile]** |
-| `roll_d_gain` | 0–2000 | Roll D gain **[profile]** |
-| `roll_f_gain` | 0–2000 | Roll feedforward gain **[profile]** |
-| `roll_b_gain` | 0–2000 | Roll B-term (boost) gain **[profile]** |
-| `roll_o_gain` | 0–2000 | Roll offset gain **[profile]** |
-| `yaw_p_gain` | 0–2000 | Yaw P gain **[profile]** |
-| `yaw_i_gain` | 0–2000 | Yaw I gain **[profile]** |
-| `yaw_d_gain` | 0–2000 | Yaw D gain **[profile]** |
-| `yaw_f_gain` | 0–2000 | Yaw feedforward gain **[profile]** |
-| `yaw_b_gain` | 0–2000 | Yaw B-term (boost) gain **[profile]** |
-| `pitch_d_cutoff` | 0–250 | Pitch D-term filter cutoff **[profile]** |
-| `pitch_b_cutoff` | 0–250 | Pitch B-term filter cutoff **[profile]** |
-| `pitch_gyro_cutoff` | 0–250 | Pitch gyro pre-filter cutoff **[profile]** |
-| `roll_d_cutoff` | 0–250 | Roll D-term filter cutoff **[profile]** |
-| `roll_b_cutoff` | 0–250 | Roll B-term filter cutoff **[profile]** |
-| `roll_gyro_cutoff` | 0–250 | Roll gyro pre-filter cutoff **[profile]** |
-| `yaw_d_cutoff` | 0–250 | Yaw D-term filter cutoff **[profile]** |
-| `yaw_b_cutoff` | 0–250 | Yaw B-term filter cutoff **[profile]** |
-| `yaw_gyro_cutoff` | 0–250 | Yaw gyro pre-filter cutoff **[profile]** |
-| `yaw_cw_stop_gain` | 25–250 | Stop gain for clockwise yaw rotation **[profile]** |
-| `yaw_ccw_stop_gain` | 25–250 | Stop gain for counter-clockwise yaw rotation **[profile]** |
-| `yaw_precomp_cutoff` | 0–250 | Yaw precompensation filter cutoff **[profile]** |
-| `yaw_cyclic_ff_gain` | 0–250 | Yaw cyclic feedforward gain **[profile]** |
-| `yaw_collective_ff_gain` | 0–250 | Yaw collective feedforward gain **[profile]** |
-| `yaw_inertia_precomp_gain` | 0–250 | Yaw inertia precompensation gain **[profile]** |
-| `yaw_inertia_precomp_cutoff` | 0–250 | Yaw inertia precompensation cutoff **[profile]** |
-| `pitch_collective_ff_gain` | 0–250 | Pitch collective feedforward gain **[profile]** |
-| `cyclic_cross_coupling_gain` | 0–250 | Cyclic cross-coupling compensation gain **[profile]** |
-| `cyclic_cross_coupling_ratio` | 0–200 | Roll-to-pitch coupling ratio **[profile]** |
-| `cyclic_cross_coupling_cutoff` | 1–250 | Cross-coupling filter cutoff **[profile]** |
-| `error_limit` | array[3] | Max error accumulation per axis (Roll/Pitch/Yaw) **[profile]** |
-| `offset_limit` | array[2] | Max offset per axis (Roll/Pitch) **[profile]** |
-| `error_decay_time_ground` | 0–250 | I-term decay speed on the ground **[profile]** |
-| `error_decay_time_cyclic` | 0–250 | I-term decay speed in air (cyclic) **[profile]** |
-| `error_decay_time_yaw` | 0–250 | I-term decay speed in air (yaw) **[profile]** |
-| `error_decay_limit_cyclic` | 0–250 | I-term decay lower limit (cyclic) **[profile]** |
-| `error_decay_limit_yaw` | 0–250 | I-term decay lower limit (yaw) **[profile]** |
-| `iterm_relax_type` | `OFF` `RP` `RPY` | I-term relax axis selection **[profile]** |
-| `iterm_relax_level` | array[3] | I-term relax level per axis **[profile]** |
-| `iterm_relax_cutoff` | array[3] | I-term relax filter cutoff per axis **[profile]** |
-| `offset_flood_relax_level` | 10–250 | Offset flood relaxation level **[profile]** |
-| `offset_flood_relax_cutoff` | 1–100 | Offset flood relaxation filter cutoff **[profile]** |
+| `pid_mode` | 0–9 | PID controller mode **\[profile]** |
+| `pitch_p_gain` | 0–2000 | Pitch P gain **\[profile]** |
+| `pitch_i_gain` | 0–2000 | Pitch I gain **\[profile]** |
+| `pitch_d_gain` | 0–2000 | Pitch D gain **\[profile]** |
+| `pitch_f_gain` | 0–2000 | Pitch feedforward gain **\[profile]** |
+| `pitch_b_gain` | 0–2000 | Pitch B-term (boost) gain **\[profile]** |
+| `pitch_o_gain` | 0–2000 | Pitch offset gain **\[profile]** |
+| `roll_p_gain` | 0–2000 | Roll P gain **\[profile]** |
+| `roll_i_gain` | 0–2000 | Roll I gain **\[profile]** |
+| `roll_d_gain` | 0–2000 | Roll D gain **\[profile]** |
+| `roll_f_gain` | 0–2000 | Roll feedforward gain **\[profile]** |
+| `roll_b_gain` | 0–2000 | Roll B-term (boost) gain **\[profile]** |
+| `roll_o_gain` | 0–2000 | Roll offset gain **\[profile]** |
+| `yaw_p_gain` | 0–2000 | Yaw P gain **\[profile]** |
+| `yaw_i_gain` | 0–2000 | Yaw I gain **\[profile]** |
+| `yaw_d_gain` | 0–2000 | Yaw D gain **\[profile]** |
+| `yaw_f_gain` | 0–2000 | Yaw feedforward gain **\[profile]** |
+| `yaw_b_gain` | 0–2000 | Yaw B-term (boost) gain **\[profile]** |
+| `pitch_d_cutoff` | 0–250 | Pitch D-term filter cutoff **\[profile]** |
+| `pitch_b_cutoff` | 0–250 | Pitch B-term filter cutoff **\[profile]** |
+| `pitch_gyro_cutoff` | 0–250 | Pitch gyro pre-filter cutoff **\[profile]** |
+| `roll_d_cutoff` | 0–250 | Roll D-term filter cutoff **\[profile]** |
+| `roll_b_cutoff` | 0–250 | Roll B-term filter cutoff **\[profile]** |
+| `roll_gyro_cutoff` | 0–250 | Roll gyro pre-filter cutoff **\[profile]** |
+| `yaw_d_cutoff` | 0–250 | Yaw D-term filter cutoff **\[profile]** |
+| `yaw_b_cutoff` | 0–250 | Yaw B-term filter cutoff **\[profile]** |
+| `yaw_gyro_cutoff` | 0–250 | Yaw gyro pre-filter cutoff **\[profile]** |
+| `yaw_cw_stop_gain` | 25–250 | Stop gain for clockwise yaw rotation **\[profile]** |
+| `yaw_ccw_stop_gain` | 25–250 | Stop gain for counter-clockwise yaw rotation **\[profile]** |
+| `yaw_precomp_cutoff` | 0–250 | Yaw precompensation filter cutoff **\[profile]** |
+| `yaw_cyclic_ff_gain` | 0–250 | Yaw cyclic feedforward gain **\[profile]** |
+| `yaw_collective_ff_gain` | 0–250 | Yaw collective feedforward gain **\[profile]** |
+| `yaw_inertia_precomp_gain` | 0–250 | Yaw inertia precompensation gain **\[profile]** |
+| `yaw_inertia_precomp_cutoff` | 0–250 | Yaw inertia precompensation cutoff **\[profile]** |
+| `pitch_collective_ff_gain` | 0–250 | Pitch collective feedforward gain **\[profile]** |
+| `cyclic_cross_coupling_gain` | 0–250 | Cyclic cross-coupling compensation gain **\[profile]** |
+| `cyclic_cross_coupling_ratio` | 0–200 | Roll-to-pitch coupling ratio **\[profile]** |
+| `cyclic_cross_coupling_cutoff` | 1–250 | Cross-coupling filter cutoff **\[profile]** |
+| `error_limit` | array\[3] | Max error accumulation per axis (Roll/Pitch/Yaw) **\[profile]** |
+| `offset_limit` | array\[2] | Max offset per axis (Roll/Pitch) **\[profile]** |
+| `error_decay_time_ground` | 0–250 | I-term decay speed on the ground **\[profile]** |
+| `error_decay_time_cyclic` | 0–250 | I-term decay speed in air (cyclic) **\[profile]** |
+| `error_decay_time_yaw` | 0–250 | I-term decay speed in air (yaw) **\[profile]** |
+| `error_decay_limit_cyclic` | 0–250 | I-term decay lower limit (cyclic) **\[profile]** |
+| `error_decay_limit_yaw` | 0–250 | I-term decay lower limit (yaw) **\[profile]** |
+| `iterm_relax_type` | `OFF` `RP` `RPY` | I-term relax axis selection **\[profile]** |
+| `iterm_relax_level` | array\[3] | I-term relax level per axis **\[profile]** |
+| `iterm_relax_cutoff` | array\[3] | I-term relax filter cutoff per axis **\[profile]** |
+| `offset_flood_relax_level` | 10–250 | Offset flood relaxation level **\[profile]** |
+| `offset_flood_relax_cutoff` | 1–100 | Offset flood relaxation filter cutoff **\[profile]** |
 | `pid_process_denom` | 1–16 | PID loop denominator (divides gyro rate) |
 | `filter_process_denom` | 0–16 | Filter task denominator |
 
----
+***
 
 #### Rescue Mode (Per-Profile)
 
 | Parameter | Range / Values | Description |
 |---|---|---|
-| `rescue_mode` | `OFF` `CLIMB` `ALT_HOLD` | Rescue mode type **[profile]** |
-| `rescue_flip` | `OFF` `ON` | Enable auto-flip during rescue **[profile]** |
-| `rescue_flip_gain` | 5–250 | Flip authority gain **[profile]** |
-| `rescue_level_gain` | 5–250 | Levelling authority gain **[profile]** |
-| `rescue_pull_up_time` | 0–250 | Pull-up phase duration (tenths of seconds) **[profile]** |
-| `rescue_climb_time` | 0–250 | Climb phase duration **[profile]** |
-| `rescue_flip_time` | 0–250 | Flip phase duration **[profile]** |
-| `rescue_exit_time` | 0–250 | Exit/handback phase duration **[profile]** |
-| `rescue_pull_up_collective` | 0–1000 | Collective during pull-up **[profile]** |
-| `rescue_climb_collective` | 0–1000 | Collective during climb **[profile]** |
-| `rescue_hover_collective` | 0–1000 | Collective at hover **[profile]** |
-| `rescue_hover_altitude` | 0–10000 | Target hover altitude (cm) **[profile]** |
-| `rescue_alt_p_gain` | 0–10000 | Altitude hold P gain **[profile]** |
-| `rescue_alt_i_gain` | 0–10000 | Altitude hold I gain **[profile]** |
-| `rescue_alt_d_gain` | 0–10000 | Altitude hold D gain **[profile]** |
-| `rescue_max_sp_rate` | 1–1000 | Max setpoint rate during rescue **[profile]** |
-| `rescue_max_sp_accel` | 1–10000 | Max setpoint acceleration during rescue **[profile]** |
-| `rescue_max_collective` | 1–1000 | Max collective during rescue **[profile]** |
+| `rescue_mode` | `OFF` `CLIMB` `ALT_HOLD` | Rescue mode type **\[profile]** |
+| `rescue_flip` | `OFF` `ON` | Enable auto-flip during rescue **\[profile]** |
+| `rescue_flip_gain` | 5–250 | Flip authority gain **\[profile]** |
+| `rescue_level_gain` | 5–250 | Levelling authority gain **\[profile]** |
+| `rescue_pull_up_time` | 0–250 | Pull-up phase duration (tenths of seconds) **\[profile]** |
+| `rescue_climb_time` | 0–250 | Climb phase duration **\[profile]** |
+| `rescue_flip_time` | 0–250 | Flip phase duration **\[profile]** |
+| `rescue_exit_time` | 0–250 | Exit/handback phase duration **\[profile]** |
+| `rescue_pull_up_collective` | 0–1000 | Collective during pull-up **\[profile]** |
+| `rescue_climb_collective` | 0–1000 | Collective during climb **\[profile]** |
+| `rescue_hover_collective` | 0–1000 | Collective at hover **\[profile]** |
+| `rescue_hover_altitude` | 0–10000 | Target hover altitude (cm) **\[profile]** |
+| `rescue_alt_p_gain` | 0–10000 | Altitude hold P gain **\[profile]** |
+| `rescue_alt_i_gain` | 0–10000 | Altitude hold I gain **\[profile]** |
+| `rescue_alt_d_gain` | 0–10000 | Altitude hold D gain **\[profile]** |
+| `rescue_max_sp_rate` | 1–1000 | Max setpoint rate during rescue **\[profile]** |
+| `rescue_max_sp_accel` | 1–10000 | Max setpoint acceleration during rescue **\[profile]** |
+| `rescue_max_collective` | 1–1000 | Max collective during rescue **\[profile]** |
 
----
+***
 
 #### Stability Modes (Per-Profile)
 
 | Parameter | Range / Values | Description |
 |---|---|---|
-| `angle_level_strength` | 0–200 | Self-level authority in Angle mode **[profile]** |
-| `angle_level_limit` | 10–90 | Max tilt in Angle mode (degrees) **[profile]** |
-| `horizon_level_strength` | 0–200 | Self-level authority in Horizon mode **[profile]** |
-| `horizon_transition` | 0–200 | Stick range over which Horizon transitions **[profile]** |
-| `horizon_tilt_effect` | 0–250 | Tilt suppression in Horizon mode **[profile]** |
-| `horizon_tilt_expert_mode` | `OFF` `ON` | Expert tilt calculation mode **[profile]** |
+| `angle_level_strength` | 0–200 | Self-level authority in Angle mode **\[profile]** |
+| `angle_level_limit` | 10–90 | Max tilt in Angle mode (degrees) **\[profile]** |
+| `horizon_level_strength` | 0–200 | Self-level authority in Horizon mode **\[profile]** |
+| `horizon_transition` | 0–200 | Stick range over which Horizon transitions **\[profile]** |
+| `horizon_tilt_effect` | 0–250 | Tilt suppression in Horizon mode **\[profile]** |
+| `horizon_tilt_expert_mode` | `OFF` `ON` | Expert tilt calculation mode **\[profile]** |
 
----
+***
 
 #### Rate Profile
 
 | Parameter | Range / Values | Description |
 |---|---|---|
-| `rateprofile_name` | string | Rate profile label **[rates]** |
-| `rates_type` | `NONE` `BETAFLIGHT` `RACEFLIGHT` `KISS` `ACTUAL` `QUICK` `ROTORFLIGHT` | Rate algorithm **[rates]** |
-| `roll_rc_rate` | 1–255 | Roll RC rate **[rates]** |
-| `pitch_rc_rate` | 1–255 | Pitch RC rate **[rates]** |
-| `yaw_rc_rate` | 1–255 | Yaw RC rate **[rates]** |
-| `collective_rc_rate` | 1–255 | Collective RC rate **[rates]** |
-| `roll_expo` | 0–100 | Roll expo **[rates]** |
-| `pitch_expo` | 0–100 | Pitch expo **[rates]** |
-| `yaw_expo` | 0–100 | Yaw expo **[rates]** |
-| `collective_expo` | 0–100 | Collective expo **[rates]** |
-| `roll_srate` | 0–255 | Roll super-rate **[rates]** |
-| `pitch_srate` | 0–255 | Pitch super-rate **[rates]** |
-| `yaw_srate` | 0–255 | Yaw super-rate **[rates]** |
-| `collective_srate` | 0–255 | Collective super-rate **[rates]** |
-| `roll_accel_limit` | 0–50000 | Roll acceleration limit (deg/s²) **[rates]** |
-| `pitch_accel_limit` | 0–50000 | Pitch acceleration limit **[rates]** |
-| `yaw_accel_limit` | 0–50000 | Yaw acceleration limit **[rates]** |
-| `collective_accel_limit` | 0–50000 | Collective acceleration limit **[rates]** |
-| `roll_response` | 0–250 | Roll response time filter **[rates]** |
-| `pitch_response` | 0–250 | Pitch response time filter **[rates]** |
-| `yaw_response` | 0–250 | Yaw response time filter **[rates]** |
-| `collective_response` | 0–250 | Collective response time filter **[rates]** |
-| `cyclic_ring` | 0–250 | Cyclic ring limit **[rates]** |
-| `roll_level_expo` | 0–100 | Roll level-mode expo **[rates]** |
-| `pitch_level_expo` | 0–100 | Pitch level-mode expo **[rates]** |
-| `setpoint_boost_gain` | array[4] | Setpoint boost gain per axis **[rates]** |
-| `setpoint_boost_cutoff` | array[4] | Setpoint boost cutoff per axis **[rates]** |
+| `rateprofile_name` | string | Rate profile label **\[rates]** |
+| `rates_type` | `NONE` `BETAFLIGHT` `RACEFLIGHT` `KISS` `ACTUAL` `QUICK` `ROTORFLIGHT` | Rate algorithm **\[rates]** |
+| `roll_rc_rate` | 1–255 | Roll RC rate **\[rates]** |
+| `pitch_rc_rate` | 1–255 | Pitch RC rate **\[rates]** |
+| `yaw_rc_rate` | 1–255 | Yaw RC rate **\[rates]** |
+| `collective_rc_rate` | 1–255 | Collective RC rate **\[rates]** |
+| `roll_expo` | 0–100 | Roll expo **\[rates]** |
+| `pitch_expo` | 0–100 | Pitch expo **\[rates]** |
+| `yaw_expo` | 0–100 | Yaw expo **\[rates]** |
+| `collective_expo` | 0–100 | Collective expo **\[rates]** |
+| `roll_srate` | 0–255 | Roll super-rate **\[rates]** |
+| `pitch_srate` | 0–255 | Pitch super-rate **\[rates]** |
+| `yaw_srate` | 0–255 | Yaw super-rate **\[rates]** |
+| `collective_srate` | 0–255 | Collective super-rate **\[rates]** |
+| `roll_accel_limit` | 0–50000 | Roll acceleration limit (deg/s²) **\[rates]** |
+| `pitch_accel_limit` | 0–50000 | Pitch acceleration limit **\[rates]** |
+| `yaw_accel_limit` | 0–50000 | Yaw acceleration limit **\[rates]** |
+| `collective_accel_limit` | 0–50000 | Collective acceleration limit **\[rates]** |
+| `roll_response` | 0–250 | Roll response time filter **\[rates]** |
+| `pitch_response` | 0–250 | Pitch response time filter **\[rates]** |
+| `yaw_response` | 0–250 | Yaw response time filter **\[rates]** |
+| `collective_response` | 0–250 | Collective response time filter **\[rates]** |
+| `cyclic_ring` | 0–250 | Cyclic ring limit **\[rates]** |
+| `roll_level_expo` | 0–100 | Roll level-mode expo **\[rates]** |
+| `pitch_level_expo` | 0–100 | Pitch level-mode expo **\[rates]** |
+| `setpoint_boost_gain` | array\[4] | Setpoint boost gain per axis **\[rates]** |
+| `setpoint_boost_cutoff` | array\[4] | Setpoint boost cutoff per axis **\[rates]** |
 
----
+***
 
 #### RC Controls
 
@@ -548,13 +548,13 @@ These are part of the PID profile and differ per profile.
 | `rc_min_throttle` | 0–2100 | RC throttle minimum (µs) |
 | `rc_max_throttle` | 0–2100 | RC throttle maximum (µs) |
 | `rc_smoothness` | 0–250 | RC input smoothing strength |
-| `rc_threshold` | array[4] | Dead-zone threshold per axis |
+| `rc_threshold` | array\[4] | Dead-zone threshold per axis |
 | `deadband` | 0–100 | Cyclic stick deadband (µs) |
 | `yaw_deadband` | 0–100 | Yaw stick deadband (µs) |
 | `rx_pulse_min` | 750–2250 | Minimum valid RC pulse width (µs) |
 | `rx_pulse_max` | 750–2250 | Maximum valid RC pulse width (µs) |
 
----
+***
 
 #### Receiver
 
@@ -573,7 +573,7 @@ These are part of the PID profile and differ per profile.
 | `crsf_telemetry_link_rate` | 0–50000 | Custom CRSF telemetry link rate |
 | `crsf_telemetry_link_ratio` | 0–50000 | Custom CRSF telemetry link ratio |
 
----
+***
 
 #### Failsafe
 
@@ -588,7 +588,7 @@ These are part of the PID profile and differ per profile.
 | `failsafe_recovery_delay` | 0–200 | Hold time after signal returns before exit (tenths of s) |
 | `failsafe_stick_threshold` | 0–50 | Stick movement threshold to confirm recovery |
 
----
+***
 
 #### Battery & Voltage
 
@@ -620,7 +620,7 @@ These are part of the PID profile and differ per profile.
 | `cbat_alert_percent` | 0–100 | Capacity remaining alert threshold (%) |
 | `vbat_cutoff_percent` | 0–100 | Cutoff warning at this % of cells |
 
----
+***
 
 #### Arming
 
@@ -638,7 +638,7 @@ These are part of the PID profile and differ per profile.
 | `wiggle_enable_error` | `OFF` `ON` | Wiggle on arming error |
 | `wiggle_enable_fatal` | `OFF` `ON` | Wiggle on fatal error |
 
----
+***
 
 #### RPM Filter
 
@@ -656,7 +656,7 @@ These are part of the PID profile and differ per profile.
 | `gyro_rpm_notch_center_yaw` | array | Centre offset for each yaw notch |
 | `gyro_rpm_notch_q_yaw` | array | Q factor for each yaw notch |
 
----
+***
 
 #### ESC Sensor
 
@@ -671,7 +671,7 @@ These are part of the PID profile and differ per profile.
 | `esc_sensor_current_correction` | -100–125 | Current scaling correction (%) |
 | `esc_sensor_consumption_correction` | -100–125 | Consumption scaling correction (%) |
 
----
+***
 
 #### Blackbox
 
@@ -696,7 +696,7 @@ These are part of the PID profile and differ per profile.
 | `blackbox_log_esc` | `OFF` `ON` | Log ESC telemetry |
 | `blackbox_log_rssi` | `OFF` `ON` | Log RSSI |
 
----
+***
 
 #### Telemetry
 
@@ -710,7 +710,7 @@ These are part of the PID profile and differ per profile.
 | `telemetry_sensors` | array | Sensor IDs to include in telemetry |
 | `telemetry_interval` | array | Interval per sensor slot (ms) |
 
----
+***
 
 #### FBUS Master / SBUS Output
 
@@ -729,7 +729,7 @@ These are part of the PID profile and differ per profile.
 | `sport_master_inverted` | `OFF` `ON` | Invert S.Port master signal |
 | `bus_servo_source_type` | array | Source type for each bus servo channel |
 
----
+***
 
 #### Pilot / Model Info
 
@@ -743,7 +743,7 @@ These are part of the PID profile and differ per profile.
 | `model_set_name` | `OFF` `ON` | Broadcast model name in telemetry |
 | `model_tell_capacity` | `OFF` `ON` | Broadcast battery capacity in telemetry |
 
----
+***
 
 #### System
 
@@ -760,7 +760,7 @@ These are part of the PID profile and differ per profile.
 | `imu_dcm_ki` | 0–32000 | DCM complementary filter integral gain |
 | `timezone_offset_minutes` | -840–840 | UTC offset for RTC clock |
 
----
+***
 
 ## System Information
 
@@ -804,7 +804,7 @@ Shows the current operational parameters of the setpoint smoothing filters.
 setpoint_info
 ```
 
----
+***
 
 ## Receiver & RC
 
@@ -816,9 +816,9 @@ Configures flight mode activation ranges on auxiliary RC channels.
 aux <index> <mode> <aux> <start> <end> <logic>
 ```
 
-- `<aux>` is 0-based (AUX1 = 0).
-- `<start>` and `<end>` are channel values in µs (900–2100).
-- `<logic>`: 0 = normal, 1 = AND with previous range.
+* `<aux>` is 0-based (AUX1 = 0).
+* `<start>` and `<end>` are channel values in µs (900–2100).
+* `<logic>`: 0 = normal, 1 = AND with previous range.
 
 ### `rxfail`
 
@@ -840,7 +840,7 @@ map           # show current mapping
 map <AETR>    # set mapping (A=aileron/roll, E=elevator/pitch, T=throttle, R=rudder/yaw)
 ```
 
----
+***
 
 ## Feature Management
 
@@ -856,7 +856,7 @@ feature -<name>      # disable a feature
 
 Available features include: `RX_PPM`, `RX_SERIAL`, `SOFTSERIAL`, `GPS`, `RANGEFINDER`, `TELEMETRY`, `RX_PARALLEL_PWM`, `RX_MSP`, `RSSI_ADC`, `LED_STRIP`, `DASHBOARD`, `OSD`, `CMS`, `RX_SPI`, `GOVERNOR`, `ESC_SENSOR`, `FREQ_SENSOR`, `DYN_NOTCH`, `RPM_FILTER`.
 
----
+***
 
 ## Hardware Configuration
 
@@ -904,7 +904,7 @@ serial    # list all serial port configurations
 serial <identifier> <function> <mspBaud> <gpsBaud> <teleBaud> <blackboxBaud>
 ```
 
----
+***
 
 ## ESC Programming
 
@@ -937,7 +937,7 @@ beacon [<-><name>]
 
 ### `escprog`
 
-Passes through serial data to an ESC for programming (BLHeli/BLHeli_32/Kira configurator).
+Passes through serial data to an ESC for programming (BLHeli/BLHeli\_32/Kira configurator).
 
 ```
 escprog <mode> <index>
@@ -945,7 +945,7 @@ escprog <mode> <index>
 
 Modes: `sk` (SimonK), `bl` (BLHeli), `ki` (Kira), `cc` (Castle Creations).
 
----
+***
 
 ## FBUS / S.Port
 
@@ -958,7 +958,7 @@ fbus_sensors         # show detected sensors
 fbus_sensors clear   # clear the sensor list
 ```
 
----
+***
 
 ## Serial Passthrough
 
@@ -970,11 +970,11 @@ Bridges a hardware UART directly to the USB VCP (or another UART). Used for ESC 
 serialpassthrough <id1> [<baud1>] [<mode1>] [none|<dtr pinio>|reset] [<id2>] [<baud2>] [<mode2>]
 ```
 
-- `<id>` is the serial port identifier number.
-- `<mode>` is a combination of `rx`, `tx` characters (e.g. `rxtx`).
-- DTR pinio: a PINIO number used to assert DTR for BLHeli passthrough.
+* `<id>` is the serial port identifier number.
+* `<mode>` is a combination of `rx`, `tx` characters (e.g. `rxtx`).
+* DTR pinio: a PINIO number used to assert DTR for BLHeli passthrough.
 
----
+***
 
 ## Adjustment Functions
 
@@ -998,7 +998,7 @@ adjfunc <index> <func> <enable_ch> <ena_start> <ena_end> <adj_ch> <dec_start> <d
 | `step` | Amount to change per activation |
 | `min` / `max` | Clamping limits for the adjusted parameter |
 
----
+***
 
 ## LED Strip & Colours
 
@@ -1031,7 +1031,7 @@ mode_color
 mode_color <mode> <direction> <colorIndex>
 ```
 
----
+***
 
 ## VTX Control
 
@@ -1060,7 +1060,7 @@ Configures the VTX frequency table.
 vtxtable <band> <bandname> <bandletter> [FACTORY|CUSTOM] <freq> ...
 ```
 
----
+***
 
 ## GPS
 
@@ -1072,7 +1072,7 @@ Connects the GPS UART directly to the USB VCP for direct communication with the 
 gpspassthrough
 ```
 
----
+***
 
 ## Board Information
 
@@ -1112,7 +1112,7 @@ signature
 signature <hex-signature>
 ```
 
----
+***
 
 ## Reboot / DFU
 
@@ -1143,7 +1143,7 @@ msc                         # enter MSC mode
 msc <timezone_offset_min>   # enter MSC mode with RTC timezone offset
 ```
 
----
+***
 
 ## Flash Memory
 
@@ -1165,7 +1165,7 @@ Erases the entire flash chip (clears all Blackbox logs).
 flash_erase
 ```
 
----
+***
 
 ## Gyro Diagnostics
 
@@ -1177,7 +1177,7 @@ Dumps the raw register contents of the gyro IC. Useful for diagnosing hardware i
 gyroregisters
 ```
 
----
+***
 
 ## SD Card
 
@@ -1189,7 +1189,7 @@ Shows SD card type, capacity, and filesystem state.
 sd_info
 ```
 
----
+***
 
 ## Examples
 

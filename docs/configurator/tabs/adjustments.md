@@ -1,3 +1,7 @@
+---
+sidebar_position: 160
+---
+
 # Adjustments
 
 There are total 32 adjustment slots, each assigning an AUX channel to a configuration parameter or a special function. An adjustment slot consist of an enabling condition, an adjustment function, and parameter limits.
