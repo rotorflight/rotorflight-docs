@@ -391,7 +391,13 @@ const config: Config = {
         process.env.ALGOLIA_SEARCH_API_KEY ||
         "df22fc1a768ac1f658d6fa5f0f0dfe62",
       indexName: process.env.ALGOLIA_INDEX_NAME || "prod_RF_DOCS",
-      contextualSearch: true,
+      // The Algolia crawler's index records don't carry the
+      // docusaurus_tag/lang facets contextual search filters on, so with
+      // it enabled every query's facet filter matches nothing and search
+      // returns zero results regardless of what's typed. Disabled until
+      // the crawler config (on Algolia's dashboard, outside this repo) is
+      // updated to emit those facets.
+      contextualSearch: false,
       searchPagePath: "search",
     } satisfies ThemeConfigAlgolia,
   } satisfies Preset.ThemeConfig,
