@@ -1,55 +1,58 @@
-name: Deploy to GitHub Pages
+name: PR Verification
 
 on:
-  push:
+  pull_request:
     branches:
-      - test
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-verification-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 jobs:
-  deploy:
-    name: Deploy to GitHub Pages
+  verify:
+    name: Verify
     runs-on: ubuntu-latest
+    env:
+      ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+      ALGOLIA_SEARCH_API_KEY: ${{ vars.ALGOLIA_SEARCH_API_KEY }}
+      ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
+      FASTER: true
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: ./package-lock.json
 
-      - name: output
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run prettier:check:all
+
+      - name: Spellcheck
+        run: npm run spellcheck:all
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Prepare output
         id: output
         run: |
           echo "URL=https://${{ github.repository_owner }}.github.io" >> $GITHUB_OUTPUT
-          echo "BASE_PATH=/${GITHUB_REPOSITORY#*/}/" >> $GITHUB_OUTPUT
+          echo "BASE_PATH=/" >> $GITHUB_OUTPUT
 
-      - name: prepare env
+      - name: Prepare env
         run: |
           touch .env
           echo URL=${{ steps.output.outputs.URL }} > .env
           echo BASE_PATH=${{ steps.output.outputs.BASE_PATH }} >> .env
           echo ORG=${{ github.repository_owner }} >> .env
 
-      - name: Install dependencies & build
-        run: |
-          npm ci
-          npm run build
-          cp CNAME ./build/
-
-      # Popular action to deploy to GitHub Pages:
-      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Build output to publish to the `gh-pages` branch:
-          publish_dir: ./build
-          # The following lines assign commit authorship to the official
-          # GH-Actions bot for deploys to `gh-pages` branch:
-          # https://github.com/actions/checkout/issues/13#issuecomment-724415212
-          # The GH actions bot is used by default if you didn't specify the two fields.
-          # You can swap them out with your own user credentials.
-          user_name: github-actions[bot]
-          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Build
+        run: npm run build

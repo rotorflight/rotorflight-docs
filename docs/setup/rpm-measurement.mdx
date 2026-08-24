@@ -1,5 +1,5 @@
 ---
-sidebar_position: 70
+sidebar_position: 90
 ---
 
 import Tabs         from '@theme/Tabs';
@@ -52,7 +52,7 @@ RPM filtering is used to remove frequencies related to the rotating components. 
 
     Then the frequency sensor can be turned ON with the feature flag located on the [***Motors***](../configurator/tabs/motors.md#pwm-protocol) tab.
 
-    ![frequency\_2](./img/frequency_2.png)
+    ![frequency\_2](./img/motors-rpm.png)
   </TabItem>
 
   <TabItem value="Bi-directional D-shot" label="Bi-directional D-shot" attributes={{className: tabStyles.tab}}>
@@ -107,7 +107,7 @@ RPM filtering is used to remove frequencies related to the rotating components. 
       <TabItem value="Bluejay" label="Bluejay" attributes={{className: tabStyles.tab}}>
         #### Bluejay
 
-        Bluejay is an open source firmware for BLheli\_S ESCs which supports Bidirectional DSHOT, see [BlueJay](https://github.com/mathiasvr/bluejay). This firmware has been used successfully for several Rotorflight builds. Bluejay is capable of flashing individual settings to each ESC (tail and main) which is important when using an all in one (AIO) board. Bluejay v0.15 and later also supports disabling *damped light* (regenerative breaking), a must if your helicopter doesn't have a one way bearing. For example, a K110 will yaw/spin rapidly on throttle hold if *damped light* is enabled. Please follow the [Blheli\_S to Bluejay](../setup/blheli_s-to-bluejay.md) walkthrough.
+        Bluejay is an open source firmware for BLheli\_S ESCs which supports Bidirectional DSHOT, see [BlueJay](https://github.com/mathiasvr/bluejay). This firmware has been used successfully for several Rotorflight builds. Bluejay is capable of flashing individual settings to each ESC (tail and main) which is important when using an all in one (AIO) board. Bluejay v0.15 and later also supports disabling *damped light* (regenerative breaking), a must if your helicopter doesn't have a one way bearing. For example, a K110 will yaw/spin rapidly on throttle hold if *damped light* is enabled. Please follow the [Blheli\_S to Bluejay](../setup/blheli_s-to-bluejay.mdx) walkthrough.
 
         <img src={bluejay} alt="Filter" width="10%" />
 

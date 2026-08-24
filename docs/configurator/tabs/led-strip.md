@@ -1,3 +1,7 @@
+---
+sidebar_position: 170
+---
+
 # LED Strip
 
 ```mdx-code-block

@@ -1,7 +1,5 @@
 {
-  "label": "Radio Setup - EdgeTx",
-  "position": 1,
-  "link": {
-    "type": "generated-index"
-  }
+  "label": "EdgeTX",
+  "position": 10,
+  "collapsed": true
 }

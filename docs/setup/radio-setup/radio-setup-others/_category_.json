@@ -1,7 +1,5 @@
 {
-  "label": "Radio Setup - Others",
-  "position": 4,
-  "link": {
-    "type": "generated-index"
-  }
+  "label": "Others",
+  "position": 50,
+  "collapsed": true
 }

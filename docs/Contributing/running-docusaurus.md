@@ -6,7 +6,7 @@ sidebar_position: 30
 
 This guide walks through installing Node.js, cloning the Rotorflight‑docs repository, installing dependencies, and running the Docusaurus development server. Everything can be done directly from the terminal.
 
-The purpose of the development server is you can make changes to a page very quickly and it will be immediately visible each time you save. Errors are immediatly seen and can be fixed.
+The purpose of the development server is you can make changes to a page very quickly and it will be immediately visible each time you save. Errors are immediately seen and can be fixed.
 
 ## 1. Install Git (Optional if already installed)
 
@@ -76,7 +76,7 @@ Start the local Docusaurus server:
 npm run start
 ```
 
-This launches your internet browser to displat your site:
+This launches your internet browser to display your site:
 
 * A local dev server (typically http://localhost:3000)
 * Hot‑reload for Markdown, config, and React components
