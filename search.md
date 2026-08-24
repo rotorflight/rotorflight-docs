@@ -21,8 +21,6 @@ Search
 
 Type your search here
 
-2.3.0 (current)
-
 Powered by[](https://www.algolia.com/)
 
 Docs

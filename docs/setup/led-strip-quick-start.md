@@ -114,9 +114,13 @@ On the Nexus Port B is the best choice for creating a LED\_STRIP resource. Port 
 
 ```
 resource SERIAL_TX 6 NONE
+
 resource LED_STRIP 1 C07
+
 timer C07 AF3    # TIM8, default is also AF3
+
 dma pin C07 0    # default is NONE
+
 save
 ```
 
@@ -126,9 +130,13 @@ Alternatively you can remap RX6 to LED\_STRIP:
 
 ```
 resource SERIAL_RX 6 NONE
+
 resource LED_STRIP 1 C06
+
 timer C06 AF3    # TIM8, default is also AF3
+
 dma pin C06 0    # default is NONE
+
 save
 ```
 
@@ -142,9 +150,13 @@ To remap SCL to LED\_STRIP, enter the following in the CLI:
 
 ```
 resource I2C_SCL 1 NONE
+
 resource LED_STRIP 1 B06   # default is B08
+
 timer B06 AF2              # TIM4
+
 dma pin B06 0
+
 save
 ```
 
@@ -154,9 +166,13 @@ To remap SDA to LED\_STRIP, enter the following in the CLI:
 
 ```
 resource I2C_SDA 1 NONE
+
 resource LED_STRIP 1 B07   # default is B08
+
 timer B07 AF2              # TIM4
+
 dma pin B07 0
+
 save
 ```
 
@@ -168,8 +184,11 @@ To remap RPM-S to LED\_STRIP on the FlyDragon V2 or V2.2, enter the following in
 
 ```
 resource LED_STRIP 1 A15   # default is B08
+
 timer A15 AF1              # TIM1
+
 dma pin A15 0
+
 save
 ```
 
@@ -177,8 +196,11 @@ To remap RPM-S to LED\_STRIP on the FlyDragon V1, enter the following in the CLI
 
 ```
 resource LED_STRIP 1 A08   # default is B08
+
 timer A08 AF1              # TIM1
+
 dma pin A08 0
+
 save
 ```
 
@@ -188,10 +210,15 @@ Be careful: F.Port uses VBec, which might be too high for your LEDs. Most LEDs r
 
 ```
 resource LED_STRIP 1 A02   # default is B08
+
 timer A02 AF1              # TIM2
+
 dma pin A02 0
+
 # Change motor 1 timer from TIM2 to TIM5
+
 timer A00 AF2
+
 save
 ```
 
@@ -201,16 +228,27 @@ You can connect a LED strip using the SBUS out signal on the RF007. But remember
 
 ```
 # remap SBUS out as LED strip
+
 resource SERIAL_RX 1 none
+
 resource LED_STRIP 1 B07
+
 timer B07 AF2     #  TIM4 CH2
+
 dma pin B07 0
 
+
+
 # configure two leds
+
 feature LED_STRIP
+
 led 0 0,0::CB:2:20495:0:0
+
 led 1 1,0::CB:1:15:0:5
+
 set ledstrip_brightness = 30
+
 save
 ```
 
@@ -220,8 +258,12 @@ You can remap SBUS to LED\_STRIP on the Flywing HELI405. To do this, enter the f
 
 ```
 resource SERIAL_RX 2 NONE
+
 resource LED_STRIP 1 A03
+
 timer A03 AF2
+
 dma pin A03 1
+
 save
 ```

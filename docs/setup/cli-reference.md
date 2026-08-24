@@ -45,6 +45,7 @@ diff [master|profile|rates|hardware|all] {defaults|bare}
 
 ```
 # Recommended backup command
+
 diff all
 ```
 
@@ -88,7 +89,9 @@ Groups multiple commands so that they are applied atomically. If any command ins
 
 ```
 batch start
+
 <commands>
+
 batch end
 ```
 
@@ -102,6 +105,7 @@ Shows the active PID profile, or switches to a different one. Profiles are zero-
 
 ```
 profile          # show current profile index
+
 profile <index>  # switch to profile 0, 1, or 2
 ```
 
@@ -111,6 +115,7 @@ Shows the active rate profile, or switches to a different one. Rate profiles are
 
 ```
 rateprofile          # show current rate profile index
+
 rateprofile <index>  # switch to rate profile 0–5
 ```
 
@@ -126,26 +131,47 @@ Configures the software mixer that routes stabilised flight controller outputs t
 
 ```
 mixer status
+
 mixer reset
 
+
+
 mixer input
+
 mixer input reset
+
 mixer input <input> <min> <max> <rate>
 
+
+
 mixer limit
+
 mixer limit <input> <min> <max>
 
+
+
 mixer rate
+
 mixer rate <input> <rate>
 
+
+
 mixer rule
+
 mixer rule reset
+
 mixer rule <index> [set|add|mul] <input> <output> <weight> <offset> [<modes>]
+
 mixer rule <index> del
 
+
+
 mixer override
+
 mixer override off
+
 mixer override <value>
+
 mixer override <input> <value>|off
 ```
 
@@ -169,13 +195,21 @@ Configures servo parameters and allows real-time override for testing.
 
 ```
 servo status
+
 servo flags
+
 servo flags <servo> <[+|-]FLAG> ...
+
+
 
 servo <servo> <center> <min> <max> <-scale> <+scale> <update_rate> <speed> <flags>
 
+
+
 servo override
+
 servo override <value>|off
+
 servo override <servo> <value>|off
 ```
 
@@ -211,8 +245,12 @@ Motor override commands spin the motor. **Remove all propellers/blades before us
 ```
 motor status
 
+
+
 motor override
+
 motor override off
+
 motor override <index> <value>|off
 ```
 
@@ -230,6 +268,7 @@ Changes a configuration variable.
 
 ```
 set                  # list all variables and current values
+
 set <name>=<value>   # set a specific variable
 ```
 
@@ -239,6 +278,7 @@ Reads the current value of one or more variables. Partial name matching is suppo
 
 ```
 get              # list all variables with values and ranges
+
 get <name>       # show a specific variable (partial name match supported)
 ```
 
@@ -822,6 +862,7 @@ Shows or sets per-channel failsafe behaviour.
 
 ```
 rxfail                           # show all channel failsafe settings
+
 rxfail <channel> <mode> [value]  # set failsafe for a channel
 ```
 
@@ -833,6 +874,7 @@ Shows or sets the RC channel input mapping.
 
 ```
 map           # show current mapping
+
 map <AETR>    # set mapping (A=aileron/roll, E=elevator/pitch, T=throttle, R=rudder/yaw)
 ```
 
@@ -846,7 +888,9 @@ Enables or disables firmware features.
 
 ```
 feature list         # list all features and their state
+
 feature <name>       # enable a feature
+
 feature -<name>      # disable a feature
 ```
 
@@ -862,7 +906,9 @@ Shows or reassigns pin/peripheral resources.
 
 ```
 resource                              # list all assigned resources
+
 resource show [all]                   # detailed resource listing
+
 resource <name> <index> <pin>|none    # assign a resource to a pin
 ```
 
@@ -874,9 +920,13 @@ Shows or reassigns timer channels.
 
 ```
 timer                                         # list configured timers
+
 timer list                                    # list all timers
+
 timer show                                    # show timer assignments
+
 timer <pin> list                              # list options for a pin
+
 timer <pin> [af<n>|none]                      # assign alternate function
 ```
 
@@ -886,8 +936,11 @@ Shows or reassigns DMA streams/channels (on targets that support DMA remapping).
 
 ```
 dma show
+
 dma list
+
 dma <device> <index> list
+
 dma <device> <index> [<option>|none]
 ```
 
@@ -897,6 +950,7 @@ Shows or configures serial port functions, baud rates, and modes.
 
 ```
 serial    # list all serial port configurations
+
 serial <identifier> <function> <mspBaud> <gpsBaud> <teleBaud> <blackboxBaud>
 ```
 
@@ -928,6 +982,7 @@ Enables or disables the DShot beacon for specific arming conditions.
 
 ```
 beacon list
+
 beacon [<-><name>]
 ```
 
@@ -951,6 +1006,7 @@ Shows all sensor IDs observed on the FBUS/S.Port bus. Useful for diagnosing sens
 
 ```
 fbus_sensors         # show detected sensors
+
 fbus_sensors clear   # clear the sensor list
 ```
 
@@ -1006,6 +1062,7 @@ Configures individual LED positions and functions.
 
 ```
 led
+
 led <index> <x,y:function:color:direction>
 ```
 
@@ -1015,6 +1072,7 @@ Configures the colour palette used by LED strip animations.
 
 ```
 color
+
 color <index> <hue,saturation,value>
 ```
 
@@ -1024,6 +1082,7 @@ Sets the colours used for each flight mode in LED strip status mode.
 
 ```
 mode_color
+
 mode_color <mode> <direction> <colorIndex>
 ```
 
@@ -1037,6 +1096,7 @@ Configures VTX band/channel/power switching on AUX channel ranges.
 
 ```
 vtx
+
 vtx <index> <aux_channel> <vtx_band> <vtx_channel> <vtx_power> <start_range> <end_range>
 ```
 
@@ -1078,6 +1138,7 @@ Gets or sets the board model name stored in firmware.
 
 ```
 board_name
+
 board_name <name>
 ```
 
@@ -1087,6 +1148,7 @@ Gets or sets the board design identifier.
 
 ```
 board_design
+
 board_design <name>
 ```
 
@@ -1096,6 +1158,7 @@ Gets or sets the manufacturer ID.
 
 ```
 manufacturer_id
+
 manufacturer_id <id>
 ```
 
@@ -1105,6 +1168,7 @@ Gets or sets the board type signature.
 
 ```
 signature
+
 signature <hex-signature>
 ```
 
@@ -1118,7 +1182,9 @@ Reboots into the bootloader.
 
 ```
 bl        # reboot into ROM bootloader
+
 bl rom    # explicitly select ROM bootloader
+
 bl flash  # select flash-based bootloader (if present)
 ```
 
@@ -1136,6 +1202,7 @@ Switches the flight controller into USB Mass Storage mode so the SD card appears
 
 ```
 msc                         # enter MSC mode
+
 msc <timezone_offset_min>   # enter MSC mode with RTC timezone offset
 ```
 
@@ -1209,7 +1276,9 @@ save
 
 ```
 servo override 1 1200    # push servo 1 to 1200 µs
+
 servo override 1 1800    # push servo 1 to 1800 µs
+
 servo override off       # release all servo overrides
 ```
 
@@ -1223,6 +1292,7 @@ mixer rule
 
 ```
 feature RPM_FILTER
+
 save
 ```
 
@@ -1230,5 +1300,6 @@ save
 
 ```
 profile 1
+
 profile
 ```

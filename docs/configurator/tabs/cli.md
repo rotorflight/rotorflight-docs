@@ -32,7 +32,9 @@ Note that the `dump` command will output every setting and their current values.
 
 ```
 rateprofile 0
+
 profile 0
+
 dump
 ```
 
@@ -40,8 +42,11 @@ dump
 
 ```
 profile 1
+
 dump profile
+
 profile 2
+
 dump profile
 ```
 
@@ -49,8 +54,11 @@ dump profile
 
 ```
 rateprofile 1
+
 dump rates
+
 rateprofile 2
+
 dump rates
 ```
 

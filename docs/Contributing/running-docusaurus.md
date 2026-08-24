@@ -34,6 +34,7 @@ Rotorflight‑docs uses Docusaurus, which requires **Node.js** and **npm**.
 
 ```
 node -v
+
 npm -v
 ```
 
@@ -43,6 +44,7 @@ Use Git to download the documentation source:
 
 ```
 git clone https://github.com/rotorflight/rotorflight-docs.git
+
 cd rotorflight-docs
 ```
 

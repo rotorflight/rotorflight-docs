@@ -29,6 +29,7 @@ After initialization, RF Tool adds widget-facing API entries:
 
 ```
 rf2.registerWidget = registerWidget
+
 rf2.rfToolApiVersion = 1.00
 ```
 
@@ -36,8 +37,11 @@ A companion widget should check that `rf2` exists before using the API:
 
 ```
 if rf2 and not widget.isRegistered then
+
     rf2.registerWidget(widget)
+
     widget.isRegistered = true
+
 end
 ```
 
@@ -64,8 +68,12 @@ RF Tool stores the widget in an internal list:
 ```
 local rfWidgets = {}
 
+
+
 local function registerWidget(widget)
+
     table.insert(rfWidgets, widget)
+
 end
 ```
 
@@ -75,10 +83,15 @@ RF Stats registers itself from both `background` and `refresh` paths by calling 
 
 ```
 w.background = function(widget)
+
     if rf2 and not widget.isRegistered then
+
         rf2.registerWidget(widget)
+
         widget.isRegistered = true
+
     end
+
 end
 ```
 
@@ -114,12 +127,19 @@ Example from RF Stats:
 
 ```
 w.onStateChanged = function(widget, newState)
+
     if newState == "connected" or newState == "disarmed" then
+
         rf2.useApi("mspFlightStats").read(onReceivedFlightStats, "unused example callback parameter")
+
     elseif newState == "disconnected" then
+
         totalFlights = nil
+
         totalFlightTime = nil
+
     end
+
 end
 ```
 
@@ -195,8 +215,11 @@ RF Stats defines:
 
 ```
 local function onReceivedFlightStats(callbackParam, stats)
+
     totalFlights = tostring(stats.stats_total_flights.value)
+
     totalFlightTime = rf2.executeScript("F/formatSeconds")(stats.stats_total_time_s.value)
+
 end
 ```
 
@@ -216,6 +239,7 @@ RF Stats currently uses only:
 
 ```
 stats.stats_total_flights.value
+
 stats.stats_total_time_s.value
 ```
 
@@ -271,31 +295,59 @@ A widget using the same RF Tool API pattern as RF Stats usually follows this seq
 ```
 local zone, options = ...
 
+
+
 local w = {
+
     zone = zone,
+
     options = options
+
 }
 
+
+
 w.background = function(widget)
+
     if rf2 and not widget.isRegistered then
+
         rf2.registerWidget(widget)
+
         widget.isRegistered = true
+
     end
+
 end
+
+
 
 w.refresh = function(widget, event, touchState)
+
     w.background(widget)
+
 end
 
+
+
 w.onStateChanged = function(widget, newState)
+
     if newState == "connected" or newState == "disarmed" then
+
         rf2.useApi("mspFlightStats").read(function(_, stats)
+
             -- Use stats here.
+
         end)
+
     elseif newState == "disconnected" then
+
         -- Clear cached values here.
+
     end
+
 end
+
+
 
 return w
 ```
@@ -314,6 +366,8 @@ Example:
 
 ```
 if rf2 and rf2.rfToolApiVersion and rf2.rfToolApiVersion >= 1.00 then
+
     rf2.registerWidget(widget)
+
 end
 ```

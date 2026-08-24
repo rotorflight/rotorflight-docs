@@ -85,6 +85,7 @@ If sensors are not being found reliably, extend the discovery window:
 
 ```
 set fbus_master_discovery_ms = 10000
+
 save
 ```
 
@@ -94,6 +95,7 @@ By default all discovered sensors are forwarded. To restrict which ones reach th
 
 ```
 set fbus_master_forwarded_sensors = 0x10, 0x22, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+
 save
 ```
 

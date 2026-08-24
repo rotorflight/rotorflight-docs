@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkrotorflight_docs||=[]).push([[9647],{7121(r,e,s){s.r(e),s.d(e,{default:()=>d});s(96540);var t=s(34164),a=s(17559),c=s(45500),o=s(22831),u=s(14055),l=s(74848);function d(r){return(0,l.jsx)(c.e3,{className:(0,t.A)(a.G.wrapper.docsPages),children:(0,l.jsx)(u.A,{children:(0,o.v)(r.route.routes)})})}}}]);

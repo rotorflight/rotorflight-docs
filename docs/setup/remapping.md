@@ -56,7 +56,10 @@ In this example, we have chosen to use the LED\_STRIP pin as our frequency input
 
 ```
 resource LED_STRIP 1 NONE
+
 resource Freq  1 A09
+
 timer A09 AF1 # Freq - pin A09: TIM1 CH2 (AF1)
+
 dma pin A09 0 # Freq - 0: DMA2 Stream 6 Channel 0
 ```

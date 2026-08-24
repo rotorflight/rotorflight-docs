@@ -47,12 +47,19 @@ Here's the resource mapping used for this build.
 
 ```
 resource MOTOR 1 B07   # main motor on M4
+
 resource MOTOR 2 B04   # tail motor on M1
+
 resource MOTOR 3 NONE
+
 resource MOTOR 4 NONE
+
 resource SERVO 1 A00   # RSSI
+
 resource SERVO 2 B03   # S5
+
 resource SERVO 3 A08   # LED strip
+
 resource LED_STRIP 1 NONE
 ```
 
@@ -80,11 +87,17 @@ The output will look something like this:
 
 ```
 MCU F411 Clock=108MHz (PLLP-HSE), Vref=3.29V, Core temp=24degC
+
 Stack size: 2048, Stack address: 0x2001fff0
+
 Configuration: CONFIGURED, size: 5147, max available: 16384
+
 Devices detected: SPI:1, I2C:0
+
 Gyros detected: gyro 1 locked dma
+
 GYRO=MPU6500, ACC=MPU6500
+
 ...
 ```
 

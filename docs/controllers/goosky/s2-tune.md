@@ -113,7 +113,9 @@ If you don't use Windows, you can configure Rotorflight so that it only exposes 
 
 ```
 resource MOTOR 1 A08
+
 resource MOTOR 2 NONE
+
 save
 ```
 
@@ -121,6 +123,8 @@ Now you can configure the tail ESC in *AM32 Configurator*. When you're done, res
 
 ```
 resource MOTOR 1 C08   # main motor
+
 resource MOTOR 2 A08   # tail motor
+
 save
 ```
