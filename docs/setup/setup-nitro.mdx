@@ -1,12 +1,16 @@
 ---
 sidebar_position: 180
 ---
+import nitroSetup1 from "./img/nitro-setup-1.png";
+import nitroSetup2 from "./img/nitro-setup-2.png";
+import nitroSetup3 from "./img/nitro-setup-3.png";
+import nitroSetup4 from "./img/nitro-setup-4.png";
 
 # Nitro/gasser throttle servo setup
 
 1. First plug in the throttle servo into the ESC port. Go to the motors page.
 
-   ![Nitro setup](./img/nitro-setup-1.png)
+   <img src={nitroSetup1} alt="Nitro setup" style={{ maxWidth: '100%' }} />
 
 2. Set *ESC throttle protocol* to PWM
 
@@ -16,7 +20,7 @@ sidebar_position: 180
 
 5. Set the *Gear ratios* and set *Main Motor pole count* to 2.
 
-   ![Nitro setup](./img/nitro-setup-2.png)
+   <img src={nitroSetup2} alt="Nitro setup" style={{ maxWidth: '100%' }} />
 
 The *Motor Stop Throttle PWM value* is the throttle cut<br />
 *0% Throttle PWM value* is the motor idle<br />
@@ -35,11 +39,11 @@ Note: if the servo is moving around the wrong way, you need to swap the *100% Th
 
 10. Set *0% throttle PWM value* around 100µs above *Motor Stop Throttle PWM value*.
 
-    ![Nitro setup](./img/nitro-setup-3.png)
+    <img src={nitroSetup3} alt="Nitro setup" style={{ maxWidth: '100%' }} />
 
 11. Enable *Motor Override* and set the slider to 100%. Now adjust the *100% Throttle PWM value* until the carb is fully open. To adjust/save the value you need to save and reboot every time.
 
-    ![Nitro setup](./img/nitro-setup-4.png)
+    <img src={nitroSetup4} alt="Nitro setup" style={{ maxWidth: '100%' }} />
 
 12. Set *Governor mode* to MODE1 or STANDARD.
 

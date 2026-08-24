@@ -2,6 +2,9 @@
 sidebar_position: 20
 ---
 
+import tuningPid from "./img/tuning-pid.png";
+import tuningHsi from "./img/tuning-hsi.png";
+
 # Tuning your Helicopter
 
 The default tuning parameters supplied with Rotorflight are designed to be safe and flyable for all helicopters. This means in most cases the helicopter will not be responsive and locked in on your first flight and some tuning will be required.
@@ -10,7 +13,7 @@ These tuning parameters are located on the Profile tab in the [Configurator](../
 
 ## Tuning Profile PID:
 
-![Profile PID](./img/tuning-pid.png)
+<img src={tuningPid} alt="Profile PID" style={{ maxWidth: '100%' }} />
 
 :::caution
 Please start by confirming your filters are working correctly before you increase your tuning parameters. If you do not have filters enabled it is particularly important that you do not use Derivative. This can result in hot Motors and Servos.
@@ -33,13 +36,13 @@ When tuning parameters are too high the helicopter will wobble or shake during s
 
 3. Increase Integral (I) on each axis individually, until it wobbles, then back off a bit.
 
-4. Set Feedforward so that you get good response and Integral (I) remains near 0 in full stick flips and rolls (viewed using the blackbox logs). Feedforward can also be tuned by following the description in [Tune Feedforward](Tune-Feedforward.md).
+4. Set Feedforward so that you get good response and Integral (I) remains near 0 in full stick flips and rolls (viewed using the blackbox logs). Feedforward can also be tuned by following the description in [Tune Feedforward](Tune-Feedforward.mdx).
 
 5. If necessary, then tweak P:D ratio to tweak stick response damping to your liking.
 
-6. Increase [HSI](./High-Speed-Integral.md) until it wobbles when jabbing elevator at full collective, back off a bit.
+6. Increase [HSI](./High-Speed-Integral.mdx) until it wobbles when jabbing elevator at full collective, back off a bit.
 
-![Profile HSI](./img/tuning-hsi.png)
+<img src={tuningHsi} alt="Profile HSI" style={{ maxWidth: '100%' }} />
 
 7. Increase Boost (B) if you want sharper/faster response.
 

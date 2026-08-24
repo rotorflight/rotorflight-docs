@@ -93,7 +93,7 @@ For example if the main gear ratio is 11.8 then you set *\[Teeth on Pinion gear 
 
 Similarly if the tail gear ratio is 4.8 then you set *\[Teeth on Tail gear =10]/\[Teeth on Autorotation Gear =48]*.
 
-note that counting the gear tooth is preferable because an accurate gear ratio is essential to the operation of the [RPM Filters](../../setup/rpm-filters.md).
+note that counting the gear tooth is preferable because an accurate gear ratio is essential to the operation of the [RPM Filters](../../setup/rpm-filters.mdx).
 :::
 
 :::note
