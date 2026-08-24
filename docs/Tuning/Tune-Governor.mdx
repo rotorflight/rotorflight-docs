@@ -1,6 +1,12 @@
 ---
 sidebar_position: 50
 ---
+import govFGainTooLow from "./img/gov-f-gain-too-low.png";
+import govFGainTooHigh from "./img/gov-f-gain-too-high.png";
+import govIGainTooHigh from "./img/gov-i-gain-too-high.png";
+import govPGainTooHigh from "./img/gov-p-gain-too-high.png";
+import govResultGraph from "./img/gov-result-graph.png";
+import govResult from "./img/gov-result.png";
 
 # Tune the Governor
 
@@ -28,23 +34,23 @@ Try increments of 10 for the F-gain, increments of 25 for the I-gain and increme
 
 The F-gain determines the feedforward term, together with cyclic and collective precompensation. As stated, the better the F-gain is tuned, the less the PID-loop has to correct. Here's an example where the F-gain is too low, since the headspeed drops quite a bit when doing pitch pumps.
 
-![f-gain too low](./img/gov-f-gain-too-low.png)
+<img src={govFGainTooLow} alt="f-gain too low" style={{ maxWidth: '100%' }} />
 
 If the F-gain is too high, the headspeed will be temporarily too high.
 
-![f-gain too high](./img/gov-f-gain-too-high.png)
+<img src={govFGainTooHigh} alt="f-gain too high" style={{ maxWidth: '100%' }} />
 
 ### 2. Tune I-gain
 
 After you have found and set the best value for F-gain you can increase the I-gain until it starts playing up, then reduce it with 1/3. Here you can see an I-gain value which is too high, since there are some slow oscillations during and/or after the pitch pump.
 
-![i-gain too high](./img/gov-i-gain-too-high.png)
+<img src={govIGainTooHigh} alt="i-gain too high" style={{ maxWidth: '100%' }} />
 
 ### 3. Tune P-gain
 
 After setting the optimal value for I-gain start increasing the P-gain till there are slight oscillations, then reduce it with 1/3. Here is an example of a P-gain that is clearly too high and introduces fast oscillations.
 
-![p-gain too high](./img/gov-p-gain-too-high.png)
+<img src={govPGainTooHigh} alt="p-gain too high" style={{ maxWidth: '100%' }} />
 
 ### 4. Tune D-gain
 
@@ -54,8 +60,8 @@ Unless you're flying a 500+ heli you probably won't need D, since there's hardly
 
 This is the result of tuning a Scorpion HKII-2208 3600KV motor in a Gaui X2.
 
-![Result](./img/gov-result-graph.png)
+<img src={govResultGraph} alt="Result" style={{ maxWidth: '100%' }} />
 
 And these are the gain values found for this heli:
 
-![Result](./img/gov-result.png)
+<img src={govResult} alt="Result" style={{ maxWidth: '100%' }} />
