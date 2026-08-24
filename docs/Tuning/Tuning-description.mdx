@@ -1,6 +1,8 @@
 ---
 sidebar_position: 20
 ---
+import tuningPid from "./img/tuning-pid.png";
+import tuningHsi from "./img/tuning-hsi.png";
 
 # Tuning your Helicopter
 
@@ -10,7 +12,7 @@ These tuning parameters are located on the Profile tab in the [Configurator](../
 
 ## Tuning Profile PID:
 
-![Profile PID](./img/tuning-pid.png)
+<img src={tuningPid} alt="Profile PID" style={{ maxWidth: '100%' }} />
 
 :::caution
 Please start by confirming your filters are working correctly before you increase your tuning parameters. If you do not have filters enabled it is particularly important that you do not use Derivative. This can result in hot Motors and Servos.
@@ -39,7 +41,7 @@ When tuning parameters are too high the helicopter will wobble or shake during s
 
 6. Increase [HSI](./High-Speed-Integral.md) until it wobbles when jabbing elevator at full collective, back off a bit.
 
-![Profile HSI](./img/tuning-hsi.png)
+<img src={tuningHsi} alt="Profile HSI" style={{ maxWidth: '100%' }} />
 
 7. Increase Boost (B) if you want sharper/faster response.
 
