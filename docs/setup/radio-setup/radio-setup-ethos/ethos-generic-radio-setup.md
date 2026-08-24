@@ -16,7 +16,7 @@ Normally you will need a total of 8 channels if you want to have options like *P
 
 ## Channels Arrangement[​](#channels-arrangement "Direct link to Channels Arrangement")
 
-This following radio model uses 10 channels to get the best of Rotorflight options, the user can add or delete channels depending on his specific application, and required features.
+This following radio model uses 10 channels to get the best of Rotorflight options, the user can add or delete channels depending on their specific application, and required features.
 
 These channels are configured as follows:
 

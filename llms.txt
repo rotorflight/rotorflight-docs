@@ -102,7 +102,7 @@ The general process for setting up a helicopter using Rotorflight.
 - [Governor Electric Setup](/docs/setup/governor/governor-electric.md): The governor electric feature allows you to control the motor speed based on the throttle input and other parameters.
 - [Flyrotor Governor setup](/docs/setup/governor/governor-flyrotor-setup.md): ESC Configurator
 - [Governor Nitro Setup](/docs/setup/governor/governor-nitro.md): The governor nitro feature allows you to control the motor speed based on the throttle input and other parameters.
-- [Governor Setup](/docs/setup/governor/governor-setup.md): Governor Setup landing page. Briefly describe the different governor options that are documented in the other pages.
+- [XDfly Upgrade Notes](/docs/setup/governor/governor-xdfly.md): Upgrade procedure for XDfly speed controllers.
 - [Getting started with LEDs](/docs/setup/led-strip-quick-start.md): Introduction to LED strips
 - [OpenLager](/docs/setup/openlager.md): OpenLager is a Blackbox data logger developed by dRonin.
 - [Profile (Bank) switching example](/docs/setup/profile-switching-example.md): Purpose
@@ -130,10 +130,6 @@ The general process for setting up a helicopter using Rotorflight.
 - [Swashplate Wiggle](/docs/setup/swash-wiggle.md): The swashplate can be configured to 'wiggle' as an indication for when you are
 - [Two-Stage Gear Train Ratios](/docs/setup/two-stage-gear-train-ratios.md): Having an accurate gear ratio for the main and tail rotor is essential for Rotorflight accurate RPM Filters performance.
 - [Using Stability Modes (6G)](/docs/setup/using-stability-modes-example.md): Purpose
-
-### testing
-
-- [Tuning process](/docs/testing/tuning-process.md): Collective to Pitch Compensation
 
 ### Tuning
 

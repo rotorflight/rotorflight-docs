@@ -30,7 +30,7 @@ We need to assign a spare channel to your 3 position switch (SwE) (can be any ch
 
 * Go to the **Adjustments** tab. Enable an adjustment slot by selecting *Mapped* and select Aux4 as the *Enable Channel* and *Value Channel*.
 * Stretch the *Enable Channel* and *Value Channel* sliders across the entire channel range. This covers the positions for each of the three switch positions.
-* Select **Profile Selection** from the dropdown. This means we want to change the 'Profile selection' by the switch position.
+* Select **Profile Selection** from the drop down. This means we want to change the 'Profile selection' by the switch position.
 * Stretch the *Profile Selection* slider from 1 to 3, This means over the defined range a value of 1-3 will be chosen based on the switch position. (e.g. SwE down = 0, SwE middle = 1, SwE up = 2). These values are added to the Profile so will result in (e.g. SwE down = Profile 1, SwE middle = Profile 2, SwE up = Profile 3).
 
 ![Change Profiles](/assets/images/change-prof-prof-sw-example-4230ebec14e328850ac68d9923e68deb.png)

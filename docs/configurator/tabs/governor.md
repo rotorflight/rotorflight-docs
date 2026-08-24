@@ -6,7 +6,7 @@ It is also ensuring safe operation by limiting the spool up and down speeds, and
 
 Basic Operation The Rotorflight RF Governor offers a variety of features, providing flexibility for both traditional throttle-curve setups and modern switch-based (flight-mode) setups. It fully supports electric helicopters as well as nitro/IC (glow) engines.
 
-To enable the governor and access its settings, navigate to the [***Governor***](/docs/configurator/configurator/tabs/governor.mdx) tab in Rotorflight Configurator.
+To enable the governor and access its settings, navigate to the ***Governor*** tab in Rotorflight Configurator.
 
 ![](/assets/images/governor-enable-eff89666a69ed9a5d70eac8c27694591.png)
 

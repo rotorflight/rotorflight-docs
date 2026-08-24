@@ -126,7 +126,7 @@ Setup:<br />**Helicopter:** Specter Nitro<br />**Main Rotor Blades:** RotorTech 
 
 #### Diff all[​](#diff-all-2 "Direct link to Diff all")
 
-[**Jiawen Nitro Specter Diff All**](/assets/files/SpecterN_before_awesome-e8013a850199938e62e08eb4475d2ec4.txt) - Jiawen uses the SBUS port as an extra servo output which is used to control the glow igniter.
+[**Jiawen Nitro Specter Diff All**](/assets/files/SpecterN_before_awesome-65b3024154c781aef91a823afd54247d.txt) - Jiawen uses the SBUS port as an extra servo output which is used to control the glow igniter.
 
 #### Servos[​](#servos-2 "Direct link to Servos")
 
