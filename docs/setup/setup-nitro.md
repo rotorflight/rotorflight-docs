@@ -1,5 +1,5 @@
 ---
-sidebar_position: 135
+sidebar_position: 180
 ---
 
 # Nitro/gasser throttle servo setup

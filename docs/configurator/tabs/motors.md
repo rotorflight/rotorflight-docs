@@ -1,3 +1,7 @@
+---
+sidebar_position: 80
+---
+
 # Motors
 
 The *Motors* tab is used to configure the ESC communications protocols **( Motor Control Protocol & Telemetry Protocol )** ,as well as to provide the ability to test motor operation. Depending on the selected ESC protocol and selected Rotorflight features, you might need to specify some other parameters as well.
@@ -104,7 +108,7 @@ Determine the number of magnetic poles for each motor. Count the number of magne
 
 ![Motor and ESC](../img/motor-pole-count-2.png)
 
-## [Governor Features](../../setup/governor.md#governor-mode)
+## [Governor Features](./governor.mdx)
 
 ## Motor Override
 

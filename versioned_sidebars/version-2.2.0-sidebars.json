@@ -71,7 +71,6 @@
               "label": "Edge Tx",
               "items": [
                 "setup/radio-setup/radio-setup-edgetx/edgetx-generic-radio-setup",
-                "setup/radio-setup/radio-setup-edgetx/lua-RF2-touch",
                 "setup/radio-setup/radio-setup-edgetx/widget-etx-bob00"
               ]
             },
@@ -114,6 +113,7 @@
         "setup/rpm-measurement",
         "setup/governor",
         "setup/governor-setup",
+        "setup/governor-flyrotor-setup",
         "setup/rpm-filters",
         "setup/esc-telemetry",
         "setup/esc-forward-programming",

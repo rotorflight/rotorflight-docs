@@ -11,11 +11,15 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
+    env:
+      ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+      ALGOLIA_SEARCH_API_KEY: ${{ vars.ALGOLIA_SEARCH_API_KEY }}
+      ALGOLIA_INDEX_NAME: ${{ vars.ALGOLIA_INDEX_NAME }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: ./package-lock.json
 
@@ -43,16 +47,25 @@ jobs:
           echo BASE_PATH=${{ steps.output.outputs.BASE_PATH }} >> .env
           echo ORG=${{ github.repository_owner }} >> .env
 
-      - name: Install dependencies & build
-        run: |
-          npm ci
-          npm run build
-          cp CNAME ./build/
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run prettier:check:all
+
+      - name: Spellcheck
+        run: npm run spellcheck:all
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Build output to publish to the `gh-pages` branch:

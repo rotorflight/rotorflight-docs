@@ -8,7 +8,7 @@ sidebar_position: 90
 
 RPM filters clean up the gyro signals by filtering out vibrations that are coming from the rotating parts in a helicopter: the main rotor, tail rotor and motor(s). These vibrations are seen as noise in the gyro signal. Removing these vibrations (noise) results in a cleaner signal which is more representative of the physical movement of the helicopter. A cleaner signal is much better for the controller to operate from.
 
-Nothing comes for free. Filters result in a cleaner signal at the expense of lag. The filtered signal is slightly slower than the original. This means to have the most responsive controller we should minimise the filters used.
+Nothing comes for free. Filters result in a cleaner signal at the expense of lag. The filtered signal is slightly slower than the original. This means to have the most responsive controller we should minimize the filters used.
 
 ## Dynamic filters
 

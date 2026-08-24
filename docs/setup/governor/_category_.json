@@ -1,0 +1,9 @@
+{
+  "label": "Governor Setup",
+  "position": 100,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "configurator/tabs/governor"
+  }
+}

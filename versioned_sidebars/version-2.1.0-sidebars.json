@@ -71,7 +71,6 @@
               "label": "Edge Tx",
               "items": [
                 "setup/radio-setup/radio-setup-edgetx/edgetx-generic-radio-setup",
-                "setup/radio-setup/radio-setup-edgetx/lua-RF2-touch",
                 "setup/radio-setup/radio-setup-edgetx/widget-etx-bob00"
               ]
             },

@@ -20,7 +20,7 @@ Rotorflight is based on Betaflight and uses the Betaflight configuration as its 
 
 ## Flash Firmware to FC
 
-Connect the FC to your computer with an USB data cable. Now you are ready to install the Rotorflight firmware to your FC. There are five different versions of the firmware, each version targeting a specific microprocessor: F405, F411, F7X2, F745, and H743. Your FC must use one of those processors. Besides firmware, each FC has it's own configuration. The configuration specifies the FC board, e.g. what pads are used for what.
+Connect the FC to your computer with an USB data cable. Now you are ready to install the Rotorflight firmware to your FC. There are five different versions of the firmware, each version targeting a specific microprocessor: F405, F411, F7X2, F745, and H743. Your FC must use one of those processors. Besides firmware, each FC has its own configuration. The configuration specifies the FC board, e.g. what pads are used for what.
 
 ### Step 1.
 
@@ -85,4 +85,4 @@ Rotorflight Configurator will display DFU - STM32 BOOTLOADER at the top of the p
 
 ![Flashing](./img/flash-7.png)
 
-If you still having problem connecting to the MCU, install the [**Impulse-RC Driver Fixer**](https://impulserc.com/pages/downloads).
+If you still having problem connecting to the MCU, install the [**Impulse-RC Driver Fixer**](https://github.com/ImpulseRC/ImpulseRC_Driver_Fixer).
