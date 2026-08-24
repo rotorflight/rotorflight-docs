@@ -37,7 +37,7 @@ Rotorflight is a flight control software suite for single rotor RC helicopters. 
 - [Sensors](/docs/configurator/tabs/sensors.md): On this tab you can enable or disable trending for each sensor. This is for testing and confirmation that each is working correctly.
 - [Servos](/docs/configurator/tabs/servos.md): Servo 101
 - [Setup](/docs/configurator/tabs/setup.md): Setup
-- [Status](/docs/configurator/tabs/status.md): A place for basic flight controller information. The status tab is the first tab you see when you connect to your flight controller. You can check the gyroscope live preview, view the arming prevention flags and other FC information.
+- [Status](/docs/configurator/tabs/status.md): Provides basic Flight Controller (FC) information. The status tab is the first tab you see when you connect to your flight controller. You can check the gyroscope live preview, view the arming prevention flags and other FC information.
 
 ### Contributing
 

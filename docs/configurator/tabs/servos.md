@@ -39,7 +39,7 @@ To tune this, increase the speed value (measured in ms/60°, as in the servo dat
 
 ### Reverse[​](#reverse "Direct link to Reverse")
 
-Toggle for forward or reverse servo direction.
+Toggle to reverse the servo direction.
 
 ### Geo Cor[​](#geo-cor "Direct link to Geo Cor")
 
@@ -61,7 +61,7 @@ The servo override slider scale is in degrees
 
 CCPM is a control system where multiple servos work together to move a helicopter’s swashplate for both cyclic and collective pitch. It is the most common system used in model helicopters today.
 
-For 120, 135 and 140 deg CCPM swashplates, looking from the tail towards the nose of the helicopter:
+For 120, 135 and 140 degree CCPM swashplates, looking from the tail towards the nose of the helicopter:
 
 Servo 1 - Pitch (inline with the centerline of the helicopter)<br /><!-- -->Servo 2 - Left side<br /><!-- -->Servo 3 - Right side<br /><!-- -->Servo 4 - Rudder
 
@@ -83,6 +83,6 @@ Servo 1 - Left side<br /><!-- -->Servo 2 - Right side<br /><!-- -->Servo 3 - Rud
 
 ### Direct[​](#direct "Direct link to Direct")
 
-For helicopters that uses mechanical mixing, where the *Pitch*, *Roll*, and *Collective* movements are each controlled by a dedicated servo by means of a complex series of linkages and levers from the servos up to the swashplate.
+For helicopters that use mechanical mixing, where the *pitch*, *roll*, and *collective* movements are each controlled by a dedicated servo by means of a complex series of linkages and levers from the servos up to the swashplate.
 
 Servo 1 - Pitch<br /><!-- -->Servo 2 - Roll<br /><!-- -->Servo 3 - Collective<br /><!-- -->Servo 4 - Rudder

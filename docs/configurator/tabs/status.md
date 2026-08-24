@@ -1,10 +1,10 @@
 # Status
 
-A place for basic flight controller information. The status tab is the first tab you see when you connect to your flight controller. You can check the gyroscope live preview, view the arming prevention flags and other FC information.
+Provides basic Flight Controller (FC) information. The status tab is the first tab you see when you connect to your flight controller. You can check the gyroscope live preview, view the arming prevention flags and other FC information.
 
 ## Info[​](#info "Direct link to Info")
 
-Shows some basic data from the flight controller and model. This includes:
+Shows data from the flight controller. This includes:
 
 * Craft Name
 * Firmware
@@ -20,13 +20,13 @@ Shows some basic data from the flight controller and model. This includes:
 
 caution
 
-With the arming enabled, the motor can spoolup when the throttle is released.
+With arming enabled, the motor can spool up when the throttle is released.
 
 Remove blades for safety.
 
 * **Arming Disable Flags:** Shows all of the "errors" that prevent the flight controller from arming. This is useful to check if you're having issues arming.
 
-You can find out a description of these flags from the [List of Arming prevention flags](https://betaflight.com/docs/wiki/guides/current/Arming-Sequence-And-Safety#description-of-arming-prevention-flags)
+You can find a description of these flags from the [List of Arming prevention flags](https://betaflight.com/docs/wiki/guides/current/Arming-Sequence-And-Safety#description-of-arming-prevention-flags)
 
 ## Battery[​](#battery "Direct link to Battery")
 
@@ -57,6 +57,6 @@ A graphic replica of real aircraft instruments.
 
 ## Receiver[​](#receiver "Direct link to Receiver")
 
-The receiver output preview shows the current state of the receiver channels, both in channel value and graph forms, and how those affect the heli movement.
+The receiver output preview shows the current state of the receiver channels in microseconds (µs) and percent. It also shows the received signal strength (RSSI).
 
 ![Status Tab](/assets/images/status-receiver-f3f873c361cd5fc3490d0570b15c486c.png)
