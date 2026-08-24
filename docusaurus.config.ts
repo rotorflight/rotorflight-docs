@@ -19,7 +19,7 @@ const config: Config = {
   ...(isFaster && {
     future: {
       v4: true, // opt-in for Docusaurus v4 planned changes
-      experimental_faster: {
+      faster: {
         swcJsLoader: true,
         swcJsMinimizer: true,
         swcHtmlMinimizer: true,
