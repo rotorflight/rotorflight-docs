@@ -1,5 +1,5 @@
 ---
-sidebar_position: 95
+sidebar_position: 150
 ---
 
 # SmartFuel
@@ -21,10 +21,10 @@ A standard battery percentage is calculated directly from voltage using a straig
 
 SmartFuel fixes this by:
 
-- **Starting from an honest baseline** — on plug-in, SmartFuel reads the pack voltage and sets the initial percentage from that, rather than always assuming 100%. If you plug in a partially used pack, the gauge starts at the right place.
-- **Compensating for sag** — while airborne, it accounts for the load on the rotor so a punch doesn't trigger a false warning
-- **Only ever counting down** — the displayed percentage never rises during a flight, so you always see the worst case seen so far
-- **Optionally tracking actual consumption** — if you have a current sensor, SmartFuel can blend in real mAh usage for extra accuracy
+* **Starting from an honest baseline** — on plug-in, SmartFuel reads the pack voltage and sets the initial percentage from that, rather than always assuming 100%. If you plug in a partially used pack, the gauge starts at the right place.
+* **Compensating for sag** — while airborne, it accounts for the load on the rotor so a punch doesn't trigger a false warning
+* **Only ever counting down** — the displayed percentage never rises during a flight, so you always see the worst case seen so far
+* **Optionally tracking actual consumption** — if you have a current sensor, SmartFuel can blend in real mAh usage for extra accuracy
 
 The result is a cleaner, calmer fuel gauge on your radio that you can actually trust.
 
@@ -33,9 +33,9 @@ The result is a cleaner, calmer fuel gauge on your radio that you can actually t
 SmartFuel always needs a battery voltage source and a known cell count. Cell
 count can be detected automatically or set in the Power tab.
 
-- **VOLTAGE** — a battery voltage sensor configured (Battery ADC or ESC telemetry).
-- **CURRENT** — a current sensor configured and battery capacity set.
-- **COMBINED** — a battery voltage sensor, current sensor, and battery capacity
+* **VOLTAGE** — a battery voltage sensor configured (Battery ADC or ESC telemetry).
+* **CURRENT** — a current sensor configured and battery capacity set.
+* **COMBINED** — a battery voltage sensor, current sensor, and battery capacity
   set.
 
 ## Setup
@@ -83,8 +83,8 @@ The defaults are a sensible starting point. Most pilots will not need to change 
 
 Controls how fast the voltage reading is allowed to drop. A lower value makes the estimate more stable but slower to react to genuine depletion.
 
-- **Drops too aggressively under load** → decrease this value
-- **Tracks real depletion too slowly** → increase this value
+* **Drops too aggressively under load** → decrease this value
+* **Tracks real depletion too slowly** → increase this value
 
 ### Charge Drop Rate
 
@@ -94,8 +94,8 @@ The maximum speed at which the voltage-based percentage can fall once the model
 is armed, or has been armed during the current power cycle. This acts as a
 smoothing limit on the voltage path.
 
-- **Percentage lags too far behind real pack state** → increase this value
-- **Percentage drops too hard during load spikes** → decrease this value
+* **Percentage lags too far behind real pack state** → increase this value
+* **Percentage drops too hard during load spikes** → decrease this value
 
 ### Sag Gain
 
@@ -103,8 +103,8 @@ smoothing limit on the voltage path.
 
 How aggressively SmartFuel compensates for voltage sag under load. A higher value means the estimate is more tolerant of dips during hard maneuvers.
 
-- **Reading feels too pessimistic under load** → increase this value
-- **Reading seems too optimistic** → decrease this value
+* **Reading feels too pessimistic under load** → increase this value
+* **Reading seems too optimistic** → decrease this value
 
 ### Tuning workflow
 
@@ -138,8 +138,8 @@ SmartFuel values.
 
 RF Suite exposes two virtual sensors:
 
-- **Smart Fuel** — the usable fuel percentage, with your configured reserve remapped to 0%. When this reads 0%, land.
-- **Smart Consumption** — consumed mAh reported by the firmware, or a value
+* **Smart Fuel** — the usable fuel percentage, with your configured reserve remapped to 0%. When this reads 0%, land.
+* **Smart Consumption** — consumed mAh reported by the firmware, or a value
   derived by RF Suite for the current SmartFuel session.
 
 RF Suite creates these local Ethos sensors from the real telemetry sensors sent

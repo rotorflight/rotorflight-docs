@@ -1,3 +1,7 @@
+---
+sidebar_position: 190
+---
+
 # GPS
 
 Rotorflight currently only uses GPS for telemetry. Return to home, and other autopilot features are not available.
