@@ -1,6 +1,8 @@
 ---
 sidebar_position: 60
 ---
+import theCouplingEffect from "./img/the-coupling-effect.png";
+import diskBodyModel from "./img/Disk_Body_Model.jpg";
 
 # Modeling Cross Coupling
 
@@ -14,7 +16,7 @@ An Initial Attempt in Theorizing Cross-Coupling Oscillation Between Roll and Pit
 
 When the helicopter experience high disturbance in the pitch axis, it would wobble to the roll axis. Similarly, when the helicopter experience disturbance in the roll axis, it would transfer to the pitch axis, but to a lesser degree.
 
-![The Coupling Effect](./img/the-coupling-effect.png)\
+<img src={theCouplingEffect} alt="The Coupling Effect" style={{ maxWidth: '100%' }} />\
 (Thanks to Jonas for the picture)
 
 ## To explain the coupling
@@ -32,7 +34,7 @@ The transient coupling is likely due to the change of phase lag of the main roto
 
 The rotor and body can be modeled as a rigid spinning disk and a body coupled by a spring and a damper. When commanded to pitch forward, the disk tilts forward first and the body stays the same attitude. Since there is a difference in angles, the spring loads up, giving the body a torque in positive pitch. However, by Newton's third law, the disk would "feel" a positive pitch force, which turns 90 degree and gives a torque on the roll axis.
 
-![Disk Body Model](./img/Disk_Body_Model.jpg)
+<img src={diskBodyModel} alt="Disk Body Model" style={{ maxWidth: '100%' }} />
 
 ## To explain the different magnitudes
 
