@@ -1,3 +1,7 @@
+---
+sidebar_position: 140
+---
+
 # Profiles
 
 :::info
@@ -60,7 +64,7 @@ The limit of how much I-term can be charged. During normal flights, it would not
 
 ### Offset Limit/Gain
 
-The offset gains are used for the [High Speed Integral](../../Tuning/High-Speed-Integral.md) feature.
+The offset gains are used for the [High Speed Integral](../../Tuning/High-Speed-Integral.mdx) feature.
 
 ![Profiles](../img/profiles-offset-limit.png)
 
