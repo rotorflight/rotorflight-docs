@@ -2,6 +2,12 @@
 sidebar_position: 100
 ---
 
+import servo1 from "../img/servo-1.png";
+import servo3 from "../img/servo-3.png";
+import ccpm from "../img/ccpm.svg";
+import img90degL from "../img/90deg-l.svg";
+import img90degV from "../img/90deg-v.svg";
+
 # Servos
 
 ## Servo 101
@@ -11,7 +17,7 @@ sidebar_position: 100
 * **Set scaling** – Use *Scale neg* and *Scale pos* to achieve correct servo angles. With *Servo Override* active, specify an angle of 30°. If the servo moves less, increase *Scale pos*; if it moves more, decrease it. Repeat for *Scale neg*.
 * **Adjust limits only for mechanical issues** – Use *Min* or *Max* to prevent binding or extend travel if required. For range adjustment of roll, pitch, or collective, use the mixer instead.
 
-![Servo Tab](../img/servo-1.png)
+<img src={servo1} alt="Servo Tab" style={{ maxWidth: '100%', borderRadius: '10px' }} />
 
 ## Servo Configuration parameters
 
@@ -57,7 +63,7 @@ The toggle at the bottom of the page enables servo overrides, allowing each serv
 
 The servo override slider scale is in degrees
 
-![Servo Tab](../img/servo-3.png)
+<img src={servo3} alt="Servo Tab" style={{ maxWidth: '100%', borderRadius: '10px' }} />
 
 ## Servo Numbering
 
@@ -72,7 +78,7 @@ Servo 2 - Left side\
 Servo 3 - Right side\
 Servo 4 - Rudder
 
-![Servo Tab](../img/ccpm.svg)
+<img src={ccpm} alt="Servo Tab" style={{ maxWidth: '100%', borderRadius: '10px' }} />
 
 ### Fixed pitch
 
@@ -82,7 +88,7 @@ Servo 1 - Pitch (inline with the centerline of the helicopter)\
 Servo 2 - Side servo\
 Servo 3 - Rudder
 
-![Servo Tab](../img/90deg-l.svg)
+<img src={img90degL} alt="Servo Tab" style={{ maxWidth: '100%', borderRadius: '10px' }} />
 
 #### 90deg V
 
@@ -90,7 +96,7 @@ Servo 1 - Left side\
 Servo 2 - Right side\
 Servo 3 - Rudder
 
-![Servo Tab](../img/90deg-v.svg)
+<img src={img90degV} alt="Servo Tab" style={{ maxWidth: '100%', borderRadius: '10px' }} />
 
 ### Direct
 

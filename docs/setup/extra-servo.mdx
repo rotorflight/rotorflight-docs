@@ -1,6 +1,7 @@
 ---
 sidebar_position: 170
 ---
+
 import remappingServo1 from "./img/remapping-servo-1.png";
 import remappingServoTimer from "./img/remapping-servo-timer.png";
 import remappingServoMixer from "./img/remapping-servo-mixer.png";
@@ -16,16 +17,16 @@ Sometimes we may wish to add an extra servo to our helicopter to be controlled b
 
 **Step 1:** Assign the servo to your chosen pin. In the pic below we have assigned Servo 5 to Serial Rx 2.
 
-<img src={remappingServo1} alt="Adding Servo" style={{ maxWidth: '100%' }} />
+<img src={remappingServo1} alt="Adding Servo" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 **Step 2:** Assign the timer to your new servo. This timer cannot clash with motors, frequency or LED\_STRIP. They can be assigned to the same timer as one of your other servos; however, it then will need to be set to the same frequency (e.g. if one is set to 333Hz they will both need to be set to 333Hz). If it can be assigned to a totally different timer then you can assign whatever frequency you like.
 
-<img src={remappingServoTimer} alt="Adding Servo" style={{ maxWidth: '100%' }} />
+<img src={remappingServoTimer} alt="Adding Servo" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 **Step 3:** In the 'Advanced' section assign your AUX channel to servo 5 and then select and copy the mixer config displayed.
 
-<img src={remappingServoMixer} alt="Adding Servo" style={{ maxWidth: '100%' }} />
+<img src={remappingServoMixer} alt="Adding Servo" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 **Step 4:** Open the configurator and go to the CLI page. Paste the config from the mixer into the command line and click \[ENTER]. Type save and click \[ENTER].
 
-<img src={remappingServoCli} alt="Adding Servo" style={{ maxWidth: '100%' }} />
+<img src={remappingServoCli} alt="Adding Servo" style={{ maxWidth: '100%' , borderRadius: '10px' }} />

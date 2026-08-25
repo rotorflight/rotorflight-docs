@@ -1,6 +1,7 @@
 ---
 sidebar_position: 250
 ---
+
 import openLagerSlideInFix from "./img/OpenLager-slide-in-fix.png";
 import openlagerSerialPort from "./img/openlager-serial-port.png";
 
@@ -14,7 +15,7 @@ An OpenLager is not the much cheaper OpenLog. They can log much faster and is mo
 
 Some versions use an open/lock hinge mechanism instead of a 'push to eject' SD card socket, so you can't wrap it in heat shrink tube. You can fix that by carefully flattening the SD card retainer pin a little bit.
 
-<img src={openLagerSlideInFix} alt="OpenLager" style={{ maxWidth: '100%' }} />
+<img src={openLagerSlideInFix} alt="OpenLager" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 ## Introduction
 
@@ -30,7 +31,7 @@ The OpenLager can be connected to the FC using just three wires: +5V, ground and
 
 After you've connected the OpenLager, you have to tell Rotorflight which UART the TX pad for the logger is connected to. You can specify that UART in the *Configuration* tab, under *Blackbox logging*. For the OpenLager select 2000000 bps. Click *Save* and *Reboot*.
 
-<img src={openlagerSerialPort} alt="OpenLager port setup" style={{ maxWidth: '100%' }} />
+<img src={openlagerSerialPort} alt="OpenLager port setup" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 After configuring the OpenLager you can go to the *Blackbox* tab to specify what should be logged at what speed when.
 
