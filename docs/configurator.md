@@ -16,7 +16,7 @@
 
 ## [📄️Presets](/docs/configurator/tabs/presets.md)
 
-[Presets Tab](/docs/configurator/tabs/presets.md)
+[Presets provide an easy way to configure a Rotorflight setup or share tuning parameters with others. They can be used for anything from a single configuration change to a complete helicopter setup.](/docs/configurator/tabs/presets.md)
 
 ## [📄️Receiver](/docs/configurator/tabs/receiver.md)
 

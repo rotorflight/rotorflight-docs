@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkrotorflight_docs||=[]).push([[5091],{55513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Official Release 2.3.0","permalink":"/announcement/official-release-2.3.0","unlisted":false,"date":"2026-08-24T11:23:03.000Z"}]}')}}]);
