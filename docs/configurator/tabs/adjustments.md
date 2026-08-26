@@ -1,3 +1,7 @@
+---
+sidebar_position: 160
+---
+
 # Adjustments
 
 There are total 32 adjustment slots, each assigning an AUX channel to a configuration parameter or a special function. An adjustment slot consist of an enabling condition, an adjustment function, and parameter limits.
@@ -10,11 +14,11 @@ Any changes are taking effect immediately, and are saved in the configuration.
 
 ## Example - Select a Profile In-Flight
 
-Being able to switch between profiles in-flight allows you to use different head-speeds with differently tuned PIDs. It can also help with PID tuning, since it makes A/B testing possible with the flick of a switch.
+Being able to switch between profiles in-flight allows you to use different headspeeds with differently tuned PIDs. It can also help with PID tuning, since it makes A/B testing possible with the flick of a switch.
 
 ### Simple example
 
-Here we use only one channel -AUX4- for *PID* and *Rates* Profiles Selection. Assign AUX4 to a 3-position switch on the TX, so that the switch outputs 1000/1500/2000us. [Profile Switching Example](../../setup/profile-switching-example.md).
+Here we use only one channel -AUX4- for *PID* and *Rates* Profiles Selection. Assign AUX4 to a 3-position switch on the TX, so that the switch outputs 1000/1500/2000us. [Profile Switching Example](../../setup/profile-switching-example.mdx).
 
 ## Adjustment Types
 

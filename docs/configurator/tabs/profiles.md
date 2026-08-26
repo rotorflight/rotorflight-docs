@@ -1,7 +1,11 @@
+---
+sidebar_position: 140
+---
+
 # Profiles
 
 :::info
-The purpose of profiles are to store in flight tuning parameters. The aim is usually to have several 'profiles' that you can switch between during flight to change flight performance. Things like different headspeeds, tuning, rescue settings etc can be 'tuned' for the individual flight mode. Please see the [profile switching example](../../setup/profile-switching-example.md)
+The purpose of profiles are to store in flight tuning parameters. The aim is usually to have several 'profiles' that you can switch between during flight to change flight performance. Things like different headspeeds, tuning, rescue settings etc can be 'tuned' for the individual flight mode. Please see the [profile switching example](../../setup/profile-switching-example.mdx)
 :::
 
 ## Main Tuning Parameters
@@ -60,7 +64,7 @@ The limit of how much I-term can be charged. During normal flights, it would not
 
 ### Offset Limit/Gain
 
-The offset gains are used for the [High Speed Integral](../../Tuning/High-Speed-Integral.md) feature.
+The offset gains are used for the [High Speed Integral](../../Tuning/High-Speed-Integral.mdx) feature.
 
 ![Profiles](../img/profiles-offset-limit.png)
 
@@ -144,7 +148,7 @@ An extra low pass filter for each axis. It is specifically designed to preserve 
 
 An extra first order low pass filter just for the D-gain to further reduce the sensitivity to noise. A high value decreases the effectiveness but may potentially increase the D-gain performance. A low value increase the filter effect but may hinder D-term effectiveness. It is advised to keep it around 20Hz to prevent oscillation.
 
-#### B-Term Cut-off
+#### B-Term Cutoff
 
 This is controlling how "quick" or "twitchy" the boost is. This works exactly the same as D-cutoff, but on setpoint.
 It is safe to start with the same cutoffs as used with D. Usually in the range of 10..20. This is used in conjunction with [Boost](./profiles.md#boost) or [B-gain](./profiles.md#boost)
@@ -185,11 +189,11 @@ Enable or disable the rescue mode.
 
 Activate flip to upright option when the heli is inverted.
 
-#### Pull-up Collective
+#### Pullup Collective
 
 Values 0.0-100. This is to be set to a level where the helicopter rapidly gains height.
 
-#### Pull-up Time
+#### Pullup Time
 
 How long pull up collective should be applied. This is usually about 0.3 to 0.5s
 

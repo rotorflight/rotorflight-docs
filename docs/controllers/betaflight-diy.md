@@ -1,5 +1,5 @@
 ---
-sidebar_position: 70
+sidebar_position: 80
 ---
 
 # DIY board - Betaflight FC
@@ -22,7 +22,7 @@ It's fairly easy to replace the stock FC and ESC with an AIO whoop board. Here w
 
 * It's able to do 15A continuously with peaks of 17A, which should be enough for the main motor.
 * It also has a 2A 5V BEC, which is plenty for the servos.
-* There are enough connections (pads) for the servos, ELRS and -optional- an [OpenLager](../setup/openlager.md) blackbox logging device.
+* There are enough connections (pads) for the servos, ELRS and -optional- an [OpenLager](../setup/openlager.mdx) blackbox logging device.
 
 The receiver used here is a [BETAFPV ELRS Lite](https://betafpv.com/products/elrs-lite-receiver).
 

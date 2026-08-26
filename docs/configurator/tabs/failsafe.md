@@ -1,3 +1,7 @@
+---
+sidebar_position: 60
+---
+
 # Failsafe
 
 ![Failsafe Tab](../img/failsafe-main.png)

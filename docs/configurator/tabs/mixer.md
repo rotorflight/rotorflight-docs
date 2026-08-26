@@ -1,3 +1,7 @@
+---
+sidebar_position: 110
+---
+
 # Mixer
 
 This section will describe the configuration of the mixer and calibrate the rotor blade angles.
