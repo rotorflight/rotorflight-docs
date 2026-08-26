@@ -1,6 +1,7 @@
 ---
 sidebar_position: 180
 ---
+
 import nitroSetup1 from "./img/nitro-setup-1.png";
 import nitroSetup2 from "./img/nitro-setup-2.png";
 import nitroSetup3 from "./img/nitro-setup-3.png";
@@ -10,7 +11,7 @@ import nitroSetup4 from "./img/nitro-setup-4.png";
 
 1. First plug in the throttle servo into the ESC port. Go to the motors page.
 
-   <img src={nitroSetup1} alt="Nitro setup" style={{ maxWidth: '100%' }} />
+   <img src={nitroSetup1} alt="Nitro setup" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 2. Set *ESC throttle protocol* to PWM
 
@@ -20,7 +21,7 @@ import nitroSetup4 from "./img/nitro-setup-4.png";
 
 5. Set the *Gear ratios* and set *Main Motor pole count* to 2.
 
-   <img src={nitroSetup2} alt="Nitro setup" style={{ maxWidth: '100%' }} />
+   <img src={nitroSetup2} alt="Nitro setup" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 The *Motor Stop Throttle PWM value* is the throttle cut<br />
 *0% Throttle PWM value* is the motor idle<br />
@@ -39,15 +40,15 @@ Note: if the servo is moving around the wrong way, you need to swap the *100% Th
 
 10. Set *0% throttle PWM value* around 100µs above *Motor Stop Throttle PWM value*.
 
-    <img src={nitroSetup3} alt="Nitro setup" style={{ maxWidth: '100%' }} />
+    <img src={nitroSetup3} alt="Nitro setup" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 11. Enable *Motor Override* and set the slider to 100%. Now adjust the *100% Throttle PWM value* until the carb is fully open. To adjust/save the value you need to save and reboot every time.
 
-    <img src={nitroSetup4} alt="Nitro setup" style={{ maxWidth: '100%' }} />
+    <img src={nitroSetup4} alt="Nitro setup" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 12. Set *Governor mode* to MODE1 or STANDARD.
 
-13. Set *Handover throttle* to around 40-50%. You can then use on the radio a curve on a pot meter or mixed on your collective stick so you can do the spool-up manually. Then you can also adjust the motor idle. Above this point the governor will take control over the headspeed.
+13. Set *Handover throttle* to around 40-50%. You can then use on the radio a curve on a pot meter or mixed on your collective stick so you can do the spoolup manually. Then you can also adjust the motor idle. Above this point the governor will take control over the headspeed.
 
 Here's a video where Jiawen explains how to setup your throttle on the transmitter.
 
