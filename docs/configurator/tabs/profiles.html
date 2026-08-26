@@ -12,8 +12,8 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Rotorflight" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.065109be.css">
-<script src="/assets/js/runtime~main.e6042009.js" defer="defer"></script>
-<script src="/assets/js/main.061b47a3.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.e184c6ab.js" defer="defer"></script>
+<script src="/assets/js/main.8464fef7.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -34,7 +34,7 @@
 <p>The gain factor proportional to the input. In practice, feedforward gain is used to eliminate I-term windup, which occurs after continuous flips and rolls. If the helicopter does not stop immediately and continue moving in the rolling / flipping direction, feedforward gain needs to be increased. If FF gain is set to be too high, the helicopter may overshoot during such maneuver. Thus it is advised to start tuning from low.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="boost">Boost<a href="#boost" class="hash-link" aria-label="Direct link to Boost" title="Direct link to Boost" translate="no">​</a></h4>
 <p>The setpoint boost - or B-term will increase the stick reaction speed. In case the heli is not reacting fast enough, the reaction can be boosted with this new B-gain on each axis separately. This seems to be in the range of 20..50</p>
-<p>This provides a rapid short term increase in your command. This parameter is used in conjunction with the time <a class="" href="/docs/configurator/tabs/profiles.md#b-term-cut-off">B-Cutoff</a>.</p>
+<p>This provides a rapid short term increase in your command. This parameter is used in conjunction with the time <a class="" href="/docs/configurator/tabs/profiles#b-term-cutoff">B-Cutoff</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="advanced-settings">Advanced Settings<a href="#advanced-settings" class="hash-link" aria-label="Direct link to Advanced Settings" title="Direct link to Advanced Settings" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pid-controller-settings">PID Controller Settings<a href="#pid-controller-settings" class="hash-link" aria-label="Direct link to PID Controller Settings" title="Direct link to PID Controller Settings" translate="no">​</a></h3>
 <img src="/assets/images/profiles-pid-controller-settings-5ffb300380e6f943d4cd109012ec02a6.png" alt="Profiles" style="max-width:100%;border-radius:10px">
@@ -93,7 +93,7 @@
 <p>An extra first order low pass filter just for the D-gain to further reduce the sensitivity to noise. A high value decreases the effectiveness but may potentially increase the D-gain performance. A low value increase the filter effect but may hinder D-term effectiveness. It is advised to keep it around 20Hz to prevent oscillation.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="b-term-cutoff">B-Term Cutoff<a href="#b-term-cutoff" class="hash-link" aria-label="Direct link to B-Term Cutoff" title="Direct link to B-Term Cutoff" translate="no">​</a></h4>
 <p>This is controlling how &quot;quick&quot; or &quot;twitchy&quot; the boost is. This works exactly the same as D-cutoff, but on setpoint.
-It is safe to start with the same cutoffs as used with D. Usually in the range of 10..20. This is used in conjunction with <a class="" href="/docs/configurator/tabs/profiles.md#boost">Boost</a> or <a class="" href="/docs/configurator/tabs/profiles.md#boost">B-gain</a></p>
+It is safe to start with the same cutoffs as used with D. Usually in the range of 10..20. This is used in conjunction with <a class="" href="/docs/configurator/tabs/profiles#boost">Boost</a> or <a class="" href="/docs/configurator/tabs/profiles#boost">B-gain</a></p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="auto-leveling-settings">Auto Leveling Settings<a href="#auto-leveling-settings" class="hash-link" aria-label="Direct link to Auto Leveling Settings" title="Direct link to Auto Leveling Settings" translate="no">​</a></h2>
 <img src="/assets/images/profiles-auto-leveling-settings-224b7eb5de21a1f3d16d5464aed9b162.png" alt="Profiles" style="max-width:100%;border-radius:10px">
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="acro-trainer-gain">Acro Trainer gain<a href="#acro-trainer-gain" class="hash-link" aria-label="Direct link to Acro Trainer gain" title="Direct link to Acro Trainer gain" translate="no">​</a></h4>

@@ -28,9 +28,7 @@ The H-Lite FC is configured with 4 servos and 1 motor. If you wish to use this b
 
 ### UART ports[​](#uart-ports "Direct link to UART ports")
 
-![UARTS](/assets/images/mt-uarts-94be99f37528279566a1d4e5c025e168.png)
-
-![UARTS](/assets/images/mt-hl-ports-bfd33c6e4363dd49a400bfae70fc29f2.png)
+![UARTS](/assets/images/mt-uarts-94be99f37528279566a1d4e5c025e168.png) ![UARTS](/assets/images/mt-hl-ports-bfd33c6e4363dd49a400bfae70fc29f2.png)
 
 ### Manuals[​](#manuals "Direct link to Manuals")
 

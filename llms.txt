@@ -55,15 +55,15 @@ There are several flight controllers specifically made for Rotorflight.
 
 - [Controllers](/docs/controllers.md): There are several flight controllers specifically made for Rotorflight.
 - [DIY board - Betaflight FC](/docs/controllers/betaflight-diy.md): Rotorflight is a fork of the popular Betaflight project commonly used for drones. This means that all of the drone boards designed for betaflight are also compatible with Rotorflight. Drones most commonly use 4 motors and do not have servos so we need to do some additional configuration to add these items (as shown below).
-- [Flydragon V2.2](/docs/controllers/flydragon2.2.md): Flydragon v2.2
-- [Flywing Heli405](/docs/controllers/flywingf405heli.md): Flywing Heli405
+- [Flydragon V2.2](/docs/controllers/flydragon2.2.md): Hardware Specifications：
+- [Flywing Heli405](/docs/controllers/flywingf405heli.md): Hardware Specifications：
 - [FrSky Vantac RF007](/docs/controllers/frsky-007.md): FrSky Vantac RF007
 - [Goosky F4-mini](/docs/controllers/goosky/f4mini.md): Goosky's purpose-built answer for S2 Max and Ultra pilots who demand more. This compact flight controller packs genuine Rotorflight processing into a micro-heli form factor — because your small bird deserves big-heli tech.
 - [Goosky F701-ELRS](/docs/controllers/goosky/f701.md): Designed specifically for Rotorflight, the Goosky F701-ELRS provides fast response and precise, stable control for RC helicopter dynamics.
 - [Rotorflight S2 Max and Ultra Tunes](/docs/controllers/goosky/s2-tune.md): This is the official Rotorflight tune for the Goosky S2 Max and Ultra. We’ve spent a lot of time fine-tuning this setup for the Goosky S2 Max and Ultra.
-- [Matek G474Heli](/docs/controllers/matek_heli.md): Matek G474HELI
-- [Matek G474-HLite](/docs/controllers/matek_hlite.md): Matek G474HELI
-- [Radiomaster NEXUS](/docs/controllers/rm-nexus.md): Nexus
+- [Matek G474Heli](/docs/controllers/matek_heli.md): Hardware Specifications：
+- [Matek G474-HLite](/docs/controllers/matek_hlite.md): Hardware Specifications：
+- [Radiomaster NEXUS](/docs/controllers/rm-nexus.md): Release Video
 
 ### download
 

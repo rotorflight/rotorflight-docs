@@ -26,8 +26,4 @@ MCU: STM32F405RGT6 IMU: ICM42688<br /><!-- -->Black Box: 16MB<br /><!-- -->Baro:
 * UART 2 - Top JST-GH port
 * UART 6 - DSM and SBUS
 
-![UARTS](/assets/images/fw-uarts-f48bd9c82aa7726f97893ffd0f5ecda4.png)
-
-![Ports](/assets/images/fw-ports2-de14d664ea175b3e43d8dc6a3882b417.png)
-
-![Ports](/assets/images/fw-ports-1c8ddfb2d121059f2ec0812006b3cc47.png)
+![UARTS](/assets/images/fw-uarts-f48bd9c82aa7726f97893ffd0f5ecda4.png) ![Ports](/assets/images/fw-ports2-de14d664ea175b3e43d8dc6a3882b417.png) ![Ports](/assets/images/fw-ports-1c8ddfb2d121059f2ec0812006b3cc47.png)

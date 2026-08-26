@@ -20,9 +20,7 @@ When updating Rotorflight firmware. Please use the MATEKG474HELI target.
 
 ### UART ports[​](#uart-ports "Direct link to UART ports")
 
-![UARTS](/assets/images/mt-uarts-94be99f37528279566a1d4e5c025e168.png)
-
-![UARTS](/assets/images/mt-ports-fba5f20a070078014ca4793ae7879158.png)
+![UARTS](/assets/images/mt-uarts-94be99f37528279566a1d4e5c025e168.png) ![UARTS](/assets/images/mt-ports-fba5f20a070078014ca4793ae7879158.png)
 
 ### Onboard BEC[​](#onboard-bec "Direct link to Onboard BEC")
 

@@ -26,9 +26,13 @@ Any of the Rotorflight receiver protocols can be used with the NEXUS. Radiomaste
 
 ### F-Port[​](#f-port "Direct link to F-Port")
 
-Nexus supports F.Port on: The 'TX' pin of Port A, B or C or by remapping the SBUS to a TX for F.Port.<br />![F.PORT](/assets/images/nexus-fport-e6ab8272f0739a3da4b280da43ed4f73.png)
+Nexus supports F.Port on: The 'TX' pin of Port A, B or C or by remapping the SBUS to a TX for F.Port.\\
 
-F.Port is an Inverted protocol over a single wire so must configured with both of these options enabled.<br />![Remap SBUS to F.PORT](/assets/images/nexus-remap-89e5b28d84acf5b21a5ee9797c30bfbd.png)
+![F.PORT](/assets/images/nexus-fport-e6ab8272f0739a3da4b280da43ed4f73.png)
+
+F.Port is an Inverted protocol over a single wire so must configured with both of these options enabled.\\
+
+![Remap SBUS to F.PORT](/assets/images/nexus-remap-89e5b28d84acf5b21a5ee9797c30bfbd.png)
 
 ### Motorised Tail[​](#motorised-tail "Direct link to Motorised Tail")
 

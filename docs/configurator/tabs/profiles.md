@@ -30,7 +30,7 @@ The gain factor proportional to the input. In practice, feedforward gain is used
 
 The setpoint boost - or B-term will increase the stick reaction speed. In case the heli is not reacting fast enough, the reaction can be boosted with this new B-gain on each axis separately. This seems to be in the range of 20..50
 
-This provides a rapid short term increase in your command. This parameter is used in conjunction with the time [B-Cutoff](/docs/configurator/tabs/profiles.md#b-term-cut-off).
+This provides a rapid short term increase in your command. This parameter is used in conjunction with the time [B-Cutoff](/docs/configurator/tabs/profiles.md#b-term-cutoff).
 
 ## Advanced Settings[​](#advanced-settings "Direct link to Advanced Settings")
 

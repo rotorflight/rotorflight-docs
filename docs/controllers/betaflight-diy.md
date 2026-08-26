@@ -12,7 +12,7 @@ Rotorflight is a fork of the popular Betaflight project commonly used for drones
 
 # Example: M1 with DarwinFPV 15A
 
-The OMPHOBBY M1 is a small double brushless helicopter with an all-up weight of about 120g. The stock FC is so-so and has some peculiarities, such as a huge deadband around center and a tail that sometimes [spins volatile](https://www.youtube.com/watch?v=q4H1CzN1pPY).
+The OMPHOBBY M1 is a small double brushless helicopter with an all up weight of about 120g. The stock FC is so-so and has some peculiarities, such as a huge deadband around center and a tail that sometimes [spins volatile](https://www.youtube.com/watch?v=q4H1CzN1pPY).
 
 It's fairly easy to replace the stock FC and ESC with an AIO whoop board. Here we're using the [DarwinFPV 15A](https://darwinfpv.com/products/darwinfpv-15a-1-3s-f411-ultralight-whoop-aio).
 
@@ -24,14 +24,14 @@ The receiver used here is a [BETAFPV ELRS Lite](https://betafpv.com/products/elr
 
 ![M1](/assets/images/m1-darwinfpv-right-987f944058e8b42db7298affb10d64e7.jpg)
 
-There's also a DarwinFPV 15A with built-in ELRS receiver, but we can't use that version since it uses SPI - which isn't supported by Rotorflight.
+There's also a DarwinFPV 15A with built in ELRS receiver, but we can't use that version since it uses SPI - which isn't supported by Rotorflight.
 
 ## Build notes[​](#build-notes "Direct link to Build notes")
 
 * The AIO is mounted to the M1 frame with some plastic M3 spacers and screws. The spacers are glued to the M1 frame with some epoxy, after cutting the thread underneath them slightly to make a perfect fit.
 * The servo connectors are three Molex PicoBlade connectors glued together (similar to [this bus](/docs/setup/led-strip-quick-start.md#building-the-picoblade-bus)), then connected to the FC using 5 wires (5V/GND using 28AWG, S1/S2/S3 with 30AWG). The underside of the bus is reinforced and insulated with epoxy.
 * None of the servo or tail motor wires are modified, and only the copper connectors on the main motor wires were removed.
-* All wires soldered to the PCBs are secured with some electronics-friendly silicon glue, which will reduce the risk of solder joints breaking or wires loosening during flight.
+* All wires soldered to the PCBs are secured with some electronics friendly silicon glue, which will reduce the risk of solder joints breaking or wires loosening during flight.
 * The ESCs were flashed with [Bluejay](/docs/setup/blheli_s-to-bluejay.md) version 0.21, so we can use bi-directional Dshot with RPM telemetry for filtering and governing.
 * The pre-soldered capacitor on the DarwinFPV 15A has been removed.
 
