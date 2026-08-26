@@ -1,8 +1,8 @@
 {
   "blocked": false,
   "blockMessage": "Rotorflight DocsEditor is temporarily unavailable.",
-  "latestVersion": "1.0.0",
+  "latestVersion": "1.2.0",
   "minSupportedVersion": "1.0.0",
-  "updateMessage": "A newer version of DocsEditor is available.",
-  "downloadUrl": "https://github.com/rotorflight/docseditor/releases/latest"
+  "updateMessage": "v1.2.0 adds a PR viewer (browse and diff any open PR, right in the app), draft PR support, a pre-submit spelling check that blocks typos before they reach a PR, and automatic detection when a PR's branch changed outside the app (e.g. an edit on github.com), with a one-click way to pull those changes into your workspace.",
+  "downloadUrl": "https://github.com/pkaig/rotorflight-docEditor/releases/latest"
 }
