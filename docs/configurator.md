@@ -8,11 +8,11 @@
 
 ## [📄️Setup](/docs/configurator/tabs/setup.md)
 
-[Setup](/docs/configurator/tabs/setup.md)
+[Calibrate Accelerometer](/docs/configurator/tabs/setup.md)
 
 ## [📄️Configuration](/docs/configurator/tabs/configuration.md)
 
-[Personalization](/docs/configurator/tabs/configuration.md)
+[Personalisation](/docs/configurator/tabs/configuration.md)
 
 ## [📄️Presets](/docs/configurator/tabs/presets.md)
 
@@ -24,7 +24,7 @@
 
 ## [📄️Failsafe](/docs/configurator/tabs/failsafe.md)
 
-[Failsafe Tab](/docs/configurator/tabs/failsafe.md)
+[In the event of receiver failsafe the flight controller can be configured to set the commands to a predetermined position.](/docs/configurator/tabs/failsafe.md)
 
 ## [📄️Power](/docs/configurator/tabs/power.md)
 
@@ -58,7 +58,7 @@
 
 ## [📄️Modes](/docs/configurator/tabs/modes.md)
 
-[Modes](/docs/configurator/tabs/modes.md)
+[| ID | Mode Name | Function |](/docs/configurator/tabs/modes.md)
 
 ## [📄️Adjustments](/docs/configurator/tabs/adjustments.md)
 

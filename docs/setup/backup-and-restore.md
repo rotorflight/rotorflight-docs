@@ -22,11 +22,11 @@ Choose what you want to back up. There are several options.
 
 ### Step 3.[​](#step-3 "Direct link to Step 3.")
 
-* Click on ***\[Clear output window]***. This removes any previous commands so they are not captured in your backup.\\
+* Click on ***\[Clear output window]***. This removes any previous commands so they are not captured in your backup.
 
   ![Step 3](/assets/images/restore-2a-4bd63265419cb69c5fd6cc5c5a259965.png)
 
-* Type the backup command (from step 2) in the window and click ***\[ENTER]***.\\
+* Type the backup command (from step 2) in the window and click ***\[ENTER]***.
 
   ![Step 3](/assets/images/restore-2-733c9d2a7a4852fc27b87adea09a9937.png)
 

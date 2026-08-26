@@ -16,7 +16,7 @@ See the other documentation sections for details of the cli commands and setting
 
 #### Diff Backup Using CLI[​](#diff-backup-using-cli "Direct link to Diff Backup Using CLI")
 
-This method shows all user-modified settings but avoids saving values left as default or values that are part of the board targets
+This method shows all user modified settings but avoids saving values left as default or values that are part of the board targets
 
 Note that `diff` only shows the current Rate and PID profiles, whereas `diff all` will show all profiles that have been changed
 
@@ -78,6 +78,6 @@ Repeat the backup process again!
 
 Compare the two backups to make sure you are happy with your restored settings.
 
-Re-apply any new defaults as desired.
+Reapply any new defaults as desired.
 
 ![CLI Tab](/assets/images/cli-cf2c37eee20b79522257a43f5281952b.png)

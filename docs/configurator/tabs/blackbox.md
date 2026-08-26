@@ -6,7 +6,7 @@ Blackbox is a flight data recording feature in Rotorflight. A Blackbox log conta
 
 ## Blackbox data can be logged to:[​](#blackbox-data-can-be-logged-to "Direct link to Blackbox data can be logged to:")
 
-* A flash chip on the FC. Logging is fast, but storage is limited, unless you are using a dedicated RF controller(FlyDragon F7 has 128MByte Flash), and copying log files can be slow.
+* A flash chip on the FC. Logging is fast, but storage is limited, unless you are using a dedicated RF controller(FlyDragon F7 has 128 MByte Flash), and copying log files can be slow.
 * An SD card on the FC, it's fast and storage is only limited by the capacity of the SD card.
 * An external logging device: [OpenLager](/docs/setup/openlager.md). These devices write the log to a micro SD card.
 
@@ -25,7 +25,7 @@ Here you can select the device type.
 * **No Logging**: Disable Logging.
 * **Onboard Flash**: Log to the onboard flash chip (if available).
 * **SD Card**: Log to the onboard SD Card (if available).
-* **Serial Port**: Log to an external logging device (eg. [OpenLager](/docs/setup/openlager.md)).
+* **Serial Port**: Log to an external logging device (e.g. [OpenLager](/docs/setup/openlager.md)).
 
 ### Logging Mode[​](#logging-mode "Direct link to Logging Mode")
 

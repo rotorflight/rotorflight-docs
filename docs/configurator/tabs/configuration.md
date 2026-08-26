@@ -1,6 +1,6 @@
 # Configuration
 
-## Personalization[​](#personalization "Direct link to Personalization")
+## Personalisation[​](#personalisation "Direct link to Personalisation")
 
 Allows you to set your heli name to be shown in the OSD, blackbox logs and diff/dump outputs.
 
@@ -50,7 +50,7 @@ Please choose the functions you wish to assign to your UART.
 
 ### MSP[​](#msp "Direct link to MSP")
 
-As the name suggests, usually only used for lower-level communication using the MSP (MultiWii Serial Protocol) for configuration done by external devices, or to allow a more direct way of control. You can also set a specific baud rate.
+As the name suggests, usually only used for lower level communication using the MSP (MultiWii Serial Protocol) for configuration done by external devices, or to allow a more direct way of control. You can also set a specific baud rate.
 
 ### GPS[​](#gps "Direct link to GPS")
 
