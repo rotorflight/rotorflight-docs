@@ -1,6 +1,7 @@
 ---
 sidebar_position: 110
 ---
+
 import rpmFiltersMissing from "./img/rpm-filters-missing.png";
 import rpmFiltersAdded from "./img/rpm-filters-added.png";
 
@@ -25,10 +26,10 @@ Dynamic filters will filter the gyro signal when an [RPM measurement](rpm-measur
 
 Make a blackbox log of a short flight with constant headspeed. Scroll to the point where the heli has spooled up and is hovering. Mark that point with the `I` key. Scroll near the end and mark that with the `O` key. Now bring up the *Analyzer Display* and enlarge it. It might look like:
 
-<img src={rpmFiltersMissing} alt="Missing filters" style={{ maxWidth: '100%' }} />
+<img src={rpmFiltersMissing} alt="Missing filters" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 This log was made with only a double fundamental filter. As you can see there's some noise around 144Hz. Since the headspeed is 4200 RPM, that must be near the second harmonic (4200/60 = 70\*2 = 140Hz). Also note that the gyro signal in the background is also a bit noisy.
 
 Now let's add some single filters for the 2nd (140Hz) and 3rd (210Hz) harmonic. Suddenly the log looks a lot cleaner:
 
-<img src={rpmFiltersAdded} alt="Added filters" style={{ maxWidth: '100%' }} />
+<img src={rpmFiltersAdded} alt="Added filters" style={{ maxWidth: '100%' , borderRadius: '10px' }} />

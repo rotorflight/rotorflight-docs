@@ -34,7 +34,7 @@ Now go to the *Configuration* tab and enable *LED\_STRIP* under *Features*. Pres
 
 A piece of LED strip is ideal for testing. I'll be using one with 3 LEDs connected to Port B on the Nexus. Wiring is simple: just connect 5V, ground and LED\_STRIP (formerly known as TX6) to the strip.
 
-<img src={ledstripWiring} alt="Wiring" style={{ maxWidth: '100%' }} />
+<img src={ledstripWiring} alt="Wiring" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 ## The *LED Strip* tab
 
@@ -61,7 +61,7 @@ Connect the Nexus to the Configurator using USB. 5V will now be available on por
 
 Your screen might now look like this, although the actual position of the three squares will likely be different:
 
-<img src={ledstripGrid} alt="LED Profile Adjustments" style={{ maxWidth: '100%' }} />
+<img src={ledstripGrid} alt="LED Profile Adjustments" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 ### Create the green navigation light
 
@@ -89,7 +89,7 @@ Your screen might now look like this, although the actual position of the three 
 * Press *Save*
 * You can use *Adjustments* to switch the LED profile from your transmitter. It might look something like:
 
-<img src={ledstripAdjustments} alt="LED Profile Adjustments" style={{ maxWidth: '100%' }} />
+<img src={ledstripAdjustments} alt="LED Profile Adjustments" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 Here's another video showing the techniques used in this Quick Start on a Walkera 4F200LM, for which I used two 3mm and four 5mm LEDs.
 
@@ -99,7 +99,7 @@ Here's another video showing the techniques used in this Quick Start on a Walker
 
 Here's a simple bus system for connecting individual LEDs using 4-pin Molex PicoBlade connectors. It can be used for connecting individual WS2811/2812 LEDs as well as conventional LEDs.
 
-<img src={ledstripC189} alt="C189 PicoBlade Bus" style={{ maxWidth: '100%' }} />
+<img src={ledstripC189} alt="C189 PicoBlade Bus" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 Conventional LEDs should come after the WS2811/2812 LEDs since they don't support *data in* and *data out*. Also, you can use 2-pin PicoBlade connectors for them.
 
@@ -114,7 +114,7 @@ Conventional LEDs should come after the WS2811/2812 LEDs since they don't suppor
 * Isolate the bottom of the bus with hot glue or epoxy
 * Connect the bus to the FC
 
-<img src={ledstripPicobus} alt="Building a PicoBlade Bus" style={{ maxWidth: '100%' }} />
+<img src={ledstripPicobus} alt="Building a PicoBlade Bus" style={{ maxWidth: '100%' , borderRadius: '10px' }} />
 
 ## Remapping to LED\_STRIP
 
