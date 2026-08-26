@@ -1,18 +1,24 @@
 ---
 sidebar_position: 30
 ---
+import configPrsnl from "../img/config-prsnl.png";
+import configSysConf from "../img/config-sys-conf.png";
+import configFeatures from "../img/config-features.png";
+import configSerial from "../img/config-serial.png";
+import configSensAlign from "../img/config-sens-align.png";
+import configAccelTrim from "../img/config-accel-trim.png";
 
 # Configuration
 
-## Personalization
+## Personalisation
 
 Allows you to set your heli name to be shown in the OSD, blackbox logs and diff/dump outputs.
 
-![Configuration Tab](../img/config-prsnl.png)
+<img src={configPrsnl} alt="Configuration Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## System Configuration
 
-![Configuration Tab](../img/config-sys-conf.png)
+<img src={configSysConf} alt="Configuration Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Gyro Update Frequency
 
@@ -40,7 +46,7 @@ Currently this does not provide any control functionality, however, it can be us
 
 This section is used to enable or disable features.
 
-![Configuration Tab](../img/config-features.png)
+<img src={configFeatures} alt="Configuration Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 :::tip
 Features such as the GPS must be selected in the [Serial ports](#serial-ports) section before selecting the Feature here.
@@ -50,11 +56,11 @@ Features such as the GPS must be selected in the [Serial ports](#serial-ports) s
 
 Please choose the functions you wish to assign to your UART.
 
-![Configuration Tab](../img/config-serial.png)
+<img src={configSerial} alt="Configuration Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### MSP
 
-As the name suggests, usually only used for lower-level communication using the MSP (MultiWii Serial Protocol) for configuration done by external devices, or to allow a more direct way of control.
+As the name suggests, usually only used for lower level communication using the MSP (MultiWii Serial Protocol) for configuration done by external devices, or to allow a more direct way of control.
 You can also set a specific baud rate.
 
 ### GPS
@@ -81,7 +87,7 @@ This is used when connecting an FrSky SmartPort receiver pin to this UART.
 
 Change the roll, pitch and yaw gyro alignment value until the model on the status page moves in the same direction as the gyro board.
 
-![Configuration Tab](../img/config-sens-align.png)
+<img src={configSensAlign} alt="Configuration Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## Accelerometer Trim
 
@@ -91,4 +97,4 @@ The Transmitter trims for each cyclic axis must be at neutral when using Rotorfl
 
 This can be done either directly by the configurator or via the transmitter with [Lua](../../setup/using-stability-modes-example.mdx) or Adjustments.
 
-![Configuration Tab](../img/config-accel-trim.png)
+<img src={configAccelTrim} alt="Configuration Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />

@@ -1,6 +1,12 @@
 ---
 sidebar_position: 10
 ---
+import statusInfo from "../img/status-info.png";
+import statusArming from "../img/status-arming.png";
+import statusBattery from "../img/status-battery.png";
+import statusLivePreview from "../img/status-live-preview.png";
+import statusInstruments from "../img/status-instruments.png";
+import statusReceiver from "../img/status-receiver.png";
 
 # Status
 
@@ -14,11 +20,11 @@ Shows data from the flight controller. This includes:
 * Firmware
 * Board
 
-![Status Tab](../img/status-info.png)
+<img src={statusInfo} alt="Status Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## Arming
 
-![Status Tab](../img/status-arming.png)
+<img src={statusArming} alt="Status Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 * **Enable Arming:** Use this switch to enable arming while the configurator is connected.
 
@@ -34,7 +40,7 @@ You can find a description of these flags from the [List of Arming prevention fl
 
 ## Battery
 
-![Status Tab](../img/status-battery.png)
+<img src={statusBattery} alt="Status Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 * **Voltage** - Shows the current battery voltage if the settings for it are set correctly.
 * **Current** - Shows the current drawn from the battery if the settings for it are set correctly.
@@ -45,7 +51,7 @@ You can find a description of these flags from the [List of Arming prevention fl
 
 A live preview of the gyroscope data. This is useful to check if the gyroscope is aligned correctly, and if it isn't getting/giving noisy data.
 
-![Status Tab](../img/status-live-preview.png)
+<img src={statusLivePreview} alt="Status Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 * **Reset Z axis** - This button resets the heli heading to 0 degrees.
 
@@ -57,10 +63,10 @@ You can set the gyroscope alignment in the `Configuration` tab.
 
 A graphic replica of real aircraft instruments.
 
-![Status Tab](../img/status-instruments.png)
+<img src={statusInstruments} alt="Status Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## Receiver
 
 The receiver output preview shows the current state of the receiver channels in microseconds (µs) and percent. It also shows the received signal strength (RSSI).
 
-![Status Tab](../img/status-receiver.png)
+<img src={statusReceiver} alt="Status Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />

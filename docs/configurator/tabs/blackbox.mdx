@@ -1,6 +1,11 @@
 ---
 sidebar_position: 210
 ---
+import blackboxMain from "../img/blackbox-main.png";
+import blackboxConfig from "../img/blackbox-config.png";
+import blackboxOptions from "../img/blackbox-options.png";
+import blackboxSave from "../img/blackbox-save.png";
+import blackboxMass from "../img/blackbox-mass.png";
 
 # Blackbox
 
@@ -10,17 +15,17 @@ Blackbox is a flight data recording feature in Rotorflight. A Blackbox log conta
 
 ## Blackbox data can be logged to:
 
-* A flash chip on the FC. Logging is fast, but storage is limited, unless you are using a dedicated RF controller(FlyDragon F7 has 128MByte Flash), and copying log files can be slow.
+* A flash chip on the FC. Logging is fast, but storage is limited, unless you are using a dedicated RF controller(FlyDragon F7 has 128 MByte Flash), and copying log files can be slow.
 * An SD card on the FC, it's fast and storage is only limited by the capacity of the SD card.
 * An external logging device: [OpenLager](../../setup/openlager.mdx). These devices write the log to a micro SD card.
 
 A flash chip or an SD card on the FC are nice, but if your FC doesn't have that you can connect an OpenLager logging device.
 
-![Blackbox Tab](../img/blackbox-main.png)
+<img src={blackboxMain} alt="Blackbox Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## Blackbox Configuration
 
-![Blackbox Tab](../img/blackbox-config.png)
+<img src={blackboxConfig} alt="Blackbox Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Logging Device
 
@@ -29,7 +34,7 @@ Here you can select the device type.
 * **No Logging**: Disable Logging.
 * **Onboard Flash**: Log to the onboard flash chip (if available).
 * **SD Card**: Log to the onboard SD Card (if available).
-* **Serial Port**: Log to an external logging device (eg. [OpenLager](../../setup/openlager.mdx)).
+* **Serial Port**: Log to an external logging device (e.g. [OpenLager](../../setup/openlager.mdx)).
 
 ### Logging Mode
 
@@ -72,7 +77,7 @@ Choose which *axis* is being debugged. Applies to some of the debug modes.
 
 ## Blackbox Logging Options
 
-![Blackbox Tab](../img/blackbox-options.png)
+<img src={blackboxOptions} alt="Blackbox Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 Here you activate the parameters that you want to log.
 
@@ -80,14 +85,14 @@ For general use activate the following options `Command` `Setpoint` `Mixer` `PID
 
 ## Onboard dataflash chip
 
-![Blackbox Tab](../img/blackbox-save.png)
+<img src={blackboxSave} alt="Blackbox Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 * **Erase** - Erase Blackbox Data.
 * **Save to file** - Download Blackbox Data.
 
 ## Mass Storage Mode
 
-![Blackbox Tab](../img/blackbox-mass.png)
+<img src={blackboxMass} alt="Blackbox Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 # Blackbox Explorer
 

@@ -1,6 +1,15 @@
 ---
 sidebar_position: 80
 ---
+import motorMain from "../img/motor-main.png";
+import motorProtocol from "../img/motor-protocol.png";
+import motorTelem from "../img/motor-telem.png";
+import motorPwm from "../img/motor-pwm.png";
+import motorDshot from "../img/motor-dshot.png";
+import motorGearRatio from "../img/motor-gear-ratio.png";
+import motorPoleCount1 from "../img/motor-pole-count-1.png";
+import motorPoleCount2 from "../img/motor-pole-count-2.png";
+import motor6 from "../img/motor-6.png";
 
 # Motors
 
@@ -12,19 +21,19 @@ This section is about Rotorflight communicating with the ESC. The settings for y
 
 ## ESC/Motor Features
 
-![Motor and ESC](../img/motor-main.png)
+<img src={motorMain} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### ESC Throttle Protocol
 
-Set the ESC protocol required for your ESC under *ESC/Motor protocol*. Usually this would be *PWM* or *DSHOT300*.
+Set the ESC protocol required for your ESC under *ESC/Motor protocol*. Usually this would be *PWM* or *DSHOT 300*.
 
-![Motor and ESC](../img/motor-protocol.png)
+<img src={motorProtocol} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### ESC Telemetry Protocol
 
 Set the ESC [*Telemetry*](../../setup/esc-telemetry.mdx) protocol if your esc supports it.
 
-![Motor and ESC](../img/motor-telem.png)
+<img src={motorTelem} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 :::note[Castle]
 Looking for Castle ESC Telemetry? Castle ESCs use a single wire protocol. Both the throttle protocol and telemetry are sent and received on the same wire.
@@ -34,7 +43,7 @@ Looking for Castle ESC Telemetry? Castle ESCs use a single wire protocol. Both t
 
 Most RC helicopter ESCs manufacturers (e.g. Hobbywing, YGE, Scorpion ,or Castle) use [PWM](https://en.wikipedia.org/wiki/Servo_control), an analog protocol.
 
-![Motor and ESC](../img/motor-pwm.png)
+<img src={motorPwm} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 **RPM Sensor:** Activate the RPM Sensor input for motor RPM, you can connect an RPM signal from the ESC, or from an external RPM sensor device.
 
@@ -67,7 +76,7 @@ With this info, the FC can calculate the:
 
 Most drone ESCs support DSHOT, a digital protocol.
 
-![Motor and ESC](../img/motor-dshot.png)
+<img src={motorDshot} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 If you use DSHOT, use either DSHOT150 or DSHOT300. DSHOT600 is not recommended. Also make sure that the main motor isn't actively being braked by the ESC, especially if you don't have a [one way bearing](https://youtu.be/ahWzhT5Bn28) on the main shaft.
 
@@ -80,7 +89,7 @@ This switch is only visible when the *ESC/Motor protocol* is DSHOTxxx. It enable
 
 ### Gear Ratio Configuration
 
-![Motor and ESC](../img/motor-gear-ratio.png)
+<img src={motorGearRatio} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 Enter the number of teeth for the main rotor gearing \[Teeth on Pinion gear]/\[Teeth on Main Gear]. For a direct drive Main rotor this is just set to 1 / 1.
 
@@ -104,9 +113,9 @@ For Helicopters with two-stage reduction, kindly read the [Two-Stage Gear Train 
 
 Determine the number of magnetic poles for each motor. Count the number of magnets on the motors rotor. In the example below the magnets (circled) are fixed to the outer bell which in total has 14. This allows the flight controller to know how many electrical phase rotations are required to complete one physical motor revolution.
 
-![Motor and ESC](../img/motor-pole-count-1.png)
+<img src={motorPoleCount1} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
-![Motor and ESC](../img/motor-pole-count-2.png)
+<img src={motorPoleCount2} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## [Governor Features](./governor.mdx)
 
@@ -114,7 +123,7 @@ Determine the number of magnetic poles for each motor. Count the number of magne
 
 Motor Override functionality is provided to test the operation of each motor directly. This functionality will make the motors spool up. Do this WITHOUT the main or tail rotors fitted!
 
-![Motor and ESC](../img/motor-6.png)
+<img src={motor6} alt="Motor and ESC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 Throttle - This is the command being sent from the flight controller to the ESC.
 

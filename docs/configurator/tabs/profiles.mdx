@@ -1,6 +1,14 @@
 ---
 sidebar_position: 140
 ---
+import profilesPidControllerGains from "../img/profiles-pid-controller-gains.png";
+import profilesPidControllerSettings from "../img/profiles-pid-controller-settings.png";
+import profilesOffsetLimit from "../img/profiles-offset-limit.png";
+import profilesMainRotorSettings from "../img/profiles-main-rotor-settings.png";
+import profilesTailRotorSettings from "../img/profiles-tail-rotor-settings.png";
+import profilesPidControllerBandwidth from "../img/profiles-pid-controller-bandwidth.png";
+import profilesAutoLevelingSettings from "../img/profiles-auto-leveling-settings.png";
+import profilesRescue from "../img/profiles-rescue.png";
 
 # Profiles
 
@@ -12,7 +20,7 @@ The purpose of profiles are to store in flight tuning parameters. The aim is usu
 
 ### PID Controller Gains
 
-![Profiles](../img/profiles-pid-controller-gains.png)
+<img src={profilesPidControllerGains} alt="Profiles" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 #### Proportional
 
@@ -40,7 +48,7 @@ This provides a rapid short term increase in your command. This parameter is use
 
 ### PID Controller Settings
 
-![Profiles](../img/profiles-pid-controller-settings.png)
+<img src={profilesPidControllerSettings} alt="Profiles" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 #### Error Rotation
 
@@ -66,7 +74,7 @@ The limit of how much I-term can be charged. During normal flights, it would not
 
 The offset gains are used for the [High Speed Integral](../../Tuning/High-Speed-Integral.mdx) feature.
 
-![Profiles](../img/profiles-offset-limit.png)
+<img src={profilesOffsetLimit} alt="Profiles" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 #### Offset Limits
 
@@ -78,7 +86,7 @@ Gain for offset term,(Integral for high speed flight).
 
 ## Main Rotor Settings
 
-![Profiles](../img/profiles-main-rotor-settings.png)
+<img src={profilesMainRotorSettings} alt="Profiles" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Collective To Pitch Feedforward Gain
 
@@ -102,7 +110,7 @@ Frequency limit for the compensation, higher value will make the compensation ac
 
 ## Tail Rotor Settings
 
-![Profiles](../img/profiles-tail-rotor-settings.png)
+<img src={profilesTailRotorSettings} alt="Profiles" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 #### CW/CCW Stop Gain
 
@@ -138,7 +146,7 @@ Cutoff frequency for the inertia Precomp. Larger values result in a more rapid a
 
 ## PID Controller Bandwidth
 
-![Profiles](../img/profiles-pid-controller-bandwidth.png)
+<img src={profilesPidControllerBandwidth} alt="Profiles" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 #### Row/Pitch/Yaw Bandwidth
 
@@ -155,7 +163,7 @@ It is safe to start with the same cutoffs as used with D. Usually in the range o
 
 ## Auto Leveling Settings
 
-![Profiles](../img/profiles-auto-leveling-settings.png)
+<img src={profilesAutoLevelingSettings} alt="Profiles" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 #### Acro Trainer gain
 
@@ -179,7 +187,7 @@ This determines how aggressively the heli tilt back to level while in *HORIZON* 
 
 ## Rescue Settings
 
-![Profiles](../img/profiles-rescue.png)
+<img src={profilesRescue} alt="Profiles" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Enable Rescue
 
