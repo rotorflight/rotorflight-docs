@@ -144,7 +144,7 @@ An extra low pass filter for each axis. It is specifically designed to preserve 
 
 An extra first order low pass filter just for the D-gain to further reduce the sensitivity to noise. A high value decreases the effectiveness but may potentially increase the D-gain performance. A low value increase the filter effect but may hinder D-term effectiveness. It is advised to keep it around 20Hz to prevent oscillation.
 
-#### B-Term Cut-off[​](#b-term-cut-off "Direct link to B-Term Cut-off")
+#### B-Term Cutoff[​](#b-term-cutoff "Direct link to B-Term Cutoff")
 
 This is controlling how "quick" or "twitchy" the boost is. This works exactly the same as D-cutoff, but on setpoint. It is safe to start with the same cutoffs as used with D. Usually in the range of 10..20. This is used in conjunction with [Boost](/docs/configurator/tabs/profiles.md#boost) or [B-gain](/docs/configurator/tabs/profiles.md#boost)
 
@@ -184,11 +184,11 @@ Enable or disable the rescue mode.
 
 Activate flip to upright option when the heli is inverted.
 
-#### Pull-up Collective[​](#pull-up-collective "Direct link to Pull-up Collective")
+#### Pullup Collective[​](#pullup-collective "Direct link to Pullup Collective")
 
 Values 0.0-100. This is to be set to a level where the helicopter rapidly gains height.
 
-#### Pull-up Time[​](#pull-up-time "Direct link to Pull-up Time")
+#### Pullup Time[​](#pullup-time "Direct link to Pullup Time")
 
 How long pull up collective should be applied. This is usually about 0.3 to 0.5s
 

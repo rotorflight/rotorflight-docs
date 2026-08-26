@@ -36,7 +36,7 @@ This way you make sure when you power the heli that the throttle servo is not bi
 
 12. Set *Governor mode* to MODE1 or STANDARD.
 
-13. Set *Handover throttle* to around 40-50%. You can then use on the radio a curve on a pot meter or mixed on your collective stick so you can do the spool-up manually. Then you can also adjust the motor idle. Above this point the governor will take control over the headspeed.
+13. Set *Handover throttle* to around 40-50%. You can then use on the radio a curve on a pot meter or mixed on your collective stick so you can do the spoolup manually. Then you can also adjust the motor idle. Above this point the governor will take control over the headspeed.
 
 Here's a video where Jiawen explains how to setup your throttle on the transmitter.
 

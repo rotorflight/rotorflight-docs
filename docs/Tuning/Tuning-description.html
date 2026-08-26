@@ -12,8 +12,8 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Rotorflight" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.065109be.css">
-<script src="/assets/js/runtime~main.d054ba41.js" defer="defer"></script>
-<script src="/assets/js/main.1830d4fb.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0655f9a9.js" defer="defer"></script>
+<script src="/assets/js/main.f914edc2.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -23,12 +23,12 @@
 <p>The default tuning parameters supplied with Rotorflight are designed to be safe and flyable for all helicopters. This means in most cases the helicopter will not be responsive and locked in on your first flight and some tuning will be required.</p>
 <p>These tuning parameters are located on the Profile tab in the <a class="" href="/docs/configurator/tabs/profiles">Configurator</a> and could also be changed via the <a class="" href="/docs/setup/radio-setup/radio-setup-edgetx/edgetx-lua-scripts">LUA Scripts</a> or <a class="" href="/docs/configurator/tabs/adjustments">Adjustments</a></p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tuning-profile-pid">Tuning Profile PID:<a href="#tuning-profile-pid" class="hash-link" aria-label="Direct link to Tuning Profile PID:" title="Direct link to Tuning Profile PID:" translate="no">​</a></h2>
-<img src="/assets/images/tuning-pid-db3a4648294a386148d0ed8df1d85a6b.png" alt="Profile PID" style="max-width:100%">
+<img src="/assets/images/tuning-pid-db3a4648294a386148d0ed8df1d85a6b.png" alt="Profile PID" style="max-width:100%;border-radius:10px">
 <div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>caution</div><div class="admonitionContent_BuS1"><p>Please start by confirming your filters are working correctly before you increase your tuning parameters. If you do not have filters enabled it is particularly important that you do not use Derivative. This can result in hot Motors and Servos.</p></div></div>
 <div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>What do we mean &quot;wobble&quot;??
 When tuning parameters are too high the helicopter will wobble or shake during some movements. Each time we increase a tuning value we need to test fly and see if the new setting is too high. Test this in the following way:</p><ul>
 <li class="">Beginner: Tap the stick and see if it shakes/shudders/wobbles</li>
-<li class="">Average: Do some flips with sudden stops, try going fast and tapping the stick, do some Tictocs</li>
+<li class="">Average: Do some flips with sudden stops, try going fast and tapping the stick, do some tick-tocks</li>
 <li class="">Advanced: Do crazy high speed high rate stuff that makes the FC sweat and see if it freaks out <!-- -->😜<!-- -->.</li>
 </ul><h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="please-also-see-the-general-guidelines-below-for-more-specific-descriptions">Please also see the General Guidelines below for more specific descriptions<a href="#please-also-see-the-general-guidelines-below-for-more-specific-descriptions" class="hash-link" aria-label="Direct link to Please also see the General Guidelines below for more specific descriptions" title="Direct link to Please also see the General Guidelines below for more specific descriptions" translate="no">​</a></h2></div></div>
 <ol>
@@ -51,7 +51,7 @@ When tuning parameters are too high the helicopter will wobble or shake during s
 <p>Increase <a class="" href="/docs/Tuning/High-Speed-Integral">HSI</a> until it wobbles when jabbing elevator at full collective, back off a bit.</p>
 </li>
 </ol>
-<img src="/assets/images/tuning-hsi-e43cad09851602245aefb19d8a01890e.png" alt="Profile HSI" style="max-width:100%">
+<img src="/assets/images/tuning-hsi-e43cad09851602245aefb19d8a01890e.png" alt="Profile HSI" style="max-width:100%;border-radius:10px">
 <ol start="7">
 <li class="">Increase Boost (B) if you want sharper/faster response.</li>
 </ol>

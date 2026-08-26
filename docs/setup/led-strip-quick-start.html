@@ -12,8 +12,8 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Rotorflight" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.065109be.css">
-<script src="/assets/js/runtime~main.d054ba41.js" defer="defer"></script>
-<script src="/assets/js/main.1830d4fb.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0655f9a9.js" defer="defer"></script>
+<script src="/assets/js/main.f914edc2.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -32,7 +32,7 @@
 <p>Now go to the <em>Configuration</em> tab and enable <em>LED_STRIP</em> under <em>Features</em>. Press <em>Save and reboot</em>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="testing-hardware">Testing hardware<a href="#testing-hardware" class="hash-link" aria-label="Direct link to Testing hardware" title="Direct link to Testing hardware" translate="no">​</a></h2>
 <p>A piece of LED strip is ideal for testing. I&#x27;ll be using one with 3 LEDs connected to Port B on the Nexus. Wiring is simple: just connect 5V, ground and LED_STRIP (formerly known as TX6) to the strip.</p>
-<img src="/assets/images/ledstrip-wiring-cc684e7e35799fac3c28f55937c931c3.jpg" alt="Wiring" style="max-width:100%">
+<img src="/assets/images/ledstrip-wiring-cc684e7e35799fac3c28f55937c931c3.jpg" alt="Wiring" style="max-width:100%;border-radius:10px">
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-led-strip-tab">The <em>LED Strip</em> tab<a href="#the-led-strip-tab" class="hash-link" aria-label="Direct link to the-led-strip-tab" title="Direct link to the-led-strip-tab" translate="no">​</a></h2>
 <p>Now go to the <em>LED Strip</em> tab. Note that this tab will only be visible if you have the <em>LED_STRIP</em> feature enabled under <em>Configuration</em>.</p>
 <p>We&#x27;re going to define:</p>
@@ -54,7 +54,7 @@
 <li class="">Press <em>Save</em></li>
 </ul>
 <p>Your screen might now look like this, although the actual position of the three squares will likely be different:</p>
-<img src="/assets/images/ledstrip-grid-94f8d398f658a24c7776fbc07633894c.png" alt="LED Profile Adjustments" style="max-width:100%">
+<img src="/assets/images/ledstrip-grid-94f8d398f658a24c7776fbc07633894c.png" alt="LED Profile Adjustments" style="max-width:100%;border-radius:10px">
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="create-the-green-navigation-light">Create the green navigation light<a href="#create-the-green-navigation-light" class="hash-link" aria-label="Direct link to Create the green navigation light" title="Direct link to Create the green navigation light" translate="no">​</a></h3>
 <ul>
 <li class="">Select the square with &#x27;0&#x27; in it</li>
@@ -81,12 +81,12 @@
 <li class="">Press <em>Save</em></li>
 <li class="">You can use <em>Adjustments</em> to switch the LED profile from your transmitter. It might look something like:</li>
 </ul>
-<img src="/assets/images/ledstrip-adjustments-4595f17e8a84421e5fc23f417049eb09.png" alt="LED Profile Adjustments" style="max-width:100%">
+<img src="/assets/images/ledstrip-adjustments-4595f17e8a84421e5fc23f417049eb09.png" alt="LED Profile Adjustments" style="max-width:100%;border-radius:10px">
 <p>Here&#x27;s another video showing the techniques used in this Quick Start on a Walkera 4F200LM, for which I used two 3mm and four 5mm LEDs.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/72LsrcEJEK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"></iframe>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="molex-picoblade-bus">Molex PicoBlade bus<a href="#molex-picoblade-bus" class="hash-link" aria-label="Direct link to Molex PicoBlade bus" title="Direct link to Molex PicoBlade bus" translate="no">​</a></h2>
 <p>Here&#x27;s a simple bus system for connecting individual LEDs using 4-pin Molex PicoBlade connectors. It can be used for connecting individual WS2811/2812 LEDs as well as conventional LEDs.</p>
-<img src="/assets/images/ledstrip-c189-044253338cadc996a4c3731638aa6373.jpg" alt="C189 PicoBlade Bus" style="max-width:100%">
+<img src="/assets/images/ledstrip-c189-044253338cadc996a4c3731638aa6373.jpg" alt="C189 PicoBlade Bus" style="max-width:100%;border-radius:10px">
 <p>Conventional LEDs should come after the WS2811/2812 LEDs since they don&#x27;t support <em>data in</em> and <em>data out</em>. Also, you can use 2-pin PicoBlade connectors for them.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="building-the-picoblade-bus">Building the PicoBlade bus<a href="#building-the-picoblade-bus" class="hash-link" aria-label="Direct link to Building the PicoBlade bus" title="Direct link to Building the PicoBlade bus" translate="no">​</a></h3>
 <ul>
@@ -99,7 +99,7 @@
 <li class="">Isolate the bottom of the bus with hot glue or epoxy</li>
 <li class="">Connect the bus to the FC</li>
 </ul>
-<img src="/assets/images/ledstrip-picobus-e2fef9b4e949d14653426846263a4157.jpg" alt="Building a PicoBlade Bus" style="max-width:100%">
+<img src="/assets/images/ledstrip-picobus-e2fef9b4e949d14653426846263a4157.jpg" alt="Building a PicoBlade Bus" style="max-width:100%;border-radius:10px">
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="remapping-to-led_strip">Remapping to LED_STRIP<a href="#remapping-to-led_strip" class="hash-link" aria-label="Direct link to Remapping to LED_STRIP" title="Direct link to Remapping to LED_STRIP" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="radiomaster-nexus">Radiomaster Nexus<a href="#radiomaster-nexus" class="hash-link" aria-label="Direct link to Radiomaster Nexus" title="Direct link to Radiomaster Nexus" translate="no">​</a></h3>
 <p>On the Nexus Port B is the best choice for creating a LED_STRIP resource. Port B provides RX6 and TX6 by default. To remap TX6 to LED_STRIP, enter the following in the CLI:</p>
