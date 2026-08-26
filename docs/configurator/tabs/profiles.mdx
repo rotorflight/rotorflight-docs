@@ -1,6 +1,7 @@
 ---
 sidebar_position: 140
 ---
+
 import profilesPidControllerGains from "../img/profiles-pid-controller-gains.png";
 import profilesPidControllerSettings from "../img/profiles-pid-controller-settings.png";
 import profilesOffsetLimit from "../img/profiles-offset-limit.png";
@@ -42,7 +43,7 @@ The gain factor proportional to the input. In practice, feedforward gain is used
 
 The setpoint boost - or B-term will increase the stick reaction speed. In case the heli is not reacting fast enough, the reaction can be boosted with this new B-gain on each axis separately. This seems to be in the range of 20..50
 
-This provides a rapid short term increase in your command. This parameter is used in conjunction with the time [B-Cutoff](./profiles.md#b-term-cut-off).
+This provides a rapid short term increase in your command. This parameter is used in conjunction with the time [B-Cutoff](./profiles.mdx#b-term-cutoff).
 
 ## Advanced Settings
 
@@ -159,7 +160,7 @@ An extra first order low pass filter just for the D-gain to further reduce the s
 #### B-Term Cutoff
 
 This is controlling how "quick" or "twitchy" the boost is. This works exactly the same as D-cutoff, but on setpoint.
-It is safe to start with the same cutoffs as used with D. Usually in the range of 10..20. This is used in conjunction with [Boost](./profiles.md#boost) or [B-gain](./profiles.md#boost)
+It is safe to start with the same cutoffs as used with D. Usually in the range of 10..20. This is used in conjunction with [Boost](./profiles.mdx#boost) or [B-gain](./profiles.mdx#boost)
 
 ## Auto Leveling Settings
 
