@@ -2,12 +2,17 @@
 sidebar_position: 110
 ---
 
+import mixerMainRotorSettings from "../img/mixer-main-rotor-settings.png";
+import mixerSwashplateLinkTrims from "../img/mixer-swashplate-link-trims.png";
+import mixerMainRotorGeometry from "../img/mixer-main-rotor-geometry.png";
+import mixerTailRotorSettings from "../img/mixer-tail-rotor-settings.png";
+
 # Mixer
 
 This section will describe the configuration of the mixer and calibrate the rotor blade angles.
 
 :::note
-Before proceeding with setting up the mixer, make sure that [gyro sensor alignment](./configuration.md#board-and-sensor-alignment) is correct.
+Before proceeding with setting up the mixer, make sure that [gyro sensor alignment](./configuration.mdx#board-and-sensor-alignment) is correct.
 :::
 
 ### Main Rotor Settings
@@ -16,7 +21,7 @@ Before proceeding with setting up the mixer, make sure that [gyro sensor alignme
 
 Choose the swash type that suits your helicopter.
 
-![Mixer Tab](../img/mixer-main-rotor-settings.png)
+<img src={mixerMainRotorSettings} alt="Mixer Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 #### Rotor direction
 
@@ -36,7 +41,7 @@ Push the collective stick forward (Increasing collective). The swash should now 
 
 ## Swashplate link trims
 
-![Mixer Tab](../img/mixer-swashplate-link-trims.png)
+<img src={mixerSwashplateLinkTrims} alt="Mixer Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 Ideally the swashplate should be set with all 3 Collective servos at 90 deg while the blade angle is at 0 degrees. Some helicopters have fixed length swash links which means in order to get 0 degrees for blade centre the servo arms need to be raised or lowered. Use these link trims to provide that function.
 
@@ -44,7 +49,7 @@ For helicopters with adjustable swash links this should remain at 0 and the link
 
 ## Main rotor geometry
 
-![Mixer Tab](../img/mixer-main-rotor-geometry.png)
+<img src={mixerMainRotorGeometry} alt="Mixer Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 #### Cyclic and collective calibration
 
@@ -88,7 +93,7 @@ Adjust the Positive collective tilt value until the swash ball remains stationar
 
 ## Tail Rotor Settings
 
-![Mixer Tab](../img/mixer-tail-rotor-settings.png)
+<img src={mixerTailRotorSettings} alt="Mixer Tab" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Tail rotor type
 

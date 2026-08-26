@@ -1,10 +1,17 @@
 ---
 sidebar_position: 30
 ---
+import flydragon22 from "./img/flydragon2-2.png";
+import fdTarget from "./img/fd-target.png";
+import fdMotorised from "./img/fd-motorised.png";
+import wiringDiagramV2 from "./img/wiring-diagram-v2.png";
+import fdUarts from "./img/fd-uarts.png";
+import disable from "./img/disable.png";
+import enable from "./img/enable.png";
 
 # Flydragon V2.2
 
-![Flydragon v2.2](./img/flydragon2-2.png)
+<img src={flydragon22} alt="Flydragon v2.2" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 :::info[Specifications]
 ### Hardware Specifications：
@@ -47,7 +54,7 @@ Firmware target：FlyDragonRC 2.4 GHz / FD R24D 2.4GHz RX
 
 When updating Rotorflight firmware. Please use the FLYDRAGONF722\_V2\_2 target.
 
-![Flydragon V2.2 Target](./img/fd-target.png)
+<img src={fdTarget} alt="Flydragon V2.2 Target" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Motorised Tail
 
@@ -57,11 +64,11 @@ To use the Flydragon with a motorised tail the Servo 4 needs to be remapped to M
 `resource MOTOR 2 C09`\
 `save`
 
-![Flydragon V2.2 Target](./img/fd-motorised.png)
+<img src={fdMotorised} alt="Flydragon V2.2 Target" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Wiring
 
-![Wiring Diagram v2.2](./img/wiring-diagram-v2.png)
+<img src={wiringDiagramV2} alt="Wiring Diagram v2.2" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 :::caution
 WARNING: The RPM-S Port is powered via the internal 5V supply which is also powered during USB connection. If you have any power supplies connected or inappropriate loads you are likely to damage your board. DO NOT plug in your ESCs BEC wire into here, many BECs act like a deadshort if you attempt to backfeed them and you WILL blow out the 5V supply on your board when you connect USB if you do this. Power to the rest of the ports is all common power you can connect whatever to.
@@ -74,7 +81,7 @@ WARNING: The RPM-S Port is powered via the internal 5V supply which is also powe
 * UART 3 - Rx and Tx on Extension port
 * UART 5 - Rx and Tx on GPS port (can also be used for the Receiver)
 
-![Save](./img/fd-uarts.png)
+<img src={fdUarts} alt="Save" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## Remapping
 
@@ -129,12 +136,12 @@ External receivers can be connected to the SBUS, FPORT or any of the Extension U
 * Command to **DISABLE** the receiver:\
   `set pinio_config = 1,1,1,1`
 
-![disable](./img/disable.png)
+<img src={disable} alt="disable" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 * Command to **ENABLE** the receiver:\
   `set pinio_config = 129,1,1,1`
 
-![Enable](./img/enable.png)
+<img src={enable} alt="Enable" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## Manuals
 

@@ -1,10 +1,18 @@
 ---
 sidebar_position: 10
 ---
+import nexusRadiomaster from "./img/nexus-radiomaster.png";
+import nexusTarget from "./img/nexus-target.png";
+import nexusRp3H from "./img/nexus-rp3-h.png";
+import nexusFport from "./img/nexus-fport.png";
+import nexusRemap from "./img/nexus-remap.png";
+import nexusMotorised from "./img/nexus-motorised.png";
+import nexusWiring from "./img/nexus-wiring.png";
+import nexusUarts from "./img/nexus-uarts.png";
 
 # Radiomaster NEXUS
 
-![Nexus](./img/nexus-radiomaster.png)
+<img src={nexusRadiomaster} alt="Nexus" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ## Release Video
 
@@ -37,22 +45,22 @@ Weight: 16.8g
 
 When updating Rotorflight firmware. Please use the NEXUS\_F7.
 
-![Radiomaster Nexus](./img/nexus-target.png)
+<img src={nexusTarget} alt="Radiomaster Nexus" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Matching RP3-H ELRS receiver
 
 Any of the Rotorflight receiver protocols can be used with the NEXUS. Radiomaster does have the RP3-H receiver which is a direct plug and play ELRS receiver.
 
-![Radiomaster RP3-H](./img/nexus-rp3-h.png)
+<img src={nexusRp3H} alt="Radiomaster RP3-H" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### F-Port
 
 Nexus supports F.Port on:
 The 'TX' pin of Port A, B or C or by remapping the SBUS to a TX for F.Port.\
-![F.PORT](./img/nexus-fport.png)
+<img src={nexusFport} alt="F.PORT" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 F.Port is an Inverted protocol over a single wire so must configured with both of these options enabled.\
-![Remap SBUS to F.PORT](./img/nexus-remap.png)
+<img src={nexusRemap} alt="Remap SBUS to F.PORT" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Motorised Tail
 
@@ -62,17 +70,17 @@ To use the NEXUS with a motorised tail the Servo 4 needs to be remapped to Motor
 `resource MOTOR 2 B03`\
 `save`
 
-![Nexus Target](./img/nexus-motorised.png)
+<img src={nexusMotorised} alt="Nexus Target" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Wiring
 
-![Nexus wiring](./img/nexus-wiring.png)
+<img src={nexusWiring} alt="Nexus wiring" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### UART ports
 
 All the UARTS on the NEXUS are labeled to match each port. Just enter the function you wish to use for each port such as SerialRx (receiver), ESC Telemetry, blackbox, GPS etc.
 
-![Nexus UARTS](./img/nexus-uarts.png)
+<img src={nexusUarts} alt="Nexus UARTS" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
 
 ### Manuals
 
