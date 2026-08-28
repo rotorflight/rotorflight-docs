@@ -1,6 +1,7 @@
 ---
 sidebar_position: 20
 ---
+import React from 'react';
 
 import Tabs     from '@theme/Tabs';
 import TabItem  from '@theme/TabItem';
@@ -8,4 +9,53 @@ import tabStyles   from '../../tabs.module.css';
 
 # Governor Nitro Setup
 
-The governor nitro feature allows you to control the motor speed based on the throttle input and other parameters.
+The governor nitro feature allows you to control the motor speed based on the throttle input and other parameters. There are multiple ways to set up a governor for nitro. This will cover a complete governor setup specific for nitro.
+
+## Motors page
+Set ESC protocol to PWM
+Enable RPM sensor
+Set ESC update frequency to the rate of your servo. Usually 333hz.
+Set endpoints of the servo with Motor stop and 100% throttle value
+Set main gear ratio
+Set tail gear ratio
+Main motor pole count usually 2
+
+Picture Page
+
+
+## Governor page
+
+#### Governor mode
+Set governor mode to Nitro
+
+#### Throttle type
+There are multiple ways to set this. Easiest way is using function. With this mode you will only set the governor in a mode. Like Off, Idle, Auto and Run. 
+
+#### Governor Direct throttle / Governor bypass
+
+Picture governor page
+
+
+
+
+Enable governor bypass mode 
+
+Picture modes bypass
+
+### Engine Idle adjustment
+Picture governor idle adjustment (stepped or mapped)
+
+## Radio setup
+<Tabs>
+  <TabItem value="edgetx" label="Edgetx">
+    Picture CH6
+        Picture of Aux for governor idle adjustment
+        Picture for governor bypass
+  </TabItem>
+  <TabItem value="ethos" label="Ethos">
+    Picture CH6
+        Picture of Aux for governor idle adjustment
+        Picture for governor Bypass
+  </TabItem>
+</Tabs>
+
