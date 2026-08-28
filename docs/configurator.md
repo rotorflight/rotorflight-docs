@@ -44,7 +44,7 @@
 
 ## [📄️Mixer](/docs/configurator/tabs/mixer.md)
 
-[This section will describe the configuration of the mixer and calibrate the rotor blade angles.](/docs/configurator/tabs/mixer.md)
+[This section describes the configuration of the mixer and calibration of the rotor blade angles.](/docs/configurator/tabs/mixer.md)
 
 ## [📄️Gyro](/docs/configurator/tabs/gyro.md)
 

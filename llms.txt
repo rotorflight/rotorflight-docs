@@ -26,7 +26,7 @@ Rotorflight is a flight control software suite for single rotor RC helicopters. 
 - [GPS](/docs/configurator/tabs/gps.md): Rotorflight currently only uses GPS for telemetry. Return to home, and other autopilot features are not available.
 - [Gyro](/docs/configurator/tabs/gyro.md)
 - [LED Strip](/docs/configurator/tabs/led-strip.md)
-- [Mixer](/docs/configurator/tabs/mixer.md): This section will describe the configuration of the mixer and calibrate the rotor blade angles.
+- [Mixer](/docs/configurator/tabs/mixer.md): This section describes the configuration of the mixer and calibration of the rotor blade angles.
 - [Modes](/docs/configurator/tabs/modes.md): | ID | Mode Name | Function |
 - [Motors](/docs/configurator/tabs/motors.md): The Motors tab is used to configure the ESC communications protocols ( Motor Control Protocol & Telemetry Protocol ) ,as well as to provide the ability to test motor operation. Depending on the selected ESC protocol and selected Rotorflight features, you might need to specify some other parameters as well.
 - [Power](/docs/configurator/tabs/power.md): Set up all your power and battery related settings. Set the voltage and current sensor sources and calibration so that the FC can read the values and warn you accordingly. You can also check the current power measurements.
@@ -135,10 +135,10 @@ The general process for setting up a helicopter using Rotorflight.
 
 - [Cyclic Cross Coupling](/docs/Tuning/Cyclic-Cross-Coupling.md): What is it?
 - [First Flight & Filter Tuning](/docs/Tuning/First-Flight-Filter-Tuning.md): It is crucial to tune the filters based on your helicopter to gain the maximum performance while keeping noise out of the control loop. A good filter tuning should be just strong enough to suppress the peaks in the gyro readouts. A filter too weak may have peaks leaked inside the loop, and a filter too strong, while making the gyro signal clean, may lower the maximum gains later which cause a "sloppy" and delayed feel.
-- [High Speed Integral](/docs/Tuning/High-Speed-Integral.md): TL;DR
+- [High Speed Integral](/docs/Tuning/High-Speed-Integral.md): The high speed integral (HSI) fixes bobbling problems during fast-moving maneuvers. Higher HSI-gain resulting in fast reaction to high airspeed. Too high might result in bobble during stops since it behaves like integral gain at constant collective position.
 - [Motorised Tail and TTA](/docs/Tuning/Motorised-Tail-and-TTA.md): Torque Tail Assist (TTA) - This is a feature used for helicopters with motorised tails. A motorised tail can provide high control authority in one direction. In the other it is greatly reduced as the motor can only turn in one direction. TTA is used to add control authority in the other direction. It does this by rapidly accelerating the main motor. This acceleration provides torque in the opposite direction to the tail motor.
 - [Rescue mode settings](/docs/Tuning/Rescue-mode-settings.md)
-- [Tune Feedforward](/docs/Tuning/Tune-Feedforward.md): It is a good practice to check for the feed forward tune after adjusting other parameters. To do this, you would need to have some basic 3D skills to do continuous flips and rolls.
+- [Tune Feedforward](/docs/Tuning/Tune-Feedforward.md): It is a good practice to check for the feed forward tune after adjusting other parameters. To do this, you need to have some basic 3D skills and be able to do continuous flips and rolls.
 - [Tune the Governor](/docs/Tuning/Tune-Governor.md): If using the governor you must first enable the RPM Measurement and configure the Governor
 - [Tuning your Helicopter](/docs/Tuning/Tuning-description.md): The default tuning parameters supplied with Rotorflight are designed to be safe and flyable for all helicopters. This means in most cases the helicopter will not be responsive and locked in on your first flight and some tuning will be required.
 - [Tuning examples and presets](/docs/Tuning/tuning-examples.md): Please use the supplied defaults until a maiden flight has been conducted and the filtering is confirmed. Once this is done higher gains can be tested. Skipping this step and using these settings without adequate filtering could result in an uncontrollable helicopter.

@@ -1,16 +1,16 @@
 # High Speed Integral
 
-TL;DR The high speed integral fixes bobbling problems during fast-moving maneuvers. Higher HSI-gain resulting in fast reaction to high airspeed. Too high might result in bobble during stops since it behaves like integral gain at constant collective position.
+The high speed integral (HSI) fixes bobbling problems during fast-moving maneuvers. Higher HSI-gain resulting in fast reaction to high airspeed. Too high might result in bobble during stops since it behaves like integral gain at constant collective position.
 
 ## What is it?[​](#what-is-it "Direct link to What is it?")
 
 This is a feature developed to mimic the observed core functionality of most advanced modern flight controllers. The problem being solved is mainly due to the difference in lift from high airspeed in the x and y directions. For example, as the helicopter is moving forward while having a constant positive collective pitch, the helicopter tends to pull up. If the collective pitch is negative, the imbalance of lift is reversed, and the heli would tend to push down. This is usually not a problem if the collective stays constant because the integral gain will compensate this constant "trim". However, when changing collective while moving at a high speed (for example, fast moving side tick tocks) the heli would not move axially. It would behave in a snake shape because the I term is constantly charging and discharging in the opposite direction.
 
-The High Speed Integral (HSI) resembles another integral term. However, its output is proportional to the collective input, which reverses when the collective is negative. This is the "arching" effect you might see on other FBLs, where if one tilt the helicopter at high collective, and move the collective up and down, the swash plate would resemble one side of a seesaw.
+The High Speed Integral resembles another integral term. However, its output is proportional to the collective input, which reverses when the collective is negative. This is the "arching" effect you might see on other FBLs, where if one tilt the helicopter at high collective, and move the collective up and down, the swash plate would resemble one side of a seesaw.
 
 ## How to tune it?[​](#how-to-tune-it "Direct link to How to tune it?")
 
-45 HSI gain and 100 degrees HSI term limit on pitch and roll are good values in general. Additional tuning is not necessary in most cases.
+45 HSI gain and 100° HSI term limit on pitch and roll are good values in general. Additional tuning is not necessary in most cases.
 
 ## (Advanced Topic) Tick tock Optimization[​](#advanced-topic-tick-tock-optimization "Direct link to (Advanced Topic) Tick tock Optimization")
 
@@ -20,7 +20,7 @@ Currently, there seems to be three ways to solve this problem. The simplest way 
 
 A much more sophisticated way to deal with this issue. From behavior of the pilots, we know that when the cyclic inputs are high, there's a very low chance that the heli would keep the same airspeed at the input direction. Therefore, the HSI would be added to the normal I term (in the input direction) at some cyclic threshold. This preserves the HSI in the orthogonal direction but "deletes" them in the parallel direction.
 
-RF2 follows the previous logic. However, instead of "deleting" the HSI, it "decays" HSI in a set speed (dictated by the offset\_bleed\_rate\_curve and offset\_bleed\_limit\_curve parameter) into the normal-I. Therefore, a extremely fast impulse on the stick would not result in a complete deletion of the HSI.
+RF2 follows the previous logic. However, instead of "deleting" the HSI, it "decays" HSI in a set speed (dictated by the offset\_bleed\_rate\_curve and offset\_bleed\_limit\_curve parameter) into the normal-I. Therefore, an extremely fast impulse on the stick would not result in a complete deletion of the HSI.
 
 ## (Advanced Topic) HSI Charging Rate[​](#advanced-topic-hsi-charging-rate "Direct link to (Advanced Topic) HSI Charging Rate")
 
