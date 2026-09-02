@@ -162,8 +162,9 @@ There are many receiver protocols supported in Rotorflight.
       * Leaving only Port 1 for connection to RF FC.
       * Full size SRXL2 Rx must have unit id 0. Enter in cli: `set srxl2_unit_id = 0` and `save`.
     * Binding.
-      SRXL2 receivers can be bound by using RFC gui bind button or the button on the receiver.
-      Other receivers can use cli commands, see: https://betaflight.com/docs/development/spektrum-bind
+      SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver.
+      Other receivers can in most cases use cli command `set spektrum_sat_bind = 9`and `save`. Then power cycle the flight controller.
+      For more information on other bind codes etc, see: https://github.com/SpektrumRC/SpektrumDocumentation/blob/master/Telemetry/Remote%20Receiver%20Interfacing.pdf
   </TabItem>
 
   <TabItem value="OTHER" label="OTHER">
