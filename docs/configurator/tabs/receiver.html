@@ -12,7 +12,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Rotorflight" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.065109be.css">
-<script src="/assets/js/runtime~main.c740ae4b.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.422a4a57.js" defer="defer"></script>
 <script src="/assets/js/main.472ef5c2.js" defer="defer"></script>
 </head>
 <body>
@@ -79,7 +79,8 @@ When connected to a UART Rx pin, set pinswap ON.</li>
 <li class="">Full size SRXL2 receivers are not supported by RotorFlight</li>
 <li class="">Binding.
 SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver.
-Other receivers can use cli commands, see: <a href="https://betaflight.com/docs/development/spektrum-bind" target="_blank" rel="noopener noreferrer" class="">https://betaflight.com/docs/development/spektrum-bind</a></li>
+Other receivers can in most cases use cli command <code>set spektrum_sat_bind = 9</code>and <code>save</code>. Then power cycle the flight controller.
+For more information on other bind codes etc, see: <a href="https://github.com/SpektrumRC/SpektrumDocumentation/blob/master/Telemetry/Remote%20Receiver%20Interfacing.pdf" target="_blank" rel="noopener noreferrer" class="">https://github.com/SpektrumRC/SpektrumDocumentation/blob/master/Telemetry/Remote%20Receiver%20Interfacing.pdf</a></li>
 </ul></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><p>If your receiver is not listed here it may still be compatible. Rotorflight can operate with all receiver protocols compatible with Betaflight. Please see the betaflight website and your Receiver documentation for more information.</p></div></div></div></div></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="receiver-channels">Receiver Channels<a href="#receiver-channels" class="hash-link" aria-label="Direct link to Receiver Channels" title="Direct link to Receiver Channels" translate="no">​</a></h2>
 <p>Either select a preset from the <em><strong>apply preset dropdown</strong></em> matching your receiver type or use the individual <em><strong>channel dropdowns</strong></em> to allocate each receiver channel to the desired function.</p>

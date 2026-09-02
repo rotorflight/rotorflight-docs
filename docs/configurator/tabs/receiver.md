@@ -98,7 +98,7 @@ There are a lot of different Spektrum Receivers and connections. Please review t
 * Leave Inverted Serial Signaling Off.
 * Rx/Tx Pin swap can be used with SRXL/SRXL2 if no Tx pin is available on the FC connector, but with F7 MCUs only. I.e. When connected to a UART Tx pin, set pinswap OFF. When connected to a UART Rx pin, set pinswap ON.
 * Full size SRXL2 receivers are not supported by RotorFlight
-* Binding. SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver. Other receivers can use cli commands, see: <https://betaflight.com/docs/development/spektrum-bind>
+* Binding. SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver. Other receivers can in most cases use cli command `set spektrum_sat_bind = 9`and `save`. Then power cycle the flight controller. For more information on other bind codes etc, see: <https://github.com/SpektrumRC/SpektrumDocumentation/blob/master/Telemetry/Remote%20Receiver%20Interfacing.pdf>
 
 If your receiver is not listed here it may still be compatible. Rotorflight can operate with all receiver protocols compatible with Betaflight. Please see the betaflight website and your Receiver documentation for more information.
 
