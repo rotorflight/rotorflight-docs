@@ -1,0 +1,65 @@
+---
+sidebar_position: 35
+draft: true
+---
+
+# Remap FC
+
+Remap FC lets you change which servos, motors, and other functions are connected to which pins on your flight controller — for example, swapping a tail servo output for a motorised tail, adding a buffer pack or onboard glow, or moving a function to a different pin. It's all done from the Configurator, without soldering, rewiring, or building custom firmware.
+
+This is most useful if your board's factory pin layout doesn't quite match how you want to wire your helicopter, or if you're using a board that doesn't have a purpose-built Rotorflight target.
+
+## Add Image Here
+
+## Reading your flight controller
+
+Connect to your flight controller and open the Remap FC tab. Click **Read FC** to load its current wiring. This reads how your board is set up right now — nothing is changed yet.
+
+If your board is a recognised Rotorflight reference design, the tab shows its board name and diagram, along with the connector names printed on the board itself (for example "ESC" or "Tail") instead of generic labels. If it isn't recognised, you'll still see every connected function, just with generic names such as "Servo 1" or "Motor 2".
+
+### Board not supported
+
+If your flight controller's MCU isn't one the remapper currently supports, you'll see a "Board not supported" message instead of the pin table. This means Remap FC can't safely calculate pin, timer, and DMA changes for your board, so remapping isn't available.
+
+## Add Image Here
+
+## The pin table
+
+Once your board has been read, you'll see a table listing every connector and what's currently assigned to it:
+
+* **FC Label** – the connector name, either the board's own printed label or a generic name like "Servo 1".
+* **Default Pin** – the pin normally used for this connector (only shown when "Show details" is switched on).
+* **Current Option** – a dropdown showing what's currently wired to this pin. Change this to reassign the pin to a different function.
+
+Use **+ Add** below the table to bring in a connector that isn't currently wired to anything, then choose what you want it to do.
+
+Turn on **Show details** if you want to see the Default Pin column, along with more detailed timer and DMA information further down the page. Most people won't need this.
+
+## Reassigning a function
+
+To change what a pin does, open its **Current Option** dropdown in the pin table and pick a different function. The function that was previously there is freed up. Motor and servo slots need to be filled in order (for example, Servo 4 can't be assigned until Servos 1–3 are), and some options depend on others already being set up.
+
+None of your changes take effect immediately — you can make as many edits as you like and review everything before applying them.
+
+## Add Image Here
+
+## Resolving pin conflicts
+
+Not every pin can be freely reassigned to every function — some pins share internal hardware that can only be used one way at a time. Most of the time, Remap FC works this out automatically in the background as you make changes.
+
+If a change you've made can't work, you'll see a **Pin selection not valid** warning explaining the problem. Where possible, Remap FC will offer a one-click suggestion to fix it — for example swapping two functions between pins, or moving a function to a free pin. If it can't find an automatic fix, you can reset the affected function back to unassigned and choose a different pin for it yourself.
+
+You won't be able to apply your changes until any conflict like this is resolved.
+
+## Applying your changes
+
+Once you're happy with your changes, review them under **Pending Changes**. You can expand **Pending Commands** to see exactly what will be sent to your flight controller before you commit to it.
+
+* **Load Changes** sends your changes to the flight controller and saves them. This also **reboots your flight controller**, which is required for the new wiring to take effect.
+* **Clear Changes** discards everything you've changed and goes back to what was last read or applied.
+
+:::caution
+Applying changes saves them and reboots your flight controller straight away — there's no separate confirmation step. Double-check the Pending Commands list before clicking Load Changes.
+:::
+
+## Add Image Here
