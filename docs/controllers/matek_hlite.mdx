@@ -1,0 +1,64 @@
+---
+sidebar_position: 70
+---
+import matekG474Hlite from "./img/matek-g474-hlite.png";
+import g474Target from "./img/g474-target.png";
+import mtMotorised from "./img/mt-motorised.png";
+import g474HliteWiring from "./img/g474-hlite_wiring.jpg";
+import mtUarts from "./img/mt-uarts.png";
+import mtHlPorts from "./img/mt-hl-ports.png";
+
+# Matek G474-HLite
+
+<img src={matekG474Hlite} alt="Matek G474HELI" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+:::info[Specifications]
+### Hardware Specifications：
+
+MCU: STM32G474CE\
+IMU: ICM42688-P\
+Black Box: W25N01G (128MB)\
+Baro: SPL06 (I2C2）\
+LED: LED\_STRIP port\
+Beeper: Buzzer output\
+USB: Type-C\
+UARTS: UART1, UART2 (Rx Only)，UART3, UART4\
+ADC: Battery measurement VBat 2-6s (5.4-30v)
+Servo Pins: CH1-CH4\
+Motor Pins: M1
+Voltage range Vx: 4.5V~14V\
+RPM Inputs: RPM Frequency input\
+Dimensions: 30mm x 23mm x 13mm\
+Weight: 9g
+:::
+
+### Rotorflight Target
+
+When updating Rotorflight firmware. Please use the MATEKG474HELI target.
+
+<img src={g474Target} alt="Matek G474Heli Target" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+### Motorised Tail
+
+The H-Lite FC is configured with 4 servos and 1 motor. If you wish to use this board for a motorised tail it can be added in the CLI using the following command (just copy and past this into the CLI then push \[ENTER]).
+
+`resource SERVO 4 none`\
+`resource motor 2 A06`\
+`save`
+
+<img src={mtMotorised} alt="Matek Motorised Tail" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+### Wiring
+
+<img src={g474HliteWiring} alt="Wiring Diagram" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+### UART ports
+
+<img src={mtUarts} alt="UARTS" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+<img src={mtHlPorts} alt="UARTS" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+### Manuals
+
+Detail specifications and documentation available at the Matek website.\
+[Matek G474-HLite website](https://www.mateksys.com/?portfolio=g474-hlite)

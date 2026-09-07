@@ -1,0 +1,65 @@
+---
+sidebar_position: 60
+---
+import matekG474 from "./img/matek-g474.png";
+import g474Target from "./img/g474-target.png";
+import g474Wiring from "./img/g474-wiring.jpg";
+import mtUarts from "./img/mt-uarts.png";
+import mtPorts from "./img/mt-ports.png";
+import mtBec from "./img/mt-bec.png";
+
+# Matek G474Heli
+
+<img src={matekG474} alt="Matek G474HELI" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+:::info[Specifications]
+### Hardware Specifications：
+
+MCU: STM32G474CE\
+IMU: ICM42688-P\
+Black Box: W25N01G (128MB)\
+Baro: SPL06 (I2C2）\
+LED: LED\_STRIP port\
+Beeper: Buzzer output\
+USB: Type-C\
+UARTS: UART1, UART2，UART3\
+I2C: I2C1\
+ADC: Battery measurement VBat 2-6s (5.4-30v)
+Servo Pins: CH1-CH4\
+Motor Pins: M1, M2\
+RPM Inputs: RPM Frequency input\
+Onboard BEC: 5 or 7.2v selectable (disable using bridge if using external BEC)\
+Dimensions: 38mm x 26mm x 13mm\
+Weight: 15g
+:::
+
+### Rotorflight Target
+
+When updating Rotorflight firmware. Please use the MATEKG474HELI target.
+
+<img src={g474Target} alt="Matek G474Heli Target" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+### Wiring
+
+<img src={g474Wiring} alt="Wiring Diagram" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+### UART ports
+
+<img src={mtUarts} alt="UARTS" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+<img src={mtPorts} alt="UARTS" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+### Onboard BEC
+
+The Matek G474Heli contains a 5A-8A peak, Variable voltage (5v or 7.2v) BEC to supply the servos. The BEC will supply 5v by default and 7.2 v when the solder bridge is connected. THis is powered by the VBat connection.
+
+:::caution
+If using an external BEC the internal BEC MUST be disabled via the \[Vx Off] solder bridge.
+:::
+
+<img src={mtBec} alt="BEC" style={{ maxWidth: '100%' , borderRadius: '10px'}} />
+
+### Manuals
+
+Detail specifications and documentation available at the Matek website.\
+[Matek G474-HELI website](https://www.mateksys.com/?portfolio=g474-heli)

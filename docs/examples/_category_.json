@@ -1,7 +1,5 @@
 {
-  "label": "Tutorial - Examples",
-  "position": 1,
-  "link": {
-    "type": "generated-index"
-  }
+  "label": "Tutorial - examples",
+  "position": 20,
+  "collapsed": true
 }
