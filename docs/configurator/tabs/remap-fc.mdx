@@ -15,32 +15,28 @@ Remap FC lets you change which servos, motors, and other functions are connected
 
 This is most useful if your board's factory pin layout doesn't quite match how you want to wire your helicopter, or if you're using a board that doesn't have a purpose built Rotorflight target.
 
-<img src={remap1} style={{ maxWidth: '100%' }} />
+<img src={remap1} style={{ maxWidth: "90%" }} />
 
 ## Reading your flight controller
 
-Connect to your flight controller and open the Remap FC tab. Click **Read FC** to load its current wiring. This reads how your board is set up right now — nothing is changed yet.
+Connect to your flight controller, open the Remap FC tab, and click **Read FC** to read its current configuration. Nothing is changed on your board — this just loads what's already there.
 
-While it's working, the button label updates to **Reading FC**, and briefly shows a percentage while it restores your existing configuration in the background. You'll also see a loading indicator over the table area until this finishes.
-
-If your board is a recognised Rotorflight reference design, the tab shows its board name and a diagram of the board — including manufacturer branding where available — along with the connector names printed on the board itself (for example "ESC" or "Tail") instead of generic labels. If it isn't recognised, you'll still see every connected function, just with generic names such as "Servo 1" or "Motor 2", and a plain, uncased board outline instead of a branded diagram.
+Once the read finishes you'll see your board's name and MCU, a diagram of the board, and the pin table.
 
 ### Supported boards
 
-The current remapper supports the following MCUs, STM32F411, STM32F40X, STM32F7X2, STM32F745, STM32H743, STM32G474. This should cover all Rotorflight compatible MCUs.
-
-If your board's MCU isn't supported (or couldn't be identified), Remap FC shows a **Board not supported** message instead of the table — pin, timer, and DMA changes can't be safely calculated for it yet.
+The remapper covers the STM32F411, STM32F40X, STM32F7X2, STM32F745, STM32H743 and STM32G47X families, which should include every Rotorflight compatible MCU. If yours isn't supported, or couldn't be identified, Remap FC shows a **Board not supported** message instead of the table.
 
 ## The pin table
 
-Once your board has been read, you'll see two connected columns:
+The table has two connected columns:
 
-* **FC Label** – every physical connector on your board, either the board's own printed label or a generic name like "Servo 1".
-* **Feature** – every motor, servo, frequency input, and LED strip function currently in use, in a fixed order regardless of which pin it's wired to.
+* **FC Label** – every physical connector on your board.
+* **Feature** – every motor, servo, frequency input, and LED strip function currently in use. A connector with nothing assigned to it has no entry here.
 
-A line connects each Feature to the FC Label pin it's currently wired to, so you can see the wiring at a glance.
+A line connects each Feature to the pin it's currently wired to, so you can see the wiring at a glance.
 
-Click an **FC Label** entry to open a card showing its pin number, a description, and (where applicable) a **Current Option** dropdown for reassigning it. Click a **Feature** entry instead to open a read-only card describing what that function is for.
+Click an **FC Label** entry to open a card showing its pin number, a description, and the dropdown used to reassign it. Click a **Feature** entry instead and the card opens read-only, describing what that function is for. A few pins can't be reassigned at all — either they're hard-wired to something onboard, or they have no timer available — and their card says so instead of offering a dropdown.
 
 Use **Other Pins** below the FC Label column to bring in a connector that isn't currently shown, then choose what you want it to do.
 
@@ -48,45 +44,53 @@ Turn on **Show details** if you want to see the calculated timer and DMA allocat
 
 ### Example: Adding an extra servo to a NEXUS
 
-<img src={remap3} style={{ maxWidth: '66%' }} />
+<img src={remap3} style={{ maxWidth: "90%" }} />
 
-### Example: Remapping a betaflight
+### Example: Remapping a Betaflight board
 
-<img src={remap3b} style={{ maxWidth: '70%' }} />
-
-{/* TODO(screenshots): remap-3.png and remap-3b.png show the previous single-dropdown table (FC Label / Current Option columns). Retake both against the current two-column FC Label/Feature table with connecting wires and the click-to-open pin card described above. */}
+<img src={remap3b} style={{ maxWidth: "90%" }} />
 
 ## Reassigning a function
 
-To change what a pin does, click its entry in the **FC Label** column to open its card, then pick a different function from the **Current Option** dropdown. The function that was previously there is freed up. Motor and servo slots need to be filled in order (for example, Servo 4 can't be assigned until Servos 1–3 are), and some options depend on others already being set up.
+To change what a pin does, click its entry in the **FC Label** column to open its card, then pick a different function from the dropdown. The function that was previously there is freed up, and picking **None** leaves the pin unassigned.
 
-A connector that's normally a fixed serial (UART) or I2C port — such as SBUS or TLM — can only ever be set back to its own original job; it can't be handed to a motor or servo, and nothing else can take its place either.
+A few ordering rules apply, matching what the firmware can actually drive:
+
+* Motors and servos have to be filled in sequence — Servo 4 can't be assigned until Servos 1, 2 and 3 all are.
+* An output frequency input can only be assigned once its matching motor is — Freq 2 needs Motor 2.
+* Rotorflight drives at most 4 motors and 8 servos, so higher numbered slots are never offered.
+
+A connector that's normally a fixed serial (UART) or I2C port — such as SBUS or TLM — can be given a motor, servo, frequency input, or LED strip like any other pin, and its own original function can always be put back from its card. The one thing it can't do is take on a *different* serial or I2C function.
 
 None of your changes take effect immediately — you can make as many edits as you like and review everything before applying them.
 
+**Servo frequency groups**, below the pin card, lists each servo's update rate alongside the others sharing its timer. Servos on the same timer must always run at the same rate, so it's worth a glance after moving one to a new pin.
+
 ## Resolving pin conflicts
 
-Not every pin can be freely reassigned to every function — some pins share internal hardware that can only be used one way at a time. Most of the time, Remap FC works this out automatically in the background as you make changes.
+Not every pin can be freely reassigned to every function — some pins share internal hardware that can only be used one way at a time. Most of the time, Remap FC works this out automatically as you make changes.
 
-If a change you've made can't work, you'll see a **Pin selection not valid** warning explaining the problem. Where possible, Remap FC will offer a one click suggestion to fix it via **Accept Suggestion** — for example swapping two functions between pins, or moving a function to a free pin. If it can't find an automatic fix, use **Reset to Set Option** to clear the affected function back to unassigned and choose a different pin for it yourself.
+If a change you've made can't work, you'll see a **Pin selection not valid** warning explaining the problem. Where possible, Remap FC offers a one click fix via **Accept Suggestion** — for example swapping two functions between pins, or moving a function to a free pin. If there's more than one way out, choose the one you want from the dropdown first. If it can't find an automatic fix, use **Reset to Set Option** to clear the affected function back to unassigned and pick a different pin for it yourself.
 
-You won't be able to apply your changes until any conflict like this is resolved.
+You won't be able to apply your changes until the conflict is resolved.
 
-<img src={remap4} style={{ maxWidth: '70%' }} />
+<img src={remap4} style={{ maxWidth: "60%" }} />
+
+### Gaps in motor/servo numbering
+
+You can still leave a hole in the numbering from above — freeing Servo 5 while Servo 6 stays put, for example. Remap FC flags this with a **Gap in motor/servo numbering** warning and blocks applying your changes, because the firmware stops at the first unassigned output rather than skipping it: a hole at Servo 5 would silently cost you Servo 5 and everything above it. Either assign the missing output, or move the higher ones down to close the gap.
 
 ## Applying your changes
 
-Once you're happy with your changes, a toolbar appears at the bottom of the page:
+Once you have unsaved changes, the usual toolbar appears at the bottom of the page:
 
-* **Save and Reboot** sends your changes to the flight controller and saves them. This also **reboots your flight controller**, which is required for the new wiring to take effect. This is disabled until any pin conflict is resolved.
+* **Save and Reboot** sends your changes to the flight controller and saves them. This also **reboots your flight controller**, which is required for the new wiring to take effect. It's disabled while any pin conflict or numbering gap is outstanding.
 * **Revert** discards everything you've changed and goes back to what was last read or applied.
 
-Turn on **Show details** to review the **Calculated config** (the resolved timer and DMA allocation for every function) and the **Pending Changes** list of exact commands that will be sent, before committing to them. If any servos end up sharing a timer, a **Servo frequency groups** note tells you which ones — servos sharing a timer must always run at the same rate.
+Turn on **Show details** to review the **Calculated config** and the **Pending Changes** list of exact commands before committing to them.
 
 :::caution
 Applying changes saves them and reboots your flight controller straight away — there's no separate confirmation step. Double check the Pending Changes list before clicking Save and Reboot.
 :::
 
-<img src={remap5} style={{ maxWidth: '80%' }} />
-
-{/* TODO(screenshots): remap-5.png shows the previous "Load Changes"/"Clear Changes" buttons living inside the "Pending Changes" card. Retake to show the current "Save and Reboot"/"Revert" buttons in the bottom toolbar, separate from the "Pending Changes" command preview. */}
+<img src={remap5} style={{ maxWidth: "95%" }} />
