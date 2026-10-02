@@ -174,59 +174,85 @@ This determines how aggressively the heli tilt back to level while in *HORIZON* 
 
 ## Rescue Settings[​](#rescue-settings "Direct link to Rescue Settings")
 
-![Profiles](/assets/images/profiles-rescue-79718b08efa3c1b64c040e820ac5873a.png)
+info
+
+Rescue is a self-leveling recovery mode that arrests a fall, climbs to a safe height, flips the helicopter upright if needed, and hovers it until you take back control. For how the different stages and gains interact, and a recommended tuning order, see the [Rescue mode settings](/docs/Tuning/Rescue-mode-settings.md) page.
+
+![Profiles](/assets/images/profiles-rescue-45f17c69e0ba4d0027d0f0adb75924a4.png)
 
 ### Enable Rescue[​](#enable-rescue "Direct link to Enable Rescue")
 
-Enable or disable the rescue mode.
+Enable or disable rescue mode (`rescue_mode`) on this profile. A switch must also be assigned to the [RESCUE mode](/docs/configurator/tabs/modes.md#rescue) before it can be activated in flight.
 
 #### Flip to upright[​](#flip-to-upright "Direct link to Flip to upright")
 
-Activate flip to upright option when the heli is inverted.
+If Rescue activates while the helicopter is inverted, flip it upright before climbing (`rescue_flip`). If disabled, Rescue levels and climbs in whatever orientation it finds the helicopter.
 
-#### Pullup Collective[​](#pullup-collective "Direct link to Pullup Collective")
+#### Pull-up Collective[​](#pull-up-collective "Direct link to Pull-up Collective")
 
-Values 0.0-100. This is to be set to a level where the helicopter rapidly gains height.
+Collective applied the instant Rescue activates, to stop a fall (`rescue_pull_up_collective`, 0–100%). Set this for your helicopter's weight and head speed — too low and it won't arrest a fast descent, too high and it will balloon upward or stall the head.
 
-#### Pullup Time[​](#pullup-time "Direct link to Pullup Time")
+#### Pull-up Time[​](#pull-up-time "Direct link to Pull-up Time")
 
-How long pull up collective should be applied. This is usually about 0.3 to 0.5s
+How long Pull-up Collective and leveling are applied before Rescue checks whether the craft is level enough to continue (`rescue_pull_up_time`). If the helicopter hasn't reached level (within 30°) by the time this expires, Rescue aborts and hands control back — so this needs to be long enough for your gains to actually get the helicopter level, not just a fixed "climb time".
 
 #### Climb Collective[​](#climb-collective "Direct link to Climb Collective")
 
-Values 0.0-100. This is to be set to a level where the helicopter gains height.
+Collective applied during the climb phase in **Climb** mode (`rescue_climb_collective`, 0–100%). Not used when Altitude Hold is enabled — the altitude PID takes over instead.
 
 #### Climb Time[​](#climb-time "Direct link to Climb Time")
 
-How long Climb collective should be applied. This is usually about 0.5 to 1.5s
+How long Climb Collective is applied for in **Climb** mode (`rescue_climb_time`). In Altitude Hold mode this instead acts as a safety timeout — the climb ends early as soon as the target Hover Altitude is reached.
 
 #### Hover Collective[​](#hover-collective "Direct link to Hover Collective")
 
-Increase this value until the heli hovers at a stable altitude
+Collective used to hold a stable hover in **Climb** mode (`rescue_hover_collective`, 0–100%). Not used when Altitude Hold is enabled.
 
 #### Flip Fail Time[​](#flip-fail-time "Direct link to Flip Fail Time")
 
-This is a safety feature. If there is a mechanical issue preventing the helicopter from completing the flip during this time the rescue mode will exit
+Timeout for the flip-to-upright attempt (`rescue_flip_time`). If the helicopter hasn't flipped upright within this time, Rescue either proceeds to Climb anyway (if it happens to be level) or aborts to hand back control.
 
 #### Exit Time[​](#exit-time "Direct link to Exit Time")
 
-This slows the transition from rescue back to normal mode. This is helpful if you have rescued from inverted where your collective may be in the opposite direction. This prevents it from rapidly pitching down.
+How long Rescue takes to blend its last commanded roll/pitch/collective back to your own stick inputs after it's switched off (`rescue_exit_time`). Increase this if handback feels abrupt.
 
 #### Leveling Gain[​](#leveling-gain "Direct link to Leveling Gain")
 
-How strong the helicopter will level. Too low and the helicopter will be sluggish to level. Too high and it will wobble/vibrate.
+How aggressively the helicopter self-levels during the **Climb and Hover** stages, while you still have stick control (`rescue_level_gain`). Too low and it's sluggish to level; too high and it will wobble or oscillate.
 
 #### Flip-to-Upright Gain[​](#flip-to-upright-gain "Direct link to Flip-to-Upright Gain")
 
-How strong the helicopter will flip to upright.
+How aggressively the helicopter levels during **Pull-up and Flip** (`rescue_flip_gain`) — i.e. before control is handed back, including the initial pull-up to level regardless of whether a flip is needed.
 
-#### Max Leveling Rate[​](#max-leveling-rate "Direct link to Max Leveling Rate")
+#### Max Levelling Rate[​](#max-levelling-rate "Direct link to Max Levelling Rate")
 
-Used to control how fast the helicopter levels. Set this to a value that is achievable by your helicopter. Larger slower helicopters may need this reduced.
+Caps the roll/pitch rate Rescue is allowed to command (`rescue_max_sp_rate`, °/s). Reduce this for larger, heavier helicopters that can't rotate as fast without risking a mechanical issue.
 
 #### Max Leveling Acceleration[​](#max-leveling-acceleration "Direct link to Max Leveling Acceleration")
 
-Limit how fast the controller tries to accelerate the helicopter to level or flip. Larger slower helicopters may need this reduced.
+Caps how fast Rescue can accelerate the helicopter into a roll/pitch rate (`rescue_max_sp_accel`, °/s²). Reduce this for larger, slower helicopters.
+
+### Altitude Hold[​](#altitude-hold "Direct link to Altitude Hold")
+
+info
+
+This section only appears once `rescue_mode` is already set to `ALT_HOLD` (e.g. via the CLI, `set rescue_mode = ALT_HOLD`). It's the newer, opt-in half of Rescue and needs a working altitude source — enable a [barometer](/docs/configurator/tabs/configuration.md#barometer) and/or have a GPS fix, or the altitude estimate it relies on will just be zero.
+
+#### Enable Altitude Hold[​](#enable-altitude-hold "Direct link to Enable Altitude Hold")
+
+Switches Rescue from the fixed-collective **Climb** behaviour to an altitude-hold PID loop (`rescue_mode = ALT_HOLD`) for the Climb and Hover stages.
+
+#### Hover Altitude[​](#hover-altitude "Direct link to Hover Altitude")
+
+The height the altitude-hold PID climbs to and then holds, in metres above the point Rescue was activated (`rescue_hover_altitude`).
+
+#### Altitude P-Gain, I-Gain, D-Gain[​](#altitude-p-gain-i-gain-d-gain "Direct link to Altitude P-Gain, I-Gain, D-Gain")
+
+PID gains for the altitude-hold loop (`rescue_alt_p_gain`, `rescue_alt_i_gain`, `rescue_alt_d_gain`). P reacts to height error, I removes a steady hover-collective offset (and starts pre-loaded from your Hover Collective value), D damps against climb/descent rate (vario) rather than height error.
+
+#### Maximum Collective[​](#maximum-collective "Direct link to Maximum Collective")
+
+Caps how much collective the altitude-hold PID can command on the high side (`rescue_max_collective`, 0–100%).
 
 ## Copy Profile[​](#copy-profile "Direct link to Copy Profile")
 
