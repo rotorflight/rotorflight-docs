@@ -133,10 +133,10 @@ There are many receiver protocols supported in Rotorflight.
 
     | Type       | Modulation | Supply Voltage   | UART I/O pin | RX Protocol | Telemetry         |
     | -----------|------------|------------------|--------------|-------------|------------------ |
-    | SPM9545    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
-    | SPM4645    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
+    | SPM9545    |   DSM2     | 3.3V             |  Rx          | DSM/2048*   |   No              |
+    | SPM4645    |   DSM2     | 3.3V             |  Rx          | DSM/2048*   |   No              |
     | SPM4645    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
-    | SPM4648    |   DSM2     | 3.3V             |  Rx          | DSM/1024    |   No              |
+    | SPM4648    |   DSM2     | 3.3V             |  Rx          | DSM/2048*   |   No              |
     | SPM4648    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
     | SPM4649T   |   DSMX     | 5V (4V - 8.4V)   |  Tx          | DSM/SRXL    |   Yes             |
     | SPM9745    |   DSMX     | 3.3V             |  Rx          | DSM/2048    |   No              |
@@ -157,7 +157,8 @@ There are many receiver protocols supported in Rotorflight.
     * Binding.
       SRXL2 Remote receivers can be bound by using RFC gui bind button or the button on the receiver.
       Other receivers can in most cases use cli command `set spektrum_sat_bind = 9`and `save`. Then power cycle the flight controller.
-      For more information on other bind codes etc, see: https://github.com/SpektrumRC/SpektrumDocumentation/blob/master/Telemetry/Remote%20Receiver%20Interfacing.pdf
+    * (*) Select DSM/1024 if Rx is bound with DSM2/22ms modulation/rate (Bind code: 3).
+      For more information on modulations, rates and bind codes etc, see: https://github.com/SpektrumRC/SpektrumDocumentation/blob/master/Telemetry/Remote%20Receiver%20Interfacing.pdf
   </TabItem>
 
   <TabItem value="OTHER" label="OTHER">
