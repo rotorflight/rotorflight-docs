@@ -50,8 +50,12 @@ On the ***Governor*** tab, set ***Governor Mode*** to ***ELECTRIC***.
 
 ***Handover Throttle*** is the throttle level above which the governor takes
 over. Below it the throttle input is passed straight to the ESC. The default of
-20% suits most electric setups — the only requirement is that the motor will
-start below this level.
+20% suits most electric setups — ***the only requirement is that the motor will
+start below this level***.
+
+:::info
+The motor must be able to start below the handover throttle level. If this does not happen using the motor override ***please check that the ESC does not have the internal Governor enabled***.
+:::
 
 The headspeed itself is a profile setting. On the ***Profiles*** tab, set
 ***Full Headspeed*** to the headspeed you want to fly.
@@ -77,6 +81,15 @@ decides whether the governor runs — it does not scale the headspeed.
 <div style={{ textAlign: 'center' }}>
   <img src={govNormal} style={{ width: '80%', borderRadius: '10px' }} />
 </div>
+
+The bar under the settings shows how the throttle channel is divided up.
+
+:::info
+The bar always draws an AUTO band between ***Auto Throttle*** and
+***Handover Throttle***, even when autorotation is switched off. It does nothing
+until you set an ***Autorotation Timeout*** — see
+[Adding autorotation bailout](#adding-autorotation-bailout).
+:::
 
 In the transmitter, assign a switch to the throttle channel with two positions:
 
@@ -119,7 +132,7 @@ With ***Full Headspeed*** set to 2400 rpm and a three-position switch:
 |---|---|---|
 | Idle | Below the active range | Motor stopped |
 | Mid | 80% | 1920 rpm |
-| High | 90% | 2160 rpm |
+| High | 100% | 2400 rpm |
 
 The jump between positions must be instantaneous, so this type cannot be used
 with throttle-on-stick.
