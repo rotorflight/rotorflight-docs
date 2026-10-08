@@ -112,11 +112,18 @@ The general process for setting up a helicopter using Rotorflight.
 - [Telemetry Widget](/docs/setup/radio-setup/radio-setup-edgetx/widget-etx-bob00.md): Bob00 has created a custom widget for displaying Rotorflight Telemetry. More details and downloads can be found in the Github Repository.
 - [FrSky Ethos Background Task Notification](/docs/setup/radio-setup/radio-setup-ethos/ethos-background-task-notification.md): On a new installation of the Ethos Suite you may be presented with the error enable background task.
 - [ETHOS Generic Radio Setup](/docs/setup/radio-setup/radio-setup-ethos/ethos-generic-radio-setup.md): This walkthrough will guide you through to create a basic radio model for rotorflight controller.
-- [Rotorflight Lua Scripts](/docs/setup/radio-setup/radio-setup-ethos/ethos-lua-scripts.md): Introduction
 - [FrSky Ethos RFStatus LUA Script](/docs/setup/radio-setup/radio-setup-ethos/ethos-nexus-status.md): Installation
 - [FrSky Ethos example](/docs/setup/radio-setup/radio-setup-ethos/ethos-setup.md): Instructions for Frsky Ethos Initial Radio and Configurator Setup, this is a generic setup using an Frsky transmitter with an frsky access receiver with a Rotorflight FC. This example shows a Nexus; however, the process is the same for any Rotorflight controller. Please choose the port related to your FC.
 - [FrSky Ethos Ethos simulators](/docs/setup/radio-setup/radio-setup-ethos/ethos-simulators.md): The following links will take you to the rotorflight Ethos suite simulators.
 - [FrSky Ethos Missing Sensors](/docs/setup/radio-setup/radio-setup-ethos/ethos-suite-missing-sensors.md): This guide will help with the error shown below: This error is shown where the Ethos Suite LUA is not receiving a sensor(s) from the FBL it requires to operate.
+- [Rotorflight Lua Suite](/docs/setup/radio-setup/radio-setup-ethos/lua-suite.md): The Rotorflight Lua suite puts the flight controller's settings on your FrSky
+- [Dashboard](/docs/setup/radio-setup/radio-setup-ethos/lua-suite/dashboard.md): The suite includes a dashboard widget for the model's home screen. It shows
+- [Flight Tuning](/docs/setup/radio-setup/radio-setup-ethos/lua-suite/flight-tuning.md): Flight Tuning holds the settings you change most at the field: PIDs,
+- [Installing the Lua Suite](/docs/setup/radio-setup/radio-setup-ethos/lua-suite/installing.md): 1. Download
+- [Settings](/docs/setup/radio-setup/radio-setup-ethos/lua-suite/settings.md): Settings are the suite's own options. They are stored on the radio, not
+- [Setup](/docs/setup/radio-setup/radio-setup-ethos/lua-suite/setup.md): Setup covers how the helicopter is built and wired: the board and radio,
+- [Tools and Logs](/docs/setup/radio-setup/radio-setup-ethos/lua-suite/tools-and-logs.md): Tools
+- [Using the App](/docs/setup/radio-setup/radio-setup-ethos/lua-suite/using-the-app.md): Menus
 - [Futaba example](/docs/setup/radio-setup/radio-setup-futaba/futaba-setup.md): Instructions for Futaba Initial Radio and Configurator Setup, this is a generic setup using Futaba T26SZ transmitter and SBUS2 receiver with a Rotorflight FC. This example shows a Nexus; however, the process is the same for any Rotorflight controller. Please choose the SBUS port related to your FC
 - [Jeti example](/docs/setup/radio-setup/radio-setup-jeti/jeti-setup.md): Instructions for Jeti Initial Radio and Configurator Setup, this is a generic setup using a Frsky transmitter with a jeti exbus receiver with a Rotorflight FC. This example shows a Nexus; however, the process is the same for any Rotorflight controller. Please choose the SBUS port related to your FC.
 - [Other Transmitters](/docs/setup/radio-setup/radio-setup-others/others.md): Coming Soon
