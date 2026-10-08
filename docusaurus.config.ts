@@ -62,6 +62,14 @@ const config: Config = {
         fromExtensions: ["html", "htm"],
         toExtensions: ["exe", "zip"],
         redirects: [
+          // The Ethos Lua scripts page became its own section.
+          {
+            from: [
+              "/docs/setup/radio-setup/radio-setup-ethos/ethos-lua-scripts",
+              "/docs/next/setup/radio-setup/radio-setup-ethos/ethos-lua-scripts",
+            ],
+            to: "/docs/setup/radio-setup/radio-setup-ethos/lua-suite",
+          },
           //Redirect Rotorflight v2.0 configurator links to new website links
           {
             from: "/docs/Tutorial-Setup/Configuration",
