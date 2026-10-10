@@ -61,7 +61,7 @@ Add the **Rotorflight Dashboard** widget to a full-screen page: press
 It shows the arming and governor state, headspeed, fuel and voltage,
 profiles, flight count, timer and Blackbox use, with separate layouts for
 before, during and after the flight. Themes are chosen under **Settings →
-Dashboard**.
+Dashboard**; [Dashboard Themes](dashboard-themes.md) shows each one.
 
 - **Slide up** (or long-press PAGE) for the toolbar: reset the flight,
   erase the Blackbox, choose the battery profile, open the info panel, or
