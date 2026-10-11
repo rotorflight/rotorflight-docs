@@ -145,6 +145,7 @@ nav:
           - radio/ethos/index.md
           - Radio Setup: radio/ethos/radio-setup.md
           - Using RFSuite: radio/ethos/lua-suite.md
+          - Dashboard Themes: radio/ethos/dashboard-themes.md
           - Tune Advisor: radio/ethos/tune-advisor.md
           - Troubleshooting: radio/ethos/troubleshooting.md
       - EdgeTX:
