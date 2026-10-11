@@ -43,4 +43,5 @@ for a real helicopter.
 | [LED Strip](led-strip.md) | Orientation and status lights. |
 | [OpenLager Logging](openlager.md) | Blackbox logging to an external logger. |
 | [FBUS Master](fbus-master.md) | F.Bus servos and sensors driven by the flight controller. |
+| [FrSky Servos](frsky-servos.md) | Wiring, programming and checking XACT servos on one F.Bus wire. |
 | [ELRS Custom Telemetry](elrs-custom-telemetry.md) | Full Rotorflight telemetry over ExpressLRS. |

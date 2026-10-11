@@ -48,7 +48,8 @@ Configuration* table on the [Servos](../configurator/tabs/servos.md#bus-servo-co
 tab. Each can follow the mixer (e.g. for the swashplate) or pass a receiver
 channel straight through. FrSky XACT servos can be programmed over the same
 wire with the [XACT Servo Programming](../configurator/tabs/xact-servo.md)
-tab.
+tab. For the full wiring, programming and bench checks of a swashplate and
+tail set, see [FrSky Servos](frsky-servos.md).
 
 ### Settings
 
@@ -59,7 +60,7 @@ tab.
 | `fbus_master_discovery_ms` | 5000 | How long to look for sensors at start-up. Raise it if sensors are missed. |
 | `fbus_master_inverted` | ON | Leave on for FrSky hardware. |
 | `fbus_master_pinswap` | OFF | Use the RX pin instead of TX. |
-| `fbus_master_forwarded_sensors` | all | Up to 8 physical IDs to forward to the radio; `0xFF` for unused slots. |
+| `fbus_master_forwarded_sensors` | none (all slots `255`) | Up to 8 physical IDs to forward to the radio; `255` for unused slots. |
 
 ## S.Port master
 

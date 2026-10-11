@@ -110,6 +110,7 @@ nav:
       - LED Strip: setup/led-strip.md
       - OpenLager Logging: setup/openlager.md
       - FBUS Master: setup/fbus-master.md
+      - FrSky Servos: setup/frsky-servos.md
       - ELRS Custom Telemetry: setup/elrs-custom-telemetry.md
   - Configurator:
       - configurator/index.md
