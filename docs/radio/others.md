@@ -6,7 +6,7 @@ Rotorflight helicopter -- see the protocol list on the
 
 | Radio system | Use |
 | --- | --- |
-| Spektrum | SRXL2 receivers (telemetry, binding from the Configurator), or DSM satellites |
+| [Spektrum](../reference/receivers.md#spektrum-receiver-settings) | SRXL2 receivers (telemetry, binding from the Configurator), or DSM satellites |
 | FlySky | iBUS, or iBUS2 for control and telemetry |
 | Graupner HoTT | SUMD, plus HoTT telemetry on a separate port |
 | JR | XBUS |

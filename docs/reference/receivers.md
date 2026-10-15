@@ -39,10 +39,50 @@ Some protocol options:
 | `crsf_telemetry_mode` | `NATIVE` or `CUSTOM` -- see [ELRS Custom Telemetry](../setup/elrs-custom-telemetry.md). |
 | `crsf_telemetry_link_rate` / `crsf_telemetry_link_ratio` | ELRS packet rate and telemetry ratio, for custom telemetry. |
 
+## Spektrum receiver settings
+
+The receiver table from the old documentation lists these remote receivers.
+The UART pin is on the **flight controller**; connect ground as well as
+power and signal. Check the receiver's supply voltage before connecting it:
+the older 3.3 V satellites must not be powered from a 5 V receiver port.
+
+| Receiver | Modulation | Supply voltage | FC UART pin | Receiver protocol | Telemetry |
+| --- | --- | --- | --- | --- | --- |
+| SPM9545 | DSM2 | 3.3 V | RX | DSM/2048* | No |
+| SPM4645 | DSM2 | 3.3 V | RX | DSM/2048* | No |
+| SPM4645 | DSMX | 3.3 V | RX | DSM/2048 | No |
+| SPM4648 | DSM2 | 3.3 V | RX | DSM/2048* | No |
+| SPM4648 | DSMX | 3.3 V | RX | DSM/2048 | No |
+| SPM4649T | DSMX | 5 V (4–8.4 V) | TX | DSM/SRXL | Yes |
+| SPM9745 | DSMX | 3.3 V | RX | DSM/2048 | No |
+| SPM9746 | DSMX | 3.3 V | RX | DSM/2048 | No |
+| SPM4650(C) | DSMX | 5 V (3.3–8.4 V) | TX | DSM/SRXL2 | Yes |
+| SPM4651T | DSMX | 5 V (3.3–8.4 V) | TX | DSM/SRXL2 | Yes |
+| SPM9747 | DSMX | 5 V (3.3–8.4 V) | TX | DSM/SRXL2 | Yes (Fly-By) |
+
+\* Choose **DSM/1024** when bound in DSM2 at 22 ms (bind code **3**).
+The CLI equivalents of DSM/1024, DSM/2048, DSM/SRXL and DSM/SRXL2 are
+`SPEK1024`, `SPEK2048`, `SRXL` and `SRXL2`, respectively.
+
+### Connection settings
+
+- Enable **Serial Rx** on the UART connected to the receiver, then select
+  the protocol from the table on the [Receiver](../configurator/tabs/receiver.md) tab.
+- Leave **Inverted Serial Signaling** off.
+- SRXL/SRXL2 use one-wire bidirectional communication; the firmware handles
+  half-duplex for these protocols.
+- With the signal on the FC's **TX** pin, leave **Pin Swap** off. To use
+  an **RX** pin instead for SRXL/SRXL2, enable **Pin Swap** on a flight
+  controller that supports it; see [Serial Ports](serial-ports.md#pin-swap-inversion-and-half-duplex).
+- For full-size SRXL2 receivers such as the AR6610T, set `srxl2_unit_id = 0`
+  and save. This differs from the remote receivers above.
+
 ## Spektrum binding
 
 **SRXL2** receivers bind from the Configurator: **Bind Receiver** on the
-Receiver tab, or `bind_rx` in the CLI.
+Receiver tab, or `bind_rx` in the CLI. A receiver with a bind button can
+also be put into bind mode using its own instructions. Then start binding
+on the transmitter.
 
 **Satellites** bind through the flight controller, which sends the bind
 pulses at power-up:
@@ -56,6 +96,13 @@ pulses at power-up:
     | 7 | DSMX 1024-bit, 22 ms |
     | 8 | DSMX 2048-bit, 22 ms |
     | 9 | DSMX 2048-bit, 11 ms |
+
+    For example, for DSMX 2048 at 11 ms:
+
+    ```text
+    set spektrum_sat_bind = 9
+    save
+    ```
 
 2. Power cycle the flight controller. The satellite blinks, ready to bind;
    bind it from the transmitter.

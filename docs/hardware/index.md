@@ -48,6 +48,12 @@ Look for:
 Boards with a built-in **SPI** receiver (rather than a UART receiver) are
 generally not usable.
 
+## DIY projects
+
+See [DIY Projects](diy-projects.md) for flight controller conversions,
+output remapping, a Castle telemetry adapter, LED lighting and external
+Blackbox logging.
+
 ## Making a flight controller?
 
 See [For Manufacturers](manufacturers.md).

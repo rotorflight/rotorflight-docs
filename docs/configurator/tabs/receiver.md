@@ -38,6 +38,10 @@ telemetry wire (for example S.Port alongside SBUS -- see
     receiver, already set up correctly. Check your flight controller's
     [hardware page](../../hardware/index.md).
 
+For Spektrum, see the [receiver model and settings table](../../reference/receivers.md#spektrum-receiver-settings)
+for supply voltages, UART connections and protocol choices, plus
+[binding instructions](../../reference/receivers.md#spektrum-binding).
+
 ### Signaling
 
 | Option | Use |

@@ -15,6 +15,7 @@ a live dashboard, voice callouts, and ESC programming -- no laptop needed.
 | **[EdgeTX / OpenTX](edgetx/classic-scripts.md)**, older or black-and-white | Classic Lua scripts | OpenTX 2.3.12+ / EdgeTX 2.5+; S.Port, F.Port or CRSF |
 | **[Futaba](futaba.md)** | -- | SBUS2 telemetry |
 | **[Jeti](jeti.md)** | -- | EX Bus telemetry |
+| **[Spektrum](../reference/receivers.md#spektrum-receiver-settings)** | -- | Receiver settings and binding for DSM satellites and SRXL/SRXL2 |
 | [Other radios](others.md) | -- | |
 
 ## What every radio needs
