@@ -3153,6 +3153,8 @@
       
         
       
+        
+      
     
     
     
@@ -3388,6 +3390,34 @@
     
   
     Matek G474-HELI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/diy-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIY Projects
   
 
     
@@ -3738,6 +3768,34 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spektrum-receiver-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spektrum receiver settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spektrum receiver settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4597,6 +4655,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#spektrum-receiver-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spektrum receiver settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spektrum receiver settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection settings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#spektrum-binding" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4778,9 +4864,134 @@ RSSI and signal-loss settings.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="spektrum-receiver-settings">Spektrum receiver settings<a class="headerlink" href="#spektrum-receiver-settings" title="Permanent link">&para;</a></h2>
+<p>The receiver table from the old documentation lists these remote receivers.
+The UART pin is on the <strong>flight controller</strong>; connect ground as well as
+power and signal. Check the receiver's supply voltage before connecting it:
+the older 3.3 V satellites must not be powered from a 5 V receiver port.</p>
+<table>
+<thead>
+<tr>
+<th>Receiver</th>
+<th>Modulation</th>
+<th>Supply voltage</th>
+<th>FC UART pin</th>
+<th>Receiver protocol</th>
+<th>Telemetry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPM9545</td>
+<td>DSM2</td>
+<td>3.3 V</td>
+<td>RX</td>
+<td>DSM/2048*</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SPM4645</td>
+<td>DSM2</td>
+<td>3.3 V</td>
+<td>RX</td>
+<td>DSM/2048*</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SPM4645</td>
+<td>DSMX</td>
+<td>3.3 V</td>
+<td>RX</td>
+<td>DSM/2048</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SPM4648</td>
+<td>DSM2</td>
+<td>3.3 V</td>
+<td>RX</td>
+<td>DSM/2048*</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SPM4648</td>
+<td>DSMX</td>
+<td>3.3 V</td>
+<td>RX</td>
+<td>DSM/2048</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SPM4649T</td>
+<td>DSMX</td>
+<td>5 V (4–8.4 V)</td>
+<td>TX</td>
+<td>DSM/SRXL</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>SPM9745</td>
+<td>DSMX</td>
+<td>3.3 V</td>
+<td>RX</td>
+<td>DSM/2048</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SPM9746</td>
+<td>DSMX</td>
+<td>3.3 V</td>
+<td>RX</td>
+<td>DSM/2048</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SPM4650(C)</td>
+<td>DSMX</td>
+<td>5 V (3.3–8.4 V)</td>
+<td>TX</td>
+<td>DSM/SRXL2</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>SPM4651T</td>
+<td>DSMX</td>
+<td>5 V (3.3–8.4 V)</td>
+<td>TX</td>
+<td>DSM/SRXL2</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>SPM9747</td>
+<td>DSMX</td>
+<td>5 V (3.3–8.4 V)</td>
+<td>TX</td>
+<td>DSM/SRXL2</td>
+<td>Yes (Fly-By)</td>
+</tr>
+</tbody>
+</table>
+<p>* Choose <strong>DSM/1024</strong> when bound in DSM2 at 22 ms (bind code <strong>3</strong>).
+The CLI equivalents of DSM/1024, DSM/2048, DSM/SRXL and DSM/SRXL2 are
+<code>SPEK1024</code>, <code>SPEK2048</code>, <code>SRXL</code> and <code>SRXL2</code>, respectively.</p>
+<h3 id="connection-settings">Connection settings<a class="headerlink" href="#connection-settings" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Enable <strong>Serial Rx</strong> on the UART connected to the receiver, then select
+  the protocol from the table on the <a href="../../configurator/tabs/receiver/">Receiver</a> tab.</li>
+<li>Leave <strong>Inverted Serial Signaling</strong> off.</li>
+<li>SRXL/SRXL2 use one-wire bidirectional communication; the firmware handles
+  half-duplex for these protocols.</li>
+<li>With the signal on the FC's <strong>TX</strong> pin, leave <strong>Pin Swap</strong> off. To use
+  an <strong>RX</strong> pin instead for SRXL/SRXL2, enable <strong>Pin Swap</strong> on a flight
+  controller that supports it; see <a href="../serial-ports/#pin-swap-inversion-and-half-duplex">Serial Ports</a>.</li>
+<li>For full-size SRXL2 receivers such as the AR6610T, set <code>srxl2_unit_id = 0</code>
+  and save. This differs from the remote receivers above.</li>
+</ul>
 <h2 id="spektrum-binding">Spektrum binding<a class="headerlink" href="#spektrum-binding" title="Permanent link">&para;</a></h2>
 <p><strong>SRXL2</strong> receivers bind from the Configurator: <strong>Bind Receiver</strong> on the
-Receiver tab, or <code>bind_rx</code> in the CLI.</p>
+Receiver tab, or <code>bind_rx</code> in the CLI. A receiver with a bind button can
+also be put into bind mode using its own instructions. Then start binding
+on the transmitter.</p>
 <p><strong>Satellites</strong> bind through the flight controller, which sends the bind
 pulses at power-up:</p>
 <ol>
@@ -4816,6 +5027,10 @@ pulses at power-up:</p>
 </tr>
 </tbody>
 </table>
+<p>For example, for DSMX 2048 at 11 ms:</p>
+<div class="highlight"><pre><span></span><code>set spektrum_sat_bind = 9
+save
+</code></pre></div>
 </li>
 <li>
 <p>Power cycle the flight controller. The satellite blinks, ready to bind;
