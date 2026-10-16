@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found</title>
+<script>
+  // GitHub Pages serves this file for every missing path. The docs live under
+  // a version (/2.3/, /2.4/) or an alias (/stable/, /dev/); a link without one
+  // -- e.g. doc.rotorflight.org/configurator/tabs/status/ from an older
+  // Configurator -- is sent to the same page in the current release.
+  (function () {
+    var parts = location.pathname.split("/").filter(Boolean);
+    var first = parts[0] || "";
+    var versioned = /^\d+\.\d+$/.test(first) || first === "stable" || first === "dev";
+    if (!versioned) {
+      location.replace("/stable/" + parts.join("/") + (parts.length ? "/" : "") + location.search + location.hash);
+    }
+  })();
+</script>
+<style>
+  :root { --bg: #ffffff; --fg: #1f2328; --muted: #57606a; --link: #0077c8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1e2129; --fg: #e6e6e6; --muted: #a0a4ab; --link: #4fa8e8; }
+  }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 36rem; margin: 15vh auto; padding: 0 16px; }
+  h1 { font-size: 1.6rem; margin: 0 0 .5rem; }
+  p { color: var(--muted); }
+  a { color: var(--link); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Page not found</h1>
+  <p>This page doesn't exist in this version of the Rotorflight documentation.
+     It may have moved, or the feature may be in another version.</p>
+  <p><a href="/stable/">Rotorflight documentation home</a></p>
+</main>
+</body>
+</html>
