@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="15">
+  <title>Castle Link Live adapter: signal, plus and minus pass straight through, with a pull-up resistor from the signal line to the BEC plus line</title>
+  <!-- connectors -->
+  <rect x="40" y="90" width="90" height="140" rx="8" fill="none" stroke="#8a96a3" stroke-width="3"/>
+  <text x="85" y="78" text-anchor="middle" fill="#8a96a3" font-weight="600">To ESC</text>
+  <rect x="510" y="90" width="90" height="140" rx="8" fill="none" stroke="#8a96a3" stroke-width="3"/>
+  <text x="555" y="78" text-anchor="middle" fill="#8a96a3" font-weight="600">To FC (ESC port)</text>
+  <!-- pins and labels -->
+  <g fill="#8a96a3" font-weight="700" text-anchor="middle">
+    <text x="85" y="130">S</text><text x="85" y="170">+</text><text x="85" y="210">−</text>
+    <text x="555" y="130">S</text><text x="555" y="170">+</text><text x="555" y="210">−</text>
+  </g>
+  <!-- wires -->
+  <line x1="130" y1="125" x2="510" y2="125" stroke="#007cc7" stroke-width="4"/>
+  <line x1="130" y1="165" x2="510" y2="165" stroke="#d9534f" stroke-width="4"/>
+  <line x1="130" y1="205" x2="510" y2="205" stroke="#8a96a3" stroke-width="4"/>
+  <!-- resistor between S and + -->
+  <circle cx="320" cy="125" r="6" fill="#007cc7"/>
+  <circle cx="380" cy="165" r="6" fill="#d9534f"/>
+  <path d="M 320 125 L 320 40 L 340 40" fill="none" stroke="#8a96a3" stroke-width="3"/>
+  <rect x="340" y="28" width="60" height="24" rx="4" fill="none" stroke="#8a96a3" stroke-width="3"/>
+  <path d="M 400 40 L 440 40 L 440 100 L 380 100 L 380 165" fill="none" stroke="#8a96a3" stroke-width="3"/>
+  <text x="370" y="20" text-anchor="middle" fill="#8a96a3" font-weight="600">R (pull-up)</text>
+  <text x="240" y="118" text-anchor="middle" fill="#007cc7">signal</text>
+  <text x="240" y="158" text-anchor="middle" fill="#d9534f">BEC +</text>
+  <text x="240" y="198" text-anchor="middle" fill="#8a96a3">ground</text>
+</svg>

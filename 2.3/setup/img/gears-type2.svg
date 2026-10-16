@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="15" font-weight="600">
+  <title>Two-stage gearbox, type 2: motor pinion z1 drives z2 on a countershaft; z3 on the countershaft drives the main gear z4; the tail drive pulley z5 is on the main shaft and drives z6 on the tail shaft</title>
+  <g fill="#8a96a3">
+    <rect x="70" y="80" width="10" height="70"/>
+    <rect x="215" y="80" width="10" height="110"/>
+    <rect x="345" y="10" width="14" height="210"/>
+    <rect x="650" y="190" width="10" height="70"/>
+    <text x="368" y="40">Main shaft</text>
+    <text x="40" y="175">Motor</text>
+    <text x="175" y="215">Countershaft</text>
+    <text x="610" y="180">Tail shaft</text>
+  </g>
+  <rect x="45" y="95" width="40" height="28" rx="3" fill="#007cc7"/>
+  <rect x="85" y="95" width="190" height="28" rx="3" fill="#8cc4ea"/>
+  <rect x="190" y="140" width="40" height="28" rx="3" fill="#007cc7"/>
+  <rect x="230" y="140" width="230" height="28" rx="3" fill="#8cc4ea"/>
+  <rect x="300" y="190" width="104" height="22" rx="3" fill="#007cc7"/>
+  <rect x="600" y="210" width="110" height="22" rx="3" fill="#8cc4ea"/>
+  <line x1="352" y1="201" x2="655" y2="221" stroke="#8a96a3" stroke-width="5"/>
+  <g fill="#ffffff" font-size="14">
+    <text x="55" y="114">z1</text><text x="160" y="114" fill="#0b2a40">z2</text>
+    <text x="200" y="159">z3</text><text x="400" y="159" fill="#0b2a40">z4</text>
+    <text x="310" y="206">z5</text><text x="645" y="226" fill="#0b2a40">z6</text>
+  </g>
+  <text x="470" y="200" fill="#8a96a3" font-weight="400">tail belt / torque tube</text>
+</svg>
