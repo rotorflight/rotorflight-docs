@@ -1,17 +1,27 @@
 name: Deploy Docs
 
+# Each docs branch publishes one version into gh-pages via mike:
+#   main          -> DEV_VERSION, alias "dev" (upcoming release, shows the banner)
+#   release/<ver> -> <ver>, alias "stable" (current release, served at the site root)
+# When a release ships: branch release/<ver> from main, then bump DEV_VERSION here.
+
 on:
   push:
     branches:
       - main
+      - release/**
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: write
 
+env:
+  DEV_VERSION: "2.4"
+
 concurrency:
-  group: pages-${{ github.ref }}
+  # all deploys share one group so branches never race on gh-pages
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.ref) || 'gh-pages' }}
   cancel-in-progress: false
 
 jobs:
@@ -22,6 +32,8 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -35,14 +47,45 @@ jobs:
       - name: Build site
         run: mkdocs build --strict
 
-      - name: Add custom domain
-        run: cp CNAME site/CNAME
-
-      - name: Deploy to GitHub Pages
+      - name: Resolve version
         if: github.event_name != 'pull_request'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          user_name: github-actions[bot]
-          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          branch="${GITHUB_REF_NAME}"
+          if [ "$branch" = "main" ]; then
+            echo "DOCS_VERSION=${DEV_VERSION}" >> "$GITHUB_ENV"
+            echo "DOCS_ALIAS=dev" >> "$GITHUB_ENV"
+            echo "DOCS_TITLE=${DEV_VERSION} (upcoming)" >> "$GITHUB_ENV"
+          elif [[ "$branch" == release/* ]]; then
+            ver="${branch#release/}"
+            echo "DOCS_VERSION=${ver}" >> "$GITHUB_ENV"
+            echo "DOCS_ALIAS=stable" >> "$GITHUB_ENV"
+            echo "DOCS_TITLE=${ver}" >> "$GITHUB_ENV"
+          else
+            echo "No docs version for branch $branch" >&2
+            exit 1
+          fi
+
+      - name: Deploy version with mike
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages --depth=1 || true
+          mike deploy --push --update-aliases --title "$DOCS_TITLE" "$DOCS_VERSION" "$DOCS_ALIAS"
+          if [ "$DOCS_ALIAS" = "stable" ]; then
+            mike set-default --push stable
+          fi
+
+      - name: Ensure custom domain
+        if: github.event_name != 'pull_request'
+        run: |
+          git fetch origin gh-pages --depth=1
+          git worktree add ../gh-pages origin/gh-pages
+          cd ../gh-pages
+          if ! cmp -s "$GITHUB_WORKSPACE/CNAME" CNAME; then
+            cp "$GITHUB_WORKSPACE/CNAME" CNAME
+            touch .nojekyll
+            git add CNAME .nojekyll
+            git commit -m "Restore CNAME"
+            git push origin HEAD:gh-pages
+          fi

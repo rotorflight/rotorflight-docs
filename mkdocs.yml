@@ -7,6 +7,7 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: overrides
   logo: assets/Rotorflight_outline_dark.svg # white outline variant, for contrast against the blue toolbar
   favicon: assets/favicon.ico
   font: false # use the system-font stack from extra.css instead of a fetched webfont
@@ -71,6 +72,9 @@ markdown_extensions:
       permalink: true
 
 extra:
+  version:
+    provider: mike # version dropdown, populated from versions.json on gh-pages
+    default: stable # versions other than this alias show the banner in overrides/main.html
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/rotorflight

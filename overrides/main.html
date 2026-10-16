@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{# Shown on any version that is not the "stable" alias (see extra.version.default) #}
+{% block outdated %}
+  You are viewing documentation for an upcoming Rotorflight release.
+  <a href="{{ '../' ~ base_url }}">
+    <strong>Switch to the current release.</strong>
+  </a>
+{% endblock %}
