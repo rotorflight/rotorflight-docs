@@ -688,10 +688,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-flashing-wizard" class="md-nav__link">
+  <a href="#flashing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The flashing wizard
+        Flashing
       
     </span>
   </a>
@@ -4474,10 +4474,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-flashing-wizard" class="md-nav__link">
+  <a href="#flashing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The flashing wizard
+        Flashing
       
     </span>
   </a>
@@ -4547,38 +4547,31 @@
 the <strong>Update Firmware</strong> button at the top right. You can flash with nothing
 connected, or after connecting to a board that is already running Rotorflight
 or Betaflight.</p>
-<p><img alt="Firmware Flasher wizard on its first (Connect) step" src="../../assets/images/configurator/firmware-flasher.png" /></p>
+<p><img alt="Firmware Flasher with the board and version pickers at the top" src="../../assets/images/configurator/firmware-flasher.png" /></p>
 <h2 id="how-rotorflight-firmware-is-built">How Rotorflight firmware is built<a class="headerlink" href="#how-rotorflight-firmware-is-built" title="Permanent link">&para;</a></h2>
 <p>Rotorflight uses <em>unified targets</em>: there is one firmware file per processor
 family (STM32 F4, F7, G4 and H7), and a small <em>board configuration</em> that
 tells the firmware which pins drive the servos, motors, UARTs and sensors on
 your particular board. The Configurator combines the two when it flashes, so
 you only ever pick your <strong>board</strong> -- the right firmware comes with it.</p>
-<h2 id="the-flashing-wizard">The flashing wizard<a class="headerlink" href="#the-flashing-wizard" title="Permanent link">&para;</a></h2>
-<p>The wizard has seven steps, shown along the top. <strong>Back</strong> and <strong>Next</strong> move
-between them.</p>
+<h2 id="flashing">Flashing<a class="headerlink" href="#flashing" title="Permanent link">&para;</a></h2>
+<p>The flasher is a single page.</p>
 <ol>
-<li><strong>Connect</strong> -- choose the port your board is on. If it isn't listed, use
-   <strong>Add Serial Device</strong>, <strong>Add DFU Device</strong> or <strong>Add Bluetooth Device</strong>. In
-   the browser, these open the browser's device chooser to grant access.</li>
-<li><strong>Board</strong> -- <strong>Detect My Board</strong> reads the board from a connected flight
-   controller. Choose it from the list yourself if detection fails, or if
-   the board is in DFU mode (DFU can't be auto-detected).</li>
-<li><strong>Firmware</strong> -- <strong>Load Online</strong> fetches a build for your board: pick a
-   release, or enable snapshots to see development builds. <strong>Load Local</strong>
-   flashes a <code>.hex</code> file (and optional <code>.config</code>) you already have.</li>
-<li><strong>Backup</strong> -- <strong>Back Up Now</strong> captures your current settings as a <code>diff</code>
-   (only changed settings) or <code>dump</code> (every setting). The backup is held by
-   the wizard and offered back to you in the Restore step. <strong>Save Backup
-   File...</strong> keeps a copy on disk, which is strongly recommended.</li>
-<li><strong>Flash</strong> -- a summary of board and version. Tick <strong>Full chip erase</strong> to
-   wipe all settings stored on the board, then start the flash.</li>
-<li><strong>Restore</strong> -- once the new firmware boots, <strong>Restore Now</strong> replays the
-   backup from step 4. <strong>Skip</strong> leaves the board on defaults.</li>
-<li><strong>Finished</strong> -- the update is complete and it's safe to disconnect.</li>
+<li><strong>Back up</strong> your configuration first -- see
+   <a href="../backup-and-restore/">Backup &amp; Restore</a>. Flashing does not keep a copy
+   for you.</li>
+<li>Pick your board in <strong>Choose a Board</strong>, or connect to the flight controller
+   and click <strong>Detect</strong> to read it from the board. Detection needs a normal
+   serial connection, not DFU.</li>
+<li>Pick a version in <strong>Choose a Firmware version</strong>. <strong>Releases</strong> shows
+   release builds; switch the build type to see development builds.</li>
+<li>Click <strong>Load Firmware [Online]</strong> to fetch it, or <strong>Load Firmware [Local]</strong>
+   to use a <code>.hex</code> file you already have.</li>
+<li>Tick <strong>Full chip erase</strong> if needed (below), then click <strong>Flash
+   Firmware</strong>. The progress bar at the bottom shows the flash.</li>
+<li>When it finishes, connect and restore your backup from the
+   <a href="../../configurator/tabs/cli/">CLI</a> tab.</li>
 </ol>
-<p><strong>Flash Another Board</strong> starts over. The link on the Connect step switches to
-the older single-page flasher if you prefer it.</p>
 <div class="admonition warning">
 <p class="admonition-title">Updates can reset your configuration</p>
 <p>When a new firmware finds settings it cannot read, it discards them and
@@ -4601,11 +4594,11 @@ the board into DFU for you. If that fails, enter DFU by hand:</p>
 <ol>
 <li>Unplug the board.</li>
 <li>Hold the <strong>BOOT</strong> button (or bridge the boot pads) while you plug in USB.</li>
-<li>On the Connect step pick the <strong>DFU</strong> device, or use <strong>Add DFU Device</strong>.</li>
+<li>Pick <strong>DFU</strong> in the port list at the top right.</li>
 <li>Choose your board manually, load the firmware and flash.</li>
 </ol>
-<p>A DFU connection is enough to flash, but board detection, backup and restore
-need a normal serial connection.</p>
+<p>A DFU connection is enough to flash, but board detection needs a normal
+serial connection.</p>
 <p>The STM32 bootloader lives in ROM, so a flight controller cannot be
 "bricked" by a bad flash -- you can always get back to DFU with the BOOT
 button. <strong>Exit DFU Mode</strong> at the top right restarts a board that is sitting in

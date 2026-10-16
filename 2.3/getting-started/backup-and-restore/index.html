@@ -4516,33 +4516,15 @@ Take one before every firmware update, before big tuning changes, and as
 soon as a new helicopter flies well. Backups are also the easiest way to
 share a setup or move it to another flight controller.</p>
 <h2 id="taking-a-backup">Taking a backup<a class="headerlink" href="#taking-a-backup" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">From the CLI tab (recommended)</label><label for="__tabbed_1_2">Typing the command</label><label for="__tabbed_1_3">While flashing</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ol>
-<li>Open the <a href="../../configurator/tabs/cli/">CLI</a> tab.</li>
-<li>Click <strong>Backup</strong> at the bottom right.</li>
-<li>Choose <strong>Backup (diff all)</strong> or <strong>Backup (dump all)</strong>.</li>
-<li>Choose where to save the file.</li>
-</ol>
-<p><img alt="CLI tab with the Backup button at the bottom right" src="../../assets/images/configurator/cli.png" /></p>
-</div>
-<div class="tabbed-block">
-<ol>
-<li>Open the CLI tab and click <strong>Clear output history</strong>.</li>
+<li>Open the <a href="../../configurator/tabs/cli/">CLI</a> tab and click <strong>Clear output
+   history</strong>.</li>
 <li>Type <code>diff all</code> (or another command from the table below) and press
    Enter.</li>
-<li>When the output stops, click <strong>Save to File</strong>.</li>
+<li>When the output stops, click <strong>Save to File</strong> and choose where to save
+   it.</li>
 </ol>
-</div>
-<div class="tabbed-block">
-<p>The <a href="../flashing-the-firmware/">Firmware Flasher</a> wizard has a Backup
-step that captures your settings before flashing and restores them once
-the new firmware boots. Use <strong>Save Backup File...</strong> in that step to keep
-a copy on disk as well.</p>
-</div>
-</div>
-</div>
+<p><img alt="CLI tab with Save to File at the bottom right" src="../../assets/images/configurator/cli.png" /></p>
 <h3 id="which-command">Which command?<a class="headerlink" href="#which-command" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
