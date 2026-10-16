@@ -47,4 +47,4 @@ Testers who help most have:
 | [rotorflight-targets](https://github.com/rotorflight/rotorflight-targets) | Board configurations |
 | [rotorflight-presets](https://github.com/rotorflight/rotorflight-presets) | Presets shown in the Configurator |
 | [rotorflight-ref-design](https://github.com/rotorflight/rotorflight-ref-design) | Flight controller reference designs |
-| [rotorflight-documentation](https://github.com/rotorflight/rotorflight-documentation) | This site |
+| [rotorflight-docs](https://github.com/rotorflight/rotorflight-docs) | This site |

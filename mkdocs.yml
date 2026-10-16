@@ -1,8 +1,8 @@
 site_name: Rotorflight Documentation
 site_description: Documentation for the Rotorflight helicopter flight controller firmware, Configurator, Blackbox and radio Lua suites
 site_url: https://doc.rotorflight.org/
-repo_url: https://github.com/rotorflight/rotorflight-documentation
-repo_name: rotorflight-documentation
+repo_url: https://github.com/rotorflight/rotorflight-docs
+repo_name: rotorflight-docs
 edit_uri: edit/main/docs/
 
 theme:

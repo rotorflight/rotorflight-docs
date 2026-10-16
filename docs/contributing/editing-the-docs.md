@@ -1,7 +1,7 @@
 # Editing the Docs
 
 This site is built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/)
-from the [rotorflight-documentation](https://github.com/rotorflight/rotorflight-documentation)
+from the [rotorflight-docs](https://github.com/rotorflight/rotorflight-docs)
 repository. Every page is a Markdown file under `docs/`, and every page has
 an **edit** button (the pencil at the top) that opens it on GitHub.
 
@@ -13,8 +13,8 @@ forks the repository for you and opens a pull request.
 ## Bigger changes
 
 ```
-git clone https://github.com/rotorflight/rotorflight-documentation.git
-cd rotorflight-documentation
+git clone https://github.com/rotorflight/rotorflight-docs.git
+cd rotorflight-docs
 python -m venv .venv
 .venv/bin/pip install -r requirements.txt     # .venv\Scripts\pip on Windows
 .venv/bin/mkdocs serve
