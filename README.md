@@ -1,4 +1,4 @@
-# rotorflight-documentation
+# rotorflight-docs
 
 Source for [doc.rotorflight.org](https://doc.rotorflight.org), the documentation
 for the Rotorflight helicopter flight controller firmware, Configurator,
