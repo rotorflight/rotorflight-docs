@@ -33,7 +33,7 @@ Some protocol options:
 | Setting | |
 | --- | --- |
 | `sbus_baud_fast` | Fast (200 kbaud) SBUS, for receivers that support it. |
-| `srxl2_unit_id` | SRXL2 unit ID; **0** for full-size Spektrum receivers such as the AR6610T. New in 2.4 |
+| `srxl2_unit_id` | SRXL2 unit ID; **0** for full-size Spektrum receivers such as the AR6610T. |
 | `srxl2_baud_fast` | Fast SRXL2 baud rate. |
 | `crsf_use_negotiated_baud` | Let CRSF/ELRS negotiate a higher baud rate. |
 | `crsf_telemetry_mode` | `NATIVE` or `CUSTOM` -- see [ELRS Custom Telemetry](../setup/elrs-custom-telemetry.md). |
