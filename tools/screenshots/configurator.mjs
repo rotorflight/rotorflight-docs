@@ -10,6 +10,14 @@
 //
 // --url defaults to the master (development) build. Point it at a local
 // `VITE_APP_BACKEND=web pnpm vite` server to capture unreleased changes.
+//
+// Real flight controller, read-only:
+//   node configurator.mjs --cdp http://127.0.0.1:9222 --port COM4
+// attaches to a desktop Configurator started with
+// `nw --remote-debugging-port=9222 <configurator checkout>` and connects to
+// that port instead of the Virtual FC. Nothing is ever saved to the board:
+// the optional-tab and prepare steps are skipped, and a tab that asks to
+// save stops the run.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -36,6 +44,7 @@ const outDir = path.resolve(args.out || path.join(here, "../../docs/assets/image
 const theme = args.theme || "dark";
 const width = Number(args.width || 1440);
 const height = Number(args.height || 900);
+const realPort = args.port;
 
 // Tab class (li.tab_<name>) -> output file name. Order matches the nav.
 const ALL_TABS = [
@@ -70,13 +79,34 @@ const tabs = args.tabs ? args.tabs.split(",") : ALL_TABS;
 
 fs.mkdirSync(outDir, { recursive: true });
 
-const browser = await chromium.launch();
-const context = await browser.newContext({
-  viewport: { width, height },
-  deviceScaleFactor: 1,
-  colorScheme: theme,
-});
-const page = await context.newPage();
+let browser, page;
+if (args.cdp) {
+  browser = await chromium.connectOverCDP(args.cdp);
+  page = browser.contexts().flatMap((c) => c.pages()).find((p) => /main\.html|index\.html/.test(p.url()));
+  if (!page) throw new Error(`no Configurator window at ${args.cdp}`);
+  await page.emulateMedia({ colorScheme: theme });
+  // NW.js keeps chrome.serial connections across a reload; close any left
+  // over from an earlier run, or the port fails to open.
+  await page.evaluate(
+    () =>
+      new Promise((resolve) => {
+        if (!globalThis.chrome?.serial) return resolve();
+        chrome.serial.getConnections((cs) => {
+          if (!cs.length) return resolve();
+          let left = cs.length;
+          for (const c of cs) chrome.serial.disconnect(c.connectionId, () => --left || resolve());
+        });
+      }),
+  );
+} else {
+  browser = await chromium.launch();
+  const context = await browser.newContext({
+    viewport: { width, height },
+    deviceScaleFactor: 1,
+    colorScheme: theme,
+  });
+  page = await context.newPage();
+}
 page.on("pageerror", (e) => console.warn("page error:", e.message));
 
 // Grow the window until the tab's scrolling content fits, so one image shows
@@ -114,7 +144,7 @@ async function shot(name) {
   console.log("saved", path.relative(process.cwd(), file));
 }
 
-await page.goto(url, { waitUntil: "networkidle" });
+if (!args.cdp) await page.goto(url, { waitUntil: "networkidle" });
 await page.waitForSelector("#port");
 
 // Pre-connect screens.
@@ -127,10 +157,14 @@ if (!args.tabs || tabs.includes("firmware_flasher")) {
   await page.click("li.tab_landing a");
 }
 
-// Pick the Virtual FC and the firmware version to emulate.
-await page.selectOption("#port", "virtual");
-await page.waitForSelector("#firmware-version-dropdown", { state: "visible" });
-await page.selectOption("#firmware-version-dropdown", { label: fwLabel });
+if (realPort) {
+  await page.selectOption("#port", realPort);
+} else {
+  // Pick the Virtual FC and the firmware version to emulate.
+  await page.selectOption("#port", "virtual");
+  await page.waitForSelector("#firmware-version-dropdown", { state: "visible" });
+  await page.selectOption("#firmware-version-dropdown", { label: fwLabel });
+}
 
 await page.click("#connectbutton a.connect");
 await page.waitForSelector("#tabs ul.mode-connected li.tab_status", { state: "visible", timeout: 30000 });
@@ -144,6 +178,7 @@ async function goto(tab) {
   await link.click();
   const exitDialog = page.locator("dialog.dialogTabExit[open]");
   if (await exitDialog.isVisible({ timeout: 1000 }).catch(() => false)) {
+    if (realPort) throw new Error(`leaving a tab for ${tab} asks to save; stopping so nothing is written to the board`);
     await exitDialog.locator(".tabExitSaveBtn").click();
     await page.waitForTimeout(1000);
     if (!(await page.locator(`#tabs li.tab_${tab}.active`).count())) await link.click();
@@ -175,7 +210,7 @@ async function enableOptionalTabs() {
   await goto("configuration");
 }
 
-if (!args["no-optional"]) await enableOptionalTabs().catch((e) => console.warn("enableOptionalTabs:", e.message));
+if (!realPort && !args["no-optional"]) await enableOptionalTabs().catch((e) => console.warn("enableOptionalTabs:", e.message));
 
 if (args.expert) {
   // The checkbox is hidden behind a Switchery toggle.
@@ -230,17 +265,22 @@ for (const tab of tabs) {
   }
   await goto(tab);
   await page.waitForSelector("#content .tab-" + tab.replace(/_/g, "-") + ", #content > *", { timeout: 15000 }).catch(() => {});
-  if (PREPARE[tab]) {
+  if (PREPARE[tab] && !realPort) {
     await page.waitForTimeout(1000);
     await PREPARE[tab]().catch((e) => console.warn(`prepare ${tab} failed:`, e.message));
   }
   await shot(tab.replace(/_/g, "-"));
   // Throw away what a prepare step changed, so leaving the tab doesn't prompt.
-  if (PREPARE[tab]) {
+  if (PREPARE[tab] && !realPort) {
     const revert = page.getByRole("button", { name: "Revert" });
     if (await revert.isVisible().catch(() => false)) await revert.click();
     await page.waitForTimeout(500);
   }
 }
 
+if (args.cdp) {
+  // Leave the desktop app running, just disconnected from the board.
+  await page.click("#connectbutton a.connect").catch(() => {});
+  await page.waitForTimeout(1000);
+}
 await browser.close();
