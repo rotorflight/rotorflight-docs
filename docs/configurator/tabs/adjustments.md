@@ -4,7 +4,7 @@ Adjustments change settings in flight from a switch, knob or trim on your
 radio: switch profiles, nudge a gain, set a headspeed. They're the way to
 tune from the radio if you don't use the [Lua suites](../../radio/index.md).
 
-![Adjustments tab, with three profile selection adjustments](../../assets/images/configurator/adjustments.png)
+![Adjustments tab](../../assets/images/configurator/adjustments.png)
 
 Up to 42 adjustments can be set up. Changes are applied immediately, and
 **saved when you disarm**. Each change gives a confirmation beep and is

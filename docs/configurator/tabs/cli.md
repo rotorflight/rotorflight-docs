@@ -26,7 +26,6 @@ The full list is in the [CLI Command Reference](../../reference/cli-reference.md
 | --- | --- |
 | **Save to File** | Saves the output window to a text file. |
 | **Load from file** | Loads a file of commands, shows them for review, then runs them on **Execute**. Used to [restore a backup](../../getting-started/backup-and-restore.md#restoring-a-backup). |
-| **Backup** | Runs `diff all` or `dump all` and saves the result to a file in one step. |
 | **Clear output history** | Clears the window. |
 | **Copy to clipboard** | Copies the output. |
 

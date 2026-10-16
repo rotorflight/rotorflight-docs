@@ -7,28 +7,14 @@ share a setup or move it to another flight controller.
 
 ## Taking a backup
 
-=== "From the CLI tab (recommended)"
+1. Open the [CLI](../configurator/tabs/cli.md) tab and click **Clear output
+   history**.
+2. Type `diff all` (or another command from the table below) and press
+   Enter.
+3. When the output stops, click **Save to File** and choose where to save
+   it.
 
-    1. Open the [CLI](../configurator/tabs/cli.md) tab.
-    2. Click **Backup** at the bottom right.
-    3. Choose **Backup (diff all)** or **Backup (dump all)**.
-    4. Choose where to save the file.
-
-    ![CLI tab with the Backup button at the bottom right](../assets/images/configurator/cli.png)
-
-=== "Typing the command"
-
-    1. Open the CLI tab and click **Clear output history**.
-    2. Type `diff all` (or another command from the table below) and press
-       Enter.
-    3. When the output stops, click **Save to File**.
-
-=== "While flashing"
-
-    The [Firmware Flasher](flashing-the-firmware.md) wizard has a Backup
-    step that captures your settings before flashing and restores them once
-    the new firmware boots. Use **Save Backup File...** in that step to keep
-    a copy on disk as well.
+![CLI tab with Save to File at the bottom right](../assets/images/configurator/cli.png)
 
 ### Which command?
 
