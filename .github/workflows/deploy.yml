@@ -76,16 +76,19 @@ jobs:
             mike set-default --push stable
           fi
 
-      - name: Ensure custom domain
+      - name: Ensure custom domain and root 404
         if: github.event_name != 'pull_request'
         run: |
           git fetch origin gh-pages
           git worktree add ../gh-pages origin/gh-pages
           cd ../gh-pages
-          if ! cmp -s "$GITHUB_WORKSPACE/CNAME" CNAME; then
-            cp "$GITHUB_WORKSPACE/CNAME" CNAME
-            touch .nojekyll
-            git add CNAME .nojekyll
-            git commit -m "Restore CNAME"
+          # CNAME, and the 404 page that sends unversioned links to /stable/,
+          # live at the gh-pages root outside every mike version.
+          cp "$GITHUB_WORKSPACE/CNAME" CNAME
+          cp "$GITHUB_WORKSPACE/gh-pages-root/404.html" 404.html
+          touch .nojekyll
+          git add CNAME 404.html .nojekyll
+          if ! git diff --cached --quiet; then
+            git commit -m "Update gh-pages root files"
             git push origin HEAD:gh-pages
           fi
