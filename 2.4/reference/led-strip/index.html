@@ -1,0 +1,6503 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Rotorflight helicopter flight controller firmware, Configurator, Blackbox and radio Lua suites">
+      
+      
+      
+        <link rel="canonical" href="https://doc.rotorflight.org/2.4/reference/led-strip/">
+      
+      
+        <link rel="prev" href="../blackbox/">
+      
+      
+        <link rel="next" href="../buzzer/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>LED Strip - Rotorflight Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#led-strip" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You are viewing documentation for an upcoming Rotorflight release.
+  <a href="../../..">
+    <strong>Switch to the current release.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Rotorflight Documentation" class="md-header__button md-logo" aria-label="Rotorflight Documentation" data-md-component="logo">
+      
+  <img src="../../assets/Rotorflight_outline_dark.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Rotorflight Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LED Strip
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rotorflight/rotorflight-documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rotorflight-documentation
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../setup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Setup Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../configurator/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configurator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../radio/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Radio & Lua
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tuning/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tuning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hardware/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Rotorflight Documentation" class="md-nav__button md-logo" aria-label="Rotorflight Documentation" data-md-component="logo">
+      
+  <img src="../../assets/Rotorflight_outline_dark.svg" alt="logo">
+
+    </a>
+    Rotorflight Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rotorflight/rotorflight-documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rotorflight-documentation
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../getting-started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/flashing-the-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashing the Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/backup-and-restore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backup & Restore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/upgrade-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrade Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/arming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arming & Safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/example-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../setup/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup Guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/remapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remapping Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servo Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/mixer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mixer & Swashplate Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/rpm-measurement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPM Measurement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/rpm-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPM Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/esc-telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/esc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Forward Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/blheli-s-to-bluejay/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLHeli_S to Bluejay
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/governor-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/nitro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nitro Helicopters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/gear-ratios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gear Ratios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/smartfuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SmartFuel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/profile-switching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profile Switching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/stability-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stability Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/led-strip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/openlager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenLager Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/fbus-master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FBUS Master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/frsky-servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky Servos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/elrs-custom-telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ELRS Custom Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../configurator/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurator
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configurator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/presets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/power/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/receiver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receiver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/failsafe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Failsafe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/mixer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mixer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/motors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/rates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/gyro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gyro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/adjustments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adjustments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/gps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/led-strip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/remap-fc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remap FC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/beepers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beepers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/crsf-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRSF Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/xact-servo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XACT Servo Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/esc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/blackbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configurator/tabs/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../radio/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio & Lua
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Radio & Lua
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../radio/ethos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky Ethos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FrSky Ethos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/ethos/radio-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/ethos/lua-suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using RFSuite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/ethos/dashboard-themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/ethos/tune-advisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tune Advisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/ethos/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../radio/edgetx/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EdgeTX
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EdgeTX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/edgetx/radio-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/edgetx/lua-suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using RFSuite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/edgetx/classic-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classic Lua Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/futaba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Futaba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/jeti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jeti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../radio/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other Radios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../tuning/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tuning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tuning/process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tuning/filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filter Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tuning/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tuning/high-speed-integral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    High Speed Integral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tuning/cyclic-cross-coupling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic Cross-Coupling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tuning/motorised-tail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motorised Tail & TTA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tuning/rescue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rescue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hardware/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/radiomaster-nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radiomaster Nexus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/frsky-007/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky VANTAC RF007
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/flydragon-f722/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FlyDragon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/flywing-heli-f405/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flywing HELI405
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/goosky-f701/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GooSky F701
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/goosky-f4mini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GooSky F4 Mini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/matek-g474/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matek G474-HELI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/diy-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIY Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/betaflight-diy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Betaflight FC (DIY)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hardware/manufacturers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Manufacturers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Command Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serial-ports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial Ports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../receivers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blackbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#led-strip-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LED Strip Profiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Strip Profiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STATUS Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status_alt-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STATUS_ALT Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RACE Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beacon-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BEACON Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led-profile-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LED Profile Selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Profile Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-use-the-configurator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 1: Use the Configurator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-configure-an-adjustment-range-to-change-the-led-strip-profile-from-your-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 2: Configure an adjustment range to change the LED strip profile from your radio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-use-the-cli-to-select-the-led-strip-profile-ie-not-selecting-the-led-strip-profile-with-your-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 3: Use the CLI to select the LED strip profile (i.e. not selecting the LED strip profile with your radio)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-color-the-race-color-can-be-configured-using-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RACE COLOR: The Race color can be configured using the CLI:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brightness-the-overall-brightness-can-be-configured-using-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BRIGHTNESS: The overall brightness can be configured using the CLI:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported hardware
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tested-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tested Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ws2811-vs-ws2812" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WS2811 vs WS2812
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WS2811 vs WS2812">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combining-rgb-and-gbrw-leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining RGB and GBR(W) LEDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Warning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPS state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rssi-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSSI level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battery-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Battery level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Blink
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flicker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flicker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fade-to-alt-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fade to alt color
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#larson-scanner-cylon-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Larson Scanner (Cylon Effect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vtx-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VTX Frequency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flight-mode-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flight Mode &amp; Orientation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indicator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#armed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Armed state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thrust-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thrust state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thrust-ring-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thrust ring state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solid-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solid Color
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Colors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-colors-assignement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode Colors Assignement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../buzzer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Buzzer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msp-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MSP Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../contributing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/developers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/building-the-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building the Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/coding-style/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding Style
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/editing-the-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing the Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support the Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../contributing/tech/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_7" id="__nav_9_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/parameter-groups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Groups
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/configuration-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/atomic-barrier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Barrier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/customizing-the-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing the Build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/custom-boards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Board Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/blackbox-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox Log Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/smartfuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SmartFuel Internals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/hardware-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/hardware-debugging-vscode-jlink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging with VS Code and J-Link
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/test-coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Coverage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/modeling-cross-coupling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Cross-Coupling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#led-strip-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LED Strip Profiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Strip Profiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STATUS Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status_alt-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STATUS_ALT Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RACE Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beacon-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BEACON Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led-profile-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LED Profile Selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Profile Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-use-the-configurator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 1: Use the Configurator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-configure-an-adjustment-range-to-change-the-led-strip-profile-from-your-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 2: Configure an adjustment range to change the LED strip profile from your radio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-use-the-cli-to-select-the-led-strip-profile-ie-not-selecting-the-led-strip-profile-with-your-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPTION 3: Use the CLI to select the LED strip profile (i.e. not selecting the LED strip profile with your radio)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-color-the-race-color-can-be-configured-using-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RACE COLOR: The Race color can be configured using the CLI:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brightness-the-overall-brightness-can-be-configured-using-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BRIGHTNESS: The overall brightness can be configured using the CLI:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported hardware
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tested-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tested Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ws2811-vs-ws2812" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WS2811 vs WS2812
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WS2811 vs WS2812">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#combining-rgb-and-gbrw-leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining RGB and GBR(W) LEDs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Warning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPS state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rssi-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSSI level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battery-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Battery level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blink" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Blink
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flicker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flicker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fade-to-alt-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fade to alt color
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#larson-scanner-cylon-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Larson Scanner (Cylon Effect)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vtx-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VTX Frequency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flight-mode-orientation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flight Mode &amp; Orientation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indicator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indicator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#armed-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Armed state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thrust-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thrust state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thrust-ring-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thrust ring state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solid-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solid Color
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Colors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-colors-assignement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode Colors Assignement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rotorflight/rotorflight-documentation/edit/main/docs/reference/led-strip.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="led-strip">LED Strip<a class="headerlink" href="#led-strip" title="Permanent link">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For a hands-on walk-through, see <a href="../../setup/led-strip/">LED Strip</a> in the
+Setup Guides and the <a href="../../configurator/tabs/led-strip/">LED Strip tab</a>.
+This page is the full reference, including the CLI.</p>
+</div>
+<p>Rotorflight supports the use of addressable LED strips.  Addressable LED strips allow each LED in the strip to be programmed with a unique and independent color. This is far more advanced than the normal RGB strips which require that all the LEDs in the strip show the same color.</p>
+<h2 id="led-strip-profiles">LED Strip Profiles<a class="headerlink" href="#led-strip-profiles" title="Permanent link">&para;</a></h2>
+<p>The LED strip feature supports 4 LED strip profiles: RACE, BEACON, STATUS and STATUS_ALT. The selected profile can be changed from the CLI, the Lua suites, or an adjustment channel, i.e. switch on your radio.  Take note that the adjustment channel from your radio overrides all other LED strip profile selection options.</p>
+<h3 id="status-profile">STATUS Profile<a class="headerlink" href="#status-profile" title="Permanent link">&para;</a></h3>
+<p>The STATUS profile is used to display all the information mentioned below, i.e. warning indications, Larson scanner etc, positional lights, ACL.</p>
+<p>Addressable LED strips can be used to show information from the flight controller system and supports:</p>
+<ul>
+<li>Up to 32 LEDs.</li>
+<li>User definable blink patterns.</li>
+<li>AUX operated switching between LED profiles.</li>
+<li>Indicators showing pitch/roll stick positions.</li>
+<li>Heading/Orientation lights.</li>
+<li>Flight mode specific color schemes.</li>
+<li>Low battery warning.</li>
+<li>GPS state.</li>
+<li>RSSI level.</li>
+<li>Battery level.</li>
+</ul>
+<h3 id="status_alt-profile">STATUS_ALT Profile<a class="headerlink" href="#status_alt-profile" title="Permanent link">&para;</a></h3>
+<p>The STATUS_ALT profile works just like the STATUS_PROFILE, except for LEDs with the Fade overlay. LEDs with the Fade overlay will use their alternate color when the STATUS_ALT profile is active.</p>
+<h3 id="race-profile">RACE Profile<a class="headerlink" href="#race-profile" title="Permanent link">&para;</a></h3>
+<p>The RACE profile is used to set ALL strip LEDs to the selected color for racing, i.e. to identify models by LED color.  The LED color is fixed and no other information is displayed.</p>
+<h3 id="beacon-profile">BEACON Profile<a class="headerlink" href="#beacon-profile" title="Permanent link">&para;</a></h3>
+<p>The BEACON profile is used to find a lost heli, it flashes all LEDs white once per second.  Again in this profile no other information is displayed on the LEDs.</p>
+<h3 id="led-profile-selection">LED Profile Selection<a class="headerlink" href="#led-profile-selection" title="Permanent link">&para;</a></h3>
+<h6 id="option-1-use-the-configurator">OPTION 1: Use the Configurator<a class="headerlink" href="#option-1-use-the-configurator" title="Permanent link">&para;</a></h6>
+<ol>
+<li>Go to the <em>LED Strip</em> tab</li>
+<li>Select the profile under <em>LED Strip Global Settings</em></li>
+</ol>
+<h6 id="option-2-configure-an-adjustment-range-to-change-the-led-strip-profile-from-your-radio">OPTION 2: Configure an adjustment range to change the LED strip profile from your radio<a class="headerlink" href="#option-2-configure-an-adjustment-range-to-change-the-led-strip-profile-from-your-radio" title="Permanent link">&para;</a></h6>
+<ol>
+<li>The LED strip profile selection is performed using an adjustment configured via the <em>Adjustments</em> tab.<ul>
+<li>Enable an adjustment by selecting <em>Mapped</em>.</li>
+<li>Select the AUX channel to be used to change the LED strip profile under <em>Enable channel</em> and set the range to 900-2100us</li>
+<li>Set the same AUX channel and range under <em>Value channel</em></li>
+<li>For the adjustment select <em>LED Profile Selection</em> and set the range to 1-4.</li>
+<li>Save</li>
+</ul>
+</li>
+<li>Configure the AUX channel on your radio.  When this channel is changed the selected LED strip profile will change between RACE, BEACON, STATUS and STATUS_ALT. You should see the LED function change as you do this.</li>
+</ol>
+<h6 id="option-3-use-the-cli-to-select-the-led-strip-profile-ie-not-selecting-the-led-strip-profile-with-your-radio">OPTION 3: Use the CLI to select the LED strip profile (i.e. not selecting the LED strip profile with your radio)<a class="headerlink" href="#option-3-use-the-cli-to-select-the-led-strip-profile-ie-not-selecting-the-led-strip-profile-with-your-radio" title="Permanent link">&para;</a></h6>
+<ol>
+<li>Open the CLI.</li>
+<li>Type <code>get ledstrip_profile</code> followed by enter to display the currently selected LED strip profile.</li>
+<li>Type <code>set ledstrip_profile=x</code> where x is the profile STATUS, STATUS_ALT, RACE or BEACON and press enter.</li>
+<li>Type <code>save</code> followed by enter to save the selected LED strip profile.</li>
+</ol>
+<h6 id="race-color-the-race-color-can-be-configured-using-the-cli">RACE COLOR: The Race color can be configured using the CLI:<a class="headerlink" href="#race-color-the-race-color-can-be-configured-using-the-cli" title="Permanent link">&para;</a></h6>
+<ol>
+<li>Open the CLI.</li>
+<li>Type <code>get ledstrip_race_color</code> followed by enter to display the currently selected race color number.</li>
+<li>Type <code>set ledstrip_race_color=x</code> where x is the required color.</li>
+<li>Type <code>save</code> followed by enter to save the race color to be used.</li>
+</ol>
+<h6 id="brightness-the-overall-brightness-can-be-configured-using-the-cli">BRIGHTNESS: The overall brightness can be configured using the CLI:<a class="headerlink" href="#brightness-the-overall-brightness-can-be-configured-using-the-cli" title="Permanent link">&para;</a></h6>
+<ol>
+<li>Open the CLI.</li>
+<li>Type <code>get ledstrip_brightness</code> followed by enter to display the current brightness.</li>
+<li>Type <code>set ledstrip_brightness=x</code> where x is the brightness in percentage between 5 and 100.</li>
+<li>Type <code>save</code> followed by enter to save the brightness level to be used.</li>
+</ol>
+<h2 id="supported-hardware">Supported hardware<a class="headerlink" href="#supported-hardware" title="Permanent link">&para;</a></h2>
+<p>Up to 32 WS2811/WS2812 LEDs are currently supported.</p>
+<p>WS2812 LEDs require an 800khz signal and precise timings and thus requires the use of a dedicated hardware timer.</p>
+<p>Note: Not all WS2812 ICs use the same timings, some batches use different timings.</p>
+<h3 id="tested-hardware">Tested Hardware<a class="headerlink" href="#tested-hardware" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://www.adafruit.com/products/2226">Adafruit NeoPixel Jewel 7</a> (preliminary testing)</li>
+<li>Measured current consumption in all white mode ~ 350 mA.</li>
+<li><a href="https://www.adafruit.com/products/1426">Adafruit NeoPixel Stick</a> (works well)</li>
+<li>Measured current consumption in all white mode ~ 350 mA.</li>
+<li><a href="https://www.aliexpress.com/wholesale?SearchText=rgbw+sk6812">Aliexpress SK6812 RBGWW strip</a> (works well)</li>
+<li>Alternative <a href="https://www.adafruit.com/product/2869">Adafruit NeoPixel Stick RGBW</a></li>
+</ul>
+<h3 id="ws2811-vs-ws2812">WS2811 vs WS2812<a class="headerlink" href="#ws2811-vs-ws2812" title="Permanent link">&para;</a></h3>
+<p>The <a href="https://cdn-shop.adafruit.com/datasheets/WS2811.pdf">WS2811</a> is a LED driver IC which is connected to an RGB LED. It accepts data in the form of 8 bits each of Red-Green-Blue.</p>
+<p>The <a href="https://cdn-shop.adafruit.com/datasheets/WS2812.pdf">WS2812</a> is integrated into the package of a 50:50 LED rather than as a separate device. It accepts data in the form of 8 bits each of Green-Red-Blue.</p>
+<p>With the <a href="https://cdn-shop.adafruit.com/product-files/1138/SK6812+LED+datasheet+.pdf">SK6812</a> also GRBW variants are supported, which have a fourth (white) channel and such provide a much cleaner white color.</p>
+<p>It is thus possible, depending on the LED board/strip being used that either Red-Green-Blue or Green-Red-Blue encoding may be required. This may be controlled by setting the following.</p>
+<p><div class="highlight"><pre><span></span><code>set ledstrip_grb_rgb = RGB
+</code></pre></div>
+or</p>
+<p><div class="highlight"><pre><span></span><code>set ledstrip_grb_rgb = GRB
+</code></pre></div>
+or</p>
+<div class="highlight"><pre><span></span><code>set ledstrip_grb_rgb = GRBW
+</code></pre></div>
+<p>Then confirm the required setting by simply setting an LED to be green. If it lights up red, you have the wrong setting.
+Afterwards check if the second LED also lights up red - if not, you might have 4-color SK6812 LEDs and would have to select GRBW.</p>
+<h6 id="combining-rgb-and-gbrw-leds">Combining RGB and GBR(W) LEDs<a class="headerlink" href="#combining-rgb-and-gbrw-leds" title="Permanent link">&para;</a></h6>
+<p>If you're using both WS2811 and WS2812/SK6812 LEDs, set <code>ledstrip_grb_rgb</code> to <code>GRB</code> or <code>GRBW</code>. The colors of the WS2811 LEDs will then be incorrect. To correct this, indicate which LEDs use RGB by specifying those LEDs in <code>ledstrip_inverted_format</code> - a 32 bit bitmask. For example, if LED 1 and 4 use RGB, specify 1 + 8 = 9:</p>
+<div class="highlight"><pre><span></span><code>set ledstrip_inverted_format = 9
+</code></pre></div>
+<h2 id="connections">Connections<a class="headerlink" href="#connections" title="Permanent link">&para;</a></h2>
+<p>WS2812 LED strips generally require a single data line, 5V and GND.</p>
+<p>WS2812 LEDs on full brightness can consume quite a bit of current.  It is recommended to verify the current draw and ensure your supply can cope with the load. On a multirotor that uses multiple BEC ESC's you can try use a different BEC to the one the FC uses.  e.g. ESC1/BEC1 -&gt; FC, ESC2/BEC2 -&gt; LED strip.   It's also possible to power one half of the strip from one BEC and the other half from another BEC.  Just ensure that the GROUND is the same for all BEC outputs and LEDs.</p>
+<p>LED Strip pin should be:
+- on a separate timer
+- with DMA enabled</p>
+<p>If you have LEDs that are intermittent, flicker or show the wrong colors then drop the VIN to less than 4.7v, e.g. by using an inline
+diode on the VIN to the LED strip. The problem occurs because of the difference in voltage between the data signal and the power
+signal. The WS2811 LED's require the data signal (Din) to be between 0.3 * Vin (Max) and 0.7 * VIN (Min) to register valid logic
+low/high signals.  The LED pin on the CPU will always be between 0v to ~3.3v, so the Vin should be 4.7v (3.3v / 0.7 = 4.71v).
+Some LEDs are more tolerant of this than others.</p>
+<p>The datasheet can be found here: <a href="http://www.adafruit.com/datasheets/WS2812.pdf">WS2812</a></p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>The LED strip feature can be configured via the Configurator or the CLI.</p>
+<h3 id="configurator">Configurator<a class="headerlink" href="#configurator" title="Permanent link">&para;</a></h3>
+<p>First enable the <em>LED_STRIP</em> feature in the <em>Configuration</em> tab. The <em>LED Strip</em> tab should now become visible.</p>
+<p>Now go to the <em>LED Strip</em> tab and configure the LEDs. First setup how the LEDs are laid out so that you can visualize it later as you configure and so the flight controller knows how many LEDs there are available.</p>
+<h3 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h3>
+<p>Enable the <code>LED_STRIP</code> feature via the cli:</p>
+<div class="highlight"><pre><span></span><code>feature LED_STRIP
+</code></pre></div>
+<p>If you enable LED_STRIP feature and the feature is turned off again after a reboot then check your config does not conflict with other features, as above.</p>
+<p>Configure the LEDs using the <code>led</code> command.</p>
+<p>The <code>led</code> command takes either zero or two arguments - an zero-based LED number and a sequence which indicates pair of coordinates, direction flags and mode flags and a color.</p>
+<p>If used with zero arguments it prints out the LED configuration which can be copied for future reference.</p>
+<p>Each LED is configured using the following template: <code>x,y:direction:mode:color:blinkpattern:blinkpause:alternatecolor</code></p>
+<p><code>x</code> and <code>y</code> are grid coordinates of a 0 based 16x16 grid, north west is 0,0, south east is 15,15
+<code>direction</code> specifies the directions, since an LED can face in any direction it can have multiple directions.  Directions are:</p>
+<p><code>N</code> - North
+ <code>E</code> - East
+ <code>S</code> - South
+ <code>W</code> - West
+ <code>U</code> - Up
+ <code>D</code> - Down</p>
+<p>For instance, an LED that faces South-east at a 45 degree downwards angle could be configured as <code>SED</code>.</p>
+<p>Note: It is perfectly possible to configure an LED to have all directions <code>NESWUD</code> but probably doesn't make sense.</p>
+<p><code>mode</code> specifies the modes that should be applied an LED. A mode consists of a base function and zero or more overlays.</p>
+<p>Each LED has one base function:</p>
+<ul>
+<li><code>C</code> - <code>C</code>olor.</li>
+<li><code>F</code> - <code>F</code>light mode &amp; Orientation</li>
+<li><code>A</code> - <code>A</code>rmed state.</li>
+<li><code>R</code> - <code>R</code>ing thrust state.</li>
+<li><code>G</code> - <code>G</code>PS state.</li>
+<li><code>S</code> - R<code>S</code>SSI level.</li>
+<li><code>L</code> - Battery <code>L</code>evel.</li>
+</ul>
+<p>And each LED can have one ore more overlays:</p>
+<ul>
+<li><code>W</code> - <code>W</code>warnings.</li>
+<li><code>I</code> - <code>I</code>ndicator.</li>
+<li><code>T</code> - <code>T</code>hrust state.</li>
+<li><code>B</code> - <code>B</code>link mode.</li>
+<li><code>O</code> - Lars<code>O</code>n Scanner (Cylon Effect).</li>
+<li><code>V</code> - <code>V</code>TX Frequency.</li>
+<li><code>K</code> - Flic<code>K</code>er.</li>
+<li><code>D</code> - Fa<code>D</code>e.</li>
+</ul>
+<p><code>color</code> specifies the color number (0 based index). This color has a black border in the Configurator.</p>
+<p><code>blinkpattern</code> specifies a 16 bit bitmask which indicates when a LED should blink. Example: two fast blinks would be 5 (binary 101), two slow blinks 3855 (binary 111100001111). The <code>alternatecolor</code> is used for blinking.</p>
+<p><code>blinkpause</code> specifies whether blinking should pause after the blink pattern has been finished. A value of <code>0</code> doesn't pause blinking, a value of <code>3</code> pauses the blinking for three subsequent rounds.</p>
+<p><code>alternatecolor</code> specifies the color for: a. blinking; b. fading between <code>color</code> and <code>alternatecolor</code> if the LED profile is switched from STATUS to STATUS_ALT. The <code>alternatecolor</code> can be black if you want to turn a light off in in the STATUS_ALT profile. The alternate color has a red border in the Configurator.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>led 0 0,15:SD:AWI:0:0:0:0
+led 1 15,0:ND:AWI:0:0:0:0
+led 2 0,0:ND:AWI:0:0:0:0
+led 3 0,15:SD:AWI:0:0:0:0
+led 4 7,7::C:1:0:0:0
+led 5 8,8::C:2:0:0:0
+led 6 8,9::CB:1:3855:0:2
+</code></pre></div>
+<p>To erase an LED, and to mark the end of the chain, use <code>0,0::</code> as the second argument, like this:</p>
+<div class="highlight"><pre><span></span><code>led 4 0,0:::
+</code></pre></div>
+<p>It is best to erase all LEDs that you do not have connected.</p>
+<h3 id="modes">Modes<a class="headerlink" href="#modes" title="Permanent link">&para;</a></h3>
+<h4 id="warning">Warning<a class="headerlink" href="#warning" title="Permanent link">&para;</a></h4>
+<p>This mode simply uses the LEDs to flash when warnings occur.</p>
+<table>
+<thead>
+<tr>
+<th>Warning</th>
+<th>LED Pattern</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arm-lock enabled</td>
+<td>flash between green and off</td>
+<td>occurs during calibration or when unarmed and the aircraft is tilted too much</td>
+</tr>
+<tr>
+<td>Low Battery</td>
+<td>flash red and off</td>
+<td>battery monitoring must be enabled.  May trigger temporarily under high-throttle due to voltage drop</td>
+</tr>
+<tr>
+<td>Failsafe</td>
+<td>flash between light blue and yellow</td>
+<td>Failsafe must be enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Flash patterns appear in order, so that it's clear which warnings are enabled.</p>
+<h4 id="gps-state">GPS state<a class="headerlink" href="#gps-state" title="Permanent link">&para;</a></h4>
+<p>This mode shows the GPS state and satellite count.</p>
+<p>No fix = red LED
+3D fix = green LED</p>
+<p>The LEDs will blink as many times as the satellite count, then pause and start again.</p>
+<h4 id="rssi-level">RSSI level<a class="headerlink" href="#rssi-level" title="Permanent link">&para;</a></h4>
+<p>This mode binds the LED color to RSSI level.</p>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>RSSI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Lime green</td>
+<td>80%</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Deep pink</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<p>When RSSI is below 50% is reached, LEDs will blink slowly, and they will blink fast when under 20%.</p>
+<h4 id="battery-level">Battery level<a class="headerlink" href="#battery-level" title="Permanent link">&para;</a></h4>
+<p>This mode binds the LED color to remaining battery capacity.</p>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Lime green</td>
+<td>80%</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Deep pink</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<p>When Warning or Critical voltage is reached, LEDs will blink slowly or fast.
+Note: this mode requires a current sensor.</p>
+<h4 id="blink">Blink<a class="headerlink" href="#blink" title="Permanent link">&para;</a></h4>
+<p>This overlay makes the LED blink from the current active color to the alternate color. You can set the blink rate using <code>ledstrip_blink_period_ms</code>.</p>
+<h4 id="flicker">Flicker<a class="headerlink" href="#flicker" title="Permanent link">&para;</a></h4>
+<p>This overlay makes the LED flicker, a bit like a candle. Set the flicker rate using <code>ledstrip_flicker_rate</code>.</p>
+<h4 id="fade-to-alt-color">Fade to alt color<a class="headerlink" href="#fade-to-alt-color" title="Permanent link">&para;</a></h4>
+<p>A LED with this overlay will fade to the alternate color in the profile STATUS_ALT. Specify Black as the alternate color to turn LEDs of (e.g. for switching off landing lights). You can set the fade rate with <code>ledstrip_fade_rate</code>.</p>
+<h4 id="larson-scanner-cylon-effect">Larson Scanner (Cylon Effect)<a class="headerlink" href="#larson-scanner-cylon-effect" title="Permanent link">&para;</a></h4>
+<p>The Larson Scanner replicates the scanning "eye" effect seen on the mechanical Cylons and on Kitt from Knight Rider.
+This overlay dims all of the LEDs it is assigned to and brightens certain ones at certain times in accordance with the animation. The animation is active regardless of arm state.</p>
+<h4 id="vtx-frequency">VTX Frequency<a class="headerlink" href="#vtx-frequency" title="Permanent link">&para;</a></h4>
+<p>This overlay makes the LED color dependent on the current channel of the VTX, in case it is equipped with SmartAudio or IRC Tramp.
+The color is selected according to the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Frequency range</th>
+<th>Default color</th>
+<th>Color index</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;= 5672</td>
+<td>White</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 5672 &lt;= 5711</td>
+<td>Red</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 5711 &lt;= 5750</td>
+<td>Orange</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 5750 &lt;= 5789</td>
+<td>Yellow</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 5789 &lt;= 5829</td>
+<td>Green</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 5829 &lt;= 5867</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 5867 &lt;= 5906</td>
+<td>Dark violet</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt; 5906</td>
+<td>Deep pink</td>
+</tr>
+</tbody>
+</table>
+<p>The default color can be changed by double-clicking the color and moving the Hue slider or by using the color command in the CLI.</p>
+<h4 id="flight-mode-orientation">Flight Mode &amp; Orientation<a class="headerlink" href="#flight-mode-orientation" title="Permanent link">&para;</a></h4>
+<p>This mode shows the flight mode and orientation.</p>
+<p>When flight modes are active then the LEDs are updated to show different colors depending on the mode, placement on the grid and direction.</p>
+<p>LEDs are set in a specific order:
+ * LEDs that marked as facing up or down.
+ * LEDs that marked as facing west or east AND are on the west or east side of the grid.
+ * LEDs that marked as facing north or south AND are on the north or south side of the grid.</p>
+<p>That is, south facing LEDs have priority.</p>
+<p>The mapping between modes LED placement and colors is currently fixed and cannot be changed.</p>
+<h4 id="indicator">Indicator<a class="headerlink" href="#indicator" title="Permanent link">&para;</a></h4>
+<p>This mode flashes LEDs that correspond to roll and pitch stick positions.  i.e.  they indicate the direction the craft is going to turn.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Direction</th>
+<th>LED Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orientation</td>
+<td>North</td>
+<td>WHITE</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>East</td>
+<td>DARK VIOLET</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>South</td>
+<td>RED</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>West</td>
+<td>DEEP PINK</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>Up</td>
+<td>BLUE</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>Down</td>
+<td>ORANGE</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Head Free</td>
+<td>North</td>
+<td>LIME GREEN</td>
+</tr>
+<tr>
+<td>Head Free</td>
+<td>East</td>
+<td>DARK VIOLET</td>
+</tr>
+<tr>
+<td>Head Free</td>
+<td>South</td>
+<td>ORANGE</td>
+</tr>
+<tr>
+<td>Head Free</td>
+<td>West</td>
+<td>DEEP PINK</td>
+</tr>
+<tr>
+<td>Head Free</td>
+<td>Up</td>
+<td>BLUE</td>
+</tr>
+<tr>
+<td>Head Free</td>
+<td>Down</td>
+<td>ORANGE</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>North</td>
+<td>BLUE</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>East</td>
+<td>DARK VIOLET</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>South</td>
+<td>YELLOW</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>West</td>
+<td>DEEP PINK</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>Up</td>
+<td>BLUE</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>Down</td>
+<td>ORANGE</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Angle</td>
+<td>North</td>
+<td>CYAN</td>
+</tr>
+<tr>
+<td>Angle</td>
+<td>East</td>
+<td>DARK VIOLET</td>
+</tr>
+<tr>
+<td>Angle</td>
+<td>South</td>
+<td>YELLOW</td>
+</tr>
+<tr>
+<td>Angle</td>
+<td>West</td>
+<td>DEEP PINK</td>
+</tr>
+<tr>
+<td>Angle</td>
+<td>Up</td>
+<td>BLUE</td>
+</tr>
+<tr>
+<td>Angle</td>
+<td>Down</td>
+<td>ORANGE</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Mag</td>
+<td>North</td>
+<td>MINT GREEN</td>
+</tr>
+<tr>
+<td>Mag</td>
+<td>East</td>
+<td>DARK VIOLET</td>
+</tr>
+<tr>
+<td>Mag</td>
+<td>South</td>
+<td>ORANGE</td>
+</tr>
+<tr>
+<td>Mag</td>
+<td>West</td>
+<td>DEEP PINK</td>
+</tr>
+<tr>
+<td>Mag</td>
+<td>Up</td>
+<td>BLUE</td>
+</tr>
+<tr>
+<td>Mag</td>
+<td>Down</td>
+<td>ORANGE</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Baro</td>
+<td>North</td>
+<td>LIGHT BLUE</td>
+</tr>
+<tr>
+<td>Baro</td>
+<td>East</td>
+<td>DARK VIOLET</td>
+</tr>
+<tr>
+<td>Baro</td>
+<td>South</td>
+<td>RED</td>
+</tr>
+<tr>
+<td>Baro</td>
+<td>West</td>
+<td>DEEP PINK</td>
+</tr>
+<tr>
+<td>Baro</td>
+<td>Up</td>
+<td>BLUE</td>
+</tr>
+<tr>
+<td>Baro</td>
+<td>Down</td>
+<td>ORANGE</td>
+</tr>
+</tbody>
+</table>
+<h4 id="armed-state">Armed state<a class="headerlink" href="#armed-state" title="Permanent link">&para;</a></h4>
+<p>This mode toggles LEDs between green and blue when disarmed and armed, respectively. If arming is disabled the LED will be set to the background color, which usually is black.</p>
+<p>Note: Armed State cannot be used with Flight Mode.</p>
+<h4 id="thrust-state">Thrust state<a class="headerlink" href="#thrust-state" title="Permanent link">&para;</a></h4>
+<p>This mode fades the current LED color to the previous/next color in the HSB color space depending on throttle stick position.  When the throttle is in the middle position the color is unaffected, thus it can be mixed with orientation colors to indicate orientation and throttle at the same time.  Thrust should normally be combined with Color or Mode/Orientation.</p>
+<h4 id="thrust-ring-state">Thrust ring state<a class="headerlink" href="#thrust-ring-state" title="Permanent link">&para;</a></h4>
+<p>This mode is allows you to use one or multiple LED rings (e.g. NeoPixel ring) for an afterburner effect. LEDs with this mode will light up with their assigned color in a repeating sequence. Assigning the color black to an LED with the ring mode will prevent the LED from lighting up.</p>
+<p>A better effect is achieved when LEDs configured for thrust ring have no other functions.</p>
+<p>LED direction and X/Y positions are irrelevant for thrust ring LED state.  The order of the LEDs that have the state determines how the LED behaves, and the throttle value determines the animation rate. The animation is only active while armed.</p>
+<p>Each LED of the ring can be a different color. The color can be selected between the 16 colors available.</p>
+<p>For example, LED 0 is set as a <code>R</code>ing thrust state LED in color 13 as follow.</p>
+<div class="highlight"><pre><span></span><code>led 0 2,2::R:13
+</code></pre></div>
+<p>LED strips and rings can be combined.</p>
+<h4 id="solid-color">Solid Color<a class="headerlink" href="#solid-color" title="Permanent link">&para;</a></h4>
+<p>The mode allows you to set an LED to be permanently on and set to a specific color.</p>
+<p>x,y position and directions are ignored when using this mode.</p>
+<p>Other modes will override or combine with the color mode.</p>
+<p>For example, to set LED 0 to always use color 10 you would issue this command.</p>
+<div class="highlight"><pre><span></span><code>led 0 0,0::C:10
+</code></pre></div>
+<h3 id="colors">Colors<a class="headerlink" href="#colors" title="Permanent link">&para;</a></h3>
+<p>Colors can be configured using the cli <code>color</code> command.</p>
+<p>The <code>color</code> command takes either zero or two arguments - an zero-based color number and a sequence which indicates pair of hue, saturation and value (HSV).</p>
+<p>See <a href="http://en.wikipedia.org/wiki/HSL_and_HSV">HSL and HSV</a></p>
+<p>If used with zero arguments it prints out the color configuration which can be copied for future reference.</p>
+<p>The default color configuration is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>black</td>
+</tr>
+<tr>
+<td>1</td>
+<td>white</td>
+</tr>
+<tr>
+<td>2</td>
+<td>red</td>
+</tr>
+<tr>
+<td>3</td>
+<td>orange</td>
+</tr>
+<tr>
+<td>4</td>
+<td>yellow</td>
+</tr>
+<tr>
+<td>5</td>
+<td>lime green</td>
+</tr>
+<tr>
+<td>6</td>
+<td>green</td>
+</tr>
+<tr>
+<td>7</td>
+<td>mint green</td>
+</tr>
+<tr>
+<td>8</td>
+<td>cyan</td>
+</tr>
+<tr>
+<td>9</td>
+<td>light blue</td>
+</tr>
+<tr>
+<td>10</td>
+<td>blue</td>
+</tr>
+<tr>
+<td>11</td>
+<td>dark violet</td>
+</tr>
+<tr>
+<td>12</td>
+<td>magenta</td>
+</tr>
+<tr>
+<td>13</td>
+<td>deep pink</td>
+</tr>
+<tr>
+<td>14</td>
+<td>black</td>
+</tr>
+<tr>
+<td>15</td>
+<td>black</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>color 0 0,0,0
+color 1 0,255,255
+color 2 0,0,255
+color 3 30,0,255
+color 4 60,0,255
+color 5 90,0,255
+color 6 120,0,255
+color 7 150,0,255
+color 8 180,0,255
+color 9 210,0,255
+color 10 240,0,255
+color 11 270,0,255
+color 12 300,0,255
+color 13 330,0,255
+color 14 0,0,0
+color 15 0,0,0
+</code></pre></div>
+<h3 id="mode-colors-assignement">Mode Colors Assignement<a class="headerlink" href="#mode-colors-assignement" title="Permanent link">&para;</a></h3>
+<p>Mode Colors can be configured using the cli <code>mode_color</code> command.</p>
+<ul>
+<li>No arguments: lists all mode colors</li>
+<li>arguments: mode, function, color</li>
+</ul>
+<p>First 8 groups of ModeIndexes are :</p>
+<table>
+<thead>
+<tr>
+<th>mode</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>orientation</td>
+</tr>
+<tr>
+<td>1</td>
+<td>headfree</td>
+</tr>
+<tr>
+<td>2</td>
+<td>horizon</td>
+</tr>
+<tr>
+<td>3</td>
+<td>angle</td>
+</tr>
+<tr>
+<td>4</td>
+<td>mag</td>
+</tr>
+<tr>
+<td>5</td>
+<td>baro</td>
+</tr>
+<tr>
+<td>6</td>
+<td>special</td>
+</tr>
+<tr>
+<td>7</td>
+<td>channel</td>
+</tr>
+</tbody>
+</table>
+<p>Modes 0 to 5 functions:</p>
+<table>
+<thead>
+<tr>
+<th>function</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>north</td>
+</tr>
+<tr>
+<td>1</td>
+<td>east</td>
+</tr>
+<tr>
+<td>2</td>
+<td>south</td>
+</tr>
+<tr>
+<td>3</td>
+<td>west</td>
+</tr>
+<tr>
+<td>4</td>
+<td>up</td>
+</tr>
+<tr>
+<td>5</td>
+<td>down</td>
+</tr>
+</tbody>
+</table>
+<p>Mode 6 use these functions:</p>
+<table>
+<thead>
+<tr>
+<th>function</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>disarmed</td>
+</tr>
+<tr>
+<td>1</td>
+<td>armed</td>
+</tr>
+<tr>
+<td>2</td>
+<td>animation</td>
+</tr>
+<tr>
+<td>3</td>
+<td>background</td>
+</tr>
+<tr>
+<td>4</td>
+<td>blink background</td>
+</tr>
+<tr>
+<td>5</td>
+<td>gps: no satellites</td>
+</tr>
+<tr>
+<td>6</td>
+<td>gps: no fix</td>
+</tr>
+<tr>
+<td>7</td>
+<td>gps: 3D fix</td>
+</tr>
+</tbody>
+</table>
+<p>The ColorIndex is picked from the colors array ("palette").</p>
+<p>Mode 7 is used along with Thrust state to make the LED color dependent on a channel different from the throttle.</p>
+<p>Examples (using the default colors):</p>
+<ul>
+<li>set armed color to red: <code>mode_color 6 1 2</code></li>
+<li>set disarmed color to yellow: <code>mode_color 6 0 4</code></li>
+<li>set Headfree mode 'south' to Cyan: <code>mode_color 1 2 8</code></li>
+<li>set color dependent on AUX 1 in Thrust state: <code>mode_color 7 0 4</code></li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>On initial power up the LEDs on the strip will be set to WHITE.  This means you can attach a current meter to verify the current draw if your measurement equipment is fast enough.  Most 5050 LEDs will draw 0.3 Watts a piece.
+This also means that you can make sure that each R,G and B LED in each LED module on the strip is also functioning. After a short delay the LEDs will show the unarmed color sequence and or low-battery warning sequence.</p>
+<p>Also check that the feature <code>LED_STRIP</code> was correctly enabled and that it does not conflict with other features, as above.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../blackbox/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Blackbox">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Blackbox
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../buzzer/" class="md-footer__link md-footer__link--next" aria-label="Next: Buzzer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Buzzer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rotorflight" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/FyfMF4RwSA" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.rotorflight.org/" target="_blank" rel="noopener" title="www.rotorflight.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "stable", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/gear-calc.js"></script>
+      
+    
+  </body>
+</html>

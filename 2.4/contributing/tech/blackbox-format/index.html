@@ -1,0 +1,6637 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Rotorflight helicopter flight controller firmware, Configurator, Blackbox and radio Lua suites">
+      
+      
+      
+        <link rel="canonical" href="https://doc.rotorflight.org/2.4/contributing/tech/blackbox-format/">
+      
+      
+        <link rel="prev" href="../custom-boards/">
+      
+      
+        <link rel="next" href="../governor/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Blackbox Log Format - Rotorflight Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#blackbox-logging-internals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You are viewing documentation for an upcoming Rotorflight release.
+  <a href="../../../..">
+    <strong>Switch to the current release.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Rotorflight Documentation" class="md-header__button md-logo" aria-label="Rotorflight Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/Rotorflight_outline_dark.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Rotorflight Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Blackbox Log Format
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rotorflight/rotorflight-documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rotorflight-documentation
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../setup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Setup Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../configurator/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configurator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../radio/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Radio & Lua
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tuning/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tuning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../hardware/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Rotorflight Documentation" class="md-nav__button md-logo" aria-label="Rotorflight Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/Rotorflight_outline_dark.svg" alt="logo">
+
+    </a>
+    Rotorflight Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rotorflight/rotorflight-documentation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rotorflight-documentation
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../getting-started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/flashing-the-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashing the Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/first-connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/backup-and-restore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backup & Restore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/upgrade-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrade Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/arming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arming & Safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/example-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../setup/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup Guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/remapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remapping Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servo Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/mixer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mixer & Swashplate Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/rpm-measurement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPM Measurement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/rpm-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPM Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/esc-telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/esc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Forward Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/blheli-s-to-bluejay/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLHeli_S to Bluejay
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/governor-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/nitro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nitro Helicopters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/gear-ratios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gear Ratios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/smartfuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SmartFuel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/profile-switching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profile Switching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/stability-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stability Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/led-strip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/openlager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenLager Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/fbus-master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FBUS Master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/frsky-servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky Servos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/elrs-custom-telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ELRS Custom Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../configurator/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurator
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configurator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/presets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/power/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/receiver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receiver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/failsafe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Failsafe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/mixer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mixer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/motors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/rates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/gyro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gyro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/adjustments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adjustments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/gps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/led-strip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/remap-fc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remap FC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/beepers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beepers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/crsf-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRSF Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/xact-servo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XACT Servo Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/esc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/blackbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../radio/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio & Lua
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Radio & Lua
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../radio/ethos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky Ethos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FrSky Ethos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/radio-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/lua-suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using RFSuite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/dashboard-themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/tune-advisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tune Advisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../radio/edgetx/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EdgeTX
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EdgeTX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/edgetx/radio-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/edgetx/lua-suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using RFSuite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/edgetx/classic-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classic Lua Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/futaba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Futaba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/jeti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jeti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other Radios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tuning/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tuning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filter Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/high-speed-integral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    High Speed Integral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/cyclic-cross-coupling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic Cross-Coupling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/motorised-tail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motorised Tail & TTA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/rescue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rescue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../hardware/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/radiomaster-nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radiomaster Nexus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/frsky-007/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky VANTAC RF007
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/flydragon-f722/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FlyDragon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/flywing-heli-f405/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flywing HELI405
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/goosky-f701/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GooSky F701
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/goosky-f4mini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GooSky F4 Mini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/matek-g474/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matek G474-HELI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/diy-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIY Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/betaflight-diy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Betaflight FC (DIY)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/manufacturers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Manufacturers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Command Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/cli-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/serial-ports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial Ports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/receivers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/blackbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/led-strip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/buzzer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Buzzer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/msp-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MSP Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building-the-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building the Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding-style/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding Style
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editing-the-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing the Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support the Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_7" id="__nav_9_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameter-groups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Groups
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atomic-barrier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Barrier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customizing-the-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing the Build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-boards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Board Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox Log Format
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox Log Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging cycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-frame-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log frame types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log frame types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-frames-i-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main frames: I, P
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps-frames-g-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPS frames: G, H
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slow-frames-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slow frames: S
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-frames-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event frames: E
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-field-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log field format
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log field format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#field-predictors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field predictors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Field predictors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predict-zero-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict zero (0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-last-value-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict last value (1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-straight-line-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict straight line (2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-average-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict average 2 (3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-minthrottle-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict minthrottle (4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-motor0-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict motor[0] (5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-increment-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict increment (6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-home-coord-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict home-coord (7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-1500-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict 1500 (8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-vbatref-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict vbatref (9)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-last-main-frame-time-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict last main-frame time (10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field encoders
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Field encoders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-variable-byte-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unsigned variable byte (1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-variable-byte-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed variable byte (0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neg-14-bit-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neg 14-bit (3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elias-delta-unsigned-32-bit-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elias delta unsigned 32-bit (4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elias-delta-signed-32-bit-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elias delta signed 32-bit (5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag8_8svb-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TAG8_8SVB (6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag2_3s32-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TAG2_3S32 (7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag8_4s16-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TAG8_4S16 (8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NULL (9)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log file structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log file structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-start-marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log start marker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log header
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log header">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-version-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data version (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging interval
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging interval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I interval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P interval
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-type-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware type (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-x-name-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field X name (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-x-signed-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field X signed (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-x-predictor-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field X predictor (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-x-encoding-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field X encoding (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vbatref" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vbatref
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minthrottle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        minthrottle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional headers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log payload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-end-marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log end marker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../smartfuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SmartFuel Internals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware-debugging-vscode-jlink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging with VS Code and J-Link
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Coverage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-cross-coupling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Cross-Coupling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging cycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-frame-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log frame types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log frame types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-frames-i-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main frames: I, P
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gps-frames-g-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPS frames: G, H
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slow-frames-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slow frames: S
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-frames-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event frames: E
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-field-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log field format
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log field format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#field-predictors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field predictors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Field predictors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predict-zero-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict zero (0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-last-value-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict last value (1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-straight-line-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict straight line (2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-average-2-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict average 2 (3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-minthrottle-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict minthrottle (4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-motor0-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict motor[0] (5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-increment-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict increment (6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-home-coord-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict home-coord (7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-1500-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict 1500 (8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-vbatref-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict vbatref (9)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict-last-main-frame-time-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predict last main-frame time (10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field encoders
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Field encoders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-variable-byte-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unsigned variable byte (1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-variable-byte-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signed variable byte (0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neg-14-bit-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neg 14-bit (3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elias-delta-unsigned-32-bit-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elias delta unsigned 32-bit (4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elias-delta-signed-32-bit-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elias delta signed 32-bit (5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag8_8svb-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TAG8_8SVB (6)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag2_3s32-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TAG2_3S32 (7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tag8_4s16-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TAG8_4S16 (8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NULL (9)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log file structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log file structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-start-marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log start marker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log header
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log header">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-version-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data version (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging interval
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging interval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I interval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P interval
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firmware-type-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware type (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-x-name-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field X name (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-x-signed-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field X signed (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-x-predictor-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field X predictor (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-x-encoding-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Field X encoding (required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vbatref" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vbatref
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minthrottle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        minthrottle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional headers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-payload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log payload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-end-marker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log end marker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rotorflight/rotorflight-documentation/edit/main/docs/contributing/tech/blackbox-format.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<!-- Ported from rotorflight-firmware docs/development/Blackbox Internals.md. -->
+<h1 id="blackbox-logging-internals">Blackbox logging internals<a class="headerlink" href="#blackbox-logging-internals" title="Permanent link">&para;</a></h1>
+<p>The Blackbox is designed to record the raw internal state of the flight controller at near-maximum rate. By logging the
+raw inputs and outputs of key flight systems, the Blackbox log aims to allow the offline bench-top simulation, debugging,
+and testing of flight control algorithms using data collected from real flights. </p>
+<p>A typical logging regime might capture 30 different state variables (for an average of 28 bytes per frame) at a sample
+rate of 900Hz. That's about 25,000 bytes per second, which is 250,000 baud with a typical 8-N-1 serial encoding.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>Please refer to the source code to clarify anything this document leaves unclear:</p>
+<ul>
+<li>Cleanflight's Blackbox logger: <a href="https://github.com/cleanflight/cleanflight/blob/master/src/main/blackbox/blackbox.c">blackbox.c</a>,
+<a href="https://github.com/cleanflight/cleanflight/blob/master/src/main/blackbox/blackbox_io.c">blackbox_io.c</a>,
+<a href="https://github.com/cleanflight/cleanflight/blob/master/src/main/blackbox/blackbox_fielddefs.h">blackbox_fielddefs.h</a></li>
+<li><a href="https://github.com/cleanflight/blackbox-tools/blob/master/src/parser.c">C implementation of the Blackbox log decoder</a></li>
+<li><a href="https://github.com/cleanflight/blackbox-log-viewer/blob/master/js/flightlog_parser.js">JavaScript implementation of the Blackbox log decoder</a></li>
+</ul>
+<h2 id="logging-cycle">Logging cycle<a class="headerlink" href="#logging-cycle" title="Permanent link">&para;</a></h2>
+<p>Blackbox is designed for flight controllers that are based around the concept of a "main loop". During each main loop
+iteration, the flight controller will read some state from sensors, run some flight control algorithms, and produce some
+outputs. For each of these loop iterations, a Blackbox "logging iteration" will be executed. This will read data that
+was stored during the execution of the main loop and log this data to an attached logging device. The data will include
+algorithm inputs such as sensor and RC data, intermediate results from flight control algorithms, and algorithm outputs
+such as motor commands.</p>
+<h2 id="log-frame-types">Log frame types<a class="headerlink" href="#log-frame-types" title="Permanent link">&para;</a></h2>
+<p>Each event which is recorded to the log is packaged as a "log frame". Blackbox only uses a handful of different types of
+log frames. Each frame type is identified by a single capital letter.</p>
+<h3 id="main-frames-i-p">Main frames: I, P<a class="headerlink" href="#main-frames-i-p" title="Permanent link">&para;</a></h3>
+<p>The most basic kind of logged frames are the "main frames". These record the primary state of the flight controller (RC
+input, gyroscopes, flight control algorithm intermediates, motor outputs), and are logged during every logging
+iteration.</p>
+<p>Each main frame must contain at least two fields, "loopIteration" which records the index of the current main loop
+iteration (starting at zero for the first logged iteration), and "time" which records the timestamp of the beginning of
+the main loop in microseconds (this needn't start at zero, on Cleanflight it represents the system uptime).</p>
+<p>There are two kinds of main frames, "I" and "P". "I", or "intra" frames are like video keyframes. They can be decoded
+without reference to any previous frame, so they allow log decoding to be resynchronized in the event of log damage. "P"
+or "inter" frames use an encoding which references previously logged frames in order to reduce the required datarate.
+When one interframe fails to decode, all following interframes will be undecodable up until the next intraframe.</p>
+<h3 id="gps-frames-g-h">GPS frames: G, H<a class="headerlink" href="#gps-frames-g-h" title="Permanent link">&para;</a></h3>
+<p>Because the GPS is updated so infrequently, GPS data is logged in its own dedicated frames. These are recorded whenever
+the GPS data changes (not necessarily alongside every main frame). Like the main frames, the GPS frames have their own
+intra/inter encoding system.</p>
+<p>The "H" or "home" frame records the lat/lon of a reference point. The "G" or "GPS" frame records the current state of
+the GPS system (current position, altitude etc.) based on the reference point. The reference point can be updated
+(infrequently) during the flight, and is logged whenever it changes. </p>
+<p>To allow "G" frames to continue be decoded in the event that an "H" update is dropped from the log, the "H" frame is
+logged periodically even if it has not changed (say, every 10 seconds). This caps the duration of unreadble "G" frames
+that will result from a single missed "H" change.</p>
+<h3 id="slow-frames-s">Slow frames: S<a class="headerlink" href="#slow-frames-s" title="Permanent link">&para;</a></h3>
+<p>Some flight controller state is updated very infrequently (on the order of once or twice a minute). Logging the fact
+that this data had not been updated during every single logging iteration would be a waste of bandwidth, so these frames
+are only logged when the "slow" state actually changes.</p>
+<p>All Slow frames are logged as intraframes. An interframe encoding scheme can't be used for Slow frames, because one
+damaged frame causes all subsequent interframes to be undecodable. Because Slow frames are written so infrequently, one
+missing Slow frame could invalidate minutes worth of Slow state.</p>
+<p>On Cleanflight, Slow frames are currently used to log data like the user-chosen flight mode and the current failsafe
+state.</p>
+<h3 id="event-frames-e">Event frames: E<a class="headerlink" href="#event-frames-e" title="Permanent link">&para;</a></h3>
+<p>Some flight controller data is updated so infrequently or exists so transiently that we do not log it as a flight
+controller "state". Instead, we log it as a state <em>transition</em> . This data is logged in "E" or "event" frames. Each event
+frame payload begins with a single byte "event type" field. The format of the rest of the payload is not encoded in the
+flight log, so its interpretation is left up to an agreement of the writer and the decoder.</p>
+<p>For example, one event that Cleanflight logs is that the user has adjusted a system setting (such as a PID setting)
+using Cleanflight's inflight adjustments feature. The event payload notes which setting was adjusted and the new value
+for the setting. </p>
+<p>Because these setting updates are so rare, it would be wasteful to treat the settings as "state" and log the fact that
+the setting had not been changed during every logging iteration. It would be infeasible to periodically log the system
+settings using an intra/interframe scheme, because the intraframes would be so large. Instead we only log the
+transitions as events, accept the small probability that any one of those events will be damaged/absent in the log, and
+leave it up to log readers to decide the extent to which they are willing to assume that the state of the setting
+between successfully-decoded transition events was truly unchanged.</p>
+<h2 id="log-field-format">Log field format<a class="headerlink" href="#log-field-format" title="Permanent link">&para;</a></h2>
+<p>For every field in a given frame type, there is an associated name, predictor, and encoding.</p>
+<p>When a field is written, the chosen predictor is computed for the field, then this predictor value is subtracted from
+the raw field value. Finally, the encoder is used to transform the value into bytes to be written to the logging device.</p>
+<h3 id="field-predictors">Field predictors<a class="headerlink" href="#field-predictors" title="Permanent link">&para;</a></h3>
+<p>The job of the predictor is to bring the value to be encoded as close to zero as possible. The predictor may be based
+on the values seen for the field in a previous frame, or some other value such as a fixed value or a value recorded in
+the log headers. For example, the battery voltage values in "I" intraframes in Cleanflight use a reference voltage that
+is logged as part of the headers as a predictor. This assumes that battery voltages will be broadly similar to the
+initial pack voltage of the flight (e.g. 4S battery voltages are likely to lie within a small range for the whole
+flight). In "P" interframes, the battery voltage will instead use the previously-logged voltage as a predictor, because
+the correlation between successive voltage readings is high.</p>
+<p>These predictors are presently available:</p>
+<h4 id="predict-zero-0">Predict zero (0)<a class="headerlink" href="#predict-zero-0" title="Permanent link">&para;</a></h4>
+<p>This predictor is the null-predictor which doesn't modify the field value at all. It is a common choice for fields
+which are already close to zero, or where no better history is available (e.g. in intraframes which may not rely on the
+previous value of fields).</p>
+<h4 id="predict-last-value-1">Predict last value (1)<a class="headerlink" href="#predict-last-value-1" title="Permanent link">&para;</a></h4>
+<p>This is the most common predictor in interframes. The last-logged value of the field will be used as the predictor, and
+subtracted from the raw field value. For fields which don't change very often, this will make their encoded value be
+normally zero. Most fields have some time-correlation, so this predictor should reduce the magnitude of all but the
+noisiest fields.</p>
+<h4 id="predict-straight-line-2">Predict straight line (2)<a class="headerlink" href="#predict-straight-line-2" title="Permanent link">&para;</a></h4>
+<p>This predictor assumes that the slope between the current measurement and the previous one will be similar to the
+slope between the previous measurement and the one before that. This is common for fields which increase at a steady rate,
+such as the "time" field. The predictor is <code>history_age_2 - 2 * history_age_1</code>.</p>
+<h4 id="predict-average-2-3">Predict average 2 (3)<a class="headerlink" href="#predict-average-2-3" title="Permanent link">&para;</a></h4>
+<p>This predictor is the average of the two previously logged values of the field (i.e. <code>(history_age_1 + history_age_2) / 2</code>
+). It is used when there is significant random noise involved in the field, which means that the average of the recent
+history is a better predictor of the next value than the previous value on its own would be (for example, in gyroscope
+or motor measurements).</p>
+<h4 id="predict-minthrottle-4">Predict minthrottle (4)<a class="headerlink" href="#predict-minthrottle-4" title="Permanent link">&para;</a></h4>
+<p>This predictor subtracts the value of "minthrottle" which is included in the log header. In Cleanflight, motors always
+lie in the range of <code>[minthrottle ... maxthrottle]</code> when the craft is armed, so this predictor is used for the first
+motor value in intraframes.</p>
+<h4 id="predict-motor0-5">Predict motor[0] (5)<a class="headerlink" href="#predict-motor0-5" title="Permanent link">&para;</a></h4>
+<p>This predictor is set to the value of <code>motor[0]</code> which was decoded earlier within the current frame. It is used in
+intraframes for every motor after the first one, because the motor commands typically lie in a tight grouping.</p>
+<h4 id="predict-increment-6">Predict increment (6)<a class="headerlink" href="#predict-increment-6" title="Permanent link">&para;</a></h4>
+<p>This predictor assumes that the field will be incremented by 1 unit for every main loop iteration. This is used to
+predict the <code>loopIteration</code> field, which increases by 1 for every loop iteration.</p>
+<h4 id="predict-home-coord-7">Predict home-coord (7)<a class="headerlink" href="#predict-home-coord-7" title="Permanent link">&para;</a></h4>
+<p>This predictor is set to the corresponding latitude or longitude field from the GPS home coordinate (which was logged in
+a preceding "H" frame). If no preceding "H" frame exists, the value is marked as invalid.</p>
+<h4 id="predict-1500-8">Predict 1500 (8)<a class="headerlink" href="#predict-1500-8" title="Permanent link">&para;</a></h4>
+<p>This predictor is set to a fixed value of 1500. It is preferred for logging servo values in intraframes, since these 
+typically lie close to the midpoint of 1500us.</p>
+<h4 id="predict-vbatref-9">Predict vbatref (9)<a class="headerlink" href="#predict-vbatref-9" title="Permanent link">&para;</a></h4>
+<p>This predictor is set to the "vbatref" field written in the log header. It is used when logging intraframe battery
+voltages in Cleanflight, since these are expected to be broadly similar to the first battery voltage seen during
+arming.</p>
+<h4 id="predict-last-main-frame-time-10">Predict last main-frame time (10)<a class="headerlink" href="#predict-last-main-frame-time-10" title="Permanent link">&para;</a></h4>
+<p>This predictor is set to the last logged <code>time</code> field from the main frame. This is used when predicting timestamps of
+non-main frames (e.g. that might be logging the timing of an event that happened during the main loop cycle, like a GPS
+reading).</p>
+<h3 id="field-encoders">Field encoders<a class="headerlink" href="#field-encoders" title="Permanent link">&para;</a></h3>
+<p>The field encoder's job is to use fewer bits to represent values which are closer to zero than for values that are
+further from zero. Blackbox supports a range of different encoders, which should be chosen on a per-field basis in order
+to minimize the encoded data size. The choice of best encoder is based on the probability distribution of the values
+which are to be encoded. For example, if a field is almost always zero, then an encoding should be chosen for it which
+can encode that case into a very small number of bits, such as one. Conversely, if a field is normally 8-16 bits large,
+it would be wasteful to use an encoder which provided a special short encoded representation for zero values, because
+this will increase the encoded length of larger values.</p>
+<p>These encoders are presently available:</p>
+<h4 id="unsigned-variable-byte-1">Unsigned variable byte (1)<a class="headerlink" href="#unsigned-variable-byte-1" title="Permanent link">&para;</a></h4>
+<p>This is the most straightforward encoding. This encoding uses the lower 7 bits of an encoded byte to store the lower 7
+bits of the field's value. The high bit of that encoded byte is set to one if more than 7 bits are required to store the
+value. If the value did exceed 7 bits, the lower 7 bits of the value (which were written to the log) are removed from
+the value (by right shift), and the encoding process begins again with the new value.</p>
+<p>This can be represented by the following algorithm:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">127</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">writeByte</span><span class="p">((</span><span class="kt">uint8_t</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mh">0x80</span><span class="p">));</span><span class="w"> </span><span class="c1">// Set the high bit to mean "more bytes follow"</span>
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">&gt;&gt;=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">writeByte</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+</code></pre></div>
+<p>Here are some example values encoded using variable-byte encoding:</p>
+<table>
+<thead>
+<tr>
+<th>Input value</th>
+<th>Output encoding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0x01</td>
+</tr>
+<tr>
+<td>42</td>
+<td>0x2A</td>
+</tr>
+<tr>
+<td>127</td>
+<td>0x7F</td>
+</tr>
+<tr>
+<td>128</td>
+<td>0x80 0x01</td>
+</tr>
+<tr>
+<td>129</td>
+<td>0x81 0x01</td>
+</tr>
+<tr>
+<td>23456</td>
+<td>0xA0 0xB7 0x01</td>
+</tr>
+</tbody>
+</table>
+<h4 id="signed-variable-byte-0">Signed variable byte (0)<a class="headerlink" href="#signed-variable-byte-0" title="Permanent link">&para;</a></h4>
+<p>This encoding applies a pre-processing step to fold negative values into positive ones, then the resulting unsigned
+number is encoded using unsigned variable byte encoding. The folding is accomplished by "ZigZag" encoding, which is
+represented by:</p>
+<div class="highlight"><pre><span></span><code><span class="n">unsigned32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">signed32</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">signed32</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">31</span><span class="p">)</span>
+</code></pre></div>
+<p>ZigZag encoding is preferred against simply casting the signed integer to unsigned, because casting would cause small
+negative quantities to appear to be very large unsigned integers, causing the encoded length to be similarly large.
+ZigZag encoding ensures that values near zero are still near zero after encoding.</p>
+<p>Here are some example integers encoded using ZigZag encoding:</p>
+<table>
+<thead>
+<tr>
+<th>Input value</th>
+<th>ZigZag encoding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2147483647</td>
+<td>4294967294</td>
+</tr>
+<tr>
+<td>-2147483648</td>
+<td>4294967295</td>
+</tr>
+</tbody>
+</table>
+<h4 id="neg-14-bit-3">Neg 14-bit (3)<a class="headerlink" href="#neg-14-bit-3" title="Permanent link">&para;</a></h4>
+<p>The value is negated, treated as an unsigned 14 bit integer, then encoded using unsigned variable byte encoding. This
+bizarre encoding is used in Cleanflight for battery pack voltages. This is because battery voltages are measured using a
+14-bit ADC, with a predictor which is set to the battery voltage during arming, which is expected to be higher than any
+voltage experienced during flight. After the predictor is subtracted, the battery voltage will almost certainly be below
+zero.</p>
+<p>This results in small encoded values when the voltage is closely below the initial one, at the expense of very large
+encoded values if the voltage rises higher than the initial one.</p>
+<h4 id="elias-delta-unsigned-32-bit-4">Elias delta unsigned 32-bit (4)<a class="headerlink" href="#elias-delta-unsigned-32-bit-4" title="Permanent link">&para;</a></h4>
+<p>Because this encoding produces a bitstream, this is the only encoding for which the encoded value might not be a whole
+number of bytes. If the bitstream isn't aligned on a byte boundary by the time the next non-Elias Delta field arrives,
+or the end of the frame is reached, the final byte is padded with zeros byte-align the stream. This encoding requires
+more CPU time than the other encodings because of the bit juggling involved in writing the bitstream.</p>
+<p>When this encoder is chosen to encode all of the values in Cleanflight interframes, it saves about 10% bandwidth
+compared to using a mixture of the other encodings, but uses too much CPU time to be practical.</p>
+<p><a href="https://en.wikipedia.org/wiki/Elias_delta_coding">The basic encoding algorithm is defined on Wikipedia</a>. Given these
+utility functions:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* Write `bitCount` bits from the least-significant end of the `bits` integer to the bitstream. The most-significant bit</span>
+<span class="cm"> * will be written first</span>
+<span class="cm"> */</span><span class="w"> </span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">writeBits</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">bits</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bitCount</span><span class="p">);</span>
+
+<span class="cm">/* Returns the number of bits needed to hold the top-most 1-bit of the integer 'i'. 'i' must not be zero. */</span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">numBitsToStoreInteger</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+</code></pre></div>
+<p>This is our reference implementation of Elias Delta:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Value must be more than zero</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">writeU32EliasDeltaInternal</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">valueLen</span><span class="p">,</span><span class="w"> </span><span class="n">lengthOfValueLen</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">valueLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numBitsToStoreInteger</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lengthOfValueLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numBitsToStoreInteger</span><span class="p">(</span><span class="n">valueLen</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Use unary to encode the number of bits we'll need to write the length of the value</span>
+<span class="w">    </span><span class="n">writeBits</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">lengthOfValueLen</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Now write the length of the value</span>
+<span class="w">    </span><span class="n">writeBits</span><span class="p">(</span><span class="n">valueLen</span><span class="p">,</span><span class="w"> </span><span class="n">lengthOfValueLen</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Having now encoded the position of the top bit of value, write its remaining bits</span>
+<span class="w">    </span><span class="n">writeBits</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">valueLen</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>To this we add a wrapper which allows encoding both the value zero and MAXINT:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">writeU32EliasDelta</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="cm">/* We can't encode value==0, so we need to add 1 to the value before encoding</span>
+<span class="cm">     *</span>
+<span class="cm">     * That would make it impossible to encode MAXINT, so use 0xFFFFFFFF as an escape </span>
+<span class="cm">     * code with an additional bit to choose between MAXINT-1 or MAXINT.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mh">0xFFFFFFFE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Write the escape code</span>
+<span class="w">        </span><span class="n">writeU32EliasDeltaInternal</span><span class="p">(</span><span class="mh">0xFFFFFFFF</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Add a one bit after the escape code if we wanted "MAXINT", or a zero if we wanted "MAXINT - 1"</span>
+<span class="w">        </span><span class="n">writeBits</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0xFFFFFFFE</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">writeU32EliasDeltaInternal</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Here are some reference encoded bit patterns produced by writeU32EliasDelta:</p>
+<table>
+<thead>
+<tr>
+<th>Input value</th>
+<th>Encoded bit string</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0100</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0101</td>
+</tr>
+<tr>
+<td>3</td>
+<td>01100</td>
+</tr>
+<tr>
+<td>4</td>
+<td>01101</td>
+</tr>
+<tr>
+<td>5</td>
+<td>01110</td>
+</tr>
+<tr>
+<td>6</td>
+<td>01111</td>
+</tr>
+<tr>
+<td>7</td>
+<td>00100000</td>
+</tr>
+<tr>
+<td>8</td>
+<td>00100001</td>
+</tr>
+<tr>
+<td>9</td>
+<td>00100010</td>
+</tr>
+<tr>
+<td>10</td>
+<td>00100011</td>
+</tr>
+<tr>
+<td>11</td>
+<td>00100100</td>
+</tr>
+<tr>
+<td>12</td>
+<td>00100101</td>
+</tr>
+<tr>
+<td>13</td>
+<td>00100110</td>
+</tr>
+<tr>
+<td>14</td>
+<td>00100111</td>
+</tr>
+<tr>
+<td>15</td>
+<td>001010000</td>
+</tr>
+<tr>
+<td>225</td>
+<td>00010001100010</td>
+</tr>
+<tr>
+<td>4294967292</td>
+<td>000001000001111111111111111111111111111101</td>
+</tr>
+<tr>
+<td>4294967293</td>
+<td>000001000001111111111111111111111111111110</td>
+</tr>
+<tr>
+<td>4294967294</td>
+<td>0000010000011111111111111111111111111111110</td>
+</tr>
+<tr>
+<td>4294967295</td>
+<td>0000010000011111111111111111111111111111111</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the very common value of zero encodes to a single bit, medium-sized values like 225 encode to 14 bits (an
+overhead of 4 bits over writing a plain 8 bit value), and typical 32-bit values like 4294967293 encode into 42 bits, an
+overhead of 10 bits.</p>
+<h4 id="elias-delta-signed-32-bit-5">Elias delta signed 32-bit (5)<a class="headerlink" href="#elias-delta-signed-32-bit-5" title="Permanent link">&para;</a></h4>
+<p>The value is first converted to unsigned using ZigZag encoding, then unsigned Elias-delta encoding is applied.</p>
+<h4 id="tag8_8svb-6">TAG8_8SVB (6)<a class="headerlink" href="#tag8_8svb-6" title="Permanent link">&para;</a></h4>
+<p>First, an 8-bit (one byte) header is written. This header has its bits set to zero when the corresponding field (from a
+maximum of 8 fields) is set to zero, otherwise the bit is set to one. The least-signficant bit in the header corresponds
+to the first field to be written. This header is followed by the values of only the fields which are non-zero, written
+using signed variable byte encoding.</p>
+<p>This encoding is preferred for groups of fields in interframes which are infrequently updated by the flight controller.
+This will mean that their predictions are usually perfect, and so the value to be encoded for each field will normally
+be zero. This is common for values like RC inputs and barometer readings, which are updated in only a fraction of main
+loop iterations.</p>
+<p>For example, given these field values to encode:</p>
+<div class="highlight"><pre><span></span><code>0, 0, 4, 0, 8
+</code></pre></div>
+<p>This would be encoded:</p>
+<div class="highlight"><pre><span></span><code>0b00010100, 0x04, 0x08
+</code></pre></div>
+<h4 id="tag2_3s32-7">TAG2_3S32 (7)<a class="headerlink" href="#tag2_3s32-7" title="Permanent link">&para;</a></h4>
+<p>A 2-bit header is written, followed by 3 signed field values of up to 32 bits each. The header value is based on the
+maximum size in bits of the three values to be encoded as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Header value</th>
+<th>Maximum field value size</th>
+<th>Field range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2 bits</td>
+<td>[-2...1]</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4 bits</td>
+<td>[-8...7]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6 bits</td>
+<td>[-32...31]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Up to 32 bits</td>
+<td>[-2147483648...2147483647]</td>
+</tr>
+</tbody>
+</table>
+<p>If any of the three values requires more than 6 bits to encode, a second, 6-bit header value is written in the lower
+bits of the initial header byte. This second header has 2 bits for each of the encoded values which represents how many
+bytes are required to encode that value. The least-significant bits of the header represent the first field which is
+encoded. The values for each possibility are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Header value</th>
+<th>Field size</th>
+<th>Field range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1 byte</td>
+<td>[-127...128]</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2 bytes</td>
+<td>[-32768...32767]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3 bytes</td>
+<td>[-8388608...8388607]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4 bytes</td>
+<td>[-2147483648...2147483647]</td>
+</tr>
+</tbody>
+</table>
+<p>This header is followed by the actual field values in order, written least-significant byte first, using the byte
+lengths specified in the header.</p>
+<p>So bringing it all together, these encoded bit patterns are possible, where "0" and "1" mean bits fixed to be those
+values, "A", "B", and "C" represent the first, second and third fields, and "s" represents the bits of the secondary
+header in the case that any field is larger than 6 bits:</p>
+<div class="highlight"><pre><span></span><code>00AA BBCC,
+0100 AAAA BBBB CCCC
+10AA AAAA 00BB BBBB 00CC CCCC
+11ss ssss (followed by fields of byte lengths specified in the "s" header)
+</code></pre></div>
+<p>This encoding is useful for fields like 3-axis gyroscopes, which are frequently small and typically have similar
+magnitudes.</p>
+<h4 id="tag8_4s16-8">TAG8_4S16 (8)<a class="headerlink" href="#tag8_4s16-8" title="Permanent link">&para;</a></h4>
+<p>An 8-bit header is written, followed by 4 signed field values of up to 16 bits each. The 8-bit header value has 2 bits
+for each of the encoded fields (the least-significant bits represent the first field) which represent the
+number of bits required to encode that field as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Header value</th>
+<th>Field value size</th>
+<th>Field range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0 bits</td>
+<td>[0...0]</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4 bits</td>
+<td>[-8...7]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8 bits</td>
+<td>[-128...127]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>16 bits</td>
+<td>[-32768...32767]</td>
+</tr>
+</tbody>
+</table>
+<p>This header is followed by the actual field values in order, written as if the output stream was a bit-stream, with the 
+most-significant bit of the first field ending up in the most-significant bits of the first written byte. If the number
+of nibbles written is odd, the final byte has its least-significant nibble set to zero.</p>
+<p>For example, given these field values:</p>
+<div class="highlight"><pre><span></span><code>13, 0, 4, 2
+</code></pre></div>
+<p>Choosing from the allowable field value sizes, they may be encoded using this many bits each:</p>
+<div class="highlight"><pre><span></span><code>8, 0, 4, 4
+</code></pre></div>
+<p>The corresponding header values for these lengths would be:</p>
+<div class="highlight"><pre><span></span><code>2, 0, 1, 1
+</code></pre></div>
+<p>So the header and fields would be encoded together as:</p>
+<div class="highlight"><pre><span></span><code>0b01010010, 0x0D, 0x42
+</code></pre></div>
+<h4 id="null-9">NULL (9)<a class="headerlink" href="#null-9" title="Permanent link">&para;</a></h4>
+<p>This encoding does not write any bytes to the file. It is used when the predictor will always perfectly predict the
+value of the field, so the remainder is always zero. In practice this is only used for the "loopIteration" field in
+interframes, which is always perfectly predictable based on the logged frame's position in the sequence of frames and
+the "P interval" setting from the header.</p>
+<h2 id="log-file-structure">Log file structure<a class="headerlink" href="#log-file-structure" title="Permanent link">&para;</a></h2>
+<p>A logging session begins with a log start marker, then a header section which describes the format of the log, then the
+log payload data, and finally an optional "log end" event ("E" frame).</p>
+<p>A single log file can be comprised of one or more logging sessions. Each session may be preceded and followed by any
+amount of non-Blackbox data. This data is ignored by the Blackbox log decoding tools. This allows for the logging device
+to be alternately used by the Blackbox and some other system (such as MSP) without requiring the ability to begin a 
+separate log file for each separate activity.</p>
+<h3 id="log-start-marker">Log start marker<a class="headerlink" href="#log-start-marker" title="Permanent link">&para;</a></h3>
+<p>The log start marker is "H Product:Blackbox flight data recorder by Nicholas Sherlock\n". This marker is
+used to discover the beginning of the flight log if the log begins partway through a file. Because it is such a long
+string, it is not expected to occur by accident in any sequence of random bytes from other log device users.</p>
+<h3 id="log-header">Log header<a class="headerlink" href="#log-header" title="Permanent link">&para;</a></h3>
+<p>The header is comprised of a sequence of lines of plain ASCII text. Each header line has the format <code>H fieldname:value</code> 
+and ends with a '\n'. The overall header does not have a terminator to separate it from the log payload
+(the header implicitly ends when a line does not begin with an 'H' character).</p>
+<p>The header can contain some of these fields:</p>
+<h4 id="data-version-required">Data version (required)<a class="headerlink" href="#data-version-required" title="Permanent link">&para;</a></h4>
+<p>When the interpretation of the Blackbox header changes due to Blackbox specification updates, the log version is 
+incremented to allow backwards-compatibility in the decoder:</p>
+<div class="highlight"><pre><span></span><code>H Data version:2
+</code></pre></div>
+<h4 id="logging-interval">Logging interval<a class="headerlink" href="#logging-interval" title="Permanent link">&para;</a></h4>
+<p>Not every main loop iteration needs to result in a Blackbox logging iteration. When a loop iteration is not logged,
+Blackbox is not called, no state is read from the flight controller, and nothing is written to the log. Two header lines
+are included to note which main loop iterations will be logged:</p>
+<h5 id="i-interval">I interval<a class="headerlink" href="#i-interval" title="Permanent link">&para;</a></h5>
+<p>This header notes which of the main loop iterations will record an "I" intraframe to the log. If main loop iterations
+with indexes divisible by 32 will be logged as "I" frames, the header will be:</p>
+<div class="highlight"><pre><span></span><code>H I interval: 32
+</code></pre></div>
+<p>The first main loop iteration seen by Blackbox will be numbered with index 0, so the first main loop iteration will
+always be logged as an intraframe.</p>
+<h5 id="p-interval">P interval<a class="headerlink" href="#p-interval" title="Permanent link">&para;</a></h5>
+<p>Not every "P" interframe needs to be logged. Blackbox will log a portion of iterations in order to bring the total
+portion of logged main frames to a user-chosen fraction. This fraction is called the logging rate. The smallest possible
+logging rate is <code>(1/I interval)</code> which corresponds to logging only "I" frames at the "I" interval and discarding all
+other loop iterations. The maximum logging rate is <code>1/1</code>, where every main loop iteration that is not an "I" frame is
+logged as a "P" frame. The header records the logging rate fraction in <code>numerator/denominator</code> format like so:</p>
+<div class="highlight"><pre><span></span><code>H P interval:1/2
+</code></pre></div>
+<p>The logging fraction given by <code>num/denom</code> should be simplified (i.e. rather than 2/6, a logging rate of 1/3 should
+be used).</p>
+<p>Given a logging rate of <code>num/denom</code> and an I-frame interval of <code>I_INTERVAL</code>, the frame type to log for an iteration
+of index <code>iteration</code> is given by:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iteration</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">I_INTERVAL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sc">'I'</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">iteration</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">I_INTERVAL</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">denom</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sc">'P'</span><span class="p">;</span>
+
+<span class="k">return</span><span class="w"> </span><span class="sc">'.'</span><span class="p">;</span><span class="w"> </span><span class="c1">// i.e. don't log this iteration</span>
+</code></pre></div>
+<p>For an I-interval of 32, these are the resulting logging patterns at some different P logging rates.</p>
+<table>
+<thead>
+<tr>
+<th>Logging rate</th>
+<th>Main frame pattern</th>
+<th>Actual portion logged</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 / 32</td>
+<td>I...............................I...............................I</td>
+<td>0.03</td>
+</tr>
+<tr>
+<td>1 / 6</td>
+<td>I.....P.....P.....P.....P.....P.I.....P.....P.....P.....P.....P.I</td>
+<td>0.19</td>
+</tr>
+<tr>
+<td>1 / 3</td>
+<td>I..P..P..P..P..P..P..P..P..P..P.I..P..P..P..P..P..P..P..P..P..P.I</td>
+<td>0.34</td>
+</tr>
+<tr>
+<td>1 / 2</td>
+<td>I.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.I.P.P.P.P.P.P.P.P.P.P.P.P.P.P.P.I</td>
+<td>0.50</td>
+</tr>
+<tr>
+<td>2 / 3</td>
+<td>I.PP.PP.PP.PP.PP.PP.PP.PP.PP.PP.I.PP.PP.PP.PP.PP.PP.PP.PP.PP.PP.I</td>
+<td>0.66</td>
+</tr>
+<tr>
+<td>5 / 6</td>
+<td>I.PPPPP.PPPPP.PPPPP.PPPPP.PPPPP.I.PPPPP.PPPPP.PPPPP.PPPPP.PPPPP.I</td>
+<td>0.81</td>
+</tr>
+<tr>
+<td>1 / 1</td>
+<td>IPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPIPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPI</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+<h4 id="firmware-type-optional">Firmware type (optional)<a class="headerlink" href="#firmware-type-optional" title="Permanent link">&para;</a></h4>
+<p>Because Blackbox records the internal flight controller state, the interpretation of the logged data will depend
+on knowing which flight controller recorded it. To accomodate this, the name of the flight controller should be recorded:</p>
+<div class="highlight"><pre><span></span><code>H Firmware type:Cleanflight
+</code></pre></div>
+<p>More details should be included to help narrow down the precise flight-controller version (but these are not required):</p>
+<div class="highlight"><pre><span></span><code>H Firmware revision:c49bd40
+H Firmware date:Aug 28 2015 16:49:11
+</code></pre></div>
+<h4 id="field-x-name-required">Field X name (required)<a class="headerlink" href="#field-x-name-required" title="Permanent link">&para;</a></h4>
+<p>This header is a comma-separated list of the names for the fields in the 'X' frame type:</p>
+<div class="highlight"><pre><span></span><code>H Field I name:loopIteration,time,axisP[0],axisP[1]...
+</code></pre></div>
+<p>The decoder assumes that the fields in the 'P' frame type will all have the same names as those in the 'I' frame, so
+a "Field P name" header does not need to be supplied.</p>
+<h4 id="field-x-signed-optional">Field X signed (optional)<a class="headerlink" href="#field-x-signed-optional" title="Permanent link">&para;</a></h4>
+<p>This is a comma-separated list of integers which are set to '1' when their corresponding field's value should be
+interpreted as signed after decoding, or '0' otherwise:</p>
+<div class="highlight"><pre><span></span><code>H Field I signed:0,0,1,1...
+</code></pre></div>
+<h4 id="field-x-predictor-required">Field X predictor (required)<a class="headerlink" href="#field-x-predictor-required" title="Permanent link">&para;</a></h4>
+<p>This is a comma-separated list of integers which specify the predictors for each field in the specified frame type:</p>
+<div class="highlight"><pre><span></span><code>H Field I predictor:0,0,0,0...
+</code></pre></div>
+<h4 id="field-x-encoding-required">Field X encoding (required)<a class="headerlink" href="#field-x-encoding-required" title="Permanent link">&para;</a></h4>
+<p>This is a comma-separated list of integers which specify the encoding used for each field in the specified frame type:</p>
+<div class="highlight"><pre><span></span><code>H Field X encoding:1,1,0,0...
+</code></pre></div>
+<h4 id="vbatref">vbatref<a class="headerlink" href="#vbatref" title="Permanent link">&para;</a></h4>
+<p>This header provides the reference voltage that will be used by predictor #9.</p>
+<h4 id="minthrottle">minthrottle<a class="headerlink" href="#minthrottle" title="Permanent link">&para;</a></h4>
+<p>This header provides the minimum value sent by Cleanflight to the ESCs when armed, it is used by predictor #4.</p>
+<h4 id="additional-headers">Additional headers<a class="headerlink" href="#additional-headers" title="Permanent link">&para;</a></h4>
+<p>The decoder ignores headers that it does not understand, so you can freely add any headers that you require in order to
+properly interpret the meaning of the logged values. </p>
+<p>For example, to create a graphical displays of RC sticks and motor percentages, the Blackbox rendering tool requires
+the additional headers "rcRate" and "maxthrottle". In order to convert raw gyroscope, accelerometer and voltage readings
+into real-world units, the Blackbox decoder requires the calibration constants "gyro.scale", "acc_1G" and "vbatscale".
+These headers might look like:</p>
+<div class="highlight"><pre><span></span><code>H rcRate:100
+H maxthrottle:1980
+H gyro.scale:0x3d79c190
+H acc_1G:4096
+H vbatscale:110
+</code></pre></div>
+<h3 id="log-payload">Log payload<a class="headerlink" href="#log-payload" title="Permanent link">&para;</a></h3>
+<p>The log payload is a concatenated sequence of logged frames. Each frame type which is present in the log payload must
+have been previously described in the log header (with Frame X name, etc. headers). Each frame begins with a single
+capital letter to specify the type of frame (I, P, etc), which is immediately followed by the frame's field data. There
+is no frame length field, checksum, or trailer.</p>
+<p>The field data is encoded by taking an array of raw field data, computing the predictor for each field, subtrating this
+predictor from the field, then applying the field encoders to each field in sequence to serialize them to the log.</p>
+<p>For example, imagine that we are encoding three fields in an intraframe, are using zero-predictors for each field (#0),
+and are encoding the values using the unsigned variable byte encoding (#1). For these field values:</p>
+<div class="highlight"><pre><span></span><code>1, 2, 3
+</code></pre></div>
+<p>We would encode a frame:</p>
+<div class="highlight"><pre><span></span><code>'I', 0x01, 0x02, 0x03
+</code></pre></div>
+<p>Imagine that we are encoding an array of motor commands in an interframe. We will use the previous motor commands as a
+predictor, and encode the resulting values using signed variable byte encoding. The motor command values seen in the
+previous logged iteration were:</p>
+<div class="highlight"><pre><span></span><code>1430, 1500, 1470, 1490
+</code></pre></div>
+<p>And the motor commands to be logged in this iteration are:</p>
+<div class="highlight"><pre><span></span><code>1635, 1501, 1469, 1532
+</code></pre></div>
+<p>After subtracting the predictors for each field, we will be left with:</p>
+<div class="highlight"><pre><span></span><code>205, 1, -1, 42
+</code></pre></div>
+<p>We will apply ZigZag encoding to each field, which will give us:</p>
+<div class="highlight"><pre><span></span><code>410, 2, 1, 84
+</code></pre></div>
+<p>We will use unsigned variable byte encoding to write the resulting values to the log, which will give us:</p>
+<div class="highlight"><pre><span></span><code>'P', 0x9A, 0x03, 0x02, 0x01, 0x54
+</code></pre></div>
+<h3 id="log-end-marker">Log end marker<a class="headerlink" href="#log-end-marker" title="Permanent link">&para;</a></h3>
+<p>The log end marker is an optional Event ("E") frame of type 0xFF whose payload is the string "End of log\0". The
+payload ensures that random data does not look like an end-of-log marker by chance. This event signals the tidy ending
+of the log. All following bytes until the next log-begin marker (or end of file) should be ignored by the log
+decoder.</p>
+<div class="highlight"><pre><span></span><code>'E', 0xFF, "End of log ", 0x00
+</code></pre></div>
+<h2 id="log-validation">Log validation<a class="headerlink" href="#log-validation" title="Permanent link">&para;</a></h2>
+<p>Any damage experienced to the log during recording is overwhelmingly due to subsequences of bytes being dropped by the
+logging device due to overflowing buffers. Accordingly, Blackbox logs do not bother to include any checksums (bytes are
+not expected to be damaged by the logging device without changing the length of the message). Because of the tight
+bandwidth requirements of logging, neither a frame length field nor frame trailer is recorded that would allow for the
+detection of missing bytes.</p>
+<p>Instead, the decoder uses a heuristic in order to detect damaged frames. The decoder reads an entire frame from the log
+(using the decoder for each field which is the counterpart of the encoder specified in the header), then it checks to
+see if the byte immediately following the frame, which should be the beginning of a next frame, is a recognized
+frame-type byte (e.g. 'I', 'P', 'E', etc). If that following byte represents a valid frame type, it is assumed that the
+decoded frame was the correct length (so was unlikely to have had random ranges of bytes removed from it, which would
+have likely altered the frame length). Otherwise, the frame is rejected, and a valid frame-type byte is looked for
+immediately after the frame-start byte of the frame that was rejected. A rejected frame causes all subsequent
+interframes to be rejected as well, up until the next intraframe.</p>
+<p>A frame is also rejected if the "loopIteration" or "time" fields have made unreasonable leaps forward, or moved at
+all backwards. This suffices to detect almost all log corruption.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../custom-boards/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Custom Board Configuration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Custom Board Configuration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../governor/" class="md-footer__link md-footer__link--next" aria-label="Next: Governor Reference">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Governor Reference
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rotorflight" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/FyfMF4RwSA" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.rotorflight.org/" target="_blank" rel="noopener" title="www.rotorflight.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "stable", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/gear-calc.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,337 @@
+/* =============================================================================
+   Rotorflight Documentation — Brand Styles
+   Design tokens sourced from rotorflight.org (color-palette.html)
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   Brand accent colours (used by Material for active state, links, etc.)
+   --------------------------------------------------------------------------- */
+
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color:        #007cc7; /* Brand Blue — header background  */
+  --md-primary-fg-color--light: #3fb0ff; /* Light Blue                      */
+  --md-primary-fg-color--dark:  #005f99; /* Dark Blue                       */
+  --md-primary-bg-color:        #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color:             #007cc7;
+  --md-accent-fg-color--transparent: rgba(0, 124, 199, 0.1);
+  --md-accent-bg-color:             #ffffff;
+  --md-accent-bg-color--light:      rgba(255, 255, 255, 0.7);
+}
+
+/* ---------------------------------------------------------------------------
+   Light scheme — rotorflight.org light palette
+   --------------------------------------------------------------------------- */
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color:         #ffffff;
+  --md-default-fg-color:         #4e4e4e;
+  --md-default-fg-color--light:  #666666;
+  --md-default-fg-color--lighter: #777777;
+  --md-code-bg-color:            #f0f0f0;
+  --md-code-fg-color:            #4e4e4e;
+}
+
+/* The sidebar wrapper (.md-sidebar--primary) is only ~48px tall (sticky anchor).
+   The actual full-height area is .md-sidebar__scrollwrap inside it.
+   Apply background and border there so it covers the full visible sidebar. */
+[data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap,
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-sidebar__scrollwrap {
+  background-color: #ebebeb;
+}
+
+[data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-sidebar__scrollwrap {
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="default"] .md-main {
+  background-color: #f8f9fa;
+}
+
+[data-md-color-scheme="default"] .md-content__inner {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Dark scheme — rotorflight.org dark palette
+   --------------------------------------------------------------------------- */
+
+[data-md-color-scheme="slate"] {
+  /* Page backgrounds */
+  --md-default-bg-color:          #101215;   /* --bg-primary   */
+  --md-default-fg-color:          #f4f5f7;   /* --text-primary  */
+  --md-default-fg-color--light:   #c5cad3;   /* --text-secondary */
+  --md-default-fg-color--lighter: #9da5b1;   /* --text-muted    */
+
+  /* Sidebar & nav surfaces */
+  --md-sidebar-bg-color:          #171b20;   /* --bg-secondary  */
+
+  /* Code blocks */
+  --md-code-bg-color:             #1d232a;   /* --bg-tertiary   */
+  --md-code-fg-color:             #c5cad3;
+
+  /* Footer */
+  --md-footer-bg-color:           #0b0e12;
+  --md-footer-bg-color--dark:     #080a0d;
+  --md-footer-fg-color:           #89919d;
+  --md-footer-fg-color--light:    #9da5b1;
+  --md-footer-fg-color--lighter:  #89919d;
+}
+
+/* The sidebar wrapper (.md-sidebar--primary) is only ~48px tall (sticky anchor).
+   The actual full-height area is .md-sidebar__scrollwrap inside it.
+   Apply background and border there so it covers the full visible sidebar. */
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap,
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-sidebar__scrollwrap {
+  background-color: #171b20;   /* --bg-secondary */
+}
+
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-sidebar__scrollwrap {
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+[data-md-color-scheme="slate"] .md-main {
+  background-color: #101215;   /* --bg-primary */
+}
+
+/* Content card */
+[data-md-color-scheme="slate"] .md-content__inner {
+  background-color: #1a2027;   /* --bg-card */
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Header stays brand-blue; override the slate-generated tint */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: #007cc7;
+}
+
+/* Search field in dark mode */
+[data-md-color-scheme="slate"] .md-search__input {
+  background-color: #1d232a;
+  color: #f4f5f7;
+}
+
+/* ---------------------------------------------------------------------------
+   Typography — 'Helvetica Now Text' matching rotorflight.org font stack
+   --------------------------------------------------------------------------- */
+
+body,
+.md-typeset {
+  font-family:
+    "Helvetica Now Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-weight: 900;
+}
+
+.md-typeset h1 {
+  letter-spacing: -1px;
+}
+
+.md-typeset h2 {
+  padding-bottom: 0.4rem;
+  border-bottom: 3px solid #007cc7;
+}
+
+[data-md-color-scheme="default"] .md-typeset h1,
+[data-md-color-scheme="default"] .md-typeset h2,
+[data-md-color-scheme="default"] .md-typeset h3 {
+  color: #4e4e4e;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2,
+[data-md-color-scheme="slate"] .md-typeset h3 {
+  color: #f4f5f7;
+}
+
+/* ---------------------------------------------------------------------------
+   Links
+   --------------------------------------------------------------------------- */
+
+.md-typeset a {
+  color: #007cc7;
+}
+
+.md-typeset a:hover {
+  color: #005f99;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #3fb0ff;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a:hover {
+  color: #7acbff;
+}
+
+/* ---------------------------------------------------------------------------
+   Navigation active / hover states
+   --------------------------------------------------------------------------- */
+
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: #3fb0ff;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------------
+   Admonitions (callout cards) — rounded, soft shadow, brand border
+   --------------------------------------------------------------------------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border: none;
+  border-left: 4px solid #007cc7;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition,
+[data-md-color-scheme="slate"] .md-typeset details {
+  background-color: #1a2027;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------------------------------------------------------------------------
+   Code blocks
+   --------------------------------------------------------------------------- */
+
+.md-typeset pre > code {
+  border-radius: 8px;
+}
+
+[data-md-color-scheme="slate"] .md-typeset code {
+  background-color: #1d232a;
+  color: #c5cad3;
+}
+
+/* ---------------------------------------------------------------------------
+   Tables
+   --------------------------------------------------------------------------- */
+
+[data-md-color-scheme="default"] .md-typeset table:not([class]) th {
+  background-color: #f0f0f0;
+  color: #4e4e4e;
+}
+
+[data-md-color-scheme="default"] .md-typeset table:not([class]) tr:hover {
+  background-color: rgba(0, 124, 199, 0.04);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  background-color: #1a2027;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: #1d232a;
+  color: #f4f5f7;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #c5cad3;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr:hover {
+  background-color: rgba(63, 176, 255, 0.06);
+}
+
+/* ---------------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------------- */
+
+[data-md-color-scheme="slate"] .md-footer {
+  background-color: #0b0e12;
+}
+
+[data-md-color-scheme="slate"] .md-footer-meta {
+  background-color: #080a0d;
+}
+
+/* ---------------------------------------------------------------------------
+   Tabs (navigation tabs)
+   --------------------------------------------------------------------------- */
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: #005f99;
+}
+
+/* ---------------------------------------------------------------------------
+   Search results
+   --------------------------------------------------------------------------- */
+
+[data-md-color-scheme="slate"] .md-search__scrollwrap {
+  background-color: #171b20;
+}
+
+[data-md-color-scheme="slate"] .md-search-result__meta {
+  background-color: #1d232a;
+  color: #9da5b1;
+}
+
+[data-md-color-scheme="slate"] .md-search-result__article {
+  background-color: #1a2027;
+}
+
+/* ---------------------------------------------------------------------------
+   Gear ratio calculator (setup/gear-ratios.md)
+   --------------------------------------------------------------------------- */
+
+.gear-calc {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+}
+
+.gear-calc__inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+}
+
+.gear-calc__inputs label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.gear-calc__inputs input {
+  width: 4.5rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+
+.gear-calc__result {
+  margin-bottom: 0;
+}
