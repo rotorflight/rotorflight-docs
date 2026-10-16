@@ -62,8 +62,6 @@ The function is a bit mask; ports with combined functions add the values.
 | SBUS output | 262144 | S.BUS Output |
 | F.Bus master | 524288 | F.BUS |
 | S.Port master | 1048576 | S.PORT Master |
-| SRXL2 ESC | 2097152 | SRXL2 ESC *(2.4)* |
-| CRSF sensors | 4194304 | CRSF Sensors *(2.4)* |
 
 ### Baud rates
 

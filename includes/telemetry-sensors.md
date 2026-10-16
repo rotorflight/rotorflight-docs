@@ -80,7 +80,7 @@
 | 76 | `GPS_VDOP` | GPS VDOP |  | `0x1124` |
 | 77 | `GPS_COORD` | GPS Coord | `0x0800` | `0x1125` |
 | 78 | `GPS_ALTITUDE` | GPS Altitude | `0x0820` | `0x1126` |
-| 79 | `GPS_HEADING` | GPS Course | `0x0840` | `0x1127` |
+| 79 | `GPS_HEADING` | GPS Heading | `0x0840` | `0x1127` |
 | 80 | `GPS_GROUNDSPEED` | GPS Groundspeed | `0x0830` | `0x1128` |
 | 81 | `GPS_HOME_DISTANCE` | GPS Home Distance |  | `0x1129` |
 | 82 | `GPS_HOME_DIRECTION` | GPS Home Direction |  | `0x112A` |
@@ -119,5 +119,3 @@
 | 115 | `FBUS_SENSOR_6` |  |  |  |
 | 116 | `FBUS_SENSOR_7` |  |  |  |
 | 117 | `FBUS_SENSOR_8` |  |  |  |
-| 120 | `SYSTEM_STATUS` | System Status | `0x5140` | `0x1230` |
-| 121 | `SYSTEM_CONFIG` | System Config | `0x5141` | `0x1231` |

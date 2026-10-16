@@ -26,8 +26,7 @@ With more than a few LEDs, power them from a separate 5 V supply.
 ## The LED pin
 
 The flight controller needs a pin assigned to `LED_STRIP`, with a timer and
-DMA. Some boards have one; on others, repurpose a pin -- with the
-[Remap FC](../configurator/tabs/remap-fc.md) tab (2.4), or the CLI snippets
+DMA. Some boards have one; on others, repurpose a pin with the CLI snippets
 [below](#board-snippets).
 
 Then turn on **LED_STRIP** under *Features* on the

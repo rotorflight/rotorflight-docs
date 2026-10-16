@@ -8,8 +8,10 @@ an AUX channel; when the channel is inside a range, the mode is on.
 
 ## Adding a mode
 
-1. Click **Add mode** and pick the mode. Modes are grouped -- Arming &
-   Safety, Flight Modes, Rescue & GPS, Governor, Logging & Telemetry.
+The tab lists every mode; **Hide unused modes** shows only the ones with a
+range or link.
+
+1. Find the mode and click **Add Range**.
 2. Pick the AUX channel, or leave it on **AUTO** and flip the switch you
    want to use: AUTO picks the first channel that moves.
 3. Drag the range so it covers the switch position that should turn the
@@ -19,7 +21,7 @@ an AUX channel; when the channel is inside a range, the mode is on.
 A mode can have several ranges. With **OR** the mode is on if *any* range is
 active; with **AND** only when *all* are. **Add Link** turns a mode on
 whenever another mode is on (ARM can't be linked). A mode that is currently
-active is highlighted, as is its group.
+active is highlighted.
 
 ## The modes
 

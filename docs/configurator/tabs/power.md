@@ -1,36 +1,33 @@
 # Power
 
-Battery measurement, battery profiles, SmartFuel and voltage/current sensor
-calibration.
+Battery measurement, SmartFuel and voltage/current sensor calibration.
 
 ![Power tab](../../assets/images/configurator/power.png)
 
-## Battery Profiles
-
-Rotorflight keeps **six battery profiles**, so one helicopter can fly
-different packs -- for example 6S and 12S, or LiPo and LiHV -- with the right
-alarms and fuel gauge for each. Each row holds:
-
-| Column | Meaning | Typical LiPo |
-| --- | --- | --- |
-| **mAh** | Pack capacity. Used for mAh-based fuel and SmartFuel *Current* mode. | Your pack |
-| **Cells** | Number of cells. **0** detects the count from the voltage when the battery is plugged in -- reliable for full packs, but a half-empty pack can be miscounted, so set it if you can. | 0 or your pack |
-| **Max [V]** | Highest believable cell voltage; used for cell count detection. | 4.30 |
-| **Full [V]** | A fully charged cell. The fuel gauge reads 100% here. | 4.10-4.20 |
-| **Warn [V]** | Low-voltage warning. | 3.50 |
-| **Min [V]** | Empty cell. The fuel gauge reads 0% here. | 3.30 |
-
-For LiHV packs raise **Max** and **Full** (e.g. 4.40 and 4.35).
-
-Click a **Battery** button to make that profile active. You can also switch
-from the radio with the *Battery Profile* [adjustment](adjustments.md) or
-the Lua suite. A change made while armed is applied once you disarm.
-
 ## Power State
 
-Live readings: whether a battery is detected (and its cell count), voltage,
-current, mAh used and charge level. With USB power only, *Connected* reads
-No.
+Live readings: whether a battery is connected, voltage, current, mAh used
+and charge level. With USB power only, *Connected* reads No.
+
+## Battery
+
+| Setting | Meaning | Typical LiPo |
+| --- | --- | --- |
+| **Battery Voltage Source** | Where the pack voltage comes from -- see [Meters](#meters). | |
+| **Battery Current Source** | Where the current comes from -- see [Meters](#meters). | |
+| **Maximum Cell Voltage** | Highest believable cell voltage; used for cell count detection. | 4.30 |
+| **Full Cell Voltage** | A fully charged cell. The fuel gauge reads 100% here. | 4.10-4.20 |
+| **Warning Cell Voltage** | Low-voltage warning. | 3.50 |
+| **Minimum Cell Voltage** | Empty cell. The fuel gauge reads 0% here. | 3.30 |
+| **Cell count** | Number of cells. **0** detects the count from the voltage when the battery is plugged in -- reliable for full packs, but a half-empty pack can be miscounted, so set it if you can. | 0 or your pack |
+| **Capacity [mAh]** | Pack capacity. Used for mAh-based fuel and SmartFuel *Current* mode. | Your pack |
+
+For LiHV packs raise **Maximum** and **Full** (e.g. 4.40 and 4.35).
+
+The cell count and cell voltages apply to every pack. The capacity is kept
+for each of six **battery profiles**, so one helicopter can fly packs of
+different sizes: switch from the radio with the *Battery Profile*
+[adjustment](adjustments.md) or the Lua suite.
 
 ## Smart Fuel
 
@@ -39,11 +36,13 @@ jumps back up when the load drops, and it allows for voltage sag under load.
 
 | Setting | |
 | --- | --- |
-| **Smart Fuel Mode** | **Off**; **Voltage** -- estimate from the pack voltage; **Current** -- mAh used against the profile's capacity; **Combined** -- whichever of the two is lower. A battery voltage source is needed for any mode. |
-| **Smart Fuel Alert Level** [%] | The landing reserve. The radio scripts show 0% fuel at this level. Default 35%. |
-| **Voltage Drop Rate** | *(Voltage and Combined)* How fast the voltage estimate may fall. |
-| **Charge Drop Rate** | *(Voltage and Combined)* How fast the displayed percentage may fall once armed. |
-| **Sag Gain** | *(Voltage and Combined)* Expected sag per cell at full load. Raise it if SmartFuel reads too low under load, lower it if it reads too high. |
+| **Smart Fuel Mode** | **Off**; **Voltage** -- estimate from the pack voltage; **Current** -- mAh used against the capacity; **Combined** -- whichever of the two is lower. A battery voltage source is needed for any mode. |
+| **Smart Fuel Voltage Drop Rate** | *(Voltage and Combined)* How fast the voltage estimate may fall. |
+| **Smart Fuel Charge Drop Rate** | *(Voltage and Combined)* How fast the displayed percentage may fall once armed. |
+| **Smart Fuel Sag Gain** | *(Voltage and Combined)* Expected sag per cell at full load. Raise it if SmartFuel reads too low under load, lower it if it reads too high. |
+
+The landing reserve -- the level the radio scripts show as 0% fuel, default
+35% -- is set in the CLI with `cbat_alert_percent`.
 
 See [SmartFuel](../../setup/smartfuel.md) for how it works and how to set
 it up.
@@ -58,7 +57,6 @@ Where the battery voltage and current come from:
 | **Battery ADC** | The flight controller's own voltage and current inputs. |
 | **ESC** | The ESC's telemetry. See [ESC Telemetry](../../setup/esc-telemetry.md). |
 | **FBUS** | FrSky voltage/current sensors on the F.Bus or S.Port master link. |
-| **CRSF** | CRSF sensors connected to the flight controller. |
 
 ## Voltage Meters and Current Meters
 

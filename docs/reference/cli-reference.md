@@ -453,7 +453,6 @@ These are part of the PID profile and differ per profile.
 | `error_decay_time_yaw` | 0–250 | I-term decay speed in air (yaw) **[profile]** |
 | `error_decay_limit_cyclic` | 0–250 | I-term decay lower limit (cyclic) **[profile]** |
 | `error_decay_limit_yaw` | 0–250 | I-term decay lower limit (yaw) **[profile]** |
-| `error_decay_gain_cyclic` | 0–250 | Scales cyclic I-term decay with stick setpoint, to stop wind-up during cyclic inputs; 0 = off. *New in 2.4.* |
 | `iterm_relax_type` | `OFF` `RP` `RPY` | I-term relax axis selection **[profile]** |
 | `iterm_relax_level` | array[3] | I-term relax level per axis **[profile]** |
 | `iterm_relax_cutoff` | array[3] | I-term relax filter cutoff per axis **[profile]** |
@@ -499,7 +498,6 @@ These are part of the PID profile and differ per profile.
 | `horizon_transition` | 0–200 | Stick range over which Horizon transitions **[profile]** |
 | `horizon_tilt_effect` | 0–250 | Tilt suppression in Horizon mode **[profile]** |
 | `horizon_tilt_expert_mode` | `OFF` `ON` | Expert tilt calculation mode **[profile]** |
-| `horizon_angle_limit` | 10–90 | Horizon mode maximum angle. *New in 2.4.* |
 
 ---
 
@@ -551,9 +549,6 @@ These are part of the PID profile and differ per profile.
 | `yaw_deadband` | 0–100 | Yaw stick deadband (µs) |
 | `rx_pulse_min` | 750–2250 | Minimum valid RC pulse width (µs) |
 | `rx_pulse_max` | 750–2250 | Maximum valid RC pulse width (µs) |
-| `airborne_mode` | `CONSERVATIVE` `STICK_RESPONSE` | How take-off is detected. `STICK_RESPONSE` also uses the helicopter's response to the sticks and vertical acceleration. *New in 2.4.* |
-| `airborne_gyro_threshold` | 1–100 | Gyro response threshold for `STICK_RESPONSE` detection. *New in 2.4.* |
-| `airborne_acc_threshold` | 5–50 | Vertical acceleration threshold for `STICK_RESPONSE` detection. *New in 2.4.* |
 
 ---
 
@@ -596,11 +591,11 @@ These are part of the PID profile and differ per profile.
 | Parameter | Range / Values | Description |
 |---|---|---|
 | `bat_profile` | 0–5 | Active battery profile (shown as 1–6 elsewhere) |
-| `battery_cell_count` | array of 6 | Cell count per battery profile (0 = auto-detect) |
-| `vbat_max_cell_voltage` | array of 6 | Maximum cell voltage per profile, in 0.01 V (used for cell count detection) |
-| `vbat_full_cell_voltage` | array of 6 | Full cell voltage per profile, in 0.01 V |
-| `vbat_min_cell_voltage` | array of 6 | Empty cell voltage per profile, in 0.01 V |
-| `vbat_warning_cell_voltage` | array of 6 | Warning cell voltage per profile, in 0.01 V |
+| `battery_cell_count` | 0–24 | Cell count (0 = auto-detect) |
+| `vbat_max_cell_voltage` | 100–500 | Maximum cell voltage, in 0.01 V (used for cell count detection) |
+| `vbat_full_cell_voltage` | 100–500 | Full cell voltage, in 0.01 V |
+| `vbat_min_cell_voltage` | 100–500 | Empty cell voltage, in 0.01 V |
+| `vbat_warning_cell_voltage` | 100–500 | Warning cell voltage, in 0.01 V |
 | `vbat_hysteresis` | 0–250 | Voltage alarm hysteresis |
 | `vbat_detect_cell_voltage` | 0–2000 | Voltage below which battery is considered absent |
 | `vbat_scale` | 1–4095 | ADC voltage divider scale |

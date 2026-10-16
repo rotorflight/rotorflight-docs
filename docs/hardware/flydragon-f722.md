@@ -91,5 +91,4 @@ yours: `FLYDRAGON_PRO42688` (ICM-42688-P) or `FLYDRAGON_PRO6000`. Its rear
 connector carries ESC, RPM, TAIL, CH1-3, TX2/RX2 and AUX; the internal ELRS
 receiver is on UART1.
 
-Motorised tail: TAIL (C09) can become motor 2 in the same way as the V2.2,
-or with the [Remap FC](../configurator/tabs/remap-fc.md) tab.
+Motorised tail: TAIL (C09) can become motor 2 in the same way as the V2.2.

@@ -16,7 +16,6 @@ messages and fields to expect, and refuse firmware they don't know.
 | 2.1 | 4.4.0 | 12.7 |
 | 2.2 | 4.5.0 | 12.8 |
 | 2.3 | 4.6.0 | 12.9 |
-| 2.4 | 4.7.0 | 12.10 |
 
 This is why the Configurator, Lua suites and firmware should all be from the
 same release. A Configurator that doesn't recognise the firmware's API
@@ -27,12 +26,11 @@ opens in CLI-only mode.
 New fields are added at the end of a message, so older clients still read
 the beginning correctly. New features usually get new commands; firmware
 that lacks a command answers it as unsupported, which is how a tool can tell.
-Rotorflight-specific commands use MSPv2 command IDs in the `0x4000` and
-`0x5F00` ranges -- for example SmartFuel configuration (`0x4000`/`0x4001`),
-F.Bus sensors (`0x5F07`-`0x5F0A`) and the Tune Advisor (`0x5F10`/`0x5F11`).
+Rotorflight-specific commands use MSPv2 command IDs in the `0x4000`
+range -- for example SmartFuel configuration (`0x4000`/`0x4001`).
 
 The per-release MSP changes are listed in the firmware's
-[Changes.md](https://github.com/rotorflight/rotorflight-firmware/blob/master/Changes.md).
+[Changes.md](https://github.com/rotorflight/rotorflight-firmware/blob/release/4.6.0/Changes.md).
 The definitive reference is the source:
 [`src/main/msp/`](https://github.com/rotorflight/rotorflight-firmware/tree/master/src/main/msp).
 

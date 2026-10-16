@@ -12,15 +12,16 @@ recorded in the Blackbox log.
 
 ## Adding an adjustment
 
-1. Click **Add Adjustment** and pick a function. Search, or browse the
-   groups: Profile Selection, Rates, PID Gains, Filters, Yaw Dynamics,
-   Stability, Accelerometer Trim, Setpoint Boost, Cross Coupling, Yaw
-   Precomp, Rescue, Governor.
-2. Set the **Enable Channel** and its range: the adjustment only works while
+The tab lists all 42 adjustment slots, one per row.
+
+1. In an unused row, set the **Mode** to **Mapped** or **Stepped**
+   (below).
+2. Pick the function from the row's function list.
+3. Set the **Enable Channel** and its range: the adjustment only works while
    this channel is in range. Use **ALWAYS** to leave it on all the time.
-3. Choose the type and set the **Value Channel** (below).
-4. Set the **Value** limits: the adjustment never goes outside them.
-5. **Save**.
+4. Set the **Value Channel**.
+5. Set the **Value** limits: the adjustment never goes outside them.
+6. **Save**.
 
 ## Mapped and Stepped
 
@@ -32,9 +33,6 @@ recorded in the Blackbox log.
 
     For example *Profile Selection*, value 1-3, on a 3-position switch:
     switch up = profile 1, middle = 2, down = 3.
-
-    A small deadband stops the value flickering when a knob sits between two
-    values.
 
 === "Stepped"
 

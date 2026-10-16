@@ -27,8 +27,7 @@ supported.
 
 !!! tip "Repurposing outputs"
     Every one of these can be remapped -- for a motorised tail, an extra
-    servo, an LED strip -- with the [Remap FC](../configurator/tabs/remap-fc.md)
-    tab (2.4) or the CLI snippets on each board's page.
+    servo, an LED strip -- with the CLI snippets on each board's page.
 
 ## Betaflight flight controllers
 

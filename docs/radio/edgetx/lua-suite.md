@@ -8,7 +8,7 @@ and system sections become available.
 
 | Section | Holds |
 | --- | --- |
-| **Flight Tuning** | PIDs, rates, governor, filters, PID controller and bandwidth, autolevel, main and tail rotor, rescue, advanced rate tables, the Tune Advisor. |
+| **Flight Tuning** | PIDs, rates, governor, filters, PID controller and bandwidth, autolevel, main and tail rotor, rescue, advanced rate tables. |
 | **Setup** | Configuration, radio config, telemetry, accelerometer, alignment, ports, model and pilot settings, mixer, servos (PWM and bus), controls (modes, adjustments, failsafe, beepers, Blackbox, statistics), power (battery, alerts, sources, SmartFuel), ESC & motors. |
 | **ESC** | Programming for AM32, BLHeli_S, Bluejay, FlyRotor, Hobbywing Platinum V5, OMP, Scorpion, XDFly, YGE and ZTW -- unlocked for the ESC telemetry protocol the flight controller reports. |
 | **Tools** | Copying and selecting profiles; Motor Override for bench tests (behind a disarm check, arm-switch check and dead-man timeout); diagnostics -- flight controller status, ELRS link, sensor validation, SmartFuel, session logs. |

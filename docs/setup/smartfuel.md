@@ -15,9 +15,9 @@ dashboards and callouts, and the LED strip.
    *Combined* modes, the current source -- on the
    [Power](../configurator/tabs/power.md) tab. A voltage source is required:
    without one, SmartFuel turns itself off.
-2. Fill in the active **battery profile**: cell count (or 0 for automatic),
-   capacity in mAh, and the **Full** and **Min** cell voltages. SmartFuel
-   reads 100% at Full and 0% at Min.
+2. In the **Battery** panel, fill in the cell count (or 0 for automatic),
+   capacity in mAh, and the **Full** and **Minimum** cell voltages. SmartFuel
+   reads 100% at Full and 0% at Minimum.
 3. Choose the **Smart Fuel Mode**:
 
     | Mode | Uses | Best for |
@@ -26,7 +26,7 @@ dashboards and callouts, and the LED strip.
     | **Current** | The starting voltage, then mAh used against the pack's capacity. | A well-calibrated current sensor. |
     | **Combined** | Whichever of the two reads lower at the moment. | The safest choice with a current sensor. |
 
-4. Set the **Smart Fuel Alert Level** -- your landing reserve, default 35%.
+4. Set the landing reserve in the CLI with `cbat_alert_percent`, default 35%.
    The radio scripts show 0% fuel at this level, so "empty" on the radio
    means "land now, with reserve left".
 

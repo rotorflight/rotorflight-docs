@@ -1,7 +1,7 @@
 # CLI Settings
 
 Every setting the firmware accepts with `set`, generated from the firmware
-source (`snapshot/4.6.0-20260208-94-g9e93d2737`). For what the important ones do, see the
+source (`release/4.6.0`). For what the important ones do, see the
 [CLI Reference](cli-reference.md) and the [Configurator](../configurator/index.md) pages.
 
 - **Global** and **Hardware** settings apply to the whole flight controller.
@@ -63,7 +63,7 @@ in firmware built with the matching feature.
 | --- | --- | --- |
 | `bat_capacity` | uint16 | array of BATTERY_PROFILE_COUNT values |
 | `bat_profile` | uint8 | 0 .. BATTERY_PROFILE_COUNT - 1 |
-| `battery_cell_count` | uint8 | array of BATTERY_PROFILE_COUNT values |
+| `battery_cell_count` | uint8 | 0 .. 24 |
 | `cbat_alert_percent` | uint8 | 0 .. 100 |
 | `ibat_lpf_hz` | uint8 | 0 .. UINT8_MAX |
 | `ibat_update_hz` | uint16 | 10 .. 1000 |
@@ -77,13 +77,13 @@ in firmware built with the matching feature.
 | `vbat_detect_cell_voltage` | uint16 | 0 .. 2000 |
 | `vbat_duration_for_critical` | uint8 | 0 .. 150 |
 | `vbat_duration_for_warning` | uint8 | 0 .. 150 |
-| `vbat_full_cell_voltage` | uint16 | array of BATTERY_PROFILE_COUNT values |
+| `vbat_full_cell_voltage` | uint16 | VBAT_CELL_VOTAGE_RANGE_MIN .. VBAT_CELL_VOTAGE_RANGE_MAX |
 | `vbat_hysteresis` | uint8 | 0 .. 250 |
 | `vbat_lpf_hz` | uint8 | 0 .. UINT8_MAX |
-| `vbat_max_cell_voltage` | uint16 | array of BATTERY_PROFILE_COUNT values |
-| `vbat_min_cell_voltage` | uint16 | array of BATTERY_PROFILE_COUNT values |
+| `vbat_max_cell_voltage` | uint16 | VBAT_CELL_VOTAGE_RANGE_MIN .. VBAT_CELL_VOTAGE_RANGE_MAX |
+| `vbat_min_cell_voltage` | uint16 | VBAT_CELL_VOTAGE_RANGE_MIN .. VBAT_CELL_VOTAGE_RANGE_MAX |
 | `vbat_update_hz` | uint16 | 10 .. 1000 |
-| `vbat_warning_cell_voltage` | uint16 | array of BATTERY_PROFILE_COUNT values |
+| `vbat_warning_cell_voltage` | uint16 | VBAT_CELL_VOTAGE_RANGE_MIN .. VBAT_CELL_VOTAGE_RANGE_MAX |
 
 ### Beeper
 
@@ -177,16 +177,6 @@ in firmware built with the matching feature.
 | `displayport_msp_serial` | int8 | SERIAL_PORT_NONE .. SERIAL_PORT_IDENTIFIER_MAX |
 | `displayport_msp_use_device_blink` | uint8 | `OFF` `ON` |
 
-### Driver CRSF Sensors
-
-| Setting | Type | Values |
-| --- | --- | --- |
-| `crsf_sensors_battery_source` | uint8 | `AUTO` `CURRENT` `VOLTAGE` |
-| `crsf_sensors_pinswap` | uint8 | `OFF` `ON` |
-| `crsf_sensors_timeout_ms` | uint16 | CRSF_SENSORS_TIMEOUT_MS_MIN .. CRSF_SENSORS_TIMEOUT_MS_MAX |
-| `crsf_sensors_use_baro` | uint8 | `OFF` `ON` |
-| `crsf_sensors_use_rpm` | uint8 | `OFF` `ON` |
-
 ### Driver FBUS Master
 
 | Setting | Type | Values |
@@ -232,7 +222,7 @@ in firmware built with the matching feature.
 | `esc_sensor_filter_cutoff` | uint8 | 0 .. 250 |
 | `esc_sensor_halfduplex` | uint8 | `OFF` `ON` |
 | `esc_sensor_pinswap` | uint8 | `OFF` `ON` |
-| `esc_sensor_protocol` | uint8 | `OFF` `BLHELI32` `HOBBYWINGV4` `HOBBYWINGV5` `SCORPION` `KONTRONIK` `OMPHOBBY` `ZTW` `APD` `OPENYGE` `FLYROTOR` `GRAUPNER` `XDFLY` `FBUS` `SRXL2` `RECORD` |
+| `esc_sensor_protocol` | uint8 | `OFF` `BLHELI32` `HOBBYWINGV4` `HOBBYWINGV5` `SCORPION` `KONTRONIK` `OMPHOBBY` `ZTW` `APD` `OPENYGE` `FLYROTOR` `GRAUPNER` `XDFLY` `FBUS` `RECORD` |
 | `esc_sensor_update_hz` | uint16 | 4 .. 500 |
 | `esc_sensor_voltage_correction` | int8 | -100 .. 125 |
 
@@ -419,7 +409,7 @@ in firmware built with the matching feature.
 | `min_throttle` | uint16 | PWM_SERVO_PULSE_MIN .. PWM_SERVO_PULSE_MAX |
 | `motor_control_mode` | uint8 | array of MAX_SUPPORTED_MOTORS values |
 | `motor_poles` | uint8 | array of MAX_SUPPORTED_MOTORS values |
-| `motor_pwm_protocol` | uint8 | `PWM` `ONESHOT125` `ONESHOT42` `MULTISHOT` `RESERVED` `DSHOT150` `DSHOT300` `DSHOT600` `PROSHOT1000` `CASTLE` `SRXL2` `DISABLED` |
+| `motor_pwm_protocol` | uint8 | `PWM` `ONESHOT125` `ONESHOT42` `MULTISHOT` `RESERVED` `DSHOT150` `DSHOT300` `DSHOT600` `PROSHOT1000` `CASTLE` `DISABLED` |
 | `motor_pwm_rate` | uint16 | 50 .. 8000 |
 | `motor_rpm_factor` | int16 | array of MAX_SUPPORTED_MOTORS values |
 | `motor_rpm_lpf` | uint8 | array of MAX_SUPPORTED_MOTORS values |
@@ -611,9 +601,6 @@ in firmware built with the matching feature.
 
 | Setting | Type | Values |
 | --- | --- | --- |
-| `airborne_acc_threshold` | uint8 | 5 .. 50 |
-| `airborne_gyro_threshold` | uint8 | 1 .. 100 |
-| `airborne_mode` | uint8 | `CONSERVATIVE` `STICK_RESPONSE` |
 | `deadband` | uint8 | 0 .. 100 |
 | `rc_center` | uint16 | 1200 .. 1700 |
 | `rc_deflection` | uint16 | 250 .. 750 |
@@ -814,7 +801,6 @@ in firmware built with the matching feature.
 | `cyclic_cross_coupling_cutoff` | uint8 | 1 .. 250 |
 | `cyclic_cross_coupling_gain` | uint8 | 0 .. 250 |
 | `cyclic_cross_coupling_ratio` | uint8 | 0 .. 200 |
-| `error_decay_gain_cyclic` | uint8 | 0 .. 250 |
 | `error_decay_limit_cyclic` | uint8 | 0 .. 250 |
 | `error_decay_limit_yaw` | uint8 | 0 .. 250 |
 | `error_decay_time_cyclic` | uint8 | 0 .. 250 |
@@ -845,7 +831,6 @@ in firmware built with the matching feature.
 | `gov_use_pid_spoolup` | uint32 | `OFF` `ON` |
 | `gov_use_voltage_comp` | uint32 | `OFF` `ON` |
 | `gov_yaw_ff_weight` | uint8 | 0 .. 250 |
-| `horizon_angle_limit` | uint8 | 10 .. 90 |
 | `horizon_level_strength` | uint8 | 0 .. 200 |
 | `horizon_tilt_effect` | uint8 | 0 .. 250 |
 | `horizon_tilt_expert_mode` | uint8 | `OFF` `ON` |
@@ -971,8 +956,8 @@ in firmware built with the matching feature.
 
 | Setting | Type | Values |
 | --- | --- | --- |
-| `battery_meter` | uint8 | `NONE` `ADC` `ESC` `FBUS` `CRSF` |
-| `current_meter` | uint8 | `NONE` `ADC` `ESC` `FBUS` `CRSF` |
+| `battery_meter` | uint8 | `NONE` `ADC` `ESC` `FBUS` |
+| `current_meter` | uint8 | `NONE` `ADC` `ESC` `FBUS` |
 
 ### Beeper Dev
 

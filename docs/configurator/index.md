@@ -40,12 +40,8 @@ with it on).
 | **Peripherals** | |
 | [GPS](tabs/gps.md) | GPS settings and status. |
 | [LED Strip](tabs/led-strip.md) | Addressable LED layout and effects. |
-| [Remap FC](tabs/remap-fc.md) | Reassign the flight controller's pins. *New in 2.4.* |
 | [Beepers](tabs/beepers.md) | When the buzzer sounds. |
 | [Sensors](tabs/sensors.md) | Live sensor graphs. |
-| [CRSF Sensors](tabs/crsf-sensors.md) | CRSF sensor accessory diagnostics. *New in 2.4.* |
-| [XACT Servo Programming](tabs/xact-servo.md) | Program FrSky XACT servos. *New in 2.4.* |
-| [ESC Programming](tabs/esc-programming.md) | Program the ESC through the flight controller. *New in 2.4.* |
 | **Diagnostics** | |
 | [Blackbox](tabs/blackbox.md) | Flight logging. |
 | [CLI](tabs/cli.md) | Command line access to every setting. |

@@ -47,8 +47,6 @@ resource MOTOR 2 B03
 save
 ```
 
-Or use the [Remap FC](../configurator/tabs/remap-fc.md) tab (2.4).
-
 ## Nexus X and Nexus XR
 
 The **Nexus X** (`NEXUS_X`) and **Nexus XR** (`NEXUS_XR`) are the

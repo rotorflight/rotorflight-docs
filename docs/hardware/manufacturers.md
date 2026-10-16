@@ -14,7 +14,7 @@ leave size, form factor and connectors to you. Features marked *optional*
 can be left out; everything else must be there.
 
 Following a reference design means your board gets the full Configurator
-experience -- labelled ports, the Remap FC tab, presets -- without special
+experience -- labelled ports, presets -- without special
 handling.
 
 | Design | Used by |

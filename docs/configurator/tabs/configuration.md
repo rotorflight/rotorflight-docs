@@ -59,8 +59,6 @@ pick the speed on the right. **Auto** uses the protocol's own speed.
 | **S.BUS Output** | Drives SBUS servos, or other devices, from the flight controller. |
 | **F.BUS** | FrSky F.Bus master: bus servos and sensors. See [FBUS Master](../../setup/fbus-master.md). |
 | **S.PORT Master** | Reads FrSky S.Port sensors connected to the flight controller. |
-| **SRXL2 ESC** | Spektrum SRXL2 ESCs. *New in 2.4.* |
-| **CRSF Sensors** | CRSF sensors connected to the flight controller. See [CRSF Sensors](crsf-sensors.md). *New in 2.4.* |
 | **Telemetry: FrSky SmartPort** | S.Port telemetry to an FrSky receiver, when the receiver itself uses another protocol (e.g. SBUS). |
 | **Telemetry: FrSky Hub / iBUS / HoTT / MAVLink / LTM** | Telemetry for those systems. |
 

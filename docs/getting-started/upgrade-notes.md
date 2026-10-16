@@ -2,7 +2,7 @@
 
 What changes between major Rotorflight versions, and what you have to set up
 again after upgrading. The full technical change list is in the firmware's
-[Changes.md](https://github.com/rotorflight/rotorflight-firmware/blob/master/Changes.md).
+[Changes.md](https://github.com/rotorflight/rotorflight-firmware/blob/release/4.6.0/Changes.md).
 
 ## Upgrade procedure
 
@@ -15,40 +15,6 @@ again after upgrading. The full technical change list is in the firmware's
 5. Update the Lua suite on your radio to the same version.
 6. Check the controls, servo directions, governor and failsafe before
    flying -- blades off for anything that spins the motor.
-
-## 2.3 to 2.4 (firmware 4.7.0)
-
-!!! info "Development version"
-    Rotorflight 2.4 is under development. This list grows as features land.
-
-**Nothing has to be redone.** Saved settings carry over. Things to know:
-
-- **Bus servos** (SBUS out, FBUS master) now default to a scale of 500
-  instead of 1000, matching PWM servos. Existing configurations keep their
-  saved values.
-- Bus servos with a **speed limit** used to move far slower than configured
-  (about 20 times at 50 Hz SBUS). They now move at the set speed -- check
-  any speed-limited bus servos before flying.
-- **Horizon mode** has its own angle limit (`horizon_angle_limit`, default
-  55°) and eases in over half a second when engaged.
-- **Airborne detection** can also use stick response and vertical
-  acceleration (`airborne_mode`).
-- The `RX_PPM`, `RX_PARALLEL_PWM` and `GHOST` receiver protocols and the
-  CMS on-screen menus are no longer built into the standard firmware.
-
-New in 2.4:
-
-- Spektrum **SRXL2 ESCs** (throttle and telemetry over one wire), and
-  full-size Spektrum receivers such as the AR6610T.
-- FrSky **RPM and temperature sensors** over F.Bus/S.Port, and
-  [XACT servo programming](../configurator/tabs/xact-servo.md) over the F.Bus
-  master link.
-- New **System Status** and **System Config** telemetry sensors, used by the
-  radio dashboards.
-- **Tune advisor** statistics for tuning help on the radio.
-- Configurator: [Remap FC](../configurator/tabs/remap-fc.md),
-  [CRSF Sensors](../configurator/tabs/crsf-sensors.md) and
-  [ESC Programming](../configurator/tabs/esc-programming.md) tabs.
 
 ## 2.2 to 2.3 (firmware 4.6.0)
 

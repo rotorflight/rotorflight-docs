@@ -75,9 +75,6 @@ uses complementary PWM.
    selected.
 3. **Disconnect** and power down.
 
-In 2.4, the [ESC Programming](../configurator/tabs/esc-programming.md) tab
-can also change AM32 settings per ESC.
-
 !!! note "Editing the tail ESC in the AM32 Configurator"
     The AM32 Configurator shows ESC 1's settings even when only ESC 2 is
     selected. To edit the tail ESC there, temporarily expose only the tail

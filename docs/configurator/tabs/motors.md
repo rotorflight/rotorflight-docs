@@ -20,7 +20,6 @@ testing.
 | **DSHOT150 / 300 / 600** | Multirotor-style ESCs (BLHeli_S/Bluejay, AM32, BLHeli32). Allows bidirectional DShot RPM. |
 | **ONESHOT125 / ONESHOT42 / MULTISHOT / PROSHOT1000** | Faster analogue protocols for multirotor ESCs. |
 | **CASTLE** | Castle Creations ESCs with Live Link telemetry on the throttle wire. See [ESC Telemetry](../../setup/esc-telemetry.md). |
-| **SRXL2** | Spektrum SRXL2 ESCs: throttle and telemetry on one wire. *New in 2.4.* |
 | **DISABLED** | No motor output. |
 
 **Update Frequency** [Hz] (PWM only) -- how often the throttle pulse is

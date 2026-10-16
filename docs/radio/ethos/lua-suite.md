@@ -10,7 +10,7 @@ menus are enabled.
 
 | Menu | Holds |
 | --- | --- |
-| **Flight Tuning** | PIDs, Rates, Governor (per profile) and Advanced: filters, PID controller, bandwidth, autolevel, main and tail rotor, rescue, rate tables. The [Tune Advisor](tune-advisor.md) gives tuning hints from your recent flights and can write them to the flight controller. |
+| **Flight Tuning** | PIDs, Rates, Governor (per profile) and Advanced: filters, PID controller, bandwidth, autolevel, main and tail rotor, rescue, rate tables. |
 | **Setup** | Configuration, Radio Config, Telemetry, Accelerometer, Alignment, Ports, Mixer, Servos, Controls (modes, adjustments, failsafe, beepers, Blackbox), Power, ESC & Motors, Governor. |
 | **Tools** | Profile copy and selection; diagnostics -- status, ELRS link, info. |
 | **Logs** | Flight logs recorded by the radio. |
@@ -73,7 +73,7 @@ Dashboard**; [Dashboard Themes](dashboard-themes.md) shows each one.
 
 ### Battery selection
 
-With more than one [battery profile](../../configurator/tabs/power.md#battery-profiles)
+With more than one [battery profile](../../configurator/tabs/power.md#battery)
 set up, the suite asks which pack you've plugged in when the helicopter
 connects:
 

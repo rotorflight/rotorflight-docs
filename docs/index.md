@@ -38,9 +38,8 @@ aircraft -- for planes, see its sister project
   [Reference](reference/index.md).
 
 !!! info "Which version do these docs cover?"
-    These pages track the current development line (**Rotorflight 2.4**).
-    Rotorflight **2.3** is the current stable release; anything that only
-    exists in 2.4 is marked **New in 2.4**. See the
+    These pages cover **Rotorflight 2.3**, the current stable release. Docs
+    for the upcoming 2.4 release are in the version menu at the top. See the
     [Upgrade Notes](getting-started/upgrade-notes.md) for what changed
     between versions.
 

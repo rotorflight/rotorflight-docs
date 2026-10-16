@@ -1,14 +1,11 @@
 # ESC Forward Programming
 
 Forward programming lets you change your ESC's settings through the flight
-controller -- from your radio with the Lua suite, or from the Configurator's
-[ESC Programming](../configurator/tabs/esc-programming.md) tab -- instead of
-a programming card or the manufacturer's software.
+controller -- from your radio with the Lua suite -- instead of a programming
+card or the manufacturer's software.
 
-| ESC | How it's connected |
-| --- | --- |
-| Hobbywing Platinum V5, Scorpion Tribunus, YGE, FlyRotor, XDFly, OMP, ZTW | The ESC telemetry wire, used in both directions. |
-| AM32, BLHeli_S, Bluejay | The throttle signal wire (DShot ESCs). *Configurator only, 2.4.* |
+It works with Hobbywing Platinum V5, Scorpion Tribunus, YGE, FlyRotor, XDFly,
+OMP and ZTW ESCs, over the ESC telemetry wire used in both directions.
 
 ## Telemetry-wire ESCs
 
@@ -27,11 +24,6 @@ connection, but the wire has to carry data both ways.
 4. Save, then power the flight controller and ESC up together.
 
 ## Programming
-
-=== "Configurator"
-
-    Open the [ESC Programming](../configurator/tabs/esc-programming.md) tab
-    (2.4), confirm the blades are off, and pick your ESC.
 
 === "Ethos"
 

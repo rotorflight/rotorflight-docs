@@ -12,11 +12,6 @@ all-in-one board where the main and tail ESCs share one connection -- and can
 turn off *damped light* (active braking), which a helicopter without a
 one-way bearing needs off on the main motor.
 
-!!! tip "Or from the Configurator"
-    In 2.4, the [ESC Programming](../configurator/tabs/esc-programming.md)
-    tab can change Bluejay settings directly. Flashing the firmware is still
-    done with ESC Configurator, as below.
-
 ## Flashing with ESC Configurator
 
 [ESC Configurator](https://esc-configurator.com/) runs in Chrome or Edge and

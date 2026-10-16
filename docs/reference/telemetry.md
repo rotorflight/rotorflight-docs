@@ -18,28 +18,6 @@ tab, or with the `telemetry_sensors` setting.
 | **Jeti EX Bus** | Sensors appear on the radio automatically. | |
 | **Graupner HoTT, Spektrum SRXL / SRXL2, Ghost, MAVLink, LTM** | Protocol-specific sets. | |
 
-## System Status and System Config
-
-*New in 2.4.* Two sensors pack the flight controller's state into bit
-fields, so a radio dashboard can show everything at once without dozens of
-sensors:
-
-**System Status** (ID 120; S.Port `0x5140`, CRSF `0x1230`) -- live state:
-armed, airborne, motors running, RX link, failsafe phase, GPS fix and
-health, spooled up, battery state, control saturated, gyro overflow,
-accelerometer not calibrated, override active, rescue state, Blackbox
-logging and governor state.
-
-**System Config** (ID 121; S.Port `0x5141`, CRSF `0x1231`) -- slower
-configuration state: PID, rate and battery profile numbers, unsaved
-changes, saving, reboot required, beeper on, which sensors are present
-(accelerometer, barometer, compass, GPS), Blackbox full, RPM source
-active, and governor mode.
-
-The exact bit layout is in the firmware's
-[`telemetry/status.h`](https://github.com/rotorflight/rotorflight-firmware/blob/master/src/main/telemetry/status.h).
-Both are in the default sensor selection.
-
 ## Sensor IDs
 
 The **ID** is what goes in `telemetry_sensors`. A sensor can only be sent

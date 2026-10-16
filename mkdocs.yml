@@ -3,7 +3,7 @@ site_description: Documentation for the Rotorflight helicopter flight controller
 site_url: https://doc.rotorflight.org/
 repo_url: https://github.com/rotorflight/rotorflight-documentation
 repo_name: rotorflight-documentation
-edit_uri: edit/main/docs/
+edit_uri: edit/release/2.3/docs/
 
 theme:
   name: material
@@ -114,7 +114,6 @@ nav:
       - LED Strip: setup/led-strip.md
       - OpenLager Logging: setup/openlager.md
       - FBUS Master: setup/fbus-master.md
-      - FrSky Servos: setup/frsky-servos.md
       - ELRS Custom Telemetry: setup/elrs-custom-telemetry.md
   - Configurator:
       - configurator/index.md
@@ -136,12 +135,8 @@ nav:
       - Adjustments: configurator/tabs/adjustments.md
       - GPS: configurator/tabs/gps.md
       - LED Strip: configurator/tabs/led-strip.md
-      - Remap FC: configurator/tabs/remap-fc.md
       - Beepers: configurator/tabs/beepers.md
       - Sensors: configurator/tabs/sensors.md
-      - CRSF Sensors: configurator/tabs/crsf-sensors.md
-      - XACT Servo Programming: configurator/tabs/xact-servo.md
-      - ESC Programming: configurator/tabs/esc-programming.md
       - Blackbox: configurator/tabs/blackbox.md
       - CLI: configurator/tabs/cli.md
   - Radio & Lua:
@@ -151,7 +146,6 @@ nav:
           - Radio Setup: radio/ethos/radio-setup.md
           - Using RFSuite: radio/ethos/lua-suite.md
           - Dashboard Themes: radio/ethos/dashboard-themes.md
-          - Tune Advisor: radio/ethos/tune-advisor.md
           - Troubleshooting: radio/ethos/troubleshooting.md
       - EdgeTX:
           - radio/edgetx/index.md

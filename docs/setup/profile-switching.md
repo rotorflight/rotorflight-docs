@@ -50,7 +50,7 @@ channel can stay at 100%. See [Governor Setup](governor-setup.md#3-throttle-on-t
 
 - The **Lua suite** on your radio can switch profiles.
 - **Battery Profile Selection** works the same way, for helicopters that
-  fly more than one pack type. See [Power](../configurator/tabs/power.md#battery-profiles).
+  fly packs of different capacity. See [Power](../configurator/tabs/power.md#battery).
 - **Stick commands**, with `enable_stick_commands = ON` and disarmed:
   collective low + yaw left + roll left / pitch forward / roll right selects PID
   profile 1 / 2 / 3.

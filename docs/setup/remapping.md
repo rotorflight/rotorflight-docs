@@ -33,13 +33,6 @@ what its timer allows:
 - **Motors and servos must be numbered without gaps**: S1, S2, S3, S4 --
   not S1, S2, S4. The flight controller stops at the first missing output.
 
-## With the Remap FC tab (2.4)
-
-The [Remap FC](../configurator/tabs/remap-fc.md) tab does all of this for
-you. Click **Read FC**, click a pin, and choose what it should do; the
-Configurator works out timers and DMA, warns about anything that can't work,
-and suggests fixes.
-
 ## With presets
 
 The [Presets](../configurator/tabs/presets.md) tab has *REMAPPING* presets for
@@ -47,7 +40,7 @@ many flight controllers: search for your board's name.
 
 ## With the CLI
 
-On 2.3, or for boards the Remap FC tab doesn't support, the remapping is a
+Otherwise the remapping is a
 set of CLI commands that assign pins (`resource`), timers (`timer`) and DMA
 (`dma`). The
 [Rotorflight remapping spreadsheet](https://docs.google.com/spreadsheets/d/1HyrgZuycS6S4s6TsFGkf90Z2PnO5yLcSx2tpa1-f1Vs/copy)
@@ -91,7 +84,7 @@ helicopter -- can be driven straight from a spare radio channel.
 === "PWM servo"
 
     1. Give the servo a pin: assign the next free servo number (e.g. **S5**)
-       to a spare pad -- with the Remap FC tab, or with `resource SERVO 5
+       to a spare pad with `resource SERVO 5
        <pin>` in the CLI. If it shares a timer with another servo, it also
        shares its update rate.
     2. Add a mixer rule that drives it from the radio channel. For AUX3

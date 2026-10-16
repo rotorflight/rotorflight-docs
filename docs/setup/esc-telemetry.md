@@ -27,7 +27,6 @@ meter and SmartFuel, log them to Blackbox, and pass them on to your radio.
 | **GRAUPNER** | Graupner |
 | **XDFLY** | XDFly |
 | **FBUS** | FrSky ESCs and sensors on F.Bus |
-| **SRXL2** | Spektrum SRXL2 ESCs *(new in 2.4)* |
 | **CASTLE** (motor protocol) | Castle Creations, Live Link -- see [below](#castle-creations) |
 
 ## Setting it up

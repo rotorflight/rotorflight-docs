@@ -20,8 +20,8 @@ Both can run at once on separate UARTs.
 
 ## Supported sensors
 
-FLVSS cell voltage, FAS current/voltage, FrSky GPS, VARIO2, RPM and
-temperature sensors, SBEC, and FrSky ESCs. Up to 32 sensors per bus.
+FLVSS cell voltage, FAS current/voltage, FrSky GPS, VARIO2, SBEC, and
+FrSky ESCs. Up to 32 sensors per bus.
 
 ## F.Bus master
 
@@ -46,10 +46,7 @@ temperature sensors, SBEC, and FrSky ESCs. Up to 32 sensors per bus.
 F.Bus servos are **bus servos** S9-S26, set up in the *Bus Servo
 Configuration* table on the [Servos](../configurator/tabs/servos.md#bus-servo-configuration)
 tab. Each can follow the mixer (e.g. for the swashplate) or pass a receiver
-channel straight through. FrSky XACT servos can be programmed over the same
-wire with the [XACT Servo Programming](../configurator/tabs/xact-servo.md)
-tab. For the full wiring, programming and bench checks of a swashplate and
-tail set, see [FrSky Servos](frsky-servos.md).
+channel straight through.
 
 ### Settings
 
