@@ -70,7 +70,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin gh-pages --depth=1 || true
+          git fetch origin gh-pages || true
           mike deploy --push --update-aliases --title "$DOCS_TITLE" "$DOCS_VERSION" "$DOCS_ALIAS"
           if [ "$DOCS_ALIAS" = "stable" ]; then
             mike set-default --push stable
@@ -79,7 +79,7 @@ jobs:
       - name: Ensure custom domain
         if: github.event_name != 'pull_request'
         run: |
-          git fetch origin gh-pages --depth=1
+          git fetch origin gh-pages
           git worktree add ../gh-pages origin/gh-pages
           cd ../gh-pages
           if ! cmp -s "$GITHUB_WORKSPACE/CNAME" CNAME; then
