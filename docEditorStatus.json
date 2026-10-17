@@ -1,0 +1,8 @@
+{
+  "blocked": false,
+  "blockMessage": "Rotorflight DocsEditor is temporarily unavailable.",
+  "latestVersion": "2.0.0",
+  "minSupportedVersion": "2.0.0",
+  "updateMessage": "v2.0.0 Migrated to MkDocs.",
+  "downloadUrl": "https://github.com/pkaig/rotorflight-docEditor/releases/latest"
+}
