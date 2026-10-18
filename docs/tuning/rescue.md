@@ -57,4 +57,4 @@ Test at a safe height, with plenty of room, starting the right way up:
 
 !!! warning
     Rescue needs height. From low down, inverted, a flip and pull-up may
-    not finish before the ground arrives.
+    not finish before the ground arrives...
