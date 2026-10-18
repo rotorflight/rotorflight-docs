@@ -37,10 +37,17 @@ altitude, using the altitude PID settings.
 The defaults are percentages of your collective range, for a typical sport
 setup. Check them for your helicopter:
 
-- **Hover Collective** -- set it to what your helicopter actually needs to
-  hover. Too low and it sinks during rescue; too high and it climbs away.
+- **Pull-up Collective** -- a strong initial pull to arrest a 
+descent.
+
+- **Pull-up Time** -- How long to apply pull up collective.
+
 - **Climb Collective** -- enough for a firm climb.
-- **Pull-up Collective** -- a strong initial pull to arrest a descent.
+
+- **Climb Time** -- How long to apply climb collective.
+
+- **Hover Collective** -- set it to what your helicopter actually needs to hover. Too low and it sinks during rescue; too high and it climbs away.
+
 
 **Leveling Gain**, **Flip-to-Upright Gain** and the **Max Levelling Rate**
 and **Acceleration** set how aggressively it rights itself. Larger
