@@ -91,8 +91,7 @@ pulses at power-up:
     | :-: | --- |
     | 3 | DSM2 1024-bit, 22 ms |
     | 5 | DSM2 2048-bit, 11 ms |
-    | 7 | DSMX 1024-bit, 22 ms |
-    | 8 | DSMX 2048-bit, 22 ms |
+    | 7 | DSMX 2048-bit, 22 ms |
     | 9 | DSMX 2048-bit, 11 ms |
 
     For example, for DSMX 2048 at 11 ms:
