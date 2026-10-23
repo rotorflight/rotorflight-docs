@@ -13,8 +13,8 @@ Set with `serialrx_provider`, on a UART with the Serial RX function.
 | `CRSF` | TBS Crossfire, ExpressLRS | Yes |
 | `SBUS` | Futaba S.BUS (inverted) | -- |
 | `SBUS2` | Futaba S.BUS2 | Yes |
-| `FPORT` / `FPORT2` | FrSky F.Port / F.Port 2 | Yes |
-| `FBUS` | FrSky F.Bus | Yes |
+| `FPORT` | FrSky F.Port | Yes |
+| `FBUS` / `FPORT2` | FrSky F.Bus / F.Port 2 | Yes |
 | `SPEK1024` / `SPEK2048` | Spektrum DSM2 / DSMX satellites | -- |
 | `SRXL` | Spektrum SRXL (and Multiplex) | Yes |
 | `SRXL2` | Spektrum SRXL2 | Yes |
@@ -24,6 +24,11 @@ Set with `serialrx_provider`, on a UART with the Serial RX function.
 | `IBUS2` | FlySky iBUS2 | Yes |
 | `JETIEXBUS` | Jeti EX Bus | Yes |
 | `XB-A` / `XB-B` / `XB-B-RJ01` | JR XBUS Mode A / Mode B / RJ01 | -- |
+
+`FBUS` (460800 baud) and `FPORT2` (115200 baud) are the same protocol. From
+4.7 both find the receiver's speed: the port starts at the selected one,
+switches to the other until good frames arrive, then keeps it. Telemetry
+starts once the speed is found. On 4.6 the setting must match the receiver.
 
 The signal options are `serialrx_inverted`, `serialrx_halfduplex` and
 `serialrx_pinswap` -- see [Serial Ports](serial-ports.md#pin-swap-inversion-and-half-duplex).

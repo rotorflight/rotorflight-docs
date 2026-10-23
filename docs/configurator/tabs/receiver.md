@@ -14,8 +14,8 @@ Before anything shows up here, set the UART your receiver is wired to to
 | Receiver | Protocol | Wiring |
 | --- | --- | --- |
 | ExpressLRS, TBS Crossfire / Tracer | **TBS CRSF** | Receiver TX → FC RX, receiver RX → FC TX |
-| FrSky (F.Bus capable: Archer, ACCESS ...) | **FrSky FBUS** | One wire to FC **TX**; *Half-Duplex* and *Inverted* on |
-| FrSky F.Port | **FrSky F.PORT** / **F.PORT2** | One wire to FC **TX**; *Half-Duplex* and *Inverted* on |
+| FrSky F.Bus or F.Port2 (Archer, ACCESS ...) | **FrSky FBUS / F.PORT2** | One wire to FC **TX**; *Half-Duplex* and *Inverted* on |
+| FrSky F.Port | **FrSky F.PORT** | One wire to FC **TX**; *Half-Duplex* and *Inverted* on |
 | Futaba, FrSky, others with SBUS | **Futaba S.BUS** | SBUS → FC **RX**; *Inverted* on |
 | Futaba SBUS2 | **Futaba S.BUS2** | One wire to FC **TX**; *Half-Duplex* and *Inverted* on |
 | Spektrum SRXL2 receivers | **Spektrum DSM/SRXL2** | One wire to FC **TX** |
@@ -25,6 +25,12 @@ Before anything shows up here, set the UART your receiver is wired to to
 | JR / XBus | **JR XBUS Mode A / B** or **XBUS/RJ01** | XBUS → FC **RX** |
 | Graupner HoTT | **Graupner SUMD** | SUMD → FC **RX** |
 | ImmersionRC Ghost | **ImmersionRC GHOST** | One wire to FC **TX** |
+
+F.Bus and F.Port2 are the same protocol at two speeds. From Rotorflight 4.7
+the flight controller finds the speed the receiver uses, so
+**FrSky FBUS / F.PORT2** covers both and changing the receiver's setting
+needs no change here. On 4.6, the list shows **FrSky FBUS** and
+**FrSky F.PORT2** separately: pick the one set in the receiver.
 
 Receivers with telemetry built into the link (CRSF/ELRS, F.Bus, F.Port,
 SRXL2, iBUS2, EXBUS, Ghost) let you tune from your radio with the
