@@ -4787,13 +4787,13 @@ RSSI and signal-loss settings.</p>
 <td style="text-align: center;">Yes</td>
 </tr>
 <tr>
-<td><code>FPORT</code> / <code>FPORT2</code></td>
-<td>FrSky F.Port / F.Port 2</td>
+<td><code>FPORT</code></td>
+<td>FrSky F.Port</td>
 <td style="text-align: center;">Yes</td>
 </tr>
 <tr>
-<td><code>FBUS</code></td>
-<td>FrSky F.Bus</td>
+<td><code>FBUS</code> / <code>FPORT2</code></td>
+<td>FrSky F.Bus / F.Port 2</td>
 <td style="text-align: center;">Yes</td>
 </tr>
 <tr>
@@ -4843,6 +4843,10 @@ RSSI and signal-loss settings.</p>
 </tr>
 </tbody>
 </table>
+<p><code>FBUS</code> (460800 baud) and <code>FPORT2</code> (115200 baud) are the same protocol. From
+4.7 both find the receiver's speed: the port starts at the selected one,
+switches to the other until good frames arrive, then keeps it. Telemetry
+starts once the speed is found. On 4.6 the setting must match the receiver.</p>
 <p>The signal options are <code>serialrx_inverted</code>, <code>serialrx_halfduplex</code> and
 <code>serialrx_pinswap</code> -- see <a href="../serial-ports/#pin-swap-inversion-and-half-duplex">Serial Ports</a>.</p>
 <p>Some protocol options:</p>

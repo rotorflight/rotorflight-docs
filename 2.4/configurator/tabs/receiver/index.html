@@ -4812,13 +4812,13 @@
 <td>Receiver TX → FC RX, receiver RX → FC TX</td>
 </tr>
 <tr>
-<td>FrSky (F.Bus capable: Archer, ACCESS ...)</td>
+<td>FrSky F.Bus or F.Port2 (Archer, ACCESS ...)</td>
 <td><strong>FrSky FBUS</strong></td>
 <td>One wire to FC <strong>TX</strong>; <em>Half-Duplex</em> and <em>Inverted</em> on</td>
 </tr>
 <tr>
 <td>FrSky F.Port</td>
-<td><strong>FrSky F.PORT</strong> / <strong>F.PORT2</strong></td>
+<td><strong>FrSky F.PORT</strong></td>
 <td>One wire to FC <strong>TX</strong>; <em>Half-Duplex</em> and <em>Inverted</em> on</td>
 </tr>
 <tr>
@@ -4868,6 +4868,11 @@
 </tr>
 </tbody>
 </table>
+<p>F.Bus and F.Port2 are the same protocol at two speeds. From Rotorflight 4.7
+the flight controller finds the speed the receiver uses, so
+<strong>FrSky FBUS</strong> covers both and changing the receiver's setting
+needs no change here. On 4.6, the list shows <strong>FrSky FBUS</strong> and
+<strong>FrSky F.PORT2</strong> separately: pick the one set in the receiver.</p>
 <p>Receivers with telemetry built into the link (CRSF/ELRS, F.Bus, F.Port,
 SRXL2, iBUS2, EXBUS, Ghost) let you tune from your radio with the
 <a href="../../../radio/">Lua suites</a>. With other receivers, add a separate
