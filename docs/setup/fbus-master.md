@@ -60,6 +60,7 @@ tail set, see [FrSky Servos](frsky-servos.md).
 | `fbus_master_discovery_ms` | 5000 | How long to look for sensors at start-up. Raise it if sensors are missed. |
 | `fbus_master_inverted` | ON | Leave on for FrSky hardware. |
 | `fbus_master_pinswap` | OFF | Use the RX pin instead of TX. |
+| `fbus_master_baud_fast` | ON | ON runs at 460800 baud, OFF at 115200 for receivers set to F.Port2 speed. At 115200 the frame rate is capped at 150 Hz. CLI only. |
 | `fbus_master_forwarded_sensors` | none (all slots `255`) | Up to 8 physical IDs to forward to the radio; `255` for unused slots. |
 
 ## S.Port master
