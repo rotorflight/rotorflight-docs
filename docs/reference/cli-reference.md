@@ -726,6 +726,7 @@ These are part of the PID profile and differ per profile.
 | `fbus_master_telemetry_rate` | min–max | Telemetry polling rate (Hz) |
 | `fbus_master_discovery_ms` | min–max | Sensor discovery window (ms) |
 | `fbus_master_forwarded_sensors` | array | Sensor IDs to forward |
+| `fbus_master_baud_fast` | `OFF` `ON` | ON: 460800 baud, OFF: 115200 (frame rate capped at 150 Hz) |
 | `sbus_out_frame_rate` | 25–250 | SBUS output frame rate (Hz) |
 | `sbus_out_pinswap` | `OFF` `ON` | Swap TX/RX pins |
 | `sbus_out_inverted` | `OFF` `ON` | Invert SBUS output |
