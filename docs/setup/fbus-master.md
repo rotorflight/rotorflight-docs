@@ -12,7 +12,7 @@ with the rest of its telemetry. On F.Bus, it can also drive F.Bus servos.
 | | F.Bus master | S.Port master |
 | --- | --- | --- |
 | For | Newer FrSky F.Bus devices | Older S.Port sensors |
-| Speed | 460800 baud | 57600 baud |
+| Speed | 460800 baud, or 115200 with `fbus_master_baud_fast = OFF` | 57600 baud |
 | Drives servos | Yes -- 16 channels at up to 500 Hz | No |
 | UART function | **F.BUS** | **S.PORT Master** |
 
