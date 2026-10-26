@@ -85,7 +85,7 @@ Windows with the desktop app:
 - For DFU, the *STM32 BOOTLOADER* device needs the **WinUSB** driver. Put the
   board in DFU, run [Zadig](https://zadig.akeo.ie/), choose *Options > List
   All Devices*, select *STM32 BOOTLOADER* and install **WinUSB**.
-- The [ImpulseRC Driver Fixer](https://impulserc.com/pages/downloads) fixes
+- The [ImpulseRC Driver Fixer](https://github.com/ImpulseRC/ImpulseRC_Driver_Fixer/releases/tag/v1_forever) fixes
   most driver problems in one step.
 
 ## Troubleshooting
