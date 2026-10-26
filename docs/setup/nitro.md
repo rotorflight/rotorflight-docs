@@ -66,3 +66,30 @@ On the [Governor](../configurator/tabs/governor.md) tab:
 Set the **Full Headspeed** on the [Profiles](../configurator/tabs/profiles.md#governor-settings)
 tab, then see [Governor Setup](governor-setup.md#4-test) to test, and
 [Governor Tuning](../tuning/governor.md).
+
+
+## Optional
+
+### Use governor-bypass (Direct throttle with collective stick)
+First setup the Governor Bypass Throttle Curve at governor setup:
+
+![](./img/governor-bypass-curve.png)
+
+
+Go to Modes and assign a channel to the governor bypass mode. In this case the same channel is used as for profile switching. This way you free up a channel and you have automatically in profile 1 the Governor Bypass Throttle curve (Direct throttle).
+
+
+![](./img/governor-bypass.png)
+
+
+### Idle adjustment from the radio
+With adjustments you can now easily add a adjustment for nitro idle adjustment. From the radio you can use a knob or a trim switch to increase or decrease the idle rpm of the engine. It will change the throttle idle value in governor setup.
+
+Go to adjustments and search for Governor Idle Throttle 
+
+
+
+![](./img/idle-adjustment.png)
+
+Now on your radio add a channel (in this example ch7)  with a range from 1000us - 2000us and assing it to a slider or knob.
+
