@@ -1269,6 +1269,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-governor-bypass-direct-throttle-with-collective-stick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use governor-bypass (Direct throttle with collective stick)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idle-adjustment-from-the-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idle adjustment from the radio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4653,6 +4692,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-governor-bypass-direct-throttle-with-collective-stick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use governor-bypass (Direct throttle with collective stick)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idle-adjustment-from-the-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idle adjustment from the radio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4766,6 +4844,17 @@ which the governor needs.</p>
 <p>Set the <strong>Full Headspeed</strong> on the <a href="../../configurator/tabs/profiles/#governor-settings">Profiles</a>
 tab, then see <a href="../governor-setup/#4-test">Governor Setup</a> to test, and
 <a href="../../tuning/governor/">Governor Tuning</a>.</p>
+<h2 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h2>
+<h3 id="use-governor-bypass-direct-throttle-with-collective-stick">Use governor-bypass (Direct throttle with collective stick)<a class="headerlink" href="#use-governor-bypass-direct-throttle-with-collective-stick" title="Permanent link">&para;</a></h3>
+<p>First setup the Governor Bypass Throttle Curve at governor setup:</p>
+<p><img alt="" src="../img/governor-bypass-curve.png" /></p>
+<p>Go to Modes and assign a channel to the governor bypass mode. In this case the same channel is used as for profile switching. This way you free up a channel and you have automatically in profile 1 the Governor Bypass Throttle curve (Direct throttle).</p>
+<p><img alt="" src="../img/governor-bypass.png" /></p>
+<h3 id="idle-adjustment-from-the-radio">Idle adjustment from the radio<a class="headerlink" href="#idle-adjustment-from-the-radio" title="Permanent link">&para;</a></h3>
+<p>With adjustments you can now easily add a adjustment for nitro idle adjustment. From the radio you can use a knob or a trim switch to increase or decrease the idle rpm of the engine. It will change the throttle idle value in governor setup.</p>
+<p>Go to adjustments and search for Governor Idle Throttle </p>
+<p><img alt="" src="../img/idle-adjustment.png" /></p>
+<p>Now on your radio add a channel (in this example ch7)  with a range from 1000us - 2000us and assing it to a slider or knob.</p>
 
 
 
