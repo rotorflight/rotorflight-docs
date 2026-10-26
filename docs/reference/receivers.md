@@ -79,8 +79,9 @@ The CLI equivalents of DSM/1024, DSM/2048, DSM/SRXL and DSM/SRXL2 are
 - With the signal on the FC's **TX** pin, leave **Pin Swap** off. To use
   an **RX** pin instead for SRXL/SRXL2, enable **Pin Swap** on a flight
   controller that supports it; see [Serial Ports](serial-ports.md#pin-swap-inversion-and-half-duplex).
-- For full-size SRXL2 receivers such as the AR6610T, set `srxl2_unit_id = 0`
+- New in 2.4. For full-size SRXL2 receivers such as the AR6610T, set `srxl2_unit_id = 0`
   and save. This differs from the remote receivers above.
+  Full-size receivers are not supported in 2.3 ( firmware 4.6) and older.
 
 ## Spektrum binding
 
