@@ -15,7 +15,7 @@ that, the saved flights stay on screen through a link loss.
 
 ## Collecting flight data
 
-The flight controller counts only rate flight while spooled up and airborne, with the heli moving on some axis.
+The flight controller counts only acro flight while spooled up and airborne, with the heli moving on some axis.
 Time in Angle, Horizon, Trainer, Altitude hold, Rescue, GPS rescue or failsafe is left out.
 
 What it needs:
@@ -25,7 +25,7 @@ What it needs:
 - **Stops** needs 10 stick releases: move the stick, then let it come back to centre. Centre the stick after each
   input instead of reversing straight through.
 
-One flight may be enough, or it may take a few. Fly your normal rate-mode flying with clear inputs and releases
+One flight may be enough, or it may take a few. Fly your normal acro-mode flying with clear inputs and releases
 on each axis.
 
 ## How flights are saved and combined
@@ -37,7 +37,7 @@ measured on its own. This happens whether or not the Tune Advisor page is open.
 - The flights are kept on the radio's SD card in `LOGS:/rfsuite/tune/<model>/history.csv`, one row per axis per
   flight. `<model>` is the flight controller's ID, the same one that names the flight log folders.
 - Only the **last 5 flights** are kept.
-- A flight with no rate flight in it is not saved.
+- A flight with no acro flight in it is not saved.
 - If you disarm while the radio has lost the link, the flight is saved when it reconnects. That works as long as
   the flight controller has not been powered off in between.
 
