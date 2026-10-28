@@ -59,7 +59,7 @@ the same flight.
   a knob in flight, then read the value off afterwards.
 - **The Lua suites** -- change gains at the field between flights.
 - **Tune Advisor** *(2.4, Ethos suite)* -- the flight controller measures
-  how the helicopter follows your sticks in rate flight; after each flight
+  how the helicopter follows your sticks in acro flight; after each flight
   the radio combines your recent flights and suggests one change per axis --
   for example F and rates when it turns faster or slower than asked, or
   I-term relax for bounce-back after stops. See
