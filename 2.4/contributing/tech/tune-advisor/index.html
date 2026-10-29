@@ -1,0 +1,5943 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Rotorflight helicopter flight controller firmware, Configurator, Blackbox and radio Lua suites">
+      
+      
+      
+        <link rel="canonical" href="https://doc.rotorflight.org/2.4/contributing/tech/tune-advisor/">
+      
+      
+        <link rel="prev" href="../smartfuel/">
+      
+      
+        <link rel="next" href="../hardware-debugging/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Tune Advisor Internals - Rotorflight Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tune-advisor-internals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You are viewing documentation for an upcoming Rotorflight release.
+  <a href="../../../..">
+    <strong>Switch to the current release.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Rotorflight Documentation" class="md-header__button md-logo" aria-label="Rotorflight Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/Rotorflight_outline_dark.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Rotorflight Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tune Advisor Internals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rotorflight/rotorflight-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rotorflight-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../setup/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Setup Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../configurator/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Configurator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../radio/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Radio & Lua
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tuning/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tuning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../hardware/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Hardware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../reference/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Rotorflight Documentation" class="md-nav__button md-logo" aria-label="Rotorflight Documentation" data-md-component="logo">
+      
+  <img src="../../../assets/Rotorflight_outline_dark.svg" alt="logo">
+
+    </a>
+    Rotorflight Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rotorflight/rotorflight-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rotorflight-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../getting-started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/downloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/flashing-the-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashing the Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/first-connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/backup-and-restore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backup & Restore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/upgrade-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrade Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/arming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arming & Safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/example-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../setup/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup Guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/remapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remapping Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servo Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/mixer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mixer & Swashplate Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/rpm-measurement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPM Measurement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/rpm-filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPM Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/esc-telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/esc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Forward Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/blheli-s-to-bluejay/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLHeli_S to Bluejay
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/governor-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/nitro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nitro Helicopters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/gear-ratios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gear Ratios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/smartfuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SmartFuel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/profile-switching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profile Switching
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/stability-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stability Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/led-strip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/openlager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenLager Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/fbus-master/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FBUS Master
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/frsky-servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky Servos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../setup/elrs-custom-telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ELRS Custom Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../configurator/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurator
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configurator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/presets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/power/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/receiver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receiver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/failsafe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Failsafe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/mixer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mixer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/servos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/motors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/rates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/gyro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gyro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/adjustments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adjustments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/gps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/led-strip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/remap-fc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remap FC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/beepers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beepers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/crsf-sensors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRSF Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/xact-servo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XACT Servo Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/esc-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ESC Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/blackbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configurator/tabs/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../radio/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio & Lua
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Radio & Lua
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../radio/ethos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky Ethos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FrSky Ethos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/radio-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/lua-suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using RFSuite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/dashboard-themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/tune-advisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tune Advisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/ethos/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../radio/edgetx/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EdgeTX
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EdgeTX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/edgetx/radio-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/edgetx/lua-suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using RFSuite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/edgetx/classic-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classic Lua Scripts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/futaba/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Futaba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/jeti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jeti
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../radio/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other Radios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../tuning/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tuning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filter Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/high-speed-integral/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    High Speed Integral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/cyclic-cross-coupling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cyclic Cross-Coupling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/motorised-tail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motorised Tail & TTA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tuning/rescue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rescue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../hardware/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/radiomaster-nexus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radiomaster Nexus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/frsky-007/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrSky VANTAC RF007
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/flydragon-f722/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FlyDragon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/flywing-heli-f405/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flywing HELI405
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/goosky-f701/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GooSky F701
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/goosky-f4mini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GooSky F4 Mini
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/matek-g474/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matek G474-HELI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/diy-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIY Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/betaflight-diy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Betaflight FC (DIY)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/manufacturers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For Manufacturers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../reference/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Command Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/cli-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/telemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/serial-ports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial Ports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/receivers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Receivers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/blackbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/led-strip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Strip
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/buzzer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Buzzer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference/msp-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MSP Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building-the-firmware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building the Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coding-style/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coding Style
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../editing-the-docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editing the Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support the Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_7" id="__nav_9_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameter-groups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter Groups
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atomic-barrier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Barrier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customizing-the-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing the Build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-boards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Board Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blackbox-format/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blackbox Log Format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../governor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governor Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../smartfuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SmartFuel Internals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tune Advisor Internals
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tune Advisor Internals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#firmware-what-is-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware: what is measured
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Firmware: what is measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sampling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-samples-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which samples count
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-feed-forward-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response (feed-forward match)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-stick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full stick
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stops-stick-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stops (stick releases)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accumulation-and-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accumulation and reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#msp-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MSP interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-capturing-each-flight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radio: capturing each flight
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio: capturing each flight">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-on-the-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files on the radio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-flights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining flights
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-the-advice-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radio: the advice rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio: the advice rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collective-fact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collective fact
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-what-save-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radio: what Save writes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio: what Save writes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-write-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The write sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clearing
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Debugging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware-debugging-vscode-jlink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging with VS Code and J-Link
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-coverage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Coverage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-cross-coupling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Cross-Coupling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#firmware-what-is-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware: what is measured
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Firmware: what is measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sampling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-samples-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which samples count
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-feed-forward-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response (feed-forward match)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-stick" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full stick
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stops-stick-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stops (stick releases)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accumulation-and-reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accumulation and reset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#msp-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MSP interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-capturing-each-flight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radio: capturing each flight
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio: capturing each flight">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-on-the-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Files on the radio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-flights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combining flights
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-the-advice-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radio: the advice rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio: the advice rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Response
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collective-fact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collective fact
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radio-what-save-writes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radio: what Save writes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radio: what Save writes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-write-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The write sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clearing
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/rotorflight/rotorflight-docs/edit/main/docs/contributing/tech/tune-advisor.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="tune-advisor-internals">Tune Advisor Internals<a class="headerlink" href="#tune-advisor-internals" title="Permanent link">&para;</a></h1>
+<p>How the Tune Advisor works, end to end: what the flight controller measures,
+how the radio stores and combines it, the exact rules that produce the advice,
+and exactly which parameters <strong>Save</strong> writes. For using it, see
+<a href="../../../radio/ethos/tune-advisor/">Tune Advisor</a>.</p>
+<p>The work is split in two:</p>
+<table>
+<thead>
+<tr>
+<th>Side</th>
+<th>Does</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flight controller</td>
+<td>Measures how the heli answers the rate loop and reports the numbers over MSP. Gives no advice and changes no settings.</td>
+<td><code>src/main/flight/tune_advisor.c</code>, <code>MSP2_GET_TUNE_ADVISOR</code> in <code>src/main/msp/msp.c</code> (rotorflight-firmware)</td>
+</tr>
+<tr>
+<td>Radio (Ethos Lua suite)</td>
+<td>Reads the numbers after each flight, keeps the last 5 flights, works out the advice, and writes it to the flight controller when the pilot presses <strong>Save</strong>.</td>
+<td><code>tasks/tune_history.lua</code>, <code>lib/tune_history.lua</code>, <code>lib/msp_tune_advisor.lua</code>, <code>app/pages/tune_advisor.lua</code> (rotorflight-lua-ethos-suite)</td>
+</tr>
+</tbody>
+</table>
+<p>The advice rules live on the radio so they can change without flashing the
+flight controller.</p>
+<h2 id="firmware-what-is-measured">Firmware: what is measured<a class="headerlink" href="#firmware-what-is-measured" title="Permanent link">&para;</a></h2>
+<p>The feature is built when <code>USE_TUNE_ADVISOR</code> is defined (on by default in
+<code>common_pre.h</code>). <code>tuneAdvisorUpdate()</code> runs every PID loop, straight after
+<code>pidController()</code>.</p>
+<h3 id="sampling">Sampling<a class="headerlink" href="#sampling" title="Permanent link">&para;</a></h3>
+<p>PID loops are averaged into one <strong>sample every 10 ms</strong> (100 Hz). Each sample
+holds, per axis (roll, pitch, yaw):</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Taken from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setpoint (deg/s)</td>
+<td>The PID controller's setpoint</td>
+</tr>
+<tr>
+<td>Gyro (deg/s)</td>
+<td>The PID controller's gyro rate</td>
+</tr>
+<tr>
+<td>I-term</td>
+<td>The PID controller's I output</td>
+</tr>
+<tr>
+<td>Feedback</td>
+<td>P + I + D + B output: the PID sum minus F and the offset (O). F and collective-to-pitch precomp are left out so they do not count as braking.</td>
+</tr>
+<tr>
+<td>Stick deflection</td>
+<td>-1 to 1</td>
+</tr>
+<tr>
+<td>Saturated</td>
+<td>Set if the mixer saturated that axis in any loop of the block</td>
+</tr>
+</tbody>
+</table>
+<p>plus |collective| (0 to 1) from the stabilised collective mixer input.</p>
+<h3 id="which-samples-count">Which samples count<a class="headerlink" href="#which-samples-count" title="Permanent link">&para;</a></h3>
+<p>A sample is <strong>valid</strong> only if, in every PID loop of its block:</p>
+<ul>
+<li>the heli is armed, spooled up (governor) and airborne, and</li>
+<li>none of Angle, Horizon, Trainer, Altitude hold, Rescue, GPS rescue or
+  failsafe is active.</li>
+</ul>
+<p>On top of that, the body must have been rotating: |roll| + |pitch| + |yaw|
+rate of at least <strong>40 deg/s</strong> within the last <strong>200 samples (2 s)</strong>. Yaw
+counts, so a pirouette is flying. This keeps spooled-up stick checks on the
+ground out.</p>
+<p>Invalid samples are not used for anything below. The reported flight time is
+the number of valid samples / 100, in seconds.</p>
+<h3 id="response-feed-forward-match">Response (feed-forward match)<a class="headerlink" href="#response-feed-forward-match" title="Permanent link">&para;</a></h3>
+<p>F sends the setpoint straight to the servos, so the ratio gyro / setpoint
+says how well F fits the airframe: 1.0 means the heli flies the rate it is
+asked for; above 1 it turns faster than asked (F too high for the rates).</p>
+<p>The heli answers late, so the setpoint is compared <strong>delayed by 0 to 25
+samples (0 to 250 ms)</strong>. For each delay the firmware keeps three running sums
+over usable pairs: Σ setpoint·gyro, Σ setpoint², Σ gyro². A pair is usable
+when:</p>
+<ul>
+<li>the current sample is valid and the axis is not saturated now, and</li>
+<li>the delayed setpoint came from a valid, unsaturated sample with
+  40 ≤ |setpoint| &lt; 200 deg/s.</li>
+</ul>
+<p>From these, for each delay:</p>
+<ul>
+<li><strong>gain</strong> = Σ setpoint·gyro / Σ setpoint² (least-squares slope through zero)</li>
+<li><strong>correlation</strong> = Σ setpoint·gyro / √(Σ setpoint² · Σ gyro²)</li>
+</ul>
+<p>Once a second the delay with the <strong>highest correlation</strong> becomes the best
+lag. The reported <code>ffGain</code>, <code>ffCorr</code> and <code>ffCount</code> are those of the best lag,
+and <code>ffLagMs</code> is the lag × 10 ms.</p>
+<p>At the best lag the same ratio is also split into bands:</p>
+<table>
+<thead>
+<tr>
+<th>Bands</th>
+<th>Split by</th>
+<th>Edges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Setpoint bands</td>
+<td>Size of the request, |setpoint|</td>
+<td>40–100, 100–200, 200+ deg/s</td>
+</tr>
+<tr>
+<td>Collective bands</td>
+<td>|collective|</td>
+<td>below 25%, 25–50%, 50% and above (only requests below 200 deg/s)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="full-stick">Full stick<a class="headerlink" href="#full-stick" title="Permanent link">&para;</a></h3>
+<p>A sample counts as full stick when the stick deflection one best-lag ago was
+at least <strong>90%</strong>. For those samples the firmware counts how many there were
+(<code>fullCount</code>) and how many were saturated (<code>fullSatCount</code>), and keeps the rate
+reached in the stick's direction against the rate asked:</p>
+<ul>
+<li><code>fullRatio</code> = Σ rate reached / Σ |setpoint|</li>
+<li><code>fullMaxRate</code> = the highest rate reached (deg/s)</li>
+</ul>
+<p>Saturated samples are included here: this is what tells the radio the cyclic
+ran out of travel.</p>
+<h3 id="stops-stick-releases">Stops (stick releases)<a class="headerlink" href="#stops-stick-releases" title="Permanent link">&para;</a></h3>
+<p>Per axis, a small state machine follows each stick input:</p>
+<ol>
+<li><strong>Input</strong>: starts when |setpoint| leaves the centre band (5 deg/s). While
+   the stick is out, the setpoint and gyro extremes are kept.</li>
+<li><strong>Release</strong>: when the setpoint returns inside 5 deg/s. The direction of the
+   input is the side with the larger setpoint peak. At that moment the I-term
+   is recorded, signed so that positive means opposing the input that just
+   ended.</li>
+<li><strong>Watch</strong>: for the next <strong>80 samples (0.8 s)</strong>, the largest rate in the
+   opposite direction is the <strong>rebound</strong>, and the largest opposite feedback
+   output is the <strong>counter-output</strong>. The rate peak in the input direction keeps
+   updating for the first 10 samples, as the heli coasts.</li>
+<li>The release counts only if the input asked for at least <strong>60 deg/s</strong> and the
+   heli reached at least <strong>60 deg/s</strong>. If the stick moves out again within 15
+   samples (0.15 s), it is not a stop and is dropped; after that, a new input
+   ends the watch early and the release still counts.</li>
+</ol>
+<p>For each counted release the firmware adds up:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>releases</code></td>
+<td>Number of counted releases</td>
+</tr>
+<tr>
+<td><code>bigRebounds</code></td>
+<td>Releases with a rebound of 15% of the peak rate or more</td>
+</tr>
+<tr>
+<td><code>meanRebound</code></td>
+<td>Mean of rebound / peak rate</td>
+</tr>
+<tr>
+<td><code>meanOvershoot</code></td>
+<td>Mean of peak rate / peak setpoint</td>
+</tr>
+<tr>
+<td><code>meanCounter</code></td>
+<td>Mean peak counter-output (P + I + D + B) after the release</td>
+</tr>
+<tr>
+<td><code>meanIterm</code></td>
+<td>Mean I-term at the release, positive = pushing back against the input</td>
+</tr>
+</tbody>
+</table>
+<p>A small counter-output with the I-term near zero points at the airframe
+rebounding on its own (not enough damping). A positive I-term points at the
+I-term pushing the heli back.</p>
+<h3 id="accumulation-and-reset">Accumulation and reset<a class="headerlink" href="#accumulation-and-reset" title="Permanent link">&para;</a></h3>
+<p>Everything accumulates in RAM across flights until it is reset. It is <strong>not</strong>
+saved and is lost at power-off. It is reset when:</p>
+<ul>
+<li><code>MSP2_CLEAR_TUNE_ADVISOR</code> is received (the radio sends it after saving each
+  flight), or</li>
+<li>the heli arms on a <strong>different tune</strong>. At each arm the firmware hashes the
+  current PID and rate profile numbers, every PID gain (P, I, D, F, B, O) of
+  the PID profile, Iterm Relax Cutoff, PID mode, rate type, and the RC rates,
+  expo and super rates of all axes. If the hash differs from the previous arm,
+  the statistics start again.</li>
+</ul>
+<p>The tune is only checked at arming. A setting changed in flight (for example
+by an adjustment function) is not noticed until the next arm.</p>
+<h2 id="msp-interface">MSP interface<a class="headerlink" href="#msp-interface" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>ID</th>
+<th>Direction</th>
+<th>Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MSP2_GET_TUNE_ADVISOR</code></td>
+<td><code>0x5F10</code></td>
+<td>Read</td>
+<td>Request: <code>U8</code> axis (0 roll, 1 pitch, 2 yaw). Any other length or axis is an error.</td>
+</tr>
+<tr>
+<td><code>MSP2_CLEAR_TUNE_ADVISOR</code></td>
+<td><code>0x5F11</code></td>
+<td>Write</td>
+<td>Empty. Resets all statistics.</td>
+</tr>
+</tbody>
+</table>
+<p>One axis per request keeps the reply (67 bytes) small enough for MSP over
+telemetry. Firmware without the feature answers with an MSP error.</p>
+<p>Reply, payload version 1. Ratios are signed 16-bit × 1000; counts saturate at
+65535; all values little-endian.</p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Type</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>U8</td>
+<td>Payload version (1)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>U8</td>
+<td>Collecting now (1 = the current sample is valid)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>U16</td>
+<td>Seconds of valid flight</td>
+</tr>
+<tr>
+<td>4</td>
+<td>U8</td>
+<td>Axis</td>
+</tr>
+<tr>
+<td>5</td>
+<td>U16</td>
+<td>P gain (current PID profile)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>U16</td>
+<td>F gain</td>
+</tr>
+<tr>
+<td>9</td>
+<td>U16</td>
+<td>B gain</td>
+</tr>
+<tr>
+<td>11</td>
+<td>U8</td>
+<td>Iterm Relax Cutoff for this axis</td>
+</tr>
+<tr>
+<td>12</td>
+<td>U8</td>
+<td>Rate type (current rate profile)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>U8</td>
+<td>RC rate for this axis (raw)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>U8</td>
+<td>Super rate for this axis (raw)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>U16</td>
+<td><code>ffCount</code></td>
+</tr>
+<tr>
+<td>17</td>
+<td>S16</td>
+<td><code>ffGain</code> × 1000</td>
+</tr>
+<tr>
+<td>19</td>
+<td>S16</td>
+<td><code>ffCorr</code> × 1000</td>
+</tr>
+<tr>
+<td>21</td>
+<td>U16</td>
+<td><code>ffLagMs</code></td>
+</tr>
+<tr>
+<td>23</td>
+<td>3 × (S16, U16)</td>
+<td>Setpoint bands 40–100, 100–200, 200+: gain × 1000, count</td>
+</tr>
+<tr>
+<td>35</td>
+<td>3 × (S16, U16)</td>
+<td>Collective bands &lt;25%, 25–50%, 50%+: gain × 1000, count</td>
+</tr>
+<tr>
+<td>47</td>
+<td>U16</td>
+<td><code>fullCount</code></td>
+</tr>
+<tr>
+<td>49</td>
+<td>U16</td>
+<td><code>fullSatCount</code></td>
+</tr>
+<tr>
+<td>51</td>
+<td>S16</td>
+<td><code>fullRatio</code> × 1000</td>
+</tr>
+<tr>
+<td>53</td>
+<td>U16</td>
+<td><code>fullMaxRate</code> (deg/s)</td>
+</tr>
+<tr>
+<td>55</td>
+<td>U16</td>
+<td><code>releases</code></td>
+</tr>
+<tr>
+<td>57</td>
+<td>U16</td>
+<td><code>bigRebounds</code></td>
+</tr>
+<tr>
+<td>59</td>
+<td>S16</td>
+<td><code>meanRebound</code> × 1000</td>
+</tr>
+<tr>
+<td>61</td>
+<td>S16</td>
+<td><code>meanOvershoot</code> × 1000</td>
+</tr>
+<tr>
+<td>63</td>
+<td>S16</td>
+<td><code>meanCounter</code> × 1000</td>
+</tr>
+<tr>
+<td>65</td>
+<td>S16</td>
+<td><code>meanIterm</code> × 1000</td>
+</tr>
+</tbody>
+</table>
+<p>The tune values at offsets 5–14 are the settings the numbers belong to, so a
+client can work out new values without reading the profiles first. The radio
+refuses a reply of any other length or version rather than guess at it.</p>
+<h2 id="radio-capturing-each-flight">Radio: capturing each flight<a class="headerlink" href="#radio-capturing-each-flight" title="Permanent link">&para;</a></h2>
+<p>The background task captures every flight, whether or not the Tune Advisor
+page is open. It only runs when the flight controller reports firmware
+4.7.0 or newer (the planned first release with the feature); until the
+version is known it sends nothing.</p>
+<p>On each <strong>disarm</strong>:</p>
+<ol>
+<li>Wait <strong>5 s</strong> (the flight-stats sync goes first).</li>
+<li>Read roll, then pitch, then yaw, with <strong>2 s</strong> between one answer and the
+   next request. Over S.Port and FBUS each reply takes about 15 telemetry
+   frames, so the gaps keep sensors updating.</li>
+<li>If a read fails, ask again for that axis only after <strong>5 s</strong>; axes already
+   read are kept. Each read is sent at most 3 times. After <strong>3</strong> link errors
+   the capture stops until the next disarm. The flight controller still holds
+   the numbers, so that disarm saves them.</li>
+<li>If the three replies report different flight times, the flight controller
+   restarted or flew between reads, and the capture starts again.</li>
+<li>Save the three axes as one flight, unless the flight time is 0 (no valid
+   flight) or the same as the last flight saved for this model (the previous
+   clear never arrived and nothing new was flown).</li>
+<li>Send <code>MSP2_CLEAR_TUNE_ADVISOR</code>, so the next flight is measured on its own.</li>
+</ol>
+<p>Arming during a capture abandons it. The flight controller was not cleared,
+so on the same tune the next disarm saves both flights as one; on a changed
+tune the firmware resets at arming and the earlier flight is lost. A disarm
+during a link loss is captured on reconnect, as long
+as the flight controller was not powered off.</p>
+<h3 id="files-on-the-radio">Files on the radio<a class="headerlink" href="#files-on-the-radio" title="Permanent link">&para;</a></h3>
+<p>All under <code>LOGS:/rfsuite/tune/&lt;mcuId&gt;/</code>, where <code>&lt;mcuId&gt;</code> is the flight
+controller's ID (the same one that names the flight log folders):</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>history.csv</code></td>
+<td>One row per axis per flight, newest last. Only the last <strong>5 flights</strong> are kept. Columns: <code>date</code>, <code>flight_seconds</code>, <code>axis</code>, then every reply field in the order above (<code>p</code>, <code>f</code>, <code>b</code>, <code>relax_cutoff</code>, <code>rates_type</code>, <code>rc_rate</code>, <code>s_rate</code>, <code>ff_count</code>, …, <code>mean_iterm</code>). A file with a different header is started again.</td>
+</tr>
+<tr>
+<td><code>logs.ini</code></td>
+<td>The model name.</td>
+</tr>
+<tr>
+<td><code>changes.csv</code></td>
+<td>Every value <strong>Save</strong> wrote: <code>date,axis,setting,from,to</code>, raw values as the flight controller stores them. Appended, never trimmed, never erased by the page.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="combining-flights">Combining flights<a class="headerlink" href="#combining-flights" title="Permanent link">&para;</a></h3>
+<p>For each axis separately, the page starts from the newest flight and goes
+back up to 5 flights, stopping at the first flight whose <strong>tune</strong> on that axis
+differs from the newest one. The tune is: P, F, B, Iterm Relax Cutoff, rate
+type, RC rate and super rate for that axis.</p>
+<ul>
+<li>Counts are added (<code>ffCount</code>, band counts, <code>fullCount</code>, <code>fullSatCount</code>,
+  <code>releases</code>, <code>bigRebounds</code>, seconds).</li>
+<li><code>ffGain</code>, <code>ffCorr</code> and <code>ffLagMs</code> are averaged weighted by <code>ffCount</code>; each
+  band's gain by its count; <code>fullRatio</code> by <code>fullCount</code>; the four stop means by
+  <code>releases</code>.</li>
+<li><code>fullMaxRate</code> is the highest of the flights.</li>
+</ul>
+<p>The firmware's gains are weighted by setpoint² within a flight, so the
+combined response is a close estimate. The stop figures combine exactly.</p>
+<h2 id="radio-the-advice-rules">Radio: the advice rules<a class="headerlink" href="#radio-the-advice-rules" title="Permanent link">&para;</a></h2>
+<p>All rules work per axis, on the combined numbers. At most <strong>3 changes</strong> and 3
+reasons are shown; a change and its reason are added together or not at all.</p>
+<h3 id="thresholds">Thresholds<a class="headerlink" href="#thresholds" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Response data needed</td>
+<td><code>ffCount</code> ≥ 1000 (10 s)</td>
+<td>Judging the response at all</td>
+</tr>
+<tr>
+<td>Consistent enough</td>
+<td><code>ffCorr</code> ≥ 0.85</td>
+<td>Judging the response at all</td>
+</tr>
+<tr>
+<td>Too fast / too slow</td>
+<td><code>ffGain</code> &gt; 1.15 / &lt; 0.85</td>
+<td>F and rate change</td>
+</tr>
+<tr>
+<td>F step limit</td>
+<td>±20% per step</td>
+<td>F change</td>
+</tr>
+<tr>
+<td>Full stick data needed</td>
+<td><code>fullCount</code> ≥ 100</td>
+<td>Full-stick rate change</td>
+</tr>
+<tr>
+<td>Cyclic at its limit</td>
+<td><code>fullSatCount</code> ≥ 50% of <code>fullCount</code></td>
+<td>Full-stick rate change</td>
+</tr>
+<tr>
+<td>Rate not reached</td>
+<td><code>fullMaxRate</code> &lt; 80% of the rate asked</td>
+<td>Full-stick rate change</td>
+</tr>
+<tr>
+<td>Stops needed</td>
+<td><code>releases</code> ≥ 10</td>
+<td>Judging stops at all</td>
+</tr>
+<tr>
+<td>Bounce too big</td>
+<td><code>meanRebound</code> ≥ 0.12</td>
+<td>Stop changes</td>
+</tr>
+<tr>
+<td>I-term pushing back</td>
+<td><code>meanIterm</code> ≥ 0.03</td>
+<td>Iterm Relax Cutoff change</td>
+</tr>
+<tr>
+<td>Collective fact</td>
+<td>both outer bands ≥ 300 samples, spread ≥ 25%</td>
+<td>Information only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h3>
+<p>Checked in this order:</p>
+<ol>
+<li><code>ffCount</code> &lt; 1000: <strong>Needs more flying</strong> (shown as a percentage of 1000).
+   The page asks for rolls, flips or pirouettes. No change.</li>
+<li><code>ffCorr</code> &lt; 0.85: <strong>Too uneven to judge</strong>. No change.</li>
+<li>
+<p><code>ffGain</code> above 1.15 or below 0.85, and F &gt; 0: change <strong>F and the rates
+   together</strong>:</p>
+<ul>
+<li>new F = round(F × clamp(1 / <code>ffGain</code>, 0.8, 1.2)), limited to 1–1000</li>
+<li>rate factor k = old F / new F</li>
+<li>each rate value that scales the curve linearly (table below) becomes
+  round(raw × k), limited to 1–255</li>
+</ul>
+<p>F × rate is what the pilot feels at the stick, so it stays the same; the
+setpoint now matches what the heli does. With F = 0 on the axis (common on
+yaw) there is no F advice: the PID gains set the response.
+4. Otherwise the response matches. Then, on <strong>roll and pitch only</strong>, if the
+   full-stick conditions above all hold, the rates are scaled by
+   k = <code>fullMaxRate</code> / rate asked, so full stick asks for what the heli can
+   reach.</p>
+</li>
+</ol>
+<p>Rate values scaled, by rate type:</p>
+<table>
+<thead>
+<tr>
+<th>Rate type</th>
+<th>Values scaled</th>
+<th>Max rate asked at full stick</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Actual</td>
+<td>RC rate (centre sensitivity) and super rate (max rate)</td>
+<td>max(RC rate, super rate) × 10 deg/s</td>
+</tr>
+<tr>
+<td>Quick</td>
+<td>RC rate and super rate (max rate)</td>
+<td>max(super rate × 10, RC rate × 2) deg/s</td>
+</tr>
+<tr>
+<td>Rotorflight</td>
+<td>RC rate only (super rate is the curve shape)</td>
+<td>RC rate × 5 deg/s</td>
+</tr>
+<tr>
+<td>Betaflight, Raceflight, KISS, None</td>
+<td>None: the page shows "all rates about N% higher/lower"</td>
+<td>Not known: no full-stick advice</td>
+</tr>
+</tbody>
+</table>
+<p>For the last group the curve cannot be scaled exactly, so the rate change is
+shown as a percentage only and <strong>not</strong> written. The F change that goes with
+it is not written either, because F alone would change the stick feel.</p>
+<h3 id="stops">Stops<a class="headerlink" href="#stops" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>releases</code> &lt; 10: <strong>Needs more stops</strong>. No change.</li>
+<li><code>meanRebound</code> &lt; 0.12: shown as the bounce-back percentage. No change.</li>
+<li><code>meanRebound</code> ≥ 0.12, first matching case:<ul>
+<li>I-term pushing back (<code>meanIterm</code> ≥ 0.03) and Iterm Relax Cutoff &gt; 1, and
+  room for a change: new cutoff = round(cutoff × 0.8), limited to
+  1 … (cutoff − 1). A lower cutoff relaxes the I-term more.</li>
+<li>The response is still off (step 3 above applies) and F &gt; 0: reason only,
+  "fix F first".</li>
+<li>Otherwise, with room for a change: new P = round(P × 1.2), limited to
+  (P + 1) … 1000. The page also mentions B as an alternative but never
+  changes B.</li>
+</ul>
+</li>
+</ol>
+<h3 id="collective-fact">Collective fact<a class="headerlink" href="#collective-fact" title="Permanent link">&para;</a></h3>
+<p>If the response is judged and both the low and high collective bands have at
+least 300 samples, the larger band gain / smaller band gain is computed. At
+1.25 or more the page adds a reason such as "It turns 30% faster at high
+collective than at low". This is information only and is the first reason
+dropped when there is no room.</p>
+<h2 id="radio-what-save-writes">Radio: what Save writes<a class="headerlink" href="#radio-what-save-writes" title="Permanent link">&para;</a></h2>
+<p><strong>Save</strong> writes the changes for the <strong>axis on screen only</strong>. These are the
+only parameters it can ever change:</p>
+<table>
+<thead>
+<tr>
+<th>Setting (as the page names it)</th>
+<th>CLI parameter</th>
+<th>MSP message, field</th>
+<th>Accepted range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PIDs &gt; <em>axis</em> &gt; P</td>
+<td><code>roll_p_gain</code>, <code>pitch_p_gain</code>, <code>yaw_p_gain</code></td>
+<td><code>MSP_SET_PID_TUNING</code> (202), <code>&lt;axis&gt;_p</code></td>
+<td>0–1000</td>
+</tr>
+<tr>
+<td>PIDs &gt; <em>axis</em> &gt; F</td>
+<td><code>roll_f_gain</code>, <code>pitch_f_gain</code>, <code>yaw_f_gain</code></td>
+<td><code>MSP_SET_PID_TUNING</code> (202), <code>&lt;axis&gt;_f</code></td>
+<td>0–1000</td>
+</tr>
+<tr>
+<td>Advanced &gt; PID Controller &gt; Iterm Relax Cutoff &gt; <em>axis</em></td>
+<td><code>iterm_relax_cutoff</code> (one value per axis)</td>
+<td><code>MSP_SET_PID_PROFILE</code> (95), <code>iterm_relax_cutoff_&lt;0-2&gt;</code></td>
+<td>1–100</td>
+</tr>
+<tr>
+<td>Rates &gt; <em>axis</em> &gt; RC rate / centre sensitivity</td>
+<td><code>roll_rc_rate</code>, <code>pitch_rc_rate</code>, <code>yaw_rc_rate</code></td>
+<td><code>MSP_SET_RC_TUNING</code> (204), <code>rcRates_&lt;1-3&gt;</code></td>
+<td>1–255</td>
+</tr>
+<tr>
+<td>Rates &gt; <em>axis</em> &gt; Rate / max rate</td>
+<td><code>roll_srate</code>, <code>pitch_srate</code>, <code>yaw_srate</code></td>
+<td><code>MSP_SET_RC_TUNING</code> (204), <code>rates_&lt;1-3&gt;</code></td>
+<td>1–255</td>
+</tr>
+</tbody>
+</table>
+<p>All of them belong to the <strong>active</strong> PID or rate profile. Save never changes
+I, D, B, O, expo, rate type, collective rates, filters, governor or any other
+setting, and never touches another axis or profile.</p>
+<h3 id="the-write-sequence">The write sequence<a class="headerlink" href="#the-write-sequence" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Confirm.</strong> The dialog lists every change exactly as the page shows it.</li>
+<li><strong>Read</strong> <code>MSP_PID_TUNING</code> (112), <code>MSP_PID_PROFILE</code> (94) and
+   <code>MSP_RC_TUNING</code> (111). A failed read, or a reply too short to hold every
+   field, stops here with nothing changed.</li>
+<li><strong>Check</strong>, and stop with nothing changed if any of these fail:<ul>
+<li>the heli is disarmed;</li>
+<li>the active PID and rate profile are the same as when Save was pressed;</li>
+<li>P, F, B, Iterm Relax Cutoff, rate type, RC rate and super rate on that
+  axis are exactly the values of the newest flight the advice came from
+  (so a hand edit, a profile switch or advice already applied stops it);</li>
+<li>every value about to change still holds its expected old value, and
+  every new value is in range.</li>
+</ul>
+</li>
+<li><strong>Write</strong> only the messages that contain a change, in the order PID tuning,
+   PID profile, RC tuning. Each is a full-message write: every other field is
+   sent back exactly as it was read in step 2.</li>
+<li><strong>Save</strong> with <code>MSP_EEPROM_WRITE</code> (250).</li>
+<li><strong>Verify</strong>: read all three messages again and check each changed field
+   holds its new value.</li>
+<li>Append each change to <code>changes.csv</code>.</li>
+</ol>
+<p>If a write fails, nothing has been saved to EEPROM, and restarting the flight
+controller undoes any part already sent. If the EEPROM save fails, the
+changes are active until the next restart.</p>
+<p>The saved flights are kept. Because the tune changed, the next flight starts
+a new combination on the page, and the firmware resets its statistics when
+it next arms.</p>
+<h2 id="clearing">Clearing<a class="headerlink" href="#clearing" title="Permanent link">&para;</a></h2>
+<p>The page's clear button deletes <code>history.csv</code> for the model and, when the
+firmware supports it, sends <code>MSP2_CLEAR_TUNE_ADVISOR</code>. <code>changes.csv</code> and
+<code>logs.ini</code> are kept.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../smartfuel/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SmartFuel Internals">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                SmartFuel Internals
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../hardware-debugging/" class="md-footer__link md-footer__link--next" aria-label="Next: Hardware Debugging">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Hardware Debugging
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rotorflight" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/FyfMF4RwSA" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.rotorflight.org/" target="_blank" rel="noopener" title="www.rotorflight.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "stable", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../../javascripts/gear-calc.js"></script>
+      
+    
+  </body>
+</html>
