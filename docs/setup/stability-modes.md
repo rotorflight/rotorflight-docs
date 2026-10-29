@@ -1,6 +1,6 @@
 # Stability Modes
 
-Normally a helicopter flies in *rate* (acro) mode: centring the sticks stops
+Normally a helicopter flies in *acro* mode: centring the sticks stops
 the rotation, but it doesn't level the helicopter. Rotorflight also has
 self-levelling modes, using the accelerometer:
 
