@@ -1,6 +1,6 @@
 # Tune Advisor
 
-The Tune Advisor tells you how your heli answers the sticks and what to change next. While you fly in rate
+The Tune Advisor tells you how your heli answers the sticks and what to change next. While you fly in acro
 mode, the flight controller measures each axis. Each time you disarm, the radio saves those measurements. The
 page combines your last few flights and suggests one change at a time for each axis. **Save** can write that
 change to the flight controller for you.
@@ -152,6 +152,8 @@ or a head change, or after an in-flight adjustment.
 
 ## See also
 
+- [Tune Advisor Internals](../../contributing/tech/tune-advisor.md): the exact measurements,
+  thresholds and formulas, and every parameter **Save** can write.
 - [Profiles: PID Controller Gains](../../configurator/tabs/profiles.md#pid-controller-gains) and
   [PID Controller Settings](../../configurator/tabs/profiles.md#pid-controller-settings).
 - [Rates](../../configurator/tabs/rates.md#rates).
