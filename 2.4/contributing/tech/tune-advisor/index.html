@@ -5401,11 +5401,13 @@ by an adjustment function) is not noticed until the next arm.</p>
 </tr>
 </tbody>
 </table>
-<p>One axis per request keeps the reply (71 bytes) small enough for MSP over
-telemetry. Firmware without the feature answers with an MSP error.</p>
-<p>Reply, payload version 2. Ratios are signed 16-bit × 1000; counts saturate at
-65535; all values little-endian. Version 1 (67 bytes) is the same without the
-two shake fields at the end.</p>
+<p>One axis per request. The reply is 51 bytes: the most one CRSF frame carries
+(a frame holds 58 bytes after the 6-byte MSP header, but the firmware sends a
+reply that exactly fills one as two), and 12 S.Port/FBUS frames. Firmware without the
+feature answers with an MSP error.</p>
+<p>Reply, payload version 3. Each value takes as few bytes as the advice needs:
+a scaled value is stored as value × scale and saturates at its byte's range;
+counts saturate at 65535; all values little-endian.</p>
 <table>
 <thead>
 <tr>
@@ -5418,12 +5420,12 @@ two shake fields at the end.</p>
 <tr>
 <td>0</td>
 <td>U8</td>
-<td>Payload version (2)</td>
+<td>Payload version (3)</td>
 </tr>
 <tr>
 <td>1</td>
 <td>U8</td>
-<td>Collecting now (1 = the current sample is valid)</td>
+<td>Flags: bits 0–1 axis, bit 2 collecting now (1 = the current sample is valid), bits 3–5 rate type (current rate profile)</td>
 </tr>
 <tr>
 <td>2</td>
@@ -5432,140 +5434,122 @@ two shake fields at the end.</p>
 </tr>
 <tr>
 <td>4</td>
-<td>U8</td>
-<td>Axis</td>
+<td>U32</td>
+<td>P, F and B gains (current PID profile), 10 bits each: P in bits 0–9, F in 10–19, B in 20–29</td>
 </tr>
 <tr>
-<td>5</td>
-<td>U16</td>
-<td>P gain (current PID profile)</td>
-</tr>
-<tr>
-<td>7</td>
-<td>U16</td>
-<td>F gain</td>
-</tr>
-<tr>
-<td>9</td>
-<td>U16</td>
-<td>B gain</td>
-</tr>
-<tr>
-<td>11</td>
+<td>8</td>
 <td>U8</td>
 <td>Iterm Relax Cutoff for this axis</td>
 </tr>
 <tr>
-<td>12</td>
-<td>U8</td>
-<td>Rate type (current rate profile)</td>
-</tr>
-<tr>
-<td>13</td>
+<td>9</td>
 <td>U8</td>
 <td>RC rate for this axis (raw)</td>
 </tr>
 <tr>
-<td>14</td>
+<td>10</td>
 <td>U8</td>
 <td>Super rate for this axis (raw)</td>
 </tr>
 <tr>
-<td>15</td>
+<td>11</td>
 <td>U16</td>
 <td><code>ffCount</code></td>
 </tr>
 <tr>
-<td>17</td>
-<td>S16</td>
-<td><code>ffGain</code> × 1000</td>
+<td>13</td>
+<td>U8</td>
+<td><code>ffGain</code> × 64 (0–3.98)</td>
 </tr>
 <tr>
-<td>19</td>
-<td>S16</td>
-<td><code>ffCorr</code> × 1000</td>
+<td>14</td>
+<td>S8</td>
+<td><code>ffCorr</code> × 100</td>
 </tr>
 <tr>
-<td>21</td>
-<td>U16</td>
+<td>15</td>
+<td>U8</td>
 <td><code>ffLagMs</code></td>
 </tr>
 <tr>
-<td>23</td>
-<td>3 × (S16, U16)</td>
-<td>Setpoint bands 40–100, 100–200, 200+: gain × 1000, count</td>
+<td>16</td>
+<td>3 × (U8, U16)</td>
+<td>Setpoint bands 40–100, 100–200, 200+: gain × 64, count</td>
 </tr>
 <tr>
-<td>35</td>
-<td>3 × (S16, U16)</td>
-<td>Collective bands &lt;25%, 25–50%, 50%+: gain × 1000, count</td>
+<td>25</td>
+<td>3 × (U8, U16)</td>
+<td>Collective bands &lt;25%, 25–50%, 50%+: gain × 64, count</td>
 </tr>
 <tr>
-<td>47</td>
+<td>34</td>
 <td>U16</td>
 <td><code>fullCount</code></td>
 </tr>
 <tr>
-<td>49</td>
+<td>36</td>
 <td>U16</td>
 <td><code>fullSatCount</code></td>
 </tr>
 <tr>
-<td>51</td>
-<td>S16</td>
-<td><code>fullRatio</code> × 1000</td>
+<td>38</td>
+<td>U8</td>
+<td><code>fullRatio</code> × 100</td>
 </tr>
 <tr>
-<td>53</td>
-<td>U16</td>
-<td><code>fullMaxRate</code> (deg/s)</td>
+<td>39</td>
+<td>U8</td>
+<td><code>fullMaxRate</code> in steps of 10 deg/s</td>
 </tr>
 <tr>
-<td>55</td>
+<td>40</td>
 <td>U16</td>
 <td><code>releases</code></td>
 </tr>
 <tr>
-<td>57</td>
-<td>U16</td>
-<td><code>bigRebounds</code></td>
+<td>42</td>
+<td>U8</td>
+<td><code>bigRebounds</code>, saturating at 255 (no advice rule reads it; the Ethos suite clears the statistics after each flight)</td>
 </tr>
 <tr>
-<td>59</td>
+<td>43</td>
+<td>U8</td>
+<td><code>meanRebound</code> × 100</td>
+</tr>
+<tr>
+<td>44</td>
+<td>U8</td>
+<td><code>meanOvershoot</code> × 64</td>
+</tr>
+<tr>
+<td>45</td>
+<td>U8</td>
+<td><code>meanCounter</code> × 100</td>
+</tr>
+<tr>
+<td>46</td>
 <td>S16</td>
-<td><code>meanRebound</code> × 1000</td>
+<td><code>meanIterm</code> × 1000 (16-bit: it needs both the range and the 0.01s)</td>
 </tr>
 <tr>
-<td>61</td>
-<td>S16</td>
-<td><code>meanOvershoot</code> × 1000</td>
-</tr>
-<tr>
-<td>63</td>
-<td>S16</td>
-<td><code>meanCounter</code> × 1000</td>
-</tr>
-<tr>
-<td>65</td>
-<td>S16</td>
-<td><code>meanIterm</code> × 1000</td>
-</tr>
-<tr>
-<td>67</td>
+<td>48</td>
 <td>U16</td>
 <td><code>shakeCount</code></td>
 </tr>
 <tr>
-<td>69</td>
-<td>U16</td>
-<td><code>shakeRms</code> × 10 (deg/s)</td>
+<td>50</td>
+<td>U8</td>
+<td><code>shakeRms</code> × 4 (0–63.75 deg/s)</td>
 </tr>
 </tbody>
 </table>
-<p>The tune values at offsets 5–14 are the settings the numbers belong to, so a
-client can work out new values without reading the profiles first. The radio
-reads version 1 (67 bytes, its shake read as no data) and version 2 (71
-bytes), and refuses any other length or version rather than guess at it.</p>
+<p>The tune values at offsets 1 and 4–10 are the settings the numbers belong to,
+so a client can work out new values without reading the profiles first. The
+radio reads version 3 only and refuses any other length or version rather
+than guess at it. Versions 1 (67 bytes) and 2 (71 bytes, adding the shake
+fields) stored every ratio as a signed 16-bit value × 1000 and were never in
+a firmware release.</p>
 <h2 id="radio-capturing-each-flight">Radio: capturing each flight<a class="headerlink" href="#radio-capturing-each-flight" title="Permanent link">&para;</a></h2>
 <p>The background task captures every flight, whether or not the Tune Advisor
 page is open. It only runs when the flight controller reports firmware
@@ -5730,8 +5714,7 @@ the only change for the axis is less P: with P &gt; 1 and room for a change,
 new P = min(round(P / 1.2), P − 1), at least 1, with the reason "Shakes N
 deg/s at centre stick. Less P calms it." The response figure is still shown,
 but no F, rate or stop change is given: an oscillation reads as bounce-back
-after every stop and spoils the F match, so those rules would ask for more P.
-Firmware with payload version 1 reports no shake, so this never applies.</p>
+after every stop and spoils the F match, so those rules would ask for more P.</p>
 <h3 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h3>
 <p>Checked in this order:</p>
 <ol>
