@@ -4525,6 +4525,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shake-stick-centred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shake (stick centred)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#accumulation-and-reset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4607,6 +4618,17 @@
     <span class="md-ellipsis">
       
         Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shake
       
     </span>
   </a>
@@ -4920,6 +4942,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#shake-stick-centred" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shake (stick centred)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#accumulation-and-reset" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5002,6 +5035,17 @@
     <span class="md-ellipsis">
       
         Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shake
       
     </span>
   </a>
@@ -5304,6 +5348,20 @@ ran out of travel.</p>
 <p>A small counter-output with the I-term near zero points at the airframe
 rebounding on its own (not enough damping). A positive I-term points at the
 I-term pushing the heli back.</p>
+<h3 id="shake-stick-centred">Shake (stick centred)<a class="headerlink" href="#shake-stick-centred" title="Permanent link">&para;</a></h3>
+<p>An oscillating loop (usually P too high) also leaves an opposite-sign peak
+after every stop, so on its own it reads as rebound. The shake figure tells
+the two apart. Per axis, on valid samples only:</p>
+<ul>
+<li>The gyro is high-passed at <strong>2 Hz</strong> (first order at 100 Hz, k = 0.118), so
+  slow drift is left out.</li>
+<li>A sample counts while |setpoint| is inside the centre band (5 deg/s) and
+  the stick has been centred for at least <strong>30 samples (0.3 s)</strong>, so the stop
+  has settled.</li>
+<li><code>shakeCount</code> is the number of samples counted and <code>shakeRms</code> the RMS of the
+  high-passed gyro over them, in deg/s.</li>
+</ul>
+<p>A tuned heli holds a few deg/s there; an oscillating one tens.</p>
 <h3 id="accumulation-and-reset">Accumulation and reset<a class="headerlink" href="#accumulation-and-reset" title="Permanent link">&para;</a></h3>
 <p>Everything accumulates in RAM across flights until it is reset. It is <strong>not</strong>
 saved and is lost at power-off. It is reset when:</p>
@@ -5343,10 +5401,11 @@ by an adjustment function) is not noticed until the next arm.</p>
 </tr>
 </tbody>
 </table>
-<p>One axis per request keeps the reply (67 bytes) small enough for MSP over
+<p>One axis per request keeps the reply (71 bytes) small enough for MSP over
 telemetry. Firmware without the feature answers with an MSP error.</p>
-<p>Reply, payload version 1. Ratios are signed 16-bit × 1000; counts saturate at
-65535; all values little-endian.</p>
+<p>Reply, payload version 2. Ratios are signed 16-bit × 1000; counts saturate at
+65535; all values little-endian. Version 1 (67 bytes) is the same without the
+two shake fields at the end.</p>
 <table>
 <thead>
 <tr>
@@ -5359,7 +5418,7 @@ telemetry. Firmware without the feature answers with an MSP error.</p>
 <tr>
 <td>0</td>
 <td>U8</td>
-<td>Payload version (1)</td>
+<td>Payload version (2)</td>
 </tr>
 <tr>
 <td>1</td>
@@ -5491,11 +5550,22 @@ telemetry. Firmware without the feature answers with an MSP error.</p>
 <td>S16</td>
 <td><code>meanIterm</code> × 1000</td>
 </tr>
+<tr>
+<td>67</td>
+<td>U16</td>
+<td><code>shakeCount</code></td>
+</tr>
+<tr>
+<td>69</td>
+<td>U16</td>
+<td><code>shakeRms</code> × 10 (deg/s)</td>
+</tr>
 </tbody>
 </table>
 <p>The tune values at offsets 5–14 are the settings the numbers belong to, so a
 client can work out new values without reading the profiles first. The radio
-refuses a reply of any other length or version rather than guess at it.</p>
+reads version 1 (67 bytes, its shake read as no data) and version 2 (71
+bytes), and refuses any other length or version rather than guess at it.</p>
 <h2 id="radio-capturing-each-flight">Radio: capturing each flight<a class="headerlink" href="#radio-capturing-each-flight" title="Permanent link">&para;</a></h2>
 <p>The background task captures every flight, whether or not the Tune Advisor
 page is open. It only runs when the flight controller reports firmware
@@ -5536,7 +5606,7 @@ controller's ID (the same one that names the flight log folders):</p>
 <tbody>
 <tr>
 <td><code>history.csv</code></td>
-<td>One row per axis per flight, newest last. Only the last <strong>5 flights</strong> are kept. Columns: <code>date</code>, <code>flight_seconds</code>, <code>axis</code>, then every reply field in the order above (<code>p</code>, <code>f</code>, <code>b</code>, <code>relax_cutoff</code>, <code>rates_type</code>, <code>rc_rate</code>, <code>s_rate</code>, <code>ff_count</code>, …, <code>mean_iterm</code>). A file with a different header is started again.</td>
+<td>One row per axis per flight, newest last. Only the last <strong>5 flights</strong> are kept. Columns: <code>date</code>, <code>flight_seconds</code>, <code>axis</code>, then every reply field in the order above (<code>p</code>, <code>f</code>, <code>b</code>, <code>relax_cutoff</code>, <code>rates_type</code>, <code>rc_rate</code>, <code>s_rate</code>, <code>ff_count</code>, …, <code>mean_iterm</code>, <code>shake_count</code>, <code>shake_rms</code>). A file with a different header is started again.</td>
 </tr>
 <tr>
 <td><code>logs.ini</code></td>
@@ -5560,12 +5630,18 @@ type, RC rate and super rate for that axis.</p>
   band's gain by its count; <code>fullRatio</code> by <code>fullCount</code>; the four stop means by
   <code>releases</code>.</li>
 <li><code>fullMaxRate</code> is the highest of the flights.</li>
+<li><code>shakeCount</code> is added; <code>shakeRms</code> combines exactly, as the square root of
+  the mean of the squares weighted by <code>shakeCount</code>.</li>
 </ul>
 <p>The firmware's gains are weighted by setpoint² within a flight, so the
 combined response is a close estimate. The stop figures combine exactly.</p>
 <h2 id="radio-the-advice-rules">Radio: the advice rules<a class="headerlink" href="#radio-the-advice-rules" title="Permanent link">&para;</a></h2>
 <p>All rules work per axis, on the combined numbers. At most <strong>3 changes</strong> and 3
 reasons are shown; a change and its reason are added together or not at all.</p>
+<p>A change is never clamped into the setting's range. If a new value would fall
+outside what the flight controller accepts, that change is not suggested, nor
+any change tied to it (F and its rates go together or not at all), and the
+reasons say "The change needed goes past a setting's limit" once.</p>
 <h3 id="thresholds">Thresholds<a class="headerlink" href="#thresholds" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -5612,6 +5688,11 @@ reasons are shown; a change and its reason are added together or not at all.</p>
 <td>Full-stick rate change</td>
 </tr>
 <tr>
+<td>Full-stick step limit</td>
+<td>−20% per step</td>
+<td>Full-stick rate change</td>
+</tr>
+<tr>
 <td>Stops needed</td>
 <td><code>releases</code> ≥ 10</td>
 <td>Judging stops at all</td>
@@ -5622,9 +5703,19 @@ reasons are shown; a change and its reason are added together or not at all.</p>
 <td>Stop changes</td>
 </tr>
 <tr>
+<td>Shaking</td>
+<td><code>shakeCount</code> ≥ 500 (5 s) and <code>shakeRms</code> ≥ 15 deg/s</td>
+<td>P down; no other change on the axis</td>
+</tr>
+<tr>
 <td>I-term pushing back</td>
 <td><code>meanIterm</code> ≥ 0.03</td>
 <td>Iterm Relax Cutoff change</td>
+</tr>
+<tr>
+<td>P raise limit</td>
+<td>1.5 × the pilot's own P</td>
+<td>P change</td>
 </tr>
 <tr>
 <td>Collective fact</td>
@@ -5633,6 +5724,14 @@ reasons are shown; a change and its reason are added together or not at all.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="shake">Shake<a class="headerlink" href="#shake" title="Permanent link">&para;</a></h3>
+<p>Checked first. When the axis is shaking, <em>Stops</em> shows "Shaking N deg/s" and
+the only change for the axis is less P: with P &gt; 1 and room for a change,
+new P = min(round(P / 1.2), P − 1), at least 1, with the reason "Shakes N
+deg/s at centre stick. Less P calms it." The response figure is still shown,
+but no F, rate or stop change is given: an oscillation reads as bounce-back
+after every stop and spoils the F match, so those rules would ask for more P.
+Firmware with payload version 1 reports no shake, so this never applies.</p>
 <h3 id="response">Response<a class="headerlink" href="#response" title="Permanent link">&para;</a></h3>
 <p>Checked in this order:</p>
 <ol>
@@ -5640,21 +5739,24 @@ reasons are shown; a change and its reason are added together or not at all.</p>
    The page asks for rolls, flips or pirouettes. No change.</li>
 <li><code>ffCorr</code> &lt; 0.85: <strong>Too uneven to judge</strong>. No change.</li>
 <li>
-<p><code>ffGain</code> above 1.15 or below 0.85, and F &gt; 0: change <strong>F and the rates
-   together</strong>:</p>
+<p><code>ffGain</code> above 1.15 or below 0.85, F &gt; 0 and the axis not shaking: change
+   <strong>F and the rates together</strong>:</p>
 <ul>
-<li>new F = round(F × clamp(1 / <code>ffGain</code>, 0.8, 1.2)), limited to 1–1000</li>
+<li>new F = round(F × clamp(1 / <code>ffGain</code>, 0.8, 1.2))</li>
 <li>rate factor k = old F / new F</li>
 <li>each rate value that scales the curve linearly (table below) becomes
-  round(raw × k), limited to 1–255</li>
+  round(raw × k)</li>
 </ul>
+<p>If new F is outside 1–1000 or a new rate value outside its range (RC rate
+1–255, super rate 0–255), neither F nor the rates are suggested.</p>
 <p>F × rate is what the pilot feels at the stick, so it stays the same; the
 setpoint now matches what the heli does. With F = 0 on the axis (common on
 yaw) there is no F advice: the PID gains set the response.
-4. Otherwise the response matches. Then, on <strong>roll and pitch only</strong>, if the
-   full-stick conditions above all hold, the rates are scaled by
-   k = <code>fullMaxRate</code> / rate asked, so full stick asks for what the heli can
-   reach.</p>
+4. Otherwise the response matches. Then, on <strong>roll and pitch only</strong> and not
+   shaking, if the full-stick conditions above all hold, the rates are scaled by
+   k = max(<code>fullMaxRate</code> / rate asked, 0.8): toward what the heli can reach,
+   at most 20% per step. A scaled value outside its range means no rate
+   change.</p>
 </li>
 </ol>
 <p>Rate values scaled, by rate type:</p>
@@ -5693,18 +5795,27 @@ yaw) there is no F advice: the PID gains set the response.
 shown as a percentage only and <strong>not</strong> written. The F change that goes with
 it is not written either, because F alone would change the stick feel.</p>
 <h3 id="stops">Stops<a class="headerlink" href="#stops" title="Permanent link">&para;</a></h3>
+<p>When the axis is shaking, see <em>Shake</em> above instead.</p>
 <ol>
 <li><code>releases</code> &lt; 10: <strong>Needs more stops</strong>. No change.</li>
 <li><code>meanRebound</code> &lt; 0.12: shown as the bounce-back percentage. No change.</li>
 <li><code>meanRebound</code> ≥ 0.12, first matching case:<ul>
 <li>I-term pushing back (<code>meanIterm</code> ≥ 0.03) and Iterm Relax Cutoff &gt; 1, and
-  room for a change: new cutoff = round(cutoff × 0.8), limited to
-  1 … (cutoff − 1). A lower cutoff relaxes the I-term more.</li>
+  room for a change: new cutoff = min(round(cutoff × 0.8), cutoff − 1),
+  given only if it is within 1–100. A lower cutoff relaxes the I-term
+  more.</li>
 <li>The response is still off (step 3 above applies) and F &gt; 0: reason only,
-  "fix F first".</li>
-<li>Otherwise, with room for a change: new P = round(P × 1.2), limited to
-  (P + 1) … 1000. The page also mentions B as an alternative but never
-  changes B.</li>
+  "fix F first". Left out when F was held back by a limit.</li>
+<li>Otherwise, with room for a change: new P = max(round(P × 1.2), P + 1).
+  It is given only if it is at most 1000 and at most 1.5 × the pilot's own
+  P (rounded down). The pilot's own P is the current P followed back
+  through <code>changes.csv</code> while each P change there ended at the value the
+  next one started from; a P set by hand breaks the chain and becomes the
+  pilot's own. Past 1.5 × the reason is "P is already N% above your
+  setting. Check the mechanics."; past 1000 it is "The change needed goes
+  past a setting's limit". The shake rule's P reductions are part of that
+  chain too. The page also mentions B as an alternative but
+  never changes B.</li>
 </ul>
 </li>
 </ol>
@@ -5755,7 +5866,7 @@ only parameters it can ever change:</p>
 <td>Rates &gt; <em>axis</em> &gt; Rate / max rate</td>
 <td><code>roll_srate</code>, <code>pitch_srate</code>, <code>yaw_srate</code></td>
 <td><code>MSP_SET_RC_TUNING</code> (204), <code>rates_&lt;1-3&gt;</code></td>
-<td>1–255</td>
+<td>0–255</td>
 </tr>
 </tbody>
 </table>

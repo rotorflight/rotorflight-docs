@@ -4851,6 +4851,8 @@ Time in Angle, Horizon, Trainer, Altitude hold, Rescue, GPS rescue or failsafe i
   shows how far along it is.</li>
 <li><strong>Stops</strong> needs 10 stick releases: move the stick, then let it come back to centre. Centre the stick after each
   input instead of reversing straight through.</li>
+<li><strong>Shake</strong> is measured while the stick is centred. It needs about five seconds of centred stick on that axis,
+  which normal flying gives on its own.</li>
 </ul>
 <p>One flight may be enough, or it may take a few. Fly your normal acro-mode flying with clear inputs and releases
 on each axis.</p>
@@ -4884,17 +4886,29 @@ on its own.</p>
 <p>The flight controller only measures. The advice is worked out on the radio, so it can be improved without a
 firmware update.</p>
 <ul>
+<li><strong>Shakes with the stick centred</strong> (15 deg/s or more, measured over at least 5 s of centred stick): <em>Stops</em>
+  shows <em>Shaking N deg/s</em>. Lower P by one step (P / 1.2), and nothing else for that axis until it is calm. An
+  oscillation also reads as bounce-back after every stop and spoils the response figure, so the other rules
+  would be misled. If lowering P does not calm it, check D and the linkages. Needs firmware that reports shake;
+  older firmware never shows it.</li>
 <li><strong>Turns faster or slower than asked</strong> (more than 15% off): change F and the rates by the same amount in
   opposite directions. The stick feel stays the same, but the heli now flies the rate you ask for. One step
   changes F by at most 20%. An axis with F set to 0 (often the tail) gets no F advice.</li>
 <li><strong>Full stick asks for more rate than the heli reaches</strong> (roll and pitch), with the cyclic at its limit: lower
-  the rates to what the heli reaches.</li>
+  the rates toward what the heli reaches, by at most 20% per step.</li>
 <li><strong>Stops bounce back 12% or more:</strong></li>
 <li>If the I-term pushes the heli back after the stop, lower <em>PID Controller &gt; Iterm Relax Cutoff</em> by 20%.</li>
 <li>If F does not match yet, fix F first and check again.</li>
 <li>Otherwise the controller is barely braking the stop: raise P by 20% (or add B).</li>
+<li>P is raised to at most 50% above your own P, which allows two steps. Your own P is the last one you set by
+    hand: the page works it out from <code>changes.csv</code> (see <a href="#after-applying">After applying</a>), and setting P by
+    hand starts the count again. Past that, the reasons say <em>P is already ...% above your setting. Check the
+    mechanics.</em> More P will not fix it.</li>
 <li><strong>Turns faster at high |collective| than at low</strong> (or the reverse) by 25% or more is shown as a fact, with no
   change.</li>
+<li><strong>A change would go past a setting's limit</strong>: the page does not suggest it, or any change that goes with it
+  (F is never suggested without its rates). The reasons say <em>The change needed goes past a setting's limit.</em>
+  Look for the cause outside the tune, for example the mechanics or the head speed.</li>
 </ul>
 <p>With Actual, Quick and Rotorflight rates the page gives the exact rate values. With Betaflight, Raceflight and
 KISS rates the curve cannot be scaled exactly, so it gives a percentage.</p>
