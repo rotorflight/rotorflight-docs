@@ -131,6 +131,22 @@ A small counter-output with the I-term near zero points at the airframe
 rebounding on its own (not enough damping). A positive I-term points at the
 I-term pushing the heli back.
 
+### Shake (stick centred)
+
+An oscillating loop (usually P too high) also leaves an opposite-sign peak
+after every stop, so on its own it reads as rebound. The shake figure tells
+the two apart. Per axis, on valid samples only:
+
+- The gyro is high-passed at **2 Hz** (first order at 100 Hz, k = 0.118), so
+  slow drift is left out.
+- A sample counts while |setpoint| is inside the centre band (5 deg/s) and
+  the stick has been centred for at least **30 samples (0.3 s)**, so the stop
+  has settled.
+- `shakeCount` is the number of samples counted and `shakeRms` the RMS of the
+  high-passed gyro over them, in deg/s.
+
+A tuned heli holds a few deg/s there; an oscillating one tens.
+
 ### Accumulation and reset
 
 Everything accumulates in RAM across flights until it is reset. It is **not**
@@ -154,15 +170,16 @@ by an adjustment function) is not noticed until the next arm.
 | `MSP2_GET_TUNE_ADVISOR` | `0x5F10` | Read | Request: `U8` axis (0 roll, 1 pitch, 2 yaw). Any other length or axis is an error. |
 | `MSP2_CLEAR_TUNE_ADVISOR` | `0x5F11` | Write | Empty. Resets all statistics. |
 
-One axis per request keeps the reply (67 bytes) small enough for MSP over
+One axis per request keeps the reply (71 bytes) small enough for MSP over
 telemetry. Firmware without the feature answers with an MSP error.
 
-Reply, payload version 1. Ratios are signed 16-bit × 1000; counts saturate at
-65535; all values little-endian.
+Reply, payload version 2. Ratios are signed 16-bit × 1000; counts saturate at
+65535; all values little-endian. Version 1 (67 bytes) is the same without the
+two shake fields at the end.
 
 | Offset | Type | Field |
 | --- | --- | --- |
-| 0 | U8 | Payload version (1) |
+| 0 | U8 | Payload version (2) |
 | 1 | U8 | Collecting now (1 = the current sample is valid) |
 | 2 | U16 | Seconds of valid flight |
 | 4 | U8 | Axis |
@@ -189,10 +206,13 @@ Reply, payload version 1. Ratios are signed 16-bit × 1000; counts saturate at
 | 61 | S16 | `meanOvershoot` × 1000 |
 | 63 | S16 | `meanCounter` × 1000 |
 | 65 | S16 | `meanIterm` × 1000 |
+| 67 | U16 | `shakeCount` |
+| 69 | U16 | `shakeRms` × 10 (deg/s) |
 
 The tune values at offsets 5–14 are the settings the numbers belong to, so a
 client can work out new values without reading the profiles first. The radio
-refuses a reply of any other length or version rather than guess at it.
+reads version 1 (67 bytes, its shake read as no data) and version 2 (71
+bytes), and refuses any other length or version rather than guess at it.
 
 ## Radio: capturing each flight
 
@@ -231,7 +251,7 @@ controller's ID (the same one that names the flight log folders):
 
 | File | Contents |
 | --- | --- |
-| `history.csv` | One row per axis per flight, newest last. Only the last **5 flights** are kept. Columns: `date`, `flight_seconds`, `axis`, then every reply field in the order above (`p`, `f`, `b`, `relax_cutoff`, `rates_type`, `rc_rate`, `s_rate`, `ff_count`, …, `mean_iterm`). A file with a different header is started again. |
+| `history.csv` | One row per axis per flight, newest last. Only the last **5 flights** are kept. Columns: `date`, `flight_seconds`, `axis`, then every reply field in the order above (`p`, `f`, `b`, `relax_cutoff`, `rates_type`, `rc_rate`, `s_rate`, `ff_count`, …, `mean_iterm`, `shake_count`, `shake_rms`). A file with a different header is started again. |
 | `logs.ini` | The model name. |
 | `changes.csv` | Every value **Save** wrote: `date,axis,setting,from,to`, raw values as the flight controller stores them. Appended, never trimmed, never erased by the page. |
 
@@ -248,6 +268,8 @@ type, RC rate and super rate for that axis.
   band's gain by its count; `fullRatio` by `fullCount`; the four stop means by
   `releases`.
 - `fullMaxRate` is the highest of the flights.
+- `shakeCount` is added; `shakeRms` combines exactly, as the square root of
+  the mean of the squares weighted by `shakeCount`.
 
 The firmware's gains are weighted by setpoint² within a flight, so the
 combined response is a close estimate. The stop figures combine exactly.
@@ -256,6 +278,11 @@ combined response is a close estimate. The stop figures combine exactly.
 
 All rules work per axis, on the combined numbers. At most **3 changes** and 3
 reasons are shown; a change and its reason are added together or not at all.
+
+A change is never clamped into the setting's range. If a new value would fall
+outside what the flight controller accepts, that change is not suggested, nor
+any change tied to it (F and its rates go together or not at all), and the
+reasons say "The change needed goes past a setting's limit" once.
 
 ### Thresholds
 
@@ -268,10 +295,23 @@ reasons are shown; a change and its reason are added together or not at all.
 | Full stick data needed | `fullCount` ≥ 100 | Full-stick rate change |
 | Cyclic at its limit | `fullSatCount` ≥ 50% of `fullCount` | Full-stick rate change |
 | Rate not reached | `fullMaxRate` < 80% of the rate asked | Full-stick rate change |
+| Full-stick step limit | −20% per step | Full-stick rate change |
 | Stops needed | `releases` ≥ 10 | Judging stops at all |
 | Bounce too big | `meanRebound` ≥ 0.12 | Stop changes |
+| Shaking | `shakeCount` ≥ 500 (5 s) and `shakeRms` ≥ 15 deg/s | P down; no other change on the axis |
 | I-term pushing back | `meanIterm` ≥ 0.03 | Iterm Relax Cutoff change |
+| P raise limit | 1.5 × the pilot's own P | P change |
 | Collective fact | both outer bands ≥ 300 samples, spread ≥ 25% | Information only |
+
+### Shake
+
+Checked first. When the axis is shaking, *Stops* shows "Shaking N deg/s" and
+the only change for the axis is less P: with P > 1 and room for a change,
+new P = min(round(P / 1.2), P − 1), at least 1, with the reason "Shakes N
+deg/s at centre stick. Less P calms it." The response figure is still shown,
+but no F, rate or stop change is given: an oscillation reads as bounce-back
+after every stop and spoils the F match, so those rules would ask for more P.
+Firmware with payload version 1 reports no shake, so this never applies.
 
 ### Response
 
@@ -280,20 +320,24 @@ Checked in this order:
 1. `ffCount` < 1000: **Needs more flying** (shown as a percentage of 1000).
    The page asks for rolls, flips or pirouettes. No change.
 2. `ffCorr` < 0.85: **Too uneven to judge**. No change.
-3. `ffGain` above 1.15 or below 0.85, and F > 0: change **F and the rates
-   together**:
-    - new F = round(F × clamp(1 / `ffGain`, 0.8, 1.2)), limited to 1–1000
+3. `ffGain` above 1.15 or below 0.85, F > 0 and the axis not shaking: change
+   **F and the rates together**:
+    - new F = round(F × clamp(1 / `ffGain`, 0.8, 1.2))
     - rate factor k = old F / new F
     - each rate value that scales the curve linearly (table below) becomes
-      round(raw × k), limited to 1–255
+      round(raw × k)
+
+    If new F is outside 1–1000 or a new rate value outside its range (RC rate
+    1–255, super rate 0–255), neither F nor the rates are suggested.
 
     F × rate is what the pilot feels at the stick, so it stays the same; the
     setpoint now matches what the heli does. With F = 0 on the axis (common on
     yaw) there is no F advice: the PID gains set the response.
-4. Otherwise the response matches. Then, on **roll and pitch only**, if the
-   full-stick conditions above all hold, the rates are scaled by
-   k = `fullMaxRate` / rate asked, so full stick asks for what the heli can
-   reach.
+4. Otherwise the response matches. Then, on **roll and pitch only** and not
+   shaking, if the full-stick conditions above all hold, the rates are scaled by
+   k = max(`fullMaxRate` / rate asked, 0.8): toward what the heli can reach,
+   at most 20% per step. A scaled value outside its range means no rate
+   change.
 
 Rate values scaled, by rate type:
 
@@ -310,17 +354,27 @@ it is not written either, because F alone would change the stick feel.
 
 ### Stops
 
+When the axis is shaking, see *Shake* above instead.
+
 1. `releases` < 10: **Needs more stops**. No change.
 2. `meanRebound` < 0.12: shown as the bounce-back percentage. No change.
 3. `meanRebound` ≥ 0.12, first matching case:
     - I-term pushing back (`meanIterm` ≥ 0.03) and Iterm Relax Cutoff > 1, and
-      room for a change: new cutoff = round(cutoff × 0.8), limited to
-      1 … (cutoff − 1). A lower cutoff relaxes the I-term more.
+      room for a change: new cutoff = min(round(cutoff × 0.8), cutoff − 1),
+      given only if it is within 1–100. A lower cutoff relaxes the I-term
+      more.
     - The response is still off (step 3 above applies) and F > 0: reason only,
-      "fix F first".
-    - Otherwise, with room for a change: new P = round(P × 1.2), limited to
-      (P + 1) … 1000. The page also mentions B as an alternative but never
-      changes B.
+      "fix F first". Left out when F was held back by a limit.
+    - Otherwise, with room for a change: new P = max(round(P × 1.2), P + 1).
+      It is given only if it is at most 1000 and at most 1.5 × the pilot's own
+      P (rounded down). The pilot's own P is the current P followed back
+      through `changes.csv` while each P change there ended at the value the
+      next one started from; a P set by hand breaks the chain and becomes the
+      pilot's own. Past 1.5 × the reason is "P is already N% above your
+      setting. Check the mechanics."; past 1000 it is "The change needed goes
+      past a setting's limit". The shake rule's P reductions are part of that
+      chain too. The page also mentions B as an alternative but
+      never changes B.
 
 ### Collective fact
 
@@ -341,7 +395,7 @@ only parameters it can ever change:
 | PIDs > *axis* > F | `roll_f_gain`, `pitch_f_gain`, `yaw_f_gain` | `MSP_SET_PID_TUNING` (202), `<axis>_f` | 0–1000 |
 | Advanced > PID Controller > Iterm Relax Cutoff > *axis* | `iterm_relax_cutoff` (one value per axis) | `MSP_SET_PID_PROFILE` (95), `iterm_relax_cutoff_<0-2>` | 1–100 |
 | Rates > *axis* > RC rate / centre sensitivity | `roll_rc_rate`, `pitch_rc_rate`, `yaw_rc_rate` | `MSP_SET_RC_TUNING` (204), `rcRates_<1-3>` | 1–255 |
-| Rates > *axis* > Rate / max rate | `roll_srate`, `pitch_srate`, `yaw_srate` | `MSP_SET_RC_TUNING` (204), `rates_<1-3>` | 1–255 |
+| Rates > *axis* > Rate / max rate | `roll_srate`, `pitch_srate`, `yaw_srate` | `MSP_SET_RC_TUNING` (204), `rates_<1-3>` | 0–255 |
 
 All of them belong to the **active** PID or rate profile. Save never changes
 I, D, B, O, expo, rate type, collective rates, filters, governor or any other
