@@ -199,7 +199,7 @@ counts saturate at 65535; all values little-endian.
 | 38 | U8 | `fullRatio` × 100 |
 | 39 | U8 | `fullMaxRate` in steps of 10 deg/s |
 | 40 | U16 | `releases` |
-| 42 | U8 | `bigRebounds` (counted within one flight, saturates at 255) |
+| 42 | U8 | `bigRebounds`, saturating at 255 (no advice rule reads it; the Ethos suite clears the statistics after each flight) |
 | 43 | U8 | `meanRebound` × 100 |
 | 44 | U8 | `meanOvershoot` × 64 |
 | 45 | U8 | `meanCounter` × 100 |
