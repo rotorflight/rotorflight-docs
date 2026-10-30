@@ -170,49 +170,49 @@ by an adjustment function) is not noticed until the next arm.
 | `MSP2_GET_TUNE_ADVISOR` | `0x5F10` | Read | Request: `U8` axis (0 roll, 1 pitch, 2 yaw). Any other length or axis is an error. |
 | `MSP2_CLEAR_TUNE_ADVISOR` | `0x5F11` | Write | Empty. Resets all statistics. |
 
-One axis per request keeps the reply (71 bytes) small enough for MSP over
-telemetry. Firmware without the feature answers with an MSP error.
+One axis per request. The reply is 51 bytes: the most one CRSF frame carries
+(a frame holds 58 bytes after the 6-byte MSP header, but the firmware sends a
+reply that exactly fills one as two), and 12 S.Port/FBUS frames. Firmware without the
+feature answers with an MSP error.
 
-Reply, payload version 2. Ratios are signed 16-bit × 1000; counts saturate at
-65535; all values little-endian. Version 1 (67 bytes) is the same without the
-two shake fields at the end.
+Reply, payload version 3. Each value takes as few bytes as the advice needs:
+a scaled value is stored as value × scale and saturates at its byte's range;
+counts saturate at 65535; all values little-endian.
 
 | Offset | Type | Field |
 | --- | --- | --- |
-| 0 | U8 | Payload version (2) |
-| 1 | U8 | Collecting now (1 = the current sample is valid) |
+| 0 | U8 | Payload version (3) |
+| 1 | U8 | Flags: bits 0–1 axis, bit 2 collecting now (1 = the current sample is valid), bits 3–5 rate type (current rate profile) |
 | 2 | U16 | Seconds of valid flight |
-| 4 | U8 | Axis |
-| 5 | U16 | P gain (current PID profile) |
-| 7 | U16 | F gain |
-| 9 | U16 | B gain |
-| 11 | U8 | Iterm Relax Cutoff for this axis |
-| 12 | U8 | Rate type (current rate profile) |
-| 13 | U8 | RC rate for this axis (raw) |
-| 14 | U8 | Super rate for this axis (raw) |
-| 15 | U16 | `ffCount` |
-| 17 | S16 | `ffGain` × 1000 |
-| 19 | S16 | `ffCorr` × 1000 |
-| 21 | U16 | `ffLagMs` |
-| 23 | 3 × (S16, U16) | Setpoint bands 40–100, 100–200, 200+: gain × 1000, count |
-| 35 | 3 × (S16, U16) | Collective bands <25%, 25–50%, 50%+: gain × 1000, count |
-| 47 | U16 | `fullCount` |
-| 49 | U16 | `fullSatCount` |
-| 51 | S16 | `fullRatio` × 1000 |
-| 53 | U16 | `fullMaxRate` (deg/s) |
-| 55 | U16 | `releases` |
-| 57 | U16 | `bigRebounds` |
-| 59 | S16 | `meanRebound` × 1000 |
-| 61 | S16 | `meanOvershoot` × 1000 |
-| 63 | S16 | `meanCounter` × 1000 |
-| 65 | S16 | `meanIterm` × 1000 |
-| 67 | U16 | `shakeCount` |
-| 69 | U16 | `shakeRms` × 10 (deg/s) |
+| 4 | U32 | P, F and B gains (current PID profile), 10 bits each: P in bits 0–9, F in 10–19, B in 20–29 |
+| 8 | U8 | Iterm Relax Cutoff for this axis |
+| 9 | U8 | RC rate for this axis (raw) |
+| 10 | U8 | Super rate for this axis (raw) |
+| 11 | U16 | `ffCount` |
+| 13 | U8 | `ffGain` × 64 (0–3.98) |
+| 14 | S8 | `ffCorr` × 100 |
+| 15 | U8 | `ffLagMs` |
+| 16 | 3 × (U8, U16) | Setpoint bands 40–100, 100–200, 200+: gain × 64, count |
+| 25 | 3 × (U8, U16) | Collective bands <25%, 25–50%, 50%+: gain × 64, count |
+| 34 | U16 | `fullCount` |
+| 36 | U16 | `fullSatCount` |
+| 38 | U8 | `fullRatio` × 100 |
+| 39 | U8 | `fullMaxRate` in steps of 10 deg/s |
+| 40 | U16 | `releases` |
+| 42 | U8 | `bigRebounds`, saturating at 255 (no advice rule reads it; the Ethos suite clears the statistics after each flight) |
+| 43 | U8 | `meanRebound` × 100 |
+| 44 | U8 | `meanOvershoot` × 64 |
+| 45 | U8 | `meanCounter` × 100 |
+| 46 | S16 | `meanIterm` × 1000 (16-bit: it needs both the range and the 0.01s) |
+| 48 | U16 | `shakeCount` |
+| 50 | U8 | `shakeRms` × 4 (0–63.75 deg/s) |
 
-The tune values at offsets 5–14 are the settings the numbers belong to, so a
-client can work out new values without reading the profiles first. The radio
-reads version 1 (67 bytes, its shake read as no data) and version 2 (71
-bytes), and refuses any other length or version rather than guess at it.
+The tune values at offsets 1 and 4–10 are the settings the numbers belong to,
+so a client can work out new values without reading the profiles first. The
+radio reads version 3 only and refuses any other length or version rather
+than guess at it. Versions 1 (67 bytes) and 2 (71 bytes, adding the shake
+fields) stored every ratio as a signed 16-bit value × 1000 and were never in
+a firmware release.
 
 ## Radio: capturing each flight
 
@@ -311,7 +311,6 @@ new P = min(round(P / 1.2), P − 1), at least 1, with the reason "Shakes N
 deg/s at centre stick. Less P calms it." The response figure is still shown,
 but no F, rate or stop change is given: an oscillation reads as bounce-back
 after every stop and spoils the F match, so those rules would ask for more P.
-Firmware with payload version 1 reports no shake, so this never applies.
 
 ### Response
 
