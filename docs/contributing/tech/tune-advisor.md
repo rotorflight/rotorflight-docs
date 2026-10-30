@@ -170,8 +170,9 @@ by an adjustment function) is not noticed until the next arm.
 | `MSP2_GET_TUNE_ADVISOR` | `0x5F10` | Read | Request: `U8` axis (0 roll, 1 pitch, 2 yaw). Any other length or axis is an error. |
 | `MSP2_CLEAR_TUNE_ADVISOR` | `0x5F11` | Write | Empty. Resets all statistics. |
 
-One axis per request. The reply is 52 bytes: the most one CRSF frame carries
-after the 6-byte MSP header, and 12 S.Port/FBUS frames. Firmware without the
+One axis per request. The reply is 51 bytes: the most one CRSF frame carries
+(a frame holds 58 bytes after the 6-byte MSP header, but the firmware sends a
+reply that exactly fills one as two), and 12 S.Port/FBUS frames. Firmware without the
 feature answers with an MSP error.
 
 Reply, payload version 3. Each value takes as few bytes as the advice needs:
@@ -198,13 +199,13 @@ counts saturate at 65535; all values little-endian.
 | 38 | U8 | `fullRatio` × 100 |
 | 39 | U8 | `fullMaxRate` in steps of 10 deg/s |
 | 40 | U16 | `releases` |
-| 42 | U16 | `bigRebounds` |
-| 44 | U8 | `meanRebound` × 100 |
-| 45 | U8 | `meanOvershoot` × 64 |
-| 46 | U8 | `meanCounter` × 100 |
-| 47 | S16 | `meanIterm` × 1000 (16-bit: it needs both the range and the 0.01s) |
-| 49 | U16 | `shakeCount` |
-| 51 | U8 | `shakeRms` × 4 (0–63.75 deg/s) |
+| 42 | U8 | `bigRebounds` (counted within one flight, saturates at 255) |
+| 43 | U8 | `meanRebound` × 100 |
+| 44 | U8 | `meanOvershoot` × 64 |
+| 45 | U8 | `meanCounter` × 100 |
+| 46 | S16 | `meanIterm` × 1000 (16-bit: it needs both the range and the 0.01s) |
+| 48 | U16 | `shakeCount` |
+| 50 | U8 | `shakeRms` × 4 (0–63.75 deg/s) |
 
 The tune values at offsets 1 and 4–10 are the settings the numbers belong to,
 so a client can work out new values without reading the profiles first. The
