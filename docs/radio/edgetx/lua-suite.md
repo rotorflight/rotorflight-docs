@@ -10,8 +10,8 @@ suite's own settings.
 | Section | Holds |
 | --- | --- |
 | **Configuration → Flight Tuning** | PIDs, rates, governor, filters, PID controller and bandwidth, autolevel, main and tail rotor, rescue, advanced rate tables, the Tune Advisor. |
-| **Configuration → Setup** | Configuration, radio config, telemetry, accelerometer, alignment, ports, model and pilot settings, mixer, servos (PWM and bus), controls (modes, adjustments, failsafe, beepers, Blackbox, statistics), power (battery, alerts, sources, SmartFuel), governor, GPS, ESC & motors -- including ESC programming for AM32, BLHeli_S, Bluejay, FlyRotor, Hobbywing Platinum V5, OMP, Scorpion, XDFly, YGE and ZTW (unlocked for the ESC telemetry protocol the flight controller reports) and Motor Override for bench tests (behind a disarm check, arm-switch check and dead-man timeout). |
-| **System → Tools** | Copying and selecting profiles; the flight log; diagnostics -- flight controller status, ELRS link, sensor validation, SmartFuel, session logs. |
+| **Configuration → Setup** | Configuration, radio config, telemetry, accelerometer, alignment, ports, model and pilot settings, mixer, servos (PWM and bus), controls (modes, adjustments, failsafe, beepers, Blackbox, statistics), power (battery, alerts, sources, SmartFuel, preferences), governor, GPS, ESC & motors -- including ESC programming for AM32, BLHeli_S, Bluejay, FlyRotor, Hobbywing Platinum V5, OMP, Scorpion, XDFly, YGE and ZTW (unlocked for the ESC telemetry protocol the flight controller reports) and Motor Override for bench tests (behind a disarm check, arm-switch check and dead-man timeout). |
+| **System → Tools** | Copying and selecting profiles; the flight log; diagnostics -- flight controller and Rotorflight status, ELRS link, sensor validation, CRSF sensors, system status, SmartFuel, session logs, info. |
 | **System → Logs** | A browser for the radio's own telemetry logs, plotting channels against flight time. |
 | **System → Settings** | The suite's own settings: general, dashboard, localization, audio and shortcuts. |
 
