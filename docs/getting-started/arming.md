@@ -123,7 +123,7 @@ more **arming disable flags**. You can read them:
 | `REBOOT_REQ` | Settings were changed that need a reboot. | Reboot the flight controller. |
 | `DSHOT_BITBANG` | DShot bitbang failed. | Check the board's timers and DMA, or `set dshot_bitbang = OFF`. |
 | `ACC_CALIB` | The accelerometer needs calibrating. | Calibrate it on the [Setup](../configurator/tabs/setup.md) tab, or turn off the features that use it. |
-| `MOTOR_PROTO` | No motor protocol is selected. | Select the ESC protocol on the [Motors](../configurator/tabs/motors.md) tab. |
+| `MOTOR_PROTO` | No motor protocol is selected, the motor outputs failed to set up, or the tail is motorised but there is no MOTOR 2. CLI `status` says which. | Select the ESC protocol on the [Motors](../configurator/tabs/motors.md) tab. If one is selected, check the motor pins and DMA, and for a motorised tail that the tail pin is MOTOR 2 -- see [Setup Wizard MSP](../contributing/tech/setup-wizard-msp.md#motor-arming-checks). |
 | `OVERRIDE` | Servo, motor or mixer override is on. | Turn off all overrides. |
 | `ARM_SWITCH` | The arm switch is on but something else is blocking arming, or it was on at power-up. | Fix the other flags and toggle the arm switch. |
 

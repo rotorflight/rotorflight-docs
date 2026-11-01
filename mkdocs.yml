@@ -211,6 +211,7 @@ nav:
           - Governor Reference: contributing/tech/governor.md
           - SmartFuel Internals: contributing/tech/smartfuel.md
           - Tune Advisor Internals: contributing/tech/tune-advisor.md
+          - Setup Wizard MSP: contributing/tech/setup-wizard-msp.md
           - Hardware Debugging: contributing/tech/hardware-debugging.md
           - Debugging with VS Code and J-Link: contributing/tech/hardware-debugging-vscode-jlink.md
           - Test Coverage: contributing/tech/test-coverage.md
