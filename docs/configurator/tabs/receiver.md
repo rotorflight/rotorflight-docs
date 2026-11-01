@@ -16,8 +16,8 @@ Before anything shows up here, set the UART your receiver is wired to to
 | ExpressLRS, TBS Crossfire / Tracer | **TBS CRSF** | Receiver TX → FC RX, receiver RX → FC TX |
 | FrSky F.Bus or F.Port2 (Archer, ACCESS ...) | **FrSky FBUS** | One wire to FC **TX**; *Half-Duplex* and *Inverted* on |
 | FrSky F.Port | **FrSky F.PORT** | One wire to FC **TX**; *Half-Duplex* and *Inverted* on |
-| Futaba, FrSky, others with SBUS | **Futaba S.BUS** | SBUS → FC **RX**; *Inverted* on |
-| Futaba SBUS2 | **Futaba S.BUS2** | One wire to FC **TX**; *Half-Duplex* and *Inverted* on |
+| Futaba SBUS2 receivers | **Futaba S.BUS2** | One wire to FC **TX**; *Half-Duplex* on, *Inverted* off |
+| Futaba (no SBUS2), FrSky, others with SBUS | **Futaba S.BUS** | SBUS → FC **RX**; *Inverted* off |
 | Spektrum SRXL2 receivers | **Spektrum DSM/SRXL2** | One wire to FC **TX** |
 | Spektrum satellites (DSMX) | **Spektrum DSM/2048** | Satellite → FC **RX**, 3.3 V supply |
 | FlySky | **Flysky IBUS** / **IBUS2** | IBUS → FC **RX** |
@@ -52,7 +52,7 @@ for supply voltages, UART connections and protocol choices, plus
 
 | Option | Use |
 | --- | --- |
-| **Inverted** | Un-inverts SBUS, F.Port and F.Bus, which are inverted signals. |
+| **Inverted** | For F.Port and F.Bus, turn on. For SBUS and SBUS2, leave off -- the FC already allows for SBUS being inverted; turn it on only for a receiver that outputs non-inverted SBUS. |
 | **Half-Duplex** | Sends and receives on the TX pin -- for single-wire protocols such as SBUS2, F.Port, F.Bus, SRXL2. |
 | **Pin Swap** | Swaps the UART's RX and TX pins. |
 
