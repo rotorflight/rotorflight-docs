@@ -4243,6 +4243,8 @@
       
         
       
+        
+      
     
     
     
@@ -4534,6 +4536,34 @@
     
   
     Tune Advisor Internals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/tech/setup-wizard-msp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup Wizard MSP
   
 
     
@@ -5106,8 +5136,8 @@ more <strong>arming disable flags</strong>. You can read them:</p>
 </tr>
 <tr>
 <td><code>MOTOR_PROTO</code></td>
-<td>No motor protocol is selected.</td>
-<td>Select the ESC protocol on the <a href="../../configurator/tabs/motors/">Motors</a> tab.</td>
+<td>No motor protocol is selected, the motor outputs failed to set up, or the tail is motorised but there is no MOTOR 2. CLI <code>status</code> says which.</td>
+<td>Select the ESC protocol on the <a href="../../configurator/tabs/motors/">Motors</a> tab. If one is selected, check the motor pins and DMA, and for a motorised tail that the tail pin is MOTOR 2 -- see <a href="../../contributing/tech/setup-wizard-msp/#motor-arming-checks">Setup Wizard MSP</a>.</td>
 </tr>
 <tr>
 <td><code>OVERRIDE</code></td>
