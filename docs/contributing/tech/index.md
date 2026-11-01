@@ -18,6 +18,7 @@ Cleanflight, and still mention those projects; the concepts still apply.
 | [Governor Reference](governor.md) | Governor modes, states and every setting in detail. |
 | [SmartFuel Internals](smartfuel.md) | The SmartFuel charge estimator in detail. |
 | [Tune Advisor Internals](tune-advisor.md) | What the Tune Advisor measures, its advice rules, and exactly which settings it writes. |
+| [Setup Wizard MSP](setup-wizard-msp.md) | Timed servo and mixer overrides, moving the tail pin to MOTOR 2, and the `MOTOR_PROTO` causes. |
 | [Hardware Debugging](hardware-debugging.md) | Debugging on the board with a debug probe. |
 | [Debugging with VS Code and J-Link](hardware-debugging-vscode-jlink.md) | A VS Code set-up for the above. |
 | [Test Coverage](test-coverage.md) | Measuring unit test coverage. |
