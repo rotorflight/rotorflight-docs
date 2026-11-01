@@ -4709,26 +4709,60 @@
 
 
 <h1 id="futaba">Futaba<a class="headerlink" href="#futaba" title="Permanent link">&para;</a></h1>
-<p>Futaba radios connect over <strong>S.BUS2</strong>, which carries both control and
-telemetry on one wire.</p>
+<p>Futaba receivers connect over <strong>S.BUS2</strong> or plain <strong>S.BUS</strong>, depending on
+the receiver model. Use S.BUS2 if your receiver has an S.BUS2 port -- it
+carries both control and telemetry on one wire. Receivers without S.BUS2
+use S.BUS, which carries control only (no telemetry).</p>
 <h2 id="wiring">Wiring<a class="headerlink" href="#wiring" title="Permanent link">&para;</a></h2>
-<p>Connect the flight controller's receiver port (often labelled <em>SBUS</em>) to the
-receiver's <strong>S.BUS2</strong> port with a servo lead.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">S.BUS2</label><label for="__tabbed_1_2">S.BUS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Connect the receiver's <strong>S.BUS2</strong> port to the flight controller's
+receiver port <strong>TX</strong> pin with a servo lead.</p>
+</div>
+<div class="tabbed-block">
+<p>Connect the receiver's <strong>S.BUS</strong> port to the flight controller's
+receiver port (often labelled <em>SBUS</em>) <strong>RX</strong> pin with a servo lead.</p>
+</div>
+</div>
+</div>
 <h2 id="flight-controller">Flight controller<a class="headerlink" href="#flight-controller" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="../../configurator/tabs/configuration/#serial-ports">Configuration</a> tab:
    set the port to <strong>Serial Rx</strong>. Save and reboot.</li>
-<li><a href="../../configurator/tabs/receiver/">Receiver</a> tab: protocol <strong>Futaba
-   S.BUS2</strong> (with <em>Inverted</em> and <em>Half-Duplex</em> on), channel preset
-   <strong>Futaba / Hitec</strong>, and telemetry <strong>enabled</strong>. Save and reboot.</li>
+<li>
+<p><a href="../../configurator/tabs/receiver/">Receiver</a> tab, then save and reboot:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">S.BUS2</label><label for="__tabbed_2_2">S.BUS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Protocol <strong>Futaba S.BUS2</strong>, <em>Inverted</em> <strong>off</strong>, <em>Half-Duplex</em>
+<strong>on</strong>, channel preset <strong>Futaba / Hitec</strong>, and telemetry
+<strong>enabled</strong>.</p>
+</div>
+<div class="tabbed-block">
+<p>Protocol <strong>Futaba S.BUS</strong>, <em>Inverted</em> <strong>off</strong>, <em>Half-Duplex</em>
+<strong>off</strong>, channel preset <strong>Futaba / Hitec</strong>.</p>
+</div>
+</div>
+</div>
+</li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Leave <em>Inverted</em> <strong>off</strong> for Futaba receivers. S.BUS is an inverted
+signal and the flight controller already allows for that -- the
+<em>Inverted</em> switch is only for receivers that output a non-inverted
+S.BUS signal.</p>
+</div>
 <h2 id="radio">Radio<a class="headerlink" href="#radio" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Linkage Menu → System Type</strong>: a protocol with telemetry, such as
-   T-FHSS or FASSTest 18CH, with telemetry on.</li>
-<li><strong>Linkage Menu → Sensor</strong>: register the sensors in these slots. The slot
-   numbers and sensor types must match exactly, or the readings come out
-   wrong.</li>
+<li><strong>Linkage Menu → System Type</strong>: pick a protocol that matches your
+   receiver. For S.BUS2 telemetry, use one with telemetry, such as T-FHSS
+   or FASSTest 18CH, with telemetry on. Make sure the receiver itself is
+   set to output S.BUS2 or S.BUS to match the flight controller.</li>
+<li><strong>Linkage Menu → Sensor</strong> (S.BUS2 only): register the sensors in these
+   slots. The slot numbers and sensor types must match exactly, or the
+   readings come out wrong.</li>
 </ol>
 <table>
 <thead>

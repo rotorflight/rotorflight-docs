@@ -4852,14 +4852,14 @@
 <td>One wire to FC <strong>TX</strong>; <em>Half-Duplex</em> and <em>Inverted</em> on</td>
 </tr>
 <tr>
-<td>Futaba, FrSky, others with SBUS</td>
-<td><strong>Futaba S.BUS</strong></td>
-<td>SBUS → FC <strong>RX</strong>; <em>Inverted</em> on</td>
+<td>Futaba SBUS2 receivers</td>
+<td><strong>Futaba S.BUS2</strong></td>
+<td>One wire to FC <strong>TX</strong>; <em>Half-Duplex</em> on, <em>Inverted</em> off</td>
 </tr>
 <tr>
-<td>Futaba SBUS2</td>
-<td><strong>Futaba S.BUS2</strong></td>
-<td>One wire to FC <strong>TX</strong>; <em>Half-Duplex</em> and <em>Inverted</em> on</td>
+<td>Futaba (no SBUS2), FrSky, others with SBUS</td>
+<td><strong>Futaba S.BUS</strong></td>
+<td>SBUS → FC <strong>RX</strong>; <em>Inverted</em> off</td>
 </tr>
 <tr>
 <td>Spektrum SRXL2 receivers</td>
@@ -4929,7 +4929,7 @@ for supply voltages, UART connections and protocol choices, plus
 <tbody>
 <tr>
 <td><strong>Inverted</strong></td>
-<td>Un-inverts SBUS, F.Port and F.Bus, which are inverted signals.</td>
+<td>For F.Port and F.Bus, turn on. For SBUS and SBUS2, leave off -- the FC already allows for SBUS being inverted; turn it on only for a receiver that outputs non-inverted SBUS.</td>
 </tr>
 <tr>
 <td><strong>Half-Duplex</strong></td>
