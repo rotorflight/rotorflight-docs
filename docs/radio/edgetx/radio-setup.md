@@ -56,12 +56,6 @@ guide for what the switch modes do.
 | 10 | AUX 5 -- Backup pack | SC (optional) |
 | 11-12 | AUX 6-7 -- adjustments | Pots or trims |
 
-The model template's dialog asks for the switches of channels 5 to 10 and
-refuses one switch for two jobs; the governor and the profiles may share
-one, as in the example above. Blackbox and backup may stay empty and then
-sit at the bottom of their travel. Channel 11 follows pot P2 and channel 12
-the trim buttons.
-
 Pick the **ELRS** preset on the
 [Receiver](../../configurator/tabs/receiver.md#channel-assignment) tab.
 
