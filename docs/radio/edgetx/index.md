@@ -27,17 +27,19 @@ If your radio and link support it, use **RFSuite**.
 
     1. Download `rfsuite-radio-install-v<version>_<language>.zip` from the
        [RFSuite releases](https://github.com/rotorflight/rotorflight-lua-edgetx-suite/releases).
-    2. Copy its `SCRIPTS`, `WIDGETS` and `SOUNDS` folders to the root of the
-       radio's SD card -- over USB storage, or with the card in a computer.
+    2. Copy its `SCRIPTS`, `WIDGETS`, `SOUNDS` and `TEMPLATES` folders to the
+       root of the radio's SD card -- over USB storage, or with the card in a
+       computer.
 
     To update, unpack a newer archive over the old one. Your settings live
     in `/SCRIPTS/TOOLS/rfsuite.user/`, which the archive doesn't touch.
 
-You'll then find **RFSuite** in the radio's **Tools** menu, and the
-**RFSuite** and **RFSuite Service** widgets in the widget list.
+You'll then find **RFSuite** in the radio's **Tools** menu, the
+**RFSuite** and **RFSuite Service** widgets in the widget list, and a
+**Rotorflight** model template in the radio's new-model dialog.
 
 !!! note "RFSuite is newer"
-    RFSuite for EdgeTX is still in development snapshots (0.1.x). The
+    RFSuite for EdgeTX is still in development snapshots (0.x). The
     classic scripts follow the main Rotorflight releases.
 
 Then set up the radio model: [Radio Setup](radio-setup.md).
@@ -46,4 +48,4 @@ Then set up the radio model: [Radio Setup](radio-setup.md).
 
 RFSuite's own documentation covers every page, the dashboard and
 troubleshooting in detail:
-[RFSuite for EdgeTX docs](https://github.com/rotorflight/rotorflight-lua-edgetx-suite/blob/master/docs/README.md).
+[RFSuite for EdgeTX docs](https://rotorflight.github.io/rotorflight-lua-edgetx-suite/).
