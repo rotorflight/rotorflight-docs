@@ -1,11 +1,41 @@
 # Using RFSuite on EdgeTX
 
+## Before you start
+
+Once RFSuite is installed, set up each model you fly with it like this:
+
+1. **Put the RFSuite dashboard on a screen of the model** if you want to use
+   it. That is all: the dashboard keeps the link to the flight controller,
+   decodes the telemetry and speaks the announcements, also while its screen
+   isn't the one shown. The widget has no options in the radio's screen
+   setup: the dashboard is configured entirely in RFSuite, under **System →
+   Settings → Dashboard**. Don't put a second dashboard or the RFSuite
+   Service widget on the same model.
+2. **For a third-party dashboard, use RFSuite Service instead.** This small
+   widget does the same background work without drawing a dashboard. It
+   isn't needed beside the RFSuite dashboard -- use one or the other.
+3. **Leave the background job to RFSuite.** On the first connection, either
+   RFSuite widget adds a special function `rfsbg` to the model (**Model → Special
+   Functions**); it runs from the next time the model is loaded. Don't
+   delete it. Remove an active `rf2bg` entry of the classic Lua scripts:
+   while it is there, RFSuite adds no background job of its own, and both
+   write the same sensors.
+4. **Without the model template, discover the telemetry sensors** once the
+   flight controller is set up -- see
+   [Radio Setup](radio-setup.md#telemetry). A model made from the
+   Rotorflight template already has them.
+5. **Set up the alarms before the first flight:** the timer and voltage
+   alerts under **Configuration → Setup → Power → Alerts**, and which
+   announcements are spoken under **System → Settings → Audio → Events**.
+   The link announcements there are off by default.
+
 ## The configuration tool
 
-Open **RFSuite** from the radio's **Tools** menu. The start screen shows the
-connection state. Its tiles come in two groups: **Configuration** opens once
-the flight controller answers; **System** holds the tools, logs and the
-suite's own settings.
+Open **RFSuite** from the radio's **Tools** menu. It opens on its menu
+straight away; the status button in its header shows the connection. The
+tiles come in two groups: **Configuration** becomes usable once the flight
+controller answers; **System** holds the tools, logs and the suite's own
+settings.
 
 | Section | Holds |
 | --- | --- |
@@ -29,8 +59,8 @@ Two widgets come with the installation:
   Theme**. Shipped themes include Default, RF Status, Urban, Grid, Deck
   and several pilot-designed themes; you can also make your own.
 - **RFSuite Service** -- a background service that keeps the link and the
-  announcements alive while the tool isn't open. It draws nothing useful, so
-  put it in a small zone on a screen you don't use.
+  announcements alive while the tool isn't open. It draws only a small
+  status tile, so put it in a small zone on a screen you don't use.
 
 One of the two widgets -- or the background decoder -- must be running for
 custom ELRS telemetry to be decoded into sensors.
@@ -42,8 +72,8 @@ battery and fuel are announced. Choose which under the suite's settings.
 
 ## Troubleshooting
 
-**The tool never connects** (start screen stays, tiles greyed out). Check
-in this order:
+**The tool never connects** (the tiles under Configuration stay greyed out,
+the status button never shows its tick). Check in this order:
 
 1. The link is **CRSF** (ExpressLRS or Crossfire) -- RFSuite talks to the
    flight controller over CRSF only.

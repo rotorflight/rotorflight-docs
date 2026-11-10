@@ -32,7 +32,7 @@ If your radio and link support it, use **RFSuite**.
        computer.
 
     To update, unpack a newer archive over the old one. Your settings live
-    in `/SCRIPTS/TOOLS/rfsuite.user/`, which the archive doesn't touch.
+    in `/SCRIPTS/RFSUITE/user/`, which the archive doesn't touch.
 
 You'll then find **RFSuite** in the radio's **Tools** menu, the
 **RFSuite** and **RFSuite Service** widgets in the widget list, and a
