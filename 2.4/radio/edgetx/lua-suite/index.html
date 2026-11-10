@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -2775,6 +2775,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-configuration-tool" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4705,6 +4716,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-configuration-tool" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4785,10 +4807,40 @@
 
 
 <h1 id="using-rfsuite-on-edgetx">Using RFSuite on EdgeTX<a class="headerlink" href="#using-rfsuite-on-edgetx" title="Permanent link">&para;</a></h1>
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h2>
+<p>Once RFSuite is installed, set up each model you fly with it like this:</p>
+<ol>
+<li><strong>Put the RFSuite dashboard on a screen of the model</strong> if you want to use
+   it. That is all: the dashboard keeps the link to the flight controller,
+   decodes the telemetry and speaks the announcements, also while its screen
+   isn't the one shown. The widget has no options in the radio's screen
+   setup: the dashboard is configured entirely in RFSuite, under <strong>System →
+   Settings → Dashboard</strong>. Don't put a second dashboard or the RFSuite
+   Service widget on the same model.</li>
+<li><strong>For a third-party dashboard, use RFSuite Service instead.</strong> This small
+   widget does the same background work without drawing a dashboard. It
+   isn't needed beside the RFSuite dashboard -- use one or the other.</li>
+<li><strong>Leave the background job to RFSuite.</strong> On the first connection, either
+   RFSuite widget adds a special function <code>rfsbg</code> to the model (<strong>Model → Special
+   Functions</strong>); it runs from the next time the model is loaded. Don't
+   delete it. Remove an active <code>rf2bg</code> entry of the classic Lua scripts:
+   while it is there, RFSuite adds no background job of its own, and both
+   write the same sensors.</li>
+<li><strong>Without the model template, discover the telemetry sensors</strong> once the
+   flight controller is set up -- see
+   <a href="../radio-setup/#telemetry">Radio Setup</a>. A model made from the
+   Rotorflight template already has them.</li>
+<li><strong>Set up the alarms before the first flight:</strong> the timer and voltage
+   alerts under <strong>Configuration → Setup → Power → Alerts</strong>, and which
+   announcements are spoken under <strong>System → Settings → Audio → Events</strong>.
+   The link announcements there are off by default.</li>
+</ol>
 <h2 id="the-configuration-tool">The configuration tool<a class="headerlink" href="#the-configuration-tool" title="Permanent link">&para;</a></h2>
-<p>Open <strong>RFSuite</strong> from the radio's <strong>Tools</strong> menu. The start screen shows the
-connection state; once the flight controller answers, the configuration
-and system sections become available.</p>
+<p>Open <strong>RFSuite</strong> from the radio's <strong>Tools</strong> menu. It opens on its menu
+straight away; the status button in its header shows the connection. The
+tiles come in two groups: <strong>Configuration</strong> becomes usable once the flight
+controller answers; <strong>System</strong> holds the tools, logs and the suite's own
+settings.</p>
 <table>
 <thead>
 <tr>
@@ -4798,24 +4850,24 @@ and system sections become available.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong>Flight Tuning</strong></td>
+<td><strong>Configuration → Flight Tuning</strong></td>
 <td>PIDs, rates, governor, filters, PID controller and bandwidth, autolevel, main and tail rotor, rescue, advanced rate tables, the Tune Advisor.</td>
 </tr>
 <tr>
-<td><strong>Setup</strong></td>
-<td>Configuration, radio config, telemetry, accelerometer, alignment, ports, model and pilot settings, mixer, servos (PWM and bus), controls (modes, adjustments, failsafe, beepers, Blackbox, statistics), power (battery, alerts, sources, SmartFuel), ESC &amp; motors.</td>
+<td><strong>Configuration → Setup</strong></td>
+<td>Configuration, radio config, telemetry, accelerometer, alignment, ports, model and pilot settings, mixer, servos (PWM and bus), controls (modes, adjustments, failsafe, beepers, Blackbox, statistics), power (battery, alerts, sources, SmartFuel, preferences), governor, GPS, ESC &amp; motors (ESC programming, Motor Override).</td>
 </tr>
 <tr>
-<td><strong>ESC</strong></td>
-<td>Programming for AM32, BLHeli_S, Bluejay, FlyRotor, Hobbywing Platinum V5, OMP, Scorpion, XDFly, YGE and ZTW -- unlocked for the ESC telemetry protocol the flight controller reports.</td>
+<td><strong>System → Tools</strong></td>
+<td>Copying and selecting profiles; the flight log; diagnostics.</td>
 </tr>
 <tr>
-<td><strong>Tools</strong></td>
-<td>Copying and selecting profiles; Motor Override for bench tests (behind a disarm check, arm-switch check and dead-man timeout); diagnostics -- flight controller status, ELRS link, sensor validation, SmartFuel, session logs.</td>
-</tr>
-<tr>
-<td><strong>Logs</strong></td>
+<td><strong>System → Logs</strong></td>
 <td>A browser for the radio's own telemetry logs, plotting channels against flight time.</td>
+</tr>
+<tr>
+<td><strong>System → Settings</strong></td>
+<td>The suite's own settings: general, dashboard, localization and audio.</td>
 </tr>
 </tbody>
 </table>
@@ -4827,12 +4879,12 @@ the dashboard and announcements carry on.</p>
 <ul>
 <li><strong>RFSuite</strong> -- the dashboard. It draws a theme from live telemetry, with
   separate preflight, in-flight and postflight layouts. Choose the theme
-  per model and flight phase under <strong>Settings → Dashboard → Design</strong>.
-  Shipped themes include Default, RF Status, Urban and several
-  pilot-designed themes; you can also make your own.</li>
+  per model and flight phase under <strong>System → Settings → Dashboard →
+  Theme</strong>. Shipped themes include Default, RF Status, Urban, Grid, Deck
+  and several pilot-designed themes; you can also make your own.</li>
 <li><strong>RFSuite Service</strong> -- a background service that keeps the link and the
-  announcements alive while the tool isn't open. It draws nothing useful, so
-  put it in a small zone on a screen you don't use.</li>
+  announcements alive while the tool isn't open. It draws only a small
+  status tile, so put it in a small zone on a screen you don't use.</li>
 </ul>
 <p>One of the two widgets -- or the background decoder -- must be running for
 custom ELRS telemetry to be decoded into sensors.</p>
@@ -4840,8 +4892,8 @@ custom ELRS telemetry to be decoded into sensors.</p>
 <p>Arming state, flight and rate profile changes, in-flight adjustments,
 battery and fuel are announced. Choose which under the suite's settings.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p><strong>The tool never connects</strong> (start screen stays, tiles greyed out). Check
-in this order:</p>
+<p><strong>The tool never connects</strong> (the tiles under Configuration stay greyed out,
+the status button never shows its tick). Check in this order:</p>
 <ol>
 <li>The link is <strong>CRSF</strong> (ExpressLRS or Crossfire) -- RFSuite talks to the
    flight controller over CRSF only.</li>
@@ -4849,8 +4901,8 @@ in this order:</p>
 <li>The receiver <strong>forwards MSP</strong> to the flight controller. If it passes
    telemetry but not MSP, the tool reports <em>No MSP reply from flight
    controller</em>.</li>
-<li>The firmware's MSP API is one the suite supports (12.08 to 12.10 --
-   Rotorflight 2.2 to 2.4). Older firmware shows an <em>Unsupported MSP API</em>
+<li>The firmware's MSP API is one the suite supports (12.09 or 12.10 --
+   Rotorflight 2.3 or 2.4). Older firmware shows an <em>Unsupported MSP API</em>
    message.</li>
 </ol>
 <p><strong>Arming while it's still connecting</strong> pauses the configuration traffic;
@@ -4861,7 +4913,7 @@ A sensor the suite doesn't recognise stops the rest of its frame from being
 read; update the suite or untick that sensor.</p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>Page-by-page documentation, dashboard theming and more troubleshooting:
-<a href="https://github.com/rotorflight/rotorflight-lua-edgetx-suite/blob/master/docs/README.md">RFSuite for EdgeTX docs</a>.</p>
+<a href="https://rotorflight.github.io/rotorflight-lua-edgetx-suite/">RFSuite for EdgeTX docs</a>.</p>
 
 
 
@@ -5000,7 +5052,7 @@ read; update the suite or untick that sensor.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.action.edit", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../../javascripts/gear-calc.js"></script>
       
