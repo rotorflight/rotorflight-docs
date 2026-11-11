@@ -56,9 +56,9 @@ ESC** section:
   for telemetry. 0 turns telemetry polling off. Default 7.
 - **Motor 2 Channel** -- for dual-motor Smart ESCs (e.g. the Spektrum
   SPMXAE1020 in the Blade 230 S Smart), the SRXL2 channel that carries the
-  second motor. Motor 1 is always channel 0. With a channel set, the motor
-  count becomes 2 and mixer output M2 drives it. Leave it **Off** for a
-  single motor (the default). CLI: `srxl2esc_motor2_channel`.
+  second motor, 2 to 32. Motor 1 is always channel 1. With a channel set,
+  the motor count becomes 2 and mixer output M2 drives it. Leave it **Off**
+  for a single motor (the default). CLI: `srxl2esc_motor2_channel`.
 
 Both take effect after **Save and Reboot**. Dual-motor Smart ESCs report no
 RPM and have no governor setting, so RPM filtering and the Rotorflight
