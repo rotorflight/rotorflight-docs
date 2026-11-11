@@ -662,6 +662,7 @@ in firmware built with the matching feature.
 | `spektrum_sat_bind_autoreset` | uint8 | `OFF` `ON` |
 | `srxl2_baud_fast` | uint8 | `OFF` `ON` |
 | `srxl2_unit_id` | uint8 | 0 .. 0xf |
+| `srxl2esc_motor2_channel` | uint8 | 0 .. 32 |
 
 ### RX Cc2500 SPI
 

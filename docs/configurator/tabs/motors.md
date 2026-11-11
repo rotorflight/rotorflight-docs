@@ -45,6 +45,25 @@ and 100% shows Motor Off, Low and High.
     If **Motor Off** is set higher than the ESC's stop point, the motor can
     run while the flight controller is disarmed.
 
+## SRXL2 ESC
+
+A Spektrum SRXL2 ESC takes throttle and returns telemetry on one wire, the
+UART set to *SRXL2 ESC* on the [Configuration](configuration.md) tab. With
+the throttle protocol on **SRXL2**, the ESC Telemetry box gains an **SRXL2
+ESC** section:
+
+- **Telemetry Interval** -- every how many throttle frames the ESC is asked
+  for telemetry. 0 turns telemetry polling off. Default 7.
+- **Motor 2 Channel** -- for dual-motor Smart ESCs (e.g. the Spektrum
+  SPMXAE1020 in the Blade 230 S Smart), the SRXL2 channel that carries the
+  second motor, 2 to 32. Motor 1 is always channel 1. With a channel set,
+  the motor count becomes 2 and mixer output M2 drives it. Leave it **Off**
+  for a single motor (the default). CLI: `srxl2esc_motor2_channel`.
+
+Both take effect after **Save and Reboot**. Dual-motor Smart ESCs report no
+RPM and have no governor setting, so RPM filtering and the Rotorflight
+governor are not available with them.
+
 ## ESC Telemetry
 
 **Telemetry Protocol** -- the ESC's serial telemetry, on the UART set to
