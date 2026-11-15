@@ -144,6 +144,15 @@ nav:
       - ESC Programming: configurator/tabs/esc-programming.md
       - Blackbox: configurator/tabs/blackbox.md
       - CLI: configurator/tabs/cli.md
+  - Blackbox Explorer:
+      - blackbox-explorer/index.md
+      - The Main Screen: blackbox-explorer/features/main-screen.md
+      - Graphs & Workspaces: blackbox-explorer/features/graphs-and-workspaces.md
+      - Spectrum Analyser: blackbox-explorer/features/analyser.md
+      - Step Response: blackbox-explorer/features/step-response.md
+      - Flight Analysis: blackbox-explorer/features/flight-analysis.md
+      - Video & Export: blackbox-explorer/features/video-and-export.md
+      - Keyboard Shortcuts: blackbox-explorer/features/shortcuts.md
   - Radio & Lua:
       - radio/index.md
       - FrSky Ethos:
