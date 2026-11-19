@@ -16,6 +16,11 @@ that the [RPM filter](../../setup/rpm-filters.md) is doing its job.
    at the end with **Set end here** (**O**). If nothing is marked, the
    whole log is used.
 
+!!! warning "SCREENSHOT NEEDED: analyser.png"
+    Main screen with the Analyser overlay open on Gyro or Unfiltered Gyro, a start/end stretch marked over a steady hover, and the red Max noise line visible.
+
+<!-- ![Analyser open over a hover, with a start and end marked](img/analyser.png) -->
+
 Choose a stretch of steady flight at a constant headspeed, such as a hover
 or some straight forward flight. Spool-up, spool-down and headspeed
 changes spread every peak out over a range of frequencies and make the
@@ -30,6 +35,11 @@ page has more on logging rates.
 The expand button in the corner of the Analyser makes it full screen. In
 full screen there are two sliders, one to zoom the frequency axis (up to
 500%) and one for the height (up to 1000%).
+
+!!! warning "SCREENSHOT NEEDED: analyser-full-screen.png"
+    The Analyser in full screen, with the expand button and both zoom sliders visible.
+
+<!-- ![Analyser in full screen with the zoom sliders](img/analyser-full-screen.png) -->
 
 ## Spectrum types
 
@@ -49,12 +59,22 @@ spectrum, so you can see where each one cuts in. You can show all filters,
 only the gyro, D-term or yaw filters, or none. **Auto** shows the filters
 that apply to the trace you're looking at.
 
+!!! warning "SCREENSHOT NEEDED: filter-lines.png"
+    A Gyro spectrum with the filter drop-down set to Auto, so the filter lines are drawn over it. Show both drop-downs open or readable.
+
+<!-- ![Gyro spectrum with the filter lines drawn on top](img/filter-lines.png) -->
+
 ## Finding the source of a peak
 
 Hold **Shift** and move the mouse over the spectrum. A line follows the
 pointer, and seven more lines mark the 2nd to 8th harmonics of that
 frequency. Every line is labelled with its frequency in Hz and the same
 frequency in rpm. The eight labelled harmonics are new in 2.4.
+
+!!! warning "SCREENSHOT NEEDED: harmonics.png"
+    Shift held with the pointer on the main rotor peak, so the eight harmonic lines and their Hz and rpm labels show. Ideally the rpm on the first line matches the headspeed.
+
+<!-- ![Harmonic lines with Hz and rpm labels on a main rotor peak](img/harmonics.png) -->
 
 Because the labels are in rpm, you can compare them straight against the
 headspeed:
@@ -78,12 +98,22 @@ what to do about each type of peak.
     been removed by the filters. A peak that is still there in the
     filtered gyro is getting past them.
 
+!!! warning "SCREENSHOT NEEDED: raw-vs-filtered.png"
+    Unfiltered Gyro and Gyro spectra for the same axis over the same stretch, side by side or one above the other in a single image, so the peaks the filters removed stand out.
+
+<!-- ![Unfiltered Gyro and Gyro spectra for the same stretch](img/raw-vs-filtered.png) -->
+
 ## Error vs Setpoint
 
 **Error vs Setpoint** plots the average PID error (setpoint minus gyro)
 against the rotation rate you were asking for. It uses the axis of the
 trace you last clicked in the legend, so click any roll, pitch or yaw
 trace first. The stick rates are grouped into ten bars.
+
+!!! warning "SCREENSHOT NEEDED: error-vs-setpoint.png"
+    The Error vs Setpoint chart for roll or pitch from a flight with plenty of hard stick inputs, so all ten bars have data.
+
+<!-- ![Error vs Setpoint chart](img/error-vs-setpoint.png) -->
 
 On a good tune the error stays low all the way across. If it rises steeply
 at the higher rates, the helicopter is struggling to keep up with big

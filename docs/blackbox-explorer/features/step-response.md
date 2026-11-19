@@ -17,8 +17,18 @@ manoeuvres.
 3. The **Roll**, **Pitch** and **Yaw** switches show or hide each axis. The
    expand button makes the graph full screen.
 
+!!! warning "SCREENSHOT NEEDED: step-response.png"
+    The Step Response overlay open on a log with plenty of stick inputs, all three axes on, with the Roll/Pitch/Yaw switches, the expand button and the P/I/D/F gain labels readable.
+
+<!-- ![Step Response graph with roll, pitch and yaw](img/step-response.png) -->
+
 Pressing **Shift** while you Hover the mouse over the graph will display the time and the value for each
 axis at that point.
+
+!!! warning "SCREENSHOT NEEDED: step-response-hover.png"
+    Shift held with the pointer over the graph, so the time and per-axis value readout shows. A crop of the graph is enough.
+
+<!-- ![Time and value readout with Shift held](img/step-response-hover.png) -->
 
 ## Getting a useful log
 
@@ -38,6 +48,11 @@ averages them, after dropping any that are very different from the rest.
 If fewer than 10 pieces could be used, the axis is labelled *(low
 confidence)*. Treat the shape as a rough guide only, and fly another log
 with more stick movement. *No data* means none of the pieces were usable.
+
+!!! warning "SCREENSHOT NEEDED: step-response-low-confidence.png"
+    A log of mostly gentle hovering, so at least one axis shows *(low confidence)* or *No data*. A crop of the label area is enough.
+
+<!-- ![An axis labelled low confidence](img/step-response-low-confidence.png) -->
 
 ## Reading it
 
@@ -61,6 +76,11 @@ different flights apart.
 Change one thing at a time, fly the same manoeuvres again and compare the
 two graphs. The [Tuning Process](../../tuning/process.md) explains which
 gain to adjust for each of these, and in what order.
+
+!!! warning "SCREENSHOT NEEDED: step-response-compare.png"
+    Two Step Response graphs of the same manoeuvres before and after one gain change, side by side in a single image. Ideally one shows overshoot or ringing and the other settles flat at 1.0, with the gain labels showing what changed.
+
+<!-- ![Step Response before and after a gain change](img/step-response-compare.png) -->
 
 !!! note
     The Step Response is an average over the whole stretch. A one-off

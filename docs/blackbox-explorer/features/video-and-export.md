@@ -6,6 +6,11 @@ With a flight video playing behind the graphs, you can see exactly what
 the helicopter was doing at each point in the log. It makes it much easier
 to match a wobble on the graph to something you saw from the ground.
 
+!!! warning "SCREENSHOT NEEDED: video-sync.png"
+    The main screen with a synced flight video playing behind the graphs, the heli clearly visible mid-manoeuvre.
+
+<!-- ![Flight video synced behind the graphs](img/video-sync.png) -->
+
 1. Open the log first, then the video. Drag the video onto the window or
    use **Open**. `.mp4`, `.mov` and `.avi` files are supported.
 2. Line the two up using **Log sync** in the toolbar.
@@ -16,6 +21,11 @@ to match a wobble on the graph to something you saw from the ground.
       seconds. A positive offset moves the log later in the video.
 3. Play it back. **Alt**+**←** and **Alt**+**→** step one video frame at a
    time, and the **VID** buttons jump to the start or end of the video.
+
+!!! warning "SCREENSHOT NEEDED: log-sync.png"
+    Crop of the toolbar with the Log sync controls showing: Start Log Here, the ◀ and ▶ buttons and the offset box, plus the VID buttons in the Playback group.
+
+<!-- ![The Log sync controls in the toolbar](img/log-sync.png) -->
 
 ### Smart Sync
 
@@ -38,6 +48,11 @@ now and then. To stop this, convert the video in HandBrake again and add
 `keyint=1` in **Additional Options**. That makes every frame a key frame,
 which the export needs in order to seek accurately.
 
+!!! warning "SCREENSHOT NEEDED: handbrake.png"
+    HandBrake's Video tab with H.264 selected and `keyint=1` typed into Additional Options. A crop of that area is enough.
+
+<!-- ![HandBrake Video tab with keyint=1 in Additional Options](img/handbrake.png) -->
+
 ## Export video
 
 **Export → Video…** (also on the right-click menu) renders the graphs to a
@@ -58,6 +73,11 @@ up the way you want before you start.
 
 The exported video has no sound. While it renders, the dialog shows the
 progress, file size and time left.
+
+!!! warning "SCREENSHOT NEEDED: export-video.png"
+    The Export video dialog with all four options visible. If you can, catch it mid-render so the progress, file size and time left show too.
+
+<!-- ![The Export video dialog](img/export-video.png) -->
 
 There is an extra option for videos in the **Settings**:
 

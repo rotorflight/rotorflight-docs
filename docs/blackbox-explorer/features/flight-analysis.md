@@ -8,6 +8,11 @@ battery, vibration and how closely the helicopter followed the sticks.
 It's meant as a quick first check. When something looks wrong, it tells
 you which part of the Explorer to look at next.
 
+!!! warning "SCREENSHOT NEEDED: flight-analysis.png"
+    The Flight analysis dialog open over the main screen, showing the top line (craft, firmware, flight length, steady seconds) and the Verdict. The pulse line button in the toolbar should be visible too.
+
+<!-- ![The Flight analysis dialog](img/flight-analysis.png) -->
+
 ## How it works
 
 The analysis covers the whole of the selected log. Start and end marks are
@@ -30,6 +35,11 @@ A steady stretch has to last at least 3 seconds. Short or very busy
 flights may not have any, and in that case most of the checks will say
 there isn't enough data.
 
+!!! warning "SCREENSHOT NEEDED: flight-analysis-no-data.png"
+    A short or very busy log where checks report there isn't enough data, or a check that says what was missing from the log. A crop of one or two sections is enough.
+
+<!-- ![Checks reporting not enough data](img/flight-analysis-no-data.png) -->
+
 If the log is longer than 4 minutes, only the steadiest 4 minutes are
 analysed, to save time. The dialog tells you when this has happened.
 
@@ -44,6 +54,11 @@ one of three ratings:
 | **Looks good** | Nothing to do. |
 | **Worth watching** | Keep an eye on it over the next few flights. |
 | **Needs attention** | Sort it out before you fly again. |
+
+!!! warning "SCREENSHOT NEEDED: flight-analysis-verdict.png"
+    Crop of the Verdict section: the one-line summary and the four cards. Ideally a log that gets a mix of ratings, so Looks good, Worth watching and Needs attention all appear.
+
+<!-- ![The Verdict with its four cards](img/flight-analysis-verdict.png) -->
 
 Under the verdict is a section for each check, with a short explanation
 and the figures it was based on. If a check couldn't run because the log
@@ -70,6 +85,11 @@ The worst single dip and the overall tracking error are shown as well. A
 lot of sag usually means either the governor needs tuning or the power
 system has run out of headroom, so check the **Power** card too. See
 [Governor Tuning](../../tuning/governor.md).
+
+!!! warning "SCREENSHOT NEEDED: flight-analysis-headspeed.png"
+    Crop of the Headspeed / Governor section with the Rotorflight governor in use, showing the sustained sag, worst dip and tracking error figures.
+
+<!-- ![The Headspeed / Governor check](img/flight-analysis-headspeed.png) -->
 
 With an ESC governor or a throttle curve there's no target in the log.
 Instead, the check looks at how steady the headspeed was. Variation up to
@@ -119,6 +139,11 @@ cause:
 - **high frequency**: motor, gear mesh or bearing noise
 - **not linked to rotor speed**: a frame or electrical resonance
 
+!!! warning "SCREENSHOT NEEDED: flight-analysis-vibration.png"
+    Crop of the Vibration section showing the strongest peak per axis and the suggested cause, ideally one matched to a rotor harmonic.
+
+<!-- ![The Vibration check](img/flight-analysis-vibration.png) -->
+
 There is no rating for vibration, only the findings. For a proper look,
 open the [Analyser](analyser.md) on the same part of the flight, and see
 [Filter Tuning](../../tuning/filters.md).
@@ -142,6 +167,11 @@ of the steady flight is worth watching and over 5% needs attention. If it
 happens on the tail, the tail probably doesn't have enough authority.
 Check the tail mechanics, gearing and pitch range before you touch the
 gains.
+
+!!! warning "SCREENSHOT NEEDED: flight-analysis-pid-tracking.png"
+    Crop of the PID Tracking section showing the error % and delay for each axis, and the PID sum limit counts.
+
+<!-- ![The PID Tracking check](img/flight-analysis-pid-tracking.png) -->
 
 To look more closely at any axis, open the
 [Step Response](step-response.md).

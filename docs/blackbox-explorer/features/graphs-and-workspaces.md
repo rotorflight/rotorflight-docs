@@ -11,6 +11,11 @@ The **Workspace** menu in the toolbar comes with a few layouts set up for
 common jobs. You can't overwrite these, but you can load one, change it,
 and save the result to one of your own slots.
 
+!!! warning "SCREENSHOT NEEDED: filter-tuning-workspace.png"
+    The main screen with the built-in Filter Tuning workspace loaded, so the raw and filtered gyro graphs and headspeed are visible with the legend.
+
+<!-- ![The Filter Tuning workspace](img/filter-tuning-workspace.png) -->
+
 | Workspace | Graphs | Good for |
 | --- | --- | --- |
 | **Filter Tuning** | Raw and filtered gyro for roll, pitch and yaw, plus headspeed | Seeing how much vibration the filters take out. Use it alongside the [Analyser](analyser.md). |
@@ -37,6 +42,11 @@ The **Workspace** menu has 20 slots for your own layouts.
 - **Clear saved workspaces**, at the bottom of the menu, deletes all of
   your own workspaces. The built-in ones stay. *New in 2.4.*
 
+!!! warning "SCREENSHOT NEEDED: workspace-menu.png"
+    The Workspace menu open, showing the built-in workspaces, a few of your own named slots with the disk and pencil icons, and Clear saved workspaces at the bottom.
+
+<!-- ![The Workspace menu](img/workspace-menu.png) -->
+
 The Explorer remembers your workspaces itself. In the web version they are
 stored by the browser, so a different browser or computer won't have them.
 To move them, or to share them with someone, use
@@ -54,9 +64,19 @@ Motors, Servos, Battery, Voltages, Temperatures, ESC Telemetry, BEC
 Telemetry, Attitude, Accelerometer and Debug. Only the graphs the log has
 data for are offered.
 
+!!! warning "SCREENSHOT NEEDED: add-graph.png"
+    The Add graph list open in Graph setup, showing Custom graph and the ready-made graphs.
+
+<!-- ![The Add graph list](img/add-graph.png) -->
+
 Each graph has an **Axis label** (its name) and a list of traces. Use
 **Add field** to add a trace, and **Remove graph** or **Remove all
 graphs** to clear things out.
+
+!!! warning "SCREENSHOT NEEDED: graph-setup.png"
+    The Graph setup dialog with two or three graphs, each with a few traces, so the Axis label, Add field, Remove graph buttons and all the trace columns (Name to Grid) are readable.
+
+<!-- ![The Graph setup dialog](img/graph-setup.png) -->
 
 For each trace you can set:
 
@@ -80,6 +100,11 @@ save it to a workspace as well.
     **S** switches all smoothing off until you press it again. **X** does
     the same for expo and **G** for grids. Turn smoothing off before you
     judge vibration from the graph, because smoothing hides it.
+
+!!! warning "SCREENSHOT NEEDED: smoothing-compare.png"
+    The same Gyro trace over the same stretch with smoothing on and off (S), one above the other in a single image, so the vibration that smoothing hides is obvious.
+
+<!-- ![The same gyro trace with smoothing on and off](img/smoothing-compare.png) -->
 
 ## Field names
 

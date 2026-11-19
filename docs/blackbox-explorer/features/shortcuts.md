@@ -3,6 +3,11 @@
 You can also find this list in the Explorer under the **?** button in the
 toolbar. On a Mac, use the **⌥ Option** key wherever it says **Alt**.
 
+!!! warning "SCREENSHOT NEEDED: shortcuts.png"
+    The shortcuts list opened from the **?** button in the toolbar, with the ? button visible if possible.
+
+<!-- ![The keyboard shortcuts list in the Explorer](img/shortcuts.png) -->
+
 ## Mouse
 
 | Action | Does |

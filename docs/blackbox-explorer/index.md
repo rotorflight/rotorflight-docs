@@ -11,6 +11,11 @@ analyser helps with filter tuning, the step response graph helps with PID
 tuning, and the flight analysis gives a quick health check of headspeed,
 power, battery, vibration and tracking.
 
+!!! warning "SCREENSHOT NEEDED: blackbox-explorer.png"
+    A good-looking hero shot of the Explorer with a real flight open: a busy part of the flight, a few graphs, the legend, and perhaps the craft and stick overlays on. This is the first thing people see, so make it inviting.
+
+<!-- ![The Blackbox Explorer with a flight log open](img/blackbox-explorer.png) -->
+
 ## Running it
 
 === "In the browser"
@@ -22,6 +27,11 @@ power, battery, vibration and tracking.
 
     There is nothing to install. The log is read by your browser and is
     never uploaded anywhere.
+
+    !!! warning "SCREENSHOT NEEDED: blackbox-site.png"
+        The blackbox.rotorflight.org page with the Launch Blackbox Explorer button, and the top of the snapshots list if it fits.
+
+    <!-- ![blackbox.rotorflight.org with the Launch button](img/blackbox-site.png) -->
 
 === "Desktop app"
 
@@ -56,6 +66,11 @@ Drag the file onto the Explorer window, or click **Open log file / video**
 on the welcome screen. Once a log is loaded, the same button is called
 **Open** and sits in the toolbar.
 
+!!! warning "SCREENSHOT NEEDED: welcome-screen.png"
+    The welcome screen before any log is loaded, with the Open log file / video button.
+
+<!-- ![The welcome screen](img/welcome-screen.png) -->
+
 | File | |
 | --- | --- |
 | `.bbl`, `.bfl`, `.txt` | Blackbox logs. |
@@ -67,6 +82,11 @@ A single file often holds more than one log, because a new one starts every
 time you arm. When that happens a drop-down list appears above the legend
 on the right. Each entry shows the start time, end time and length of that
 log, so you can pick the flight you want.
+
+!!! warning "SCREENSHOT NEEDED: log-select.png"
+    The log drop-down above the legend, opened on a file with several logs so the start time, end time and length of each one show.
+
+<!-- ![The log drop-down for a file with several logs](img/log-select.png) -->
 
 ## A first look
 

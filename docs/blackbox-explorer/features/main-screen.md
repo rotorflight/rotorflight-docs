@@ -7,6 +7,11 @@ The red vertical line in the centre of the graph marks the current time.
 The values in the legend, the overlays and any flight video all show what
 was happening at that moment.
 
+!!! warning "SCREENSHOT NEEDED: main-window.png"
+    Whole window with a log open. Toolbar, graph with the red time line, seek bar and legend all visible. Optionally label the four areas.
+
+<!-- ![Blackbox Explorer main screen with a log open](img/main-window.png) -->
+
 ## Moving around the log
 
 | To | Do this |
@@ -41,7 +46,17 @@ point in the log:
 - **Export video…** and **Save graph as image…**, covered on
   [Video & Export](video-and-export.md).
 
+!!! warning "SCREENSHOT NEEDED: right-click-menu.png"
+    The right-click menu open over the graph, ideally with a start/end range and a marker already set so they show too.
+
+<!-- ![Right-click menu on the graph](img/right-click-menu.png) -->
+
 ## The toolbar
+
+!!! warning "SCREENSHOT NEEDED: toolbar.png"
+    Crop of the full toolbar at a wide window size so no groups are folded into drop-downs.
+
+<!-- ![The toolbar](img/toolbar.png) -->
 
 | Control | |
 | --- | --- |
@@ -72,10 +87,21 @@ at the time. Turn on **Profile Hints** in the [Settings](#settings). This
 is useful if you switch profiles in flight, for example to compare two
 tunes in the same log.
 
+!!! warning "SCREENSHOT NEEDED: seek-bar.png"
+    Crop of the seek bar with Profile Hints on, using a log where the PID profile changes in flight. Event marks visible if possible.
+
+<!-- ![Seek bar coloured by PID profile](img/seek-bar.png) -->
+
 ## The legend
 
 The legend lists each graph and its traces, along with the value of each
 trace at the red line. You can also use it to change the display:
+
+!!! warning "SCREENSHOT NEEDED: legend.png"
+    Crop of the legend panel, including the buttons along the bottom and the Graph setup button. Hovering a trace (highlighted) is a bonus.
+
+<!-- ![The legend](img/legend.png) -->
+
 
 - Hover over a trace name and that trace is highlighted on the graph.
 - Click a trace name to send it to the [Analyser](analyser.md).
@@ -100,14 +126,29 @@ governor gains, rates, filters and RPM filter settings. When you have a
 pile of logs and can't remember which tune each one was flown on, this is
 where to check. The master gains were added in 2.4.
 
+!!! warning "SCREENSHOT NEEDED: header.png"
+    The Header view (H), showing the PID, master gain and governor section.
+
+<!-- ![Header view](img/header.png) -->
+
 The **Values Table** (**T**) shows every logged field at the red line. Each
 one is given twice: the raw number from the log, and the value converted to
 real units such as degrees per second, volts, amps or rpm.
+
+!!! warning "SCREENSHOT NEEDED: values-table.png"
+    The Values Table (T), with the raw and converted columns both visible.
+
+<!-- ![Values Table view](img/values-table.png) -->
 
 ## Overlays
 
 Overlays sit on top of the graph. Turn them on and off from the **View**
 menu.
+
+!!! warning "SCREENSHOT NEEDED: overlays.png"
+    Graph with the Craft and Sticks overlays on, mid-flight with collective and cyclic applied so the rotor disc colouring shows.
+
+<!-- ![Craft and stick overlays over the graph](img/overlays.png) -->
 
 | Overlay | Shows |
 | --- | --- |
@@ -125,6 +166,11 @@ To fix that for future flights, tick **Attitude** on the Configurator's
 
 The cog in the toolbar opens the display settings. These belong to the
 Explorer, so they stay the same whichever log you open.
+
+!!! warning "SCREENSHOT NEEDED: settings.png"
+    The Settings dialog opened from the cog. If it scrolls, capture the top half, or take two shots.
+
+<!-- ![Settings dialog](img/settings.png) -->
 
 | Setting | |
 | --- | --- |
