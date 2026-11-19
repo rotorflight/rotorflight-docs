@@ -20,7 +20,7 @@ aircraft -- for planes, see its sister project
 | --- | --- |
 | **Firmware** | Runs on the flight controller. Flashed from the Configurator. |
 | **[Configurator](configurator/index.md)** | Flashes, configures and tunes the flight controller. Runs as a desktop app or in the browser at [cfg.rotorflight.org](https://cfg.rotorflight.org). |
-| **Blackbox Explorer** | Reviews flight logs recorded by the flight controller. |
+| **[Blackbox Explorer](blackbox-explorer/index.md)** | Reviews flight logs recorded by the flight controller. Runs as a desktop app or in the browser at [blackbox.rotorflight.org](https://blackbox.rotorflight.org). |
 | **[Lua suites](radio/index.md)** | Configure and tune at the field from an FrSky Ethos or EdgeTX radio, with dashboards, telemetry callouts and ESC programming. |
 
 ## Where to start
